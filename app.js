@@ -8,9 +8,7 @@ function switchPage(pageKey) {
   const pageMap = {
     'home': 'home-view',
     'watch': 'watch-view',
-    'gallery': 'gallery-view',
-    'cast': 'cast-view',
-    'specs': 'specs-view'
+    'gallery': 'gallery-view'
   };
 
   const targetId = pageMap[pageKey] || 'home-view';
@@ -773,7 +771,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // URL Hash Routing on page load
   const hash = window.location.hash.replace('#', '');
-  if (hash && ['home', 'watch', 'gallery', 'cast', 'specs'].includes(hash)) {
+  if (hash && ['home', 'watch', 'gallery'].includes(hash)) {
     switchPage(hash);
   }
 });

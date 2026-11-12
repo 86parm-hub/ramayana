@@ -31,8 +31,6 @@
         <button class="tab-link active" data-target="home-view" onclick="switchPage('home')">Home</button>
         <button class="tab-link" data-target="watch-view" onclick="switchPage('watch')">Cinema Theater</button>
         <button class="tab-link" data-target="gallery-view" onclick="switchPage('gallery')">Stills &amp; Frames</button>
-        <button class="tab-link" data-target="cast-view" onclick="switchPage('cast')">Cast &amp; Characters</button>
-        <button class="tab-link" data-target="specs-view" onclick="switchPage('specs')">Studio Specs</button>
       </nav>
 
       <!-- Header Right Utilities (Top Navbar Logo Preserved & Clickable to Instagram) -->
@@ -159,8 +157,8 @@
               <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
               <span>Stream In Cinema</span>
             </button>
-            <button class="btn-cta-secondary" onclick="switchPage('cast')">
-              <span>Explore Cast</span>
+            <button class="btn-cta-secondary" onclick="switchPage('gallery')">
+              <span>View Stills &amp; Frames</span>
             </button>
           </div>
         </div>
@@ -644,126 +642,6 @@
   </section>
 
   <!-- =========================================================================
-       PAGE 4: CAST & CHARACTERS VIEW
-       ========================================================================= -->
-  <section class="page-view" id="cast-view">
-    <div class="page-inner-header">
-      <h2 class="view-title">Lead Ensemble &amp; Master Creators</h2>
-      <p class="view-subtitle">The visionary actors and master artisans behind the greatest epic ever made</p>
-    </div>
-
-    <div class="cast-roster-grid">
-      <!-- Cast 1: Ranbir Kapoor -->
-      <div class="roster-card">
-        <div class="roster-avatar avatar-gold">🏹</div>
-        <div class="roster-details">
-          <h3>Ranbir Kapoor</h3>
-          <span class="roster-role">Lord Rama</span>
-          <p class="roster-bio">The embodiment of righteousness, truth, and grace. The seventh avatar of Vishnu born to uphold cosmic order.</p>
-        </div>
-      </div>
-
-      <!-- Cast 2: Sai Pallavi -->
-      <div class="roster-card">
-        <div class="roster-avatar avatar-rose">🌸</div>
-        <div class="roster-details">
-          <h3>Sai Pallavi</h3>
-          <span class="roster-role">Mata Sita</span>
-          <p class="roster-bio">Princess of Mithila and embodiment of Goddess Lakshmi. The personification of devotion, courage, and virtue.</p>
-        </div>
-      </div>
-
-      <!-- Cast 3: Yash -->
-      <div class="roster-card">
-        <div class="roster-avatar avatar-dark">👑</div>
-        <div class="roster-details">
-          <h3>Yash</h3>
-          <span class="roster-role">Lankesh Ravana</span>
-          <p class="roster-bio">The fearsome ten-headed monarch of golden Lanka. A devout devotee of Shiva blinded by pride and supreme power.</p>
-        </div>
-      </div>
-
-      <!-- Cast 4: Sunny Deol -->
-      <div class="roster-card">
-        <div class="roster-avatar avatar-saffron">🔱</div>
-        <div class="roster-details">
-          <h3>Sunny Deol</h3>
-          <span class="roster-role">Lord Hanuman</span>
-          <p class="roster-bio">The invincible Rudra avatar and supreme devotee whose boundless strength and loyalty cross oceans.</p>
-        </div>
-      </div>
-
-      <!-- Creator 1: Nitesh Tiwari -->
-      <div class="roster-card">
-        <div class="roster-avatar avatar-cyan">🎬</div>
-        <div class="roster-details">
-          <h3>Nitesh Tiwari</h3>
-          <span class="roster-role">Director &bull; Screenplay</span>
-          <p class="roster-bio">Visionary filmmaker bringing ancient texts to life through meticulous narrative craftsmanship and epic scale.</p>
-        </div>
-      </div>
-
-      <!-- Creator 2: A.R. Rahman & Hans Zimmer -->
-      <div class="roster-card">
-        <div class="roster-avatar avatar-gold">🎼</div>
-        <div class="roster-details">
-          <h3>A.R. Rahman &amp; Hans Zimmer</h3>
-          <span class="roster-role">Original Score &bull; Soundscape</span>
-          <p class="roster-bio">Two Oscar-winning legends unite ancient Vedic chants with monumental orchestral symphonies.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- =========================================================================
-       PAGE 5: STUDIO SPECS VIEW
-       ========================================================================= -->
-  <section class="page-view" id="specs-view">
-    <div class="page-inner-header">
-      <h2 class="view-title">Master Quality &amp; Technical Specs</h2>
-      <p class="view-subtitle">High-fidelity production encoding specifications and audio architecture</p>
-    </div>
-
-    <div class="specs-manifest-grid">
-      <div class="manifest-card">
-        <span class="manifest-label">Master Resolution</span>
-        <span class="manifest-val">1080p Full HD</span>
-        <p class="manifest-sub">1920 &times; 1080 Progressive Scan</p>
-      </div>
-
-      <div class="manifest-card">
-        <span class="manifest-label">Encoding Format</span>
-        <span class="manifest-val">HEVC / H.265</span>
-        <p class="manifest-sub">High Efficiency 10-Bit Color Depth</p>
-      </div>
-
-      <div class="manifest-card">
-        <span class="manifest-label">Audio Configuration</span>
-        <span class="manifest-val">Hindi Multi-Org 2.0</span>
-        <p class="manifest-sub">Clean Stereo Master &bull; Uncompressed Dialogue</p>
-      </div>
-
-      <div class="manifest-card">
-        <span class="manifest-label">Media Container</span>
-        <span class="manifest-val">Matroska (.MKV)</span>
-        <p class="manifest-sub">Lossless Chapter Markers &amp; Subtitle Layers</p>
-      </div>
-
-      <div class="manifest-card">
-        <span class="manifest-label">Asset Data Size</span>
-        <span class="manifest-val">3.54 GB</span>
-        <p class="manifest-sub">Clean Master &bull; Intro (1m 17s) &amp; Outro (2m) Cropped</p>
-      </div>
-
-      <div class="manifest-card">
-        <span class="manifest-label">Stream Engine</span>
-        <span class="manifest-val">HTTP 206 Partial</span>
-        <p class="manifest-sub">Zero-Latency Instant Byte-Range Scrubbing</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- =========================================================================
        STUDIO FOOTER (AI SYNDICAT Logo & Instagram Link Untouched & Intact)
        ========================================================================= -->
   <footer class="studio-footer">
@@ -877,22 +755,6 @@
         <polyline points="21 15 16 10 5 21"></polyline>
       </svg>
       <span>Stills</span>
-    </button>
-    <button class="mobile-nav-item" data-target="cast-view" onclick="switchPage('cast')">
-      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-        <circle cx="9" cy="7" r="4"></circle>
-        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-      </svg>
-      <span>Cast</span>
-    </button>
-    <button class="mobile-nav-item" data-target="specs-view" onclick="switchPage('specs')">
-      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="12" cy="12" r="3"></circle>
-        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-      </svg>
-      <span>Specs</span>
     </button>
   </nav>
 
