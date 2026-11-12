@@ -1471,6 +1471,244 @@ video {
   cursor: pointer;
 }
 
+/* ==========================================================================
+   Theater On-Screen Corner Watermark (AI SYNDICAT)
+   ========================================================================== */
+.theater-corner-watermark {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  z-index: 18;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px 5px 6px;
+  background: rgba(10, 14, 24, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 20px;
+  text-decoration: none;
+  opacity: 0.85;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.6);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: auto;
+  user-select: none;
+}
+
+.theater-corner-watermark:hover {
+  opacity: 1;
+  transform: translateY(-2px) scale(1.03);
+  border-color: var(--neon-red);
+  box-shadow: 0 6px 24px rgba(255, 42, 68, 0.35), 0 0 14px rgba(255, 183, 3, 0.25);
+  background: rgba(16, 20, 32, 0.92);
+}
+
+.watermark-emblem-wrap {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+  flex-shrink: 0;
+}
+
+.watermark-emblem-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.watermark-text-wrap {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.watermark-brand-name {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #ffffff;
+}
+
+.watermark-sub-tag {
+  font-family: var(--font-ui);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--gold-light);
+}
+
+/* ==========================================================================
+   Cinematic Ending Outro Card (AI SYNDICAT Presentation Slate)
+   ========================================================================== */
+.theater-outro-card {
+  position: absolute;
+  inset: 0;
+  z-index: 28;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: radial-gradient(circle at center, rgba(14, 18, 30, 0.96) 0%, rgba(3, 4, 6, 0.98) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  text-align: center;
+  padding: 30px;
+  animation: fadeInOutro 0.4s ease forwards;
+}
+
+@keyframes fadeInOutro {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.theater-outro-card.active {
+  display: flex;
+}
+
+.outro-close-btn {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border-subtle);
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.outro-close-btn:hover {
+  background: rgba(255, 42, 68, 0.3);
+  border-color: var(--neon-red);
+}
+
+.outro-emblem-ring {
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  border: 2px solid var(--gold-pri);
+  box-shadow: 0 0 25px rgba(255, 183, 3, 0.5), 0 0 45px rgba(255, 42, 68, 0.3);
+  overflow: hidden;
+  margin-bottom: 14px;
+  animation: floatEmblem 3s ease-in-out infinite;
+}
+
+@keyframes floatEmblem {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.outro-emblem-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.outro-super-tag {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  color: var(--gold-pri);
+  margin-bottom: 6px;
+}
+
+.outro-title {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 4vw, 36px);
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.outro-subtitle {
+  font-size: clamp(12px, 2.5vw, 15px);
+  color: var(--text-muted);
+  max-width: 540px;
+  margin-bottom: 22px;
+  line-height: 1.5;
+}
+
+.outro-cta-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn-outro-action {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: 24px;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  border: none;
+  transition: all 0.25s ease;
+}
+
+.btn-outro-action.primary {
+  background: linear-gradient(135deg, var(--gold-pri) 0%, var(--saffron-deep) 100%);
+  color: #040508;
+  box-shadow: 0 4px 18px var(--gold-glow-bright);
+}
+
+.btn-outro-action.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px var(--gold-glow-bright);
+}
+
+.btn-outro-action.secondary {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-silver);
+  color: #ffffff;
+}
+
+.btn-outro-action.secondary:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: #fff;
+}
+
+.btn-outro-insta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 24px;
+  background: rgba(255, 42, 68, 0.15);
+  border: 1px solid rgba(255, 42, 68, 0.5);
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  transition: all 0.25s ease;
+}
+
+.btn-outro-insta:hover {
+  background: var(--neon-red);
+  border-color: var(--neon-red);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(255, 42, 68, 0.5);
+}
+
 /* Center Play Orb */
 .center-play-veil {
   position: absolute;
@@ -2324,23 +2562,58 @@ video {
 }
 
 /* ==========================================================================
-   Responsive Adaptations: Tablets & Desktops (max-width: 1024px)
-   ========================================================================= */
-@media (max-width: 1024px) {
+   Responsive Adaptations: Tablets & iPads (769px - 1024px)
+   ========================================================================== */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .header-content {
+    padding: 0 20px;
+  }
+  .brand-name {
+    font-size: 19px;
+    letter-spacing: 2px;
+  }
+  .nav-tabs {
+    gap: 6px;
+  }
+  .tab-link {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+  .quality-pill {
+    display: none;
+  }
+  .syndicat-header-brand {
+    padding: 5px 10px;
+    font-size: 11px;
+  }
+  .btn-play-header {
+    padding: 6px 14px;
+    font-size: 12px;
+  }
   .hero-slide {
-    padding: 100px 30px 60px;
+    padding: 95px 24px 50px;
+  }
+  .hero-title {
+    font-size: clamp(32px, 5vw, 48px);
   }
   .cards-rail {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
   .gallery-mosaic {
     grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
   }
   .mosaic-item.large {
     grid-row: span 1;
   }
   .cast-roster-grid {
     grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .specs-manifest-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
   }
 }
 
@@ -2471,7 +2744,6 @@ video {
   .page-inner-header,
   .theater-control-strip,
   .cinema-act-selector-bar,
-  .screen-stage,
   .content-row,
   .gallery-mosaic,
   .cast-roster-grid,
@@ -2479,6 +2751,15 @@ video {
   .theater-trilogy-container {
     padding-left: 14px;
     padding-right: 14px;
+  }
+  .screen-stage {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .video-chassis {
+    border-radius: 0 !important;
+    border-left: none !important;
+    border-right: none !important;
   }
 
   /* Hero Section */
@@ -2568,6 +2849,55 @@ video {
     justify-content: space-between;
   }
 
+  /* Corner Watermark on Mobile */
+  .theater-corner-watermark {
+    top: 10px;
+    right: 12px;
+    padding: 3px 8px 3px 4px;
+    gap: 6px;
+  }
+  .watermark-emblem-wrap {
+    width: 20px;
+    height: 20px;
+  }
+  .watermark-brand-name {
+    font-size: 9.5px;
+  }
+  .watermark-sub-tag {
+    font-size: 7px;
+  }
+
+  /* Outro Card on Mobile */
+  .theater-outro-card {
+    padding: 16px;
+  }
+  .outro-emblem-ring {
+    width: 54px;
+    height: 54px;
+  }
+  .outro-super-tag {
+    font-size: 9px;
+    letter-spacing: 2px;
+  }
+  .outro-title {
+    font-size: 20px;
+  }
+  .outro-subtitle {
+    font-size: 11px;
+    margin-bottom: 14px;
+  }
+  .outro-cta-row {
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+  }
+  .btn-outro-action, .btn-outro-insta {
+    width: 100%;
+    justify-content: center;
+    padding: 9px 16px;
+    font-size: 12px;
+  }
+
   /* Player Controls */
   .studio-controls-bar {
     padding: 8px 12px;
@@ -2589,14 +2919,36 @@ video {
     height: 34px;
   }
 
-  /* Grids & Cards */
+  /* Netflix-Style Horizontal Touch Scroll for Chapters */
   .cards-rail {
-    grid-template-columns: 1fr;
-    gap: 16px;
+    display: flex !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 14px !important;
+    padding-bottom: 12px !important;
+    scrollbar-width: none !important;
+    margin: 0 -14px !important;
+    padding-left: 14px !important;
+    padding-right: 14px !important;
   }
+  .cards-rail::-webkit-scrollbar {
+    display: none !important;
+  }
+  .film-card {
+    min-width: 260px !important;
+    max-width: 260px !important;
+    flex-shrink: 0 !important;
+    scroll-snap-align: start !important;
+  }
+
   .gallery-mosaic {
-    grid-template-columns: 1fr;
-    gap: 14px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .mosaic-item.large {
+    grid-row: span 1;
   }
   .cast-roster-grid {
     grid-template-columns: repeat(2, 1fr);

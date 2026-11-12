@@ -70,7 +70,31 @@ const ACT_CONFIG = {
 
 let activeActKey = 'act1';
 
-window.selectAct = function(actKey) {
+// Outro Card Handlers
+window.closeOutroCard = function () {
+  const card = document.getElementById('theaterOutroCard');
+  if (card) card.classList.remove('active');
+};
+
+window.handleOutroNext = function () {
+  window.closeOutroCard();
+  if (activeActKey === 'act1') {
+    window.selectAct('act2');
+  } else {
+    window.selectAct('act1');
+  }
+};
+
+window.handleOutroReplay = function () {
+  window.closeOutroCard();
+  const video = document.getElementById('videoPlayer');
+  if (video) {
+    video.currentTime = 0;
+    video.play().catch(e => console.log('Replay deferred:', e));
+  }
+};
+
+window.selectAct = function (actKey) {
   if (!ACT_CONFIG[actKey]) return;
   activeActKey = actKey;
   const cfg = ACT_CONFIG[actKey];
@@ -79,10 +103,12 @@ window.selectAct = function(actKey) {
   const btn2 = document.getElementById('btnAct2');
   const modal = document.getElementById('offlineFileModal');
   const spinner = document.getElementById('streamSpinnerVeil');
+  const outroCard = document.getElementById('theaterOutroCard');
 
   if (btn1) btn1.classList.toggle('active', actKey === 'act1');
   if (btn2) btn2.classList.toggle('active', actKey === 'act2');
   if (modal) modal.classList.remove('visible');
+  if (outroCard) outroCard.classList.remove('active');
   if (spinner) spinner.classList.add('active');
 
   if (video) {
@@ -159,7 +185,7 @@ let currentModalPart = 2;
 function openComingSoonModal(partNum) {
   const modal = document.getElementById('comingSoonModal');
   if (!modal) return;
-  
+
   currentModalPart = partNum;
   const data = trilogyData[partNum] || trilogyData[2];
 
@@ -430,11 +456,24 @@ document.addEventListener('DOMContentLoaded', () => {
     streamSpinnerVeil.classList.remove('active');
   });
 
-  // Seamless Act 1 -> Act 2 Auto Transition
+  // Cinematic Ending: AI SYNDICAT Outro Branding Card
   video.addEventListener('ended', () => {
-    if (activeActKey === 'act1') {
-      console.log('Act 1 completed. Auto-starting Act 2...');
-      window.selectAct('act2');
+    const outroCard = document.getElementById('theaterOutroCard');
+    const title = document.getElementById('outroTitle');
+    const sub = document.getElementById('outroSubtitle');
+    const nextBtnTxt = document.getElementById('btnOutroNextText');
+
+    if (outroCard) {
+      if (activeActKey === 'act1') {
+        if (title) title.textContent = "RAMAYANA: PART ONE";
+        if (sub) sub.textContent = "Act 1: The Divine Beginning Complete • Ready for Act 2!";
+        if (nextBtnTxt) nextBtnTxt.textContent = "Play Act 2 Now (Forest Exile)";
+      } else {
+        if (title) title.textContent = "RAMAYANA: PART ONE (COMPLETE)";
+        if (sub) sub.textContent = "Part 1 Complete • Part 2 Coming Soon (Diwali 2028)";
+        if (nextBtnTxt) nextBtnTxt.textContent = "Replay Full Movie (Act 1)";
+      }
+      outroCard.classList.add('active');
     }
   });
 
@@ -557,7 +596,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Ambient Glow & Lights Out
-  window.toggleCinemaAmbient = function() {
+  window.toggleCinemaAmbient = function () {
     screenAmbientGlow.classList.toggle('hidden');
     const glowBtn = document.getElementById('theaterGlowBtn');
     const status = glowBtn.querySelector('.toggle-status');
@@ -570,7 +609,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  window.toggleLightsOut = function() {
+  window.toggleLightsOut = function () {
     document.body.classList.toggle('lights-out');
     const btn = document.getElementById('theaterLightsBtn');
     if (document.body.classList.contains('lights-out')) {
@@ -645,7 +684,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const blobURL = URL.createObjectURL(file);
     video.src = blobURL;
     video.load();
-    fileNote.textContent = `Streaming file: ${file.name} (${(file.size / (1024*1024*1024)).toFixed(2)} GB)`;
+    fileNote.textContent = `Streaming file: ${file.name} (${(file.size / (1024 * 1024 * 1024)).toFixed(2)} GB)`;
     switchPage('watch');
     setTimeout(() => {
       video.play().then(() => {
