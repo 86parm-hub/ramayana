@@ -3069,108 +3069,582 @@ video {
 }
 
 /* ==========================================================================
-   Studio Footer (Untouched - Footer Logo Intact)
-   ========================================================================= */
-.studio-footer {
-  border-top: 1px solid var(--border-subtle);
-  background: rgba(4, 5, 8, 0.98);
-  padding: 50px 40px 40px;
-  text-align: center;
-}
-
-.footer-wrap {
-  max-width: 860px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-}
-
-.footer-syndicat-showcase {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 4px;
-  text-decoration: none;
-  cursor: pointer;
-  transition: transform 0.25s ease;
-}
-
-.footer-syndicat-showcase:hover {
-  transform: translateY(-3px);
-}
-
-.footer-emblem-ring {
-  width: 58px;
-  height: 58px;
-  border-radius: 50%;
-  border: 2px solid var(--border-silver);
-  overflow: hidden;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.footer-syndicat-showcase:hover .footer-emblem-ring {
-  border-color: var(--neon-red);
-  box-shadow: 0 0 30px rgba(255, 42, 68, 0.4);
-}
-
-.footer-syndicat-emblem {
+   Grand Celestial Ram Mandir Footer (AI SYNDICAT Studio Official)
+   ========================================================================== */
+.studio-footer.grand-mandir-footer {
+  position: relative;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  background-color: #060402;
+  background-image: url('footer_backdrop_clean_hd.jpg');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+  min-height: 520px;
+  padding: clamp(140px, 14vw, 190px) 40px 32px;
+  overflow: hidden;
+  color: #f7e7ce;
+  border-top: 1px solid rgba(229, 184, 66, 0.45);
+  box-shadow: 0 -20px 50px rgba(0, 0, 0, 0.9);
+  text-align: left;
 }
 
-.footer-syndicat-title {
-  font-family: var(--font-display);
-  font-size: 14px;
+/* Atmospheric Divine Animations */
+.gmf-atmosphere {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Pulsating Halo over the Central Sacred ॐ */
+.gmf-om-aura-pulse {
+  position: absolute;
+  top: clamp(60px, 9vw, 95px);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(120px, 15vw, 180px);
+  height: clamp(120px, 15vw, 180px);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 220, 110, 0.6) 0%, rgba(255, 175, 20, 0.25) 45%, transparent 72%);
+  animation: gmfOmAuraPulse 4s ease-in-out infinite;
+  mix-blend-mode: screen;
+}
+
+@keyframes gmfOmAuraPulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.92);
+    opacity: 0.5;
+    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.4));
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.15);
+    opacity: 0.95;
+    filter: drop-shadow(0 0 35px rgba(255, 215, 0, 0.85));
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.92);
+    opacity: 0.5;
+    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.4));
+  }
+}
+
+/* Volumetric Golden Ambient Glow over Ayodhya Ram Mandir */
+.gmf-mandir-aura {
+  position: absolute;
+  top: clamp(35px, 6vw, 70px);
+  right: clamp(4%, 8vw, 12%);
+  width: clamp(200px, 25vw, 320px);
+  height: clamp(130px, 16vw, 200px);
+  background: radial-gradient(ellipse at center, rgba(255, 215, 110, 0.4) 0%, rgba(255, 140, 20, 0.15) 50%, transparent 80%);
+  animation: gmfMandirWarmth 5.5s ease-in-out infinite alternate;
+  mix-blend-mode: screen;
+}
+
+@keyframes gmfMandirWarmth {
+  0% {
+    opacity: 0.35;
+    transform: scale(0.97);
+  }
+  100% {
+    opacity: 0.85;
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 25px rgba(255, 190, 60, 0.6));
+  }
+}
+
+/* Light Sheen gliding along the Golden Wave Ribbon */
+.gmf-wave-sheen {
+  position: absolute;
+  top: clamp(90px, 12vw, 130px);
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 225, 120, 0.4) 50%, transparent 100%);
+  animation: gmfWaveSheen 8s ease-in-out infinite;
+  mix-blend-mode: screen;
+}
+
+@keyframes gmfWaveSheen {
+  0% {
+    left: -40%;
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.7;
+  }
+  70% {
+    opacity: 0.7;
+  }
+  100% {
+    left: 120%;
+    opacity: 0;
+  }
+}
+
+/* Warm Ambient Wick Flicker for Floating Water Diyas */
+.gmf-diya-glow {
+  position: absolute;
+  bottom: 20px;
+  right: 10%;
+  width: 260px;
+  height: 80px;
+  background: radial-gradient(ellipse at center, rgba(255, 185, 50, 0.35) 0%, rgba(255, 120, 0, 0.1) 60%, transparent 80%);
+  animation: gmfDiyaFlicker 3.2s ease-in-out infinite;
+  mix-blend-mode: screen;
+}
+
+@keyframes gmfDiyaFlicker {
+  0%, 100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  35% {
+    opacity: 0.8;
+    transform: scale(1.06);
+  }
+  65% {
+    opacity: 0.6;
+    transform: scale(0.96);
+  }
+}
+
+/* Floating Sacred Golden Dust Particles */
+.gmf-particles {
+  position: absolute;
+  inset: 0;
+}
+
+.gmf-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #ffe082;
+  box-shadow: 0 0 10px #ffd54f, 0 0 20px #ffb300;
+  opacity: 0;
+}
+
+.gmf-particle.p1 { left: 18%; bottom: 60px; animation: gmfParticleFloat 6s ease-in infinite 0.2s; }
+.gmf-particle.p2 { left: 34%; bottom: 40px; animation: gmfParticleFloat 7s ease-in infinite 2.1s; }
+.gmf-particle.p3 { left: 52%; bottom: 70px; animation: gmfParticleFloat 6.5s ease-in infinite 1.4s; }
+.gmf-particle.p4 { left: 68%; bottom: 50px; animation: gmfParticleFloat 8s ease-in infinite 3.5s; }
+.gmf-particle.p5 { left: 82%; bottom: 65px; animation: gmfParticleFloat 7.5s ease-in infinite 0.8s; }
+.gmf-particle.p6 { left: 91%; bottom: 45px; animation: gmfParticleFloat 6.8s ease-in infinite 2.7s; }
+
+@keyframes gmfParticleFloat {
+  0% {
+    transform: translateY(0) scale(0.6);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.85;
+  }
+  75% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(-180px) translateX(25px) scale(1.3);
+    opacity: 0;
+  }
+}
+
+/* 4-Column Grid Wrap */
+.gmf-columns-wrap {
+  position: relative;
+  z-index: 2;
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.35fr 1fr 1.15fr 1.4fr;
+  align-items: start;
+}
+
+.gmf-col {
+  position: relative;
+  padding: 0 28px;
+}
+
+/* Fine Golden Vertical Divider between Columns */
+.gmf-col:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 10%;
+  height: 80%;
+  width: 1px;
+  background: linear-gradient(180deg, transparent 0%, rgba(229, 184, 66, 0.4) 25%, rgba(229, 184, 66, 0.4) 75%, transparent 100%);
+}
+
+/* Column 1: Brand */
+.gmf-brand-lotus {
+  margin-bottom: 10px;
+}
+
+.gmf-lotus-icon {
+  width: 52px;
+  height: 30px;
+  filter: drop-shadow(0 2px 8px rgba(229, 184, 66, 0.45));
+}
+
+.gmf-brand-title {
+  font-family: 'Cinzel', 'Trajan Pro', Georgia, serif;
+  font-size: 22px;
   font-weight: 800;
-  letter-spacing: 2.5px;
-  color: #fff;
+  letter-spacing: 3px;
+  background: linear-gradient(135deg, #fff3cf 0%, #e6b845 50%, #b8860b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0 0 5px 0;
 }
 
-.footer-insta-handle {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 12px;
-  font-weight: 600;
-  color: #ff5b77;
-  letter-spacing: 0.5px;
+.gmf-brand-tagline {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 2.2px;
+  color: #ffca28;
+  margin: 0 0 14px 0;
+  text-transform: uppercase;
 }
 
-.footer-brand-lockup {
+.gmf-brand-desc {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 13px;
+  color: #c8c0b0;
+  line-height: 1.6;
+  margin: 0 0 20px 0;
+  max-width: 290px;
+}
+
+/* Social Icon Pills */
+.gmf-social-pills {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-.footer-brand-name {
-  font-family: var(--font-display);
-  font-size: 16px;
-  font-weight: 800;
-  letter-spacing: 3px;
-  color: var(--gold-light);
+.gmf-social-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(229, 184, 66, 0.45);
+  background: rgba(18, 14, 10, 0.65);
+  color: #f5dfa8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
-.footer-note {
+.gmf-social-btn:hover {
+  border-color: #ffd54f;
+  background: rgba(229, 184, 66, 0.2);
+  color: #ffffff;
+  transform: translateY(-3px) scale(1.08);
+  box-shadow: 0 0 20px rgba(255, 213, 79, 0.65);
+}
+
+/* Column Headings & Ornament */
+.gmf-col-title {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  background: linear-gradient(135deg, #fff3cf 0%, #e6b845 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0 0 4px 0;
+}
+
+.gmf-title-ornament {
+  margin-bottom: 16px;
+  line-height: 1;
+}
+
+.gmf-diamond {
+  color: #d4af37;
+  font-size: 8px;
+  opacity: 0.85;
+}
+
+/* Quick Links List */
+.gmf-nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.gmf-nav-list li {
+  margin-bottom: 8px;
+}
+
+.gmf-nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #c8c0b0;
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  padding: 3px 0;
+  cursor: pointer;
+}
+
+.gmf-arrow {
+  color: #e5b842;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.gmf-nav-link:hover {
+  color: #ffd54f;
+  transform: translateX(4px);
+}
+
+.gmf-nav-link:hover .gmf-arrow {
+  color: #ffffff;
+  transform: translateX(3px);
+  filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.8));
+}
+
+/* Column 3: Get In Touch */
+.gmf-contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.gmf-contact-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #c8c0b0;
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.gmf-c-icon {
+  color: #e5b842;
+  flex-shrink: 0;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+a.gmf-contact-row:hover {
+  color: #ffd54f;
+}
+
+a.gmf-contact-row:hover .gmf-c-icon {
+  color: #ffffff;
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.8));
+}
+
+/* Column 4: Stay Connected */
+.gmf-subscribe-sub {
+  font-family: 'Inter', sans-serif;
   font-size: 13px;
-  color: var(--text-dim);
-  line-height: 1.6;
+  color: #c8c0b0;
+  margin: 0 0 16px 0;
+  line-height: 1.5;
 }
 
-.footer-shortcuts-line {
+.gmf-input-pill {
+  display: flex;
+  align-items: center;
+  background: rgba(14, 11, 8, 0.85);
+  border: 1.5px solid rgba(229, 184, 66, 0.5);
+  border-radius: 999px;
+  padding: 4px 5px 4px 14px;
+  max-width: 320px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+.gmf-input-pill:focus-within {
+  border-color: #ffd54f;
+  box-shadow: 0 0 20px rgba(255, 213, 79, 0.45);
+}
+
+.gmf-mail-ico {
+  color: #e5b842;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+.gmf-email-input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+}
+
+.gmf-email-input::placeholder {
+  color: #8c8474;
+}
+
+.gmf-subscribe-btn {
+  background: linear-gradient(135deg, #ffd777 0%, #e5b842 50%, #b8860b 100%);
+  color: #160c02;
+  font-family: 'Cinzel', Georgia, serif;
   font-size: 12px;
-  color: var(--text-muted);
+  font-weight: 800;
+  letter-spacing: 1px;
+  border: none;
+  border-radius: 999px;
+  padding: 9px 18px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 10px rgba(229, 184, 66, 0.35);
+  white-space: nowrap;
 }
 
-.footer-shortcuts-line code {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 2px 6px;
-  border-radius: 4px;
-  color: var(--gold-light);
+.gmf-subscribe-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 18px rgba(255, 215, 0, 0.6);
+  filter: brightness(1.1);
+}
+
+.gmf-subscribe-btn.subscribed {
+  background: linear-gradient(135deg, #a8ff78 0%, #78ffd6 100%);
+  color: #032b14;
+  box-shadow: 0 0 20px rgba(120, 255, 214, 0.6);
+}
+
+/* Toast Message */
+.gmf-subscribe-toast {
+  min-height: 20px;
+  margin-top: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: #ffd54f;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.gmf-subscribe-toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gmf-subscribe-toast.error {
+  color: #ff6b6b;
+}
+
+/* Bottom Bar */
+.gmf-bottom-bar {
+  position: relative;
+  z-index: 2;
+  margin-top: 50px;
+  text-align: center;
+}
+
+.gmf-divider-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.gmf-div-line {
+  height: 1px;
+  flex: 1;
+  max-width: 440px;
+  background: linear-gradient(90deg, transparent, rgba(229, 184, 66, 0.45), transparent);
+}
+
+.gmf-div-lotus {
+  display: inline-flex;
+  align-items: center;
+}
+
+.gmf-mini-lotus {
+  width: 32px;
+  height: 18px;
+  filter: drop-shadow(0 0 8px rgba(229, 184, 66, 0.5));
+}
+
+.gmf-copyright-text {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 12px;
+  color: #a49c8c;
+  letter-spacing: 0.4px;
+}
+
+.gmf-pipe {
+  margin: 0 10px;
+  color: rgba(229, 184, 66, 0.5);
+}
+
+.gmf-heart {
+  color: #e53935;
+  display: inline-block;
+  animation: gmfHeartBeat 2s infinite ease-in-out;
+}
+
+@keyframes gmfHeartBeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.25); filter: drop-shadow(0 0 5px rgba(229, 57, 53, 0.7)); }
+}
+
+/* Responsive Rules for Tablet & Mobile */
+@media (max-width: 1024px) {
+  .gmf-columns-wrap {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 36px;
+  }
+  .gmf-col {
+    padding: 0 20px;
+  }
+  .gmf-col:nth-child(2)::after {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .studio-footer.grand-mandir-footer {
+    padding: 110px 20px 26px;
+    text-align: center;
+  }
+  .gmf-columns-wrap {
+    grid-template-columns: 1fr;
+    row-gap: 32px;
+  }
+  .gmf-col::after {
+    display: none !important;
+  }
+  .gmf-brand-desc {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .gmf-social-pills {
+    justify-content: center;
+  }
+  .gmf-nav-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .gmf-contact-list {
+    align-items: center;
+  }
+  .gmf-input-pill {
+    margin: 0 auto;
+  }
 }
 
 /* ==========================================================================
