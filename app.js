@@ -7,11 +7,18 @@
 function switchPage(pageKey) {
   const pageMap = {
     'home': 'home-view',
+    'trailer': 'trailer-view',
     'watch': 'watch-view',
     'gallery': 'gallery-view'
   };
 
   const targetId = pageMap[pageKey] || 'home-view';
+
+  // Pause trailer video if leaving trailer page
+  const trailerVideo = document.getElementById('trailerVideo');
+  if (trailerVideo && pageKey !== 'trailer' && !trailerVideo.paused) {
+    trailerVideo.pause();
+  }
 
   // Toggle active view
   document.querySelectorAll('.page-view').forEach(view => {
@@ -769,9 +776,126 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Initialize Dedicated Movie Trailer Player
+  initTrailerPlayer();
+
   // URL Hash Routing on page load
   const hash = window.location.hash.replace('#', '');
-  if (hash && ['home', 'watch', 'gallery'].includes(hash)) {
+  if (hash && ['home', 'trailer', 'watch', 'gallery'].includes(hash)) {
     switchPage(hash);
   }
 });
+
+/* ==========================================================================
+   DEDICATED MOVIE TRAILER ENGINE
+   ========================================================================== */
+function initTrailerPlayer() {
+  const video = document.getElementById('trailerVideo');
+  const playOverlay = document.getElementById('trailerPlayOverlay');
+  const playIcon = document.getElementById('trailerPlayIcon');
+  const pauseIcon = document.getElementById('trailerPauseIcon');
+  const muteBtn = document.getElementById('trailerMuteBtn');
+  const volIcon = document.getElementById('trailerVolIcon');
+  const timeDisplay = document.getElementById('trailerTimeDisplay');
+  const scrubTrack = document.getElementById('trailerScrubTrack');
+  const scrubFill = document.getElementById('trailerScrubFill');
+  const scrubLoaded = document.getElementById('trailerScrubLoaded');
+  const chassis = document.getElementById('trailerChassis');
+  if (!video) return;
+
+  window.toggleTrailerPlayback = function() {
+    if (video.paused || video.ended) {
+      video.play().catch(e => console.log('Autoplay prevented', e));
+    } else {
+      video.pause();
+    }
+  };
+
+  window.toggleTrailerMute = function() {
+    video.muted = !video.muted;
+    if (volIcon) {
+      if (video.muted) {
+        volIcon.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line>';
+      } else {
+        volIcon.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>';
+      }
+    }
+  };
+
+  window.toggleTrailerFullscreen = function() {
+    if (!document.fullscreenElement) {
+      if (chassis && chassis.requestFullscreen) {
+        chassis.requestFullscreen();
+      } else if (video.requestFullscreen) {
+        video.requestFullscreen();
+      }
+    } else {
+      if (document.exitFullscreen) document.exitFullscreen();
+    }
+  };
+
+  window.seekTrailer = function(timeInSec, cardEl) {
+    if (video) {
+      video.currentTime = timeInSec;
+      video.play().catch(() => {});
+      if (cardEl) {
+        document.querySelectorAll('.trailer-cut-card').forEach(c => c.classList.remove('active'));
+        cardEl.classList.add('active');
+      }
+    }
+  };
+
+  video.addEventListener('play', () => {
+    if (playOverlay) playOverlay.classList.add('hidden');
+    if (playIcon) playIcon.style.display = 'none';
+    if (pauseIcon) pauseIcon.style.display = 'block';
+  });
+
+  video.addEventListener('pause', () => {
+    if (playOverlay) playOverlay.classList.remove('hidden');
+    if (playIcon) playIcon.style.display = 'block';
+    if (pauseIcon) pauseIcon.style.display = 'none';
+  });
+
+  video.addEventListener('ended', () => {
+    if (playOverlay) playOverlay.classList.remove('hidden');
+    if (playIcon) playIcon.style.display = 'block';
+    if (pauseIcon) pauseIcon.style.display = 'none';
+  });
+
+  video.addEventListener('timeupdate', () => {
+    const cur = video.currentTime || 0;
+    const dur = video.duration || 120;
+    const pct = (cur / dur) * 100;
+    if (scrubFill) scrubFill.style.width = `${pct}%`;
+    if (timeDisplay) {
+      const curStr = formatTimeSecTrailer(cur);
+      const durStr = formatTimeSecTrailer(dur);
+      timeDisplay.textContent = `${curStr} / ${durStr}`;
+    }
+  });
+
+  video.addEventListener('progress', () => {
+    if (video.buffered.length > 0 && scrubLoaded) {
+      const bufferedEnd = video.buffered.end(video.buffered.length - 1);
+      const dur = video.duration || 120;
+      scrubLoaded.style.width = `${(bufferedEnd / dur) * 100}%`;
+    }
+  });
+
+  if (scrubTrack) {
+    scrubTrack.addEventListener('click', (e) => {
+      const rect = scrubTrack.getBoundingClientRect();
+      const pos = (e.clientX - rect.left) / rect.width;
+      const dur = video.duration || 120;
+      video.currentTime = Math.max(0, Math.min(dur, pos * dur));
+    });
+  }
+}
+
+function formatTimeSecTrailer(sec) {
+  if (isNaN(sec) || !isFinite(sec)) return "00:00";
+  const m = Math.floor(sec / 60);
+  const s = Math.floor(sec % 60);
+  return `${m < 10 ? '0' + m : m}:${s < 10 ? '0' + s : s}`;
+}

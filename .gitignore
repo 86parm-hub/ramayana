@@ -1,6 +1,7 @@
 # Video files (too large for GitHub > 100MB)
 *.mkv
 *.mp4
+!trailer_official.mp4
 *.wav
 
 # Vercel & Cache
