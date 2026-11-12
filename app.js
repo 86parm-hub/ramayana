@@ -57,12 +57,12 @@ function switchPage(pageKey) {
   }
 }
 
-// Act Switcher Engine (Act 1: 01:30:15 | Act 2: 01:30:16)
+// Act Switcher Engine (Act 1: 01:30:10 | Act 2: 01:30:16)
 const ACT_CONFIG = {
   act1: {
     title: 'Part 1: Act 1 (The Divine Beginning)',
-    duration: '01:30:15',
-    cloudUrl: 'https://github.com/86parm-hub/ramayana/releases/download/v1.0/Ramayana.Part1.Act1.mp4',
+    duration: '01:30:10',
+    cloudUrl: 'https://github.com/86parm-hub/ramayana/releases/download/v1.0/Ramayana.Part1.Act1.mp4#t=5',
     localUrl: 'Ramayana.Part1.Act1.mp4'
   },
   act2: {
@@ -148,7 +148,7 @@ window.selectAct = function (actKey) {
   if (streamBtn1) {
     streamBtn1.innerHTML = actKey === 'act1'
       ? '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg><span>✓ Streaming Act 1</span>'
-      : '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg><span>Play Act 1 (01:30:15)</span>';
+      : '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg><span>Play Act 1 (01:30:10)</span>';
   }
 
   if (streamBtn2) {
