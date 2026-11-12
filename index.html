@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>RAMAYANA (2026) | Cinema Max Ultra HD</title>
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Premium Fonts: Cinzel, Cinzel Decorative, Marcellus, Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@600;700;800;900&family=Marcellus&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="ott-platform">
+  <!-- Dynamic Ambient Glow Backdrop -->
+  <div class="glow-backdrop" id="glowBackdrop"></div>
+
+  <!-- Main Navigation Header (Top Navbar: AI SYNDICAT Logo Intact) -->
+  <header class="studio-header" id="studioHeader">
+    <div class="header-content">
+      <div class="brand-container" onclick="switchPage('home')">
+        <span class="sacred-emblem">🕉</span>
+        <div class="brand-titles">
+          <span class="brand-name">RAMAYANA</span>
+          <span class="brand-edition">CINEMA MAX &bull; ULTRA HD</span>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs (Multi-Page Switcher) -->
+      <nav class="nav-tabs" id="navTabs">
+        <button class="tab-link active" data-target="home-view" onclick="switchPage('home')">Home</button>
+        <button class="tab-link" data-target="watch-view" onclick="switchPage('watch')">Cinema Theater</button>
+        <button class="tab-link" data-target="gallery-view" onclick="switchPage('gallery')">Stills &amp; Frames</button>
+        <button class="tab-link" data-target="cast-view" onclick="switchPage('cast')">Cast &amp; Characters</button>
+        <button class="tab-link" data-target="specs-view" onclick="switchPage('specs')">Studio Specs</button>
+      </nav>
+
+      <!-- Header Right Utilities (Top Navbar Logo Preserved & Clickable to Instagram) -->
+      <div class="header-actions">
+        <a href="https://www.instagram.com/ai.syndicat" target="_blank" rel="noopener noreferrer" class="syndicat-header-brand" title="Follow @ai.syndicat on Instagram">
+          <img src="syndicat_emblem_hd.jpg" alt="AI SYNDICAT" class="syndicat-header-emblem">
+          <span>AI SYNDICAT</span>
+        </a>
+
+        <div class="quality-pill">
+          <span class="live-dot"></span>
+          <span class="quality-txt">1080P HEVC</span>
+        </div>
+        <button class="btn-play-header" onclick="startCinemaStream()">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          <span>Watch Film</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       PAGE 1: HOME VIEW (Clean, Pristine, Ultra-Premium Hero Cinema Showcase)
+       Hero section cleaned of back clutter, Ramayana banner in full majesty!
+       ========================================================================= -->
+  <main class="page-view active" id="home-view">
+    <section class="hero-showcase" id="heroShowcase">
+
+      <!-- Slide 1: Sacred Dandakaranya Meditation (Ranbir Kapoor) -->
+      <div class="hero-slide active" id="slide-1">
+        <div class="slide-media-wrap">
+          <img src="hero_banner_hd.jpg" alt="Ramayana (2026) Banner" class="slide-image">
+          <div class="slide-gradient-left"></div>
+          <div class="slide-gradient-bottom"></div>
+        </div>
+        <div class="slide-content-box">
+          <div class="meta-badges">
+            <span class="badge-gold">PART 1 &bull; NOW STREAMING</span>
+            <span class="badge-glass badge-clickable-part" onclick="openComingSoonModal(2)" title="View Part 2 Details">PART 2 &bull; COMING SOON 2028 🔒</span>
+            <span class="badge-glass badge-clickable-part" onclick="openComingSoonModal(3)" title="View Part 3 Details">PART 3 &bull; COMING SOON 2029 🔒</span>
+            <span class="badge-glass">3h 12m</span>
+            <span class="badge-glass">1080P HEVC</span>
+          </div>
+          <h1 class="hero-title">
+            RAMAYANA
+            <span class="hero-subtitle">PART ONE : THE AWAKENING</span>
+          </h1>
+          <p class="hero-synopsis">
+            An eternal cinematic spectacle chronicling Maryada Purushottam Lord Rama's supreme vow to uphold Dharma. From the sacred courts of Ayodhya to the mystic wilderness of Dandakaranya, witness the beginning of the legendary battle between divine righteousness and untamed evil.
+          </p>
+          <div class="hero-cta-group">
+            <button class="btn-cta-primary" onclick="startCinemaStream()">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              <span>Play Part 1 Movie</span>
+            </button>
+            <button class="btn-cta-secondary" onclick="scrollToChapters()">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              <span>Explore Chapters &amp; Parts</span>
+            </button>
+            <label for="directPickerInput" class="btn-cta-outline" title="Select custom local video">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+              <span>Select File</span>
+            </label>
+            <input type="file" id="directPickerInput" accept=".mkv,.mp4,.webm" style="display:none;">
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2: Breaking The Shiva Dhanush in Mithila -->
+      <div class="hero-slide" id="slide-2">
+        <div class="slide-media-wrap">
+          <img src="feature_banner_hd.jpg" alt="Breaking The Shiva Dhanush" class="slide-image">
+          <div class="slide-gradient-left"></div>
+          <div class="slide-gradient-bottom"></div>
+        </div>
+        <div class="slide-content-box">
+          <div class="meta-badges">
+            <span class="badge-gold">LEGENDARY PROPHECY</span>
+            <span class="badge-glass">SWAYAMVARA</span>
+            <span class="badge-glass">1080P HEVC</span>
+            <span class="badge-glass">CINEMA MAX</span>
+          </div>
+          <h1 class="hero-title">
+            SHIVA DHANUSH
+            <span class="hero-subtitle">THE BREAKING OF PINAKA</span>
+          </h1>
+          <p class="hero-synopsis">
+            In the grand assembly of Mithila, amidst mighty kings and celestial warriors, Prince Rama effortlessly strings the divine bow of Lord Shiva, breaking it into two halves and fulfilling the sacred prophecy to wed Mata Sita.
+          </p>
+          <div class="hero-cta-group">
+            <button class="btn-cta-primary" onclick="startCinemaStream()">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              <span>Watch Sequence</span>
+            </button>
+            <button class="btn-cta-secondary" onclick="switchPage('gallery')">
+              <span>View Gallery</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3: The Supreme Archer of Cosmic Dharma -->
+      <div class="hero-slide" id="slide-3">
+        <div class="slide-media-wrap">
+          <img src="movie_poster_hd.jpg" alt="Supreme Archer" class="slide-image">
+          <div class="slide-gradient-left"></div>
+          <div class="slide-gradient-bottom"></div>
+        </div>
+        <div class="slide-content-box">
+          <div class="meta-badges">
+            <span class="badge-gold">COSMIC DESTINY</span>
+            <span class="badge-glass">DHARMA YUDDHA</span>
+            <span class="badge-glass">CINEMA MAX</span>
+          </div>
+          <h1 class="hero-title">
+            THE SUPREME ARCHER
+            <span class="hero-subtitle">IN DEFENCE OF CREATION</span>
+          </h1>
+          <p class="hero-synopsis">
+            Bathed in celestial golden rays and showered with blessings from the Devas, the protector of the universe rises with his inexhaustible quiver to defeat the forces of Lanka and restore universal balance.
+          </p>
+          <div class="hero-cta-group">
+            <button class="btn-cta-primary" onclick="startCinemaStream()">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              <span>Stream In Cinema</span>
+            </button>
+            <button class="btn-cta-secondary" onclick="switchPage('cast')">
+              <span>Explore Cast</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slider Controls -->
+      <div class="slider-indicators">
+        <button class="slide-dot active" onclick="gotoSlide(0)"></button>
+        <button class="slide-dot" onclick="gotoSlide(1)"></button>
+        <button class="slide-dot" onclick="gotoSlide(2)"></button>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         ICONIC SEQUENCES & CHAPTERS (Trilogy Parts 1, 2, 3 Built-in)
+         ========================================================================= -->
+    <section class="content-row" id="chaptersRow">
+      <div class="row-header">
+        <div class="row-title-block">
+          <h2 class="row-title">Iconic Sequences &amp; Chapters</h2>
+          <span class="row-sub-tag">Part 1 Now Streaming &bull; Part 2 (2028) &amp; Part 3 (2029) Coming Soon</span>
+        </div>
+        <span class="row-link" onclick="switchPage('gallery')">Explore All &rarr;</span>
+      </div>
+
+      <div class="cards-rail">
+        <!-- Chapter 01 / Part 1: Full Movie (Now Streaming) -->
+        <div class="film-card card-part-1" onclick="startCinemaStream()" title="Click to Watch Full Movie">
+          <div class="film-card-thumb">
+            <img src="hero_banner_hd.jpg" alt="Ramayana Part 1: The Awakening">
+            <div class="card-play-hover">▶</div>
+            <span class="card-tag tag-streaming-now">
+              <span class="live-dot-green"></span> PART 1 &bull; NOW STREAMING
+            </span>
+          </div>
+          <div class="film-card-info">
+            <div class="film-card-header-line">
+              <h4>Part 1: The Awakening (2026)</h4>
+              <span class="quality-badge-mini">1080P HEVC</span>
+            </div>
+            <p>Maryada Purushottam Lord Rama's fourteen years of exile and forest meditation. Click to watch full movie now.</p>
+            <div class="card-action-bar">
+              <span class="btn-card-action play-action">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                Watch Movie Now
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chapter 02 / Part 2: Coming Soon 2028 -->
+        <div class="film-card card-part-2" onclick="openComingSoonModal(2)" title="Click for Coming Soon 2028 Teaser">
+          <div class="film-card-thumb">
+            <img src="feature_banner_hd.jpg" alt="Ramayana Part 2: Coming Soon 2028">
+            <div class="card-lock-hover">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+            </div>
+            <span class="card-tag tag-coming-gold">
+              🔒 PART 2 &bull; COMING SOON 2028
+            </span>
+          </div>
+          <div class="film-card-info">
+            <div class="film-card-header-line">
+              <h4>Part 2: The Quest &amp; The War</h4>
+              <span class="coming-badge-mini gold">2028</span>
+            </div>
+            <p>The breaking of Shiva Dhanush, the quest for Mata Sita &amp; Kishkindha. Click to view release details.</p>
+            <div class="card-action-bar">
+              <span class="btn-card-action notify-action-gold">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/></svg>
+                Coming Soon 2028
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chapter 03 / Part 3: Coming Soon 2029 -->
+        <div class="film-card card-part-3" onclick="openComingSoonModal(3)" title="Click for Coming Soon 2029 Teaser">
+          <div class="film-card-thumb">
+            <img src="movie_poster_hd.jpg" alt="Ramayana Part 3: Coming Soon 2029">
+            <div class="card-lock-hover">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+            </div>
+            <span class="card-tag tag-coming-saffron">
+              🔒 PART 3 &bull; COMING SOON 2029
+            </span>
+          </div>
+          <div class="film-card-info">
+            <div class="film-card-header-line">
+              <h4>Part 3: The Final Triumph</h4>
+              <span class="coming-badge-mini saffron">2029</span>
+            </div>
+            <p>The celestial archer, Dharma Yuddha of Lanka &amp; grand coronation. Click to view release details.</p>
+            <div class="card-action-bar">
+              <span class="btn-card-action notify-action-saffron">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/></svg>
+                Coming Soon 2029
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================================
+       PAGE 2: CINEMA THEATER VIEW (Immersive Dedicated Player Room)
+       ========================================================================= -->
+  <section class="page-view" id="watch-view">
+    <div class="theater-control-strip">
+      <div class="theater-title-block">
+        <span class="status-live-indicator"><span class="pulse"></span> STREAM READY</span>
+        <h2 class="theater-heading">Ramayana: Part One (2026)</h2>
+      </div>
+      <div class="theater-tools">
+        <button class="tool-btn" id="theaterGlowBtn" onclick="toggleCinemaAmbient()">
+          <span>Ambient Glow</span>
+          <span class="toggle-status">ON</span>
+        </button>
+        <button class="tool-btn" id="theaterLightsBtn" onclick="toggleLightsOut()">
+          <span>Lights Out</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- The Video Screen Container -->
+    <div class="screen-stage" id="screenStage">
+      <div class="screen-ambient-glow" id="screenAmbientGlow"></div>
+
+      <div class="video-chassis" id="videoChassis">
+        <video id="videoPlayer" preload="metadata" playsinline webkit-playsinline x-webkit-airplay="allow">
+          <source src="Ramayana.2026.Part1.Final.mkv" type="video/mp4">
+          <source src="Ramayana.2026.Part1.Final.mkv" type="video/x-matroska">
+          <source src="Ramayana.2026.Part1.Clean.mkv" type="video/x-matroska">
+          <source src="Ramayana.2026.V2-1080p.HEVC.HDTC-Hindi-MULTi-ORG.2.0.x265-HDHub4u.Ag.mkv" type="video/x-matroska">
+          Your browser does not support HTML5 video streaming.
+        </video>
+
+        <!-- Big Center Play/Pause Ripple Button -->
+        <div class="center-play-veil" id="centerPlayVeil">
+          <button class="center-play-orb" id="centerPlayOrb" aria-label="Play Video">
+            <svg class="icon-play" viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+            <svg class="icon-pause" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+          </button>
+        </div>
+
+        <!-- Buffer Spinner Overlay -->
+        <div class="stream-spinner-veil" id="streamSpinnerVeil">
+          <div class="stream-spinner"></div>
+          <span class="spinner-caption">Buffering HD Stream...</span>
+        </div>
+
+        <!-- Custom Studio Controls Bar -->
+        <div class="studio-controls-bar" id="studioControlsBar">
+          <!-- Scrubber Progress Bar -->
+          <div class="scrubber-bar" id="scrubberBar">
+            <div class="scrub-hover-fill" id="scrubHoverFill"></div>
+            <div class="scrub-buffer-fill" id="scrubBufferFill"></div>
+            <div class="scrub-played-fill" id="scrubPlayedFill">
+              <div class="scrub-thumb"></div>
+            </div>
+            <div class="scrub-tooltip" id="scrubTooltip">00:00:00</div>
+          </div>
+
+          <!-- Bottom Control Elements Row -->
+          <div class="controls-action-row">
+            <!-- Left Side Controls -->
+            <div class="controls-group-left">
+              <button class="ctrl-icon-btn" id="btnPlayPause" title="Play/Pause (Space)">
+                <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                <svg class="icon-pause" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+              </button>
+
+              <button class="ctrl-icon-btn" id="btnRewind10" title="Rewind 10 Seconds (Left Arrow)">
+                <svg viewBox="0 0 24 24"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/><text x="12" y="15" text-anchor="middle" font-size="7" font-weight="bold" fill="currentColor">10</text></svg>
+              </button>
+
+              <button class="ctrl-icon-btn" id="btnForward10" title="Forward 10 Seconds (Right Arrow)">
+                <svg viewBox="0 0 24 24"><path d="M12 5V1l5 5-5 5V7c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6h2c0 4.42-3.58 8-8 8s-8-3.58-8-8 3.58-8 8-8z"/><text x="12" y="15" text-anchor="middle" font-size="7" font-weight="bold" fill="currentColor">10</text></svg>
+              </button>
+
+              <!-- Volume Bundle -->
+              <div class="volume-bundle">
+                <button class="ctrl-icon-btn" id="btnSoundToggle" title="Mute/Unmute (M)">
+                  <svg class="sound-on" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                  <svg class="sound-off" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+                </button>
+                <div class="vol-slider-rail">
+                  <input type="range" class="vol-slider" id="volSlider" min="0" max="1" step="0.05" value="1">
+                </div>
+              </div>
+
+              <!-- Time Counter -->
+              <div class="time-readout">
+                <span id="txtCurrentTime">00:00:00</span>
+                <span class="sep">/</span>
+                <span id="txtDurationTime">00:00:00</span>
+              </div>
+            </div>
+
+            <!-- Right Side Controls -->
+            <div class="controls-group-right">
+              <!-- Playback Rate Pill -->
+              <div class="speed-picker">
+                <button class="ctrl-pill-btn" id="btnPlaybackRate">1.0x</button>
+                <div class="speed-panel" id="speedPanel">
+                  <div class="speed-choice" data-rate="0.5">0.5x Slower</div>
+                  <div class="speed-choice" data-rate="0.75">0.75x</div>
+                  <div class="speed-choice active" data-rate="1">1.0x Normal</div>
+                  <div class="speed-choice" data-rate="1.25">1.25x</div>
+                  <div class="speed-choice" data-rate="1.5">1.5x</div>
+                  <div class="speed-choice" data-rate="2">2.0x Double</div>
+                </div>
+              </div>
+
+              <!-- Picture In Picture -->
+              <button class="ctrl-icon-btn" id="btnPiP" title="Picture in Picture (P)">
+                <svg viewBox="0 0 24 24"><path d="M19 11h-8v6h8v-6zm4 8V4.98C23 3.88 22.1 3 21 3H3c-1.1 0-2 .88-2 1.98V19c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2zm-2 .02H3V4.97h18v14.05z"/></svg>
+              </button>
+
+              <!-- Fullscreen -->
+              <button class="ctrl-icon-btn" id="btnFullscreen" title="Fullscreen (F)">
+                <svg class="fs-enter" viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+                <svg class="fs-exit" viewBox="0 0 24 24"><path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-14v3h3v2h-5V5h2z"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Offline File Picker Modal (Fallback) -->
+        <div class="offline-file-modal" id="offlineFileModal">
+          <div class="modal-card">
+            <div class="modal-badge-icon">🎬</div>
+            <h3>Local Video Stream Ready</h3>
+            <p>Streaming server is currently active. If your browser restricts direct file loading, select the MKV file:</p>
+            <label class="btn-select-file" for="localFileInput">
+              <span>Select Ramayana.2026.Part1.Final.mkv</span>
+            </label>
+            <input type="file" id="localFileInput" accept=".mkv,.mp4,.webm" style="display:none;">
+            <span class="file-note" id="fileNote">Auto-linked: Ramayana.2026.Part1.Final.mkv (Intro &amp; Outro 2-min Cropped)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Theater Trilogy Navigation Bar (Part 1 Playing Now, Part 2 Coming Soon 2028, Part 3 Coming Soon 2029) -->
+    <div class="theater-trilogy-container">
+      <div class="theater-trilogy-bar">
+        <div class="trilogy-bar-lead">
+          <span class="bar-tag">CINEMATIC TRILOGY</span>
+          <span class="bar-sub">Franchise Chapters:</span>
+        </div>
+        <div class="trilogy-bar-items">
+          <!-- Part 1: Active -->
+          <div class="trilogy-bar-pill active" title="Currently Playing in 1080P HEVC">
+            <span class="status-indicator live"></span>
+            <span class="part-name">Part 1: The Awakening (2026)</span>
+            <span class="tag-status live-tag">NOW PLAYING</span>
+          </div>
+
+          <!-- Part 2: Coming Soon 2028 -->
+          <div class="trilogy-bar-pill upcoming" onclick="openComingSoonModal(2)" title="Click to view release details">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+            <span class="part-name">Part 2: The Quest &amp; The War</span>
+            <span class="tag-status coming-tag">COMING SOON 2028</span>
+          </div>
+
+          <!-- Part 3: Coming Soon 2029 -->
+          <div class="trilogy-bar-pill upcoming" onclick="openComingSoonModal(3)" title="Click to view release details">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+            <span class="part-name">Part 3: The Final Triumph</span>
+            <span class="tag-status coming-tag saffron">COMING SOON 2029</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       PAGE 3: STILLS & FRAMES GALLERY VIEW
+       ========================================================================= -->
+  <section class="page-view" id="gallery-view">
+    <div class="page-inner-header">
+      <h2 class="view-title">Cinematic Stills &amp; Moments</h2>
+      <p class="view-subtitle">High-definition frames captured from Ramayana: Part One (2026)</p>
+    </div>
+
+    <div class="gallery-mosaic">
+      <!-- Stills 1: Dandakaranya Meditation -->
+      <div class="mosaic-item large">
+        <img src="hero_banner_hd.jpg" alt="Sacred Meditation" class="mosaic-img">
+        <div class="mosaic-overlay">
+          <span class="mosaic-tag">SCENE 01 &bull; DANDAKARANYA</span>
+          <h3>Meditation By Sacred Waters</h3>
+          <p>Lord Rama embraces exile with supreme serenity, meditating amidst torrential forest waterfalls.</p>
+        </div>
+      </div>
+
+      <!-- Stills 2: Shiva Dhanush -->
+      <div class="mosaic-item">
+        <img src="feature_banner_hd.jpg" alt="Shiva Dhanush Prophecy" class="mosaic-img">
+        <div class="mosaic-overlay">
+          <span class="mosaic-tag">SCENE 02 &bull; MITHILA PALACE</span>
+          <h3>The Stringing of Pinaka</h3>
+          <p>Prince Rama lifts Lord Shiva's divine bow before the assembly of monarchs.</p>
+        </div>
+      </div>
+
+      <!-- Stills 3: Cosmic Archer -->
+      <div class="mosaic-item">
+        <img src="movie_poster_hd.jpg" alt="Cosmic Archer" class="mosaic-img">
+        <div class="mosaic-overlay">
+          <span class="mosaic-tag">SCENE 03 &bull; CELESTIAL BLESSING</span>
+          <h3>The Golden Avatar</h3>
+          <p>Surrounded by celestial light, Lord Rama prepares to defend Dharma.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       PAGE 4: CAST & CHARACTERS VIEW
+       ========================================================================= -->
+  <section class="page-view" id="cast-view">
+    <div class="page-inner-header">
+      <h2 class="view-title">Lead Ensemble &amp; Master Creators</h2>
+      <p class="view-subtitle">The visionary actors and master artisans behind the greatest epic ever made</p>
+    </div>
+
+    <div class="cast-roster-grid">
+      <!-- Cast 1: Ranbir Kapoor -->
+      <div class="roster-card">
+        <div class="roster-avatar avatar-gold">🏹</div>
+        <div class="roster-details">
+          <h3>Ranbir Kapoor</h3>
+          <span class="roster-role">Lord Rama</span>
+          <p class="roster-bio">The embodiment of righteousness, truth, and grace. The seventh avatar of Vishnu born to uphold cosmic order.</p>
+        </div>
+      </div>
+
+      <!-- Cast 2: Sai Pallavi -->
+      <div class="roster-card">
+        <div class="roster-avatar avatar-rose">🌸</div>
+        <div class="roster-details">
+          <h3>Sai Pallavi</h3>
+          <span class="roster-role">Mata Sita</span>
+          <p class="roster-bio">Princess of Mithila and embodiment of Goddess Lakshmi. The personification of devotion, courage, and virtue.</p>
+        </div>
+      </div>
+
+      <!-- Cast 3: Yash -->
+      <div class="roster-card">
+        <div class="roster-avatar avatar-dark">👑</div>
+        <div class="roster-details">
+          <h3>Yash</h3>
+          <span class="roster-role">Lankesh Ravana</span>
+          <p class="roster-bio">The fearsome ten-headed monarch of golden Lanka. A devout devotee of Shiva blinded by pride and supreme power.</p>
+        </div>
+      </div>
+
+      <!-- Cast 4: Sunny Deol -->
+      <div class="roster-card">
+        <div class="roster-avatar avatar-saffron">🔱</div>
+        <div class="roster-details">
+          <h3>Sunny Deol</h3>
+          <span class="roster-role">Lord Hanuman</span>
+          <p class="roster-bio">The invincible Rudra avatar and supreme devotee whose boundless strength and loyalty cross oceans.</p>
+        </div>
+      </div>
+
+      <!-- Creator 1: Nitesh Tiwari -->
+      <div class="roster-card">
+        <div class="roster-avatar avatar-cyan">🎬</div>
+        <div class="roster-details">
+          <h3>Nitesh Tiwari</h3>
+          <span class="roster-role">Director &bull; Screenplay</span>
+          <p class="roster-bio">Visionary filmmaker bringing ancient texts to life through meticulous narrative craftsmanship and epic scale.</p>
+        </div>
+      </div>
+
+      <!-- Creator 2: A.R. Rahman & Hans Zimmer -->
+      <div class="roster-card">
+        <div class="roster-avatar avatar-gold">🎼</div>
+        <div class="roster-details">
+          <h3>A.R. Rahman &amp; Hans Zimmer</h3>
+          <span class="roster-role">Original Score &bull; Soundscape</span>
+          <p class="roster-bio">Two Oscar-winning legends unite ancient Vedic chants with monumental orchestral symphonies.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       PAGE 5: STUDIO SPECS VIEW
+       ========================================================================= -->
+  <section class="page-view" id="specs-view">
+    <div class="page-inner-header">
+      <h2 class="view-title">Master Quality &amp; Technical Specs</h2>
+      <p class="view-subtitle">High-fidelity production encoding specifications and audio architecture</p>
+    </div>
+
+    <div class="specs-manifest-grid">
+      <div class="manifest-card">
+        <span class="manifest-label">Master Resolution</span>
+        <span class="manifest-val">1080p Full HD</span>
+        <p class="manifest-sub">1920 &times; 1080 Progressive Scan</p>
+      </div>
+
+      <div class="manifest-card">
+        <span class="manifest-label">Encoding Format</span>
+        <span class="manifest-val">HEVC / H.265</span>
+        <p class="manifest-sub">High Efficiency 10-Bit Color Depth</p>
+      </div>
+
+      <div class="manifest-card">
+        <span class="manifest-label">Audio Configuration</span>
+        <span class="manifest-val">Hindi Multi-Org 2.0</span>
+        <p class="manifest-sub">Clean Stereo Master &bull; Uncompressed Dialogue</p>
+      </div>
+
+      <div class="manifest-card">
+        <span class="manifest-label">Media Container</span>
+        <span class="manifest-val">Matroska (.MKV)</span>
+        <p class="manifest-sub">Lossless Chapter Markers &amp; Subtitle Layers</p>
+      </div>
+
+      <div class="manifest-card">
+        <span class="manifest-label">Asset Data Size</span>
+        <span class="manifest-val">3.54 GB</span>
+        <p class="manifest-sub">Clean Master &bull; Intro (1m 17s) &amp; Outro (2m) Cropped</p>
+      </div>
+
+      <div class="manifest-card">
+        <span class="manifest-label">Stream Engine</span>
+        <span class="manifest-val">HTTP 206 Partial</span>
+        <p class="manifest-sub">Zero-Latency Instant Byte-Range Scrubbing</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       STUDIO FOOTER (AI SYNDICAT Logo & Instagram Link Untouched & Intact)
+       ========================================================================= -->
+  <footer class="studio-footer">
+    <div class="footer-wrap">
+      <!-- AI Syndicat Clickable Emblem Showcase in Footer -->
+      <a href="https://www.instagram.com/ai.syndicat" target="_blank" rel="noopener noreferrer" class="footer-syndicat-showcase" title="Follow @ai.syndicat on Instagram">
+        <div class="footer-emblem-ring">
+          <img src="syndicat_emblem_hd.jpg" alt="AI SYNDICAT" class="footer-syndicat-emblem">
+        </div>
+        <span class="footer-syndicat-title">AI SYNDICAT</span>
+        <span class="footer-insta-handle">
+          <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          <span>instagram.com/ai.syndicat</span>
+        </span>
+      </a>
+
+      <div class="footer-brand-lockup">
+        <span class="sacred-emblem">🕉</span>
+        <span class="footer-brand-name">RAMAYANA &bull; CINEMA MAX</span>
+      </div>
+      <p class="footer-note">
+        Presented in association with Namit Malhotra, DNEG &bull; Directed by Nitesh Tiwari &bull; Music by A.R. Rahman &amp; Hans Zimmer
+      </p>
+      <div class="footer-shortcuts-line">
+        <span>Shortcuts: <code>Space</code> Play/Pause &bull; <code>&larr;/&rarr;</code> Seek 10s &bull; <code>F</code> Fullscreen &bull; <code>M</code> Mute</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       TRILOGY COMING SOON MODAL (Studio Interactive Showcase for Part 2 & Part 3)
+       ========================================================================= -->
+  <div class="coming-soon-modal" id="comingSoonModal" onclick="closeComingSoonModal()">
+    <div class="modal-dialog-box" onclick="event.stopPropagation()">
+      <button class="modal-close-cross" onclick="closeComingSoonModal()" aria-label="Close dialog">&times;</button>
+      
+      <div class="modal-media-header">
+        <img src="feature_banner_hd.jpg" id="modalBannerImg" alt="Coming Soon Banner" class="modal-banner-img">
+        <div class="modal-banner-gradient"></div>
+        <div class="modal-status-badge-wrap">
+          <span class="modal-status-badge" id="modalPartBadge">COMING SOON 2028</span>
+        </div>
+      </div>
+
+      <div class="modal-content-body">
+        <div class="modal-titles-wrap">
+          <span class="modal-sub-eyebrow" id="modalPartSubtitle">The Divine Quest &amp; The Exile</span>
+          <h2 class="modal-main-title" id="modalPartTitle">RAMAYANA: PART TWO</h2>
+          <span class="modal-production-status" id="modalPartStatus">IN PRE-PRODUCTION &bull; RELEASING 2028</span>
+        </div>
+
+        <p class="modal-synopsis-text" id="modalPartDesc">
+          Witness the monumental saga continue. Lord Rama, Mata Sita, and Lakshmana journey through deep Panchavati. From the fateful deception of the Golden Deer to the supreme devotion of Lord Hanuman in Kishkindha, the stage is set for the epic crossing of the southern sea.
+        </p>
+
+        <div class="modal-meta-grid">
+          <div class="modal-meta-item">
+            <span class="meta-item-label">Release Window</span>
+            <span class="meta-item-val highlight-gold" id="modalReleaseYear">Diwali 2028</span>
+          </div>
+          <div class="modal-meta-item">
+            <span class="meta-item-label">Format</span>
+            <span class="meta-item-val">IMAX 3D &bull; Dolby Cinema Max</span>
+          </div>
+          <div class="modal-meta-item">
+            <span class="meta-item-label">Part 1 Availability</span>
+            <span class="meta-item-val highlight-green">Streaming Now in 1080P HEVC</span>
+          </div>
+        </div>
+
+        <div class="modal-cast-strip">
+          <span class="cast-label">Vision &amp; Cast:</span>
+          <span class="cast-names" id="modalPartCast">Ranbir Kapoor (Lord Rama) &bull; Sai Pallavi (Mata Sita) &bull; Yash (Ravana) &bull; Sunny Deol (Lord Hanuman)</span>
+        </div>
+
+        <div class="modal-action-row">
+          <button class="btn-modal-notify" id="modalNotifyBtn" onclick="notifyMeAlert()">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/></svg>
+            <span id="notifyBtnText">Get Notified on Release</span>
+          </button>
+          <button class="btn-modal-back-part1" onclick="closeComingSoonModal(); startCinemaStream();">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            <span>Watch Part 1 Movie Now</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

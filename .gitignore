@@ -1,0 +1,20 @@
+# Video files (too large for GitHub > 100MB)
+*.mkv
+*.mp4
+*.wav
+
+# Vercel & Cache
+.vercel
+node_modules
+
+# Temp & testing frames
+scene_*.jpg
+check_*.jpg
+frame_*.jpg
+clean_start.jpg
+intro_audio.wav
+
+# Local scripts
+server.py
+start_player.bat
+*.log
