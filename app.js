@@ -57,17 +57,19 @@ function switchPage(pageKey) {
   }
 }
 
-// Act Switcher Engine (Act 1: 01:30:10 | Act 2: 01:30:16)
+// Act Switcher Engine (Act 1: 01:30:07 | Act 2: 01:30:16)
 const ACT_CONFIG = {
   act1: {
     title: 'Part 1: Act 1 (The Divine Beginning)',
-    duration: '01:30:10',
-    cloudUrl: 'https://github.com/86parm-hub/ramayana/releases/download/v1.0/Ramayana.Part1.Act1.mp4#t=5',
+    duration: '01:30:07',
+    startOffset: 3.0,
+    cloudUrl: 'https://github.com/86parm-hub/ramayana/releases/download/v1.0/Ramayana.Part1.Act1.mp4#t=3',
     localUrl: 'Ramayana.Part1.Act1.mp4'
   },
   act2: {
     title: 'Part 1: Act 2 (The Forest Exile & Awakening)',
     duration: '01:30:16',
+    startOffset: 0,
     cloudUrl: 'https://github.com/86parm-hub/ramayana/releases/download/v1.0/Ramayana.Part1.Act2.mp4',
     localUrl: 'Ramayana.Part1.Act2.mp4'
   }
@@ -94,7 +96,9 @@ window.handleOutroReplay = function () {
   window.closeOutroCard();
   const video = document.getElementById('videoPlayer');
   if (video) {
-    video.currentTime = 0;
+    const isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+    const offset = (!isLocal && activeActKey === 'act1') ? 3.0 : 0;
+    video.currentTime = offset;
     video.play().catch(e => console.log('Replay deferred:', e));
   }
 };
@@ -148,7 +152,7 @@ window.selectAct = function (actKey) {
   if (streamBtn1) {
     streamBtn1.innerHTML = actKey === 'act1'
       ? '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg><span>✓ Streaming Act 1</span>'
-      : '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg><span>Play Act 1 (01:30:10)</span>';
+      : '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg><span>Play Act 1 (01:30:07)</span>';
   }
 
   if (streamBtn2) {
@@ -172,7 +176,14 @@ window.selectAct = function (actKey) {
     video.src = targetUrl;
     video.poster = 'movie_cover_hd.jpg';
     video.load();
+    const offset = (!isLocal && actKey === 'act1') ? 3.0 : 0;
+    if (offset > 0) {
+      video.currentTime = offset;
+    }
     video.play().then(() => {
+      if (offset > 0 && video.currentTime < offset) {
+        video.currentTime = offset;
+      }
       if (spinner) spinner.classList.remove('active');
     }).catch(err => {
       console.log('Playback deferred until user interaction:', err);
@@ -188,8 +199,16 @@ function startCinemaStream() {
   const spinner = document.getElementById('streamSpinnerVeil');
   if (video) {
     if (modal) modal.classList.remove('visible');
+    const isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+    const offset = (!isLocal && activeActKey === 'act1') ? 3.0 : 0;
+    if (offset > 0 && video.currentTime < offset) {
+      video.currentTime = offset;
+    }
     setTimeout(() => {
       video.play().then(() => {
+        if (offset > 0 && video.currentTime < offset) {
+          video.currentTime = offset;
+        }
         if (modal) modal.classList.remove('visible');
         if (spinner) spinner.classList.remove('active');
       }).catch(e => {
@@ -370,6 +389,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const LOCAL_STREAM_URL = 'Ramayana.Part1.Act1.mp4';
 
   const isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+  function getStartOffset() {
+    return (!isLocal && activeActKey === 'act1') ? 3.0 : 0;
+  }
+
   video.src = isLocal ? LOCAL_STREAM_URL : CLOUD_STREAM_URL;
   video.poster = 'movie_cover_hd.jpg';
   video.load();
@@ -396,7 +419,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // Play / Pause Logic
   function togglePlay() {
     if (video.paused || video.ended) {
+      const offset = getStartOffset();
+      if (offset > 0 && video.currentTime < offset) {
+        video.currentTime = offset;
+      }
       video.play().then(() => {
+        if (offset > 0 && video.currentTime < offset) {
+          video.currentTime = offset;
+        }
         videoChassis.classList.add('is-playing');
         offlineFileModal.classList.remove('visible');
         streamSpinnerVeil.classList.remove('active');
@@ -421,7 +451,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  video.addEventListener('play', syncPlayUI);
+  video.addEventListener('play', () => {
+    syncPlayUI();
+    const offset = getStartOffset();
+    if (offset > 0 && video.currentTime < offset) {
+      video.currentTime = offset;
+    }
+  });
   video.addEventListener('pause', syncPlayUI);
   centerPlayOrb.addEventListener('click', togglePlay);
   btnPlayPause.addEventListener('click', togglePlay);
@@ -429,7 +465,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Rewind & Fast Forward 10s
   btnRewind10.addEventListener('click', () => {
-    video.currentTime = Math.max(0, video.currentTime - 10);
+    const offset = getStartOffset();
+    video.currentTime = Math.max(offset, video.currentTime - 10);
     resetHideTimer();
   });
 
@@ -468,10 +505,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Time & Buffer Tracking
   video.addEventListener('timeupdate', () => {
+    const offset = getStartOffset();
+    if (offset > 0 && video.currentTime < (offset - 0.1) && !video.paused) {
+      video.currentTime = offset;
+    }
+    const curTime = Math.max(0, (video.currentTime || 0) - offset);
+    const durTime = Math.max(0, (video.duration || 0) - offset);
     if (!isDraggingScrub) {
-      txtCurrentTime.textContent = formatTime(video.currentTime);
-      if (video.duration) {
-        const pct = (video.currentTime / video.duration) * 100;
+      txtCurrentTime.textContent = formatTime(curTime);
+      if (durTime > 0) {
+        const pct = Math.min(100, Math.max(0, (curTime / durTime) * 100));
         scrubPlayedFill.style.width = `${pct}%`;
       }
     }
@@ -479,18 +522,28 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   video.addEventListener('loadedmetadata', () => {
-    txtDurationTime.textContent = formatTime(video.duration);
+    const offset = getStartOffset();
+    const durTime = Math.max(0, (video.duration || 0) - offset);
+    txtDurationTime.textContent = formatTime(durTime);
     offlineFileModal.classList.remove('visible');
+    if (offset > 0 && video.currentTime < offset) {
+      video.currentTime = offset;
+    }
   });
 
   video.addEventListener('durationchange', () => {
-    txtDurationTime.textContent = formatTime(video.duration);
+    const offset = getStartOffset();
+    const durTime = Math.max(0, (video.duration || 0) - offset);
+    txtDurationTime.textContent = formatTime(durTime);
   });
 
   function updateBufferDisplay() {
-    if (video.buffered.length > 0 && video.duration) {
-      const end = video.buffered.end(video.buffered.length - 1);
-      const pct = (end / video.duration) * 100;
+    const offset = getStartOffset();
+    const durTime = Math.max(0, (video.duration || 0) - offset);
+    if (video.buffered.length > 0 && durTime > 0) {
+      const rawEnd = video.buffered.end(video.buffered.length - 1);
+      const end = Math.max(0, rawEnd - offset);
+      const pct = Math.min(100, (end / durTime) * 100);
       scrubBufferFill.style.width = `${pct}%`;
     }
   }
@@ -539,9 +592,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const rect = scrubberBar.getBoundingClientRect();
     const pos = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
     scrubPlayedFill.style.width = `${pos * 100}%`;
-    if (video.duration) {
-      video.currentTime = pos * video.duration;
-      txtCurrentTime.textContent = formatTime(video.currentTime);
+    const offset = getStartOffset();
+    const durTime = Math.max(0, (video.duration || 0) - offset);
+    if (durTime > 0) {
+      video.currentTime = offset + (pos * durTime);
+      txtCurrentTime.textContent = formatTime(pos * durTime);
     }
   }
 
@@ -578,8 +633,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const pos = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
     scrubHoverFill.style.width = `${pos * 100}%`;
     scrubTooltip.style.left = `${pos * 100}%`;
-    if (video.duration) {
-      scrubTooltip.textContent = formatTime(pos * video.duration);
+    const offset = getStartOffset();
+    const durTime = Math.max(0, (video.duration || 0) - offset);
+    if (durTime > 0) {
+      scrubTooltip.textContent = formatTime(pos * durTime);
     }
   });
 
@@ -691,7 +748,7 @@ document.addEventListener('DOMContentLoaded', () => {
       case 'arrowleft':
       case 'j':
         e.preventDefault();
-        video.currentTime = Math.max(0, video.currentTime - 10);
+        video.currentTime = Math.max(getStartOffset(), video.currentTime - 10);
         resetHideTimer();
         break;
       case 'arrowright':
@@ -726,7 +783,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key >= '0' && e.key <= '9' && video.duration) {
           e.preventDefault();
           const pct = parseInt(e.key) / 10;
-          video.currentTime = pct * video.duration;
+          const offset = getStartOffset();
+          const durTime = Math.max(0, (video.duration || 0) - offset);
+          video.currentTime = offset + (pct * durTime);
           resetHideTimer();
         }
         break;
