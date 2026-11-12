@@ -292,10 +292,10 @@
 
       <div class="video-chassis" id="videoChassis">
         <video id="videoPlayer" preload="metadata" playsinline webkit-playsinline x-webkit-airplay="allow">
+          <source src="Ramayana.2026.Part1.Final.mp4" type="video/mp4">
           <source src="Ramayana.2026.Part1.Final.mkv" type="video/mp4">
           <source src="Ramayana.2026.Part1.Final.mkv" type="video/x-matroska">
           <source src="Ramayana.2026.Part1.Clean.mkv" type="video/x-matroska">
-          <source src="Ramayana.2026.V2-1080p.HEVC.HDTC-Hindi-MULTi-ORG.2.0.x265-HDHub4u.Ag.mkv" type="video/x-matroska">
           Your browser does not support HTML5 video streaming.
         </video>
 
@@ -394,13 +394,16 @@
         <div class="offline-file-modal" id="offlineFileModal">
           <div class="modal-card">
             <div class="modal-badge-icon">🎬</div>
-            <h3>Local Video Stream Ready</h3>
-            <p>Streaming server is currently active. If your browser restricts direct file loading, select the MKV file:</p>
+            <h3>RAMAYANA: PART 1 STREAM READY</h3>
+            <p>GitHub Pages online hosting par 2.6GB video files allow nahi hoti hain (100MB limit). Apni cropped video select kijiye aur bina kisi buffering ke instant 1080P Cinema playback shuru kijiye:</p>
             <label class="btn-select-file" for="localFileInput">
-              <span>Select Ramayana.2026.Part1.Final.mkv</span>
+              <span>📂 Select Ramayana.2026.Part1.Final.mp4 / .mkv</span>
             </label>
-            <input type="file" id="localFileInput" accept=".mkv,.mp4,.webm" style="display:none;">
-            <span class="file-note" id="fileNote">Auto-linked: Ramayana.2026.Part1.Final.mkv (Intro &amp; Outro 2-min Cropped)</span>
+            <input type="file" id="localFileInput" accept=".mp4,.mkv,.webm" style="display:none;">
+            <div style="margin-top: 14px; font-size: 13px; color: var(--gold-pri);">
+              <span>💡 Recommended: <strong>Ramayana.2026.Part1.Final.mp4</strong> (Fastest Browser Native Playback)</span>
+            </div>
+            <span class="file-note" id="fileNote">Auto-trimmed: Intro 1m17s &amp; Outro 2-min removed • 03:00:31 Full Movie</span>
           </div>
         </div>
       </div>

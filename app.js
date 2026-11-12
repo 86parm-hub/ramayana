@@ -47,9 +47,18 @@ function switchPage(pageKey) {
 function startCinemaStream() {
   switchPage('watch');
   const video = document.getElementById('videoPlayer');
+  const modal = document.getElementById('offlineFileModal');
+  const spinner = document.getElementById('streamSpinnerVeil');
   if (video) {
     setTimeout(() => {
-      video.play().catch(e => console.log('Playback policy:', e));
+      video.play().then(() => {
+        if (modal) modal.classList.remove('visible');
+        if (spinner) spinner.classList.remove('active');
+      }).catch(e => {
+        console.log('Playback policy/source check:', e);
+        if (spinner) spinner.classList.remove('active');
+        if (modal) modal.classList.add('visible');
+      });
     }, 400);
   }
 }
@@ -342,10 +351,25 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   video.addEventListener('progress', updateBufferDisplay);
 
-  // Spinner on buffer
-  video.addEventListener('waiting', () => streamSpinnerVeil.classList.add('active'));
+  // Spinner on buffer & Error handling
+  video.addEventListener('waiting', () => {
+    if (!video.src && (!video.currentSrc || video.networkState === HTMLMediaElement.NETWORK_NO_SOURCE)) {
+      streamSpinnerVeil.classList.remove('active');
+      offlineFileModal.classList.add('visible');
+      return;
+    }
+    streamSpinnerVeil.classList.add('active');
+  });
   video.addEventListener('canplay', () => streamSpinnerVeil.classList.remove('active'));
-  video.addEventListener('playing', () => streamSpinnerVeil.classList.remove('active'));
+  video.addEventListener('playing', () => {
+    streamSpinnerVeil.classList.remove('active');
+    offlineFileModal.classList.remove('visible');
+  });
+  video.addEventListener('error', (e) => {
+    console.warn('Video source error:', e);
+    streamSpinnerVeil.classList.remove('active');
+    offlineFileModal.classList.add('visible');
+  });
 
   // Seeking Logic (Smooth for Touch & Mouse)
   function seekToX(clientX) {
@@ -549,11 +573,21 @@ document.addEventListener('DOMContentLoaded', () => {
   // Local File Selector
   function handleChosenFile(file) {
     if (!file) return;
+    streamSpinnerVeil.classList.remove('active');
+    offlineFileModal.classList.remove('visible');
     const blobURL = URL.createObjectURL(file);
     video.src = blobURL;
+    video.load();
     fileNote.textContent = `Streaming file: ${file.name} (${(file.size / (1024*1024*1024)).toFixed(2)} GB)`;
-    offlineFileModal.classList.remove('visible');
-    startCinemaStream();
+    switchPage('watch');
+    setTimeout(() => {
+      video.play().then(() => {
+        videoChassis.classList.add('is-playing');
+        resetHideTimer();
+      }).catch(err => {
+        console.warn('Playback error:', err);
+      });
+    }, 200);
   }
 
   localFileInput.addEventListener('change', (e) => {
