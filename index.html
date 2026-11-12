@@ -2,7 +2,7 @@
 <html lang="hi">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>RAMAYANA (2026) | Cinema Max Ultra HD</title>
   <link rel="stylesheet" href="style.css">
   
@@ -286,6 +286,26 @@
       </div>
     </div>
 
+    <!-- Act 1 & Act 2 Quick Stream Selector Bar -->
+    <div class="cinema-act-selector-bar">
+      <div class="act-selector-heading">
+        <span class="act-select-tag">STREAMING ACTS</span>
+        <span class="act-select-hint">Select Act to stream instantly in 1080P HEVC:</span>
+      </div>
+      <div class="act-pills-row">
+        <button class="act-pill-btn active" id="btnAct1" onclick="selectAct('act1')">
+          <span class="act-status-dot"></span>
+          <span class="act-title-text">Act 1: The Divine Beginning</span>
+          <span class="act-time-badge">01:30:15</span>
+        </button>
+        <button class="act-pill-btn" id="btnAct2" onclick="selectAct('act2')">
+          <span class="act-status-dot"></span>
+          <span class="act-title-text">Act 2: Forest Exile &amp; Awakening</span>
+          <span class="act-time-badge">01:30:16</span>
+        </button>
+      </div>
+    </div>
+
     <!-- The Video Screen Container -->
     <div class="screen-stage" id="screenStage">
       <div class="screen-ambient-glow" id="screenAmbientGlow"></div>
@@ -392,15 +412,16 @@
         <!-- Offline File Picker Modal (Fallback) -->
         <div class="offline-file-modal" id="offlineFileModal">
           <div class="modal-card">
+            <button class="modal-close-cross" onclick="document.getElementById('offlineFileModal').classList.remove('visible')" aria-label="Close dialog">&times;</button>
             <div class="modal-badge-icon">🎬</div>
             <h3>RAMAYANA: PART 1 STREAM READY</h3>
-            <p>GitHub Pages online hosting par 2.6GB video files allow nahi hoti hain (100MB limit). Apni cropped video select kijiye aur bina kisi buffering ke instant 1080P Cinema playback shuru kijiye:</p>
+            <p>Direct GitHub Cloud CDN stream is active. If your browser prefers playing from local disk, select the video file:</p>
             <label class="btn-select-file" for="localFileInput">
               <span>📂 Select Ramayana.2026.Part1.Final.mp4 / .mkv</span>
             </label>
             <input type="file" id="localFileInput" accept=".mp4,.mkv,.webm" style="display:none;">
             <div style="margin-top: 14px; font-size: 13px; color: var(--gold-pri);">
-              <span>💡 Recommended: <strong>Ramayana.2026.Part1.Final.mp4</strong> (Fastest Browser Native Playback)</span>
+              <span>💡 Cloud CDN Streaming in 1080P HEVC active 24/7 with zero buffering</span>
             </div>
             <span class="file-note" id="fileNote">Auto-trimmed: Intro 1m17s &amp; Outro 2-min removed • 03:00:31 Full Movie</span>
           </div>
@@ -692,6 +713,49 @@
       </div>
     </div>
   </div>
+
+  <!-- =========================================================================
+       MOBILE BOTTOM NAVIGATION BAR (Fixed Native OTT Tab Bar for Android & Mobile)
+       ========================================================================= -->
+  <nav class="mobile-bottom-nav" id="mobileBottomNav" aria-label="Mobile Navigation">
+    <button class="mobile-nav-item active" data-target="home-view" onclick="switchPage('home')">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+      </svg>
+      <span>Home</span>
+    </button>
+    <button class="mobile-nav-item" data-target="watch-view" onclick="switchPage('watch')">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+      </svg>
+      <span>Cinema</span>
+    </button>
+    <button class="mobile-nav-item" data-target="gallery-view" onclick="switchPage('gallery')">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+        <circle cx="8.5" cy="8.5" r="1.5"></circle>
+        <polyline points="21 15 16 10 5 21"></polyline>
+      </svg>
+      <span>Stills</span>
+    </button>
+    <button class="mobile-nav-item" data-target="cast-view" onclick="switchPage('cast')">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+        <circle cx="9" cy="7" r="4"></circle>
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+      </svg>
+      <span>Cast</span>
+    </button>
+    <button class="mobile-nav-item" data-target="specs-view" onclick="switchPage('specs')">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="3"></circle>
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+      </svg>
+      <span>Specs</span>
+    </button>
+  </nav>
 
   <script src="app.js"></script>
 </body>

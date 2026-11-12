@@ -25,12 +25,21 @@ function switchPage(pageKey) {
     activeView.classList.add('active');
   }
 
-  // Update tabs
+  // Update desktop navigation tabs
   document.querySelectorAll('.tab-link').forEach(tab => {
     if (tab.getAttribute('data-target') === targetId) {
       tab.classList.add('active');
     } else {
       tab.classList.remove('active');
+    }
+  });
+
+  // Update mobile bottom navigation bar items
+  document.querySelectorAll('.mobile-nav-item').forEach(item => {
+    if (item.getAttribute('data-target') === targetId) {
+      item.classList.add('active');
+    } else {
+      item.classList.remove('active');
     }
   });
 
@@ -42,6 +51,52 @@ function switchPage(pageKey) {
     history.pushState(null, null, `#${pageKey}`);
   }
 }
+
+// Act Switcher Engine (Act 1: 01:30:15 | Act 2: 01:30:16)
+const ACT_CONFIG = {
+  act1: {
+    title: 'Part 1: Act 1 (The Divine Beginning)',
+    duration: '01:30:15',
+    cloudUrl: 'https://github.com/86parm-hub/ramayana/releases/download/v1.0/Ramayana.Part1.Act1.mp4',
+    localUrl: 'Ramayana.Part1.Act1.mp4'
+  },
+  act2: {
+    title: 'Part 1: Act 2 (The Forest Exile & Awakening)',
+    duration: '01:30:16',
+    cloudUrl: 'https://github.com/86parm-hub/ramayana/releases/download/v1.0/Ramayana.Part1.Act2.mp4',
+    localUrl: 'Ramayana.Part1.Act2.mp4'
+  }
+};
+
+let activeActKey = 'act1';
+
+window.selectAct = function(actKey) {
+  if (!ACT_CONFIG[actKey]) return;
+  activeActKey = actKey;
+  const cfg = ACT_CONFIG[actKey];
+  const video = document.getElementById('videoPlayer');
+  const btn1 = document.getElementById('btnAct1');
+  const btn2 = document.getElementById('btnAct2');
+  const modal = document.getElementById('offlineFileModal');
+  const spinner = document.getElementById('streamSpinnerVeil');
+
+  if (btn1) btn1.classList.toggle('active', actKey === 'act1');
+  if (btn2) btn2.classList.toggle('active', actKey === 'act2');
+  if (modal) modal.classList.remove('visible');
+  if (spinner) spinner.classList.add('active');
+
+  if (video) {
+    const isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+    const targetUrl = isLocal ? cfg.localUrl : cfg.cloudUrl;
+    video.src = targetUrl;
+    video.load();
+    video.play().then(() => {
+      if (spinner) spinner.classList.remove('active');
+    }).catch(err => {
+      console.log('Playback deferred until user interaction:', err);
+    });
+  }
+};
 
 // Global Quick Stream Trigger
 function startCinemaStream() {
@@ -358,24 +413,29 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   video.addEventListener('progress', updateBufferDisplay);
 
-  // Spinner on buffer & Error handling
+  // Spinner on buffer & Stream Resilience
   video.addEventListener('waiting', () => {
-    if (!video.src && (!video.currentSrc || video.networkState === HTMLMediaElement.NETWORK_NO_SOURCE)) {
-      streamSpinnerVeil.classList.remove('active');
-      offlineFileModal.classList.add('visible');
-      return;
-    }
     streamSpinnerVeil.classList.add('active');
   });
-  video.addEventListener('canplay', () => streamSpinnerVeil.classList.remove('active'));
+  video.addEventListener('canplay', () => {
+    streamSpinnerVeil.classList.remove('active');
+    offlineFileModal.classList.remove('visible');
+  });
   video.addEventListener('playing', () => {
     streamSpinnerVeil.classList.remove('active');
     offlineFileModal.classList.remove('visible');
   });
   video.addEventListener('error', (e) => {
-    console.warn('Video source error:', e);
+    console.warn('Video stream error/check:', e);
     streamSpinnerVeil.classList.remove('active');
-    offlineFileModal.classList.add('visible');
+  });
+
+  // Seamless Act 1 -> Act 2 Auto Transition
+  video.addEventListener('ended', () => {
+    if (activeActKey === 'act1') {
+      console.log('Act 1 completed. Auto-starting Act 2...');
+      window.selectAct('act2');
+    }
   });
 
   // Seeking Logic (Smooth for Touch & Mouse)
