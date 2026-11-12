@@ -101,12 +101,62 @@ window.selectAct = function (actKey) {
   const video = document.getElementById('videoPlayer');
   const btn1 = document.getElementById('btnAct1');
   const btn2 = document.getElementById('btnAct2');
+  const card1 = document.getElementById('actCard1');
+  const card2 = document.getElementById('actCard2');
+  const badge1 = document.getElementById('actBadge1');
+  const badge2 = document.getElementById('actBadge2');
+  const streamBtn1 = document.getElementById('btnStreamAct1');
+  const streamBtn2 = document.getElementById('btnStreamAct2');
+  const watermarkTag = document.getElementById('watermarkActTag');
   const modal = document.getElementById('offlineFileModal');
   const spinner = document.getElementById('streamSpinnerVeil');
   const outroCard = document.getElementById('theaterOutroCard');
 
+  // Update Top Quick Buttons
   if (btn1) btn1.classList.toggle('active', actKey === 'act1');
   if (btn2) btn2.classList.toggle('active', actKey === 'act2');
+
+  // Update Bottom Showcase Feature Cards & Badges
+  if (card1) card1.classList.toggle('active', actKey === 'act1');
+  if (card2) card2.classList.toggle('active', actKey === 'act2');
+
+  if (badge1) {
+    if (actKey === 'act1') {
+      badge1.textContent = '● NOW PLAYING';
+      badge1.className = 'act-badge-pill live';
+    } else {
+      badge1.textContent = 'ACT 1';
+      badge1.className = 'act-badge-pill';
+    }
+  }
+
+  if (badge2) {
+    if (actKey === 'act2') {
+      badge2.textContent = '● NOW PLAYING';
+      badge2.className = 'act-badge-pill live';
+    } else {
+      badge2.textContent = 'ACT 2';
+      badge2.className = 'act-badge-pill';
+    }
+  }
+
+  if (streamBtn1) {
+    streamBtn1.innerHTML = actKey === 'act1'
+      ? '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg><span>✓ Streaming Act 1</span>'
+      : '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg><span>Play Act 1 (01:30:15)</span>';
+  }
+
+  if (streamBtn2) {
+    streamBtn2.innerHTML = actKey === 'act2'
+      ? '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg><span>✓ Streaming Act 2</span>'
+      : '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg><span>Play Act 2 (01:30:16)</span>';
+  }
+
+  // Update On-Screen Upper Right Watermark Tag
+  if (watermarkTag) {
+    watermarkTag.textContent = actKey === 'act1' ? 'ACT 1 STREAMING' : 'ACT 2 STREAMING';
+  }
+
   if (modal) modal.classList.remove('visible');
   if (outroCard) outroCard.classList.remove('active');
   if (spinner) spinner.classList.add('active');

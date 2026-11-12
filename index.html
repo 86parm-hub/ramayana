@@ -318,7 +318,7 @@
           Your browser does not support HTML5 video streaming.
         </video>
 
-        <!-- AI SYNDICAT On-Screen Theater Corner Watermark -->
+        <!-- AI SYNDICAT On-Screen Theater Corner Watermark (Right Upper Corner - Always Crystal Clear) -->
         <a href="https://www.instagram.com/ai.syndicat" target="_blank" rel="noopener noreferrer" 
            class="theater-corner-watermark" id="theaterCornerWatermark" 
            title="AI SYNDICAT • Follow @ai.syndicat on Instagram">
@@ -326,8 +326,11 @@
             <img src="syndicat_emblem_hd.jpg" alt="AI SYNDICAT" class="watermark-emblem-img">
           </div>
           <div class="watermark-text-wrap">
-            <span class="watermark-brand-name">AI SYNDICAT</span>
-            <span class="watermark-sub-tag">ORIGINAL</span>
+            <div class="watermark-top-line">
+              <span class="watermark-live-dot"></span>
+              <span class="watermark-brand-name">AI SYNDICAT</span>
+            </div>
+            <span class="watermark-act-tag" id="watermarkActTag">ACT 1 STREAMING</span>
           </div>
         </a>
 
@@ -469,6 +472,98 @@
             </div>
             <span class="file-note" id="fileNote">Auto-trimmed: Intro 1m17s &amp; Outro 2-min removed • 03:00:31 Full Movie</span>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================================================================
+         AI SYNDICAT CINEMA ACTS SHOWCASE (Prominently Placed Below The Player)
+         ========================================================================= -->
+    <div class="theater-acts-showcase-container">
+      <div class="theater-acts-showcase-card">
+        <div class="acts-showcase-header">
+          <div class="acts-header-left">
+            <a href="https://www.instagram.com/ai.syndicat" target="_blank" rel="noopener noreferrer" class="acts-syndicat-badge" title="Follow @ai.syndicat on Instagram">
+              <img src="syndicat_emblem_hd.jpg" alt="AI SYNDICAT" class="acts-badge-emblem">
+              <span>AI SYNDICAT PRESENTATION</span>
+            </a>
+            <h3 class="acts-showcase-title">Ramayana Part 1: Both Acts (Complete 3-Hour Cut)</h3>
+            <p class="acts-showcase-desc">Neeche diye gaye dono Acts me se kisi par bhi click karke direct 1080P HEVC Ultra HD stream shuru kijiye:</p>
+          </div>
+          <div class="acts-header-right">
+            <span class="acts-quality-tag">1080P HEVC CINEMA</span>
+          </div>
+        </div>
+
+        <div class="acts-dual-grid">
+          <!-- Act 1 Card -->
+          <div class="act-feature-card active" id="actCard1" onclick="selectAct('act1')">
+            <div class="act-card-inner">
+              <div class="act-card-thumb">
+                <img src="hero_banner_hd.jpg" alt="Act 1: The Divine Beginning">
+                <div class="act-card-play-overlay">
+                  <div class="act-play-circle">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                  </div>
+                </div>
+                <span class="act-badge-pill live" id="actBadge1">● NOW PLAYING</span>
+              </div>
+              <div class="act-card-info">
+                <div class="act-meta-row">
+                  <span class="act-num-tag">ACT ONE</span>
+                  <span class="act-runtime-pill">⏱ 01:30:15</span>
+                  <span class="act-studio-tag">AI SYNDICAT</span>
+                </div>
+                <h4 class="act-name">The Divine Beginning &amp; Shiva Dhanush</h4>
+                <p class="act-synopsis">Lord Rama's cosmic birth in Ayodhya, guru Vishwamitra's sacred yajna protection, and the breaking of Pinaka in Mithila.</p>
+                <button class="btn-stream-act primary" id="btnStreamAct1" onclick="event.stopPropagation(); selectAct('act1');">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                  <span>Play Act 1 (01:30:15)</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Act 2 Card -->
+          <div class="act-feature-card" id="actCard2" onclick="selectAct('act2')">
+            <div class="act-card-inner">
+              <div class="act-card-thumb">
+                <img src="feature_banner_hd.jpg" alt="Act 2: The Forest Exile &amp; Awakening">
+                <div class="act-card-play-overlay">
+                  <div class="act-play-circle">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                  </div>
+                </div>
+                <span class="act-badge-pill" id="actBadge2">ACT 2</span>
+              </div>
+              <div class="act-card-info">
+                <div class="act-meta-row">
+                  <span class="act-num-tag">ACT TWO</span>
+                  <span class="act-runtime-pill">⏱ 01:30:16</span>
+                  <span class="act-studio-tag">AI SYNDICAT</span>
+                </div>
+                <h4 class="act-name">Forest Exile &amp; Divine Awakening</h4>
+                <p class="act-synopsis">The 14-year vanvas vow, sacred Dandakaranya meditation, Panchavati journey, and the awakening of the supreme battle.</p>
+                <button class="btn-stream-act secondary" id="btnStreamAct2" onclick="event.stopPropagation(); selectAct('act2');">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                  <span>Play Act 2 (01:30:16)</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="acts-showcase-footer">
+          <div class="footer-syndicat-verify">
+            <img src="syndicat_emblem_hd.jpg" alt="AI SYNDICAT" class="verify-emblem">
+            <span>Official 24/7 Zero-Buffer Cloud CDN Stream presented by <strong>AI SYNDICAT</strong></span>
+          </div>
+          <a href="https://www.instagram.com/ai.syndicat" target="_blank" rel="noopener noreferrer" class="btn-verify-insta">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+            <span>Follow @ai.syndicat</span>
+          </a>
         </div>
       </div>
     </div>
