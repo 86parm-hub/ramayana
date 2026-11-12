@@ -962,33 +962,31 @@ function formatTimeSecTrailer(sec) {
 }
 
 
+
 /* ==========================================================================
    Grand Celestial Ram Mandir Footer Interactive Logic (AI SYNDICAT)
    ========================================================================== */
 function handleFooterSubscribe(e) {
   if (e) e.preventDefault();
-  const dEmail = document.getElementById('gmfDesktopEmail');
-  const mEmail = document.getElementById('gmfMobileEmail');
-  const dToast = document.getElementById('gmfDesktopToast');
-  const mToast = document.getElementById('gmfMobileToast');
-  const dBtn = document.getElementById('gmfDesktopSubBtn');
-  const mBtn = document.getElementById('gmfMobileSubBtn');
+  const input = document.getElementById('gmfEmailInput');
+  const toast = document.getElementById('gmfToastFeedback');
+  const btn = document.getElementById('gmfSubBtn');
 
-  const emailVal = ((dEmail && dEmail.value) || (mEmail && mEmail.value) || '').trim();
+  if (!input) return;
+  const emailVal = (input.value || '').trim();
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  const showFeedback = (msg, isError) => {
-    [dToast, mToast].forEach(toast => {
-      if (toast) {
-        toast.textContent = msg;
-        toast.className = (toast === dToast ? 'gmf-desktop-toast' : 'gmf-m-toast') + (isError ? ' error show' : ' show');
-        setTimeout(() => { toast.classList.remove('show'); }, 4000);
-      }
-    });
+  const showToast = (msg, isErr) => {
+    if (toast) {
+      toast.textContent = msg;
+      toast.className = 'gmf-toast-feedback' + (isErr ? ' error show' : ' show');
+      setTimeout(() => { toast.classList.remove('show'); }, 4000);
+    }
   };
 
   if (!emailVal || !emailRegex.test(emailVal)) {
-    showFeedback('Please enter a valid email address.', true);
+    showToast('Please enter a valid email address.', true);
+    input.focus();
     return;
   }
 
@@ -998,15 +996,9 @@ function handleFooterSubscribe(e) {
     /* ignore */
   }
 
-  if (mBtn) mBtn.textContent = 'Subscribed ✓';
-  showFeedback('✨ Thank you! Subscribed to AI SYNDICAT.', false);
-
-  if (dEmail) dEmail.value = '';
-  if (mEmail) mEmail.value = '';
-
-  setTimeout(() => {
-    if (mBtn) mBtn.textContent = 'Subscribe';
-  }, 4000);
+  showToast('✨ Thank you! Subscribed to AI SYNDICAT updates.', false);
+  input.value = '';
 }
 
 window.handleFooterSubscribe = handleFooterSubscribe;
+
