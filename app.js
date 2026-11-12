@@ -170,6 +170,7 @@ window.selectAct = function (actKey) {
     const isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
     const targetUrl = isLocal ? cfg.localUrl : cfg.cloudUrl;
     video.src = targetUrl;
+    video.poster = 'movie_cover_hd.jpg';
     video.load();
     video.play().then(() => {
       if (spinner) spinner.classList.remove('active');
@@ -370,6 +371,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
   video.src = isLocal ? LOCAL_STREAM_URL : CLOUD_STREAM_URL;
+  video.poster = 'movie_cover_hd.jpg';
   video.load();
 
   // Start Hero Auto Carousel
