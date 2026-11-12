@@ -864,7 +864,7 @@ function initTrailerPlayer() {
   const chassis = document.getElementById('trailerChassis');
   if (!video) return;
 
-  window.toggleTrailerPlayback = function() {
+  window.toggleTrailerPlayback = function () {
     if (video.paused || video.ended) {
       video.play().catch(e => console.log('Autoplay prevented', e));
     } else {
@@ -872,7 +872,7 @@ function initTrailerPlayer() {
     }
   };
 
-  window.toggleTrailerMute = function() {
+  window.toggleTrailerMute = function () {
     video.muted = !video.muted;
     if (volIcon) {
       if (video.muted) {
@@ -883,7 +883,7 @@ function initTrailerPlayer() {
     }
   };
 
-  window.toggleTrailerFullscreen = function() {
+  window.toggleTrailerFullscreen = function () {
     if (!document.fullscreenElement) {
       if (chassis && chassis.requestFullscreen) {
         chassis.requestFullscreen();
@@ -895,10 +895,10 @@ function initTrailerPlayer() {
     }
   };
 
-  window.seekTrailer = function(timeInSec, cardEl) {
+  window.seekTrailer = function (timeInSec, cardEl) {
     if (video) {
       video.currentTime = timeInSec;
-      video.play().catch(() => {});
+      video.play().catch(() => { });
       if (cardEl) {
         document.querySelectorAll('.trailer-cut-card').forEach(c => c.classList.remove('active'));
         cardEl.classList.add('active');
