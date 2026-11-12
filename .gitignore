@@ -21,3 +21,4 @@ intro_audio.wav
 server.py
 start_player.bat
 *.log
+*.zip
