@@ -50,16 +50,15 @@ function startCinemaStream() {
   const modal = document.getElementById('offlineFileModal');
   const spinner = document.getElementById('streamSpinnerVeil');
   if (video) {
+    if (modal) modal.classList.remove('visible');
     setTimeout(() => {
       video.play().then(() => {
         if (modal) modal.classList.remove('visible');
         if (spinner) spinner.classList.remove('active');
       }).catch(e => {
         console.log('Playback policy/source check:', e);
-        if (spinner) spinner.classList.remove('active');
-        if (modal) modal.classList.add('visible');
       });
-    }, 400);
+    }, 300);
   }
 }
 
@@ -229,6 +228,14 @@ document.addEventListener('DOMContentLoaded', () => {
   let controlsHideTimer = null;
   let isDraggingScrub = false;
 
+  // Live Cloud Stream Link vs Localhost
+  const CLOUD_STREAM_URL = 'https://harvest-tony-downloadable-follow.trycloudflare.com/Ramayana.2026.Part1.Final.mp4';
+  const LOCAL_STREAM_URL = 'Ramayana.2026.Part1.Final.mp4';
+
+  const isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+  video.src = isLocal ? LOCAL_STREAM_URL : CLOUD_STREAM_URL;
+  video.load();
+
   // Start Hero Auto Carousel
   carouselInterval = setInterval(() => {
     // Only auto-advance if user is viewing Home
@@ -254,10 +261,10 @@ document.addEventListener('DOMContentLoaded', () => {
       video.play().then(() => {
         videoChassis.classList.add('is-playing');
         offlineFileModal.classList.remove('visible');
+        streamSpinnerVeil.classList.remove('active');
         resetHideTimer();
       }).catch(err => {
-        console.warn('Direct stream restricted:', err);
-        offlineFileModal.classList.add('visible');
+        console.warn('Playback error / User interaction needed:', err);
       });
     } else {
       video.pause();
