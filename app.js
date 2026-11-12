@@ -960,3 +960,498 @@ function formatTimeSecTrailer(sec) {
   const s = Math.floor(sec % 60);
   return `${m < 10 ? '0' + m : m}:${s < 10 ? '0' + s : s}`;
 }
+
+
+/* ==========================================================================
+   RAMAYANA OFFICIAL ORIGINAL MOTION PICTURE SOUNDTRACK (OST) AUDIO ENGINE
+   Composed by A.R. Rahman & Hans Zimmer
+   ========================================================================== */
+
+const OST_TRACKS = [
+  {
+    id: 1,
+    num: "01",
+    title: "Dharthi Hai Ambar",
+    subtitle: "Ramayana Introduction Theme & Chants",
+    tag: "TITLE THEME",
+    artist: "A.R. Rahman × Hans Zimmer",
+    duration: "01:13",
+    durationSec: 73,
+    src: "audio/01_dharthi_hai_ambar_intro.m4a",
+    banner: "hero_banner_hd.jpg",
+    desc: "Celestial Sanskrit chants & divine symphony heralding the birth of Sri Rama."
+  },
+  {
+    id: 2,
+    num: "02",
+    title: "Sita's Aspiration (Lyrical)",
+    subtitle: "Valmiki Ramayana Sanskrit Shloka",
+    tag: "SANSKRIT SHLOKA",
+    artist: "A.R. Rahman • Dr. Kumar Vishwas",
+    duration: "02:40",
+    durationSec: 160,
+    src: "audio/02_sitas_aspiration_lyrical.m4a",
+    banner: "feature_banner_hd.jpg",
+    desc: "Sacred Sanskrit verses from Valmiki Ramayana depicting Princess Sita's devotion."
+  },
+  {
+    id: 3,
+    num: "03",
+    title: "Jai Jai Ram (Orchestral Theme)",
+    subtitle: "Hollywood Symphony & Celestial Choral Harmony",
+    tag: "HOLLYWOOD SYMPHONY",
+    artist: "Hans Zimmer × A.R. Rahman",
+    duration: "03:02",
+    durationSec: 182,
+    src: "audio/03_jai_jai_ram_orchestral.m4a",
+    banner: "movie_poster_hd.jpg",
+    desc: "Monumental symphonic score performed by world-class strings & choir."
+  },
+  {
+    id: 4,
+    num: "04",
+    title: "Sita's Aspiration (Divine Flute)",
+    subtitle: "Bamboo Flute, Sitar & Ethereal Choral Resonance",
+    tag: "ACOUSTIC MELODY",
+    artist: "A.R. Ameen, Vaishali Samant, Rakshita Suresh",
+    duration: "02:42",
+    durationSec: 162,
+    src: "audio/04_sitas_aspiration_divine.m4a",
+    banner: "movie_cover_hd.jpg",
+    desc: "Serene Indian acoustic instruments celebrating the quiet sanctity of Dandakaranya."
+  },
+  {
+    id: 5,
+    num: "05",
+    title: "Ravana Tandav (Shiv Tandav Anthem)",
+    subtitle: "Lankan War Drums & Lord Shiva's Tandav Stotram",
+    tag: "WAR ANTHEM",
+    artist: "A.R. Rahman, Vishal Dadlani, Kumar Vishwas",
+    duration: "03:14",
+    durationSec: 194,
+    src: "audio/05_ravana_tandav.m4a",
+    banner: "teaser_lanka_hd.jpg",
+    desc: "High-octane war anthem encapsulating the unstoppable might and devotion of the Lankan King."
+  },
+  {
+    id: 6,
+    num: "06",
+    title: "Jai Jai Ram (Meri Pooja Mere Ram)",
+    subtitle: "Monumental Devotional Anthem & Achyutam Keshavam",
+    tag: "DEVOTIONAL CLIMAX",
+    artist: "A.R. Rahman, Arijit Singh, Shreya Ghoshal, Kumar Vishwas",
+    duration: "05:20",
+    durationSec: 320,
+    src: "audio/06_jai_jai_ram_meri_pooja.m4a",
+    banner: "teaser_archer_hd.jpg",
+    desc: "The monumental heart-touching devotional anthem with Achyutam Keshavam shlokas."
+  }
+];
+
+let ostAudio = new Audio();
+let currentOSTIndex = 0;
+let isOSTPlaying = false;
+let isOSTLoop = false;
+let isOSTMuted = false;
+let ostSavedVolume = 0.9;
+
+ostAudio.volume = ostSavedVolume;
+ostAudio.preload = 'metadata';
+
+// Format seconds into MM:SS
+function formatOSTTime(seconds) {
+  if (isNaN(seconds) || seconds < 0) return '00:00';
+  const m = Math.floor(seconds / 60);
+  const s = Math.floor(seconds % 60);
+  return `${m < 10 ? '0' + m : m}:${s < 10 ? '0' + s : s}`;
+}
+
+// Pause any active video player before playing music
+function pauseActiveVideosForAudio() {
+  const trailerVid = document.getElementById('trailerVideo');
+  if (trailerVid && !trailerVid.paused) {
+    trailerVid.pause();
+  }
+  const cinemaVid = document.getElementById('videoPlayer');
+  if (cinemaVid && !cinemaVid.paused) {
+    cinemaVid.pause();
+  }
+}
+
+// Play specific track by 1-based ID
+function playOSTTrack(trackId) {
+  const targetIndex = OST_TRACKS.findIndex(t => t.id === trackId);
+  if (targetIndex === -1) return;
+
+  pauseActiveVideosForAudio();
+
+  // If already playing this track, toggle play/pause
+  if (currentOSTIndex === targetIndex && ostAudio.src.includes(OST_TRACKS[targetIndex].src)) {
+    if (ostAudio.paused) {
+      ostAudio.play().catch(e => console.warn('Audio play prevented:', e));
+    } else {
+      ostAudio.pause();
+    }
+    return;
+  }
+
+  // Switch to new track
+  currentOSTIndex = targetIndex;
+  const track = OST_TRACKS[currentOSTIndex];
+  
+  ostAudio.src = track.src;
+  ostAudio.load();
+  ostAudio.play().catch(e => console.warn('Audio play prevented:', e));
+
+  updateFloatingPlayerUI();
+  updateMediaSession(track);
+}
+
+// Play/Pause Current Track (From floating player or banner)
+function toggleCurrentOSTTrack() {
+  pauseActiveVideosForAudio();
+  if (!ostAudio.src || ostAudio.src === '') {
+    playOSTTrack(OST_TRACKS[currentOSTIndex].id);
+    return;
+  }
+  if (ostAudio.paused) {
+    ostAudio.play().catch(e => console.warn('Audio play prevented:', e));
+  } else {
+    ostAudio.pause();
+  }
+}
+
+// Play All Tracks from start or resume
+function togglePlayAllOST() {
+  pauseActiveVideosForAudio();
+  if (isOSTPlaying) {
+    ostAudio.pause();
+  } else {
+    if (!ostAudio.src || ostAudio.src === '') {
+      playOSTTrack(1);
+    } else {
+      ostAudio.play().catch(e => console.warn('Audio play prevented:', e));
+    }
+  }
+}
+
+// Shuffle Play
+function shufflePlayOST() {
+  pauseActiveVideosForAudio();
+  let nextIdx;
+  if (OST_TRACKS.length > 1) {
+    do {
+      nextIdx = Math.floor(Math.random() * OST_TRACKS.length);
+    } while (nextIdx === currentOSTIndex);
+  } else {
+    nextIdx = 0;
+  }
+  playOSTTrack(OST_TRACKS[nextIdx].id);
+}
+
+// Previous Track
+function prevOSTTrack() {
+  pauseActiveVideosForAudio();
+  if (ostAudio.currentTime > 3) {
+    ostAudio.currentTime = 0;
+    return;
+  }
+  currentOSTIndex = (currentOSTIndex - 1 + OST_TRACKS.length) % OST_TRACKS.length;
+  playOSTTrack(OST_TRACKS[currentOSTIndex].id);
+}
+
+// Next Track
+function nextOSTTrack() {
+  pauseActiveVideosForAudio();
+  currentOSTIndex = (currentOSTIndex + 1) % OST_TRACKS.length;
+  playOSTTrack(OST_TRACKS[currentOSTIndex].id);
+}
+
+// Loop Toggle
+function toggleOSTLoop() {
+  isOSTLoop = !isOSTLoop;
+  ostAudio.loop = isOSTLoop;
+  const loopBtn = document.getElementById('ostFpLoopBtn');
+  if (loopBtn) {
+    loopBtn.classList.toggle('active', isOSTLoop);
+    loopBtn.title = isOSTLoop ? 'Repeat Track: ON' : 'Repeat Track: OFF';
+  }
+}
+
+// Mute / Unmute
+function toggleOSTMute() {
+  isOSTMuted = !isOSTMuted;
+  ostAudio.muted = isOSTMuted;
+  const volOn = document.getElementById('fpVolOn');
+  const volOff = document.getElementById('fpVolOff');
+  const volSlider = document.getElementById('ostFpVolume');
+  if (volOn && volOff) {
+    volOn.style.display = isOSTMuted ? 'none' : 'block';
+    volOff.style.display = isOSTMuted ? 'block' : 'none';
+  }
+  if (volSlider) {
+    volSlider.value = isOSTMuted ? 0 : ostAudio.volume;
+  }
+}
+
+// Volume Slider
+function setOSTVolume(val) {
+  const v = parseFloat(val);
+  ostAudio.volume = v;
+  if (v === 0) {
+    isOSTMuted = true;
+    ostAudio.muted = true;
+  } else {
+    isOSTMuted = false;
+    ostAudio.muted = false;
+  }
+  const volOn = document.getElementById('fpVolOn');
+  const volOff = document.getElementById('fpVolOff');
+  if (volOn && volOff) {
+    volOn.style.display = isOSTMuted ? 'none' : 'block';
+    volOff.style.display = isOSTMuted ? 'block' : 'none';
+  }
+}
+
+// Card Scrubber Seek
+function seekOSTCard(trackId, event) {
+  if (currentOSTIndex !== trackId - 1 || !ostAudio.src) {
+    playOSTTrack(trackId);
+    return;
+  }
+  const rect = event.currentTarget.getBoundingClientRect();
+  const clickX = event.clientX - rect.left;
+  const ratio = Math.max(0, Math.min(1, clickX / rect.width));
+  if (ostAudio.duration) {
+    ostAudio.currentTime = ratio * ostAudio.duration;
+  }
+}
+
+// Floating Player Scrubber Seek
+function seekOSTScrubber(event) {
+  const rect = event.currentTarget.getBoundingClientRect();
+  const clickX = event.clientX - rect.left;
+  const ratio = Math.max(0, Math.min(1, clickX / rect.width));
+  if (ostAudio.duration) {
+    ostAudio.currentTime = ratio * ostAudio.duration;
+  }
+}
+
+// Close / Hide Floating Player Bar
+function closeFloatingPlayer() {
+  ostAudio.pause();
+  const fp = document.getElementById('ostFloatingPlayer');
+  if (fp) fp.style.display = 'none';
+}
+
+// Scroll page to current active card
+function scrollToActiveTrack() {
+  const card = document.getElementById(`ostCard${currentOSTIndex + 1}`);
+  if (card) {
+    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+}
+
+// Update Floating Player DOM
+function updateFloatingPlayerUI() {
+  const track = OST_TRACKS[currentOSTIndex];
+  if (!track) return;
+
+  const fp = document.getElementById('ostFloatingPlayer');
+  if (fp) fp.style.display = 'flex';
+
+  const thumb = document.getElementById('ostFpThumb');
+  const title = document.getElementById('ostFpTitle');
+  const tag = document.getElementById('ostFpTag');
+  const artist = document.getElementById('ostFpArtist');
+  const dur = document.getElementById('ostFpDuration');
+  const dl = document.getElementById('ostFpDownloadBtn');
+
+  if (thumb) thumb.src = track.banner;
+  if (title) title.textContent = track.title;
+  if (tag) tag.textContent = track.tag;
+  if (artist) artist.innerHTML = track.artist;
+  if (dur) dur.textContent = track.duration;
+  if (dl) {
+    dl.href = track.src;
+    dl.download = `Ramayana - ${track.num} - ${track.title}.m4a`;
+  }
+}
+
+// Web Media Session API for Lock Screen & Bluetooth Headsets
+function updateMediaSession(track) {
+  if ('mediaSession' in navigator) {
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title: track.title,
+      artist: track.artist.replace(/<[^>]*>?/gm, '').replace('&times;', 'x'),
+      album: 'Ramayana: Part One (Original Soundtrack)',
+      artwork: [
+        { src: track.banner, sizes: '512x512', type: 'image/jpeg' }
+      ]
+    });
+
+    navigator.mediaSession.setActionHandler('play', () => toggleCurrentOSTTrack());
+    navigator.mediaSession.setActionHandler('pause', () => toggleCurrentOSTTrack());
+    navigator.mediaSession.setActionHandler('previoustrack', () => prevOSTTrack());
+    navigator.mediaSession.setActionHandler('nexttrack', () => nextOSTTrack());
+    navigator.mediaSession.setActionHandler('seekto', (details) => {
+      if (details.seekTime && ostAudio.duration) {
+        ostAudio.currentTime = details.seekTime;
+      }
+    });
+  }
+}
+
+// Audio Event Listeners
+ostAudio.addEventListener('play', () => {
+  isOSTPlaying = true;
+
+  // Update Vinyl Spin
+  const vinyl = document.getElementById('ostVinylDisc');
+  if (vinyl) vinyl.classList.add('playing');
+
+  // Update Banner Play All Button
+  const playAllIcon = document.getElementById('ostPlayAllIcon');
+  const playAllLabel = document.getElementById('ostPlayAllLabel');
+  if (playAllIcon) {
+    playAllIcon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
+  }
+  if (playAllLabel) playAllLabel.textContent = 'Pause Music';
+
+  // Update Floating Player Play/Pause Icon
+  const fpPlay = document.getElementById('fpIconPlay');
+  const fpPause = document.getElementById('fpIconPause');
+  if (fpPlay) fpPlay.style.display = 'none';
+  if (fpPause) fpPause.style.display = 'block';
+
+  // Update Floating Equalizer
+  const fpEq = document.getElementById('ostFpEqualizer');
+  if (fpEq) fpEq.classList.add('playing');
+
+  // Update Cards UI
+  OST_TRACKS.forEach((t, idx) => {
+    const card = document.getElementById(`ostCard${t.id}`);
+    const playBtn = card ? card.querySelector('.ost-card-play-btn') : null;
+    const viz = document.getElementById(`ostCardViz${t.id}`);
+
+    if (idx === currentOSTIndex) {
+      if (card) card.classList.add('active-playing');
+      if (viz) viz.classList.add('playing');
+      if (playBtn) {
+        playBtn.querySelector('.icon-play').style.display = 'none';
+        playBtn.querySelector('.icon-pause').style.display = 'block';
+      }
+    } else {
+      if (card) card.classList.remove('active-playing');
+      if (viz) viz.classList.remove('playing');
+      if (playBtn) {
+        playBtn.querySelector('.icon-play').style.display = 'block';
+        playBtn.querySelector('.icon-pause').style.display = 'none';
+      }
+    }
+  });
+
+  updateFloatingPlayerUI();
+});
+
+ostAudio.addEventListener('pause', () => {
+  isOSTPlaying = false;
+
+  // Pause Vinyl Spin
+  const vinyl = document.getElementById('ostVinylDisc');
+  if (vinyl) vinyl.classList.remove('playing');
+
+  // Banner button
+  const playAllIcon = document.getElementById('ostPlayAllIcon');
+  const playAllLabel = document.getElementById('ostPlayAllLabel');
+  if (playAllIcon) {
+    playAllIcon.innerHTML = '<path d="M8 5v14l11-7z"/>';
+  }
+  if (playAllLabel) playAllLabel.textContent = 'Play All Tracks';
+
+  // Floating button
+  const fpPlay = document.getElementById('fpIconPlay');
+  const fpPause = document.getElementById('fpIconPause');
+  if (fpPlay) fpPlay.style.display = 'block';
+  if (fpPause) fpPause.style.display = 'none';
+
+  // Equalizers stop
+  const fpEq = document.getElementById('ostFpEqualizer');
+  if (fpEq) fpEq.classList.remove('playing');
+
+  OST_TRACKS.forEach((t) => {
+    const card = document.getElementById(`ostCard${t.id}`);
+    const playBtn = card ? card.querySelector('.ost-card-play-btn') : null;
+    const viz = document.getElementById(`ostCardViz${t.id}`);
+
+    if (viz) viz.classList.remove('playing');
+    if (playBtn) {
+      playBtn.querySelector('.icon-play').style.display = 'block';
+      playBtn.querySelector('.icon-pause').style.display = 'none';
+    }
+  });
+});
+
+ostAudio.addEventListener('timeupdate', () => {
+  if (!ostAudio.duration) return;
+  const curTime = ostAudio.currentTime;
+  const durTime = ostAudio.duration;
+  const pct = (curTime / durTime) * 100;
+
+  // Update floating player scrubber
+  const fpBar = document.getElementById('ostFpProgressBar');
+  const fpCur = document.getElementById('ostFpCurrentTime');
+  const fpDur = document.getElementById('ostFpDuration');
+  if (fpBar) fpBar.style.width = `${pct}%`;
+  if (fpCur) fpCur.textContent = formatOSTTime(curTime);
+  if (fpDur && !isNaN(durTime)) fpDur.textContent = formatOSTTime(durTime);
+
+  // Update active card progress bar
+  const activeCardId = OST_TRACKS[currentOSTIndex].id;
+  const cardBar = document.getElementById(`ostCardBar${activeCardId}`);
+  const cardCur = document.getElementById(`ostCardCur${activeCardId}`);
+  if (cardBar) cardBar.style.width = `${pct}%`;
+  if (cardCur) cardCur.textContent = formatOSTTime(curTime);
+});
+
+ostAudio.addEventListener('ended', () => {
+  if (isOSTLoop) {
+    ostAudio.currentTime = 0;
+    ostAudio.play().catch(e => console.warn(e));
+  } else {
+    // Auto-advance to next track
+    nextOSTTrack();
+  }
+});
+
+// Auto-pause audio if user starts watching movie trailer or cinema video
+window.addEventListener('DOMContentLoaded', () => {
+  const trailerVid = document.getElementById('trailerVideo');
+  if (trailerVid) {
+    trailerVid.addEventListener('play', () => {
+      if (isOSTPlaying) ostAudio.pause();
+    });
+  }
+  const cinemaVid = document.getElementById('videoPlayer');
+  if (cinemaVid) {
+    cinemaVid.addEventListener('play', () => {
+      if (isOSTPlaying) ostAudio.pause();
+    });
+  }
+});
+
+// Expose functions globally for HTML onclick handlers
+window.playOSTTrack = playOSTTrack;
+window.toggleCurrentOSTTrack = toggleCurrentOSTTrack;
+window.togglePlayAllOST = togglePlayAllOST;
+window.shufflePlayOST = shufflePlayOST;
+window.prevOSTTrack = prevOSTTrack;
+window.nextOSTTrack = nextOSTTrack;
+window.toggleOSTLoop = toggleOSTLoop;
+window.toggleOSTMute = toggleOSTMute;
+window.setOSTVolume = setOSTVolume;
+window.seekOSTCard = seekOSTCard;
+window.seekOSTScrubber = seekOSTScrubber;
+window.closeFloatingPlayer = closeFloatingPlayer;
+window.scrollToActiveTrack = scrollToActiveTrack;
+

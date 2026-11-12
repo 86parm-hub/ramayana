@@ -786,10 +786,472 @@
   <!-- =========================================================================
        PAGE 3: STILLS & FRAMES GALLERY VIEW
        ========================================================================= -->
+    <!-- =========================================================================
+       PAGE 3: STILLS, FRAMES & OFFICIAL SOUNDTRACK VIEW
+       ========================================================================= -->
   <section class="page-view" id="gallery-view">
     <div class="page-inner-header">
-      <h2 class="view-title">Cinematic Stills &amp; Moments</h2>
-      <p class="view-subtitle">High-definition frames captured from Ramayana: Part One (2026)</p>
+      <div class="ost-top-pill">
+        <span class="pulse-dot"></span>
+        <span>EXCLUSIVE SOUNDTRACK &amp; CINEMATIC GALLERY</span>
+      </div>
+      <h2 class="view-title">Original Soundtrack &amp; Stills</h2>
+      <p class="view-subtitle">Official Motion Picture Music by A.R. Rahman &amp; Hans Zimmer with High-Definition Captured Frames</p>
+    </div>
+
+    <!-- =========================================================================
+         OFFICIAL MOTION PICTURE SOUNDTRACK HERO SHOWCASE BANNER
+         ========================================================================= -->
+    <div class="ost-hero-banner" id="ostHeroBanner">
+      <div class="ost-banner-bg" style="background-image: url('feature_banner_hd.jpg');"></div>
+      <div class="ost-banner-overlay"></div>
+      <div class="ost-banner-glow"></div>
+
+      <!-- Sacred Embers Animation -->
+      <div class="ost-banner-embers" aria-hidden="true">
+        <span class="ost-ember e1"></span>
+        <span class="ost-ember e2"></span>
+        <span class="ost-ember e3"></span>
+        <span class="ost-ember e4"></span>
+      </div>
+
+      <div class="ost-banner-content">
+        <!-- Vinyl Record Showcase -->
+        <div class="ost-album-art-wrap">
+          <div class="ost-vinyl-disc" id="ostVinylDisc">
+            <div class="ost-vinyl-grooves"></div>
+            <div class="ost-vinyl-label">
+              <img src="syndicat_emblem_hd.jpg" alt="Vinyl Core Logo">
+            </div>
+          </div>
+          <div class="ost-cover-card">
+            <img src="movie_poster_hd.jpg" alt="Ramayana Official Soundtrack Album Cover" class="ost-album-img">
+            <div class="ost-cover-badge">ORIGINAL SCORE</div>
+          </div>
+        </div>
+
+        <!-- Banner Info & Controls -->
+        <div class="ost-banner-meta">
+          <div class="ost-meta-tags">
+            <span class="ost-pill-gold">OFFICIAL MOTION PICTURE SOUNDTRACK</span>
+            <span class="ost-pill-glass">24-BIT MASTER AUDIO</span>
+            <span class="ost-pill-glass">LOSSLESS STEREO</span>
+          </div>
+
+          <h1 class="ost-banner-title">RAMAYANA: PART ONE</h1>
+          <p class="ost-banner-composers">
+            Original Music Composed &amp; Produced by <span class="ost-gold-txt">A.R. RAHMAN</span> &times; <span class="ost-gold-txt">HANS ZIMMER</span>
+          </p>
+          <p class="ost-banner-lyrics">
+            Lyrics by <span class="ost-light-txt">Dr. Kumar Vishwas</span> &bull; Featuring <span class="ost-light-txt">Arijit Singh, Shreya Ghoshal, Vishal Dadlani, A.R. Ameen &amp; Budapest Choral Ensemble</span>
+          </p>
+
+          <!-- Banner Action Buttons -->
+          <div class="ost-banner-actions">
+            <button class="ost-btn-play-all" id="ostPlayAllBtn" onclick="togglePlayAllOST()">
+              <svg class="ost-icon-play" id="ostPlayAllIcon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+              <span id="ostPlayAllLabel">Play All Tracks</span>
+            </button>
+
+            <button class="ost-btn-shuffle" onclick="shufflePlayOST()" title="Shuffle Play Tracks">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/>
+              </svg>
+              <span>Shuffle</span>
+            </button>
+
+            <div class="ost-banner-stat">
+              <span class="stat-count">6</span>
+              <span class="stat-label">Official Tracks &bull; 16 Min Runtime</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================================================================
+         ORIGINAL SOUNDTRACK TRACKS GRID WITH BANNERS
+         ========================================================================= -->
+    <div class="ost-tracks-container">
+      <div class="ost-section-heading-row">
+        <div class="ost-sh-text">
+          <div class="ost-sh-badge">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+            <span>OFFICIAL TRACKLIST</span>
+          </div>
+          <h3 class="ost-sh-title">Stream &amp; Experience Original Compositions</h3>
+          <p class="ost-sh-sub">Direct studio master tracks with high-definition album art and lossless acoustic streaming</p>
+        </div>
+        <div class="ost-sh-specs">
+          <span class="spec-pill">AAC 44.1kHz</span>
+          <span class="spec-pill gold">STUDIO MASTER</span>
+        </div>
+      </div>
+
+      <!-- 6 SONG CARDS WITH BANNERS -->
+      <div class="ost-cards-grid" id="ostCardsGrid">
+
+        <!-- TRACK 01 -->
+        <article class="ost-track-card" id="ostCard1" data-track-id="1">
+          <div class="ost-card-banner">
+            <img src="hero_banner_hd.jpg" alt="Dharthi Hai Ambar Banner" class="ost-card-img" loading="lazy">
+            <div class="ost-card-gradient"></div>
+            
+            <div class="ost-card-top-info">
+              <span class="ost-track-idx">01</span>
+              <span class="ost-track-mood">TITLE THEME</span>
+            </div>
+
+            <!-- Animated Sound Wave Visualizer (Active on play) -->
+            <div class="ost-card-visualizer" id="ostCardViz1">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+
+            <!-- Big Floating Play/Pause Button on Banner -->
+            <button class="ost-card-play-btn" onclick="playOSTTrack(1)" aria-label="Play Dharthi Hai Ambar">
+              <svg class="icon-play" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              <svg class="icon-pause" style="display:none;" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            </button>
+
+            <span class="ost-card-duration-badge">01:13</span>
+          </div>
+
+          <div class="ost-card-body">
+            <div class="ost-card-meta-top">
+              <h4 class="ost-card-title">Dharthi Hai Ambar</h4>
+              <span class="ost-card-subtitle">Ramayana Introduction Theme &amp; Sacred Chants</span>
+            </div>
+            
+            <p class="ost-card-artists">
+              <strong>A.R. Rahman</strong> &times; <strong>Hans Zimmer</strong>
+            </p>
+
+            <p class="ost-card-desc">
+              Celestial Sanskrit chants and thunderous cinematic symphony announcing the divine incarnation of Lord Rama.
+            </p>
+
+            <!-- Real-time Progress Bar & Seek -->
+            <div class="ost-card-progress-row">
+              <span class="ost-time-cur" id="ostCardCur1">00:00</span>
+              <div class="ost-card-bar-wrap" onclick="seekOSTCard(1, event)">
+                <div class="ost-card-bar-fill" id="ostCardBar1" style="width: 0%;"></div>
+              </div>
+              <span class="ost-time-dur">01:13</span>
+            </div>
+
+            <!-- Card Bottom Bar: Actions -->
+            <div class="ost-card-footer">
+              <span class="ost-format-tag">LOSSLESS AUDIO</span>
+              <div class="ost-card-btn-group">
+                <a href="audio/01_dharthi_hai_ambar_intro.m4a" download="Ramayana - 01 - Dharthi Hai Ambar.m4a" class="ost-card-btn-action" title="Download Audio File">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
+                  <span>Download</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- TRACK 02 -->
+        <article class="ost-track-card" id="ostCard2" data-track-id="2">
+          <div class="ost-card-banner">
+            <img src="feature_banner_hd.jpg" alt="Sita's Aspiration Banner" class="ost-card-img" loading="lazy">
+            <div class="ost-card-gradient"></div>
+            
+            <div class="ost-card-top-info">
+              <span class="ost-track-idx">02</span>
+              <span class="ost-track-mood">SANSKRIT SHLOKA</span>
+            </div>
+
+            <div class="ost-card-visualizer" id="ostCardViz2">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+
+            <button class="ost-card-play-btn" onclick="playOSTTrack(2)" aria-label="Play Sita's Aspiration">
+              <svg class="icon-play" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              <svg class="icon-pause" style="display:none;" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            </button>
+
+            <span class="ost-card-duration-badge">02:40</span>
+          </div>
+
+          <div class="ost-card-body">
+            <div class="ost-card-meta-top">
+              <h4 class="ost-card-title">Sita's Aspiration (Lyrical)</h4>
+              <span class="ost-card-subtitle">Valmiki Ramayana Sanskrit Shloka &amp; Divine Melody</span>
+            </div>
+            
+            <p class="ost-card-artists">
+              <strong>A.R. Rahman</strong> &bull; Lyrics: <strong>Dr. Kumar Vishwas</strong>
+            </p>
+
+            <p class="ost-card-desc">
+              Sacred Sanskrit verses from Valmiki Ramayana exploring Mother Sita's eternal devotion and divine presence.
+            </p>
+
+            <div class="ost-card-progress-row">
+              <span class="ost-time-cur" id="ostCardCur2">00:00</span>
+              <div class="ost-card-bar-wrap" onclick="seekOSTCard(2, event)">
+                <div class="ost-card-bar-fill" id="ostCardBar2" style="width: 0%;"></div>
+              </div>
+              <span class="ost-time-dur">02:40</span>
+            </div>
+
+            <div class="ost-card-footer">
+              <span class="ost-format-tag">LOSSLESS AUDIO</span>
+              <div class="ost-card-btn-group">
+                <a href="audio/02_sitas_aspiration_lyrical.m4a" download="Ramayana - 02 - Sitas Aspiration Lyrical.m4a" class="ost-card-btn-action" title="Download Audio File">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
+                  <span>Download</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- TRACK 03 -->
+        <article class="ost-track-card" id="ostCard3" data-track-id="3">
+          <div class="ost-card-banner">
+            <img src="movie_poster_hd.jpg" alt="Jai Jai Ram Orchestral Banner" class="ost-card-img" loading="lazy">
+            <div class="ost-card-gradient"></div>
+            
+            <div class="ost-card-top-info">
+              <span class="ost-track-idx">03</span>
+              <span class="ost-track-mood">HOLLYWOOD SYMPHONY</span>
+            </div>
+
+            <div class="ost-card-visualizer" id="ostCardViz3">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+
+            <button class="ost-card-play-btn" onclick="playOSTTrack(3)" aria-label="Play Jai Jai Ram Orchestral">
+              <svg class="icon-play" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              <svg class="icon-pause" style="display:none;" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            </button>
+
+            <span class="ost-card-duration-badge">03:02</span>
+          </div>
+
+          <div class="ost-card-body">
+            <div class="ost-card-meta-top">
+              <h4 class="ost-card-title">Jai Jai Ram (Orchestral Theme)</h4>
+              <span class="ost-card-subtitle">Hollywood Symphony &amp; Celestial Choral Harmony</span>
+            </div>
+            
+            <p class="ost-card-artists">
+              <strong>Hans Zimmer</strong> &times; <strong>A.R. Rahman</strong>
+            </p>
+
+            <p class="ost-card-desc">
+              Monumental orchestral score performed by world-class philharmonic strings and choir crafted for Dolby Atmos theaters.
+            </p>
+
+            <div class="ost-card-progress-row">
+              <span class="ost-time-cur" id="ostCardCur3">00:00</span>
+              <div class="ost-card-bar-wrap" onclick="seekOSTCard(3, event)">
+                <div class="ost-card-bar-fill" id="ostCardBar3" style="width: 0%;"></div>
+              </div>
+              <span class="ost-time-dur">03:02</span>
+            </div>
+
+            <div class="ost-card-footer">
+              <span class="ost-format-tag">LOSSLESS AUDIO</span>
+              <div class="ost-card-btn-group">
+                <a href="audio/03_jai_jai_ram_orchestral.m4a" download="Ramayana - 03 - Jai Jai Ram Orchestral.m4a" class="ost-card-btn-action" title="Download Audio File">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
+                  <span>Download</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- TRACK 04 -->
+        <article class="ost-track-card" id="ostCard4" data-track-id="4">
+          <div class="ost-card-banner">
+            <img src="movie_cover_hd.jpg" alt="Sita's Aspiration Flute Banner" class="ost-card-img" loading="lazy">
+            <div class="ost-card-gradient"></div>
+            
+            <div class="ost-card-top-info">
+              <span class="ost-track-idx">04</span>
+              <span class="ost-track-mood">ACOUSTIC MELODY</span>
+            </div>
+
+            <div class="ost-card-visualizer" id="ostCardViz4">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+
+            <button class="ost-card-play-btn" onclick="playOSTTrack(4)" aria-label="Play Sita's Aspiration Flute">
+              <svg class="icon-play" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              <svg class="icon-pause" style="display:none;" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            </button>
+
+            <span class="ost-card-duration-badge">02:42</span>
+          </div>
+
+          <div class="ost-card-body">
+            <div class="ost-card-meta-top">
+              <h4 class="ost-card-title">Sita's Aspiration (Divine Flute &amp; Vocals)</h4>
+              <span class="ost-card-subtitle">Bamboo Flute, Sitar &amp; Ethereal Choral Resonance</span>
+            </div>
+            
+            <p class="ost-card-artists">
+              <strong>A.R. Ameen</strong>, <strong>Vaishali Samant</strong>, <strong>Rakshita Suresh</strong> &amp; <strong>Antra Nandy</strong>
+            </p>
+
+            <p class="ost-card-desc">
+              Serene Indian acoustic instruments resonating with gentle river currents and the spiritual beauty of exile in the forest.
+            </p>
+
+            <div class="ost-card-progress-row">
+              <span class="ost-time-cur" id="ostCardCur4">00:00</span>
+              <div class="ost-card-bar-wrap" onclick="seekOSTCard(4, event)">
+                <div class="ost-card-bar-fill" id="ostCardBar4" style="width: 0%;"></div>
+              </div>
+              <span class="ost-time-dur">02:42</span>
+            </div>
+
+            <div class="ost-card-footer">
+              <span class="ost-format-tag">LOSSLESS AUDIO</span>
+              <div class="ost-card-btn-group">
+                <a href="audio/04_sitas_aspiration_divine.m4a" download="Ramayana - 04 - Sitas Aspiration Flute.m4a" class="ost-card-btn-action" title="Download Audio File">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
+                  <span>Download</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- TRACK 05 -->
+        <article class="ost-track-card" id="ostCard5" data-track-id="5">
+          <div class="ost-card-banner">
+            <img src="teaser_lanka_hd.jpg" alt="Ravana Tandav Banner" class="ost-card-img" loading="lazy">
+            <div class="ost-card-gradient"></div>
+            
+            <div class="ost-card-top-info">
+              <span class="ost-track-idx">05</span>
+              <span class="ost-track-mood">WAR ANTHEM</span>
+            </div>
+
+            <div class="ost-card-visualizer" id="ostCardViz5">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+
+            <button class="ost-card-play-btn" onclick="playOSTTrack(5)" aria-label="Play Ravana Tandav">
+              <svg class="icon-play" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              <svg class="icon-pause" style="display:none;" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            </button>
+
+            <span class="ost-card-duration-badge">03:14</span>
+          </div>
+
+          <div class="ost-card-body">
+            <div class="ost-card-meta-top">
+              <h4 class="ost-card-title">Ravana Tandav (Shiv Tandav Anthem)</h4>
+              <span class="ost-card-subtitle">Lankan War Drums &amp; Lord Shiva's Tandav Stotram</span>
+            </div>
+            
+            <p class="ost-card-artists">
+              <strong>A.R. Rahman</strong> &times; <strong>Vishal Dadlani</strong> &bull; Lyrics: <strong>Kumar Vishwas</strong>
+            </p>
+
+            <p class="ost-card-desc">
+              High-energy, thunderous war anthem encapsulating the unstoppable might, ego, and supreme devotion of the Lankan King.
+            </p>
+
+            <div class="ost-card-progress-row">
+              <span class="ost-time-cur" id="ostCardCur5">00:00</span>
+              <div class="ost-card-bar-wrap" onclick="seekOSTCard(5, event)">
+                <div class="ost-card-bar-fill" id="ostCardBar5" style="width: 0%;"></div>
+              </div>
+              <span class="ost-time-dur">03:14</span>
+            </div>
+
+            <div class="ost-card-footer">
+              <span class="ost-format-tag">LOSSLESS AUDIO</span>
+              <div class="ost-card-btn-group">
+                <a href="audio/05_ravana_tandav.m4a" download="Ramayana - 05 - Ravana Tandav.m4a" class="ost-card-btn-action" title="Download Audio File">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
+                  <span>Download</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- TRACK 06 -->
+        <article class="ost-track-card" id="ostCard6" data-track-id="6">
+          <div class="ost-card-banner">
+            <img src="teaser_archer_hd.jpg" alt="Jai Jai Ram Meri Pooja Banner" class="ost-card-img" loading="lazy">
+            <div class="ost-card-gradient"></div>
+            
+            <div class="ost-card-top-info">
+              <span class="ost-track-idx">06</span>
+              <span class="ost-track-mood">DEVOTIONAL CLIMAX</span>
+            </div>
+
+            <div class="ost-card-visualizer" id="ostCardViz6">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+
+            <button class="ost-card-play-btn" onclick="playOSTTrack(6)" aria-label="Play Jai Jai Ram Meri Pooja">
+              <svg class="icon-play" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              <svg class="icon-pause" style="display:none;" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            </button>
+
+            <span class="ost-card-duration-badge">05:20</span>
+          </div>
+
+          <div class="ost-card-body">
+            <div class="ost-card-meta-top">
+              <h4 class="ost-card-title">Jai Jai Ram (Meri Pooja Mere Ram)</h4>
+              <span class="ost-card-subtitle">Monumental Devotional Anthem &amp; Achyutam Keshavam</span>
+            </div>
+            
+            <p class="ost-card-artists">
+              <strong>A.R. Rahman</strong> &bull; <strong>Arijit Singh</strong> &bull; <strong>Shreya Ghoshal</strong> &bull; <strong>Kumar Vishwas</strong>
+            </p>
+
+            <p class="ost-card-desc">
+              The heart and soul of Ramayana: an emotional masterpiece expressing boundless devotion and the divine name of Rama.
+            </p>
+
+            <div class="ost-card-progress-row">
+              <span class="ost-time-cur" id="ostCardCur6">00:00</span>
+              <div class="ost-card-bar-wrap" onclick="seekOSTCard(6, event)">
+                <div class="ost-card-bar-fill" id="ostCardBar6" style="width: 0%;"></div>
+              </div>
+              <span class="ost-time-dur">05:20</span>
+            </div>
+
+            <div class="ost-card-footer">
+              <span class="ost-format-tag">LOSSLESS AUDIO</span>
+              <div class="ost-card-btn-group">
+                <a href="audio/06_jai_jai_ram_meri_pooja.m4a" download="Ramayana - 06 - Jai Jai Ram Meri Pooja.m4a" class="ost-card-btn-action" title="Download Audio File">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
+                  <span>Download</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- =========================================================================
+         DIVIDER TO CINEMATIC STILLS & PRODUCTION FRAMES
+         ========================================================================= -->
+    <div class="gallery-stills-divider">
+      <div class="gsd-line"></div>
+      <div class="gsd-badge">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+        <span>CINEMATIC STILLS &amp; PRODUCTION FRAMES</span>
+      </div>
+      <div class="gsd-line"></div>
     </div>
 
     <div class="gallery-mosaic">
@@ -920,5 +1382,79 @@
   </nav>
 
   <script src="app.js"></script>
+
+  <!-- =========================================================================
+       STICKY FLOATING MASTER SOUNDTRACK PLAYER
+       ========================================================================= -->
+  <aside class="ost-floating-player" id="ostFloatingPlayer" style="display: none;" aria-label="Audio Player">
+    <div class="ost-fp-container">
+      <!-- Left: Track Cover & Details -->
+      <div class="ost-fp-track-info" onclick="scrollToActiveTrack()">
+        <div class="ost-fp-thumb-wrap">
+          <img src="hero_banner_hd.jpg" alt="Track Art" id="ostFpThumb" class="ost-fp-thumb">
+          <div class="ost-fp-equalizer" id="ostFpEqualizer">
+            <span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+        <div class="ost-fp-meta">
+          <div class="ost-fp-title-row">
+            <span class="ost-fp-track-name" id="ostFpTitle">Dharthi Hai Ambar</span>
+            <span class="ost-fp-track-tag" id="ostFpTag">TITLE THEME</span>
+          </div>
+          <span class="ost-fp-artist" id="ostFpArtist">A.R. Rahman &times; Hans Zimmer</span>
+        </div>
+      </div>
+
+      <!-- Center: Controls & Scrubber -->
+      <div class="ost-fp-center-controls">
+        <div class="ost-fp-buttons">
+          <button class="ost-fp-btn" onclick="prevOSTTrack()" title="Previous Track (Shift+Left)">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+          </button>
+          
+          <button class="ost-fp-btn-main" id="ostFpPlayBtn" onclick="toggleCurrentOSTTrack()" title="Play / Pause (Space)">
+            <svg class="fp-icon-play" id="fpIconPlay" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            <svg class="fp-icon-pause" id="fpIconPause" style="display:none;" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+          </button>
+          
+          <button class="ost-fp-btn" onclick="nextOSTTrack()" title="Next Track (Shift+Right)">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+          </button>
+          
+          <button class="ost-fp-btn-icon" id="ostFpLoopBtn" onclick="toggleOSTLoop()" title="Toggle Repeat Track">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+          </button>
+        </div>
+        
+        <div class="ost-fp-scrubber-row">
+          <span class="ost-fp-time" id="ostFpCurrentTime">00:00</span>
+          <div class="ost-fp-progress-wrap" id="ostFpProgressWrap" onclick="seekOSTScrubber(event)">
+            <div class="ost-fp-progress-bg">
+              <div class="ost-fp-progress-bar" id="ostFpProgressBar" style="width: 0%;">
+                <span class="ost-fp-progress-thumb"></span>
+              </div>
+            </div>
+          </div>
+          <span class="ost-fp-time" id="ostFpDuration">01:13</span>
+        </div>
+      </div>
+
+      <!-- Right: Volume & Download & Close -->
+      <div class="ost-fp-right-controls">
+        <button class="ost-fp-vol-btn" id="ostFpMuteBtn" onclick="toggleOSTMute()" title="Mute/Unmute">
+          <svg class="vol-icon-on" id="fpVolOn" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+          <svg class="vol-icon-off" id="fpVolOff" style="display:none;" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+        </button>
+        <input type="range" class="ost-fp-volume-slider" id="ostFpVolume" min="0" max="1" step="0.05" value="0.9" oninput="setOSTVolume(this.value)" title="Volume Slider">
+        <a href="audio/01_dharthi_hai_ambar_intro.m4a" download class="ost-fp-dl-btn" id="ostFpDownloadBtn" title="Download Audio File">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
+        </a>
+        <button class="ost-fp-close-btn" onclick="closeFloatingPlayer()" title="Hide Player Bar">
+          &times;
+        </button>
+      </div>
+    </div>
+  </aside>
+
 </body>
 </html>
