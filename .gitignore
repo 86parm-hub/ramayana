@@ -1,6 +1,8 @@
 # Video files (too large for GitHub > 100MB)
 *.mkv
 *.mp4
+!move trailer.mp4
+!move_trailer.mp4
 !trailer_official.mp4
 *.wav
 

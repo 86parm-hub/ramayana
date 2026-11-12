@@ -865,7 +865,7 @@ function initTrailerPlayer() {
 
   video.addEventListener('timeupdate', () => {
     const cur = video.currentTime || 0;
-    const dur = video.duration || 120;
+    const dur = video.duration || 241;
     const pct = (cur / dur) * 100;
     if (scrubFill) scrubFill.style.width = `${pct}%`;
     if (timeDisplay) {
@@ -878,7 +878,7 @@ function initTrailerPlayer() {
   video.addEventListener('progress', () => {
     if (video.buffered.length > 0 && scrubLoaded) {
       const bufferedEnd = video.buffered.end(video.buffered.length - 1);
-      const dur = video.duration || 120;
+      const dur = video.duration || 241;
       scrubLoaded.style.width = `${(bufferedEnd / dur) * 100}%`;
     }
   });
@@ -887,7 +887,7 @@ function initTrailerPlayer() {
     scrubTrack.addEventListener('click', (e) => {
       const rect = scrubTrack.getBoundingClientRect();
       const pos = (e.clientX - rect.left) / rect.width;
-      const dur = video.duration || 120;
+      const dur = video.duration || 241;
       video.currentTime = Math.max(0, Math.min(dur, pos * dur));
     });
   }
