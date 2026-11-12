@@ -229,7 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let isDraggingScrub = false;
 
   // Live Cloud Stream Link vs Localhost
-  const CLOUD_STREAM_URL = 'https://harvest-tony-downloadable-follow.trycloudflare.com/Ramayana.2026.Part1.Final.mp4';
+  const CLOUD_STREAM_URL = 'https://cayman-decimal-evans-statistical.trycloudflare.com/Ramayana.2026.Part1.Final.mp4';
   const LOCAL_STREAM_URL = 'Ramayana.2026.Part1.Final.mp4';
 
   const isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
