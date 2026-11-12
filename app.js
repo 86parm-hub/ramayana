@@ -228,9 +228,9 @@ document.addEventListener('DOMContentLoaded', () => {
   let controlsHideTimer = null;
   let isDraggingScrub = false;
 
-  // Live Cloud Stream Link vs Localhost
-  const CLOUD_STREAM_URL = 'https://cayman-decimal-evans-statistical.trycloudflare.com/Ramayana.2026.Part1.Final.mp4';
-  const LOCAL_STREAM_URL = 'Ramayana.2026.Part1.Final.mp4';
+  // Permanent Official GitHub CDN Stream Endpoints (100% Autonomous, No PC Needed)
+  const CLOUD_STREAM_URL = 'https://github.com/86parm-hub/ramayana/releases/download/v1.0/Ramayana.Part1.Act1.mp4';
+  const LOCAL_STREAM_URL = 'Ramayana.Part1.Act1.mp4';
 
   const isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
   video.src = isLocal ? LOCAL_STREAM_URL : CLOUD_STREAM_URL;
