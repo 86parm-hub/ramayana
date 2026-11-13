@@ -419,6 +419,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Play / Pause Logic
   function togglePlay() {
     if (video.paused || video.ended) {
+      streamSpinnerVeil.classList.add('active');
       const offset = getStartOffset();
       if (offset > 0 && video.currentTime < offset) {
         video.currentTime = offset;
@@ -428,15 +429,17 @@ document.addEventListener('DOMContentLoaded', () => {
           video.currentTime = offset;
         }
         videoChassis.classList.add('is-playing');
-        offlineFileModal.classList.remove('visible');
+        if (offlineFileModal) offlineFileModal.classList.remove('visible');
         streamSpinnerVeil.classList.remove('active');
         resetHideTimer();
       }).catch(err => {
+        streamSpinnerVeil.classList.remove('active');
         console.warn('Playback error / User interaction needed:', err);
       });
     } else {
       video.pause();
       videoChassis.classList.remove('is-playing');
+      streamSpinnerVeil.classList.remove('active');
       showControls();
     }
   }
@@ -549,22 +552,40 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   video.addEventListener('progress', updateBufferDisplay);
 
-  // Spinner on buffer & Stream Resilience
+  // Netflix Spinner on buffer, seek & Stream Resilience
   video.addEventListener('waiting', () => {
     streamSpinnerVeil.classList.add('active');
   });
+  video.addEventListener('seeking', () => {
+    streamSpinnerVeil.classList.add('active');
+  });
+  video.addEventListener('seeked', () => {
+    streamSpinnerVeil.classList.remove('active');
+  });
   video.addEventListener('canplay', () => {
     streamSpinnerVeil.classList.remove('active');
-    offlineFileModal.classList.remove('visible');
+    if (offlineFileModal) offlineFileModal.classList.remove('visible');
   });
   video.addEventListener('playing', () => {
     streamSpinnerVeil.classList.remove('active');
-    offlineFileModal.classList.remove('visible');
+    if (offlineFileModal) offlineFileModal.classList.remove('visible');
   });
   video.addEventListener('error', (e) => {
     console.warn('Video stream error/check:', e);
     streamSpinnerVeil.classList.remove('active');
   });
+
+  // Trailer Player Netflix Spinner Wiring
+  const trailerVideo = document.getElementById('trailerVideo');
+  const trailerSpinnerVeil = document.getElementById('trailerSpinnerVeil');
+  if (trailerVideo && trailerSpinnerVeil) {
+    trailerVideo.addEventListener('waiting', () => trailerSpinnerVeil.classList.add('active'));
+    trailerVideo.addEventListener('seeking', () => trailerSpinnerVeil.classList.add('active'));
+    trailerVideo.addEventListener('seeked', () => trailerSpinnerVeil.classList.remove('active'));
+    trailerVideo.addEventListener('playing', () => trailerSpinnerVeil.classList.remove('active'));
+    trailerVideo.addEventListener('canplay', () => trailerSpinnerVeil.classList.remove('active'));
+    trailerVideo.addEventListener('error', () => trailerSpinnerVeil.classList.remove('active'));
+  }
 
   // Cinematic Ending: AI SYNDICAT Outro Branding Card
   video.addEventListener('ended', () => {
