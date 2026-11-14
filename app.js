@@ -2538,8 +2538,13 @@ window.openMovieDetailsModal = openMovieDetailsModal;
 window.closeMovieDetailsModal = closeMovieDetailsModal;
 
 // Auto-initialize on load
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initHomeBillboard);
-} else {
+function initAllBillboards() {
   initHomeBillboard();
+  initMoviesBillboard();
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initAllBillboards);
+} else {
+  initAllBillboards();
 }
