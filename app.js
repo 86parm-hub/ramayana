@@ -864,7 +864,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // URL Hash Routing on page load
   const hash = window.location.hash.replace('#', '');
-  if (hash && ['home', 'trailer', 'watch', 'gallery'].includes(hash)) {
+  if (hash && ['home', 'movies', 'trailer', 'watch', 'gallery'].includes(hash)) {
     switchPage(hash);
   }
 });
@@ -1484,30 +1484,39 @@ window.scrollToActiveTrack = scrollToActiveTrack;
    ========================================================================== */
 
 function playMovieInCinema(actKey) {
-  // Pause trailer and audio if playing
+  actKey = actKey || 'act1';
+
+  // Pause trailer video and OST audio if playing
   const trailerVideo = document.getElementById('trailerVideo');
   if (trailerVideo && !trailerVideo.paused) trailerVideo.pause();
   if (typeof ostAudio !== 'undefined' && !ostAudio.paused) ostAudio.pause();
 
-  // Switch to Cinema Theater
+  // Switch to Cinema Theater view
   switchPage('watch');
 
-  // If specific act selected, trigger switchAct
-  if (typeof window.switchAct === 'function' && actKey) {
-    window.switchAct(actKey);
-  }
-
-  // Start Cinema Stream
+  // Trigger Act Selection & Auto-Play
   setTimeout(() => {
-    if (typeof window.startCinemaStream === 'function') {
+    if (typeof window.selectAct === 'function') {
+      window.selectAct(actKey);
+    } else if (typeof window.switchAct === 'function') {
+      window.switchAct(actKey);
+    } else if (typeof window.startCinemaStream === 'function') {
       window.startCinemaStream();
     }
+
+    const video = document.getElementById('videoPlayer');
+    if (video) {
+      video.play().catch(e => console.log('Playback deferred:', e));
+    }
+
     const stage = document.getElementById('cinemaStage') || document.getElementById('videoPlayer');
     if (stage) {
       stage.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
-  }, 120);
+  }, 100);
 }
+
+
 
 function filterMoviesCatalog(category, buttonEl) {
   // Update active pill button

@@ -17,7 +17,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png?v=2">
   <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png?v=2">
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=20261114_movies_v3">
 
   <!-- Premium Fonts: Cinzel, Cinzel Decorative, Marcellus, Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,6 +25,133 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@600;700;800;900&family=Marcellus&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet">
+  <!-- Zero-Cache Robust Page Switcher Engine -->
+  <script>
+    function switchPage(pageKey) {
+      try {
+        var pageMap = {
+          'home': 'home-view',
+          'movies': 'movies-view',
+          'trailer': 'trailer-view',
+          'watch': 'watch-view',
+          'gallery': 'gallery-view'
+        };
+        var targetId = pageMap[pageKey] || 'home-view';
+
+        // Pause trailer if active
+        var trailerVideo = document.getElementById('trailerVideo');
+        if (trailerVideo && pageKey !== 'trailer' && !trailerVideo.paused) {
+          try { trailerVideo.pause(); } catch(e){}
+        }
+
+        // Deactivate all views
+        var views = document.querySelectorAll('.page-view');
+        for (var i = 0; i < views.length; i++) {
+          views[i].classList.remove('active');
+        }
+
+        // Activate target view
+        var activeView = document.getElementById(targetId);
+        if (activeView) {
+          activeView.classList.add('active');
+        }
+
+        // Update desktop tabs
+        var tabs = document.querySelectorAll('.tab-link');
+        for (var j = 0; j < tabs.length; j++) {
+          if (tabs[j].getAttribute('data-target') === targetId) {
+            tabs[j].classList.add('active');
+          } else {
+            tabs[j].classList.remove('active');
+          }
+        }
+
+        // Update mobile bottom nav
+        var mobItems = document.querySelectorAll('.mobile-nav-item');
+        for (var k = 0; k < mobItems.length; k++) {
+          if (mobItems[k].getAttribute('data-target') === targetId) {
+            mobItems[k].classList.add('active');
+          } else {
+            mobItems[k].classList.remove('active');
+          }
+        }
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        try {
+          if (window.history && window.history.pushState && window.location.protocol.indexOf('file') === -1) {
+            window.history.pushState(null, null, '#' + pageKey);
+          }
+        } catch(e) {}
+      } catch(err) {
+        console.error('switchPage error:', err);
+      }
+    }
+    window.switchPage = switchPage;
+
+    function playMovieInCinema(actKey) {
+      actKey = actKey || 'act1';
+      var trailerVideo = document.getElementById('trailerVideo');
+      if (trailerVideo && !trailerVideo.paused) {
+        try { trailerVideo.pause(); } catch(e) {}
+      }
+      if (window.ostAudio && !window.ostAudio.paused) {
+        try { window.ostAudio.pause(); } catch(e) {}
+      }
+
+      switchPage('watch');
+
+      setTimeout(function() {
+        if (typeof window.selectAct === 'function') {
+          window.selectAct(actKey);
+        } else if (typeof window.startCinemaStream === 'function') {
+          window.startCinemaStream();
+        }
+        var vid = document.getElementById('videoPlayer');
+        if (vid) {
+          vid.play().catch(function(e) { console.log('Autoplay policy info:', e); });
+        }
+        var stage = document.getElementById('cinemaStage') || document.getElementById('videoPlayer');
+        if (stage) {
+          stage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }, 100);
+    }
+    window.playMovieInCinema = playMovieInCinema;
+
+    function filterMoviesCatalog(category, buttonEl) {
+      var pills = document.querySelectorAll('.movies-filter-bar .filter-pill');
+      pills.forEach(function(p) { p.classList.remove('active'); });
+      if (buttonEl) buttonEl.classList.add('active');
+
+      var cards = document.querySelectorAll('.movies-grid .movie-banner-card');
+      cards.forEach(function(card) {
+        var cardCats = (card.getAttribute('data-category') || '').split(' ');
+        if (category === 'all' || cardCats.indexOf(category) !== -1) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+    window.filterMoviesCatalog = filterMoviesCatalog;
+
+    // Attach immediate click listeners for zero delay
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('[data-target="movies-view"]').forEach(function(el) {
+        el.addEventListener('click', function(e) {
+          e.preventDefault();
+          switchPage('movies');
+        });
+      });
+
+      var hash = (window.location.hash || '').replace('#', '');
+      if (hash && ['home', 'movies', 'trailer', 'watch', 'gallery'].indexOf(hash) !== -1) {
+        switchPage(hash);
+      }
+    });
+  </script>
+
 </head>
 
 <body class="ott-platform">
@@ -1946,7 +2073,7 @@
     </button>
   </nav>
 
-  <script src="app.js"></script>
+  <script src="app.js?v=20261114_movies_v3"></script>
 
   <!-- =========================================================================
        STICKY FLOATING MASTER SOUNDTRACK PLAYER
