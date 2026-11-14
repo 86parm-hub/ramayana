@@ -1153,11 +1153,43 @@ function seekOSTScrubber(event) {
   }
 }
 
-// Close / Hide Floating Player Bar
-function closeFloatingPlayer() {
-  ostAudio.pause();
+// Minimize Floating Player Bar with smooth zoom out
+function minimizeFloatingPlayer(event) {
+  if (event) event.stopPropagation();
   const fp = document.getElementById('ostFloatingPlayer');
-  if (fp) fp.style.display = 'none';
+  const restorePill = document.getElementById('ostRestorePill');
+  const pillTitle = document.getElementById('ostRestorePillTitle');
+
+  if (fp) {
+    fp.classList.add('minimized');
+  }
+
+  if (restorePill) {
+    if (pillTitle && OST_TRACKS[currentOSTIndex]) {
+      pillTitle.textContent = OST_TRACKS[currentOSTIndex].title;
+    }
+    restorePill.classList.add('visible');
+  }
+}
+
+// Restore / Expand Floating Player Bar with zoom in
+function restoreFloatingPlayer(event) {
+  if (event) event.stopPropagation();
+  const fp = document.getElementById('ostFloatingPlayer');
+  const restorePill = document.getElementById('ostRestorePill');
+
+  if (fp) {
+    fp.classList.remove('is-hidden');
+    fp.classList.remove('minimized');
+  }
+
+  if (restorePill) {
+    restorePill.classList.remove('visible');
+  }
+}
+
+function closeFloatingPlayer(event) {
+  minimizeFloatingPlayer(event);
 }
 
 // Scroll page to current active card
@@ -1174,7 +1206,14 @@ function updateFloatingPlayerUI() {
   if (!track) return;
 
   const fp = document.getElementById('ostFloatingPlayer');
-  if (fp) fp.style.display = 'flex';
+  const restorePill = document.getElementById('ostRestorePill');
+  if (fp) {
+    fp.classList.remove('is-hidden');
+    fp.classList.remove('minimized');
+  }
+  if (restorePill) {
+    restorePill.classList.remove('visible');
+  }
 
   const thumb = document.getElementById('ostFpThumb');
   const title = document.getElementById('ostFpTitle');
@@ -1184,7 +1223,7 @@ function updateFloatingPlayerUI() {
   
   if (thumb) thumb.src = track.banner;
   if (title) title.textContent = track.title;
-  if (tag) tag.textContent = track.tag;
+  if (tag) tag.textContent = track.tag || '';
   if (artist) artist.innerHTML = track.artist;
   if (dur) dur.textContent = track.duration;
   // Anti-download: direct download link removed
@@ -1469,6 +1508,8 @@ window.setOSTVolume = setOSTVolume;
 window.seekOSTCard = seekOSTCard;
 window.seekOSTScrubber = seekOSTScrubber;
 window.closeFloatingPlayer = closeFloatingPlayer;
+window.minimizeFloatingPlayer = minimizeFloatingPlayer;
+window.restoreFloatingPlayer = restoreFloatingPlayer;
 window.scrollToActiveTrack = scrollToActiveTrack;
 
 

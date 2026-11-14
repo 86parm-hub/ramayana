@@ -4120,18 +4120,32 @@ body.ott-platform {
   border-bottom: none !important;
   border-radius: 0 !important;
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.8) !important;
-  transform: none !important;
   z-index: 99999 !important;
   padding: 0 16px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
-  animation: ostSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transform-origin: bottom center !important;
+  transform: translateY(0) scale(1) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.35s ease !important;
 }
 
-@keyframes ostSlideUp {
-  from { transform: translateY(100%); }
-  to { transform: translateY(0); }
+/* Initially hidden before user starts playing any track */
+.ost-floating-player.is-hidden {
+  display: none !important;
+}
+
+/* Smooth Zoom Out Minimize Transition */
+.ost-floating-player.minimized {
+  transform: translateY(60px) scale(0.85) !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
 
 .ost-fp-container {
@@ -4504,13 +4518,121 @@ body.ott-platform {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  transition: all 0.15s ease !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
   margin-left: 4px !important;
+  pointer-events: auto !important;
+  z-index: 10 !important;
 }
 
 .ost-fp-close-btn:hover {
   color: #ffffff !important;
-  background: rgba(255, 255, 255, 0.1) !important;
+  background: rgba(255, 255, 255, 0.14) !important;
+  transform: scale(1.12) !important;
+}
+
+.ost-fp-close-btn svg {
+  pointer-events: none !important;
+}
+
+/* ==========================================================================
+   FLOATING SPOTIFY MINI RESTORE PILL (Shown when player is minimized)
+   ========================================================================== */
+.ost-restore-pill {
+  position: fixed !important;
+  bottom: 22px !important;
+  right: 24px !important;
+  z-index: 99999 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  padding: 8px 16px 8px 10px !important;
+  background: #181818 !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  border-radius: 999px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.75), 0 0 16px rgba(229, 9, 20, 0.25) !important;
+  cursor: pointer !important;
+  transform: translateY(24px) scale(0.85) !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.32s ease,
+              background 0.2s ease,
+              box-shadow 0.2s ease,
+              border-color 0.2s ease !important;
+}
+
+.ost-restore-pill.visible {
+  transform: translateY(0) scale(1) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+.ost-restore-pill:hover {
+  background: #242424 !important;
+  border-color: rgba(229, 9, 20, 0.6) !important;
+  transform: translateY(-2px) scale(1.04) !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.85), 0 0 22px rgba(229, 9, 20, 0.45) !important;
+}
+
+.ost-restore-pill:active {
+  transform: translateY(0) scale(0.97) !important;
+}
+
+.ost-restore-pill-icon {
+  width: 26px !important;
+  height: 26px !important;
+  border-radius: 50% !important;
+  background: #e50914 !important;
+  color: #ffffff !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+  animation: ostPillPulse 2s infinite ease-in-out !important;
+}
+
+@keyframes ostPillPulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(229, 9, 20, 0.6); }
+  70% { transform: scale(1.05); box-shadow: 0 0 0 6px rgba(229, 9, 20, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(229, 9, 20, 0); }
+}
+
+.ost-restore-pill-text {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  max-width: 150px !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  letter-spacing: 0.2px !important;
+}
+
+.ost-restore-pill-chevron {
+  color: #b3b3b3 !important;
+  flex-shrink: 0 !important;
+  transition: transform 0.2s ease, color 0.2s ease !important;
+}
+
+.ost-restore-pill:hover .ost-restore-pill-chevron {
+  color: #ffffff !important;
+  transform: translateY(-2px) !important;
+}
+
+@media (max-width: 768px) {
+  .ost-restore-pill {
+    bottom: 74px !important;
+    right: 14px !important;
+    padding: 7px 14px 7px 8px !important;
+  }
+  .ost-restore-pill-text {
+    max-width: 110px !important;
+    font-size: 11.5px !important;
+  }
 }
 
 /* ==========================================================================
@@ -8330,8 +8452,9 @@ img, video {
   letter-spacing: 2px !important;
   color: #ffffff !important;
   margin: 0 0 16px 0 !important;
-  padding: 4px 0 !important;
-  line-height: 1.18 !important;
+  padding: 8px 0 !important;
+  line-height: 1.25 !important;
+  overflow: visible !important;
   text-shadow: 
     0 4px 20px rgba(0, 0, 0, 1),
     0 2px 6px rgba(0, 0, 0, 1),
@@ -8434,11 +8557,16 @@ img, video {
    ========================================================================== */
 .billboard-upper-left {
   position: absolute !important;
-  top: 48px !important;
+  top: 54px !important;
   left: 48px !important;
   z-index: 6 !important;
-  max-width: 75% !important;
+  max-width: 80% !important;
   pointer-events: none !important;
+  overflow: visible !important;
+}
+
+#moviesHeroBillboard .billboard-upper-left {
+  top: 56px !important;
 }
 
 .billboard-lower-left {

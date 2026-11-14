@@ -840,7 +840,7 @@
   <!-- =========================================================================
        SPOTIFY NOW PLAYING BOTTOM BAR (AUTHENTIC 3-COLUMN DESKTOP DOCK)
        ========================================================================= -->
-  <aside class="ost-floating-player" id="ostFloatingPlayer" oncontextmenu="return false;" style="display: none;" aria-label="Audio Player">
+  <aside class="ost-floating-player is-hidden" id="ostFloatingPlayer" oncontextmenu="return false;" aria-label="Audio Player">
     <div class="ost-fp-container">
       <!-- Left: Track Cover & Details & Heart -->
       <div class="ost-fp-track-info" onclick="scrollToActiveTrack()">
@@ -932,7 +932,7 @@
         <div class="ost-fp-vol-slider-wrap">
           <input type="range" class="ost-fp-volume-slider" id="ostFpVolume" min="0" max="1" step="0.05" value="0.9" oninput="setOSTVolume(this.value)" title="Volume Slider">
         </div>
-        <button class="ost-fp-close-btn" onclick="closeFloatingPlayer()" title="Hide Player Bar">
+        <button class="ost-fp-close-btn" id="ostFpCloseBtn" onclick="minimizeFloatingPlayer(event)" title="Minimize Player Bar">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5">
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -941,6 +941,19 @@
       </div>
     </div>
   </aside>
+
+  <!-- Floating Spotify Mini Restore Pill (Appears when player is minimized) -->
+  <div class="ost-restore-pill" id="ostRestorePill" onclick="restoreFloatingPlayer(event)" title="Click to Expand Music Player">
+    <span class="ost-restore-pill-icon">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+        <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+      </svg>
+    </span>
+    <span class="ost-restore-pill-text" id="ostRestorePillTitle">Now Playing</span>
+    <svg class="ost-restore-pill-chevron" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </div>
 
 
   
