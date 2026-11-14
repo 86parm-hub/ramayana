@@ -5115,7 +5115,9 @@ video {
    SANDFLIX MOVIES CATALOG VIEW STYLING
    ========================================================================== */
 #movies-view {
-  padding-bottom: 90px;
+  padding: 30px 24px 90px;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
 .movies-badge-pill {

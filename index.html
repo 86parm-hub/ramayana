@@ -18,7 +18,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png?v=3">
   <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png?v=3">
 
-  <link rel="stylesheet" href="style.css?v=20261114_movies_v3">
+  <link rel="stylesheet" href="style.css?v=20261114_movies_v4">
 
   <!-- Premium Fonts: Cinzel, Cinzel Decorative, Marcellus, Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -442,29 +442,11 @@
 
   
   <!-- =========================================================================
-       PAGE: MOVIES VIEW (SANDFLIX Official Movies & Sagas Hub)
+       PAGE: MOVIES VIEW (SANDFLIX Official Ramayana Cinema Hub)
        ========================================================================= -->
   <section class="page-view" id="movies-view">
-    <!-- Movies Page Header -->
-    <div class="page-inner-header">
-      <div class="movies-badge-pill">
-        <span class="live-dot-pulse"></span>
-        <span>SANDFLIX MOVIES &bull; 1080P HEVC ULTRA HD</span>
-      </div>
-      <h2 class="view-title">Featured Movies &amp; Sagas</h2>
-      <p class="view-subtitle">Click any movie banner to start streaming instantly in the Cinema Theater</p>
-
-      <!-- Category Filter Pills -->
-      <div class="movies-filter-bar">
-        <button class="filter-pill active" onclick="filterMoviesCatalog('all', this)">All Movies</button>
-        <button class="filter-pill" onclick="filterMoviesCatalog('now-playing', this)">Now Streaming</button>
-        <button class="filter-pill" onclick="filterMoviesCatalog('trilogy', this)">Ramayana Trilogy</button>
-        <button class="filter-pill" onclick="filterMoviesCatalog('upcoming', this)">Upcoming</button>
-      </div>
-    </div>
-
-    <!-- Spotlight Featured Movie Banner (Ramayana: Part One) -->
-    <div class="movies-spotlight-card" onclick="playMovieInCinema('act1')" title="Click to Watch Ramayana: Part One in Cinema Theater">
+    <!-- Single Exclusive Ramayana Movie Card -->
+    <div class="movies-spotlight-card" onclick="playMovieInCinema('act1')" title="Click anywhere on banner to Play Ramayana: Part One in Cinema Theater">
       <div class="spotlight-banner-bg" style="background-image: url('feature_banner_hd.jpg');"></div>
       <div class="spotlight-gradient-overlay"></div>
       <div class="spotlight-glow-fx"></div>
@@ -474,6 +456,7 @@
           <span class="spotlight-rank-badge">&#9733; #1 TRENDING ON SANDFLIX</span>
           <span class="spotlight-res-badge">4K ULTRA HD</span>
           <span class="spotlight-res-badge">DOLBY ATMOS</span>
+          <span class="spotlight-res-badge">1080P HEVC</span>
         </div>
 
         <h1 class="spotlight-title">RAMAYANA: PART ONE</h1>
@@ -490,7 +473,7 @@
         </p>
 
         <p class="spotlight-synopsis">
-          Witness Maryada Purushottam Lord Rama's supreme vow to uphold Dharma. From the golden courts of Ayodhya to the divine breaking of Pinaka and the mystic shadows of Dandakaranya forest. Both Act 1 and Act 2 available in full 1080P HEVC.
+          Witness Maryada Purushottam Lord Rama's supreme vow to uphold Dharma. From the golden courts of Ayodhya to the divine breaking of Pinaka bow and the mystic shadows of Dandakaranya forest. Both Act 1 and Act 2 available in full 1080P HEVC.
         </p>
 
         <div class="spotlight-btn-group" onclick="event.stopPropagation()">
@@ -519,265 +502,6 @@
           <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
         </div>
         <span class="play-label">CLICK TO PLAY IN CINEMA</span>
-      </div>
-    </div>
-
-    <!-- Movies Catalog Grid -->
-    <div class="movies-catalog-section">
-      <div class="movies-grid-heading">
-        <h3 class="grid-title">All Catalog Movies</h3>
-        <span class="grid-count">6 Titles Available</span>
-      </div>
-
-      <div class="movies-grid" id="moviesCatalogGrid">
-
-        <!-- Movie 1: Ramayana Part 1 (Both Acts) -->
-        <article class="movie-banner-card" data-category="now-playing trilogy" onclick="playMovieInCinema('act1')" title="Play Ramayana Part One">
-          <div class="movie-banner-img-wrap">
-            <img src="hero_banner_hd.jpg" alt="Ramayana: Part One Banner" class="movie-banner-img" loading="lazy">
-            <div class="movie-banner-gradient"></div>
-            
-            <div class="movie-card-badges">
-              <span class="badge-status-live">&#9679; NOW STREAMING</span>
-              <span class="badge-format">1080P HEVC</span>
-            </div>
-
-            <div class="movie-banner-hover-play">
-              <div class="banner-play-icon">
-                <svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
-              </div>
-              <span class="hover-play-text">PLAY IN CINEMA</span>
-            </div>
-
-            <span class="movie-duration-pill">3h 12m</span>
-          </div>
-
-          <div class="movie-banner-details">
-            <div class="movie-title-row">
-              <h4 class="movie-name">Ramayana: Part One (The Awakening)</h4>
-              <span class="movie-rating-badge">&#9733; 9.8</span>
-            </div>
-            <p class="movie-sub-info">
-              <span>2026</span> &bull; <span>Act 1 &amp; Act 2 Complete</span> &bull; <span>Hindi &bull; English Sub</span>
-            </p>
-            <p class="movie-short-synopsis">
-              Ranbir Kapoor, Yash, Sai Pallavi. Music by A.R. Rahman &amp; Hans Zimmer. Directed by Nitesh Tiwari.
-            </p>
-            <div class="movie-action-row" onclick="event.stopPropagation()">
-              <button class="btn-movie-play-direct" onclick="playMovieInCinema('act1')">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                <span>Watch Act 1</span>
-              </button>
-              <button class="btn-movie-act-alt" onclick="playMovieInCinema('act2')">
-                <span>Watch Act 2</span>
-              </button>
-            </div>
-          </div>
-        </article>
-
-        <!-- Movie 2: Ramayana Act 1 Special Cut -->
-        <article class="movie-banner-card" data-category="now-playing trilogy" onclick="playMovieInCinema('act1')" title="Play Ramayana Act One">
-          <div class="movie-banner-img-wrap">
-            <img src="feature_banner_hd.jpg" alt="The Divine Beginning Banner" class="movie-banner-img" loading="lazy">
-            <div class="movie-banner-gradient"></div>
-            
-            <div class="movie-card-badges">
-              <span class="badge-status-live">&#9679; ACT ONE</span>
-              <span class="badge-format">HD</span>
-            </div>
-
-            <div class="movie-banner-hover-play">
-              <div class="banner-play-icon">
-                <svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
-              </div>
-              <span class="hover-play-text">PLAY IN CINEMA</span>
-            </div>
-
-            <span class="movie-duration-pill">01:30:07</span>
-          </div>
-
-          <div class="movie-banner-details">
-            <div class="movie-title-row">
-              <h4 class="movie-name">Ramayana: The Divine Beginning &amp; Shiva Dhanush</h4>
-              <span class="movie-rating-badge">&#9733; 9.9</span>
-            </div>
-            <p class="movie-sub-info">
-              <span>Act 1</span> &bull; <span>Ayodhya &amp; Mithila Saga</span> &bull; <span>1080P HEVC</span>
-            </p>
-            <p class="movie-short-synopsis">
-              Prince Rama protects Sage Vishwamitra's yajna, slays Tadaka, and strings Lord Shiva's divine bow Pinaka.
-            </p>
-            <div class="movie-action-row" onclick="event.stopPropagation()">
-              <button class="btn-movie-play-direct" onclick="playMovieInCinema('act1')">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                <span>Play in Cinema</span>
-              </button>
-            </div>
-          </div>
-        </article>
-
-        <!-- Movie 3: Ramayana Act 2 Forest Exile -->
-        <article class="movie-banner-card" data-category="now-playing trilogy" onclick="playMovieInCinema('act2')" title="Play Ramayana Act Two">
-          <div class="movie-banner-img-wrap">
-            <img src="movie_cover_hd.jpg" alt="Forest Exile Banner" class="movie-banner-img" loading="lazy">
-            <div class="movie-banner-gradient"></div>
-            
-            <div class="movie-card-badges">
-              <span class="badge-status-live">&#9679; ACT TWO</span>
-              <span class="badge-format">HD</span>
-            </div>
-
-            <div class="movie-banner-hover-play">
-              <div class="banner-play-icon">
-                <svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
-              </div>
-              <span class="hover-play-text">PLAY IN CINEMA</span>
-            </div>
-
-            <span class="movie-duration-pill">01:30:16</span>
-          </div>
-
-          <div class="movie-banner-details">
-            <div class="movie-title-row">
-              <h4 class="movie-name">Ramayana: Forest Exile &amp; Divine Awakening</h4>
-              <span class="movie-rating-badge">&#9733; 9.8</span>
-            </div>
-            <p class="movie-sub-info">
-              <span>Act 2</span> &bull; <span>Dandakaranya Exile</span> &bull; <span>1080P HEVC</span>
-            </p>
-            <p class="movie-short-synopsis">
-              The 14-year exile commences as Rama, Sita and Lakshmana journey into the sacred wilderness toward the grand conflict.
-            </p>
-            <div class="movie-action-row" onclick="event.stopPropagation()">
-              <button class="btn-movie-play-direct" onclick="playMovieInCinema('act2')">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                <span>Play in Cinema</span>
-              </button>
-            </div>
-          </div>
-        </article>
-
-        <!-- Movie 4: Ramayana Part 2 (Upcoming 2028) -->
-        <article class="movie-banner-card upcoming" data-category="trilogy upcoming" onclick="openComingSoonModal(2)" title="View Part 2 Details">
-          <div class="movie-banner-img-wrap">
-            <img src="teaser_lanka_hd.jpg" alt="Ramayana Part 2 Banner" class="movie-banner-img" loading="lazy">
-            <div class="movie-banner-gradient"></div>
-            
-            <div class="movie-card-badges">
-              <span class="badge-status-soon">&#128274; COMING SOON 2028</span>
-              <span class="badge-format">IMAX 4K</span>
-            </div>
-
-            <div class="movie-banner-hover-play soon">
-              <div class="banner-play-icon lock">
-                <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-              </div>
-              <span class="hover-play-text">VIEW RELEASE DETAILS</span>
-            </div>
-
-            <span class="movie-duration-pill">Diwali 2028</span>
-          </div>
-
-          <div class="movie-banner-details">
-            <div class="movie-title-row">
-              <h4 class="movie-name">Ramayana: Part Two (War For Dharma)</h4>
-              <span class="movie-status-pill">PRE-PRODUCTION</span>
-            </div>
-            <p class="movie-sub-info">
-              <span>Franchise Chapter 2</span> &bull; <span>Lanka &amp; Vanar Sena</span> &bull; <span>IMAX Theatrical</span>
-            </p>
-            <p class="movie-short-synopsis">
-              The search for Sita, the alliance with Sugriva and Hanuman, the building of Ram Setu, and the great war of Lanka.
-            </p>
-            <div class="movie-action-row" onclick="event.stopPropagation()">
-              <button class="btn-movie-soon" onclick="openComingSoonModal(2)">
-                <span>View Release Intel</span>
-              </button>
-            </div>
-          </div>
-        </article>
-
-        <!-- Movie 5: Ramayana Part 3 (Upcoming 2029) -->
-        <article class="movie-banner-card upcoming" data-category="trilogy upcoming" onclick="openComingSoonModal(3)" title="View Part 3 Details">
-          <div class="movie-banner-img-wrap">
-            <img src="teaser_archer_hd.jpg" alt="Ramayana Part 3 Banner" class="movie-banner-img" loading="lazy">
-            <div class="movie-banner-gradient"></div>
-            
-            <div class="movie-card-badges">
-              <span class="badge-status-soon">&#128274; COMING SOON 2029</span>
-              <span class="badge-format">IMAX 4K</span>
-            </div>
-
-            <div class="movie-banner-hover-play soon">
-              <div class="banner-play-icon lock">
-                <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-              </div>
-              <span class="hover-play-text">VIEW RELEASE DETAILS</span>
-            </div>
-
-            <span class="movie-duration-pill">Diwali 2029</span>
-          </div>
-
-          <div class="movie-banner-details">
-            <div class="movie-title-row">
-              <h4 class="movie-name">Ramayana: Part Three (The Cosmic Return)</h4>
-              <span class="movie-status-pill">PLANNED</span>
-            </div>
-            <p class="movie-sub-info">
-              <span>Franchise Chapter 3</span> &bull; <span>The Final Consecration</span> &bull; <span>Ram Rajya</span>
-            </p>
-            <p class="movie-short-synopsis">
-              The epic climax of the war, the return of Sri Rama and Mata Sita to Ayodhya, and the dawn of Ram Rajya.
-            </p>
-            <div class="movie-action-row" onclick="event.stopPropagation()">
-              <button class="btn-movie-soon" onclick="openComingSoonModal(3)">
-                <span>View Release Intel</span>
-              </button>
-            </div>
-          </div>
-        </article>
-
-        <!-- Movie 6: Ramayana Theatrical Trailer Special -->
-        <article class="movie-banner-card" data-category="now-playing" onclick="switchPage('trailer')" title="Watch Official Theatrical Trailer">
-          <div class="movie-banner-img-wrap">
-            <img src="movie_poster_hd.jpg" alt="Ramayana Trailer Special Banner" class="movie-banner-img" loading="lazy">
-            <div class="movie-banner-gradient"></div>
-            
-            <div class="movie-card-badges">
-              <span class="badge-status-live">&#9679; TRAILER SPECIAL</span>
-              <span class="badge-format">4K CUT</span>
-            </div>
-
-            <div class="movie-banner-hover-play">
-              <div class="banner-play-icon">
-                <svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
-              </div>
-              <span class="hover-play-text">WATCH TRAILER</span>
-            </div>
-
-            <span class="movie-duration-pill">02:30</span>
-          </div>
-
-          <div class="movie-banner-details">
-            <div class="movie-title-row">
-              <h4 class="movie-name">Ramayana: Official Theatrical 4K Trailer</h4>
-              <span class="movie-rating-badge">&#9733; 10/10</span>
-            </div>
-            <p class="movie-sub-info">
-              <span>Trailer Showcase</span> &bull; <span>Dolby Atmos Audio</span> &bull; <span>Full HD</span>
-            </p>
-            <p class="movie-short-synopsis">
-              Experience the breathtaking official theatrical preview featuring the Hans Zimmer &amp; A.R. Rahman background score.
-            </p>
-            <div class="movie-action-row" onclick="event.stopPropagation()">
-              <button class="btn-movie-play-direct" onclick="switchPage('trailer')">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                <span>Play Trailer</span>
-              </button>
-            </div>
-          </div>
-        </article>
-
       </div>
     </div>
   </section>
@@ -2074,7 +1798,7 @@
     </button>
   </nav>
 
-  <script src="app.js?v=20261114_movies_v3"></script>
+  <script src="app.js?v=20261114_movies_v4"></script>
 
   <!-- =========================================================================
        STICKY FLOATING MASTER SOUNDTRACK PLAYER
