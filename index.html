@@ -18,7 +18,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png?v=3">
   <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png?v=3">
 
-  <link rel="stylesheet" href="style.css?v=20261114_mobile_anim_v2">
+  <link rel="stylesheet" href="style.css?v=20261114_spinner_v3">
 
   <!-- Premium Fonts: Cinzel, Cinzel Decorative, Marcellus, Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -2044,7 +2044,7 @@
     </button>
   </nav>
 
-  <script src="app.js?v=20261114_mobile_anim_v2"></script>
+  <script src="app.js?v=20261114_spinner_v3"></script>
 
   <!-- =========================================================================
        STICKY FLOATING MASTER SOUNDTRACK PLAYER
@@ -2187,11 +2187,12 @@
     <!-- Center Play/Pause Touch Area -->
     <div class="nbp-click-catcher" id="nbpClickCatcher" onclick="handleNbpCenterClick(event)"></div>
 
-    <!-- Centered Netflix Loading Spinner (White SVG Spinner) -->
+    <!-- Centered Netflix Loading Spinner (Authentic Rotating White SVG Spinner) -->
     <div class="nbp-spinner-wrap" id="nbpSpinner">
-      <div class="netflix-spinner-ring">
-        <svg viewBox="0 0 50 50">
-          <circle class="netflix-spinner-path" cx="25" cy="25" r="20" fill="none" stroke-width="4"></circle>
+      <div class="nbp-netflix-spinner">
+        <svg class="nbp-spinner-svg" viewBox="0 0 60 60">
+          <circle class="nbp-spinner-track" cx="30" cy="30" r="24" fill="none" stroke-width="4.5"></circle>
+          <circle class="nbp-spinner-arc" cx="30" cy="30" r="24" fill="none" stroke-width="4.5" stroke-linecap="round"></circle>
         </svg>
       </div>
     </div>

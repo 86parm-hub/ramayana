@@ -1786,7 +1786,10 @@ function nbpSeekRelative(seconds) {
 
 function seekGlobal(targetSec) {
   const video = document.getElementById('nbpVideo');
+  const spinner = document.getElementById('nbpSpinner');
   if (!video) return;
+
+  if (spinner) spinner.classList.add('active');
 
   if (targetSec < NBP_ACT1_DUR) {
     if (nbpCurrentAct === 1) {
@@ -2021,8 +2024,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Real-time Netflix Loading & Buffering Spinner Events
   video.addEventListener('waiting', () => {
     if (spinner) spinner.classList.add('active');
+  });
+
+  video.addEventListener('seeking', () => {
+    if (spinner) spinner.classList.add('active');
+  });
+
+  video.addEventListener('loadstart', () => {
+    if (spinner) spinner.classList.add('active');
+  });
+
+  video.addEventListener('canplay', () => {
+    if (spinner) spinner.classList.remove('active');
+  });
+
+  video.addEventListener('canplaythrough', () => {
+    if (spinner) spinner.classList.remove('active');
+  });
+
+  video.addEventListener('seeked', () => {
+    if (spinner) spinner.classList.remove('active');
   });
 
   video.addEventListener('playing', () => {

@@ -6591,26 +6591,82 @@ video {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 7;
+  z-index: 15;
   pointer-events: none;
   opacity: 0;
-  transition: opacity 0.25s ease;
+  visibility: hidden;
+  transition: opacity 0.22s ease, visibility 0.22s;
 }
 
 .nbp-spinner-wrap.active {
   opacity: 1;
+  visibility: visible;
 }
 
-.nbp-spinner-wrap .netflix-spinner-ring {
-  width: 72px;
-  height: 72px;
+.nbp-netflix-spinner {
+  width: 76px;
+  height: 76px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 0 18px rgba(0, 0, 0, 0.85));
 }
 
-.nbp-spinner-wrap .netflix-spinner-path {
+.nbp-spinner-svg {
+  width: 100%;
+  height: 100%;
+  animation: nbpSpinnerRotate 1.5s linear infinite;
+  transform-origin: center center;
+}
+
+.nbp-spinner-track {
+  stroke: rgba(255, 255, 255, 0.18);
+}
+
+.nbp-spinner-arc {
   stroke: #ffffff;
+  stroke-dasharray: 120;
+  stroke-dashoffset: 40;
+  animation: nbpSpinnerDash 1.4s ease-in-out infinite;
+  transform-origin: center center;
 }
 
-/* Top Header Bar */
+@keyframes nbpSpinnerRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes nbpSpinnerDash {
+  0% {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 95, 150;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 95, 150;
+    stroke-dashoffset: -125;
+  }
+}
+
+@media (max-width: 768px) {
+  .nbp-netflix-spinner {
+    width: 58px;
+    height: 58px;
+  }
+  .nbp-spinner-track,
+  .nbp-spinner-arc {
+    stroke-width: 4;
+  }
+}
+
 /* Top Header: Netflix 1:1 Clean Arrow + Flag */
 .nbp-top-header {
   position: absolute;
