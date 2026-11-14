@@ -841,6 +841,11 @@
        SPOTIFY NOW PLAYING BOTTOM BAR (AUTHENTIC 3-COLUMN DESKTOP DOCK)
        ========================================================================= -->
   <aside class="ost-floating-player is-hidden" id="ostFloatingPlayer" oncontextmenu="return false;" aria-label="Audio Player">
+    <!-- Spotify Mobile Edge Border Progress Bar (Runs along the bottom border on mobile devices) -->
+    <div class="ost-fp-mobile-progress" id="ostFpMobileProgress" onclick="seekOSTMobile(event)" ontouchstart="seekOSTMobile(event)" ontouchmove="seekOSTMobile(event)" title="Track Progress">
+      <div class="ost-fp-mobile-progress-bar" id="ostFpMobileProgressBar" style="width: 0%;"></div>
+    </div>
+
     <div class="ost-fp-container">
       <!-- Left: Track Cover & Details & Heart -->
       <div class="ost-fp-track-info" onclick="scrollToActiveTrack()">

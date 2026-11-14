@@ -1153,6 +1153,24 @@ function seekOSTScrubber(event) {
   }
 }
 
+// Mobile Spotify Border Scrubber Seek (Runs along player bottom border)
+function seekOSTMobile(event) {
+  if (!ostAudio || !ostAudio.duration) return;
+  if (event) event.stopPropagation();
+  const target = event.currentTarget;
+  if (!target) return;
+  const rect = target.getBoundingClientRect();
+  const clientX = (event.touches && event.touches[0]) ? event.touches[0].clientX : event.clientX;
+  const clickX = clientX - rect.left;
+  const ratio = Math.max(0, Math.min(1, clickX / rect.width));
+  ostAudio.currentTime = ratio * ostAudio.duration;
+
+  const fpMobBar = document.getElementById('ostFpMobileProgressBar');
+  if (fpMobBar) fpMobBar.style.width = `${ratio * 100}%`;
+  const fpBar = document.getElementById('ostFpProgressBar');
+  if (fpBar) fpBar.style.width = `${ratio * 100}%`;
+}
+
 // Minimize Floating Player Bar with smooth zoom out
 function minimizeFloatingPlayer(event) {
   if (event) event.stopPropagation();
@@ -1226,6 +1244,8 @@ function updateFloatingPlayerUI() {
   if (tag) tag.textContent = track.tag || '';
   if (artist) artist.innerHTML = track.artist;
   if (dur) dur.textContent = track.duration;
+  const mobBar = document.getElementById('ostFpMobileProgressBar');
+  if (mobBar) mobBar.style.width = '0%';
   // Anti-download: direct download link removed
 }
 
@@ -1461,6 +1481,10 @@ ostAudio.addEventListener('timeupdate', () => {
   if (fpCur) fpCur.textContent = formatOSTTime(curTime);
   if (fpDur && !isNaN(durTime)) fpDur.textContent = formatOSTTime(durTime);
 
+  // Update mobile border progress bar (Spotify mobile style)
+  const fpMobBar = document.getElementById('ostFpMobileProgressBar');
+  if (fpMobBar) fpMobBar.style.width = `${pct}%`;
+
   // Update active card progress bar
   const activeCardId = OST_TRACKS[currentOSTIndex].id;
   const cardBar = document.getElementById(`ostCardBar${activeCardId}`);
@@ -1507,6 +1531,7 @@ window.toggleOSTMute = toggleOSTMute;
 window.setOSTVolume = setOSTVolume;
 window.seekOSTCard = seekOSTCard;
 window.seekOSTScrubber = seekOSTScrubber;
+window.seekOSTMobile = seekOSTMobile;
 window.closeFloatingPlayer = closeFloatingPlayer;
 window.minimizeFloatingPlayer = minimizeFloatingPlayer;
 window.restoreFloatingPlayer = restoreFloatingPlayer;

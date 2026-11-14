@@ -4148,6 +4148,11 @@ body.ott-platform {
   pointer-events: none !important;
 }
 
+/* Spotify Mobile Edge-to-Edge Border Progress Bar (Hidden on desktop by default) */
+.ost-fp-mobile-progress {
+  display: none !important;
+}
+
 .ost-fp-container {
   display: flex !important;
   align-items: center !important;
@@ -4702,6 +4707,10 @@ body.ott-platform {
     padding: 8px 12px;
     border-radius: 12px;
     z-index: 9990;
+    overflow: hidden;
+  }
+  .ost-fp-mobile-progress {
+    display: block !important;
   }
   .ost-fp-container {
     gap: 10px;
@@ -7620,6 +7629,35 @@ img, video {
     border-radius: 8px !important;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.9) !important;
     z-index: 9980 !important;
+    overflow: hidden !important;
+  }
+
+  /* Spotify Mobile Edge-to-Edge Border Progress Bar (Runs along player bottom border) */
+  .ost-fp-mobile-progress {
+    display: block !important;
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    height: 3px !important;
+    background: rgba(255, 255, 255, 0.22) !important;
+    cursor: pointer !important;
+    z-index: 30 !important;
+    border-bottom-left-radius: 8px !important;
+    border-bottom-right-radius: 8px !important;
+    overflow: hidden !important;
+    touch-action: none !important;
+  }
+
+  .ost-fp-mobile-progress-bar {
+    height: 100% !important;
+    width: 0%;
+    background: #ffffff !important;
+    border-radius: 0 2px 2px 0 !important;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.8) !important;
+    transition: width 0.12s linear !important;
+    pointer-events: none !important;
   }
   .ost-fp-thumb-wrap {
     width: 42px !important;
