@@ -18,7 +18,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png?v=3">
   <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png?v=3">
 
-  <link rel="stylesheet" href="style.css?v=20261114_netflix_v5">
+  <link rel="stylesheet" href="style.css?v=20261114_blackplayer_v6">
 
   <!-- Premium Fonts: Cinzel, Cinzel Decorative, Marcellus, Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -90,35 +90,24 @@
     }
     window.switchPage = switchPage;
 
+    function openNetflixBlackPlayer(actKey) {
+      actKey = actKey || 'act1';
+      if (typeof window.openNetflixBlackPlayer === 'function') {
+        window.openNetflixBlackPlayer(actKey);
+      }
+    }
+    window.openNetflixBlackPlayer = openNetflixBlackPlayer;
+
     function playMovieInCinema(actKey) {
       actKey = actKey || 'act1';
-      var trailerVideo = document.getElementById('trailerVideo');
-      if (trailerVideo && !trailerVideo.paused) {
-        try { trailerVideo.pause(); } catch(e) {}
-      }
-      if (window.ostAudio && !window.ostAudio.paused) {
-        try { window.ostAudio.pause(); } catch(e) {}
-      }
-
-      switchPage('watch');
-
-      setTimeout(function() {
-        if (typeof window.selectAct === 'function') {
-          window.selectAct(actKey);
-        } else if (typeof window.startCinemaStream === 'function') {
-          window.startCinemaStream();
-        }
-        var vid = document.getElementById('videoPlayer');
-        if (vid) {
-          vid.play().catch(function(e) { console.log('Autoplay policy info:', e); });
-        }
-        var stage = document.getElementById('cinemaStage') || document.getElementById('videoPlayer');
-        if (stage) {
-          stage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-      }, 100);
+      openNetflixBlackPlayer(actKey);
     }
     window.playMovieInCinema = playMovieInCinema;
+
+    function startCinemaStream() {
+      openNetflixBlackPlayer('act1');
+    }
+    window.startCinemaStream = startCinemaStream;
 
     function filterMoviesCatalog(category, buttonEl) {
       var pills = document.querySelectorAll('.movies-filter-bar .filter-pill');
@@ -2154,7 +2143,7 @@
     </button>
   </nav>
 
-  <script src="app.js?v=20261114_netflix_v5"></script>
+  <script src="app.js?v=20261114_blackplayer_v6"></script>
 
   <!-- =========================================================================
        STICKY FLOATING MASTER SOUNDTRACK PLAYER
@@ -2252,6 +2241,154 @@
       </div>
     </div>
   </aside>
+
+
+  <!-- =========================================================================
+       NETFLIX FULL BLACK SCREEN THEATER OVERLAY (SANDFLIX CINEMA ENGINE)
+       ========================================================================= -->
+  <div id="netflixBlackPlayerModal" class="netflix-black-modal" aria-hidden="true">
+    <!-- Video Element -->
+    <div class="nbp-video-container" id="nbpVideoContainer">
+      <video id="nbpVideo" preload="metadata" playsinline webkit-playsinline x-webkit-airplay="allow">
+        <source src="https://github.com/86parm-hub/ramayana/releases/download/v1.0/Ramayana.Part1.Act1.mp4#t=3" type="video/mp4">
+      </video>
+      <div class="nbp-ambient-vignette"></div>
+    </div>
+
+    <!-- Centered Netflix Loading Spinner (White SVG Spinner) -->
+    <div class="nbp-spinner-wrap" id="nbpSpinner">
+      <div class="netflix-spinner-ring">
+        <svg viewBox="0 0 50 50">
+          <circle class="netflix-spinner-path" cx="25" cy="25" r="20" fill="none" stroke-width="4"></circle>
+        </svg>
+      </div>
+      <span class="nbp-loading-text">Loading Stream...</span>
+    </div>
+
+    <!-- Big Center Click-to-Play/Pause Overlay -->
+    <div class="nbp-click-catcher" id="nbpClickCatcher" onclick="toggleNbpPlayPause()"></div>
+
+    <!-- Center Play/Pause Flash Icon Indicator -->
+    <div class="nbp-flash-icon" id="nbpFlashIcon">
+      <svg id="nbpFlashPlay" viewBox="0 0 24 24" width="48" height="48" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+      <svg id="nbpFlashPause" viewBox="0 0 24 24" width="48" height="48" fill="currentColor" style="display:none;"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+    </div>
+
+    <!-- Top Navigation Header Overlay -->
+    <div class="nbp-top-header" id="nbpTopHeader">
+      <div class="nbp-top-left">
+        <button class="nbp-back-btn" onclick="closeNetflixBlackPlayer()" title="Back to Browse (Esc)">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          <span>Back</span>
+        </button>
+        <div class="nbp-title-block">
+          <h2 class="nbp-movie-title">RAMAYANA: PART ONE</h2>
+          <span class="nbp-act-title" id="nbpActTitle">Part 1: Act 1 (The Divine Beginning)</span>
+        </div>
+      </div>
+
+      <div class="nbp-top-right">
+        <!-- Act Switcher Pills -->
+        <div class="nbp-act-pills">
+          <button class="nbp-act-pill active" id="nbpPillAct1" onclick="switchNbpAct('act1')">Act 1 (01:30:07)</button>
+          <button class="nbp-act-pill" id="nbpPillAct2" onclick="switchNbpAct('act2')">Act 2 (01:30:16)</button>
+        </div>
+        <div class="nbp-badges">
+          <span class="nbp-badge">1080P HEVC</span>
+          <span class="nbp-badge gold">DOLBY ATMOS 5.1</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Controls Overlay -->
+    <div class="nbp-controls-bar" id="nbpControlsBar">
+      <!-- Full-Width Scrubber / Progress Bar -->
+      <div class="nbp-scrubber-wrapper" id="nbpScrubberWrap">
+        <div class="nbp-progress-rail" id="nbpProgressRail">
+          <div class="nbp-buffer-fill" id="nbpBufferFill"></div>
+          <div class="nbp-progress-fill" id="nbpProgressFill"></div>
+          <div class="nbp-scrubber-thumb" id="nbpScrubberThumb"></div>
+        </div>
+        <div class="nbp-scrubber-tooltip" id="nbpScrubberTooltip">00:00:00</div>
+      </div>
+
+      <!-- Controls Row -->
+      <div class="nbp-controls-row">
+        <div class="nbp-ctrl-left">
+          <!-- Play / Pause -->
+          <button class="nbp-ctrl-btn" id="nbpBtnPlay" onclick="toggleNbpPlayPause()" title="Play/Pause (Space)">
+            <svg id="nbpPlayIcon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+            <svg id="nbpPauseIcon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" style="display:none;">
+              <rect x="6" y="4" width="4" height="16"></rect>
+              <rect x="14" y="4" width="4" height="16"></rect>
+            </svg>
+          </button>
+
+          <!-- Rewind 10s -->
+          <button class="nbp-ctrl-btn" onclick="nbpSeekRelative(-10)" title="Rewind 10s (Left Arrow)">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+              <path d="M12.5 8c-2.65 0-5.05.99-6.9 2.6L2 7v9h9l-3.62-3.62c1.39-1.2 3.16-1.93 5.12-1.93 4.41 0 8 3.59 8 8s-3.59 8-8 8c-3.73 0-6.84-2.55-7.73-6h-2.08c.93 4.56 4.96 8 9.81 8 5.52 0 10-4.48 10-10s-4.48-10-10-10z"/>
+            </svg>
+            <span class="nbp-skip-num">10</span>
+          </button>
+
+          <!-- Forward 10s -->
+          <button class="nbp-ctrl-btn" onclick="nbpSeekRelative(10)" title="Forward 10s (Right Arrow)">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+              <path d="M11.5 8c2.65 0 5.05.99 6.9 2.6L22 7v9h-9l3.62-3.62c-1.39-1.2-3.16-1.93-5.12-1.93-4.41 0-8 3.59-8 8s3.59 8 8 8c3.73 0 6.84-2.55 7.73-6h2.08c-.93 4.56-4.96 8-9.81 8-5.52 0-10-4.48-10-10s4.48-10 10-10z"/>
+            </svg>
+            <span class="nbp-skip-num">10</span>
+          </button>
+
+          <!-- Volume Controls -->
+          <div class="nbp-volume-group">
+            <button class="nbp-ctrl-btn" id="nbpBtnVolume" onclick="toggleNbpMute()" title="Mute/Unmute (M)">
+              <svg id="nbpVolHigh" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+              </svg>
+              <svg id="nbpVolMute" viewBox="0 0 24 24" width="22" height="22" fill="currentColor" style="display:none;">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                <line x1="23" y1="9" x2="17" y2="15"></line>
+                <line x1="17" y1="9" x2="23" y2="15"></line>
+              </svg>
+            </button>
+            <input type="range" class="nbp-volume-slider" id="nbpVolumeSlider" min="0" max="1" step="0.05" value="1">
+          </div>
+
+          <!-- Time Display -->
+          <div class="nbp-time-display">
+            <span id="nbpCurrentTime">00:00:00</span>
+            <span class="nbp-time-divider">/</span>
+            <span id="nbpDurationTime">01:30:07</span>
+          </div>
+        </div>
+
+        <div class="nbp-ctrl-right">
+          <!-- Act Switcher Dropdown/Quick Button -->
+          <button class="nbp-next-act-btn" id="nbpBtnNextAct" onclick="nbpToggleNextAct()" title="Switch to Next Act">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="5 4 15 12 5 20 5 4"></polygon><line x1="19" y1="5" x2="19" y2="19"></line></svg>
+            <span id="nbpNextActLabel">Play Act 2</span>
+          </button>
+
+          <!-- Speed -->
+          <button class="nbp-ctrl-btn text-btn" id="nbpBtnSpeed" onclick="cycleNbpSpeed()" title="Playback Speed">1x</button>
+
+          <!-- Fullscreen Toggle -->
+          <button class="nbp-ctrl-btn" onclick="toggleNbpFullscreen()" title="Fullscreen (F)">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </body>
 

@@ -194,30 +194,9 @@ window.selectAct = function (actKey) {
 
 // Global Quick Stream Trigger
 function startCinemaStream() {
-  switchPage('watch');
-  const video = document.getElementById('videoPlayer');
-  const modal = document.getElementById('offlineFileModal');
-  const spinner = document.getElementById('streamSpinnerVeil');
-  if (video) {
-    if (modal) modal.classList.remove('visible');
-    const isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
-    const offset = (!isLocal && activeActKey === 'act1') ? 3.0 : 0;
-    if (offset > 0 && video.currentTime < offset) {
-      video.currentTime = offset;
-    }
-    setTimeout(() => {
-      video.play().then(() => {
-        if (offset > 0 && video.currentTime < offset) {
-          video.currentTime = offset;
-        }
-        if (modal) modal.classList.remove('visible');
-        if (spinner) spinner.classList.remove('active');
-      }).catch(e => {
-        console.log('Playback policy/source check:', e);
-      });
-    }, 300);
-  }
+  openNetflixBlackPlayer('act1');
 }
+window.startCinemaStream = startCinemaStream;
 
 // Chapters Section Scroll Helper
 function scrollToChapters() {
@@ -1485,57 +1464,8 @@ window.scrollToActiveTrack = scrollToActiveTrack;
 
 function playMovieInCinema(actKey) {
   actKey = actKey || 'act1';
-
-  // Pause trailer video and OST audio if playing
-  const trailerVideo = document.getElementById('trailerVideo');
-  if (trailerVideo && !trailerVideo.paused) trailerVideo.pause();
-  if (typeof ostAudio !== 'undefined' && !ostAudio.paused) ostAudio.pause();
-
-  // Switch to Cinema Theater view
-  switchPage('watch');
-
-  // Trigger Act Selection & Auto-Play
-  setTimeout(() => {
-    if (typeof window.selectAct === 'function') {
-      window.selectAct(actKey);
-    } else if (typeof window.switchAct === 'function') {
-      window.switchAct(actKey);
-    } else if (typeof window.startCinemaStream === 'function') {
-      window.startCinemaStream();
-    }
-
-    const video = document.getElementById('videoPlayer');
-    if (video) {
-      video.play().catch(e => console.log('Playback deferred:', e));
-    }
-
-    const stage = document.getElementById('cinemaStage') || document.getElementById('videoPlayer');
-    if (stage) {
-      stage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-  }, 100);
+  openNetflixBlackPlayer(actKey);
 }
-
-
-
-function filterMoviesCatalog(category, buttonEl) {
-  // Update active pill button
-  const pills = document.querySelectorAll('.movies-filter-bar .filter-pill');
-  pills.forEach(p => p.classList.remove('active'));
-  if (buttonEl) buttonEl.classList.add('active');
-
-  const cards = document.querySelectorAll('.movies-grid .movie-banner-card');
-  cards.forEach(card => {
-    const cardCats = (card.getAttribute('data-category') || '').split(' ');
-    if (category === 'all' || cardCats.includes(category)) {
-      card.style.display = 'flex';
-      card.style.animation = 'fadeInUp 0.3s ease';
-    } else {
-      card.style.display = 'none';
-    }
-  });
-}
-
 window.playMovieInCinema = playMovieInCinema;
 window.filterMoviesCatalog = filterMoviesCatalog;
 
@@ -1594,3 +1524,367 @@ document.addEventListener('click', function(e) {
 
 window.toggleGenreDropdown = toggleGenreDropdown;
 window.selectMovieGenre = selectMovieGenre;
+
+
+/* ==========================================================================
+   NETFLIX FULL BLACK SCREEN THEATER CONTROLLER
+   Plays movie in pure fullscreen black screen without redirecting
+   ========================================================================== */
+let nbpActiveAct = 'act1';
+let nbpIdleTimer = null;
+let nbpIsSeeking = false;
+let nbpSpeeds = [0.75, 1, 1.25, 1.5, 2];
+let nbpSpeedIdx = 1;
+
+function openNetflixBlackPlayer(actKey) {
+  actKey = actKey || 'act1';
+  nbpActiveAct = actKey;
+
+  const modal = document.getElementById('netflixBlackPlayerModal');
+  const video = document.getElementById('nbpVideo');
+  const spinner = document.getElementById('nbpSpinner');
+  const actTitle = document.getElementById('nbpActTitle');
+  const nextActLabel = document.getElementById('nbpNextActLabel');
+  const pill1 = document.getElementById('nbpPillAct1');
+  const pill2 = document.getElementById('nbpPillAct2');
+
+  // Pause trailer and OST if playing
+  const trailerVideo = document.getElementById('trailerVideo');
+  if (trailerVideo && !trailerVideo.paused) trailerVideo.pause();
+  if (typeof ostAudio !== 'undefined' && !ostAudio.paused) ostAudio.pause();
+
+  // Also pause cinema video if playing
+  const cinemaVideo = document.getElementById('videoPlayer');
+  if (cinemaVideo && !cinemaVideo.paused) cinemaVideo.pause();
+
+  if (!modal || !video) return;
+
+  // Show Modal
+  modal.classList.add('active');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+
+  // Update Titles & Pills
+  if (actKey === 'act1') {
+    if (actTitle) actTitle.textContent = 'Part 1: Act 1 (The Divine Beginning)';
+    if (nextActLabel) nextActLabel.textContent = 'Play Act 2';
+    if (pill1) pill1.classList.add('active');
+    if (pill2) pill2.classList.remove('active');
+  } else {
+    if (actTitle) actTitle.textContent = 'Part 1: Act 2 (The Forest Exile & Awakening)';
+    if (nextActLabel) nextActLabel.textContent = 'Play Act 1';
+    if (pill1) pill1.classList.remove('active');
+    if (pill2) pill2.classList.add('active');
+  }
+
+  // Load Video Source
+  const isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+  const cfg = (typeof ACT_CONFIG !== 'undefined' && ACT_CONFIG[actKey]) ? ACT_CONFIG[actKey] : {
+    cloudUrl: actKey === 'act1' 
+      ? 'https://github.com/86parm-hub/ramayana/releases/download/v1.0/Ramayana.Part1.Act1.mp4#t=3' 
+      : 'https://github.com/86parm-hub/ramayana/releases/download/v1.0/Ramayana.Part1.Act2.mp4',
+    localUrl: actKey === 'act1' ? 'Ramayana.Part1.Act1.mp4' : 'Ramayana.Part1.Act2.mp4'
+  };
+
+  const targetUrl = isLocal ? cfg.localUrl : cfg.cloudUrl;
+  
+  if (video.getAttribute('data-loaded-src') !== targetUrl) {
+    video.src = targetUrl;
+    video.setAttribute('data-loaded-src', targetUrl);
+    video.load();
+  }
+
+  if (spinner) spinner.classList.add('active');
+
+  const offset = (!isLocal && actKey === 'act1') ? 3.0 : 0;
+  if (offset > 0 && video.currentTime < offset) {
+    video.currentTime = offset;
+  }
+
+  // Auto-play
+  video.play().then(() => {
+    if (spinner) spinner.classList.remove('active');
+    updateNbpPlayButton(true);
+  }).catch(e => {
+    console.log('NBP Autoplay policy:', e);
+    if (spinner) spinner.classList.remove('active');
+    updateNbpPlayButton(false);
+  });
+
+  resetNbpIdleTimer();
+}
+
+function closeNetflixBlackPlayer() {
+  const modal = document.getElementById('netflixBlackPlayerModal');
+  const video = document.getElementById('nbpVideo');
+  if (video && !video.paused) {
+    video.pause();
+  }
+  if (modal) {
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+  }
+  document.body.style.overflow = '';
+
+  // Exit fullscreen if active
+  if (document.fullscreenElement) {
+    document.exitFullscreen().catch(e => {});
+  }
+}
+
+function switchNbpAct(actKey) {
+  openNetflixBlackPlayer(actKey);
+}
+
+function nbpToggleNextAct() {
+  if (nbpActiveAct === 'act1') {
+    switchNbpAct('act2');
+  } else {
+    switchNbpAct('act1');
+  }
+}
+
+function toggleNbpPlayPause() {
+  const video = document.getElementById('nbpVideo');
+  if (!video) return;
+  if (video.paused) {
+    video.play();
+    flashNbpIcon('play');
+    updateNbpPlayButton(true);
+  } else {
+    video.pause();
+    flashNbpIcon('pause');
+    updateNbpPlayButton(false);
+  }
+}
+
+function updateNbpPlayButton(isPlaying) {
+  const playIcon = document.getElementById('nbpPlayIcon');
+  const pauseIcon = document.getElementById('nbpPauseIcon');
+  if (playIcon && pauseIcon) {
+    playIcon.style.display = isPlaying ? 'none' : 'block';
+    pauseIcon.style.display = isPlaying ? 'block' : 'none';
+  }
+}
+
+function flashNbpIcon(type) {
+  const flash = document.getElementById('nbpFlashIcon');
+  const play = document.getElementById('nbpFlashPlay');
+  const pause = document.getElementById('nbpFlashPause');
+  if (!flash) return;
+  if (type === 'play') {
+    if (play) play.style.display = 'block';
+    if (pause) pause.style.display = 'none';
+  } else {
+    if (play) play.style.display = 'none';
+    if (pause) pause.style.display = 'block';
+  }
+  flash.classList.add('show');
+  setTimeout(() => flash.classList.remove('show'), 400);
+}
+
+function nbpSeekRelative(seconds) {
+  const video = document.getElementById('nbpVideo');
+  if (!video) return;
+  video.currentTime = Math.max(0, Math.min(video.duration || 9999, video.currentTime + seconds));
+  resetNbpIdleTimer();
+}
+
+function toggleNbpMute() {
+  const video = document.getElementById('nbpVideo');
+  const volHigh = document.getElementById('nbpVolHigh');
+  const volMute = document.getElementById('nbpVolMute');
+  const slider = document.getElementById('nbpVolumeSlider');
+  if (!video) return;
+  video.muted = !video.muted;
+  if (volHigh && volMute) {
+    volHigh.style.display = video.muted ? 'none' : 'block';
+    volMute.style.display = video.muted ? 'block' : 'none';
+  }
+  if (slider) {
+    slider.value = video.muted ? 0 : video.volume;
+  }
+}
+
+function cycleNbpSpeed() {
+  const video = document.getElementById('nbpVideo');
+  const btn = document.getElementById('nbpBtnSpeed');
+  if (!video) return;
+  nbpSpeedIdx = (nbpSpeedIdx + 1) % nbpSpeeds.length;
+  const speed = nbpSpeeds[nbpSpeedIdx];
+  video.playbackRate = speed;
+  if (btn) btn.textContent = speed + 'x';
+}
+
+function toggleNbpFullscreen() {
+  const modal = document.getElementById('netflixBlackPlayerModal');
+  if (!modal) return;
+  if (!document.fullscreenElement) {
+    modal.requestFullscreen().catch(err => {
+      console.log('Fullscreen error:', err);
+    });
+  } else {
+    document.exitFullscreen().catch(err => {});
+  }
+}
+
+function resetNbpIdleTimer() {
+  const modal = document.getElementById('netflixBlackPlayerModal');
+  if (!modal) return;
+  modal.classList.remove('is-idle');
+  clearTimeout(nbpIdleTimer);
+  nbpIdleTimer = setTimeout(() => {
+    const video = document.getElementById('nbpVideo');
+    if (video && !video.paused && !nbpIsSeeking) {
+      modal.classList.add('is-idle');
+    }
+  }, 3500);
+}
+
+function formatNbpTime(sec) {
+  sec = Math.max(0, Math.floor(sec || 0));
+  const h = Math.floor(sec / 3600);
+  const m = Math.floor((sec % 3600) / 60);
+  const s = sec % 60;
+  return `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+}
+
+// Scrubber & Event Listeners
+document.addEventListener('DOMContentLoaded', () => {
+  const modal = document.getElementById('netflixBlackPlayerModal');
+  const video = document.getElementById('nbpVideo');
+  const spinner = document.getElementById('nbpSpinner');
+  const progFill = document.getElementById('nbpProgressFill');
+  const buffFill = document.getElementById('nbpBufferFill');
+  const thumb = document.getElementById('nbpScrubberThumb');
+  const txtCurrent = document.getElementById('nbpCurrentTime');
+  const txtDuration = document.getElementById('nbpDurationTime');
+  const scrubWrap = document.getElementById('nbpScrubberWrap');
+  const tooltip = document.getElementById('nbpScrubberTooltip');
+  const volSlider = document.getElementById('nbpVolumeSlider');
+
+  if (!video) return;
+
+  // Video Events
+  video.addEventListener('waiting', () => {
+    if (spinner) spinner.classList.add('active');
+  });
+
+  video.addEventListener('playing', () => {
+    if (spinner) spinner.classList.remove('active');
+    updateNbpPlayButton(true);
+  });
+
+  video.addEventListener('pause', () => {
+    updateNbpPlayButton(false);
+    if (modal) modal.classList.remove('is-idle');
+  });
+
+  video.addEventListener('timeupdate', () => {
+    if (nbpIsSeeking) return;
+    const cur = video.currentTime;
+    const dur = video.duration || (nbpActiveAct === 'act1' ? 5407 : 5416);
+    const pct = (cur / dur) * 100;
+    if (progFill) progFill.style.width = pct + '%';
+    if (thumb) thumb.style.left = pct + '%';
+    if (txtCurrent) txtCurrent.textContent = formatNbpTime(cur);
+    if (txtDuration) txtDuration.textContent = formatNbpTime(dur);
+
+    // Buffer calculation
+    if (video.buffered.length > 0 && buffFill) {
+      for (let i = 0; i < video.buffered.length; i++) {
+        if (video.buffered.start(i) <= cur && cur <= video.buffered.end(i)) {
+          buffFill.style.width = (video.buffered.end(i) / dur * 100) + '%';
+          break;
+        }
+      }
+    }
+  });
+
+  // Scrubber Interaction
+  function seekToPosition(e) {
+    if (!scrubWrap) return;
+    const rect = scrubWrap.getBoundingClientRect();
+    const pos = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+    const dur = video.duration || 5407;
+    video.currentTime = pos * dur;
+    if (progFill) progFill.style.width = (pos * 100) + '%';
+    if (thumb) thumb.style.left = (pos * 100) + '%';
+  }
+
+  if (scrubWrap) {
+    scrubWrap.addEventListener('mousedown', (e) => {
+      nbpIsSeeking = true;
+      seekToPosition(e);
+      const onMove = (ev) => seekToPosition(ev);
+      const onUp = () => {
+        nbpIsSeeking = false;
+        window.removeEventListener('mousemove', onMove);
+        window.removeEventListener('mouseup', onUp);
+      };
+      window.addEventListener('mousemove', onMove);
+      window.addEventListener('mouseup', onUp);
+    });
+
+    scrubWrap.addEventListener('mousemove', (e) => {
+      const rect = scrubWrap.getBoundingClientRect();
+      const pos = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+      const dur = video.duration || 5407;
+      if (tooltip) {
+        tooltip.style.left = (pos * 100) + '%';
+        tooltip.textContent = formatNbpTime(pos * dur);
+      }
+    });
+  }
+
+  // Volume Slider
+  if (volSlider) {
+    volSlider.addEventListener('input', (e) => {
+      video.volume = parseFloat(e.target.value);
+      video.muted = (video.volume === 0);
+      const volHigh = document.getElementById('nbpVolHigh');
+      const volMute = document.getElementById('nbpVolMute');
+      if (volHigh && volMute) {
+        volHigh.style.display = video.muted ? 'none' : 'block';
+        volMute.style.display = video.muted ? 'block' : 'none';
+      }
+    });
+  }
+
+  // Mouse movement on modal resets idle timer
+  if (modal) {
+    modal.addEventListener('mousemove', resetNbpIdleTimer);
+    modal.addEventListener('touchstart', resetNbpIdleTimer);
+  }
+
+  // Global Keyboard Shortcuts
+  window.addEventListener('keydown', (e) => {
+    if (!modal || !modal.classList.contains('active')) return;
+    if (e.key === 'Escape') {
+      closeNetflixBlackPlayer();
+    } else if (e.key === ' ' || e.key === 'k') {
+      e.preventDefault();
+      toggleNbpPlayPause();
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      nbpSeekRelative(-10);
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      nbpSeekRelative(10);
+    } else if (e.key === 'm' || e.key === 'M') {
+      toggleNbpMute();
+    } else if (e.key === 'f' || e.key === 'F') {
+      toggleNbpFullscreen();
+    }
+  });
+});
+
+window.openNetflixBlackPlayer = openNetflixBlackPlayer;
+window.closeNetflixBlackPlayer = closeNetflixBlackPlayer;
+window.switchNbpAct = switchNbpAct;
+window.nbpToggleNextAct = nbpToggleNextAct;
+window.toggleNbpPlayPause = toggleNbpPlayPause;
+window.nbpSeekRelative = nbpSeekRelative;
+window.toggleNbpMute = toggleNbpMute;
+window.cycleNbpSpeed = cycleNbpSpeed;
+window.toggleNbpFullscreen = toggleNbpFullscreen;
