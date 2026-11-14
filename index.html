@@ -18,7 +18,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png?v=3">
   <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png?v=3">
 
-  <link rel="stylesheet" href="style.css?v=20261114_movies_v4">
+  <link rel="stylesheet" href="style.css?v=20261114_netflix_v5">
 
   <!-- Premium Fonts: Cinzel, Cinzel Decorative, Marcellus, Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -444,65 +444,421 @@
   <!-- =========================================================================
        PAGE: MOVIES VIEW (SANDFLIX Official Ramayana Cinema Hub)
        ========================================================================= -->
+    <!-- =========================================================================
+       PAGE: MOVIES VIEW (Netflix-Style Genre Hub: Genre 34399)
+       ========================================================================= -->
   <section class="page-view" id="movies-view">
-    <!-- Single Exclusive Ramayana Movie Card -->
-    <div class="movies-spotlight-card" onclick="playMovieInCinema('act1')" title="Click anywhere on banner to Play Ramayana: Part One in Cinema Theater">
-      <div class="spotlight-banner-bg" style="background-image: url('feature_banner_hd.jpg');"></div>
-      <div class="spotlight-gradient-overlay"></div>
-      <div class="spotlight-glow-fx"></div>
 
-      <div class="spotlight-content-wrap">
-        <div class="spotlight-top-tags">
-          <span class="spotlight-rank-badge">&#9733; #1 TRENDING ON SANDFLIX</span>
-          <span class="spotlight-res-badge">4K ULTRA HD</span>
-          <span class="spotlight-res-badge">DOLBY ATMOS</span>
-          <span class="spotlight-res-badge">1080P HEVC</span>
+    <!-- Netflix Style Sub-Header / Genre Filter Bar -->
+    <div class="netflix-genre-header">
+      <div class="netflix-genre-left">
+        <h1 class="netflix-genre-title">Movies</h1>
+        <div class="netflix-genre-dropdown">
+          <button class="genre-select-btn" id="genreDropdownBtn" onclick="toggleGenreDropdown()">
+            <span id="currentGenreLabel">Genres</span>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="7 10 12 15 17 10"></polygon></svg>
+          </button>
+          <div class="genre-dropdown-menu" id="genreDropdownMenu">
+            <a href="javascript:void(0)" onclick="selectMovieGenre('all', 'All Movies')">All Movies</a>
+            <a href="javascript:void(0)" onclick="selectMovieGenre('trending', 'Trending Now')">Trending Now</a>
+            <a href="javascript:void(0)" onclick="selectMovieGenre('mythology', 'Epic Mythology &amp; Sagas')">Epic Mythology &amp; Sagas</a>
+            <a href="javascript:void(0)" onclick="selectMovieGenre('action', 'Action &amp; Battles')">Action &amp; Battles</a>
+            <a href="javascript:void(0)" onclick="selectMovieGenre('upcoming', 'Upcoming Sagas')">Upcoming on SANDFLIX</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Genre Pills (Netflix Desktop Style) -->
+      <div class="netflix-genre-pills">
+        <button class="n-pill active" onclick="selectMovieGenre('all', 'All Movies', this)">All</button>
+        <button class="n-pill" onclick="selectMovieGenre('trending', 'Trending Now', this)">Trending Now</button>
+        <button class="n-pill" onclick="selectMovieGenre('mythology', 'Epic Mythology', this)">Epic Mythology</button>
+        <button class="n-pill" onclick="selectMovieGenre('action', 'Action &amp; Battles', this)">Action</button>
+        <button class="n-pill" onclick="selectMovieGenre('upcoming', 'Upcoming', this)">Upcoming</button>
+      </div>
+    </div>
+
+    <!-- Netflix Massive Hero Billboard Banner (Ramayana: Part One) -->
+    <div class="netflix-billboard" onclick="playMovieInCinema('act1')" title="Click anywhere on Billboard to stream in Cinema Theater">
+      <div class="billboard-backdrop" style="background-image: url('feature_banner_hd.jpg');"></div>
+      <div class="billboard-vignette"></div>
+      <div class="billboard-bottom-fade"></div>
+
+      <div class="billboard-content">
+        <div class="billboard-top-row">
+          <span class="billboard-top10-badge">
+            <span class="top10-num">TOP 10</span>
+            <span class="top10-text">#1 in Movies Today</span>
+          </span>
+          <span class="billboard-tag-gold">SANDFLIX EXCLUSIVE</span>
         </div>
 
-        <h1 class="spotlight-title">RAMAYANA: PART ONE</h1>
-        <p class="spotlight-meta-line">
-          <span class="meta-tag gold">THE AWAKENING</span>
-          <span>&bull;</span>
-          <span>2026</span>
-          <span>&bull;</span>
-          <span>3h 12m</span>
-          <span>&bull;</span>
-          <span class="meta-rating">U/A 13+</span>
-          <span>&bull;</span>
-          <span class="meta-genre">Epic Mythology &bull; Fantasy &bull; Action</span>
+        <h1 class="billboard-title">RAMAYANA: PART ONE</h1>
+        <p class="billboard-subtitle-tag">THE AWAKENING &bull; SACRED SAGA</p>
+
+        <div class="billboard-meta-row">
+          <span class="meta-match">99% Match</span>
+          <span class="meta-year">2026</span>
+          <span class="meta-age">U/A 13+</span>
+          <span class="meta-runtime">3h 12m (Act 1 &amp; Act 2)</span>
+          <span class="meta-quality">4K ULTRA HD</span>
+          <span class="meta-audio">DOLBY ATMOS 5.1</span>
+        </div>
+
+        <p class="billboard-overview">
+          Witness Maryada Purushottam Lord Rama's supreme vow to uphold Dharma. From the golden halls of Ayodhya to the divine breaking of Lord Shiva's Pinaka bow, and the epic journey through the mystic Dandakaranya forest. Complete saga available in full 1080P HEVC.
         </p>
 
-        <p class="spotlight-synopsis">
-          Witness Maryada Purushottam Lord Rama's supreme vow to uphold Dharma. From the golden courts of Ayodhya to the divine breaking of Pinaka bow and the mystic shadows of Dandakaranya forest. Both Act 1 and Act 2 available in full 1080P HEVC.
-        </p>
-
-        <div class="spotlight-btn-group" onclick="event.stopPropagation()">
-          <button class="spotlight-btn-play" onclick="playMovieInCinema('act1')">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-            <span>Play Movie (Cinema Theater)</span>
+        <div class="billboard-actions" onclick="event.stopPropagation()">
+          <button class="btn-n-play" onclick="playMovieInCinema('act1')">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+            <span>Play in Cinema</span>
           </button>
 
-          <button class="spotlight-btn-trailer" onclick="switchPage('trailer')">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
-              <polygon points="23 7 16 12 23 17 23 7"></polygon>
-              <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
-            </svg>
-            <span>Watch Trailer</span>
-          </button>
-
-          <button class="spotlight-btn-act" onclick="playMovieInCinema('act2')" title="Jump directly to Act 2">
+          <button class="btn-n-act" onclick="playMovieInCinema('act2')" title="Jump directly to Act 2">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
             <span>Play Act 2</span>
           </button>
-        </div>
-      </div>
 
-      <!-- Corner Play Indicator -->
-      <div class="spotlight-corner-play">
-        <div class="play-orb-mini">
-          <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+          <button class="btn-n-info" onclick="switchPage('trailer')">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            <span>Trailer &amp; Info</span>
+          </button>
         </div>
-        <span class="play-label">CLICK TO PLAY IN CINEMA</span>
       </div>
+    </div>
+
+    <!-- Netflix Category Rows Section -->
+    <div class="netflix-rows-container">
+
+      <!-- ==========================================
+           ROW 1: Trending Now on SANDFLIX
+           ========================================== -->
+      <section class="netflix-row" id="row-trending" data-genre-category="trending">
+        <div class="row-header">
+          <h2 class="row-title">Trending Now on SANDFLIX <span class="row-title-chevron">&rsaquo;</span></h2>
+          <span class="row-badge-pill">Popular</span>
+        </div>
+
+        <div class="netflix-slider-track">
+          <!-- Card 1 -->
+          <article class="n-card" onclick="playMovieInCinema('act1')">
+            <div class="n-card-thumb">
+              <img src="hero_banner_hd.jpg" alt="Ramayana Complete Cinema Cut" loading="lazy">
+              <span class="n-card-top-tag">TOP 1</span>
+              <div class="n-card-overlay">
+                <div class="n-card-actions">
+                  <div class="n-action-btn play"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg></div>
+                  <div class="n-action-btn"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></div>
+                </div>
+                <div class="n-card-info">
+                  <h4 class="n-movie-name">Ramayana: Part One (Complete Cut)</h4>
+                  <div class="n-card-meta"><span class="match">99% Match</span><span class="n-badge">4K</span><span class="n-time">3h 12m</span></div>
+                  <p class="n-card-genres">Mythology &bull; Action &bull; Grand Epic</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="n-card" onclick="playMovieInCinema('act1')">
+            <div class="n-card-thumb">
+              <img src="feature_banner_hd.jpg" alt="Ramayana Act 1" loading="lazy">
+              <span class="n-card-top-tag">ACT 1</span>
+              <div class="n-card-overlay">
+                <div class="n-card-actions">
+                  <div class="n-action-btn play"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg></div>
+                </div>
+                <div class="n-card-info">
+                  <h4 class="n-movie-name">Ramayana: The Divine Beginning &amp; Shiva Dhanush</h4>
+                  <div class="n-card-meta"><span class="match">98% Match</span><span class="n-badge">1080P</span><span class="n-time">01:30:07</span></div>
+                  <p class="n-card-genres">Sacred Beginning &bull; Pinaka &bull; Ayodhya</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="n-card" onclick="playMovieInCinema('act2')">
+            <div class="n-card-thumb">
+              <img src="movie_cover_hd.jpg" alt="Ramayana Act 2" loading="lazy">
+              <span class="n-card-top-tag">ACT 2</span>
+              <div class="n-card-overlay">
+                <div class="n-card-actions">
+                  <div class="n-action-btn play"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg></div>
+                </div>
+                <div class="n-card-info">
+                  <h4 class="n-movie-name">Ramayana: Forest Exile &amp; Dandakaranya</h4>
+                  <div class="n-card-meta"><span class="match">99% Match</span><span class="n-badge">1080P</span><span class="n-time">01:30:16</span></div>
+                  <p class="n-card-genres">Exile &bull; Spiritual Journey &bull; War Awaken</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="n-card" onclick="switchPage('trailer')">
+            <div class="n-card-thumb">
+              <img src="movie_poster_hd.jpg" alt="Ramayana 4K Trailer" loading="lazy">
+              <span class="n-card-top-tag gold">TRAILER</span>
+              <div class="n-card-overlay">
+                <div class="n-card-actions">
+                  <div class="n-action-btn play"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg></div>
+                </div>
+                <div class="n-card-info">
+                  <h4 class="n-movie-name">Ramayana: Official 4K Theatrical Trailer</h4>
+                  <div class="n-card-meta"><span class="match">100% Match</span><span class="n-badge">4K</span><span class="n-time">02:30</span></div>
+                  <p class="n-card-genres">Hans Zimmer Score &bull; IMAX Preview</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="n-card" onclick="openComingSoonModal(2)">
+            <div class="n-card-thumb">
+              <img src="teaser_lanka_hd.jpg" alt="Ramayana Part 2" loading="lazy">
+              <span class="n-card-top-tag lock">SOON 2028</span>
+              <div class="n-card-overlay">
+                <div class="n-card-info">
+                  <h4 class="n-movie-name">Ramayana: Part Two (War For Dharma)</h4>
+                  <div class="n-card-meta"><span class="match gold">Diwali 2028</span><span class="n-badge">IMAX 3D</span></div>
+                  <p class="n-card-genres">Golden Lanka &bull; Vanar Sena &bull; Setu</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 6 -->
+          <article class="n-card" onclick="openComingSoonModal(3)">
+            <div class="n-card-thumb">
+              <img src="teaser_archer_hd.jpg" alt="Ramayana Part 3" loading="lazy">
+              <span class="n-card-top-tag lock">SOON 2029</span>
+              <div class="n-card-overlay">
+                <div class="n-card-info">
+                  <h4 class="n-movie-name">Ramayana: Part Three (The Cosmic Return)</h4>
+                  <div class="n-card-meta"><span class="match gold">Diwali 2029</span><span class="n-badge">IMAX 3D</span></div>
+                  <p class="n-card-genres">The Final Consecration &bull; Ram Rajya</p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           ROW 2: Epic Mythology & Sagas
+           ========================================== -->
+      <section class="netflix-row" id="row-mythology" data-genre-category="mythology">
+        <div class="row-header">
+          <h2 class="row-title">Epic Mythology &amp; Sacred Sagas <span class="row-title-chevron">&rsaquo;</span></h2>
+          <span class="row-badge-pill">Spiritual Epics</span>
+        </div>
+
+        <div class="netflix-slider-track">
+          <!-- Card 1 -->
+          <article class="n-card" onclick="playMovieInCinema('act1')">
+            <div class="n-card-thumb">
+              <img src="feature_banner_hd.jpg" alt="The Breaking of Pinaka Bow" loading="lazy">
+              <div class="n-card-overlay">
+                <div class="n-card-actions">
+                  <div class="n-action-btn play"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg></div>
+                </div>
+                <div class="n-card-info">
+                  <h4 class="n-movie-name">Pinaka: Breaking of the Celestial Bow</h4>
+                  <div class="n-card-meta"><span class="match">99% Match</span><span class="n-badge">U/A 13+</span><span class="n-time">Act 1</span></div>
+                  <p class="n-card-genres">Mithila Swayamvar &bull; Lord Shiva's Bow</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="n-card" onclick="playMovieInCinema('act1')">
+            <div class="n-card-thumb">
+              <img src="frame_1m30s.jpg" alt="The Divine Swayamvar of Sita" loading="lazy">
+              <div class="n-card-overlay">
+                <div class="n-card-actions">
+                  <div class="n-action-btn play"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg></div>
+                </div>
+                <div class="n-card-info">
+                  <h4 class="n-movie-name">The Sacred Union: Sri Rama &amp; Mata Sita</h4>
+                  <div class="n-card-meta"><span class="match">98% Match</span><span class="n-badge">HD</span></div>
+                  <p class="n-card-genres">Divine Romance &bull; Dharma Union</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="n-card" onclick="playMovieInCinema('act2')">
+            <div class="n-card-thumb">
+              <img src="movie_cover_hd.jpg" alt="Sacred Dandakaranya Forest" loading="lazy">
+              <div class="n-card-overlay">
+                <div class="n-card-actions">
+                  <div class="n-action-btn play"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg></div>
+                </div>
+                <div class="n-card-info">
+                  <h4 class="n-movie-name">Dandakaranya: 14 Years Sacred Exile</h4>
+                  <div class="n-card-meta"><span class="match">99% Match</span><span class="n-badge">1080P</span><span class="n-time">Act 2</span></div>
+                  <p class="n-card-genres">Spiritual Forest &bull; Rishi Protection</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="n-card" onclick="playMovieInCinema('act1')">
+            <div class="n-card-thumb">
+              <img src="check_15s.jpg" alt="Protection of Sage Vishwamitra Yajna" loading="lazy">
+              <div class="n-card-overlay">
+                <div class="n-card-actions">
+                  <div class="n-action-btn play"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg></div>
+                </div>
+                <div class="n-card-info">
+                  <h4 class="n-movie-name">Yajna Raksha: Tadaka &amp; Subahu Vadh</h4>
+                  <div class="n-card-meta"><span class="match">97% Match</span><span class="n-badge">HD</span></div>
+                  <p class="n-card-genres">Sage Vishwamitra &bull; Astras Granted</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="n-card" onclick="playMovieInCinema('act1')">
+            <div class="n-card-thumb">
+              <img src="check_18s.jpg" alt="Ayodhya Golden Courts" loading="lazy">
+              <div class="n-card-overlay">
+                <div class="n-card-actions">
+                  <div class="n-action-btn play"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg></div>
+                </div>
+                <div class="n-card-info">
+                  <h4 class="n-movie-name">Court of Ayodhya: Vow of King Dasharatha</h4>
+                  <div class="n-card-meta"><span class="match">96% Match</span><span class="n-badge">HD</span></div>
+                  <p class="n-card-genres">Royal Court &bull; Maryada &bull; Raghukul</p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           ROW 3: Blockbuster Action & Battles
+           ========================================== -->
+      <section class="netflix-row" id="row-action" data-genre-category="action">
+        <div class="row-header">
+          <h2 class="row-title">Blockbuster Action &amp; Celestial Battles <span class="row-title-chevron">&rsaquo;</span></h2>
+          <span class="row-badge-pill">War for Dharma</span>
+        </div>
+
+        <div class="netflix-slider-track">
+          <!-- Card 1 -->
+          <article class="n-card" onclick="openComingSoonModal(2)">
+            <div class="n-card-thumb">
+              <img src="teaser_lanka_hd.jpg" alt="War of Golden Lanka" loading="lazy">
+              <div class="n-card-overlay">
+                <div class="n-card-info">
+                  <h4 class="n-movie-name">Siege of Golden Lanka &amp; Ram Setu</h4>
+                  <div class="n-card-meta"><span class="match gold">Chapter 2</span><span class="n-badge">IMAX 4K</span></div>
+                  <p class="n-card-genres">Vanar Sena &bull; Ocean Crossing &bull; Epic War</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="n-card" onclick="playMovieInCinema('act1')">
+            <div class="n-card-thumb">
+              <img src="hero_banner_hd.jpg" alt="Ranbir Kapoor Archer" loading="lazy">
+              <div class="n-card-overlay">
+                <div class="n-card-actions">
+                  <div class="n-action-btn play"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg></div>
+                </div>
+                <div class="n-card-info">
+                  <h4 class="n-movie-name">Ranbir Kapoor as Sri Rama: Pinaka Stance</h4>
+                  <div class="n-card-meta"><span class="match">99% Match</span><span class="n-badge">4K ULTRA</span></div>
+                  <p class="n-card-genres">Divine Archer &bull; Nitesh Tiwari Direction</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="n-card" onclick="openComingSoonModal(3)">
+            <div class="n-card-thumb">
+              <img src="teaser_archer_hd.jpg" alt="Brahmashira Astra Climax" loading="lazy">
+              <div class="n-card-overlay">
+                <div class="n-card-info">
+                  <h4 class="n-movie-name">Brahmashira: The Cosmic Arrow of Truth</h4>
+                  <div class="n-card-meta"><span class="match gold">Chapter 3</span><span class="n-badge">IMAX 3D</span></div>
+                  <p class="n-card-genres">Cosmic Clash &bull; Ravana Vadh &bull; Triumph</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="n-card" onclick="switchPage('trailer')">
+            <div class="n-card-thumb">
+              <img src="movie_poster_hd.jpg" alt="Hans Zimmer Symphony Trailer" loading="lazy">
+              <div class="n-card-overlay">
+                <div class="n-card-actions">
+                  <div class="n-action-btn play"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg></div>
+                </div>
+                <div class="n-card-info">
+                  <h4 class="n-movie-name">Theatrical 4K War Symphony Preview</h4>
+                  <div class="n-card-meta"><span class="match">100% Match</span><span class="n-badge">Dolby Atmos</span></div>
+                  <p class="n-card-genres">A.R. Rahman &bull; Hans Zimmer &bull; Dolby</p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           ROW 4: Upcoming on SANDFLIX
+           ========================================== -->
+      <section class="netflix-row" id="row-upcoming" data-genre-category="upcoming">
+        <div class="row-header">
+          <h2 class="row-title">Upcoming on SANDFLIX <span class="row-title-chevron">&rsaquo;</span></h2>
+          <span class="row-badge-pill">Future Blockbusters</span>
+        </div>
+
+        <div class="netflix-slider-track">
+          <!-- Card 1 -->
+          <article class="n-card" onclick="openComingSoonModal(2)">
+            <div class="n-card-thumb">
+              <img src="teaser_lanka_hd.jpg" alt="Part Two War for Dharma" loading="lazy">
+              <span class="n-card-top-tag lock">DIWALI 2028</span>
+              <div class="n-card-overlay">
+                <div class="n-card-info">
+                  <h4 class="n-movie-name">Ramayana: Part Two (War For Dharma)</h4>
+                  <div class="n-card-meta"><span class="match gold">Pre-Production</span><span class="n-badge">IMAX 70MM</span></div>
+                  <p class="n-card-genres">Yash as Ravana &bull; Sunny Deol as Hanuman</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="n-card" onclick="openComingSoonModal(3)">
+            <div class="n-card-thumb">
+              <img src="teaser_archer_hd.jpg" alt="Part Three The Cosmic Return" loading="lazy">
+              <span class="n-card-top-tag lock">DIWALI 2029</span>
+              <div class="n-card-overlay">
+                <div class="n-card-info">
+                  <h4 class="n-movie-name">Ramayana: Part Three (The Cosmic Return)</h4>
+                  <div class="n-card-meta"><span class="match gold">Planned</span><span class="n-badge">IMAX 3D</span></div>
+                  <p class="n-card-genres">Grand Finale &bull; Pushpaka Viman &bull; Ram Rajya</p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
     </div>
   </section>
 
@@ -1798,7 +2154,7 @@
     </button>
   </nav>
 
-  <script src="app.js?v=20261114_movies_v4"></script>
+  <script src="app.js?v=20261114_netflix_v5"></script>
 
   <!-- =========================================================================
        STICKY FLOATING MASTER SOUNDTRACK PLAYER

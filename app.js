@@ -1538,3 +1538,59 @@ function filterMoviesCatalog(category, buttonEl) {
 
 window.playMovieInCinema = playMovieInCinema;
 window.filterMoviesCatalog = filterMoviesCatalog;
+
+
+/* ==========================================================================
+   NETFLIX GENRE BROWSE INTERACTIVITY
+   ========================================================================== */
+function toggleGenreDropdown() {
+  const menu = document.getElementById('genreDropdownMenu');
+  if (menu) menu.classList.toggle('show');
+}
+
+function selectMovieGenre(catKey, catLabel, pillBtn) {
+  // Update dropdown label
+  const labelEl = document.getElementById('currentGenreLabel');
+  if (labelEl && catLabel) labelEl.textContent = catLabel;
+
+  const menu = document.getElementById('genreDropdownMenu');
+  if (menu) menu.classList.remove('show');
+
+  // Update pills
+  const pills = document.querySelectorAll('.netflix-genre-pills .n-pill');
+  pills.forEach(p => p.classList.remove('active'));
+  if (pillBtn) {
+    pillBtn.classList.add('active');
+  }
+
+  // Filter or scroll rows
+  const rows = document.querySelectorAll('.netflix-rows-container .netflix-row');
+  rows.forEach(row => {
+    const rowCat = row.getAttribute('data-genre-category');
+    if (catKey === 'all' || rowCat === catKey) {
+      row.style.display = 'block';
+    } else {
+      row.style.display = 'none';
+    }
+  });
+
+  // Smooth scroll down to rows if a specific genre picked
+  if (catKey !== 'all') {
+    const targetRow = document.getElementById('row-' + catKey);
+    if (targetRow) {
+      targetRow.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+}
+
+// Close dropdown on outside click
+document.addEventListener('click', function(e) {
+  const dropdown = document.querySelector('.netflix-genre-dropdown');
+  const menu = document.getElementById('genreDropdownMenu');
+  if (menu && dropdown && !dropdown.contains(e.target)) {
+    menu.classList.remove('show');
+  }
+});
+
+window.toggleGenreDropdown = toggleGenreDropdown;
+window.selectMovieGenre = selectMovieGenre;
