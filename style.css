@@ -7389,3 +7389,582 @@ video {
     bottom: calc(100% + 8px);
   }
 }
+
+
+/* =========================================================================
+   UNIVERSAL MASTER RESPONSIVE ENGINE
+   Supported: Android Phones, iOS iPhones, iPads/Tablets, Laptops, Desktops, 4K
+   ========================================================================= */
+
+/* 1. Global Box-Sizing & Viewport Containment */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden !important;
+  -webkit-text-size-adjust: 100%;
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* =========================================================================
+   LARGE SCREENS: High-Res Desktops, PCs & 4K Monitors (min-width: 1400px)
+   ========================================================================= */
+@media (min-width: 1400px) {
+  .header-content {
+    max-width: 1600px;
+    padding: 0 48px;
+  }
+  .netflix-genre-header {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 24px 48px;
+  }
+  .netflix-billboard {
+    max-width: 1600px;
+    margin: 0 auto 28px;
+    min-height: 600px;
+    border-radius: 12px;
+  }
+  .netflix-row {
+    max-width: 1600px;
+    margin: 0 auto 36px;
+    padding: 0 48px;
+  }
+  .content-row {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+  .theater-acts-showcase-container {
+    max-width: 1400px;
+    margin: 32px auto;
+  }
+  .trailer-player-wrap {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .gallery-mosaic {
+    max-width: 1600px;
+    margin: 0 auto;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .footer-content {
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+}
+
+/* =========================================================================
+   STANDARD LAPTOPS & DESKTOPS (1025px - 1399px)
+   ========================================================================= */
+@media (min-width: 1025px) and (max-width: 1399px) {
+  .header-content {
+    padding: 0 32px;
+  }
+  .netflix-genre-header {
+    padding: 18px 36px;
+  }
+  .netflix-billboard {
+    min-height: 500px;
+    padding: 0 36px;
+    margin-bottom: 24px;
+  }
+  .billboard-title {
+    font-size: 42px;
+  }
+  .billboard-overview {
+    max-width: 600px;
+    font-size: 14px;
+  }
+  .netflix-row {
+    padding: 0 36px;
+    margin-bottom: 30px;
+  }
+  .netflix-slider-track {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 14px;
+  }
+  .gallery-mosaic {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 0 36px;
+  }
+}
+
+/* =========================================================================
+   TABLETS & iPADS (769px - 1024px)
+   ========================================================================= */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .studio-header {
+    height: 68px;
+  }
+  .header-content {
+    padding: 0 24px;
+  }
+  .nav-tabs {
+    gap: 6px;
+  }
+  .tab-link {
+    padding: 6px 12px;
+    font-size: 12.5px;
+  }
+  .btn-play-header {
+    padding: 6px 14px;
+    font-size: 12px;
+  }
+  .page-view {
+    padding-top: 68px;
+    min-height: calc(100vh - 68px);
+  }
+  .netflix-genre-header {
+    padding: 16px 24px;
+  }
+  .netflix-billboard {
+    min-height: 440px;
+    padding: 0 24px;
+    margin-bottom: 20px;
+  }
+  .billboard-title {
+    font-size: 34px;
+  }
+  .billboard-overview {
+    max-width: 520px;
+    font-size: 13px;
+    -webkit-line-clamp: 3;
+  }
+  .netflix-row {
+    padding: 0 24px;
+    margin-bottom: 24px;
+  }
+  .netflix-slider-track {
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 12px;
+  }
+  .theater-acts-showcase-container {
+    padding: 24px 20px;
+    margin: 20px auto;
+  }
+  .acts-single-grid {
+    margin: 14px 0;
+  }
+  .trailer-player-wrap {
+    padding: 0 24px;
+  }
+  .trailer-cta-banner {
+    padding: 28px 24px;
+  }
+  .gallery-mosaic {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    padding: 0 24px;
+  }
+  .ost-floating-player {
+    bottom: 20px;
+    width: calc(100% - 40px);
+    padding: 10px 18px;
+  }
+  .site-footer {
+    padding: 40px 24px 24px;
+  }
+}
+
+/* =========================================================================
+   MOBILE PHONES: Android & iOS Portrait (max-width: 768px)
+   ========================================================================= */
+@media (max-width: 768px) {
+  /* Studio Header Mobile Optimization */
+  .studio-header {
+    height: 58px !important;
+    background: rgba(6, 8, 12, 0.96) !important;
+  }
+  .header-content {
+    padding: 0 14px !important;
+  }
+  .nav-tabs {
+    display: none !important;
+  }
+  .brand-logo-wrap {
+    width: 32px !important;
+    height: 32px !important;
+  }
+  .brand-wordmark-wrap img {
+    height: 22px !important;
+    width: auto !important;
+  }
+  .btn-play-header {
+    padding: 6px 10px !important;
+    font-size: 11px !important;
+    gap: 4px !important;
+  }
+  .btn-play-header svg {
+    width: 13px !important;
+    height: 13px !important;
+  }
+
+  /* Fixed Native Mobile Bottom Navigation */
+  .mobile-bottom-nav {
+    display: flex !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 62px !important;
+    background: rgba(8, 10, 16, 0.98) !important;
+    backdrop-filter: blur(24px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+    border-top: 1px solid rgba(255, 183, 3, 0.22) !important;
+    box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.85) !important;
+    z-index: 9999 !important;
+    align-items: center !important;
+    justify-content: space-around !important;
+    padding: 0 4px !important;
+    padding-bottom: max(6px, env(safe-area-inset-bottom, 0px)) !important;
+  }
+  .mobile-nav-item {
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 3px !important;
+    padding: 6px 2px !important;
+  }
+  .mobile-nav-item span {
+    font-size: 10px !important;
+    font-weight: 700 !important;
+  }
+  .mobile-nav-item svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  /* Global Page Container Padding */
+  .page-view {
+    padding-top: 58px !important;
+    padding-bottom: 76px !important;
+    min-height: 100vh !important;
+  }
+
+  /* Movies Page: Genre Sub-Header */
+  .netflix-genre-header {
+    padding: 10px 14px !important;
+    top: 58px !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    background: rgba(20, 20, 20, 0.95) !important;
+  }
+  .netflix-genre-title {
+    font-size: 22px !important;
+  }
+  .genre-select-btn {
+    padding: 5px 10px !important;
+    font-size: 11.5px !important;
+  }
+  .netflix-genre-pills {
+    display: flex !important;
+    overflow-x: auto !important;
+    scrollbar-width: none !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 8px !important;
+    width: 100% !important;
+    padding-bottom: 2px !important;
+  }
+  .netflix-genre-pills::-webkit-scrollbar {
+    display: none;
+  }
+  .n-pill {
+    padding: 4px 11px !important;
+    font-size: 11px !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* Movies Page: Billboard Banner Mobile */
+  .netflix-billboard {
+    min-height: 340px !important;
+    padding: 0 14px !important;
+    margin-bottom: 16px !important;
+    border-radius: 0 !important;
+  }
+  .billboard-content {
+    padding: 20px 0 16px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .billboard-top-row {
+    gap: 8px !important;
+    margin-bottom: 6px !important;
+  }
+  .billboard-top10-badge {
+    font-size: 9px !important;
+  }
+  .billboard-tag-gold {
+    font-size: 9.5px !important;
+    padding: 2px 6px !important;
+  }
+  .billboard-title {
+    font-size: 24px !important;
+    line-height: 1.15 !important;
+    margin-bottom: 4px !important;
+  }
+  .billboard-subtitle-tag {
+    font-size: 10px !important;
+    margin-bottom: 6px !important;
+  }
+  .billboard-meta-row {
+    flex-wrap: wrap !important;
+    gap: 4px 8px !important;
+    font-size: 10.5px !important;
+    margin-bottom: 8px !important;
+  }
+  .billboard-overview {
+    font-size: 12px !important;
+    line-height: 1.4 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    margin-bottom: 12px !important;
+  }
+  .billboard-btn-group {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+  .btn-billboard-play, .btn-billboard-info {
+    flex: 1 !important;
+    padding: 8px 12px !important;
+    font-size: 12px !important;
+    justify-content: center !important;
+  }
+
+  /* Movies Page: Row & Swipeable Slider Track on Touch */
+  .netflix-row {
+    padding: 0 14px !important;
+    margin-bottom: 20px !important;
+  }
+  .row-title {
+    font-size: 15px !important;
+    margin-bottom: 10px !important;
+  }
+  .netflix-slider-track {
+    display: flex !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    gap: 10px !important;
+    padding-bottom: 6px !important;
+  }
+  .netflix-slider-track::-webkit-scrollbar {
+    display: none;
+  }
+  .n-card {
+    flex: 0 0 200px !important;
+    min-width: 180px !important;
+    scroll-snap-align: start !important;
+  }
+  .n-card:hover {
+    transform: none !important; /* Disable hover jumps on mobile touch */
+  }
+  .n-movie-name {
+    font-size: 12.5px !important;
+  }
+  .n-card-genres {
+    font-size: 10px !important;
+  }
+
+  /* Cinema Theater View Mobile */
+  .theater-acts-showcase-container {
+    padding: 16px 12px !important;
+    margin: 16px 10px !important;
+    border-radius: 12px !important;
+  }
+  .acts-showcase-title {
+    font-size: 17px !important;
+  }
+  .acts-showcase-desc {
+    font-size: 11.5px !important;
+  }
+  .acts-single-grid {
+    margin: 10px 0 !important;
+  }
+  .acts-single-grid .act-feature-card {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .acts-single-grid .act-card-inner {
+    flex-direction: column !important;
+  }
+  .acts-single-grid .act-card-thumb {
+    width: 100% !important;
+    min-width: 100% !important;
+    height: 160px !important;
+  }
+  .acts-single-grid .act-card-info {
+    padding: 12px !important;
+  }
+  .acts-single-grid .act-name {
+    font-size: 15px !important;
+  }
+  .acts-single-grid .act-synopsis {
+    font-size: 11.5px !important;
+    line-height: 1.4 !important;
+  }
+  .acts-single-grid .btn-stream-act {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 10px !important;
+    font-size: 13px !important;
+  }
+
+  /* Trailer View Mobile */
+  .trailer-player-wrap {
+    padding: 0 10px !important;
+  }
+  .trailer-cta-banner {
+    padding: 20px 14px !important;
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 14px !important;
+  }
+  .trailer-cta-actions {
+    width: 100% !important;
+  }
+  .btn-cta-primary {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  /* Gallery View Mobile */
+  .gallery-mosaic {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+    padding: 0 10px !important;
+  }
+  .mosaic-item.large {
+    grid-row: span 1 !important;
+    grid-column: span 2 !important;
+  }
+
+  /* Sticky Floating OST Player Positioned ABOVE Mobile Bottom Nav */
+  .ost-floating-player {
+    bottom: calc(64px + env(safe-area-inset-bottom, 6px)) !important;
+    width: calc(100% - 16px) !important;
+    padding: 6px 10px !important;
+    border-radius: 12px !important;
+    z-index: 9980 !important;
+  }
+  .ost-fp-volume {
+    display: none !important;
+  }
+  .ost-fp-thumb-wrap {
+    width: 40px !important;
+    height: 40px !important;
+  }
+  .ost-fp-meta {
+    max-width: 130px !important;
+    min-width: 0 !important;
+  }
+  .ost-fp-track-name {
+    font-size: 12px !important;
+  }
+  .ost-fp-track-tag {
+    display: none !important;
+  }
+  .ost-fp-btn {
+    width: 32px !important;
+    height: 32px !important;
+  }
+  .ost-fp-btn svg {
+    width: 14px !important;
+    height: 14px !important;
+  }
+
+  /* Modals Mobile Centering & Safe Max-Width */
+  .modal-card, 
+  .offline-file-modal .modal-card,
+  .feedback-modal .modal-card {
+    width: calc(100% - 24px) !important;
+    max-width: 100% !important;
+    margin: 12px auto !important;
+    padding: 20px 16px !important;
+    border-radius: 14px !important;
+  }
+
+  /* Site Footer Mobile */
+  .site-footer {
+    padding: 30px 14px 85px !important;
+    text-align: center !important;
+  }
+  .footer-content {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+}
+
+/* =========================================================================
+   COMPACT SMARTPHONES (Width <= 420px - iPhone SE, Galaxy Compact, etc.)
+   ========================================================================= */
+@media (max-width: 420px) {
+  .billboard-title {
+    font-size: 21px !important;
+  }
+  .btn-billboard-play, .btn-billboard-info {
+    font-size: 11px !important;
+    padding: 7px 10px !important;
+  }
+  .n-card {
+    flex: 0 0 165px !important;
+    min-width: 155px !important;
+  }
+  .acts-single-grid .act-card-thumb {
+    height: 140px !important;
+  }
+  .gallery-mosaic {
+    grid-template-columns: 1fr !important;
+  }
+  .mosaic-item.large {
+    grid-column: span 1 !important;
+  }
+}
+
+/* =========================================================================
+   MOBILE LANDSCAPE (Height <= 520px and orientation: landscape)
+   ========================================================================= */
+@media (max-height: 520px) and (orientation: landscape) {
+  .studio-header {
+    height: 48px !important;
+    padding: 0 20px !important;
+  }
+  .page-view {
+    padding-top: 48px !important;
+    padding-bottom: 56px !important;
+  }
+  .mobile-bottom-nav {
+    height: 50px !important;
+  }
+  .mobile-nav-item span {
+    font-size: 9px !important;
+  }
+  .mobile-nav-item svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+  .netflix-billboard {
+    min-height: 280px !important;
+  }
+  .billboard-title {
+    font-size: 22px !important;
+  }
+  .ost-floating-player {
+    bottom: 54px !important;
+    padding: 4px 10px !important;
+  }
+}
