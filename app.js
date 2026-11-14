@@ -1526,15 +1526,33 @@ window.toggleGenreDropdown = toggleGenreDropdown;
 window.selectMovieGenre = selectMovieGenre;
 
 
+
 /* ==========================================================================
-   NETFLIX FULL BLACK SCREEN THEATER CONTROLLER
-   Plays movie in pure fullscreen black screen without redirecting
+   AUTHENTIC NETFLIX WEB CINEMA ENGINE (PRO UPGRADE)
    ========================================================================== */
 let nbpActiveAct = 'act1';
 let nbpIdleTimer = null;
 let nbpIsSeeking = false;
-let nbpSpeeds = [0.75, 1, 1.25, 1.5, 2];
-let nbpSpeedIdx = 1;
+let nbpShowRemaining = false;
+let nbpActiveSub = 'off';
+let nbpSubInterval = null;
+
+// Mock Subtitles Sync for Ramayana Act 1 & 2
+const NBP_SUBTITLES = {
+  act1: [
+    { start: 3, end: 9, en: "In the golden age of Treta Yuga, Ayodhya stands in divine majesty.", hi: "त्रेतायुग के स्वर्ण काल में, अयोध्या दिव्य महिमा में विराजमान है।" },
+    { start: 10, end: 18, en: "King Dasharatha performs the sacred Putrakameshti Yajna.", hi: "महाराज दशरथ ने पवित्र पुत्रकामेष्टि यज्ञ संपन्न किया।" },
+    { start: 20, end: 32, en: "From the sacred flames, Lord Vishnu descends as Maryada Purushottam Rama.", hi: "पवित्र अग्नि से मर्यादा पुरुषोत्तम श्रीराम का दिव्य प्राकट्य हुआ।" },
+    { start: 35, end: 50, en: "Sage Vishwamitra arrives at the court seeking Prince Rama's protection.", hi: "महर्षि विश्वामित्र अयोध्या की सभा में श्रीराम की रक्षा मांगने पधारे।" },
+    { start: 55, end: 85, en: "With divine Astras, Sri Rama vanquishes Tadaka and restores Dharma.", hi: "दिव्य अस्त्रों से श्रीराम ने ताड़का का वध कर धर्म की रक्षा की।" },
+    { start: 90, end: 120, en: "In the court of Mithila, Sri Rama strings the unyielding Shiva Dhanush Pinaka.", hi: "मिथिला की राजसभा में श्रीराम ने भगवान शिव के पिनाक धनुष पर प्रत्यंचा चढ़ाई।" }
+  ],
+  act2: [
+    { start: 2, end: 15, en: "The 14-year sacred exile begins as Sri Rama, Sita, and Lakshmana depart Ayodhya.", hi: "श्रीराम, जानकी और लक्ष्मण का 14 वर्ष का पवित्र वनवास प्रारंभ हुआ।" },
+    { start: 18, end: 40, en: "Deep in Dandakaranya, the hermits find divine refuge in the presence of Rama.", hi: "दंडकारण्य के ऋषि-मुनि श्रीराम की छत्रछाया में अभय प्राप्त करते हैं।" },
+    { start: 45, end: 80, en: "At Panchavati, the cosmic clash of Dharma and Adharma takes its initial sparks.", hi: "पंचवटी में धर्म और अधर्म के महायुद्ध की दिव्य चिंगारी सुलगी।" }
+  ]
+};
 
 function openNetflixBlackPlayer(actKey) {
   actKey = actKey || 'act1';
@@ -1545,10 +1563,11 @@ function openNetflixBlackPlayer(actKey) {
   const spinner = document.getElementById('nbpSpinner');
   const actTitle = document.getElementById('nbpActTitle');
   const nextActLabel = document.getElementById('nbpNextActLabel');
-  const pill1 = document.getElementById('nbpPillAct1');
-  const pill2 = document.getElementById('nbpPillAct2');
+  const card1 = document.getElementById('nbpDrawerAct1');
+  const card2 = document.getElementById('nbpDrawerAct2');
+  const tooltipImg = document.getElementById('nbpTooltipImg');
 
-  // Pause trailer and OST if playing
+  // Pause trailer and OST audio if playing
   const trailerVideo = document.getElementById('trailerVideo');
   if (trailerVideo && !trailerVideo.paused) trailerVideo.pause();
   if (typeof ostAudio !== 'undefined' && !ostAudio.paused) ostAudio.pause();
@@ -1564,18 +1583,23 @@ function openNetflixBlackPlayer(actKey) {
   modal.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
 
-  // Update Titles & Pills
+  // Update Titles & Drawer Cards
   if (actKey === 'act1') {
-    if (actTitle) actTitle.textContent = 'Part 1: Act 1 (The Divine Beginning)';
-    if (nextActLabel) nextActLabel.textContent = 'Play Act 2';
-    if (pill1) pill1.classList.add('active');
-    if (pill2) pill2.classList.remove('active');
+    if (actTitle) actTitle.textContent = 'Act 1: The Divine Beginning & Shiva Dhanush';
+    if (nextActLabel) nextActLabel.textContent = 'Act 2';
+    if (card1) card1.classList.add('active');
+    if (card2) card2.classList.remove('active');
+    if (tooltipImg) tooltipImg.src = 'feature_banner_hd.jpg';
   } else {
-    if (actTitle) actTitle.textContent = 'Part 1: Act 2 (The Forest Exile & Awakening)';
-    if (nextActLabel) nextActLabel.textContent = 'Play Act 1';
-    if (pill1) pill1.classList.remove('active');
-    if (pill2) pill2.classList.add('active');
+    if (actTitle) actTitle.textContent = 'Act 2: Forest Exile & Sacred Awakening';
+    if (nextActLabel) nextActLabel.textContent = 'Act 1';
+    if (card1) card1.classList.remove('active');
+    if (card2) card2.classList.add('active');
+    if (tooltipImg) tooltipImg.src = 'movie_cover_hd.jpg';
   }
+
+  // Close all popovers
+  closeAllNbpPopovers();
 
   // Load Video Source
   const isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
@@ -1611,6 +1635,7 @@ function openNetflixBlackPlayer(actKey) {
     updateNbpPlayButton(false);
   });
 
+  startSubtitleEngine();
   resetNbpIdleTimer();
 }
 
@@ -1625,6 +1650,8 @@ function closeNetflixBlackPlayer() {
     modal.setAttribute('aria-hidden', 'true');
   }
   document.body.style.overflow = '';
+  closeAllNbpPopovers();
+  stopSubtitleEngine();
 
   // Exit fullscreen if active
   if (document.fullscreenElement) {
@@ -1644,6 +1671,53 @@ function nbpToggleNextAct() {
   }
 }
 
+// Center & Double Click Zone Handlers
+let nbpLastTapLeft = 0;
+let nbpLastTapRight = 0;
+
+function handleNbpZoneClick(side, e) {
+  const now = Date.now();
+  if (side === 'left') {
+    if (now - nbpLastTapLeft < 300) {
+      // Double tap!
+      nbpSeekRelative(-10);
+      flashNbpRipple('left');
+      nbpLastTapLeft = 0;
+    } else {
+      nbpLastTapLeft = now;
+      setTimeout(() => {
+        if (nbpLastTapLeft === now) {
+          toggleNbpPlayPause();
+        }
+      }, 300);
+    }
+  } else if (side === 'right') {
+    if (now - nbpLastTapRight < 300) {
+      nbpSeekRelative(10);
+      flashNbpRipple('right');
+      nbpLastTapRight = 0;
+    } else {
+      nbpLastTapRight = now;
+      setTimeout(() => {
+        if (nbpLastTapRight === now) {
+          toggleNbpPlayPause();
+        }
+      }, 300);
+    }
+  }
+}
+
+function handleNbpCenterClick(e) {
+  toggleNbpPlayPause();
+}
+
+function flashNbpRipple(side) {
+  const rip = document.getElementById(side === 'left' ? 'nbpRippleLeft' : 'nbpRippleRight');
+  if (!rip) return;
+  rip.classList.add('show');
+  setTimeout(() => rip.classList.remove('show'), 500);
+}
+
 function toggleNbpPlayPause() {
   const video = document.getElementById('nbpVideo');
   if (!video) return;
@@ -1656,6 +1730,7 @@ function toggleNbpPlayPause() {
     flashNbpIcon('pause');
     updateNbpPlayButton(false);
   }
+  resetNbpIdleTimer();
 }
 
 function updateNbpPlayButton(isPlaying) {
@@ -1706,25 +1781,145 @@ function toggleNbpMute() {
   }
 }
 
-function cycleNbpSpeed() {
+// Popover Toggles
+function toggleNbpActsDrawer() {
+  const drawer = document.getElementById('nbpActsDrawer');
+  if (!drawer) return;
+  const isShown = drawer.classList.contains('show');
+  closeAllNbpPopovers();
+  if (!isShown) drawer.classList.add('show');
+}
+
+function toggleNbpAudioPopover() {
+  const pop = document.getElementById('nbpAudioPopover');
+  if (!pop) return;
+  const isShown = pop.classList.contains('show');
+  closeAllNbpPopovers();
+  if (!isShown) pop.classList.add('show');
+}
+
+function toggleNbpSpeedPopover() {
+  const pop = document.getElementById('nbpSpeedPopover');
+  if (!pop) return;
+  const isShown = pop.classList.contains('show');
+  closeAllNbpPopovers();
+  if (!isShown) pop.classList.add('show');
+}
+
+function closeAllNbpPopovers() {
+  const d = document.getElementById('nbpActsDrawer');
+  const a = document.getElementById('nbpAudioPopover');
+  const s = document.getElementById('nbpSpeedPopover');
+  if (d) d.classList.remove('show');
+  if (a) a.classList.remove('show');
+  if (s) s.classList.remove('show');
+}
+
+// Audio & Subtitle Control
+function setNbpAudio(audioKey) {
+  const h51 = document.getElementById('nbpAudHindi51');
+  const h20 = document.getElementById('nbpAudHindi20');
+  if (h51) h51.classList.toggle('active', audioKey === 'hindi51');
+  if (h20) h20.classList.toggle('active', audioKey === 'hindi20');
+  closeAllNbpPopovers();
+}
+
+function setNbpSubtitle(subKey) {
+  nbpActiveSub = subKey;
+  const sOff = document.getElementById('nbpSubOff');
+  const sEn = document.getElementById('nbpSubEn');
+  const sHi = document.getElementById('nbpSubHi');
+  if (sOff) sOff.classList.toggle('active', subKey === 'off');
+  if (sEn) sEn.classList.toggle('active', subKey === 'en');
+  if (sHi) sHi.classList.toggle('active', subKey === 'hi');
+  const subText = document.getElementById('nbpSubtitleText');
+  if (subKey === 'off' && subText) {
+    subText.classList.remove('visible');
+  }
+  closeAllNbpPopovers();
+}
+
+function startSubtitleEngine() {
+  stopSubtitleEngine();
+  const video = document.getElementById('nbpVideo');
+  const subText = document.getElementById('nbpSubtitleText');
+  if (!video || !subText) return;
+
+  nbpSubInterval = setInterval(() => {
+    if (nbpActiveSub === 'off') {
+      subText.classList.remove('visible');
+      return;
+    }
+    const cur = video.currentTime;
+    const subs = NBP_SUBTITLES[nbpActiveAct] || [];
+    let match = null;
+    for (let i = 0; i < subs.length; i++) {
+      if (cur >= subs[i].start && cur <= subs[i].end) {
+        match = subs[i];
+        break;
+      }
+    }
+    if (match) {
+      subText.textContent = nbpActiveSub === 'hi' ? match.hi : match.en;
+      subText.classList.add('visible');
+    } else {
+      subText.classList.remove('visible');
+    }
+  }, 250);
+}
+
+function stopSubtitleEngine() {
+  if (nbpSubInterval) {
+    clearInterval(nbpSubInterval);
+    nbpSubInterval = null;
+  }
+  const subText = document.getElementById('nbpSubtitleText');
+  if (subText) subText.classList.remove('visible');
+}
+
+function setNbpSpeed(speed, optEl) {
   const video = document.getElementById('nbpVideo');
   const btn = document.getElementById('nbpBtnSpeed');
   if (!video) return;
-  nbpSpeedIdx = (nbpSpeedIdx + 1) % nbpSpeeds.length;
-  const speed = nbpSpeeds[nbpSpeedIdx];
   video.playbackRate = speed;
   if (btn) btn.textContent = speed + 'x';
+
+  document.querySelectorAll('.nbp-speed-opt').forEach(el => el.classList.remove('active'));
+  if (optEl) optEl.classList.add('active');
+  closeAllNbpPopovers();
 }
 
+function toggleNbpTimeFormat() {
+  nbpShowRemaining = !nbpShowRemaining;
+}
+
+// Picture in Picture
+function toggleNbpPiP() {
+  const video = document.getElementById('nbpVideo');
+  if (!video) return;
+  if (document.pictureInPictureElement) {
+    document.exitPictureInPicture().catch(e => {});
+  } else if (video.requestPictureInPicture) {
+    video.requestPictureInPicture().catch(e => console.log('PiP Error:', e));
+  }
+}
+
+// Fullscreen
 function toggleNbpFullscreen() {
   const modal = document.getElementById('netflixBlackPlayerModal');
+  const fsEnter = document.getElementById('nbpFsEnter');
+  const fsExit = document.getElementById('nbpFsExit');
   if (!modal) return;
   if (!document.fullscreenElement) {
-    modal.requestFullscreen().catch(err => {
-      console.log('Fullscreen error:', err);
-    });
+    modal.requestFullscreen().then(() => {
+      if (fsEnter) fsEnter.style.display = 'none';
+      if (fsExit) fsExit.style.display = 'block';
+    }).catch(err => console.log('FS error:', err));
   } else {
-    document.exitFullscreen().catch(err => {});
+    document.exitFullscreen().then(() => {
+      if (fsEnter) fsEnter.style.display = 'block';
+      if (fsExit) fsExit.style.display = 'none';
+    }).catch(err => {});
   }
 }
 
@@ -1737,6 +1932,7 @@ function resetNbpIdleTimer() {
     const video = document.getElementById('nbpVideo');
     if (video && !video.paused && !nbpIsSeeking) {
       modal.classList.add('is-idle');
+      closeAllNbpPopovers();
     }
   }, 3500);
 }
@@ -1749,7 +1945,7 @@ function formatNbpTime(sec) {
   return `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
 }
 
-// Scrubber & Event Listeners
+// Scrubber & Event Wiring
 document.addEventListener('DOMContentLoaded', () => {
   const modal = document.getElementById('netflixBlackPlayerModal');
   const video = document.getElementById('nbpVideo');
@@ -1761,6 +1957,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const txtDuration = document.getElementById('nbpDurationTime');
   const scrubWrap = document.getElementById('nbpScrubberWrap');
   const tooltip = document.getElementById('nbpScrubberTooltip');
+  const tooltipTime = document.getElementById('nbpTooltipTime');
   const volSlider = document.getElementById('nbpVolumeSlider');
 
   if (!video) return;
@@ -1787,8 +1984,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const pct = (cur / dur) * 100;
     if (progFill) progFill.style.width = pct + '%';
     if (thumb) thumb.style.left = pct + '%';
-    if (txtCurrent) txtCurrent.textContent = formatNbpTime(cur);
-    if (txtDuration) txtDuration.textContent = formatNbpTime(dur);
+    
+    if (txtCurrent && txtDuration) {
+      if (nbpShowRemaining) {
+        const rem = Math.max(0, dur - cur);
+        txtCurrent.textContent = formatNbpTime(cur);
+        txtDuration.textContent = '-' + formatNbpTime(rem);
+      } else {
+        txtCurrent.textContent = formatNbpTime(cur);
+        txtDuration.textContent = formatNbpTime(dur);
+      }
+    }
 
     // Buffer calculation
     if (video.buffered.length > 0 && buffFill) {
@@ -1832,7 +2038,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const dur = video.duration || 5407;
       if (tooltip) {
         tooltip.style.left = (pos * 100) + '%';
-        tooltip.textContent = formatNbpTime(pos * dur);
+      }
+      if (tooltipTime) {
+        tooltipTime.textContent = formatNbpTime(pos * dur);
       }
     });
   }
@@ -1851,7 +2059,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Mouse movement on modal resets idle timer
+  // Mouse Movement
   if (modal) {
     modal.addEventListener('mousemove', resetNbpIdleTimer);
     modal.addEventListener('touchstart', resetNbpIdleTimer);
@@ -1862,15 +2070,17 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!modal || !modal.classList.contains('active')) return;
     if (e.key === 'Escape') {
       closeNetflixBlackPlayer();
-    } else if (e.key === ' ' || e.key === 'k') {
+    } else if (e.key === ' ' || e.key === 'k' || e.key === 'K') {
       e.preventDefault();
       toggleNbpPlayPause();
     } else if (e.key === 'ArrowLeft') {
       e.preventDefault();
       nbpSeekRelative(-10);
+      flashNbpRipple('left');
     } else if (e.key === 'ArrowRight') {
       e.preventDefault();
       nbpSeekRelative(10);
+      flashNbpRipple('right');
     } else if (e.key === 'm' || e.key === 'M') {
       toggleNbpMute();
     } else if (e.key === 'f' || e.key === 'F') {
@@ -1883,8 +2093,17 @@ window.openNetflixBlackPlayer = openNetflixBlackPlayer;
 window.closeNetflixBlackPlayer = closeNetflixBlackPlayer;
 window.switchNbpAct = switchNbpAct;
 window.nbpToggleNextAct = nbpToggleNextAct;
+window.handleNbpZoneClick = handleNbpZoneClick;
+window.handleNbpCenterClick = handleNbpCenterClick;
 window.toggleNbpPlayPause = toggleNbpPlayPause;
 window.nbpSeekRelative = nbpSeekRelative;
 window.toggleNbpMute = toggleNbpMute;
-window.cycleNbpSpeed = cycleNbpSpeed;
+window.toggleNbpActsDrawer = toggleNbpActsDrawer;
+window.toggleNbpAudioPopover = toggleNbpAudioPopover;
+window.toggleNbpSpeedPopover = toggleNbpSpeedPopover;
+window.setNbpAudio = setNbpAudio;
+window.setNbpSubtitle = setNbpSubtitle;
+window.setNbpSpeed = setNbpSpeed;
+window.toggleNbpTimeFormat = toggleNbpTimeFormat;
+window.toggleNbpPiP = toggleNbpPiP;
 window.toggleNbpFullscreen = toggleNbpFullscreen;
