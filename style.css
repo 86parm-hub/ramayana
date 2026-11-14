@@ -8640,3 +8640,127 @@ img, video {
     width: 118px;
   }
 }
+
+/* ==========================================================================
+   COMPACT NETFLIX HERO BILLBOARD (Minimal Bold Title, Responsive Sizing)
+   ========================================================================== */
+
+.netflix-billboard.home-billboard {
+  min-height: 440px !important;
+  max-height: 480px !important;
+  display: flex !important;
+  align-items: flex-end !important;
+  padding: 0 48px 44px 48px !important;
+  margin-bottom: 16px !important;
+  position: relative !important;
+  background: #000000 !important;
+  overflow: hidden !important;
+}
+
+.billboard-content.minimal-netflix {
+  max-width: 580px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  z-index: 6 !important;
+}
+
+.billboard-title.bold-title {
+  font-family: 'Cinzel', 'Plus Jakarta Sans', serif !important;
+  font-size: 48px !important;
+  font-weight: 900 !important;
+  letter-spacing: 2px !important;
+  color: #ffffff !important;
+  margin: 0 0 16px 0 !important;
+  line-height: 1.08 !important;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.95), 0 2px 6px rgba(0, 0, 0, 0.8) !important;
+  text-transform: uppercase !important;
+}
+
+.billboard-aside-controls {
+  position: absolute !important;
+  right: 48px !important;
+  bottom: 46px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  z-index: 10 !important;
+}
+
+/* Tablets (1024px and below) */
+@media screen and (max-width: 1024px) {
+  .netflix-billboard.home-billboard {
+    min-height: 360px !important;
+    max-height: 400px !important;
+    padding: 0 32px 32px 32px !important;
+  }
+  .billboard-title.bold-title {
+    font-size: 38px !important;
+    margin-bottom: 14px !important;
+  }
+  .billboard-aside-controls {
+    right: 28px !important;
+    bottom: 34px !important;
+  }
+}
+
+/* Mobile Devices: Android & iOS (768px and below) */
+@media screen and (max-width: 768px) {
+  .netflix-billboard.home-billboard {
+    min-height: 290px !important;
+    max-height: 330px !important;
+    padding: 0 16px 20px 16px !important;
+    margin-bottom: 10px !important;
+  }
+  .billboard-title.bold-title {
+    font-size: 26px !important;
+    letter-spacing: 1px !important;
+    margin-bottom: 12px !important;
+  }
+  .billboard-actions {
+    gap: 8px !important;
+  }
+  .btn-n-play {
+    padding: 8px 18px !important;
+    font-size: 13px !important;
+  }
+  .btn-n-info {
+    padding: 8px 16px !important;
+    font-size: 12px !important;
+  }
+  .billboard-aside-controls {
+    right: 14px !important;
+    bottom: 20px !important;
+    gap: 6px !important;
+  }
+  .billboard-audio-btn {
+    width: 32px !important;
+    height: 32px !important;
+  }
+  .billboard-maturity-badge {
+    padding: 3px 8px !important;
+  }
+  .bb-maturity-border {
+    font-size: 10px !important;
+  }
+}
+
+/* Compact Phones (420px and below) */
+@media screen and (max-width: 420px) {
+  .netflix-billboard.home-billboard {
+    min-height: 260px !important;
+    max-height: 290px !important;
+    padding: 0 12px 16px 12px !important;
+  }
+  .billboard-title.bold-title {
+    font-size: 22px !important;
+    margin-bottom: 10px !important;
+  }
+  .btn-n-play {
+    padding: 6px 14px !important;
+    font-size: 12px !important;
+  }
+  .btn-n-info {
+    padding: 6px 12px !important;
+    font-size: 11px !important;
+  }
+}

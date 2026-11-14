@@ -4,6 +4,7 @@
 !move trailer.mp4
 !move_trailer.mp4
 !trailer_official.mp4
+!banner_preview_hd.mp4
 *.wav
 
 # Vercel & Cache

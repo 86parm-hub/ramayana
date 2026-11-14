@@ -2245,8 +2245,6 @@ window.toggleNbpFullscreen = toggleNbpFullscreen;
    NETFLIX HOME BROWSE CONTROLLER (Billboard Hover Video, Carousel & Modals)
    ========================================================================== */
 
-let billboardPreviewTimer = null;
-
 function initHomeBillboard() {
   const billboard = document.getElementById('homeHeroBillboard');
   const video = document.getElementById('homeBillboardVideo');
@@ -2261,30 +2259,27 @@ function initHomeBillboard() {
       playPromise.then(() => {
         videoWrap.classList.add('playing');
       }).catch(err => {
-        console.log('Billboard preview autoplay waiting for interaction:', err);
+        console.log('Billboard preview waiting for user interaction:', err);
       });
     }
   }
 
   function pauseBillboardPreview() {
     videoWrap.classList.remove('playing');
-    video.pause();
+    if (!video.paused) {
+      video.pause();
+    }
   }
 
-  // Hover play / pause
+  // 1. Jab banner par cursor hover ho, tabhi video play ho
   billboard.addEventListener('mouseenter', () => {
     playBillboardPreview();
   });
 
-  // Auto-play after 2s delay if user lands on Home page
-  clearTimeout(billboardPreviewTimer);
-  billboardPreviewTimer = setTimeout(() => {
-    const homeView = document.getElementById('home-view');
-    const blackModal = document.getElementById('netflixBlackPlayerModal');
-    if (homeView && homeView.classList.contains('active') && (!blackModal || !blackModal.classList.contains('active'))) {
-      playBillboardPreview();
-    }
-  }, 2000);
+  // 2. Jab banner par se cursor hate, tab video turant ruk jaye (pause)
+  billboard.addEventListener('mouseleave', () => {
+    pauseBillboardPreview();
+  });
 }
 
 function toggleBillboardAudio(event) {
