@@ -445,71 +445,7 @@ body.ott-platform {
   margin-top: 1px;
 }
 
-/* Hero Slides */
-.hero-slide {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.7s;
-  display: flex;
-  align-items: flex-end;
-  padding: 130px 60px 80px;
-  z-index: 1;
-}
-
-.hero-slide.active {
-  opacity: 1;
-  visibility: visible;
-  position: relative;
-}
-
-.slide-media-wrap {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  overflow: hidden;
-}
-
-.slide-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 25%;
-  filter: brightness(0.9) contrast(1.08) saturate(1.05);
-  transform: scale(1.02);
-  transition: transform 10s ease;
-}
-
-.hero-slide.active .slide-image {
-  transform: scale(1.06);
-}
-
-.slide-gradient-left {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to right, rgba(4, 5, 8, 0.98) 0%, rgba(4, 5, 8, 0.8) 45%, rgba(4, 5, 8, 0.3) 80%, transparent 100%);
-}
-
-.slide-gradient-bottom {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(4, 5, 8, 1) 0%, rgba(4, 5, 8, 0.6) 30%, transparent 65%);
-}
-
-.slide-content-box {
-  max-width: 820px;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  animation: slideContentIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  z-index: 2;
-}
-
-@keyframes slideContentIn {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+/* Hero Slides cleaned - replaced by Netflix Billboard */
 
 .meta-badges {
   display: flex;
@@ -689,30 +625,7 @@ body.ott-platform {
   transform: translateY(-2px);
 }
 
-.slider-indicators {
-  position: absolute;
-  bottom: 30px;
-  right: 60px;
-  display: flex;
-  gap: 10px;
-  z-index: 10;
-}
-
-.slide-dot {
-  width: 32px;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.3);
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.slide-dot.active {
-  width: 56px;
-  background: var(--gold-pri);
-  box-shadow: 0 0 10px var(--gold-glow-bright);
-}
+/* Slider indicators cleaned */
 
 /* ==========================================================================
    THEATER TRILOGY NAVIGATION BAR (Inside Watch View)
@@ -1127,205 +1040,7 @@ body.ott-platform {
   gap: 24px;
 }
 
-.film-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.film-card:hover {
-  transform: translateY(-8px);
-  border-color: var(--border-gold-bright);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 25px var(--gold-glow-subtle);
-}
-
-.film-card-thumb {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-}
-
-.film-card-thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.film-card:hover .film-card-thumb img {
-  transform: scale(1.08);
-}
-
-.row-title-block {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.row-sub-tag {
-  font-size: 13px;
-  color: var(--text-dim);
-  font-weight: 500;
-}
-
-.card-play-hover, .card-lock-hover {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(4, 5, 8, 0.65);
-  font-size: 28px;
-  opacity: 0;
-  transition: opacity 0.25s ease;
-  z-index: 2;
-}
-
-.card-play-hover {
-  color: var(--gold-pri);
-}
-
-.card-lock-hover {
-  color: var(--gold-light);
-}
-
-.film-card:hover .card-play-hover,
-.film-card:hover .card-lock-hover {
-  opacity: 1;
-}
-
-.card-tag {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  background: rgba(4, 5, 8, 0.85);
-  border: 1px solid var(--border-gold);
-  color: var(--gold-light);
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  padding: 4px 10px;
-  border-radius: 20px;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  z-index: 3;
-}
-
-.card-tag.tag-streaming-now {
-  border-color: #10b981;
-  color: #34d399;
-  background: rgba(4, 5, 8, 0.9);
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  box-shadow: 0 0 12px rgba(16, 185, 129, 0.3);
-}
-
-.card-tag.tag-coming-gold {
-  border-color: var(--gold-pri);
-  color: var(--gold-light);
-  box-shadow: 0 0 12px rgba(255, 183, 3, 0.3);
-}
-
-.card-tag.tag-coming-saffron {
-  border-color: var(--saffron-deep);
-  color: #fed7aa;
-  box-shadow: 0 0 12px rgba(251, 133, 0, 0.3);
-}
-
-.film-card-info {
-  padding: 18px 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.film-card-header-line {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-}
-
-.film-card-info h4 {
-  font-family: var(--font-display);
-  font-size: 17px;
-  font-weight: 700;
-  color: #fff;
-}
-
-.quality-badge-mini {
-  font-size: 10px;
-  font-weight: 800;
-  color: #34d399;
-  background: rgba(16, 185, 129, 0.15);
-  border: 1px solid rgba(16, 185, 129, 0.4);
-  padding: 2px 7px;
-  border-radius: 4px;
-  letter-spacing: 0.5px;
-}
-
-.coming-badge-mini {
-  font-size: 10px;
-  font-weight: 800;
-  padding: 2px 7px;
-  border-radius: 4px;
-  letter-spacing: 0.5px;
-}
-
-.coming-badge-mini.gold {
-  color: var(--gold-pri);
-  background: rgba(255, 183, 3, 0.15);
-  border: 1px solid rgba(255, 183, 3, 0.4);
-}
-
-.coming-badge-mini.saffron {
-  color: var(--saffron-deep);
-  background: rgba(251, 133, 0, 0.15);
-  border: 1px solid rgba(251, 133, 0, 0.4);
-}
-
-.film-card-info p {
-  font-size: 13px;
-  color: var(--text-muted);
-  line-height: 1.5;
-}
-
-.card-action-bar {
-  margin-top: 6px;
-  padding-top: 10px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.btn-card-action {
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.5px;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  transition: all 0.2s ease;
-}
-
-.btn-card-action.play-action {
-  color: var(--gold-pri);
-}
-
-.btn-card-action.notify-action-gold {
-  color: var(--gold-light);
-}
-
-.btn-card-action.notify-action-saffron {
-  color: #fed7aa;
-}
-
-.film-card:hover .btn-card-action {
-  transform: translateX(4px);
-}
+/* Old film-card block cleaned */
 
 /* ==========================================================================
    PAGE 2: CINEMA THEATER VIEW (Immersive Player)
@@ -3207,9 +2922,7 @@ video {
     padding: 6px 14px;
     font-size: 12px;
   }
-  .hero-slide {
-    padding: 95px 24px 50px;
-  }
+  /* .hero-slide cleaned */
   .hero-title {
     font-size: clamp(32px, 5vw, 48px);
   }
@@ -3364,10 +3077,7 @@ video {
   }
 
   /* Hero Section */
-  .hero-slide {
-    min-height: 80vh;
-    padding: 75px 16px 36px;
-  }
+  /* .hero-slide cleaned */
   .meta-badges {
     display: flex;
     flex-wrap: wrap;
@@ -3411,10 +3121,7 @@ video {
     padding: 12px 18px;
     font-size: 14px;
   }
-  .slider-indicators {
-    bottom: 14px;
-    right: 16px;
-  }
+  /* .slider-indicators cleaned */
 
   /* Cinema Theater */
   .theater-control-strip {
@@ -3568,12 +3275,7 @@ video {
   .cards-rail::-webkit-scrollbar {
     display: none !important;
   }
-  .film-card {
-    min-width: 260px !important;
-    max-width: 260px !important;
-    flex-shrink: 0 !important;
-    scroll-snap-align: start !important;
-  }
+  /* .film-card cleaned */
 
   .gallery-mosaic {
     display: grid;
@@ -3699,10 +3401,7 @@ video {
   .brand-edition {
     display: none;
   }
-  .hero-slide {
-    padding: 70px 12px 28px;
-    min-height: 75vh;
-  }
+  /* .hero-slide cleaned */
   .hero-title {
     font-size: 26px;
   }
@@ -8853,5 +8552,187 @@ img, video {
   .billboard-audio-btn.left-audio {
     width: 30px !important;
     height: 30px !important;
+  }
+}
+
+
+/* ==========================================================================
+   OFFICIAL MASTER SINGLE MOVIE CARD (SANDFLIX OFFICIAL 16:9 CARD)
+   ========================================================================= */
+.single-movie-track {
+  display: flex;
+  align-items: flex-start;
+  padding: 12px 0 28px;
+  overflow: visible;
+}
+
+.single-movie-track .n-card.official-master-card {
+  position: relative;
+  flex: 0 0 250px;
+  width: 250px;
+  background: #181818;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  z-index: 10;
+}
+
+.single-movie-track .n-card.official-master-card:hover {
+  transform: scale(1.08) translateY(-6px);
+  border-color: rgba(229, 9, 20, 0.85);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.95), 0 0 25px rgba(229, 9, 20, 0.4);
+  z-index: 25;
+}
+
+.single-movie-track .n-card-thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  overflow: hidden;
+}
+
+.single-movie-track .n-card-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+.single-movie-track .n-card.official-master-card:hover .n-card-thumb img {
+  transform: scale(1.08);
+}
+
+.single-movie-track .n-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.85) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.single-movie-track .n-card.official-master-card:hover .n-card-overlay {
+  opacity: 1;
+}
+
+.single-movie-track .n-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.single-movie-track .n-action-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(40, 40, 40, 0.85);
+  color: #fff;
+}
+
+.single-movie-track .n-action-btn.play {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
+
+.single-movie-track .n-action-btn:hover {
+  transform: scale(1.12);
+  border-color: #fff;
+}
+
+.single-movie-track .n-card-info {
+  padding: 10px 12px 12px;
+  background: #181818;
+}
+
+.single-movie-track .n-movie-name {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 4px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: 0.3px;
+}
+
+.single-movie-track .n-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  margin-bottom: 4px;
+}
+
+.single-movie-track .n-card-meta .match {
+  color: #46d369;
+  font-weight: 800;
+}
+
+.single-movie-track .n-card-meta .age,
+.single-movie-track .n-card-meta .dur,
+.single-movie-track .n-card-meta .n-badge {
+  font-size: 9px;
+  padding: 1px 4px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 2px;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 700;
+}
+
+.single-movie-track .n-card-genres {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Responsive Devices */
+@media (min-width: 1200px) {
+  .single-movie-track .n-card.official-master-card {
+    flex: 0 0 260px;
+    width: 260px;
+  }
+}
+
+@media (max-width: 768px) {
+  .single-movie-track .n-card.official-master-card {
+    flex: 0 0 200px;
+    width: 200px;
+  }
+  .single-movie-track .n-movie-name {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .single-movie-track .n-card.official-master-card {
+    flex: 0 0 170px;
+    width: 170px;
+  }
+  .single-movie-track .n-action-btn {
+    width: 30px;
+    height: 30px;
+  }
+  .single-movie-track .n-movie-name {
+    font-size: 11px;
+  }
+  .single-movie-track .n-card-genres {
+    display: none;
   }
 }

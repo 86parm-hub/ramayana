@@ -113,90 +113,9 @@ window.handleOutroReplay = function () {
 };
 
 window.selectAct = function (actKey) {
-  if (!ACT_CONFIG[actKey]) return;
-  activeActKey = actKey;
-  const cfg = ACT_CONFIG[actKey];
-  const video = document.getElementById('videoPlayer');
-  const btn1 = document.getElementById('btnAct1');
-  const btn2 = document.getElementById('btnAct2');
-  const card1 = document.getElementById('actCard1');
-  const card2 = document.getElementById('actCard2');
-  const badge1 = document.getElementById('actBadge1');
-  const badge2 = document.getElementById('actBadge2');
-  const streamBtn1 = document.getElementById('btnStreamAct1');
-  const streamBtn2 = document.getElementById('btnStreamAct2');
-  const watermarkTag = document.getElementById('watermarkActTag');
-  const modal = document.getElementById('offlineFileModal');
-  const spinner = document.getElementById('streamSpinnerVeil');
-  const outroCard = document.getElementById('theaterOutroCard');
-
-  // Update Top Quick Buttons
-  if (btn1) btn1.classList.toggle('active', actKey === 'act1');
-  if (btn2) btn2.classList.toggle('active', actKey === 'act2');
-
-  // Update Bottom Showcase Feature Cards & Badges
-  if (card1) card1.classList.toggle('active', actKey === 'act1');
-  if (card2) card2.classList.toggle('active', actKey === 'act2');
-
-  if (badge1) {
-    if (actKey === 'act1') {
-      badge1.textContent = '● NOW PLAYING';
-      badge1.className = 'act-badge-pill live';
-    } else {
-      badge1.textContent = 'ACT 1';
-      badge1.className = 'act-badge-pill';
-    }
-  }
-
-  if (badge2) {
-    if (actKey === 'act2') {
-      badge2.textContent = '● NOW PLAYING';
-      badge2.className = 'act-badge-pill live';
-    } else {
-      badge2.textContent = 'ACT 2';
-      badge2.className = 'act-badge-pill';
-    }
-  }
-
-  if (streamBtn1) {
-    streamBtn1.innerHTML = actKey === 'act1'
-      ? '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg><span>✓ Streaming Act 1</span>'
-      : '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg><span>Play Act 1 (01:30:07)</span>';
-  }
-
-  if (streamBtn2) {
-    streamBtn2.innerHTML = actKey === 'act2'
-      ? '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg><span>✓ Streaming Act 2</span>'
-      : '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg><span>Play Act 2 (01:30:16)</span>';
-  }
-
-  // Update On-Screen Upper Right Watermark Tag
-  if (watermarkTag) {
-    watermarkTag.textContent = actKey === 'act1' ? 'ACT 1 STREAMING' : 'ACT 2 STREAMING';
-  }
-
-  if (modal) modal.classList.remove('visible');
-  if (outroCard) outroCard.classList.remove('active');
-  if (spinner) spinner.classList.add('active');
-
-  if (video) {
-    const isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
-    const targetUrl = isLocal ? cfg.localUrl : cfg.cloudUrl;
-    video.src = targetUrl;
-    video.poster = 'movie_cover_hd.jpg';
-    video.load();
-    const offset = (!isLocal && actKey === 'act1') ? 3.0 : 0;
-    if (offset > 0) {
-      video.currentTime = offset;
-    }
-    video.play().then(() => {
-      if (offset > 0 && video.currentTime < offset) {
-        video.currentTime = offset;
-      }
-      if (spinner) spinner.classList.remove('active');
-    }).catch(err => {
-      console.log('Playback deferred until user interaction:', err);
-    });
+  activeActKey = 'act1';
+  if (typeof openNetflixBlackPlayer === 'function') {
+    openNetflixBlackPlayer('act1');
   }
 };
 
@@ -206,15 +125,9 @@ function startCinemaStream() {
 }
 window.startCinemaStream = startCinemaStream;
 
-// Chapters Section Scroll Helper
+// Section Switch Helper
 function scrollToChapters() {
   switchPage('home');
-  setTimeout(() => {
-    const sec = document.getElementById('chaptersRow');
-    if (sec) {
-      sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }, 100);
 }
 
 // Global Trilogy Data for Coming Soon Modal
@@ -311,32 +224,7 @@ window.addEventListener('keydown', (e) => {
   }
 });
 
-// Hero Carousel Global Variables & Function
-let currentSlideIdx = 0;
-let carouselInterval = null;
-
-function gotoSlide(idx) {
-  const slides = document.querySelectorAll('.hero-slide');
-  const dots = document.querySelectorAll('.slide-dot');
-  if (!slides.length) return;
-
-  slides.forEach((s, i) => {
-    s.classList.toggle('active', i === idx);
-  });
-
-  dots.forEach((d, i) => {
-    d.classList.toggle('active', i === idx);
-  });
-
-  currentSlideIdx = idx;
-}
-
-function nextSlide() {
-  const slides = document.querySelectorAll('.hero-slide');
-  if (!slides.length) return;
-  const nextIdx = (currentSlideIdx + 1) % slides.length;
-  gotoSlide(nextIdx);
-}
+// Hero Carousel cleaned (replaced by Netflix Billboard)
 
 // DOM Ready Handlers
 document.addEventListener('DOMContentLoaded', () => {
@@ -366,7 +254,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const streamSpinnerVeil = document.getElementById('streamSpinnerVeil');
   const offlineFileModal = document.getElementById('offlineFileModal');
   const localFileInput = document.getElementById('localFileInput');
-  const directPickerInput = document.getElementById('directPickerInput');
   const fileNote = document.getElementById('fileNote');
 
   let controlsHideTimer = null;
@@ -385,14 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
   video.poster = 'movie_cover_hd.jpg';
   video.load();
 
-  // Start Hero Auto Carousel
-  carouselInterval = setInterval(() => {
-    // Only auto-advance if user is viewing Home
-    const homeView = document.getElementById('home-view');
-    if (homeView && homeView.classList.contains('active')) {
-      nextSlide();
-    }
-  }, 7000);
+  // Auto carousel interval removed (Billboard is active)
 
   // Time Formatter
   function formatTime(sec) {
@@ -821,13 +701,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 200);
   }
 
-  localFileInput.addEventListener('change', (e) => {
-    if (e.target.files && e.target.files[0]) handleChosenFile(e.target.files[0]);
-  });
-
-  directPickerInput.addEventListener('change', (e) => {
-    if (e.target.files && e.target.files[0]) handleChosenFile(e.target.files[0]);
-  });
+  if (localFileInput) {
+    localFileInput.addEventListener('change', (e) => {
+      if (e.target.files && e.target.files[0]) handleChosenFile(e.target.files[0]);
+    });
+  }
 
   // Drag and drop into chassis
   videoChassis.addEventListener('dragover', (e) => {
