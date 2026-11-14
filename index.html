@@ -18,7 +18,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png?v=3">
   <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png?v=3">
 
-  <link rel="stylesheet" href="style.css?v=20261114_unified_v10">
+  <link rel="stylesheet" href="style.css?v=20261114_netflix_exact_v1">
 
   <!-- Premium Fonts: Cinzel, Cinzel Decorative, Marcellus, Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -2044,7 +2044,7 @@
     </button>
   </nav>
 
-  <script src="app.js?v=20261114_unified_v10"></script>
+  <script src="app.js?v=20261114_netflix_exact_v1"></script>
 
   <!-- =========================================================================
        STICKY FLOATING MASTER SOUNDTRACK PLAYER
@@ -2148,6 +2148,9 @@
   <!-- =========================================================================
        AUTHENTIC NETFLIX WEB CINEMA ENGINE (FULL BLACK SCREEN PLAYER)
        ========================================================================= -->
+    <!-- =========================================================================
+       NETFLIX AUTHENTIC BLACK SCREEN PLAYER MODAL (1:1 Web Player Clone)
+       ========================================================================= -->
   <div id="netflixBlackPlayerModal" class="netflix-black-modal" aria-hidden="true">
     <!-- Video Element Container -->
     <div class="nbp-video-container" id="nbpVideoContainer">
@@ -2199,118 +2202,112 @@
       <svg id="nbpFlashPause" viewBox="0 0 24 24" width="56" height="56" fill="currentColor" style="display:none;"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
     </div>
 
-    <!-- Top Navigation Header Overlay -->
+    <!-- Top Navigation Header Overlay (Netflix 1:1: back arrow left, flag right) -->
     <div class="nbp-top-header" id="nbpTopHeader">
-      <div class="nbp-top-left">
-        <button class="nbp-back-circle-btn" onclick="closeNetflixBlackPlayer()" title="Back to Browse (Esc)">
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="19" y1="12" x2="5" y2="12"></line>
-            <polyline points="12 19 5 12 12 5"></polyline>
-          </svg>
-        </button>
-
-        <div class="nbp-title-cluster">
-          <div class="nbp-brand-tag">
-            <span class="nbp-brand-s">S</span>
-            <span class="nbp-brand-film">FILM</span>
-          </div>
-          <h1 class="nbp-movie-title">RAMAYANA: PART ONE (THE AWAKENING)</h1>
-        </div>
-      </div>
+      <button class="nbp-back-circle-btn" onclick="closeNetflixBlackPlayer()" title="Back to Browse (Esc)">
+        <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+      </button>
 
       <div class="nbp-top-right">
-        <button class="nbp-close-x-btn" onclick="closeNetflixBlackPlayer()" title="Close Player (Esc)">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
+        <button class="nbp-flag-btn" title="Report a problem" onclick="alert('Thank you for your feedback! Stream quality is verified.')">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
+            <line x1="4" y1="22" x2="4" y2="15"></line>
           </svg>
         </button>
       </div>
     </div>
 
-    <!-- Bottom Controls Overlay -->
+    <!-- Bottom Controls Overlay (Netflix 1:1 Layout) -->
     <div class="nbp-controls-bar" id="nbpControlsBar">
-      <!-- Full-Width Scrubber Track with Floating Scene Tooltip -->
-      <div class="nbp-scrubber-wrapper" id="nbpScrubberWrap">
-        <div class="nbp-progress-rail" id="nbpProgressRail">
-          <div class="nbp-buffer-fill" id="nbpBufferFill"></div>
-          <div class="nbp-progress-fill" id="nbpProgressFill"></div>
-          <div class="nbp-scrubber-thumb" id="nbpScrubberThumb"></div>
+      <!-- Full-Width Scrubber Track with Floating Scene Tooltip & Time at right -->
+      <div class="nbp-scrubber-row">
+        <div class="nbp-scrubber-wrapper" id="nbpScrubberWrap">
+          <div class="nbp-progress-rail" id="nbpProgressRail">
+            <div class="nbp-buffer-fill" id="nbpBufferFill"></div>
+            <div class="nbp-progress-fill" id="nbpProgressFill"></div>
+            <div class="nbp-scrubber-thumb" id="nbpScrubberThumb"></div>
+          </div>
+
+          <!-- Floating Scrubber Tooltip with Scene Preview -->
+          <div class="nbp-scrubber-tooltip" id="nbpScrubberTooltip">
+            <div class="nbp-tooltip-thumb" id="nbpTooltipThumb">
+              <img src="feature_banner_hd.jpg" alt="Scene Preview" id="nbpTooltipImg">
+            </div>
+            <span class="nbp-tooltip-time" id="nbpTooltipTime">00:00:00</span>
+          </div>
         </div>
 
-        <!-- Floating Scrubber Tooltip with Scene Preview -->
-        <div class="nbp-scrubber-tooltip" id="nbpScrubberTooltip">
-          <div class="nbp-tooltip-thumb" id="nbpTooltipThumb">
-            <img src="feature_banner_hd.jpg" alt="Scene Preview" id="nbpTooltipImg">
-          </div>
-          <span class="nbp-tooltip-time" id="nbpTooltipTime">00:00:00</span>
-        </div>
+        <!-- Remaining Time Display at end of scrubber rail -->
+        <span class="nbp-time-remaining" id="nbpTimeRemaining" onclick="toggleNbpTimeFormat()" title="Click to toggle remaining / elapsed time">03:00:23</span>
       </div>
 
-      <!-- Controls Action Row -->
+      <!-- Controls Action Row (Left: Play/Rew/Fwd/Vol | Center: Movie Title | Right: Subs/Speed/Fullscreen) -->
       <div class="nbp-controls-row">
         <!-- Left Controls -->
         <div class="nbp-ctrl-left">
           <!-- Play / Pause -->
           <button class="nbp-ctrl-btn" id="nbpBtnPlay" onclick="toggleNbpPlayPause()" title="Play/Pause (Space)">
-            <svg id="nbpPlayIcon" viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+            <svg id="nbpPlayIcon" viewBox="0 0 24 24" width="30" height="30" fill="#ffffff">
               <polygon points="5 3 19 12 5 21 5 3"></polygon>
             </svg>
-            <svg id="nbpPauseIcon" viewBox="0 0 24 24" width="28" height="28" fill="currentColor" style="display:none;">
-              <rect x="6" y="4" width="4" height="16"></rect>
-              <rect x="14" y="4" width="4" height="16"></rect>
+            <svg id="nbpPauseIcon" viewBox="0 0 24 24" width="30" height="30" fill="#ffffff" style="display:none;">
+              <rect x="5" y="3" width="4.5" height="18" rx="1"></rect>
+              <rect x="14.5" y="3" width="4.5" height="18" rx="1"></rect>
             </svg>
           </button>
 
-          <!-- Rewind 10s -->
+          <!-- Rewind 10s (Netflix Circular Arrow) -->
           <button class="nbp-ctrl-btn" onclick="nbpSeekRelative(-10)" title="Rewind 10 seconds (Left Arrow)">
-            <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor">
-              <path d="M12.5 8c-2.65 0-5.05.99-6.9 2.6L2 7v9h9l-3.62-3.62c1.39-1.2 3.16-1.93 5.12-1.93 4.41 0 8 3.59 8 8s-3.59 8-8 8c-3.73 0-6.84-2.55-7.73-6h-2.08c.93 4.56 4.96 8 9.81 8 5.52 0 10-4.48 10-10s-4.48-10-10-10z"/>
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none">
+              <path d="M12.5 4.5 A 7.5 7.5 0 1 0 20 12" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
+              <polyline points="13 1.5 9 4.5 13 7.5" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="12" y="15.2" text-anchor="middle" font-size="7.5" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" fill="#ffffff">10</text>
             </svg>
-            <span class="nbp-skip-num">10</span>
           </button>
 
-          <!-- Forward 10s -->
+          <!-- Forward 10s (Netflix Circular Arrow) -->
           <button class="nbp-ctrl-btn" onclick="nbpSeekRelative(10)" title="Forward 10 seconds (Right Arrow)">
-            <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor">
-              <path d="M11.5 8c2.65 0 5.05.99 6.9 2.6L22 7v9h-9l3.62-3.62c-1.39-1.2-3.16-1.93-5.12-1.93-4.41 0-8 3.59-8 8s3.59 8 8 8c3.73 0 6.84-2.55 7.73-6h2.08c-.93 4.56-4.96 8-9.81 8-5.52 0-10-4.48-10-10s4.48-10 10-10z"/>
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none">
+              <path d="M11.5 4.5 A 7.5 7.5 0 1 1 4 12" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
+              <polyline points="11 1.5 15 4.5 11 7.5" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="12" y="15.2" text-anchor="middle" font-size="7.5" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" fill="#ffffff">10</text>
             </svg>
-            <span class="nbp-skip-num">10</span>
           </button>
 
           <!-- Volume Hover Capsule -->
           <div class="nbp-volume-group" id="nbpVolumeGroup">
             <button class="nbp-ctrl-btn" id="nbpBtnVolume" onclick="toggleNbpMute()" title="Mute/Unmute (M)">
-              <svg id="nbpVolHigh" viewBox="0 0 24 24" width="26" height="26" fill="currentColor">
-                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+              <svg id="nbpVolHigh" viewBox="0 0 24 24" width="28" height="28" fill="#ffffff">
+                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
               </svg>
-              <svg id="nbpVolMute" viewBox="0 0 24 24" width="26" height="26" fill="currentColor" style="display:none;">
-                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-                <line x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="2.5"></line>
-                <line x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="2.5"></line>
+              <svg id="nbpVolMute" viewBox="0 0 24 24" width="28" height="28" fill="#ffffff" style="display:none;">
+                <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
               </svg>
             </button>
             <div class="nbp-volume-slider-wrap">
               <input type="range" class="nbp-volume-slider" id="nbpVolumeSlider" min="0" max="1" step="0.05" value="1" title="Volume">
             </div>
           </div>
+        </div>
 
-          <!-- Time Display (Click to toggle Remaining vs Elapsed) -->
-          <div class="nbp-time-display" onclick="toggleNbpTimeFormat()" title="Click to toggle remaining time">
-            <span id="nbpCurrentTime">00:00:00</span>
-            <span class="nbp-time-divider">/</span>
-            <span id="nbpDurationTime">01:30:07</span>
-          </div>
+        <!-- Center Movie Title (Netflix Style) -->
+        <div class="nbp-ctrl-center">
+          <span class="nbp-center-title" id="nbpCenterTitle">Ramayana: Part One</span>
         </div>
 
         <!-- Right Controls -->
         <div class="nbp-ctrl-right">
-          <!-- Audio & Subtitles Popover Toggle -->
+          <!-- Audio & Subtitles Popover Toggle (Dialog Bubble with text lines) -->
           <div class="nbp-popover-anchor">
             <button class="nbp-ctrl-btn" id="nbpBtnAudioSubs" onclick="toggleNbpAudioPopover()" title="Audio &amp; Subtitles">
-              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                <line x1="7" y1="8" x2="17" y2="8"></line>
+                <line x1="7" y1="12" x2="13" y2="12"></line>
               </svg>
             </button>
 
@@ -2346,9 +2343,16 @@
             </div>
           </div>
 
-          <!-- Playback Speed Popover Toggle -->
+          <!-- Playback Speed Popover Toggle (Speedometer Gauge Icon) -->
           <div class="nbp-popover-anchor">
-            <button class="nbp-ctrl-btn text-badge-btn" id="nbpBtnSpeed" onclick="toggleNbpSpeedPopover()" title="Playback Speed">1x</button>
+            <button class="nbp-ctrl-btn" id="nbpBtnSpeed" onclick="toggleNbpSpeedPopover()" title="Playback Speed">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9.5"></circle>
+                <path d="M12 12l4.2-4.2"></path>
+                <circle cx="12" cy="12" r="1.5" fill="#ffffff"></circle>
+                <path d="M5.5 12h2M16.5 12h2M12 5.5v2"></path>
+              </svg>
+            </button>
 
             <!-- Speed Menu -->
             <div class="nbp-speed-popover" id="nbpSpeedPopover">
@@ -2362,21 +2366,13 @@
             </div>
           </div>
 
-          <!-- Picture in Picture -->
-          <button class="nbp-ctrl-btn" onclick="toggleNbpPiP()" title="Picture in Picture">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="2" y="3" width="20" height="14" rx="2"></rect>
-              <rect x="12" y="9" width="8" height="6" rx="1" fill="currentColor"></rect>
-            </svg>
-          </button>
-
-          <!-- Fullscreen Toggle -->
+          <!-- Fullscreen Toggle (4 Corner Brackets) -->
           <button class="nbp-ctrl-btn" id="nbpBtnFullscreen" onclick="toggleNbpFullscreen()" title="Fullscreen (F)">
-            <svg id="nbpFsEnter" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+            <svg id="nbpFsEnter" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 8V4h4M20 8V4h-4M4 16v4h4M20 16v4h-4"></path>
             </svg>
-            <svg id="nbpFsExit" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
-              <path d="M4 14h6m0 0v6m0-6L3 21m17-7h-6m0 0v6m0-6l7 7M4 10h6m0 0V4m0 6L3 3m17 7h-6m0 0V4m0 6l7-7"></path>
+            <svg id="nbpFsExit" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+              <path d="M8 4v4H4M16 4v4h4M8 20v-4H4M16 20v-4h4"></path>
             </svg>
           </button>
         </div>

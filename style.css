@@ -6611,153 +6611,76 @@ video {
 }
 
 /* Top Header Bar */
+/* Top Header: Netflix 1:1 Clean Arrow + Flag */
 .nbp-top-header {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 10;
+  z-index: 12;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 28px 48px;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.5) 60%, transparent 100%);
+  padding: 24px 36px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 60%, transparent 100%);
+  pointer-events: auto;
   transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
-.nbp-top-left {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
 .nbp-back-circle-btn {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #fff;
+  background: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  backdrop-filter: blur(14px);
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 50%;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
 }
 
 .nbp-back-circle-btn:hover {
-  background: #ffffff;
-  color: #000000;
-  transform: scale(1.08);
-}
-
-.nbp-title-cluster {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.nbp-brand-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 3px;
-  font-family: 'Cinzel', serif;
-  font-weight: 900;
-}
-
-.nbp-brand-s {
-  color: #ff2a44;
-  font-size: 18px;
-  text-shadow: 0 0 10px rgba(255, 42, 68, 0.6);
-}
-
-.nbp-brand-film {
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 10px;
-  letter-spacing: 2px;
-}
-
-.nbp-movie-title {
-  font-family: 'Cinzel', serif;
-  font-size: 22px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  color: #fff;
-  margin: 0;
-}
-
-.nbp-title-divider {
-  color: rgba(255, 255, 255, 0.4);
-}
-
-.nbp-act-title {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  color: #ffb703;
+  transform: scale(1.15);
+  opacity: 0.85;
 }
 
 .nbp-top-right {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
 }
 
-.nbp-badge-capsules {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.nbp-badge-box {
-  padding: 3px 8px;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  border-radius: 4px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 11px;
-  font-weight: 800;
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.nbp-badge-box.gold {
-  border-color: rgba(255, 183, 3, 0.6);
-  color: #ffb703;
-}
-
-.nbp-close-x-btn {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #fff;
+.nbp-flag-btn {
+  background: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s;
+  border-radius: 50%;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
 }
 
-.nbp-close-x-btn:hover {
-  background: rgba(255, 42, 68, 0.3);
-  border-color: #ff2a44;
-  color: #fff;
-  transform: rotate(90deg);
+.nbp-flag-btn:hover {
+  transform: scale(1.15);
+  opacity: 0.85;
 }
 
-/* Bottom Controls Bar */
+/* Bottom Controls Bar: Netflix 1:1 Layout */
 .nbp-controls-bar {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 10;
-  padding: 0 48px 32px;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.6) 60%, transparent 100%);
+  z-index: 12;
+  padding: 0 40px 24px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.5) 60%, transparent 100%);
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
   transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
@@ -6777,11 +6700,18 @@ video {
   cursor: none;
 }
 
-/* Scrubber Rail */
+/* Scrubber Row: Scrubber Rail with Time at right */
+.nbp-scrubber-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+}
+
 .nbp-scrubber-wrapper {
   position: relative;
-  width: 100%;
-  height: 24px;
+  flex: 1;
+  height: 22px;
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -6791,13 +6721,13 @@ video {
   position: relative;
   width: 100%;
   height: 4px;
-  background: rgba(255, 255, 255, 0.25);
-  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.28);
+  border-radius: 4px;
   transition: height 0.15s ease;
 }
 
 .nbp-scrubber-wrapper:hover .nbp-progress-rail {
-  height: 8px;
+  height: 6px;
 }
 
 .nbp-buffer-fill {
@@ -6807,7 +6737,7 @@ video {
   height: 100%;
   width: 0%;
   background: rgba(255, 255, 255, 0.45);
-  border-radius: 999px;
+  border-radius: 4px;
 }
 
 .nbp-progress-fill {
@@ -6817,25 +6747,25 @@ video {
   height: 100%;
   width: 0%;
   background: #E50914;
-  border-radius: 999px;
+  border-radius: 4px;
 }
 
 .nbp-scrubber-thumb {
   position: absolute;
   top: 50%;
   left: 0%;
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
   background: #E50914;
-  transform: translate(-50%, -50%) scale(0);
-  box-shadow: 0 0 10px rgba(229, 9, 20, 0.8);
-  transition: transform 0.15s ease;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.85);
+  transition: transform 0.12s ease;
   pointer-events: none;
 }
 
 .nbp-scrubber-wrapper:hover .nbp-scrubber-thumb {
-  transform: translate(-50%, -50%) scale(1);
+  transform: translate(-50%, -50%) scale(1.25);
 }
 
 /* Floating Thumbnail Tooltip */
@@ -6851,13 +6781,11 @@ video {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.9);
   pointer-events: none;
   opacity: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: opacity 0.15s;
+  transition: opacity 0.2s ease;
+  z-index: 20;
 }
 
-.nbp-scrubber-wrapper:hover .nbp-scrubber-tooltip {
+.nbp-scrubber-tooltip.show {
   opacity: 1;
 }
 
@@ -6865,7 +6793,6 @@ video {
   width: 160px;
   height: 90px;
   background: #000;
-  overflow: hidden;
 }
 
 .nbp-tooltip-thumb img {
@@ -6875,14 +6802,33 @@ video {
 }
 
 .nbp-tooltip-time {
+  display: block;
   padding: 4px 8px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 12px;
-  font-weight: 800;
-  color: #fff;
-  background: rgba(0, 0, 0, 0.9);
-  width: 100%;
   text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.85);
+}
+
+/* Remaining Time at Right of Scrubber (e.g. 2:14:21) */
+.nbp-time-remaining {
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  user-select: none;
+  cursor: pointer;
+  min-width: 65px;
+  text-align: right;
+  transition: color 0.15s ease;
+}
+
+.nbp-time-remaining:hover {
+  color: #e5e5e5;
 }
 
 /* Controls Action Row */
@@ -6890,64 +6836,55 @@ video {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
 }
 
 .nbp-ctrl-left, .nbp-ctrl-right {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 16px;
+}
+
+/* Center Movie Title (like 'Ikka' in Netflix screenshot) */
+.nbp-ctrl-center {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.nbp-center-title {
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 440px;
 }
 
 .nbp-ctrl-btn {
   background: none;
   border: none;
   color: #ffffff;
-  width: 44px;
-  height: 44px;
+  width: 42px;
+  height: 42px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   border-radius: 50%;
   position: relative;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
 }
 
 .nbp-ctrl-btn:hover {
-  transform: scale(1.18);
-  color: #ff2a44;
-}
-
-.nbp-ctrl-btn.text-icon-btn {
-  width: auto;
-  border-radius: 999px;
-  padding: 6px 14px;
-  gap: 6px;
-  background: rgba(255, 255, 255, 0.1);
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 13px;
-  font-weight: 800;
-}
-
-.nbp-ctrl-btn.text-icon-btn:hover {
-  background: #ff2a44;
-  color: #fff;
-}
-
-.nbp-ctrl-btn.text-badge-btn {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 14px;
-  font-weight: 800;
-}
-
-.nbp-skip-num {
-  position: absolute;
-  font-size: 9px;
-  font-weight: 900;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -46%);
-  pointer-events: none;
+  transform: scale(1.15);
+  opacity: 0.9;
 }
 
 /* Volume Expanding Capsule */
@@ -6972,189 +6909,27 @@ video {
 .nbp-volume-slider {
   width: 75px;
   height: 4px;
-  accent-color: #E50914;
-  cursor: pointer;
-}
-
-/* Time Display */
-.nbp-time-display {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.85);
-  letter-spacing: 0.5px;
+  -webkit-appearance: none;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 2px;
+  outline: none;
   margin-left: 6px;
+}
+
+.nbp-volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fff;
   cursor: pointer;
-  padding: 4px 8px;
-  border-radius: 4px;
-  transition: background 0.2s;
 }
 
-.nbp-time-display:hover {
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.nbp-time-divider {
-  color: rgba(255, 255, 255, 0.4);
-}
-
-/* Popover Anchors & Modals */
+/* Popover Anchors */
 .nbp-popover-anchor {
   position: relative;
 }
 
-/* Acts Drawer (Netflix Slide-Up) */
-.nbp-acts-drawer {
-  display: none;
-  position: absolute;
-  bottom: calc(100% + 16px);
-  right: -80px;
-  width: 440px;
-  max-height: 460px;
-  background: rgba(20, 20, 20, 0.96);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.95);
-  padding: 20px;
-  z-index: 100;
-  backdrop-filter: blur(20px);
-  animation: nbpFadeUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.nbp-acts-drawer.show {
-  display: block;
-}
-
-.nbp-drawer-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 16px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-bottom: 10px;
-}
-
-.nbp-drawer-header h3 {
-  font-family: 'Cinzel', serif;
-  font-size: 16px;
-  color: #fff;
-  margin: 0;
-}
-
-.nbp-drawer-close {
-  background: none;
-  border: none;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 22px;
-  cursor: pointer;
-}
-
-.nbp-acts-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.nbp-act-card {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 10px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.nbp-act-card:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.4);
-  transform: translateX(4px);
-}
-
-.nbp-act-card.active {
-  background: rgba(229, 9, 20, 0.2);
-  border-color: #E50914;
-}
-
-.nbp-act-thumb-wrap {
-  position: relative;
-  width: 120px;
-  height: 68px;
-  border-radius: 4px;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-.nbp-act-thumb-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.nbp-act-play-badge {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-
-.nbp-act-card:hover .nbp-act-play-badge,
-.nbp-act-card.active .nbp-act-play-badge {
-  opacity: 1;
-}
-
-.nbp-act-details {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  flex: 1;
-}
-
-.nbp-act-row1 {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 11px;
-  font-weight: 800;
-}
-
-.nbp-act-num {
-  color: #ff2a44;
-}
-
-.nbp-act-dur {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.nbp-act-name {
-  font-family: 'Cinzel', serif;
-  font-size: 13px;
-  color: #fff;
-  margin: 0;
-  line-height: 1.2;
-}
-
-.nbp-act-desc {
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.65);
-  margin: 0;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-/* Audio & Subtitles Popover */
 .nbp-audio-popover {
   display: none;
   position: absolute;

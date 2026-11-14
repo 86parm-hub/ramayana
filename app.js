@@ -1848,10 +1848,8 @@ function setNbpSubtitle(subKey) {
 
 function setNbpSpeed(speed, optEl) {
   const video = document.getElementById('nbpVideo');
-  const btn = document.getElementById('nbpBtnSpeed');
   if (!video) return;
   video.playbackRate = speed;
-  if (btn) btn.textContent = speed + 'x';
 
   document.querySelectorAll('.nbp-speed-opt').forEach(el => el.classList.remove('active'));
   if (optEl) optEl.classList.add('active');
@@ -1860,6 +1858,17 @@ function setNbpSpeed(speed, optEl) {
 
 function toggleNbpTimeFormat() {
   nbpShowRemaining = !nbpShowRemaining;
+  const curGlobal = getCurrentGlobalTime();
+  const durGlobal = NBP_TOTAL_DUR;
+  const timeRemaining = document.getElementById('nbpTimeRemaining');
+  if (timeRemaining) {
+    if (nbpShowRemaining) {
+      const rem = Math.max(0, durGlobal - curGlobal);
+      timeRemaining.textContent = formatNbpTime(rem);
+    } else {
+      timeRemaining.textContent = formatNbpTime(curGlobal);
+    }
+  }
 }
 
 function toggleNbpPiP() {
@@ -1945,7 +1954,10 @@ function formatNbpTime(sec) {
   const h = Math.floor(sec / 3600);
   const m = Math.floor((sec % 3600) / 60);
   const s = sec % 60;
-  return `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+  if (h > 0) {
+    return `${h}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+  }
+  return `${m}:${s.toString().padStart(2, '0')}`;
 }
 
 // Scrubber & Event Wiring
@@ -1995,15 +2007,18 @@ document.addEventListener('DOMContentLoaded', () => {
     if (progFill) progFill.style.width = pct + '%';
     if (thumb) thumb.style.left = pct + '%';
     
-    if (txtCurrent && txtDuration) {
+    const timeRemaining = document.getElementById('nbpTimeRemaining');
+    if (timeRemaining) {
       if (nbpShowRemaining) {
         const rem = Math.max(0, durGlobal - curGlobal);
-        txtCurrent.textContent = formatNbpTime(curGlobal);
-        txtDuration.textContent = '-' + formatNbpTime(rem);
+        timeRemaining.textContent = formatNbpTime(rem);
       } else {
-        txtCurrent.textContent = formatNbpTime(curGlobal);
-        txtDuration.textContent = formatNbpTime(durGlobal);
+        timeRemaining.textContent = formatNbpTime(curGlobal);
       }
+    }
+    if (txtCurrent && txtDuration) {
+      txtCurrent.textContent = formatNbpTime(curGlobal);
+      txtDuration.textContent = formatNbpTime(durGlobal);
     }
 
     // Buffer calculation
