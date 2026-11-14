@@ -27,13 +27,18 @@ function switchPage(pageKey) {
   });
 
   const activeView = document.getElementById(targetId);
-  const bbVideo = document.getElementById('homeBillboardVideo');
-  if (bbVideo) {
-    if (pageKey === 'home') {
-      if (typeof initHomeBillboard === 'function') initHomeBillboard();
-    } else {
-      if (!bbVideo.paused) bbVideo.pause();
-    }
+  const homeBbVideo = document.getElementById('homeBillboardVideo');
+  const moviesBbVideo = document.getElementById('moviesBillboardVideo');
+
+  if (pageKey === 'home') {
+    if (typeof initHomeBillboard === 'function') initHomeBillboard();
+    if (moviesBbVideo && !moviesBbVideo.paused) moviesBbVideo.pause();
+  } else if (pageKey === 'movies') {
+    if (typeof initMoviesBillboard === 'function') initMoviesBillboard();
+    if (homeBbVideo && !homeBbVideo.paused) homeBbVideo.pause();
+  } else {
+    if (homeBbVideo && !homeBbVideo.paused) homeBbVideo.pause();
+    if (moviesBbVideo && !moviesBbVideo.paused) moviesBbVideo.pause();
   }
   if (activeView) {
     activeView.classList.add('active');
@@ -1456,15 +1461,24 @@ const NBP_CONTINUOUS_SUBS = [
   { start: 5455, end: 5490, en: "At Panchavati, the cosmic clash of Dharma and Adharma takes its initial sparks.", hi: "पंचवटी में धर्म और अधर्म के महायुद्ध की दिव्य चिंगारी सुलगी।" }
 ];
 
+let nbpIsTrailerMode = false;
+
+function playTrailerInNetflixPlayer(startSec) {
+  openNetflixBlackPlayer(typeof startSec === 'number' ? startSec : 'trailer');
+}
+window.playTrailerInNetflixPlayer = playTrailerInNetflixPlayer;
+
 function openNetflixBlackPlayer(targetTime) {
   const modal = document.getElementById('netflixBlackPlayerModal');
   const video = document.getElementById('nbpVideo');
   const spinner = document.getElementById('nbpSpinner');
 
-  // Pause billboard video, trailer and OST
+  // Pause billboard videos, trailer and OST
   const bbVideo = document.getElementById('homeBillboardVideo');
   if (bbVideo && !bbVideo.paused) bbVideo.pause();
-  // Pause trailer and OST
+  const moviesBbVideo = document.getElementById('moviesBillboardVideo');
+  if (moviesBbVideo && !moviesBbVideo.paused) moviesBbVideo.pause();
+
   const trailerVideo = document.getElementById('trailerVideo');
   if (trailerVideo && !trailerVideo.paused) trailerVideo.pause();
   if (typeof ostAudio !== 'undefined' && !ostAudio.paused) ostAudio.pause();
@@ -1480,12 +1494,49 @@ function openNetflixBlackPlayer(targetTime) {
 
   closeAllNbpPopovers();
 
-  // If specific target time given or starting fresh
-  const startSec = (typeof targetTime === 'number') ? targetTime : 0;
-  loadAndPlayContinuous(startSec);
+  // Handle trailer mode
+  if (targetTime === 'trailer' || (typeof targetTime === 'number' && nbpIsTrailerMode)) {
+    nbpIsTrailerMode = true;
+    const offset = (typeof targetTime === 'number') ? targetTime : 0;
+    loadAndPlayTrailerInNbp(offset);
+  } else {
+    nbpIsTrailerMode = false;
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = 'Ramayana: Part One';
+    const startSec = (typeof targetTime === 'number') ? targetTime : 0;
+    loadAndPlayContinuous(startSec);
+  }
 
   startSubtitleEngine();
   resetNbpIdleTimer();
+}
+
+function loadAndPlayTrailerInNbp(startOffset) {
+  const video = document.getElementById('nbpVideo');
+  const spinner = document.getElementById('nbpSpinner');
+  const titleDisplay = document.getElementById('nbpCenterTitle');
+  if (titleDisplay) {
+    titleDisplay.textContent = 'Ramayana: Part One • Official Theatrical Trailer (Full HD)';
+  }
+  if (!video) return;
+
+  const trailerUrl = 'move_trailer_hd.mp4';
+  if (video.getAttribute('data-loaded-src') !== trailerUrl) {
+    video.src = trailerUrl;
+    video.setAttribute('data-loaded-src', trailerUrl);
+    video.load();
+  }
+
+  if (spinner) spinner.classList.add('active');
+  if (startOffset > 0) video.currentTime = startOffset;
+
+  video.play().then(() => {
+    if (spinner) spinner.classList.remove('active');
+    updateNbpPlayButton(true);
+  }).catch(e => {
+    if (spinner) spinner.classList.remove('active');
+    updateNbpPlayButton(false);
+  });
 }
 
 function loadAndPlayContinuous(globalSec) {
@@ -1556,6 +1607,12 @@ function closeNetflixBlackPlayer() {
   document.body.style.overflow = '';
   closeAllNbpPopovers();
   stopSubtitleEngine();
+
+  if (nbpIsTrailerMode) {
+    nbpIsTrailerMode = false;
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = 'Ramayana: Part One';
+  }
 
   if (document.fullscreenElement) {
     document.exitFullscreen().catch(e => {});
@@ -1663,10 +1720,21 @@ function flashNbpIcon(type) {
 function getCurrentGlobalTime() {
   const video = document.getElementById('nbpVideo');
   if (!video) return 0;
+  if (nbpIsTrailerMode) {
+    return video.currentTime || 0;
+  }
   return (nbpCurrentAct === 1) ? video.currentTime : (NBP_ACT1_DUR + video.currentTime);
 }
 
 function nbpSeekRelative(seconds) {
+  const video = document.getElementById('nbpVideo');
+  if (nbpIsTrailerMode && video) {
+    const cur = video.currentTime || 0;
+    const maxDur = video.duration || 241;
+    video.currentTime = Math.max(0, Math.min(maxDur, cur + seconds));
+    resetNbpIdleTimer();
+    return;
+  }
   const curGlobal = getCurrentGlobalTime();
   const target = Math.max(0, Math.min(NBP_TOTAL_DUR, curGlobal + seconds));
   seekGlobal(target);
@@ -1677,6 +1745,13 @@ function seekGlobal(targetSec) {
   const video = document.getElementById('nbpVideo');
   const spinner = document.getElementById('nbpSpinner');
   if (!video) return;
+
+  if (nbpIsTrailerMode) {
+    const maxDur = video.duration || 241;
+    video.currentTime = Math.max(0, Math.min(maxDur, targetSec));
+    resetNbpIdleTimer();
+    return;
+  }
 
   if (spinner) spinner.classList.add('active');
 
@@ -1951,7 +2026,7 @@ document.addEventListener('DOMContentLoaded', () => {
   video.addEventListener('timeupdate', () => {
     if (nbpIsSeeking) return;
     const curGlobal = getCurrentGlobalTime();
-    const durGlobal = NBP_TOTAL_DUR;
+    const durGlobal = nbpIsTrailerMode ? (video.duration || 241) : NBP_TOTAL_DUR;
     const pct = (curGlobal / durGlobal) * 100;
     if (progFill) progFill.style.width = pct + '%';
     if (thumb) thumb.style.left = pct + '%';
@@ -2286,6 +2361,71 @@ function closeMovieDetailsModal() {
 
 window.initHomeBillboard = initHomeBillboard;
 window.toggleBillboardAudio = toggleBillboardAudio;
+
+// ============================================================================
+// MOVIES PAGE BILLBOARD (Identical to Home Billboard)
+// ============================================================================
+function initMoviesBillboard() {
+  const billboard = document.getElementById('moviesHeroBillboard');
+  const video = document.getElementById('moviesBillboardVideo');
+  const videoWrap = document.getElementById('moviesBillboardVideoWrap');
+
+  if (!billboard || !video || !videoWrap) return;
+
+  function playMoviesBillboardPreview() {
+    video.muted = true;
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.then(() => {
+        videoWrap.classList.add('playing');
+      }).catch(err => {
+        console.log('Movies billboard preview waiting for interaction:', err);
+      });
+    }
+  }
+
+  function pauseMoviesBillboardPreview() {
+    videoWrap.classList.remove('playing');
+    if (!video.paused) {
+      video.pause();
+    }
+  }
+
+  billboard.addEventListener('mouseenter', () => {
+    playMoviesBillboardPreview();
+  });
+
+  billboard.addEventListener('mouseleave', () => {
+    pauseMoviesBillboardPreview();
+  });
+}
+window.initMoviesBillboard = initMoviesBillboard;
+
+function toggleMoviesBillboardAudio(event) {
+  if (event) event.stopPropagation();
+  const video = document.getElementById('moviesBillboardVideo');
+  const muteIcon = document.getElementById('moviesBBAudioMute');
+  const unmuteIcon = document.getElementById('moviesBBAudioUnmute');
+  const videoWrap = document.getElementById('moviesBillboardVideoWrap');
+
+  if (!video) return;
+
+  if (video.paused) {
+    video.play();
+    if (videoWrap) videoWrap.classList.add('playing');
+  }
+
+  video.muted = !video.muted;
+  if (video.muted) {
+    if (muteIcon) muteIcon.style.display = 'block';
+    if (unmuteIcon) unmuteIcon.style.display = 'none';
+  } else {
+    if (muteIcon) muteIcon.style.display = 'none';
+    if (unmuteIcon) unmuteIcon.style.display = 'block';
+  }
+}
+window.toggleMoviesBillboardAudio = toggleMoviesBillboardAudio;
+
 window.scrollNetflixRow = scrollNetflixRow;
 window.toggleMyList = toggleMyList;
 window.openMovieDetailsModal = openMovieDetailsModal;
