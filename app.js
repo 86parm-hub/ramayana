@@ -7,6 +7,7 @@
 function switchPage(pageKey) {
   const pageMap = {
     'home': 'home-view',
+    'movies': 'movies-view',
     'trailer': 'trailer-view',
     'watch': 'watch-view',
     'gallery': 'gallery-view'
@@ -1476,3 +1477,55 @@ window.seekOSTScrubber = seekOSTScrubber;
 window.closeFloatingPlayer = closeFloatingPlayer;
 window.scrollToActiveTrack = scrollToActiveTrack;
 
+
+
+/* ==========================================================================
+   SANDFLIX MOVIES CATALOG LOGIC & PLAY INTEGRATION
+   ========================================================================== */
+
+function playMovieInCinema(actKey) {
+  // Pause trailer and audio if playing
+  const trailerVideo = document.getElementById('trailerVideo');
+  if (trailerVideo && !trailerVideo.paused) trailerVideo.pause();
+  if (typeof ostAudio !== 'undefined' && !ostAudio.paused) ostAudio.pause();
+
+  // Switch to Cinema Theater
+  switchPage('watch');
+
+  // If specific act selected, trigger switchAct
+  if (typeof window.switchAct === 'function' && actKey) {
+    window.switchAct(actKey);
+  }
+
+  // Start Cinema Stream
+  setTimeout(() => {
+    if (typeof window.startCinemaStream === 'function') {
+      window.startCinemaStream();
+    }
+    const stage = document.getElementById('cinemaStage') || document.getElementById('videoPlayer');
+    if (stage) {
+      stage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }, 120);
+}
+
+function filterMoviesCatalog(category, buttonEl) {
+  // Update active pill button
+  const pills = document.querySelectorAll('.movies-filter-bar .filter-pill');
+  pills.forEach(p => p.classList.remove('active'));
+  if (buttonEl) buttonEl.classList.add('active');
+
+  const cards = document.querySelectorAll('.movies-grid .movie-banner-card');
+  cards.forEach(card => {
+    const cardCats = (card.getAttribute('data-category') || '').split(' ');
+    if (category === 'all' || cardCats.includes(category)) {
+      card.style.display = 'flex';
+      card.style.animation = 'fadeInUp 0.3s ease';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+window.playMovieInCinema = playMovieInCinema;
+window.filterMoviesCatalog = filterMoviesCatalog;
