@@ -5075,3 +5075,87 @@ video {
   }
 }
 
+
+
+/* ==========================================================================
+   SANDFLIX OFFICIAL BRAND STYLING (Netflix Style Left Brand Alignment)
+   ========================================================================== */
+.brand-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.25s ease;
+}
+
+.brand-container:hover {
+  transform: scale(1.03);
+}
+
+.brand-logo-wrap {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 0 12px rgba(255, 42, 68, 0.45));
+  transition: transform 0.35s cubic-bezier(0.2, 0.9, 0.3, 1), filter 0.35s ease;
+  flex-shrink: 0;
+}
+
+.brand-container:hover .brand-logo-wrap {
+  transform: rotate(-4deg) scale(1.1);
+  filter: drop-shadow(0 0 20px rgba(255, 42, 68, 0.8));
+}
+
+.brand-wordmark-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.brand-wordmark-img {
+  height: 34px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.8));
+  transition: filter 0.3s ease;
+}
+
+.brand-container:hover .brand-wordmark-img {
+  filter: drop-shadow(0 0 16px rgba(255, 42, 68, 0.55));
+}
+
+@media (max-width: 1024px) {
+  .brand-wordmark-img {
+    height: 28px;
+  }
+  .brand-logo-wrap {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  .brand-container {
+    gap: 8px;
+  }
+  .brand-logo-wrap {
+    width: 32px;
+    height: 32px;
+  }
+  .brand-wordmark-img {
+    height: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-logo-wrap {
+    width: 28px;
+    height: 28px;
+  }
+  .brand-wordmark-img {
+    height: 20px;
+  }
+}

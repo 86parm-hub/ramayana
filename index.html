@@ -3,16 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>RAMAYANA (2026) | Cinema Max Ultra HD</title>
+  <title>SANDFLIX | Ramayana: Part One (2026) Cinema Max Ultra HD</title>
   
   <!-- Browser Tab Favicon (Official Metallic Insignia) -->
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
-  <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
+  <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=2">
+  <link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png?v=2">
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon-64x64.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=2">
+  <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png?v=2">
+  <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png?v=2">
 
   <link rel="stylesheet" href="style.css">
   
@@ -28,13 +29,12 @@
   <!-- Main Navigation Header (Top Navbar: AI SYNDICAT Logo Intact) -->
   <header class="studio-header" id="studioHeader">
     <div class="header-content">
-      <div class="brand-container" onclick="switchPage('home')">
+      <div class="brand-container" onclick="switchPage('home')" title="SANDFLIX - Watch Online">
         <div class="brand-logo-wrap">
-          <img src="site_logo.png" alt="Ramayana Official Logo" class="brand-logo-img">
+          <img src="sandflix_icon.png" alt="SANDFLIX Icon" class="brand-logo-img">
         </div>
-        <div class="brand-titles">
-          <span class="brand-name">RAMAYANA</span>
-          <span class="brand-edition">CINEMA MAX &bull; ULTRA HD</span>
+        <div class="brand-wordmark-wrap">
+          <img src="sandflix_logo.png" alt="SANDFLIX" class="brand-wordmark-img">
         </div>
       </div>
 
@@ -48,10 +48,10 @@
 
       <!-- Header Right Utilities (Top Navbar Logo Preserved & Clickable to Instagram) -->
       <div class="header-actions">
-        <a href="https://www.instagram.com/ai.syndicat" target="_blank" rel="noopener noreferrer" class="syndicat-header-brand" title="Follow @ai.syndicat on Instagram">
-          <img src="syndicat_emblem_hd.jpg" alt="AI SYNDICAT" class="syndicat-header-emblem">
-          <span>AI SYNDICAT</span>
-        </a>
+        <div class="syndicat-header-brand" title="SANDFLIX ORIGINALS">
+          <img src="sandflix_icon.png" alt="SANDFLIX" class="syndicat-header-emblem">
+          <span>ORIGINALS</span>
+        </div>
 
         <button class="btn-play-header" onclick="startCinemaStream()">
           <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
@@ -280,7 +280,7 @@
     <div class="trailer-header-section">
       <div class="trailer-badge-pill">
         <span class="live-dot-pulse"></span>
-        <span>AI SYNDICAT EXCLUSIVE &bull; OFFICIAL THEATRICAL CUT</span>
+        <span>SANDFLIX EXCLUSIVE &bull; OFFICIAL THEATRICAL CUT</span>
       </div>
       <h1 class="trailer-main-title">
         RAMAYANA: PART 1
@@ -301,18 +301,18 @@
     <div class="trailer-stage">
       <div class="trailer-chassis" id="trailerChassis">
         <!-- Floating Watermark in top-right corner of trailer -->
-        <a href="https://www.instagram.com/ai.syndicat" target="_blank" rel="noopener noreferrer" 
-           class="theater-corner-watermark" id="trailerCornerWatermark" 
-           title="AI SYNDICAT Official - Instagram @ai.syndicat">
+        <div class="theater-corner-watermark" id="theaterCornerWatermark" title="SANDFLIX">
           <div class="watermark-emblem-wrap">
-            <img src="syndicat_emblem_hd.jpg" alt="AI SYNDICAT" class="watermark-emblem-img">
-            <span class="watermark-dot"></span>
+            <img src="sandflix_icon.png" alt="SANDFLIX" class="watermark-emblem-img">
           </div>
           <div class="watermark-text-wrap">
-            <span class="watermark-brand-title">AI SYNDICAT</span>
-            <span class="watermark-sub-tag">OFFICIAL TRAILER</span>
+            <div class="watermark-title-row">
+              <span class="watermark-live-dot"></span>
+              <span class="watermark-brand-name">SANDFLIX</span>
+            </div>
+            <span class="watermark-act-label">1080P HEVC</span>
           </div>
-        </a>
+        </div>
 
         <!-- Video Element -->
         <video id="trailerVideo" class="trailer-video" poster="move_trailer_poster.jpg" playsinline preload="metadata">
@@ -511,28 +511,26 @@
         </video>
 
         <!-- AI SYNDICAT On-Screen Theater Corner Watermark (Right Upper Corner - Always Crystal Clear) -->
-        <a href="https://www.instagram.com/ai.syndicat" target="_blank" rel="noopener noreferrer" 
-           class="theater-corner-watermark" id="theaterCornerWatermark" 
-           title="AI SYNDICAT • Follow @ai.syndicat on Instagram">
+        <div class="theater-corner-watermark" id="theaterCornerWatermark" title="SANDFLIX">
           <div class="watermark-emblem-wrap">
-            <img src="syndicat_emblem_hd.jpg" alt="AI SYNDICAT" class="watermark-emblem-img">
+            <img src="sandflix_icon.png" alt="SANDFLIX" class="watermark-emblem-img">
           </div>
           <div class="watermark-text-wrap">
-            <div class="watermark-top-line">
+            <div class="watermark-title-row">
               <span class="watermark-live-dot"></span>
-              <span class="watermark-brand-name">AI SYNDICAT</span>
+              <span class="watermark-brand-name">SANDFLIX</span>
             </div>
-            <span class="watermark-act-tag" id="watermarkActTag">ACT 1 STREAMING</span>
+            <span class="watermark-act-label">1080P HEVC</span>
           </div>
-        </a>
+        </div>
 
         <!-- AI SYNDICAT Cinematic Outro / Ending Branding Card -->
         <div class="theater-outro-card" id="theaterOutroCard">
           <button class="outro-close-btn" onclick="closeOutroCard()" aria-label="Close dialog">&times;</button>
           <div class="outro-emblem-ring">
-            <img src="syndicat_emblem_hd.jpg" alt="AI SYNDICAT" class="outro-emblem-img">
+            <img src="sandflix_icon.png" alt="SANDFLIX" class="outro-emblem-img">
           </div>
-          <span class="outro-super-tag">AN AI SYNDICAT PRESENTATION</span>
+          <span class="outro-super-tag">A SANDFLIX ORIGINAL PRESENTATION</span>
           <h2 class="outro-title" id="outroTitle">RAMAYANA: PART ONE</h2>
           <p class="outro-subtitle" id="outroSubtitle">Act 1 Complete • Up Next: Act 2 (The Forest Exile &amp; Awakening)</p>
           
@@ -679,10 +677,10 @@
       <div class="theater-acts-showcase-card">
         <div class="acts-showcase-header">
           <div class="acts-header-left">
-            <a href="https://www.instagram.com/ai.syndicat" target="_blank" rel="noopener noreferrer" class="acts-syndicat-badge" title="Follow @ai.syndicat on Instagram">
-              <img src="syndicat_emblem_hd.jpg" alt="AI SYNDICAT" class="acts-badge-emblem">
-              <span>AI SYNDICAT PRESENTATION</span>
-            </a>
+            <div class="acts-syndicat-badge" title="SANDFLIX ORIGINALS">
+              <img src="sandflix_icon.png" alt="SANDFLIX" class="acts-badge-emblem">
+              <span>SANDFLIX ORIGINALS</span>
+            </div>
             <h3 class="acts-showcase-title">Ramayana Part 1: Both Acts (Complete 3-Hour Cut)</h3>
             <p class="acts-showcase-desc">Neeche diye gaye dono Acts me se kisi par bhi click karke direct 1080P HEVC Ultra HD stream shuru kijiye:</p>
           </div>
@@ -708,7 +706,7 @@
                 <div class="act-meta-row">
                   <span class="act-num-tag">ACT ONE</span>
                   <span class="act-runtime-pill">⏱ 01:30:07</span>
-                  <span class="act-studio-tag">AI SYNDICAT</span>
+                  <span class="act-studio-tag">SANDFLIX</span>
                 </div>
                 <h4 class="act-name">The Divine Beginning &amp; Shiva Dhanush</h4>
                 <p class="act-synopsis">Lord Rama's cosmic birth in Ayodhya, guru Vishwamitra's sacred yajna protection, and the breaking of Pinaka in Mithila.</p>
@@ -736,7 +734,7 @@
                 <div class="act-meta-row">
                   <span class="act-num-tag">ACT TWO</span>
                   <span class="act-runtime-pill">⏱ 01:30:16</span>
-                  <span class="act-studio-tag">AI SYNDICAT</span>
+                  <span class="act-studio-tag">SANDFLIX</span>
                 </div>
                 <h4 class="act-name">Forest Exile &amp; Divine Awakening</h4>
                 <p class="act-synopsis">The 14-year vanvas vow, sacred Dandakaranya meditation, Panchavati journey, and the awakening of the supreme battle.</p>
@@ -751,15 +749,9 @@
 
         <div class="acts-showcase-footer">
           <div class="footer-syndicat-verify">
-            <img src="syndicat_emblem_hd.jpg" alt="AI SYNDICAT" class="verify-emblem">
-            <span>Official 24/7 Zero-Buffer Cloud CDN Stream presented by <strong>AI SYNDICAT</strong></span>
+            <img src="sandflix_icon.png" alt="SANDFLIX" class="verify-emblem">
+            <span>Official 24/7 Zero-Buffer Cloud CDN Stream presented by <strong>SANDFLIX</strong></span>
           </div>
-          <a href="https://www.instagram.com/ai.syndicat" target="_blank" rel="noopener noreferrer" class="btn-verify-insta">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-            </svg>
-            <span>Follow @ai.syndicat</span>
-          </a>
         </div>
       </div>
     </div>
@@ -835,7 +827,7 @@
           <div class="ost-vinyl-disc" id="ostVinylDisc">
             <div class="ost-vinyl-grooves"></div>
             <div class="ost-vinyl-label">
-              <img src="syndicat_emblem_hd.jpg" alt="Vinyl Core Logo">
+              <img src="sandflix_icon.png" alt="SANDFLIX Vinyl Core">
             </div>
           </div>
           <div class="ost-cover-card">
