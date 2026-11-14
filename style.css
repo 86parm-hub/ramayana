@@ -4652,12 +4652,6 @@ body.ott-platform {
 /* ==========================================================================
    SANDFLIX MOVIES CATALOG VIEW STYLING
    ========================================================================== */
-#movies-view {
-  padding: 30px 24px 90px;
-  max-width: 1440px;
-  margin: 0 auto;
-}
-
 .movies-badge-pill {
   display: inline-flex;
   align-items: center;
@@ -5351,24 +5345,35 @@ body.ott-platform {
    NETFLIX BROWSE MOVIES HUB (GENRE 34399 REPLICA)
    ========================================================================== */
 #movies-view {
-  padding: 0 0 100px 0;
+  padding-top: 76px !important;
+  padding-bottom: 100px !important;
   max-width: 100%;
   overflow-x: hidden;
   background: #141414;
 }
 
-/* Sub-Header / Genre Filter Bar (Sticky Netflix Style) */
+@media (max-width: 1024px) {
+  #movies-view {
+    padding-top: 68px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  #movies-view {
+    padding-top: 58px !important;
+  }
+}
+
+/* Sub-Header / Genre Filter Bar (Clean Flow Above Billboard - No Overlap) */
 .netflix-genre-header {
-  position: sticky;
-  top: 76px;
-  z-index: 50;
+  position: relative !important;
+  top: 0 !important;
+  z-index: 20 !important;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 48px;
-  background: rgba(20, 20, 20, 0.95);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  padding: 16px 48px;
+  background: #141414;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -8230,13 +8235,18 @@ img, video {
 
 .billboard-title.bold-title {
   font-family: 'Cinzel', 'Plus Jakarta Sans', serif !important;
-  font-size: 48px !important;
+  font-size: clamp(28px, 4vw, 48px) !important;
   font-weight: 900 !important;
   letter-spacing: 2px !important;
   color: #ffffff !important;
   margin: 0 0 16px 0 !important;
-  line-height: 1.08 !important;
-  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.95), 0 2px 6px rgba(0, 0, 0, 0.8) !important;
+  padding: 4px 0 !important;
+  line-height: 1.18 !important;
+  text-shadow: 
+    0 4px 20px rgba(0, 0, 0, 1),
+    0 2px 6px rgba(0, 0, 0, 1),
+    0 8px 30px rgba(0, 0, 0, 0.95),
+    0 0 50px rgba(0, 0, 0, 0.9) !important;
   text-transform: uppercase !important;
 }
 
