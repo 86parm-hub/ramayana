@@ -8764,3 +8764,94 @@ img, video {
     font-size: 11px !important;
   }
 }
+
+/* ==========================================================================
+   UPPER-LEFT TITLE & LOWER-LEFT BUTTONS PROFESSIONAL BILLBOARD LAYOUT
+   ========================================================================== */
+.billboard-upper-left {
+  position: absolute !important;
+  top: 48px !important;
+  left: 48px !important;
+  z-index: 6 !important;
+  max-width: 75% !important;
+  pointer-events: none !important;
+}
+
+.billboard-lower-left {
+  position: absolute !important;
+  bottom: 44px !important;
+  left: 48px !important;
+  z-index: 6 !important;
+  pointer-events: auto !important;
+}
+
+.billboard-lower-left .billboard-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+.billboard-audio-btn.left-audio {
+  width: 42px !important;
+  height: 42px !important;
+  border-radius: 50% !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.5) !important;
+  background: rgba(42, 42, 42, 0.65) !important;
+  color: #ffffff !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6) !important;
+  padding: 0 !important;
+}
+
+.billboard-audio-btn.left-audio:hover {
+  border-color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.25) !important;
+  transform: scale(1.1) !important;
+}
+
+@media screen and (max-width: 1024px) {
+  .billboard-upper-left {
+    top: 32px !important;
+    left: 32px !important;
+  }
+  .billboard-lower-left {
+    bottom: 32px !important;
+    left: 32px !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .billboard-upper-left {
+    top: 20px !important;
+    left: 16px !important;
+  }
+  .billboard-lower-left {
+    bottom: 20px !important;
+    left: 16px !important;
+  }
+  .billboard-audio-btn.left-audio {
+    width: 34px !important;
+    height: 34px !important;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .billboard-upper-left {
+    top: 14px !important;
+    left: 12px !important;
+  }
+  .billboard-lower-left {
+    bottom: 14px !important;
+    left: 12px !important;
+  }
+  .billboard-audio-btn.left-audio {
+    width: 30px !important;
+    height: 30px !important;
+  }
+}
