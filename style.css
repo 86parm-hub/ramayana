@@ -4102,347 +4102,415 @@ body.ott-platform {
 /* ==========================================================================
    Sticky Floating Master Soundtrack Player Bar
    ========================================================================== */
+/* ==========================================================================
+   AUTHENTIC SPOTIFY NOW PLAYING BOTTOM BAR (DESKTOP & WEB REPLICA)
+   ========================================================================== */
 .ost-floating-player {
-  position: fixed;
-  bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: calc(100% - 48px);
-  max-width: 1280px;
-  background: rgba(10, 14, 22, 0.94);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 183, 3, 0.32);
-  border-radius: 16px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(255, 183, 3, 0.15);
-  z-index: 9980;
-  padding: 10px 20px;
-  animation: ostSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 84px !important;
+  background: #000000 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-bottom: none !important;
+  border-radius: 0 !important;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.8) !important;
+  transform: none !important;
+  z-index: 99999 !important;
+  padding: 0 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  animation: ostSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 @keyframes ostSlideUp {
-  from { transform: translate(-50%, 60px); opacity: 0; }
-  to { transform: translate(-50%, 0); opacity: 1; }
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
 }
 
 .ost-fp-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  width: 100%;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  height: 100% !important;
+  gap: 16px !important;
 }
 
-/* FP Track Info (Left) */
+/* Left Section: Track Art, Details & Heart (~30% width) */
 .ost-fp-track-info {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  min-width: 240px;
-  cursor: pointer;
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  width: 30% !important;
+  min-width: 180px !important;
+  max-width: 360px !important;
+  cursor: pointer !important;
+  user-select: none !important;
 }
 
 .ost-fp-thumb-wrap {
-  position: relative;
-  width: 52px;
-  height: 52px;
-  border-radius: 8px;
-  overflow: hidden;
-  border: 1px solid rgba(255, 183, 3, 0.3);
-  flex-shrink: 0;
+  position: relative !important;
+  width: 56px !important;
+  height: 56px !important;
+  border-radius: 4px !important;
+  overflow: hidden !important;
+  border: none !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
+  flex-shrink: 0 !important;
 }
 
 .ost-fp-thumb {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
 }
 
 .ost-fp-equalizer {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.55);
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  gap: 2px;
-  padding-bottom: 6px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  position: absolute !important;
+  inset: 0 !important;
+  background: rgba(0, 0, 0, 0.5) !important;
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: center !important;
+  gap: 2.5px !important;
+  padding-bottom: 8px !important;
+  opacity: 0 !important;
+  transition: opacity 0.2s ease !important;
 }
 
 .ost-fp-equalizer.playing {
-  opacity: 1;
+  opacity: 1 !important;
 }
 
 .ost-fp-equalizer span {
-  width: 3px;
-  height: 4px;
-  background: #ffb703;
-  border-radius: 1px;
+  width: 2.5px !important;
+  height: 6px !important;
+  background: #ffffff !important;
+  border-radius: 1px !important;
 }
 
 .ost-fp-equalizer.playing span {
-  animation: ostEqBounce 0.8s infinite ease-in-out alternate;
+  animation: ostEqBounce 0.8s infinite ease-in-out alternate !important;
 }
 
-.ost-fp-equalizer span:nth-child(1) { animation-delay: 0.1s; }
-.ost-fp-equalizer span:nth-child(2) { animation-delay: 0.3s; }
-.ost-fp-equalizer span:nth-child(3) { animation-delay: 0.2s; }
-.ost-fp-equalizer span:nth-child(4) { animation-delay: 0.4s; }
+.ost-fp-equalizer span:nth-child(1) { animation-delay: 0.1s !important; }
+.ost-fp-equalizer span:nth-child(2) { animation-delay: 0.3s !important; }
+.ost-fp-equalizer span:nth-child(3) { animation-delay: 0.2s !important; }
+.ost-fp-equalizer span:nth-child(4) { animation-delay: 0.4s !important; }
 
 .ost-fp-meta {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  min-width: 0 !important;
 }
 
 .ost-fp-title-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
 }
 
 .ost-fp-track-name {
-  font-family: 'Cinzel', serif;
-  font-size: 14px;
-  font-weight: 700;
-  color: #fff;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 180px;
+  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  max-width: 200px !important;
+  line-height: 1.3 !important;
+}
+
+.ost-fp-track-name:hover {
+  text-decoration: underline !important;
 }
 
 .ost-fp-track-tag {
-  font-size: 9px;
-  font-weight: 700;
-  color: #ffb703;
-  padding: 2px 6px;
-  background: rgba(255, 183, 3, 0.15);
-  border-radius: 4px;
-  letter-spacing: 0.5px;
-  flex-shrink: 0;
+  display: none !important;
 }
 
 .ost-fp-artist {
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.6);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 220px;
+  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 400 !important;
+  color: #b3b3b3 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  max-width: 200px !important;
+  line-height: 1.3 !important;
+  margin-top: 3px !important;
 }
 
-/* FP Controls (Center) */
+.ost-fp-artist:hover {
+  color: #ffffff !important;
+  text-decoration: underline !important;
+}
+
+.ost-fp-heart-btn {
+  background: transparent !important;
+  border: none !important;
+  color: #b3b3b3 !important;
+  cursor: pointer !important;
+  padding: 6px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s ease !important;
+  margin-left: 6px !important;
+  flex-shrink: 0 !important;
+}
+
+.ost-fp-heart-btn:hover {
+  color: #ffffff !important;
+  transform: scale(1.1) !important;
+}
+
+.ost-fp-heart-btn.active {
+  color: #e50914 !important;
+}
+
+/* Center Section: Controls & Scrubber (~40% width) */
 .ost-fp-center-controls {
-  flex: 1;
-  max-width: 550px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
+  flex: 1 !important;
+  max-width: 720px !important;
+  width: 40% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
 }
 
 .ost-fp-buttons {
-  display: flex;
-  align-items: center;
-  gap: 16px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 16px !important;
+  margin-bottom: 2px !important;
 }
 
 .ost-fp-btn {
-  background: transparent;
-  border: none;
-  color: rgba(255, 255, 255, 0.7);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 6px;
-  border-radius: 50%;
-  transition: all 0.2s ease;
+  background: transparent !important;
+  border: none !important;
+  color: #b3b3b3 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 8px !important;
+  border-radius: 50% !important;
+  transition: all 0.15s ease !important;
 }
 
 .ost-fp-btn:hover {
-  color: #ffb703;
-  transform: scale(1.15);
+  color: #ffffff !important;
+  transform: scale(1.06) !important;
 }
 
 .ost-fp-btn-main {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #ffb703 0%, #fb8500 100%);
-  color: #000;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 15px rgba(251, 133, 0, 0.4), 0 0 20px rgba(255, 183, 3, 0.25);
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 34px !important;
+  height: 34px !important;
+  border-radius: 50% !important;
+  background: #ffffff !important;
+  color: #000000 !important;
+  border: none !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important;
+  transition: transform 0.15s ease, background 0.15s ease !important;
 }
 
 .ost-fp-btn-main:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 20px rgba(251, 133, 0, 0.6), 0 0 25px rgba(255, 183, 3, 0.4);
+  transform: scale(1.08) !important;
+  background: #f0f0f0 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6) !important;
+}
+
+.ost-fp-btn-main svg {
+  fill: #000000 !important;
 }
 
 .ost-fp-btn-icon {
-  background: transparent;
-  border: none;
-  color: rgba(255, 255, 255, 0.5);
-  cursor: pointer;
-  padding: 6px;
-  border-radius: 50%;
-  transition: all 0.2s ease;
+  background: transparent !important;
+  border: none !important;
+  color: #b3b3b3 !important;
+  cursor: pointer !important;
+  padding: 8px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.15s ease !important;
 }
 
-.ost-fp-btn-icon:hover,
+.ost-fp-btn-icon:hover {
+  color: #ffffff !important;
+}
+
 .ost-fp-btn-icon.active {
-  color: #ffb703;
+  color: #e50914 !important;
 }
 
-/* Scrubber Row */
 .ost-fp-scrubber-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  width: 100% !important;
+  max-width: 580px !important;
 }
 
 .ost-fp-time {
-  font-size: 11px;
-  font-family: monospace;
-  color: rgba(255, 255, 255, 0.65);
-  min-width: 36px;
+  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif !important;
+  font-size: 11px !important;
+  color: #a7a7a7 !important;
+  min-width: 36px !important;
+  font-variant-numeric: tabular-nums !important;
+}
+
+#ostFpCurrentTime {
+  text-align: right !important;
+}
+
+#ostFpDuration {
+  text-align: left !important;
 }
 
 .ost-fp-progress-wrap {
-  flex: 1;
-  height: 14px;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
+  flex: 1 !important;
+  height: 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  cursor: pointer !important;
+  position: relative !important;
 }
 
 .ost-fp-progress-bg {
-  width: 100%;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.12);
-  border-radius: 2px;
-  position: relative;
-  transition: height 0.2s ease;
-}
-
-.ost-fp-progress-wrap:hover .ost-fp-progress-bg {
-  height: 6px;
+  width: 100% !important;
+  height: 4px !important;
+  background: #4d4d4d !important;
+  border-radius: 2px !important;
+  position: relative !important;
+  overflow: visible !important;
 }
 
 .ost-fp-progress-bar {
-  height: 100%;
-  background: linear-gradient(90deg, #ffb703, #fb8500);
-  border-radius: 2px;
-  width: 0%;
-  position: relative;
+  height: 100% !important;
+  background: #ffffff !important;
+  border-radius: 2px !important;
+  position: relative !important;
+  transition: background 0.15s ease !important;
+}
+
+.ost-fp-progress-wrap:hover .ost-fp-progress-bar {
+  background: #e50914 !important;
 }
 
 .ost-fp-progress-thumb {
-  position: absolute;
-  right: -5px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #fff;
-  box-shadow: 0 0 8px rgba(255, 183, 3, 0.8);
-  opacity: 0;
-  transition: opacity 0.2s ease;
+  position: absolute !important;
+  right: -6px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 12px !important;
+  height: 12px !important;
+  border-radius: 50% !important;
+  background: #ffffff !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
+  opacity: 0 !important;
+  transition: opacity 0.1s ease !important;
 }
 
 .ost-fp-progress-wrap:hover .ost-fp-progress-thumb {
-  opacity: 1;
+  opacity: 1 !important;
 }
 
-/* FP Right Controls (Volume, Download, Close) */
+/* Right Section: Volume & Close Controls (~30% width) */
 .ost-fp-right-controls {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  min-width: 180px;
-  justify-content: flex-end;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 12px !important;
+  width: 30% !important;
+  min-width: 180px !important;
 }
 
 .ost-fp-vol-btn {
-  background: transparent;
-  border: none;
-  color: rgba(255, 255, 255, 0.7);
-  cursor: pointer;
-  padding: 4px;
-  display: flex;
-  align-items: center;
-  transition: color 0.2s ease;
+  background: transparent !important;
+  border: none !important;
+  color: #b3b3b3 !important;
+  cursor: pointer !important;
+  padding: 6px !important;
+  display: flex !important;
+  align-items: center !important;
+  transition: color 0.15s ease !important;
 }
 
 .ost-fp-vol-btn:hover {
-  color: #ffb703;
+  color: #ffffff !important;
+}
+
+.ost-fp-vol-slider-wrap {
+  display: flex !important;
+  align-items: center !important;
+  width: 96px !important;
 }
 
 .ost-fp-volume-slider {
-  width: 70px;
-  height: 4px;
-  -webkit-appearance: none;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 2px;
-  outline: none;
-  cursor: pointer;
+  width: 96px !important;
+  height: 4px !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  background: linear-gradient(to right, #ffffff 90%, #4d4d4d 90%);
+  border-radius: 2px !important;
+  outline: none !important;
+  cursor: pointer !important;
 }
 
 .ost-fp-volume-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #ffb703;
-  cursor: pointer;
-  box-shadow: 0 0 6px #ffb703;
+  -webkit-appearance: none !important;
+  width: 12px !important;
+  height: 12px !important;
+  border-radius: 50% !important;
+  background: #ffffff !important;
+  cursor: pointer !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) !important;
+  opacity: 0 !important;
+  transition: opacity 0.1s ease !important;
 }
 
-.ost-fp-dl-btn {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 6px;
-  color: rgba(255, 255, 255, 0.8);
-  padding: 6px 8px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-
-.ost-fp-dl-btn:hover {
-  background: rgba(255, 183, 3, 0.2);
-  border-color: #ffb703;
-  color: #ffb703;
+.ost-fp-volume-slider:hover::-webkit-slider-thumb {
+  opacity: 1 !important;
 }
 
 .ost-fp-close-btn {
-  background: transparent;
-  border: none;
-  color: rgba(255, 255, 255, 0.4);
-  font-size: 22px;
-  line-height: 1;
-  cursor: pointer;
-  padding: 4px 6px;
-  border-radius: 4px;
-  transition: all 0.2s ease;
+  background: transparent !important;
+  border: none !important;
+  color: #727272 !important;
+  cursor: pointer !important;
+  padding: 6px !important;
+  border-radius: 4px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.15s ease !important;
+  margin-left: 4px !important;
 }
 
 .ost-fp-close-btn:hover {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.1) !important;
 }
 
 /* ==========================================================================
@@ -7133,11 +7201,6 @@ img, video {
     gap: 14px;
     padding: 0 24px;
   }
-  .ost-floating-player {
-    bottom: 20px;
-    width: calc(100% - 40px);
-    padding: 10px 18px;
-  }
   .site-footer {
     padding: 40px 24px 24px;
   }
@@ -7422,38 +7485,69 @@ img, video {
     grid-column: span 2 !important;
   }
 
-  /* Sticky Floating OST Player Positioned ABOVE Mobile Bottom Nav */
+  /* Spotify OST Player Positioned ABOVE Mobile Bottom Nav */
   .ost-floating-player {
     bottom: calc(64px + env(safe-area-inset-bottom, 6px)) !important;
+    left: 8px !important;
+    right: 8px !important;
     width: calc(100% - 16px) !important;
-    padding: 6px 10px !important;
-    border-radius: 12px !important;
+    height: 58px !important;
+    padding: 0 12px !important;
+    background: #181818 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.9) !important;
     z-index: 9980 !important;
   }
-  .ost-fp-volume {
-    display: none !important;
-  }
   .ost-fp-thumb-wrap {
-    width: 40px !important;
-    height: 40px !important;
+    width: 42px !important;
+    height: 42px !important;
+    border-radius: 4px !important;
+  }
+  .ost-fp-track-info {
+    width: auto !important;
+    min-width: 0 !important;
+    flex: 1 !important;
+    gap: 10px !important;
   }
   .ost-fp-meta {
-    max-width: 130px !important;
+    max-width: 140px !important;
     min-width: 0 !important;
   }
   .ost-fp-track-name {
-    font-size: 12px !important;
+    font-size: 13px !important;
+    max-width: 140px !important;
   }
-  .ost-fp-track-tag {
+  .ost-fp-artist {
+    font-size: 10px !important;
+    max-width: 140px !important;
+  }
+  .ost-fp-center-controls {
+    width: auto !important;
+    flex: 0 0 auto !important;
+  }
+  .ost-fp-scrubber-row,
+  .ost-fp-btn,
+  .ost-fp-btn-icon {
     display: none !important;
   }
-  .ost-fp-btn {
+  .ost-fp-btn-main {
     width: 32px !important;
     height: 32px !important;
   }
-  .ost-fp-btn svg {
-    width: 14px !important;
-    height: 14px !important;
+  .ost-fp-right-controls {
+    width: auto !important;
+    min-width: 0 !important;
+    gap: 6px !important;
+  }
+  .ost-fp-vol-btn,
+  .ost-fp-vol-slider-wrap,
+  .ost-fp-volume-slider {
+    display: none !important;
+  }
+  .ost-fp-close-btn {
+    font-size: 16px !important;
+    padding: 4px !important;
   }
 
   /* Modals Mobile Centering & Safe Max-Width */
@@ -7531,10 +7625,6 @@ img, video {
   }
   .billboard-title {
     font-size: 22px !important;
-  }
-  .ost-floating-player {
-    bottom: 54px !important;
-    padding: 4px 10px !important;
   }
 }
 
@@ -9246,30 +9336,6 @@ img, video {
 /* Floating Player Brand Red Theme & Download Removal */
 .ost-fp-dl-btn {
   display: none !important;
-}
-
-.ost-fp-play-btn {
-  background: #e50914 !important;
-  color: #ffffff !important;
-  box-shadow: 0 4px 14px rgba(229, 9, 20, 0.5) !important;
-}
-
-.ost-fp-play-btn:hover {
-  background: #f40612 !important;
-  transform: scale(1.08) !important;
-  box-shadow: 0 6px 20px rgba(229, 9, 20, 0.7) !important;
-}
-
-.ost-fp-scrub-fill {
-  background: #e50914 !important;
-}
-
-.ost-fp-scrub-track:hover .ost-fp-scrub-fill {
-  background: #f40612 !important;
-}
-
-.ost-fp-equalizer.playing span {
-  background: #e50914 !important;
 }
 
 /* Protected Anti-Download UI */

@@ -1122,6 +1122,11 @@ function setOSTVolume(val) {
     volOn.style.display = isOSTMuted ? 'none' : 'block';
     volOff.style.display = isOSTMuted ? 'block' : 'none';
   }
+  const volSlider = document.getElementById('ostFpVolume');
+  if (volSlider) {
+    const pct = v * 100;
+    volSlider.style.background = `linear-gradient(to right, #ffffff ${pct}%, #4d4d4d ${pct}%)`;
+  }
 }
 
 // Card Scrubber Seek
@@ -1212,6 +1217,19 @@ function toggleSpotifyHeart(btn) {
   showToast(isFilled ? 'Saved to Your Library ❤️' : 'Removed from Library');
 }
 window.toggleSpotifyHeart = toggleSpotifyHeart;
+
+function toggleFpHeart(btn) {
+  if (!btn) return;
+  btn.classList.toggle('active');
+  const isFilled = btn.classList.contains('active');
+  btn.style.color = isFilled ? '#e50914' : '';
+  const svg = btn.querySelector('svg');
+  if (svg) {
+    svg.setAttribute('fill', isFilled ? '#e50914' : 'none');
+  }
+  showToast(isFilled ? 'Added to Liked Songs ❤️' : 'Removed from Liked Songs');
+}
+window.toggleFpHeart = toggleFpHeart;
 
 function toggleRowHeart(btn) {
   if (!btn) return;
