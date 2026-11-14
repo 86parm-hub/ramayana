@@ -984,16 +984,17 @@ function playOSTTrack(trackId) {
   pauseActiveVideosForAudio();
 
   // If already playing this track, toggle play/pause
-  if (currentOSTIndex === targetIndex && ostAudio.src.includes(OST_TRACKS[targetIndex].src)) {
+  if (currentOSTIndex === targetIndex && ostAudio.src && (ostAudio.src.endsWith(OST_TRACKS[targetIndex].src) || ostAudio.src.includes(encodeURI(OST_TRACKS[targetIndex].src)))) {
     if (ostAudio.paused) {
-      ostAudio.play().catch(e => console.warn('Audio play prevented:', e));
+      const p = ostAudio.play();
+      if (p !== undefined) p.catch(e => console.warn('Audio play error:', e));
     } else {
       ostAudio.pause();
     }
     return;
   }
 
-  // Switch to new track with protected streaming
+  // Switch to new track synchronously inside user click gesture
   currentOSTIndex = targetIndex;
   const track = OST_TRACKS[currentOSTIndex];
 
@@ -1002,11 +1003,16 @@ function playOSTTrack(trackId) {
     ostAudio.setAttribute('disableRemotePlayback', '');
   } catch(e) {}
 
-  fetchProtectedAudioUrl(track.src).then(streamUrl => {
-    ostAudio.src = streamUrl;
-    ostAudio.load();
-    ostAudio.play().catch(e => console.warn('Audio play prevented:', e));
-  });
+  ostAudio.src = track.src;
+  ostAudio.load();
+  const playPromise = ostAudio.play();
+  if (playPromise !== undefined) {
+    playPromise.then(() => {
+      isOSTPlaying = true;
+    }).catch(e => {
+      console.warn('Audio play rejected by browser:', e);
+    });
+  }
 
   updateFloatingPlayerUI();
   updateMediaSession(track);
