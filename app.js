@@ -9,12 +9,14 @@ function switchPage(pageKey) {
     openNetflixBlackPlayer('act1');
     return;
   }
+  if (pageKey === 'trailer') {
+    openNetflixBlackPlayer('trailer');
+    return;
+  }
   const pageMap = {
     'home': 'home-view',
     'movies': 'movies-view',
-    'trailer': 'trailer-view',
-    'gallery': 'gallery-view',
-    'sound': 'sound-view'
+    'gallery': 'gallery-view'
   };
 
   const targetId = pageMap[pageKey] || 'home-view';
