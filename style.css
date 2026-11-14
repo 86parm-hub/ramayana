@@ -6621,10 +6621,10 @@ video {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 24px 36px;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 60%, transparent 100%);
+  padding: max(24px, env(safe-area-inset-top)) max(36px, env(safe-area-inset-right)) 16px max(36px, env(safe-area-inset-left));
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.4) 60%, transparent 100%);
   pointer-events: auto;
-  transition: opacity 0.35s ease, transform 0.35s ease;
+  transition: opacity 0.35s cubic-bezier(0.25, 1, 0.5, 1), transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .nbp-back-circle-btn {
@@ -6632,17 +6632,22 @@ video {
   border: none;
   color: #ffffff;
   cursor: pointer;
-  padding: 6px;
+  padding: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.22s ease, opacity 0.2s ease;
 }
 
 .nbp-back-circle-btn:hover {
-  transform: scale(1.15);
-  opacity: 0.85;
+  transform: scale(1.22) translateX(-3px);
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.7));
+  opacity: 1;
+}
+
+.nbp-back-circle-btn:active {
+  transform: scale(0.92);
 }
 
 .nbp-top-right {
@@ -6656,44 +6661,50 @@ video {
   border: none;
   color: #ffffff;
   cursor: pointer;
-  padding: 6px;
+  padding: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.22s ease, opacity 0.2s ease;
 }
 
 .nbp-flag-btn:hover {
-  transform: scale(1.15);
-  opacity: 0.85;
+  transform: scale(1.22);
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.7));
+  opacity: 1;
 }
 
-/* Bottom Controls Bar: Netflix 1:1 Layout */
+.nbp-flag-btn:active {
+  transform: scale(0.92);
+}
+
+/* Bottom Controls Bar: Netflix 1:1 Layout with Safe Area Support */
 .nbp-controls-bar {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   z-index: 12;
-  padding: 0 40px 24px;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.5) 60%, transparent 100%);
+  padding: 0 max(40px, env(safe-area-inset-right)) max(24px, env(safe-area-inset-bottom)) max(40px, env(safe-area-inset-left));
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.96) 0%, rgba(0, 0, 0, 0.5) 60%, transparent 100%);
   display: flex;
   flex-direction: column;
   gap: 12px;
-  transition: opacity 0.35s ease, transform 0.35s ease;
+  transition: opacity 0.35s cubic-bezier(0.25, 1, 0.5, 1), transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* Idle Fadeout */
-.netflix-black-modal.is-idle .nbp-top-header,
+/* Idle Fadeout with Smooth Translate */
+.netflix-black-modal.is-idle .nbp-top-header {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-14px);
+}
+
 .netflix-black-modal.is-idle .nbp-controls-bar {
   opacity: 0;
   pointer-events: none;
-  transform: translateY(-8px);
-}
-
-.netflix-black-modal.is-idle .nbp-controls-bar {
-  transform: translateY(8px);
+  transform: translateY(14px);
 }
 
 .netflix-black-modal.is-idle {
@@ -6711,10 +6722,21 @@ video {
 .nbp-scrubber-wrapper {
   position: relative;
   flex: 1;
-  height: 22px;
+  height: 24px;
   display: flex;
   align-items: center;
   cursor: pointer;
+  touch-action: none;
+}
+
+/* Invisible hit-area expansion for effortless touch on mobile */
+.nbp-scrubber-wrapper::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  bottom: -12px;
+  left: 0;
+  right: 0;
 }
 
 .nbp-progress-rail {
@@ -6723,11 +6745,12 @@ video {
   height: 4px;
   background: rgba(255, 255, 255, 0.28);
   border-radius: 4px;
-  transition: height 0.15s ease;
+  transition: height 0.2s cubic-bezier(0.2, 0.9, 0.3, 1), background 0.2s ease;
 }
 
 .nbp-scrubber-wrapper:hover .nbp-progress-rail {
-  height: 6px;
+  height: 7px;
+  background: rgba(255, 255, 255, 0.35);
 }
 
 .nbp-buffer-fill {
@@ -6748,6 +6771,12 @@ video {
   width: 0%;
   background: #E50914;
   border-radius: 4px;
+  box-shadow: 0 0 8px rgba(229, 9, 20, 0.6);
+  transition: box-shadow 0.2s ease;
+}
+
+.nbp-scrubber-wrapper:hover .nbp-progress-fill {
+  box-shadow: 0 0 14px rgba(229, 9, 20, 0.9);
 }
 
 .nbp-scrubber-thumb {
@@ -6758,22 +6787,23 @@ video {
   height: 14px;
   border-radius: 50%;
   background: #E50914;
-  transform: translate(-50%, -50%);
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.85);
-  transition: transform 0.12s ease;
+  transform: translate(-50%, -50%) scale(0.95);
+  box-shadow: 0 0 8px rgba(229, 9, 20, 0.8), 0 2px 6px rgba(0, 0, 0, 0.8);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
   pointer-events: none;
 }
 
 .nbp-scrubber-wrapper:hover .nbp-scrubber-thumb {
-  transform: translate(-50%, -50%) scale(1.25);
+  transform: translate(-50%, -50%) scale(1.35);
+  box-shadow: 0 0 16px rgba(229, 9, 20, 1), 0 0 28px rgba(229, 9, 20, 0.6);
 }
 
 /* Floating Thumbnail Tooltip */
 .nbp-scrubber-tooltip {
   position: absolute;
-  bottom: 30px;
+  bottom: 34px;
   left: 0%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(4px) scale(0.96);
   background: #141414;
   border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 8px;
@@ -6781,12 +6811,13 @@ video {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.9);
   pointer-events: none;
   opacity: 0;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 20;
 }
 
 .nbp-scrubber-tooltip.show {
   opacity: 1;
+  transform: translateX(-50%) translateY(0) scale(1);
 }
 
 .nbp-tooltip-thumb {
@@ -6824,11 +6855,12 @@ video {
   cursor: pointer;
   min-width: 65px;
   text-align: right;
-  transition: color 0.15s ease;
+  transition: color 0.18s ease, transform 0.18s ease;
 }
 
 .nbp-time-remaining:hover {
   color: #e5e5e5;
+  transform: scale(1.05);
 }
 
 /* Controls Action Row */
@@ -6865,8 +6897,10 @@ video {
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 440px;
+  transition: opacity 0.2s ease;
 }
 
+/* Button Micro-Interactions & Hover Animations */
 .nbp-ctrl-btn {
   background: none;
   border: none;
@@ -6879,12 +6913,24 @@ video {
   cursor: pointer;
   border-radius: 50%;
   position: relative;
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              filter 0.22s ease, 
+              opacity 0.2s ease;
 }
 
 .nbp-ctrl-btn:hover {
-  transform: scale(1.15);
-  opacity: 0.9;
+  transform: scale(1.22);
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.6));
+  opacity: 1;
+}
+
+.nbp-ctrl-btn:active {
+  transform: scale(0.92);
+}
+
+#nbpBtnPlay:hover svg {
+  transform: scale(1.12);
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.8));
 }
 
 /* Volume Expanding Capsule */
@@ -6897,7 +6943,7 @@ video {
 .nbp-volume-slider-wrap {
   width: 0;
   overflow: hidden;
-  transition: width 0.25s ease;
+  transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   align-items: center;
 }
@@ -6914,6 +6960,7 @@ video {
   border-radius: 2px;
   outline: none;
   margin-left: 6px;
+  cursor: pointer;
 }
 
 .nbp-volume-slider::-webkit-slider-thumb {
@@ -6923,6 +6970,12 @@ video {
   border-radius: 50%;
   background: #fff;
   cursor: pointer;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+  transition: transform 0.15s ease;
+}
+
+.nbp-volume-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.3);
 }
 
 /* Popover Anchors */
@@ -6930,31 +6983,38 @@ video {
   position: relative;
 }
 
+/* Audio & Subtitles Popover: Glassmorphism Upgrade */
 .nbp-audio-popover {
   display: none;
   position: absolute;
   bottom: calc(100% + 16px);
   right: -40px;
-  width: 400px;
-  background: rgba(20, 20, 20, 0.96);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 380px;
+  background: rgba(18, 18, 18, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 10px;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.95);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.95), 0 0 1px rgba(255, 255, 255, 0.2);
   padding: 18px;
   z-index: 100;
-  backdrop-filter: blur(20px);
-  display: none;
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
   grid-template-columns: 1fr 1fr;
   gap: 20px;
-  animation: nbpFadeUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(8px) scale(0.96);
+  opacity: 0;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.22s ease;
+  pointer-events: none;
 }
 
 .nbp-audio-popover.show {
   display: grid;
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .nbp-pop-col-title {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 13px;
   font-weight: 800;
   color: #e5e5e5;
@@ -6967,17 +7027,18 @@ video {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 8px;
-  border-radius: 4px;
+  padding: 8px 10px;
+  border-radius: 6px;
   font-size: 12px;
   color: rgba(255, 255, 255, 0.7);
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.18s ease;
 }
 
 .nbp-pop-option:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.12);
   color: #fff;
+  transform: translateX(3px);
 }
 
 .nbp-pop-option.active {
@@ -6987,7 +7048,7 @@ video {
 
 .nbp-check-icon {
   visibility: hidden;
-  color: #ff2a44;
+  color: #E50914;
   font-weight: 900;
 }
 
@@ -6995,36 +7056,43 @@ video {
   visibility: visible;
 }
 
-/* Speed Popover Upgraded */
+/* Speed Popover: Glassmorphism Upgrade */
 .nbp-speed-popover {
   display: none;
   position: absolute;
   bottom: calc(100% + 16px);
   right: -20px;
   width: 175px;
-  background: rgba(20, 20, 20, 0.98);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 8px;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.95);
+  background: rgba(18, 18, 18, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 10px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.95), 0 0 1px rgba(255, 255, 255, 0.2);
   padding: 10px 0;
   z-index: 100;
-  backdrop-filter: blur(25px);
-  animation: nbpFadeUp 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  transform: translateY(8px) scale(0.96);
+  opacity: 0;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.22s ease;
+  pointer-events: none;
 }
 
 .nbp-speed-popover.show {
   display: block;
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .nbp-speed-header {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 11px;
   font-weight: 800;
   color: rgba(255, 255, 255, 0.5);
   text-transform: uppercase;
   letter-spacing: 1px;
-  padding: 0 16px 8px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 4px 16px 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   margin-bottom: 4px;
 }
 
@@ -7034,77 +7102,234 @@ video {
   gap: 10px;
   padding: 8px 16px;
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.75);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.18s ease;
 }
 
 .nbp-speed-opt:hover {
   background: rgba(255, 255, 255, 0.12);
   color: #fff;
+  transform: translateX(3px);
 }
 
 .nbp-speed-opt.active {
-  color: #ff2a44;
+  color: #fff;
   font-weight: 800;
-  background: rgba(255, 42, 68, 0.12);
 }
 
 .nbp-tick-icon {
   visibility: hidden;
-  font-weight: 900;
-  color: #ff2a44;
+  color: #E50914;
+  font-size: 14px;
 }
 
 .nbp-speed-opt.active .nbp-tick-icon {
   visibility: visible;
 }
 
-@keyframes nbpFadeUp {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+/* =========================================================================
+   COMPREHENSIVE RESPONSIVE DESIGN (Android, iOS iPhones/iPads, Tablets)
+   ========================================================================= */
 
-/* Mobile Responsiveness for Upgraded Netflix Player */
-@media (max-width: 900px) {
+/* Tablets & Small Laptops (Width <= 1024px) */
+@media (max-width: 1024px) {
   .nbp-top-header {
-    padding: 16px 20px;
+    padding: max(20px, env(safe-area-inset-top)) max(28px, env(safe-area-inset-right)) 12px max(28px, env(safe-area-inset-left));
   }
   .nbp-controls-bar {
-    padding: 0 20px 24px;
+    padding: 0 max(28px, env(safe-area-inset-right)) max(20px, env(safe-area-inset-bottom)) max(28px, env(safe-area-inset-left));
   }
-  .nbp-acts-drawer {
-    width: 320px;
-    right: -20px;
-  }
-  .nbp-audio-popover {
-    width: 300px;
-    grid-template-columns: 1fr;
-    gap: 10px;
+  .nbp-center-title {
+    max-width: 280px;
+    font-size: 15px;
   }
 }
 
-@media (max-width: 600px) {
-  .nbp-movie-title {
-    font-size: 15px;
+/* Mobile Devices & Phones (Width <= 768px - Android & iOS Portrait) */
+@media (max-width: 768px) {
+  .nbp-top-header {
+    padding: max(16px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right)) 10px max(20px, env(safe-area-inset-left));
   }
-  .nbp-title-divider, .nbp-act-title {
-    display: none;
+
+  .nbp-back-circle-btn svg {
+    width: 28px;
+    height: 28px;
   }
-  .nbp-badge-capsules {
-    display: none;
+
+  .nbp-flag-btn svg {
+    width: 24px;
+    height: 24px;
   }
+
+  .nbp-controls-bar {
+    padding: 0 max(16px, env(safe-area-inset-right)) max(18px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+    gap: 10px;
+  }
+
+  /* Scrubber Row on Mobile */
+  .nbp-scrubber-row {
+    gap: 12px;
+  }
+
+  .nbp-scrubber-wrapper {
+    height: 28px; /* Taller touch hit-area */
+  }
+
+  .nbp-scrubber-thumb {
+    width: 16px;
+    height: 16px;
+  }
+
+  .nbp-time-remaining {
+    font-size: 13px;
+    min-width: 52px;
+  }
+
+  /* Hide Volume Slider Capsule on Touch Devices (Mobile uses physical buttons) */
   .nbp-volume-group {
     display: none;
   }
-  .nbp-time-display {
-    font-size: 11px;
-    margin-left: 0;
-  }
+
   .nbp-ctrl-left, .nbp-ctrl-right {
     gap: 10px;
   }
-  .nbp-acts-drawer {
-    width: 290px;
+
+  .nbp-ctrl-btn {
+    width: 38px;
+    height: 38px;
+  }
+
+  .nbp-ctrl-btn svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  #nbpBtnPlay svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .nbp-center-title {
+    font-size: 13px;
+    max-width: 140px;
+    font-weight: 600;
+  }
+
+  /* Popovers adjust for mobile */
+  .nbp-audio-popover {
+    width: calc(100vw - 32px);
+    max-width: 300px;
+    right: -10px;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .nbp-speed-popover {
+    width: 160px;
+    right: 0;
+  }
+
+  .nbp-subtitle-layer {
+    bottom: 85px;
+    max-width: 90%;
+  }
+
+  .nbp-subtitle-text {
+    font-size: 18px;
+    padding: 3px 10px;
+  }
+}
+
+/* Compact Smartphones (Width <= 480px - iPhone SE, Galaxy Compact, etc.) */
+@media (max-width: 480px) {
+  .nbp-top-header {
+    padding: max(12px, env(safe-area-inset-top)) max(14px, env(safe-area-inset-right)) 8px max(14px, env(safe-area-inset-left));
+  }
+
+  .nbp-controls-bar {
+    padding: 0 max(12px, env(safe-area-inset-right)) max(14px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+    gap: 8px;
+  }
+
+  .nbp-ctrl-left, .nbp-ctrl-right {
+    gap: 6px;
+  }
+
+  .nbp-ctrl-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .nbp-ctrl-btn svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  #nbpBtnPlay svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .nbp-center-title {
+    font-size: 12px;
+    max-width: 100px;
+  }
+
+  .nbp-time-remaining {
+    font-size: 12px;
+    min-width: 48px;
+  }
+}
+
+/* Mobile Landscape (Height <= 520px - Android & iPhone turned horizontally) */
+@media (max-height: 520px) and (orientation: landscape) {
+  .nbp-top-header {
+    padding: max(8px, env(safe-area-inset-top)) max(24px, env(safe-area-inset-right)) 6px max(24px, env(safe-area-inset-left));
+  }
+
+  .nbp-controls-bar {
+    padding: 0 max(24px, env(safe-area-inset-right)) max(10px, env(safe-area-inset-bottom)) max(24px, env(safe-area-inset-left));
+    gap: 6px;
+  }
+
+  .nbp-scrubber-wrapper {
+    height: 20px;
+  }
+
+  .nbp-ctrl-btn {
+    width: 34px;
+    height: 34px;
+  }
+
+  .nbp-ctrl-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  #nbpBtnPlay svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .nbp-center-title {
+    font-size: 13px;
+    max-width: 240px;
+  }
+
+  .nbp-subtitle-layer {
+    bottom: 60px;
+  }
+
+  .nbp-subtitle-text {
+    font-size: 16px;
+  }
+
+  .nbp-audio-popover, .nbp-speed-popover {
+    max-height: 220px;
+    overflow-y: auto;
+    bottom: calc(100% + 8px);
   }
 }

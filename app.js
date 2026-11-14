@@ -1705,7 +1705,23 @@ function handleNbpZoneClick(side, e) {
 }
 
 function handleNbpCenterClick(e) {
-  toggleNbpPlayPause();
+  const modal = document.getElementById('netflixBlackPlayerModal');
+  if (!modal) return;
+
+  // On touch / mobile devices, if idle, tap wakes up controls
+  if (modal.classList.contains('is-idle')) {
+    resetNbpIdleTimer();
+    return;
+  }
+
+  // If already visible on touch device, tapping video hides controls for immersion
+  const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+  if (isTouch) {
+    modal.classList.add('is-idle');
+    closeAllNbpPopovers();
+  } else {
+    toggleNbpPlayPause();
+  }
 }
 
 function flashNbpRipple(side) {
@@ -1883,19 +1899,39 @@ function toggleNbpPiP() {
 
 function toggleNbpFullscreen() {
   const modal = document.getElementById('netflixBlackPlayerModal');
+  const video = document.getElementById('nbpVideo');
   const fsEnter = document.getElementById('nbpFsEnter');
   const fsExit = document.getElementById('nbpFsExit');
-  if (!modal) return;
-  if (!document.fullscreenElement) {
-    modal.requestFullscreen().then(() => {
+  if (!modal || !video) return;
+
+  const isFullscreen = document.fullscreenElement || document.webkitFullscreenElement;
+  if (!isFullscreen) {
+    if (modal.requestFullscreen) {
+      modal.requestFullscreen().then(() => {
+        if (fsEnter) fsEnter.style.display = 'none';
+        if (fsExit) fsExit.style.display = 'block';
+      }).catch(err => {
+        if (video.webkitEnterFullscreen) video.webkitEnterFullscreen();
+      });
+    } else if (modal.webkitRequestFullscreen) {
+      modal.webkitRequestFullscreen();
       if (fsEnter) fsEnter.style.display = 'none';
       if (fsExit) fsExit.style.display = 'block';
-    }).catch(err => console.log('FS error:', err));
+    } else if (video.webkitEnterFullscreen) {
+      // iOS Safari on iPhone
+      video.webkitEnterFullscreen();
+    }
   } else {
-    document.exitFullscreen().then(() => {
+    if (document.exitFullscreen) {
+      document.exitFullscreen().then(() => {
+        if (fsEnter) fsEnter.style.display = 'block';
+        if (fsExit) fsExit.style.display = 'none';
+      }).catch(err => {});
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
       if (fsEnter) fsEnter.style.display = 'block';
       if (fsExit) fsExit.style.display = 'none';
-    }).catch(err => {});
+    }
   }
 }
 
@@ -2034,11 +2070,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Scrubber Seeking over full continuous duration
+  // Scrubber Seeking over full continuous duration (Mouse + Touch Support for iOS/Android)
+  function getEventClientX(e) {
+    if (e.touches && e.touches.length > 0) return e.touches[0].clientX;
+    if (e.changedTouches && e.changedTouches.length > 0) return e.changedTouches[0].clientX;
+    return e.clientX || 0;
+  }
+
   function seekToPosition(e) {
     if (!scrubWrap) return;
     const rect = scrubWrap.getBoundingClientRect();
-    const pos = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+    const clientX = getEventClientX(e);
+    const pos = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
     const targetGlobalSec = pos * NBP_TOTAL_DUR;
     seekGlobal(targetGlobalSec);
     if (progFill) progFill.style.width = (pos * 100) + '%';
@@ -2046,6 +2089,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (scrubWrap) {
+    // Mouse Support
     scrubWrap.addEventListener('mousedown', (e) => {
       nbpIsSeeking = true;
       seekToPosition(e);
@@ -2070,6 +2114,26 @@ document.addEventListener('DOMContentLoaded', () => {
         tooltipTime.textContent = formatNbpTime(targetSec);
       }
     });
+
+    // Touch Support for Android & iOS
+    scrubWrap.addEventListener('touchstart', (e) => {
+      nbpIsSeeking = true;
+      resetNbpIdleTimer();
+      seekToPosition(e);
+      const onTouchMove = (ev) => {
+        seekToPosition(ev);
+      };
+      const onTouchEnd = () => {
+        nbpIsSeeking = false;
+        resetNbpIdleTimer();
+        window.removeEventListener('touchmove', onTouchMove);
+        window.removeEventListener('touchend', onTouchEnd);
+        window.removeEventListener('touchcancel', onTouchEnd);
+      };
+      window.addEventListener('touchmove', onTouchMove, { passive: true });
+      window.addEventListener('touchend', onTouchEnd, { passive: true });
+      window.addEventListener('touchcancel', onTouchEnd, { passive: true });
+    }, { passive: true });
   }
 
   // Volume Slider
