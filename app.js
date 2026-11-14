@@ -1527,116 +1527,131 @@ window.selectMovieGenre = selectMovieGenre;
 
 
 
+
 /* ==========================================================================
-   AUTHENTIC NETFLIX WEB CINEMA ENGINE (PRO UPGRADE)
+   AUTHENTIC NETFLIX WEB CINEMA ENGINE (SEAMLESS CONTINUOUS FULL-MOVIE)
+   Plays as 1 single 3-hour movie on screen while backend chains Act 1 & 2
    ========================================================================== */
-let nbpActiveAct = 'act1';
+const NBP_ACT1_DUR = 5407; // 01:30:07
+const NBP_ACT2_DUR = 5416; // 01:30:16
+const NBP_TOTAL_DUR = NBP_ACT1_DUR + NBP_ACT2_DUR; // 10823s -> 03:00:23
+
+let nbpCurrentAct = 1; // 1 or 2
 let nbpIdleTimer = null;
 let nbpIsSeeking = false;
 let nbpShowRemaining = false;
 let nbpActiveSub = 'off';
 let nbpSubInterval = null;
 
-// Mock Subtitles Sync for Ramayana Act 1 & 2
-const NBP_SUBTITLES = {
-  act1: [
-    { start: 3, end: 9, en: "In the golden age of Treta Yuga, Ayodhya stands in divine majesty.", hi: "त्रेतायुग के स्वर्ण काल में, अयोध्या दिव्य महिमा में विराजमान है।" },
-    { start: 10, end: 18, en: "King Dasharatha performs the sacred Putrakameshti Yajna.", hi: "महाराज दशरथ ने पवित्र पुत्रकामेष्टि यज्ञ संपन्न किया।" },
-    { start: 20, end: 32, en: "From the sacred flames, Lord Vishnu descends as Maryada Purushottam Rama.", hi: "पवित्र अग्नि से मर्यादा पुरुषोत्तम श्रीराम का दिव्य प्राकट्य हुआ।" },
-    { start: 35, end: 50, en: "Sage Vishwamitra arrives at the court seeking Prince Rama's protection.", hi: "महर्षि विश्वामित्र अयोध्या की सभा में श्रीराम की रक्षा मांगने पधारे।" },
-    { start: 55, end: 85, en: "With divine Astras, Sri Rama vanquishes Tadaka and restores Dharma.", hi: "दिव्य अस्त्रों से श्रीराम ने ताड़का का वध कर धर्म की रक्षा की।" },
-    { start: 90, end: 120, en: "In the court of Mithila, Sri Rama strings the unyielding Shiva Dhanush Pinaka.", hi: "मिथिला की राजसभा में श्रीराम ने भगवान शिव के पिनाक धनुष पर प्रत्यंचा चढ़ाई।" }
-  ],
-  act2: [
-    { start: 2, end: 15, en: "The 14-year sacred exile begins as Sri Rama, Sita, and Lakshmana depart Ayodhya.", hi: "श्रीराम, जानकी और लक्ष्मण का 14 वर्ष का पवित्र वनवास प्रारंभ हुआ।" },
-    { start: 18, end: 40, en: "Deep in Dandakaranya, the hermits find divine refuge in the presence of Rama.", hi: "दंडकारण्य के ऋषि-मुनि श्रीराम की छत्रछाया में अभय प्राप्त करते हैं।" },
-    { start: 45, end: 80, en: "At Panchavati, the cosmic clash of Dharma and Adharma takes its initial sparks.", hi: "पंचवटी में धर्म और अधर्म के महायुद्ध की दिव्य चिंगारी सुलगी।" }
-  ]
+const NBP_SOURCES = {
+  act1: {
+    cloud: 'https://github.com/86parm-hub/ramayana/releases/download/v1.0/Ramayana.Part1.Act1.mp4#t=3',
+    local: 'Ramayana.Part1.Act1.mp4',
+    dur: NBP_ACT1_DUR
+  },
+  act2: {
+    cloud: 'https://github.com/86parm-hub/ramayana/releases/download/v1.0/Ramayana.Part1.Act2.mp4',
+    local: 'Ramayana.Part1.Act2.mp4',
+    dur: NBP_ACT2_DUR
+  }
 };
 
-function openNetflixBlackPlayer(actKey) {
-  actKey = actKey || 'act1';
-  nbpActiveAct = actKey;
+// Subtitles mapping over the continuous timeline
+const NBP_CONTINUOUS_SUBS = [
+  { start: 3, end: 9, en: "In the golden age of Treta Yuga, Ayodhya stands in divine majesty.", hi: "त्रेतायुग के स्वर्ण काल में, अयोध्या दिव्य महिमा में विराजमान है।" },
+  { start: 10, end: 18, en: "King Dasharatha performs the sacred Putrakameshti Yajna.", hi: "महाराज दशरथ ने पवित्र पुत्रकामेष्टि यज्ञ संपन्न किया।" },
+  { start: 20, end: 32, en: "From the sacred flames, Lord Vishnu descends as Maryada Purushottam Rama.", hi: "पवित्र अग्नि से मर्यादा पुरुषोत्तम श्रीराम का दिव्य प्राकट्य हुआ।" },
+  { start: 35, end: 50, en: "Sage Vishwamitra arrives at the court seeking Prince Rama's protection.", hi: "महर्षि विश्वामित्र अयोध्या की सभा में श्रीराम की रक्षा मांगने पधारे।" },
+  { start: 55, end: 85, en: "With divine Astras, Sri Rama vanquishes Tadaka and restores Dharma.", hi: "दिव्य अस्त्रों से श्रीराम ने ताड़का का वध कर धर्म की रक्षा की।" },
+  { start: 90, end: 120, en: "In the court of Mithila, Sri Rama strings the unyielding Shiva Dhanush Pinaka.", hi: "मिथिला की राजसभा में श्रीराम ने भगवान शिव के पिनाक धनुष पर प्रत्यंचा चढ़ाई।" },
+  // Act 2 continuous timeline (starts after 5407s)
+  { start: 5410, end: 5425, en: "The 14-year sacred exile begins as Sri Rama, Sita, and Lakshmana depart Ayodhya.", hi: "श्रीराम, जानकी और लक्ष्मण का 14 वर्ष का पवित्र वनवास प्रारंभ हुआ।" },
+  { start: 5430, end: 5450, en: "Deep in Dandakaranya, the hermits find divine refuge in the presence of Rama.", hi: "दंडकारण्य के ऋषि-मुनि श्रीराम की छत्रछाया में अभय प्राप्त करते हैं।" },
+  { start: 5455, end: 5490, en: "At Panchavati, the cosmic clash of Dharma and Adharma takes its initial sparks.", hi: "पंचवटी में धर्म और अधर्म के महायुद्ध की दिव्य चिंगारी सुलगी।" }
+];
 
+function openNetflixBlackPlayer(targetTime) {
   const modal = document.getElementById('netflixBlackPlayerModal');
   const video = document.getElementById('nbpVideo');
   const spinner = document.getElementById('nbpSpinner');
-  const actTitle = document.getElementById('nbpActTitle');
-  const nextActLabel = document.getElementById('nbpNextActLabel');
-  const card1 = document.getElementById('nbpDrawerAct1');
-  const card2 = document.getElementById('nbpDrawerAct2');
-  const tooltipImg = document.getElementById('nbpTooltipImg');
 
-  // Pause trailer and OST audio if playing
+  // Pause trailer and OST
   const trailerVideo = document.getElementById('trailerVideo');
   if (trailerVideo && !trailerVideo.paused) trailerVideo.pause();
   if (typeof ostAudio !== 'undefined' && !ostAudio.paused) ostAudio.pause();
 
-  // Also pause cinema video if playing
   const cinemaVideo = document.getElementById('videoPlayer');
   if (cinemaVideo && !cinemaVideo.paused) cinemaVideo.pause();
 
   if (!modal || !video) return;
 
-  // Show Modal
   modal.classList.add('active');
   modal.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
 
-  // Update Titles & Drawer Cards
-  if (actKey === 'act1') {
-    if (actTitle) actTitle.textContent = 'Act 1: The Divine Beginning & Shiva Dhanush';
-    if (nextActLabel) nextActLabel.textContent = 'Act 2';
-    if (card1) card1.classList.add('active');
-    if (card2) card2.classList.remove('active');
-    if (tooltipImg) tooltipImg.src = 'feature_banner_hd.jpg';
-  } else {
-    if (actTitle) actTitle.textContent = 'Act 2: Forest Exile & Sacred Awakening';
-    if (nextActLabel) nextActLabel.textContent = 'Act 1';
-    if (card1) card1.classList.remove('active');
-    if (card2) card2.classList.add('active');
-    if (tooltipImg) tooltipImg.src = 'movie_cover_hd.jpg';
-  }
-
-  // Close all popovers
   closeAllNbpPopovers();
 
-  // Load Video Source
-  const isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
-  const cfg = (typeof ACT_CONFIG !== 'undefined' && ACT_CONFIG[actKey]) ? ACT_CONFIG[actKey] : {
-    cloudUrl: actKey === 'act1' 
-      ? 'https://github.com/86parm-hub/ramayana/releases/download/v1.0/Ramayana.Part1.Act1.mp4#t=3' 
-      : 'https://github.com/86parm-hub/ramayana/releases/download/v1.0/Ramayana.Part1.Act2.mp4',
-    localUrl: actKey === 'act1' ? 'Ramayana.Part1.Act1.mp4' : 'Ramayana.Part1.Act2.mp4'
-  };
-
-  const targetUrl = isLocal ? cfg.localUrl : cfg.cloudUrl;
-  
-  if (video.getAttribute('data-loaded-src') !== targetUrl) {
-    video.src = targetUrl;
-    video.setAttribute('data-loaded-src', targetUrl);
-    video.load();
-  }
-
-  if (spinner) spinner.classList.add('active');
-
-  const offset = (!isLocal && actKey === 'act1') ? 3.0 : 0;
-  if (offset > 0 && video.currentTime < offset) {
-    video.currentTime = offset;
-  }
-
-  // Auto-play
-  video.play().then(() => {
-    if (spinner) spinner.classList.remove('active');
-    updateNbpPlayButton(true);
-  }).catch(e => {
-    console.log('NBP Autoplay policy:', e);
-    if (spinner) spinner.classList.remove('active');
-    updateNbpPlayButton(false);
-  });
+  // If specific target time given or starting fresh
+  const startSec = (typeof targetTime === 'number') ? targetTime : 0;
+  loadAndPlayContinuous(startSec);
 
   startSubtitleEngine();
   resetNbpIdleTimer();
+}
+
+function loadAndPlayContinuous(globalSec) {
+  const video = document.getElementById('nbpVideo');
+  const spinner = document.getElementById('nbpSpinner');
+  if (!video) return;
+
+  const isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+
+  // Determine act and internal offset
+  if (globalSec < NBP_ACT1_DUR) {
+    nbpCurrentAct = 1;
+    const internalOffset = Math.max(0, globalSec);
+    const targetUrl = isLocal ? NBP_SOURCES.act1.local : NBP_SOURCES.act1.cloud;
+
+    if (video.getAttribute('data-loaded-src') !== targetUrl) {
+      video.src = targetUrl;
+      video.setAttribute('data-loaded-src', targetUrl);
+      video.load();
+    }
+
+    if (spinner) spinner.classList.add('active');
+    const offset = (!isLocal && internalOffset < 3.0) ? 3.0 : internalOffset;
+    if (offset > 0) video.currentTime = offset;
+
+    video.play().then(() => {
+      if (spinner) spinner.classList.remove('active');
+      updateNbpPlayButton(true);
+    }).catch(e => {
+      if (spinner) spinner.classList.remove('active');
+      updateNbpPlayButton(false);
+    });
+
+  } else {
+    nbpCurrentAct = 2;
+    const internalOffset = Math.max(0, globalSec - NBP_ACT1_DUR);
+    const targetUrl = isLocal ? NBP_SOURCES.act2.local : NBP_SOURCES.act2.cloud;
+
+    if (video.getAttribute('data-loaded-src') !== targetUrl) {
+      video.src = targetUrl;
+      video.setAttribute('data-loaded-src', targetUrl);
+      video.load();
+    }
+
+    if (spinner) spinner.classList.add('active');
+    video.currentTime = internalOffset;
+
+    video.play().then(() => {
+      if (spinner) spinner.classList.remove('active');
+      updateNbpPlayButton(true);
+    }).catch(e => {
+      if (spinner) spinner.classList.remove('active');
+      updateNbpPlayButton(false);
+    });
+  }
 }
 
 function closeNetflixBlackPlayer() {
@@ -1653,25 +1668,12 @@ function closeNetflixBlackPlayer() {
   closeAllNbpPopovers();
   stopSubtitleEngine();
 
-  // Exit fullscreen if active
   if (document.fullscreenElement) {
     document.exitFullscreen().catch(e => {});
   }
 }
 
-function switchNbpAct(actKey) {
-  openNetflixBlackPlayer(actKey);
-}
-
-function nbpToggleNextAct() {
-  if (nbpActiveAct === 'act1') {
-    switchNbpAct('act2');
-  } else {
-    switchNbpAct('act1');
-  }
-}
-
-// Center & Double Click Zone Handlers
+// Double Click & Tap Handlers
 let nbpLastTapLeft = 0;
 let nbpLastTapRight = 0;
 
@@ -1679,16 +1681,13 @@ function handleNbpZoneClick(side, e) {
   const now = Date.now();
   if (side === 'left') {
     if (now - nbpLastTapLeft < 300) {
-      // Double tap!
       nbpSeekRelative(-10);
       flashNbpRipple('left');
       nbpLastTapLeft = 0;
     } else {
       nbpLastTapLeft = now;
       setTimeout(() => {
-        if (nbpLastTapLeft === now) {
-          toggleNbpPlayPause();
-        }
+        if (nbpLastTapLeft === now) toggleNbpPlayPause();
       }, 300);
     }
   } else if (side === 'right') {
@@ -1699,9 +1698,7 @@ function handleNbpZoneClick(side, e) {
     } else {
       nbpLastTapRight = now;
       setTimeout(() => {
-        if (nbpLastTapRight === now) {
-          toggleNbpPlayPause();
-        }
+        if (nbpLastTapRight === now) toggleNbpPlayPause();
       }, 300);
     }
   }
@@ -1758,11 +1755,36 @@ function flashNbpIcon(type) {
   setTimeout(() => flash.classList.remove('show'), 400);
 }
 
+function getCurrentGlobalTime() {
+  const video = document.getElementById('nbpVideo');
+  if (!video) return 0;
+  return (nbpCurrentAct === 1) ? video.currentTime : (NBP_ACT1_DUR + video.currentTime);
+}
+
 function nbpSeekRelative(seconds) {
+  const curGlobal = getCurrentGlobalTime();
+  const target = Math.max(0, Math.min(NBP_TOTAL_DUR, curGlobal + seconds));
+  seekGlobal(target);
+  resetNbpIdleTimer();
+}
+
+function seekGlobal(targetSec) {
   const video = document.getElementById('nbpVideo');
   if (!video) return;
-  video.currentTime = Math.max(0, Math.min(video.duration || 9999, video.currentTime + seconds));
-  resetNbpIdleTimer();
+
+  if (targetSec < NBP_ACT1_DUR) {
+    if (nbpCurrentAct === 1) {
+      video.currentTime = targetSec;
+    } else {
+      loadAndPlayContinuous(targetSec);
+    }
+  } else {
+    if (nbpCurrentAct === 2) {
+      video.currentTime = targetSec - NBP_ACT1_DUR;
+    } else {
+      loadAndPlayContinuous(targetSec);
+    }
+  }
 }
 
 function toggleNbpMute() {
@@ -1776,20 +1798,10 @@ function toggleNbpMute() {
     volHigh.style.display = video.muted ? 'none' : 'block';
     volMute.style.display = video.muted ? 'block' : 'none';
   }
-  if (slider) {
-    slider.value = video.muted ? 0 : video.volume;
-  }
+  if (slider) slider.value = video.muted ? 0 : video.volume;
 }
 
-// Popover Toggles
-function toggleNbpActsDrawer() {
-  const drawer = document.getElementById('nbpActsDrawer');
-  if (!drawer) return;
-  const isShown = drawer.classList.contains('show');
-  closeAllNbpPopovers();
-  if (!isShown) drawer.classList.add('show');
-}
-
+// Popovers
 function toggleNbpAudioPopover() {
   const pop = document.getElementById('nbpAudioPopover');
   if (!pop) return;
@@ -1807,15 +1819,12 @@ function toggleNbpSpeedPopover() {
 }
 
 function closeAllNbpPopovers() {
-  const d = document.getElementById('nbpActsDrawer');
   const a = document.getElementById('nbpAudioPopover');
   const s = document.getElementById('nbpSpeedPopover');
-  if (d) d.classList.remove('show');
   if (a) a.classList.remove('show');
   if (s) s.classList.remove('show');
 }
 
-// Audio & Subtitle Control
 function setNbpAudio(audioKey) {
   const h51 = document.getElementById('nbpAudHindi51');
   const h20 = document.getElementById('nbpAudHindi20');
@@ -1833,29 +1842,69 @@ function setNbpSubtitle(subKey) {
   if (sEn) sEn.classList.toggle('active', subKey === 'en');
   if (sHi) sHi.classList.toggle('active', subKey === 'hi');
   const subText = document.getElementById('nbpSubtitleText');
-  if (subKey === 'off' && subText) {
-    subText.classList.remove('visible');
-  }
+  if (subKey === 'off' && subText) subText.classList.remove('visible');
   closeAllNbpPopovers();
+}
+
+function setNbpSpeed(speed, optEl) {
+  const video = document.getElementById('nbpVideo');
+  const btn = document.getElementById('nbpBtnSpeed');
+  if (!video) return;
+  video.playbackRate = speed;
+  if (btn) btn.textContent = speed + 'x';
+
+  document.querySelectorAll('.nbp-speed-opt').forEach(el => el.classList.remove('active'));
+  if (optEl) optEl.classList.add('active');
+  closeAllNbpPopovers();
+}
+
+function toggleNbpTimeFormat() {
+  nbpShowRemaining = !nbpShowRemaining;
+}
+
+function toggleNbpPiP() {
+  const video = document.getElementById('nbpVideo');
+  if (!video) return;
+  if (document.pictureInPictureElement) {
+    document.exitPictureInPicture().catch(e => {});
+  } else if (video.requestPictureInPicture) {
+    video.requestPictureInPicture().catch(e => console.log('PiP Error:', e));
+  }
+}
+
+function toggleNbpFullscreen() {
+  const modal = document.getElementById('netflixBlackPlayerModal');
+  const fsEnter = document.getElementById('nbpFsEnter');
+  const fsExit = document.getElementById('nbpFsExit');
+  if (!modal) return;
+  if (!document.fullscreenElement) {
+    modal.requestFullscreen().then(() => {
+      if (fsEnter) fsEnter.style.display = 'none';
+      if (fsExit) fsExit.style.display = 'block';
+    }).catch(err => console.log('FS error:', err));
+  } else {
+    document.exitFullscreen().then(() => {
+      if (fsEnter) fsEnter.style.display = 'block';
+      if (fsExit) fsExit.style.display = 'none';
+    }).catch(err => {});
+  }
 }
 
 function startSubtitleEngine() {
   stopSubtitleEngine();
-  const video = document.getElementById('nbpVideo');
   const subText = document.getElementById('nbpSubtitleText');
-  if (!video || !subText) return;
+  if (!subText) return;
 
   nbpSubInterval = setInterval(() => {
     if (nbpActiveSub === 'off') {
       subText.classList.remove('visible');
       return;
     }
-    const cur = video.currentTime;
-    const subs = NBP_SUBTITLES[nbpActiveAct] || [];
+    const curGlobal = getCurrentGlobalTime();
     let match = null;
-    for (let i = 0; i < subs.length; i++) {
-      if (cur >= subs[i].start && cur <= subs[i].end) {
-        match = subs[i];
+    for (let i = 0; i < NBP_CONTINUOUS_SUBS.length; i++) {
+      if (curGlobal >= NBP_CONTINUOUS_SUBS[i].start && curGlobal <= NBP_CONTINUOUS_SUBS[i].end) {
+        match = NBP_CONTINUOUS_SUBS[i];
         break;
       }
     }
@@ -1875,52 +1924,6 @@ function stopSubtitleEngine() {
   }
   const subText = document.getElementById('nbpSubtitleText');
   if (subText) subText.classList.remove('visible');
-}
-
-function setNbpSpeed(speed, optEl) {
-  const video = document.getElementById('nbpVideo');
-  const btn = document.getElementById('nbpBtnSpeed');
-  if (!video) return;
-  video.playbackRate = speed;
-  if (btn) btn.textContent = speed + 'x';
-
-  document.querySelectorAll('.nbp-speed-opt').forEach(el => el.classList.remove('active'));
-  if (optEl) optEl.classList.add('active');
-  closeAllNbpPopovers();
-}
-
-function toggleNbpTimeFormat() {
-  nbpShowRemaining = !nbpShowRemaining;
-}
-
-// Picture in Picture
-function toggleNbpPiP() {
-  const video = document.getElementById('nbpVideo');
-  if (!video) return;
-  if (document.pictureInPictureElement) {
-    document.exitPictureInPicture().catch(e => {});
-  } else if (video.requestPictureInPicture) {
-    video.requestPictureInPicture().catch(e => console.log('PiP Error:', e));
-  }
-}
-
-// Fullscreen
-function toggleNbpFullscreen() {
-  const modal = document.getElementById('netflixBlackPlayerModal');
-  const fsEnter = document.getElementById('nbpFsEnter');
-  const fsExit = document.getElementById('nbpFsExit');
-  if (!modal) return;
-  if (!document.fullscreenElement) {
-    modal.requestFullscreen().then(() => {
-      if (fsEnter) fsEnter.style.display = 'none';
-      if (fsExit) fsExit.style.display = 'block';
-    }).catch(err => console.log('FS error:', err));
-  } else {
-    document.exitFullscreen().then(() => {
-      if (fsEnter) fsEnter.style.display = 'block';
-      if (fsExit) fsExit.style.display = 'none';
-    }).catch(err => {});
-  }
 }
 
 function resetNbpIdleTimer() {
@@ -1962,7 +1965,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (!video) return;
 
-  // Video Events
+  // Seamless auto-transition from Part 1 to Part 2 on ended
+  video.addEventListener('ended', () => {
+    if (nbpCurrentAct === 1) {
+      console.log('Act 1 ended, seamlessly continuing to Act 2...');
+      loadAndPlayContinuous(NBP_ACT1_DUR);
+    }
+  });
+
   video.addEventListener('waiting', () => {
     if (spinner) spinner.classList.add('active');
   });
@@ -1979,41 +1989,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
   video.addEventListener('timeupdate', () => {
     if (nbpIsSeeking) return;
-    const cur = video.currentTime;
-    const dur = video.duration || (nbpActiveAct === 'act1' ? 5407 : 5416);
-    const pct = (cur / dur) * 100;
+    const curGlobal = getCurrentGlobalTime();
+    const durGlobal = NBP_TOTAL_DUR;
+    const pct = (curGlobal / durGlobal) * 100;
     if (progFill) progFill.style.width = pct + '%';
     if (thumb) thumb.style.left = pct + '%';
     
     if (txtCurrent && txtDuration) {
       if (nbpShowRemaining) {
-        const rem = Math.max(0, dur - cur);
-        txtCurrent.textContent = formatNbpTime(cur);
+        const rem = Math.max(0, durGlobal - curGlobal);
+        txtCurrent.textContent = formatNbpTime(curGlobal);
         txtDuration.textContent = '-' + formatNbpTime(rem);
       } else {
-        txtCurrent.textContent = formatNbpTime(cur);
-        txtDuration.textContent = formatNbpTime(dur);
+        txtCurrent.textContent = formatNbpTime(curGlobal);
+        txtDuration.textContent = formatNbpTime(durGlobal);
       }
     }
 
     // Buffer calculation
     if (video.buffered.length > 0 && buffFill) {
+      const actOffset = (nbpCurrentAct === 1) ? 0 : NBP_ACT1_DUR;
       for (let i = 0; i < video.buffered.length; i++) {
-        if (video.buffered.start(i) <= cur && cur <= video.buffered.end(i)) {
-          buffFill.style.width = (video.buffered.end(i) / dur * 100) + '%';
+        if (video.buffered.start(i) <= video.currentTime && video.currentTime <= video.buffered.end(i)) {
+          const globalBufferEnd = actOffset + video.buffered.end(i);
+          buffFill.style.width = ((globalBufferEnd / durGlobal) * 100) + '%';
           break;
         }
       }
     }
   });
 
-  // Scrubber Interaction
+  // Scrubber Seeking over full continuous duration
   function seekToPosition(e) {
     if (!scrubWrap) return;
     const rect = scrubWrap.getBoundingClientRect();
     const pos = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-    const dur = video.duration || 5407;
-    video.currentTime = pos * dur;
+    const targetGlobalSec = pos * NBP_TOTAL_DUR;
+    seekGlobal(targetGlobalSec);
     if (progFill) progFill.style.width = (pos * 100) + '%';
     if (thumb) thumb.style.left = (pos * 100) + '%';
   }
@@ -2035,12 +2047,12 @@ document.addEventListener('DOMContentLoaded', () => {
     scrubWrap.addEventListener('mousemove', (e) => {
       const rect = scrubWrap.getBoundingClientRect();
       const pos = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-      const dur = video.duration || 5407;
+      const targetSec = pos * NBP_TOTAL_DUR;
       if (tooltip) {
         tooltip.style.left = (pos * 100) + '%';
       }
       if (tooltipTime) {
-        tooltipTime.textContent = formatNbpTime(pos * dur);
+        tooltipTime.textContent = formatNbpTime(targetSec);
       }
     });
   }
@@ -2065,7 +2077,7 @@ document.addEventListener('DOMContentLoaded', () => {
     modal.addEventListener('touchstart', resetNbpIdleTimer);
   }
 
-  // Global Keyboard Shortcuts
+  // Keyboard Shortcuts
   window.addEventListener('keydown', (e) => {
     if (!modal || !modal.classList.contains('active')) return;
     if (e.key === 'Escape') {
@@ -2089,16 +2101,23 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+function playMovieInCinema() {
+  openNetflixBlackPlayer(0);
+}
+window.playMovieInCinema = playMovieInCinema;
+
+function startCinemaStream() {
+  openNetflixBlackPlayer(0);
+}
+window.startCinemaStream = startCinemaStream;
+
 window.openNetflixBlackPlayer = openNetflixBlackPlayer;
 window.closeNetflixBlackPlayer = closeNetflixBlackPlayer;
-window.switchNbpAct = switchNbpAct;
-window.nbpToggleNextAct = nbpToggleNextAct;
 window.handleNbpZoneClick = handleNbpZoneClick;
 window.handleNbpCenterClick = handleNbpCenterClick;
 window.toggleNbpPlayPause = toggleNbpPlayPause;
 window.nbpSeekRelative = nbpSeekRelative;
 window.toggleNbpMute = toggleNbpMute;
-window.toggleNbpActsDrawer = toggleNbpActsDrawer;
 window.toggleNbpAudioPopover = toggleNbpAudioPopover;
 window.toggleNbpSpeedPopover = toggleNbpSpeedPopover;
 window.setNbpAudio = setNbpAudio;
