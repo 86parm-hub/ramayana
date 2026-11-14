@@ -207,37 +207,7 @@ body.ott-platform {
   gap: 16px;
 }
 
-/* AI Syndicat Header Brand Badge */
-.syndicat-header-brand {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(16, 20, 32, 0.85);
-  border: 1px solid var(--border-silver);
-  padding: 5px 12px 5px 8px;
-  border-radius: 20px;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  color: #fff;
-  text-decoration: none;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.08);
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-}
 
-.syndicat-header-brand:hover {
-  transform: translateY(-2px);
-  border-color: var(--neon-red);
-  box-shadow: 0 4px 18px rgba(255, 42, 68, 0.3);
-}
-
-.syndicat-header-emblem {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-}
 
 .quality-pill {
   display: flex;
@@ -3259,10 +3229,6 @@ video {
   .quality-pill {
     display: none;
   }
-  .syndicat-header-brand {
-    padding: 5px 10px;
-    font-size: 11px;
-  }
   .btn-play-header {
     padding: 6px 14px;
     font-size: 12px;
@@ -3372,16 +3338,6 @@ video {
   }
   .nav-tabs {
     display: none;
-  }
-  .syndicat-header-brand {
-    display: flex !important;
-    padding: 4px 10px;
-    font-size: 10px;
-    gap: 6px;
-  }
-  .syndicat-header-emblem {
-    width: 18px;
-    height: 18px;
   }
   .brand-container {
     gap: 8px;
@@ -3768,12 +3724,6 @@ video {
   }
   .brand-edition {
     display: none;
-  }
-  .syndicat-header-brand span {
-    display: none;
-  }
-  .syndicat-header-brand {
-    padding: 4px 6px;
   }
   .hero-slide {
     padding: 70px 12px 28px;

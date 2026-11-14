@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="hi">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>SANDFLIX | Ramayana: Part One (2026) Cinema Max Ultra HD</title>
-  
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>SANDFLIX</title>
+
   <!-- Browser Tab Favicon (Official Metallic Insignia) -->
   <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=2">
@@ -16,12 +18,15 @@
   <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png?v=2">
 
   <link rel="stylesheet" href="style.css">
-  
+
   <!-- Premium Fonts: Cinzel, Cinzel Decorative, Marcellus, Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@600;700;800;900&family=Marcellus&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@600;700;800;900&family=Marcellus&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
 </head>
+
 <body class="ott-platform">
   <!-- Dynamic Ambient Glow Backdrop -->
   <div class="glow-backdrop" id="glowBackdrop"></div>
@@ -46,15 +51,12 @@
         <button class="tab-link" data-target="gallery-view" onclick="switchPage('gallery')">Stills &amp; Frames</button>
       </nav>
 
-      <!-- Header Right Utilities (Top Navbar Logo Preserved & Clickable to Instagram) -->
+      <!-- Header Right Utilities: Watch CTA Button -->
       <div class="header-actions">
-        <div class="syndicat-header-brand" title="SANDFLIX ORIGINALS">
-          <img src="sandflix_icon.png" alt="SANDFLIX" class="syndicat-header-emblem">
-          <span>ORIGINALS</span>
-        </div>
-
         <button class="btn-play-header" onclick="startCinemaStream()">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
           <span>Watch Film</span>
         </button>
       </div>
@@ -78,8 +80,10 @@
         <div class="slide-content-box">
           <div class="meta-badges">
             <span class="badge-gold">PART 1 &bull; NOW STREAMING</span>
-            <span class="badge-glass badge-clickable-part" onclick="openComingSoonModal(2)" title="View Part 2 Details">PART 2 &bull; COMING SOON 2028 🔒</span>
-            <span class="badge-glass badge-clickable-part" onclick="openComingSoonModal(3)" title="View Part 3 Details">PART 3 &bull; COMING SOON 2029 🔒</span>
+            <span class="badge-glass badge-clickable-part" onclick="openComingSoonModal(2)"
+              title="View Part 2 Details">PART 2 &bull; COMING SOON 2028 🔒</span>
+            <span class="badge-glass badge-clickable-part" onclick="openComingSoonModal(3)"
+              title="View Part 3 Details">PART 3 &bull; COMING SOON 2029 🔒</span>
             <span class="badge-glass">3h 12m</span>
             <span class="badge-glass">1080P HEVC</span>
           </div>
@@ -88,19 +92,30 @@
             <span class="hero-subtitle">PART ONE : THE AWAKENING</span>
           </h1>
           <p class="hero-synopsis">
-            An eternal cinematic spectacle chronicling Maryada Purushottam Lord Rama's supreme vow to uphold Dharma. From the sacred courts of Ayodhya to the mystic wilderness of Dandakaranya, witness the beginning of the legendary battle between divine righteousness and untamed evil.
+            An eternal cinematic spectacle chronicling Maryada Purushottam Lord Rama's supreme vow to uphold Dharma.
+            From the sacred courts of Ayodhya to the mystic wilderness of Dandakaranya, witness the beginning of the
+            legendary battle between divine righteousness and untamed evil.
           </p>
           <div class="hero-cta-group">
             <button class="btn-cta-primary" onclick="startCinemaStream()">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
               <span>Play Part 1 Movie</span>
             </button>
             <button class="btn-cta-secondary" onclick="scrollToChapters()">
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
               <span>Explore Chapters &amp; Parts</span>
             </button>
             <label for="directPickerInput" class="btn-cta-outline" title="Select custom local video">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="17 8 12 3 7 8"></polyline>
+                <line x1="12" y1="3" x2="12" y2="15"></line>
+              </svg>
               <span>Select File</span>
             </label>
             <input type="file" id="directPickerInput" accept=".mkv,.mp4,.webm" style="display:none;">
@@ -127,11 +142,15 @@
             <span class="hero-subtitle">THE BREAKING OF PINAKA</span>
           </h1>
           <p class="hero-synopsis">
-            In the grand assembly of Mithila, amidst mighty kings and celestial warriors, Prince Rama effortlessly strings the divine bow of Lord Shiva, breaking it into two halves and fulfilling the sacred prophecy to wed Mata Sita.
+            In the grand assembly of Mithila, amidst mighty kings and celestial warriors, Prince Rama effortlessly
+            strings the divine bow of Lord Shiva, breaking it into two halves and fulfilling the sacred prophecy to wed
+            Mata Sita.
           </p>
           <div class="hero-cta-group">
             <button class="btn-cta-primary" onclick="startCinemaStream()">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
               <span>Watch Sequence</span>
             </button>
             <button class="btn-cta-secondary" onclick="switchPage('gallery')">
@@ -159,11 +178,14 @@
             <span class="hero-subtitle">IN DEFENCE OF CREATION</span>
           </h1>
           <p class="hero-synopsis">
-            Bathed in celestial golden rays and showered with blessings from the Devas, the protector of the universe rises with his inexhaustible quiver to defeat the forces of Lanka and restore universal balance.
+            Bathed in celestial golden rays and showered with blessings from the Devas, the protector of the universe
+            rises with his inexhaustible quiver to defeat the forces of Lanka and restore universal balance.
           </p>
           <div class="hero-cta-group">
             <button class="btn-cta-primary" onclick="startCinemaStream()">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
               <span>Stream In Cinema</span>
             </button>
             <button class="btn-cta-secondary" onclick="switchPage('gallery')">
@@ -208,10 +230,13 @@
               <h4>Part 1: The Awakening (2026)</h4>
               <span class="quality-badge-mini">1080P HEVC</span>
             </div>
-            <p>Maryada Purushottam Lord Rama's fourteen years of exile and forest meditation. Click to watch full movie now.</p>
+            <p>Maryada Purushottam Lord Rama's fourteen years of exile and forest meditation. Click to watch full movie
+              now.</p>
             <div class="card-action-bar">
               <span class="btn-card-action play-action">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
                 Watch Movie Now
               </span>
             </div>
@@ -223,7 +248,10 @@
           <div class="film-card-thumb">
             <img src="feature_banner_hd.jpg" alt="Ramayana Part 2: Coming Soon 2028">
             <div class="card-lock-hover">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                <path
+                  d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" />
+              </svg>
             </div>
             <span class="card-tag tag-coming-gold">
               🔒 PART 2 &bull; COMING SOON 2028
@@ -234,10 +262,14 @@
               <h4>Part 2: The Quest &amp; The War</h4>
               <span class="coming-badge-mini gold">2028</span>
             </div>
-            <p>The breaking of Shiva Dhanush, the quest for Mata Sita &amp; Kishkindha. Click to view release details.</p>
+            <p>The breaking of Shiva Dhanush, the quest for Mata Sita &amp; Kishkindha. Click to view release details.
+            </p>
             <div class="card-action-bar">
               <span class="btn-card-action notify-action-gold">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/></svg>
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                  <path
+                    d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z" />
+                </svg>
                 Coming Soon 2028
               </span>
             </div>
@@ -249,7 +281,10 @@
           <div class="film-card-thumb">
             <img src="movie_poster_hd.jpg" alt="Ramayana Part 3: Coming Soon 2029">
             <div class="card-lock-hover">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                <path
+                  d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" />
+              </svg>
             </div>
             <span class="card-tag tag-coming-saffron">
               🔒 PART 3 &bull; COMING SOON 2029
@@ -263,7 +298,10 @@
             <p>The celestial archer, Dharma Yuddha of Lanka &amp; grand coronation. Click to view release details.</p>
             <div class="card-action-bar">
               <span class="btn-card-action notify-action-saffron">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/></svg>
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                  <path
+                    d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z" />
+                </svg>
                 Coming Soon 2029
               </span>
             </div>
@@ -350,19 +388,34 @@
           </div>
           <div class="trailer-ctrls-inner">
             <div class="trailer-ctrls-left">
-              <button class="trailer-ctrl-btn" id="trailerPlayBtn" onclick="toggleTrailerPlayback()" title="Play / Pause">
-                <svg id="trailerPlayIcon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                <svg id="trailerPauseIcon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="display:none;"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+              <button class="trailer-ctrl-btn" id="trailerPlayBtn" onclick="toggleTrailerPlayback()"
+                title="Play / Pause">
+                <svg id="trailerPlayIcon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+                <svg id="trailerPauseIcon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"
+                  style="display:none;">
+                  <rect x="6" y="4" width="4" height="16"></rect>
+                  <rect x="14" y="4" width="4" height="16"></rect>
+                </svg>
               </button>
               <button class="trailer-ctrl-btn" id="trailerMuteBtn" onclick="toggleTrailerMute()" title="Mute / Unmute">
-                <svg id="trailerVolIcon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+                <svg id="trailerVolIcon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                </svg>
               </button>
               <span class="trailer-time" id="trailerTimeDisplay">00:00 / 04:01</span>
             </div>
             <div class="trailer-ctrls-right">
               <span class="trailer-pill-badge">4K MASTER</span>
               <button class="trailer-ctrl-btn" onclick="toggleTrailerFullscreen()" title="Fullscreen">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                  <path
+                    d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3">
+                  </path>
+                </svg>
               </button>
             </div>
           </div>
@@ -391,7 +444,8 @@
 
         <div class="trailer-cut-card" onclick="seekTrailer(45, this)">
           <div class="cut-thumb-box">
-            <img src="teaser_archer_hd.jpg" alt="Teaser: The Divine Archer" loading="eager" onerror="this.onerror=null; this.src='teaser_archer.jpg'">
+            <img src="teaser_archer_hd.jpg" alt="Teaser: The Divine Archer" loading="eager"
+              onerror="this.onerror=null; this.src='teaser_archer.jpg'">
             <span class="cut-duration">01:45</span>
             <div class="cut-play-pill">▶ PLAY</div>
           </div>
@@ -403,7 +457,8 @@
 
         <div class="trailer-cut-card" onclick="seekTrailer(140, this)">
           <div class="cut-thumb-box">
-            <img src="teaser_lanka_hd.jpg" alt="Teaser: Awakening of Lanka" loading="eager" onerror="this.onerror=null; this.src='teaser_lanka.jpg'">
+            <img src="teaser_lanka_hd.jpg" alt="Teaser: Awakening of Lanka" loading="eager"
+              onerror="this.onerror=null; this.src='teaser_lanka.jpg'">
             <span class="cut-duration">01:21</span>
             <div class="cut-play-pill">▶ PLAY</div>
           </div>
@@ -421,14 +476,16 @@
         <div class="tf-icon">🏹</div>
         <div class="tf-info">
           <h3>The Eternal Legend</h3>
-          <p>Witness Lord Rama's celestial vows rise to safeguard cosmic righteousness against the untamed forces of Lanka.</p>
+          <p>Witness Lord Rama's celestial vows rise to safeguard cosmic righteousness against the untamed forces of
+            Lanka.</p>
         </div>
       </div>
       <div class="trailer-feature-card">
         <div class="tf-icon">✨</div>
         <div class="tf-info">
           <h3>Oscar-Winning VFX</h3>
-          <p>Breathtaking celestial worlds crafted by Namit Malhotra &amp; DNEG's Academy Award-winning visual masters.</p>
+          <p>Breathtaking celestial worlds crafted by Namit Malhotra &amp; DNEG's Academy Award-winning visual masters.
+          </p>
         </div>
       </div>
       <div class="trailer-feature-card">
@@ -448,7 +505,9 @@
       </div>
       <div class="trailer-cta-actions">
         <button class="btn-cta-primary" onclick="startCinemaStream()">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
           <span>Watch Full Movie (Cinema)</span>
         </button>
         <button class="btn-cta-secondary" onclick="switchPage('gallery')">
@@ -503,8 +562,10 @@
       <div class="screen-ambient-glow" id="screenAmbientGlow"></div>
 
       <div class="video-chassis" id="videoChassis">
-        <video id="videoPlayer" preload="metadata" playsinline webkit-playsinline x-webkit-airplay="allow" poster="movie_cover_hd.jpg">
-          <source src="https://github.com/86parm-hub/ramayana/releases/download/v1.0/Ramayana.Part1.Act1.mp4#t=3" type="video/mp4">
+        <video id="videoPlayer" preload="metadata" playsinline webkit-playsinline x-webkit-airplay="allow"
+          poster="movie_cover_hd.jpg">
+          <source src="https://github.com/86parm-hub/ramayana/releases/download/v1.0/Ramayana.Part1.Act1.mp4#t=3"
+            type="video/mp4">
           <source src="Ramayana.2026.Part1.Final.mp4" type="video/mp4">
           <source src="Ramayana.Part1.Act1.mp4" type="video/mp4">
           Your browser does not support HTML5 video streaming.
@@ -532,11 +593,14 @@
           </div>
           <span class="outro-super-tag">A SANDFLIX ORIGINAL PRESENTATION</span>
           <h2 class="outro-title" id="outroTitle">RAMAYANA: PART ONE</h2>
-          <p class="outro-subtitle" id="outroSubtitle">Act 1 Complete • Up Next: Act 2 (The Forest Exile &amp; Awakening)</p>
-          
+          <p class="outro-subtitle" id="outroSubtitle">Act 1 Complete • Up Next: Act 2 (The Forest Exile &amp;
+            Awakening)</p>
+
           <div class="outro-cta-row">
             <button class="btn-outro-action primary" id="btnOutroNext" onclick="handleOutroNext()">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
               <span id="btnOutroNextText">Play Act 2 Now</span>
             </button>
             <button class="btn-outro-action secondary" onclick="handleOutroReplay()">
@@ -546,9 +610,11 @@
               </svg>
               <span>Replay Act</span>
             </button>
-            <a href="https://www.instagram.com/ai.syndicat" target="_blank" rel="noopener noreferrer" class="btn-outro-insta">
+            <a href="https://www.instagram.com/ai.syndicat" target="_blank" rel="noopener noreferrer"
+              class="btn-outro-insta">
               <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                <path
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
               </svg>
               <span>Follow @ai.syndicat</span>
             </a>
@@ -558,8 +624,13 @@
         <!-- Big Center Play/Pause Ripple Button -->
         <div class="center-play-veil" id="centerPlayVeil">
           <button class="center-play-orb" id="centerPlayOrb" aria-label="Play Video">
-            <svg class="icon-play" viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
-            <svg class="icon-pause" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+            <svg class="icon-play" viewBox="0 0 24 24">
+              <polygon points="6 3 20 12 6 21 6 3"></polygon>
+            </svg>
+            <svg class="icon-pause" viewBox="0 0 24 24">
+              <rect x="6" y="4" width="4" height="16"></rect>
+              <rect x="14" y="4" width="4" height="16"></rect>
+            </svg>
           </button>
         </div>
 
@@ -590,23 +661,44 @@
             <!-- Left Side Controls -->
             <div class="controls-group-left">
               <button class="ctrl-icon-btn" id="btnPlayPause" title="Play/Pause (Space)">
-                <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                <svg class="icon-pause" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+                <svg class="icon-play" viewBox="0 0 24 24">
+                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+                <svg class="icon-pause" viewBox="0 0 24 24">
+                  <rect x="6" y="4" width="4" height="16"></rect>
+                  <rect x="14" y="4" width="4" height="16"></rect>
+                </svg>
               </button>
 
               <button class="ctrl-icon-btn" id="btnRewind10" title="Rewind 10 Seconds (Left Arrow)">
-                <svg viewBox="0 0 24 24"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/><text x="12" y="15" text-anchor="middle" font-size="7" font-weight="bold" fill="currentColor">10</text></svg>
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z" />
+                  <text x="12" y="15" text-anchor="middle" font-size="7" font-weight="bold"
+                    fill="currentColor">10</text>
+                </svg>
               </button>
 
               <button class="ctrl-icon-btn" id="btnForward10" title="Forward 10 Seconds (Right Arrow)">
-                <svg viewBox="0 0 24 24"><path d="M12 5V1l5 5-5 5V7c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6h2c0 4.42-3.58 8-8 8s-8-3.58-8-8 3.58-8 8-8z"/><text x="12" y="15" text-anchor="middle" font-size="7" font-weight="bold" fill="currentColor">10</text></svg>
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M12 5V1l5 5-5 5V7c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6h2c0 4.42-3.58 8-8 8s-8-3.58-8-8 3.58-8 8-8z" />
+                  <text x="12" y="15" text-anchor="middle" font-size="7" font-weight="bold"
+                    fill="currentColor">10</text>
+                </svg>
               </button>
 
               <!-- Volume Bundle -->
               <div class="volume-bundle">
                 <button class="ctrl-icon-btn" id="btnSoundToggle" title="Mute/Unmute (M)">
-                  <svg class="sound-on" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-                  <svg class="sound-off" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+                  <svg class="sound-on" viewBox="0 0 24 24">
+                    <path
+                      d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
+                  </svg>
+                  <svg class="sound-off" viewBox="0 0 24 24">
+                    <path
+                      d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z" />
+                  </svg>
                 </button>
                 <div class="vol-slider-rail">
                   <input type="range" class="vol-slider" id="volSlider" min="0" max="1" step="0.05" value="1">
@@ -638,13 +730,20 @@
 
               <!-- Picture In Picture -->
               <button class="ctrl-icon-btn" id="btnPiP" title="Picture in Picture (P)">
-                <svg viewBox="0 0 24 24"><path d="M19 11h-8v6h8v-6zm4 8V4.98C23 3.88 22.1 3 21 3H3c-1.1 0-2 .88-2 1.98V19c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2zm-2 .02H3V4.97h18v14.05z"/></svg>
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M19 11h-8v6h8v-6zm4 8V4.98C23 3.88 22.1 3 21 3H3c-1.1 0-2 .88-2 1.98V19c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2zm-2 .02H3V4.97h18v14.05z" />
+                </svg>
               </button>
 
               <!-- Fullscreen -->
               <button class="ctrl-icon-btn" id="btnFullscreen" title="Fullscreen (F)">
-                <svg class="fs-enter" viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
-                <svg class="fs-exit" viewBox="0 0 24 24"><path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-14v3h3v2h-5V5h2z"/></svg>
+                <svg class="fs-enter" viewBox="0 0 24 24">
+                  <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z" />
+                </svg>
+                <svg class="fs-exit" viewBox="0 0 24 24">
+                  <path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-14v3h3v2h-5V5h2z" />
+                </svg>
               </button>
             </div>
           </div>
@@ -653,10 +752,13 @@
         <!-- Offline File Picker Modal (Fallback) -->
         <div class="offline-file-modal" id="offlineFileModal">
           <div class="modal-card">
-            <button class="modal-close-cross" onclick="document.getElementById('offlineFileModal').classList.remove('visible')" aria-label="Close dialog">&times;</button>
+            <button class="modal-close-cross"
+              onclick="document.getElementById('offlineFileModal').classList.remove('visible')"
+              aria-label="Close dialog">&times;</button>
             <div class="modal-badge-icon">🎬</div>
             <h3>RAMAYANA: PART 1 STREAM READY</h3>
-            <p>Direct GitHub Cloud CDN stream is active. If your browser prefers playing from local disk, select the video file:</p>
+            <p>Direct GitHub Cloud CDN stream is active. If your browser prefers playing from local disk, select the
+              video file:</p>
             <label class="btn-select-file" for="localFileInput">
               <span>📂 Select Ramayana.2026.Part1.Final.mp4 / .mkv</span>
             </label>
@@ -664,7 +766,8 @@
             <div style="margin-top: 14px; font-size: 13px; color: var(--gold-pri);">
               <span>💡 Cloud CDN Streaming in 1080P HEVC active 24/7 with zero buffering</span>
             </div>
-            <span class="file-note" id="fileNote">Auto-trimmed: Intro 1m17s &amp; Outro 2-min removed • 03:00:31 Full Movie</span>
+            <span class="file-note" id="fileNote">Auto-trimmed: Intro 1m17s &amp; Outro 2-min removed • 03:00:31 Full
+              Movie</span>
           </div>
         </div>
       </div>
@@ -682,7 +785,8 @@
               <span>SANDFLIX ORIGINALS</span>
             </div>
             <h3 class="acts-showcase-title">Ramayana Part 1: Both Acts (Complete 3-Hour Cut)</h3>
-            <p class="acts-showcase-desc">Neeche diye gaye dono Acts me se kisi par bhi click karke direct 1080P HEVC Ultra HD stream shuru kijiye:</p>
+            <p class="acts-showcase-desc">Neeche diye gaye dono Acts me se kisi par bhi click karke direct 1080P HEVC
+              Ultra HD stream shuru kijiye:</p>
           </div>
           <div class="acts-header-right">
             <span class="acts-quality-tag">1080P HEVC CINEMA</span>
@@ -697,7 +801,9 @@
                 <img src="movie_cover_hd.jpg" alt="Act 1: The Divine Beginning">
                 <div class="act-card-play-overlay">
                   <div class="act-play-circle">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                      <polygon points="6 3 20 12 6 21 6 3"></polygon>
+                    </svg>
                   </div>
                 </div>
                 <span class="act-badge-pill live" id="actBadge1">● NOW PLAYING</span>
@@ -709,9 +815,13 @@
                   <span class="act-studio-tag">SANDFLIX</span>
                 </div>
                 <h4 class="act-name">The Divine Beginning &amp; Shiva Dhanush</h4>
-                <p class="act-synopsis">Lord Rama's cosmic birth in Ayodhya, guru Vishwamitra's sacred yajna protection, and the breaking of Pinaka in Mithila.</p>
-                <button class="btn-stream-act primary" id="btnStreamAct1" onclick="event.stopPropagation(); selectAct('act1');">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                <p class="act-synopsis">Lord Rama's cosmic birth in Ayodhya, guru Vishwamitra's sacred yajna protection,
+                  and the breaking of Pinaka in Mithila.</p>
+                <button class="btn-stream-act primary" id="btnStreamAct1"
+                  onclick="event.stopPropagation(); selectAct('act1');">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                  </svg>
                   <span>Play Act 1 (01:30:07)</span>
                 </button>
               </div>
@@ -725,7 +835,9 @@
                 <img src="feature_banner_hd.jpg" alt="Act 2: The Forest Exile &amp; Awakening">
                 <div class="act-card-play-overlay">
                   <div class="act-play-circle">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                      <polygon points="6 3 20 12 6 21 6 3"></polygon>
+                    </svg>
                   </div>
                 </div>
                 <span class="act-badge-pill" id="actBadge2">ACT 2</span>
@@ -737,9 +849,13 @@
                   <span class="act-studio-tag">SANDFLIX</span>
                 </div>
                 <h4 class="act-name">Forest Exile &amp; Divine Awakening</h4>
-                <p class="act-synopsis">The 14-year vanvas vow, sacred Dandakaranya meditation, Panchavati journey, and the awakening of the supreme battle.</p>
-                <button class="btn-stream-act secondary" id="btnStreamAct2" onclick="event.stopPropagation(); selectAct('act2');">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                <p class="act-synopsis">The 14-year vanvas vow, sacred Dandakaranya meditation, Panchavati journey, and
+                  the awakening of the supreme battle.</p>
+                <button class="btn-stream-act secondary" id="btnStreamAct2"
+                  onclick="event.stopPropagation(); selectAct('act2');">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                  </svg>
                   <span>Play Act 2 (01:30:16)</span>
                 </button>
               </div>
@@ -773,14 +889,20 @@
 
           <!-- Part 2: Coming Soon 2028 -->
           <div class="trilogy-bar-pill upcoming" onclick="openComingSoonModal(2)" title="Click to view release details">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+              <path
+                d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" />
+            </svg>
             <span class="part-name">Part 2: The Quest &amp; The War</span>
             <span class="tag-status coming-tag">COMING SOON 2028</span>
           </div>
 
           <!-- Part 3: Coming Soon 2029 -->
           <div class="trilogy-bar-pill upcoming" onclick="openComingSoonModal(3)" title="Click to view release details">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+              <path
+                d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" />
+            </svg>
             <span class="part-name">Part 3: The Final Triumph</span>
             <span class="tag-status coming-tag saffron">COMING SOON 2029</span>
           </div>
@@ -792,7 +914,7 @@
   <!-- =========================================================================
        PAGE 3: STILLS & FRAMES GALLERY VIEW
        ========================================================================= -->
-    <!-- =========================================================================
+  <!-- =========================================================================
        PAGE 3: STILLS, FRAMES & OFFICIAL SOUNDTRACK VIEW
        ========================================================================= -->
   <section class="page-view" id="gallery-view">
@@ -802,7 +924,8 @@
         <span>EXCLUSIVE SOUNDTRACK &amp; CINEMATIC GALLERY</span>
       </div>
       <h2 class="view-title">Original Soundtrack &amp; Stills</h2>
-      <p class="view-subtitle">Official Motion Picture Music by A.R. Rahman &amp; Hans Zimmer with High-Definition Captured Frames</p>
+      <p class="view-subtitle">Official Motion Picture Music by A.R. Rahman &amp; Hans Zimmer with High-Definition
+        Captured Frames</p>
     </div>
 
     <!-- =========================================================================
@@ -846,24 +969,28 @@
 
           <h1 class="ost-banner-title">RAMAYANA: PART ONE</h1>
           <p class="ost-banner-composers">
-            Original Music Composed &amp; Produced by <span class="ost-gold-txt">A.R. RAHMAN</span> &times; <span class="ost-gold-txt">HANS ZIMMER</span>
+            Original Music Composed &amp; Produced by <span class="ost-gold-txt">A.R. RAHMAN</span> &times; <span
+              class="ost-gold-txt">HANS ZIMMER</span>
           </p>
           <p class="ost-banner-lyrics">
-            Lyrics by <span class="ost-light-txt">Dr. Kumar Vishwas</span> &bull; Featuring <span class="ost-light-txt">Arijit Singh, Shreya Ghoshal, Vishal Dadlani, A.R. Ameen &amp; Budapest Choral Ensemble</span>
+            Lyrics by <span class="ost-light-txt">Dr. Kumar Vishwas</span> &bull; Featuring <span
+              class="ost-light-txt">Arijit Singh, Shreya Ghoshal, Vishal Dadlani, A.R. Ameen &amp; Budapest Choral
+              Ensemble</span>
           </p>
 
           <!-- Banner Action Buttons -->
           <div class="ost-banner-actions">
             <button class="ost-btn-play-all" id="ostPlayAllBtn" onclick="togglePlayAllOST()">
-              <svg class="ost-icon-play" id="ostPlayAllIcon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                <path d="M8 5v14l11-7z"/>
+              <svg class="ost-icon-play" id="ostPlayAllIcon" viewBox="0 0 24 24" width="20" height="20"
+                fill="currentColor">
+                <path d="M8 5v14l11-7z" />
               </svg>
               <span id="ostPlayAllLabel">Play All Tracks</span>
             </button>
 
             <button class="ost-btn-shuffle" onclick="shufflePlayOST()" title="Shuffle Play Tracks">
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/>
+                <path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5" />
               </svg>
               <span>Shuffle</span>
             </button>
@@ -884,11 +1011,14 @@
       <div class="ost-section-heading-row">
         <div class="ost-sh-text">
           <div class="ost-sh-badge">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+              <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
+            </svg>
             <span>OFFICIAL TRACKLIST</span>
           </div>
           <h3 class="ost-sh-title">Stream &amp; Experience Original Compositions</h3>
-          <p class="ost-sh-sub">Direct studio master tracks with high-definition album art and lossless acoustic streaming</p>
+          <p class="ost-sh-sub">Direct studio master tracks with high-definition album art and lossless acoustic
+            streaming</p>
         </div>
         <div class="ost-sh-specs">
           <span class="spec-pill">AAC 44.1kHz</span>
@@ -904,7 +1034,7 @@
           <div class="ost-card-banner">
             <img src="hero_banner_hd.jpg" alt="Dharthi Hai Ambar Banner" class="ost-card-img" loading="lazy">
             <div class="ost-card-gradient"></div>
-            
+
             <div class="ost-card-top-info">
               <span class="ost-track-idx">01</span>
               <span class="ost-track-mood">TITLE THEME</span>
@@ -917,8 +1047,13 @@
 
             <!-- Big Floating Play/Pause Button on Banner -->
             <button class="ost-card-play-btn" onclick="playOSTTrack(1)" aria-label="Play Dharthi Hai Ambar">
-              <svg class="icon-play" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-              <svg class="icon-pause" style="display:none;" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+              <svg class="icon-play" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+              <svg class="icon-pause" style="display:none;" viewBox="0 0 24 24" width="22" height="22"
+                fill="currentColor">
+                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+              </svg>
             </button>
 
             <span class="ost-card-duration-badge">01:13</span>
@@ -929,13 +1064,14 @@
               <h4 class="ost-card-title">Dharthi Hai Ambar</h4>
               <span class="ost-card-subtitle">Ramayana Introduction Theme &amp; Sacred Chants</span>
             </div>
-            
+
             <p class="ost-card-artists">
               <strong>A.R. Rahman</strong> &times; <strong>Hans Zimmer</strong>
             </p>
 
             <p class="ost-card-desc">
-              Celestial Sanskrit chants and thunderous cinematic symphony announcing the divine incarnation of Lord Rama.
+              Celestial Sanskrit chants and thunderous cinematic symphony announcing the divine incarnation of Lord
+              Rama.
             </p>
 
             <!-- Real-time Progress Bar & Seek -->
@@ -951,8 +1087,12 @@
             <div class="ost-card-footer">
               <span class="ost-format-tag">LOSSLESS AUDIO</span>
               <div class="ost-card-btn-group">
-                <a href="audio/01_dharthi_hai_ambar_intro.m4a" download="Ramayana - 01 - Dharthi Hai Ambar.m4a" class="ost-card-btn-action" title="Download Audio File">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
+                <a href="audio/01_dharthi_hai_ambar_intro.m4a" download="Ramayana - 01 - Dharthi Hai Ambar.m4a"
+                  class="ost-card-btn-action" title="Download Audio File">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                    <path
+                      d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z" />
+                  </svg>
                   <span>Download</span>
                 </a>
               </div>
@@ -965,7 +1105,7 @@
           <div class="ost-card-banner">
             <img src="feature_banner_hd.jpg" alt="Sita's Aspiration Banner" class="ost-card-img" loading="lazy">
             <div class="ost-card-gradient"></div>
-            
+
             <div class="ost-card-top-info">
               <span class="ost-track-idx">02</span>
               <span class="ost-track-mood">SANSKRIT SHLOKA</span>
@@ -976,8 +1116,13 @@
             </div>
 
             <button class="ost-card-play-btn" onclick="playOSTTrack(2)" aria-label="Play Sita's Aspiration">
-              <svg class="icon-play" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-              <svg class="icon-pause" style="display:none;" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+              <svg class="icon-play" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+              <svg class="icon-pause" style="display:none;" viewBox="0 0 24 24" width="22" height="22"
+                fill="currentColor">
+                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+              </svg>
             </button>
 
             <span class="ost-card-duration-badge">02:40</span>
@@ -988,7 +1133,7 @@
               <h4 class="ost-card-title">Sita's Aspiration (Lyrical)</h4>
               <span class="ost-card-subtitle">Valmiki Ramayana Sanskrit Shloka &amp; Divine Melody</span>
             </div>
-            
+
             <p class="ost-card-artists">
               <strong>A.R. Rahman</strong> &bull; Lyrics: <strong>Dr. Kumar Vishwas</strong>
             </p>
@@ -1008,8 +1153,12 @@
             <div class="ost-card-footer">
               <span class="ost-format-tag">LOSSLESS AUDIO</span>
               <div class="ost-card-btn-group">
-                <a href="audio/02_sitas_aspiration_lyrical.m4a" download="Ramayana - 02 - Sitas Aspiration Lyrical.m4a" class="ost-card-btn-action" title="Download Audio File">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
+                <a href="audio/02_sitas_aspiration_lyrical.m4a" download="Ramayana - 02 - Sitas Aspiration Lyrical.m4a"
+                  class="ost-card-btn-action" title="Download Audio File">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                    <path
+                      d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z" />
+                  </svg>
                   <span>Download</span>
                 </a>
               </div>
@@ -1022,7 +1171,7 @@
           <div class="ost-card-banner">
             <img src="movie_poster_hd.jpg" alt="Jai Jai Ram Orchestral Banner" class="ost-card-img" loading="lazy">
             <div class="ost-card-gradient"></div>
-            
+
             <div class="ost-card-top-info">
               <span class="ost-track-idx">03</span>
               <span class="ost-track-mood">HOLLYWOOD SYMPHONY</span>
@@ -1033,8 +1182,13 @@
             </div>
 
             <button class="ost-card-play-btn" onclick="playOSTTrack(3)" aria-label="Play Jai Jai Ram Orchestral">
-              <svg class="icon-play" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-              <svg class="icon-pause" style="display:none;" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+              <svg class="icon-play" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+              <svg class="icon-pause" style="display:none;" viewBox="0 0 24 24" width="22" height="22"
+                fill="currentColor">
+                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+              </svg>
             </button>
 
             <span class="ost-card-duration-badge">03:02</span>
@@ -1045,13 +1199,14 @@
               <h4 class="ost-card-title">Jai Jai Ram (Orchestral Theme)</h4>
               <span class="ost-card-subtitle">Hollywood Symphony &amp; Celestial Choral Harmony</span>
             </div>
-            
+
             <p class="ost-card-artists">
               <strong>Hans Zimmer</strong> &times; <strong>A.R. Rahman</strong>
             </p>
 
             <p class="ost-card-desc">
-              Monumental orchestral score performed by world-class philharmonic strings and choir crafted for Dolby Atmos theaters.
+              Monumental orchestral score performed by world-class philharmonic strings and choir crafted for Dolby
+              Atmos theaters.
             </p>
 
             <div class="ost-card-progress-row">
@@ -1065,8 +1220,12 @@
             <div class="ost-card-footer">
               <span class="ost-format-tag">LOSSLESS AUDIO</span>
               <div class="ost-card-btn-group">
-                <a href="audio/03_jai_jai_ram_orchestral.m4a" download="Ramayana - 03 - Jai Jai Ram Orchestral.m4a" class="ost-card-btn-action" title="Download Audio File">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
+                <a href="audio/03_jai_jai_ram_orchestral.m4a" download="Ramayana - 03 - Jai Jai Ram Orchestral.m4a"
+                  class="ost-card-btn-action" title="Download Audio File">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                    <path
+                      d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z" />
+                  </svg>
                   <span>Download</span>
                 </a>
               </div>
@@ -1079,7 +1238,7 @@
           <div class="ost-card-banner">
             <img src="movie_cover_hd.jpg" alt="Sita's Aspiration Flute Banner" class="ost-card-img" loading="lazy">
             <div class="ost-card-gradient"></div>
-            
+
             <div class="ost-card-top-info">
               <span class="ost-track-idx">04</span>
               <span class="ost-track-mood">ACOUSTIC MELODY</span>
@@ -1090,8 +1249,13 @@
             </div>
 
             <button class="ost-card-play-btn" onclick="playOSTTrack(4)" aria-label="Play Sita's Aspiration Flute">
-              <svg class="icon-play" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-              <svg class="icon-pause" style="display:none;" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+              <svg class="icon-play" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+              <svg class="icon-pause" style="display:none;" viewBox="0 0 24 24" width="22" height="22"
+                fill="currentColor">
+                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+              </svg>
             </button>
 
             <span class="ost-card-duration-badge">02:42</span>
@@ -1102,13 +1266,15 @@
               <h4 class="ost-card-title">Sita's Aspiration (Divine Flute &amp; Vocals)</h4>
               <span class="ost-card-subtitle">Bamboo Flute, Sitar &amp; Ethereal Choral Resonance</span>
             </div>
-            
+
             <p class="ost-card-artists">
-              <strong>A.R. Ameen</strong>, <strong>Vaishali Samant</strong>, <strong>Rakshita Suresh</strong> &amp; <strong>Antra Nandy</strong>
+              <strong>A.R. Ameen</strong>, <strong>Vaishali Samant</strong>, <strong>Rakshita Suresh</strong> &amp;
+              <strong>Antra Nandy</strong>
             </p>
 
             <p class="ost-card-desc">
-              Serene Indian acoustic instruments resonating with gentle river currents and the spiritual beauty of exile in the forest.
+              Serene Indian acoustic instruments resonating with gentle river currents and the spiritual beauty of exile
+              in the forest.
             </p>
 
             <div class="ost-card-progress-row">
@@ -1122,8 +1288,12 @@
             <div class="ost-card-footer">
               <span class="ost-format-tag">LOSSLESS AUDIO</span>
               <div class="ost-card-btn-group">
-                <a href="audio/04_sitas_aspiration_divine.m4a" download="Ramayana - 04 - Sitas Aspiration Flute.m4a" class="ost-card-btn-action" title="Download Audio File">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
+                <a href="audio/04_sitas_aspiration_divine.m4a" download="Ramayana - 04 - Sitas Aspiration Flute.m4a"
+                  class="ost-card-btn-action" title="Download Audio File">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                    <path
+                      d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z" />
+                  </svg>
                   <span>Download</span>
                 </a>
               </div>
@@ -1136,7 +1306,7 @@
           <div class="ost-card-banner">
             <img src="teaser_lanka_hd.jpg" alt="Ravana Tandav Banner" class="ost-card-img" loading="lazy">
             <div class="ost-card-gradient"></div>
-            
+
             <div class="ost-card-top-info">
               <span class="ost-track-idx">05</span>
               <span class="ost-track-mood">WAR ANTHEM</span>
@@ -1147,8 +1317,13 @@
             </div>
 
             <button class="ost-card-play-btn" onclick="playOSTTrack(5)" aria-label="Play Ravana Tandav">
-              <svg class="icon-play" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-              <svg class="icon-pause" style="display:none;" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+              <svg class="icon-play" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+              <svg class="icon-pause" style="display:none;" viewBox="0 0 24 24" width="22" height="22"
+                fill="currentColor">
+                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+              </svg>
             </button>
 
             <span class="ost-card-duration-badge">03:14</span>
@@ -1159,13 +1334,15 @@
               <h4 class="ost-card-title">Ravana Tandav (Shiv Tandav Anthem)</h4>
               <span class="ost-card-subtitle">Lankan War Drums &amp; Lord Shiva's Tandav Stotram</span>
             </div>
-            
+
             <p class="ost-card-artists">
-              <strong>A.R. Rahman</strong> &times; <strong>Vishal Dadlani</strong> &bull; Lyrics: <strong>Kumar Vishwas</strong>
+              <strong>A.R. Rahman</strong> &times; <strong>Vishal Dadlani</strong> &bull; Lyrics: <strong>Kumar
+                Vishwas</strong>
             </p>
 
             <p class="ost-card-desc">
-              High-energy, thunderous war anthem encapsulating the unstoppable might, ego, and supreme devotion of the Lankan King.
+              High-energy, thunderous war anthem encapsulating the unstoppable might, ego, and supreme devotion of the
+              Lankan King.
             </p>
 
             <div class="ost-card-progress-row">
@@ -1179,8 +1356,12 @@
             <div class="ost-card-footer">
               <span class="ost-format-tag">LOSSLESS AUDIO</span>
               <div class="ost-card-btn-group">
-                <a href="audio/05_ravana_tandav.m4a" download="Ramayana - 05 - Ravana Tandav.m4a" class="ost-card-btn-action" title="Download Audio File">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
+                <a href="audio/05_ravana_tandav.m4a" download="Ramayana - 05 - Ravana Tandav.m4a"
+                  class="ost-card-btn-action" title="Download Audio File">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                    <path
+                      d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z" />
+                  </svg>
                   <span>Download</span>
                 </a>
               </div>
@@ -1193,7 +1374,7 @@
           <div class="ost-card-banner">
             <img src="teaser_archer_hd.jpg" alt="Jai Jai Ram Meri Pooja Banner" class="ost-card-img" loading="lazy">
             <div class="ost-card-gradient"></div>
-            
+
             <div class="ost-card-top-info">
               <span class="ost-track-idx">06</span>
               <span class="ost-track-mood">DEVOTIONAL CLIMAX</span>
@@ -1204,8 +1385,13 @@
             </div>
 
             <button class="ost-card-play-btn" onclick="playOSTTrack(6)" aria-label="Play Jai Jai Ram Meri Pooja">
-              <svg class="icon-play" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-              <svg class="icon-pause" style="display:none;" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+              <svg class="icon-play" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+              <svg class="icon-pause" style="display:none;" viewBox="0 0 24 24" width="22" height="22"
+                fill="currentColor">
+                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+              </svg>
             </button>
 
             <span class="ost-card-duration-badge">05:20</span>
@@ -1216,13 +1402,15 @@
               <h4 class="ost-card-title">Jai Jai Ram (Meri Pooja Mere Ram)</h4>
               <span class="ost-card-subtitle">Monumental Devotional Anthem &amp; Achyutam Keshavam</span>
             </div>
-            
+
             <p class="ost-card-artists">
-              <strong>A.R. Rahman</strong> &bull; <strong>Arijit Singh</strong> &bull; <strong>Shreya Ghoshal</strong> &bull; <strong>Kumar Vishwas</strong>
+              <strong>A.R. Rahman</strong> &bull; <strong>Arijit Singh</strong> &bull; <strong>Shreya Ghoshal</strong>
+              &bull; <strong>Kumar Vishwas</strong>
             </p>
 
             <p class="ost-card-desc">
-              The heart and soul of Ramayana: an emotional masterpiece expressing boundless devotion and the divine name of Rama.
+              The heart and soul of Ramayana: an emotional masterpiece expressing boundless devotion and the divine name
+              of Rama.
             </p>
 
             <div class="ost-card-progress-row">
@@ -1236,8 +1424,12 @@
             <div class="ost-card-footer">
               <span class="ost-format-tag">LOSSLESS AUDIO</span>
               <div class="ost-card-btn-group">
-                <a href="audio/06_jai_jai_ram_meri_pooja.m4a" download="Ramayana - 06 - Jai Jai Ram Meri Pooja.m4a" class="ost-card-btn-action" title="Download Audio File">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
+                <a href="audio/06_jai_jai_ram_meri_pooja.m4a" download="Ramayana - 06 - Jai Jai Ram Meri Pooja.m4a"
+                  class="ost-card-btn-action" title="Download Audio File">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                    <path
+                      d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z" />
+                  </svg>
                   <span>Download</span>
                 </a>
               </div>
@@ -1254,7 +1446,10 @@
     <div class="gallery-stills-divider">
       <div class="gsd-line"></div>
       <div class="gsd-badge">
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+          <path
+            d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
+        </svg>
         <span>CINEMATIC STILLS &amp; PRODUCTION FRAMES</span>
       </div>
       <div class="gsd-line"></div>
@@ -1293,13 +1488,13 @@
     </div>
   </section>
 
-<!-- =========================================================================
+  <!-- =========================================================================
        TRILOGY COMING SOON MODAL (Studio Interactive Showcase for Part 2 & Part 3)
        ========================================================================= -->
   <div class="coming-soon-modal" id="comingSoonModal" onclick="closeComingSoonModal()">
     <div class="modal-dialog-box" onclick="event.stopPropagation()">
       <button class="modal-close-cross" onclick="closeComingSoonModal()" aria-label="Close dialog">&times;</button>
-      
+
       <div class="modal-media-header">
         <img src="feature_banner_hd.jpg" id="modalBannerImg" alt="Coming Soon Banner" class="modal-banner-img">
         <div class="modal-banner-gradient"></div>
@@ -1316,7 +1511,9 @@
         </div>
 
         <p class="modal-synopsis-text" id="modalPartDesc">
-          Witness the monumental saga continue. Lord Rama, Mata Sita, and Lakshmana journey through deep Panchavati. From the fateful deception of the Golden Deer to the supreme devotion of Lord Hanuman in Kishkindha, the stage is set for the epic crossing of the southern sea.
+          Witness the monumental saga continue. Lord Rama, Mata Sita, and Lakshmana journey through deep Panchavati.
+          From the fateful deception of the Golden Deer to the supreme devotion of Lord Hanuman in Kishkindha, the stage
+          is set for the epic crossing of the southern sea.
         </p>
 
         <div class="modal-meta-grid">
@@ -1336,16 +1533,22 @@
 
         <div class="modal-cast-strip">
           <span class="cast-label">Vision &amp; Cast:</span>
-          <span class="cast-names" id="modalPartCast">Ranbir Kapoor (Lord Rama) &bull; Sai Pallavi (Mata Sita) &bull; Yash (Ravana) &bull; Sunny Deol (Lord Hanuman)</span>
+          <span class="cast-names" id="modalPartCast">Ranbir Kapoor (Lord Rama) &bull; Sai Pallavi (Mata Sita) &bull;
+            Yash (Ravana) &bull; Sunny Deol (Lord Hanuman)</span>
         </div>
 
         <div class="modal-action-row">
           <button class="btn-modal-notify" id="modalNotifyBtn" onclick="notifyMeAlert()">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/></svg>
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+              <path
+                d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z" />
+            </svg>
             <span id="notifyBtnText">Get Notified on Release</span>
           </button>
           <button class="btn-modal-back-part1" onclick="closeComingSoonModal(); startCinemaStream();">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
             <span>Watch Part 1 Movie Now</span>
           </button>
         </div>
@@ -1415,23 +1618,35 @@
       <div class="ost-fp-center-controls">
         <div class="ost-fp-buttons">
           <button class="ost-fp-btn" onclick="prevOSTTrack()" title="Previous Track (Shift+Left)">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+              <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" />
+            </svg>
           </button>
-          
-          <button class="ost-fp-btn-main" id="ostFpPlayBtn" onclick="toggleCurrentOSTTrack()" title="Play / Pause (Space)">
-            <svg class="fp-icon-play" id="fpIconPlay" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            <svg class="fp-icon-pause" id="fpIconPause" style="display:none;" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+
+          <button class="ost-fp-btn-main" id="ostFpPlayBtn" onclick="toggleCurrentOSTTrack()"
+            title="Play / Pause (Space)">
+            <svg class="fp-icon-play" id="fpIconPlay" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+            <svg class="fp-icon-pause" id="fpIconPause" style="display:none;" viewBox="0 0 24 24" width="22" height="22"
+              fill="currentColor">
+              <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+            </svg>
           </button>
-          
+
           <button class="ost-fp-btn" onclick="nextOSTTrack()" title="Next Track (Shift+Right)">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+              <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" />
+            </svg>
           </button>
-          
+
           <button class="ost-fp-btn-icon" id="ostFpLoopBtn" onclick="toggleOSTLoop()" title="Toggle Repeat Track">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+              <path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z" />
+            </svg>
           </button>
         </div>
-        
+
         <div class="ost-fp-scrubber-row">
           <span class="ost-fp-time" id="ostFpCurrentTime">00:00</span>
           <div class="ost-fp-progress-wrap" id="ostFpProgressWrap" onclick="seekOSTScrubber(event)">
@@ -1448,12 +1663,24 @@
       <!-- Right: Volume & Download & Close -->
       <div class="ost-fp-right-controls">
         <button class="ost-fp-vol-btn" id="ostFpMuteBtn" onclick="toggleOSTMute()" title="Mute/Unmute">
-          <svg class="vol-icon-on" id="fpVolOn" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-          <svg class="vol-icon-off" id="fpVolOff" style="display:none;" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+          <svg class="vol-icon-on" id="fpVolOn" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+            <path
+              d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
+          </svg>
+          <svg class="vol-icon-off" id="fpVolOff" style="display:none;" viewBox="0 0 24 24" width="18" height="18"
+            fill="currentColor">
+            <path
+              d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z" />
+          </svg>
         </button>
-        <input type="range" class="ost-fp-volume-slider" id="ostFpVolume" min="0" max="1" step="0.05" value="0.9" oninput="setOSTVolume(this.value)" title="Volume Slider">
-        <a href="audio/01_dharthi_hai_ambar_intro.m4a" download class="ost-fp-dl-btn" id="ostFpDownloadBtn" title="Download Audio File">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
+        <input type="range" class="ost-fp-volume-slider" id="ostFpVolume" min="0" max="1" step="0.05" value="0.9"
+          oninput="setOSTVolume(this.value)" title="Volume Slider">
+        <a href="audio/01_dharthi_hai_ambar_intro.m4a" download class="ost-fp-dl-btn" id="ostFpDownloadBtn"
+          title="Download Audio File">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+            <path
+              d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z" />
+          </svg>
         </a>
         <button class="ost-fp-close-btn" onclick="closeFloatingPlayer()" title="Hide Player Bar">
           &times;
@@ -1463,4 +1690,5 @@
   </aside>
 
 </body>
+
 </html>
