@@ -2304,6 +2304,8 @@ window.toggleNbpFullscreen = toggleNbpFullscreen;
    NETFLIX HOME BROWSE CONTROLLER (Billboard Hover Video, Carousel & Modals)
    ========================================================================== */
 
+let isHomeBillboardAudioEnabled = false;
+
 function initHomeBillboard() {
   const billboard = document.getElementById('homeHeroBillboard');
   const video = document.getElementById('homeBillboardVideo');
@@ -2312,7 +2314,8 @@ function initHomeBillboard() {
   if (!billboard || !video || !videoWrap) return;
 
   function playBillboardPreview() {
-    video.muted = true;
+    video.muted = !isHomeBillboardAudioEnabled;
+    video.volume = 1.0;
     const playPromise = video.play();
     if (playPromise !== undefined) {
       playPromise.then(() => {
@@ -2350,12 +2353,21 @@ function toggleBillboardAudio(event) {
 
   if (!video) return;
 
+  isHomeBillboardAudioEnabled = !isHomeBillboardAudioEnabled;
+  video.muted = !isHomeBillboardAudioEnabled;
+  video.volume = 1.0;
+
   if (video.paused) {
-    video.play();
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.then(() => {
+        if (videoWrap) videoWrap.classList.add('playing');
+      }).catch(err => console.log('Home billboard play error:', err));
+    }
+  } else {
     if (videoWrap) videoWrap.classList.add('playing');
   }
 
-  video.muted = !video.muted;
   if (video.muted) {
     if (muteIcon) muteIcon.style.display = 'block';
     if (unmuteIcon) unmuteIcon.style.display = 'none';
@@ -2471,6 +2483,8 @@ window.toggleBillboardAudio = toggleBillboardAudio;
 // ============================================================================
 // MOVIES PAGE BILLBOARD (Identical to Home Billboard)
 // ============================================================================
+let isMoviesBillboardAudioEnabled = false;
+
 function initMoviesBillboard() {
   const billboard = document.getElementById('moviesHeroBillboard');
   const video = document.getElementById('moviesBillboardVideo');
@@ -2479,7 +2493,8 @@ function initMoviesBillboard() {
   if (!billboard || !video || !videoWrap) return;
 
   function playMoviesBillboardPreview() {
-    video.muted = true;
+    video.muted = !isMoviesBillboardAudioEnabled;
+    video.volume = 1.0;
     const playPromise = video.play();
     if (playPromise !== undefined) {
       playPromise.then(() => {
@@ -2516,12 +2531,21 @@ function toggleMoviesBillboardAudio(event) {
 
   if (!video) return;
 
+  isMoviesBillboardAudioEnabled = !isMoviesBillboardAudioEnabled;
+  video.muted = !isMoviesBillboardAudioEnabled;
+  video.volume = 1.0;
+
   if (video.paused) {
-    video.play();
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.then(() => {
+        if (videoWrap) videoWrap.classList.add('playing');
+      }).catch(err => console.log('Movies billboard play error:', err));
+    }
+  } else {
     if (videoWrap) videoWrap.classList.add('playing');
   }
 
-  video.muted = !video.muted;
   if (video.muted) {
     if (muteIcon) muteIcon.style.display = 'block';
     if (unmuteIcon) unmuteIcon.style.display = 'none';

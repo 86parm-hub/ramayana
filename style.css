@@ -8949,7 +8949,7 @@ img, video {
 
 .spotify-table-header {
   display: grid;
-  grid-template-columns: 48px 1fr 200px 100px;
+  grid-template-columns: 48px 1fr 100px;
   padding: 8px 16px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 11px;
@@ -8973,7 +8973,7 @@ img, video {
 /* Individual Spotify Row */
 .spotify-row {
   display: grid;
-  grid-template-columns: 48px 1fr 200px 100px;
+  grid-template-columns: 48px 1fr 100px;
   align-items: center;
   padding: 10px 16px;
   border-radius: 6px;
