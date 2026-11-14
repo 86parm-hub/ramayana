@@ -993,13 +993,20 @@ function playOSTTrack(trackId) {
     return;
   }
 
-  // Switch to new track
+  // Switch to new track with protected streaming
   currentOSTIndex = targetIndex;
   const track = OST_TRACKS[currentOSTIndex];
-  
-  ostAudio.src = track.src;
-  ostAudio.load();
-  ostAudio.play().catch(e => console.warn('Audio play prevented:', e));
+
+  try {
+    ostAudio.setAttribute('controlsList', 'nodownload noplaybackrate');
+    ostAudio.setAttribute('disableRemotePlayback', '');
+  } catch(e) {}
+
+  fetchProtectedAudioUrl(track.src).then(streamUrl => {
+    ostAudio.src = streamUrl;
+    ostAudio.load();
+    ostAudio.play().catch(e => console.warn('Audio play prevented:', e));
+  });
 
   updateFloatingPlayerUI();
   updateMediaSession(track);
@@ -1163,17 +1170,13 @@ function updateFloatingPlayerUI() {
   const tag = document.getElementById('ostFpTag');
   const artist = document.getElementById('ostFpArtist');
   const dur = document.getElementById('ostFpDuration');
-  const dl = document.getElementById('ostFpDownloadBtn');
-
+  
   if (thumb) thumb.src = track.banner;
   if (title) title.textContent = track.title;
   if (tag) tag.textContent = track.tag;
   if (artist) artist.innerHTML = track.artist;
   if (dur) dur.textContent = track.duration;
-  if (dl) {
-    dl.href = track.src;
-    dl.download = `Ramayana - ${track.num} - ${track.title}.m4a`;
-  }
+  // Anti-download: direct download link removed
 }
 
 // Web Media Session API for Lock Screen & Bluetooth Headsets
@@ -1199,7 +1202,7 @@ function toggleSpotifyHeart(btn) {
   if (!btn) return;
   btn.classList.toggle('active');
   const isFilled = btn.classList.contains('active');
-  btn.style.color = isFilled ? '#1db954' : '';
+  btn.style.color = isFilled ? '#e50914' : '';
   showToast(isFilled ? 'Saved to Your Library ❤️' : 'Removed from Library');
 }
 window.toggleSpotifyHeart = toggleSpotifyHeart;
@@ -1208,7 +1211,7 @@ function toggleRowHeart(btn) {
   if (!btn) return;
   btn.classList.toggle('active');
   const isFilled = btn.classList.contains('active');
-  btn.style.color = isFilled ? '#1db954' : '';
+  btn.style.color = isFilled ? '#e50914' : '';
 }
 window.toggleRowHeart = toggleRowHeart;
 

@@ -450,7 +450,7 @@
   <!-- =========================================================================
        PAGE 3: STILLS, FRAMES & OFFICIAL SOUNDTRACK VIEW
        ========================================================================= -->
-  <section class="page-view" id="gallery-view">
+  <section class="page-view" id="gallery-view" oncontextmenu="return false;">
     
     <!-- =========================================================================
          SPOTIFY / YOUTUBE MUSIC STYLE ALBUM HEADER (SANDIFY TRACKS)
@@ -909,7 +909,7 @@
   <!-- =========================================================================
        STICKY FLOATING MASTER SOUNDTRACK PLAYER
        ========================================================================= -->
-  <aside class="ost-floating-player" id="ostFloatingPlayer" style="display: none;" aria-label="Audio Player">
+  <aside class="ost-floating-player" id="ostFloatingPlayer" oncontextmenu="return false;" style="display: none;" aria-label="Audio Player">
     <div class="ost-fp-container">
       <!-- Left: Track Cover & Details -->
       <div class="ost-fp-track-info" onclick="scrollToActiveTrack()">
@@ -989,13 +989,6 @@
         </button>
         <input type="range" class="ost-fp-volume-slider" id="ostFpVolume" min="0" max="1" step="0.05" value="0.9"
           oninput="setOSTVolume(this.value)" title="Volume Slider">
-        <a href="audio/01_dharthi_hai_ambar_intro.m4a" download class="ost-fp-dl-btn" id="ostFpDownloadBtn"
-          title="Download Audio File">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-            <path
-              d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z" />
-          </svg>
-        </a>
         <button class="ost-fp-close-btn" onclick="closeFloatingPlayer()" title="Hide Player Bar">
           &times;
         </button>

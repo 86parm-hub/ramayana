@@ -8722,7 +8722,7 @@ img, video {
   position: relative;
   width: 100%;
   padding: 40px 32px 32px;
-  background: linear-gradient(180deg, rgba(29, 185, 84, 0.18) 0%, rgba(20, 20, 20, 0.95) 75%, #121212 100%);
+  background: linear-gradient(180deg, rgba(229, 9, 20, 0.22) 0%, rgba(20, 20, 20, 0.95) 75%, #121212 100%);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   overflow: hidden;
 }
@@ -8744,7 +8744,7 @@ img, video {
   width: 230px;
   height: 230px;
   border-radius: 8px;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.9), 0 0 30px rgba(29, 185, 84, 0.15);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.9), 0 0 30px rgba(229, 9, 20, 0.25);
 }
 
 .spotify-cover-img {
@@ -8834,17 +8834,17 @@ img, video {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #1db954;
-  box-shadow: 0 0 10px #1db954;
+  background: #e50914;
+  box-shadow: 0 0 10px #e50914;
 }
 
 .spotify-tag-pill {
   font-size: 9px;
   padding: 2px 7px;
   border-radius: 4px;
-  background: rgba(29, 185, 84, 0.15);
-  border: 1px solid rgba(29, 185, 84, 0.4);
-  color: #1db954;
+  background: rgba(229, 9, 20, 0.25);
+  border: 1px solid rgba(229, 9, 20, 0.45);
+  color: #e50914;
 }
 
 .spotify-album-title {
@@ -8908,21 +8908,21 @@ img, video {
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: #1db954;
+  background: #e50914;
   color: #000000;
   border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 24px rgba(29, 185, 84, 0.4);
+  box-shadow: 0 8px 24px rgba(229, 9, 20, 0.45);
   transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s ease, box-shadow 0.2s ease;
 }
 
 .spotify-btn-play:hover {
   transform: scale(1.08);
-  background: #1ed760;
-  box-shadow: 0 12px 30px rgba(29, 185, 84, 0.6);
+  background: #f40612;
+  box-shadow: 0 12px 30px rgba(229, 9, 20, 0.65);
 }
 
 .spotify-btn-action {
@@ -8945,7 +8945,7 @@ img, video {
 }
 
 .spotify-btn-action.heart.active {
-  color: #1db954;
+  color: #e50914;
 }
 
 .spotify-bg-play-pill {
@@ -8966,13 +8966,13 @@ img, video {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #1db954;
+  background: #e50914;
   animation: pulseBgDot 1.5s infinite;
 }
 
 @keyframes pulseBgDot {
   0% { transform: scale(0.9); opacity: 0.6; }
-  50% { transform: scale(1.4); opacity: 1; box-shadow: 0 0 10px #1db954; }
+  50% { transform: scale(1.4); opacity: 1; box-shadow: 0 0 10px #e50914; }
   100% { transform: scale(0.9); opacity: 0.6; }
 }
 
@@ -9063,11 +9063,11 @@ img, video {
 }
 
 .spotify-row.active {
-  background: rgba(29, 185, 84, 0.1);
+  background: rgba(229, 9, 20, 0.12);
 }
 
 .spotify-row.active .s-track-name {
-  color: #1db954;
+  color: #e50914;
 }
 
 /* Col Num & Equalizer */
@@ -9108,7 +9108,7 @@ img, video {
 
 .s-row-equalizer span {
   width: 2.5px;
-  background: #1db954;
+  background: #e50914;
   border-radius: 1px;
   animation: eqBounce 1s ease-in-out infinite alternate;
 }
@@ -9180,7 +9180,7 @@ img, video {
 }
 
 .s-lossless-tag {
-  color: #1db954;
+  color: #e50914;
   font-weight: 600;
 }
 
@@ -9322,4 +9322,42 @@ img, video {
   .s-duration {
     font-size: 11px;
   }
+}
+
+/* Floating Player Brand Red Theme & Download Removal */
+.ost-fp-dl-btn {
+  display: none !important;
+}
+
+.ost-fp-play-btn {
+  background: #e50914 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(229, 9, 20, 0.5) !important;
+}
+
+.ost-fp-play-btn:hover {
+  background: #f40612 !important;
+  transform: scale(1.08) !important;
+  box-shadow: 0 6px 20px rgba(229, 9, 20, 0.7) !important;
+}
+
+.ost-fp-scrub-fill {
+  background: #e50914 !important;
+}
+
+.ost-fp-scrub-track:hover .ost-fp-scrub-fill {
+  background: #f40612 !important;
+}
+
+.ost-fp-equalizer.playing span {
+  background: #e50914 !important;
+}
+
+/* Protected Anti-Download UI */
+.spotify-row,
+.spotify-cover-wrap,
+.ost-floating-player {
+  -webkit-touch-callout: none !important;
+  -webkit-user-select: none !important;
+  user-select: none !important;
 }
