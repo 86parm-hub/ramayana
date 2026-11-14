@@ -1177,32 +1177,102 @@ function updateFloatingPlayerUI() {
 }
 
 // Web Media Session API for Lock Screen & Bluetooth Headsets
+
+// Spotify / YouTube Music Filter Chips
+function filterSandifyTracks(category, btn) {
+  document.querySelectorAll('.ytm-chip').forEach(c => c.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+
+  const rows = document.querySelectorAll('.spotify-row');
+  rows.forEach(r => {
+    const cat = r.getAttribute('data-cat');
+    if (category === 'all' || cat === category) {
+      r.style.display = 'grid';
+    } else {
+      r.style.display = 'none';
+    }
+  });
+}
+window.filterSandifyTracks = filterSandifyTracks;
+
+function toggleSpotifyHeart(btn) {
+  if (!btn) return;
+  btn.classList.toggle('active');
+  const isFilled = btn.classList.contains('active');
+  btn.style.color = isFilled ? '#1db954' : '';
+  showToast(isFilled ? 'Saved to Your Library ❤️' : 'Removed from Library');
+}
+window.toggleSpotifyHeart = toggleSpotifyHeart;
+
+function toggleRowHeart(btn) {
+  if (!btn) return;
+  btn.classList.toggle('active');
+  const isFilled = btn.classList.contains('active');
+  btn.style.color = isFilled ? '#1db954' : '';
+}
+window.toggleRowHeart = toggleRowHeart;
+
 function updateMediaSession(track) {
   if ('mediaSession' in navigator) {
-    navigator.mediaSession.metadata = new MediaMetadata({
-      title: track.title,
-      artist: track.artist.replace(/<[^>]*>?/gm, '').replace('&times;', 'x'),
-      album: 'Ramayana: Part One (Original Soundtrack)',
-      artwork: [
-        { src: track.banner, sizes: '512x512', type: 'image/jpeg' }
-      ]
-    });
+    try {
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title: track.title,
+        artist: track.artist.replace(/<[^>]*>?/gm, '').replace('&times;', 'x'),
+        album: 'Ramayana: The Divine Symphony (Sandify Tracks)',
+        artwork: [
+          { src: track.banner, sizes: '512x512', type: 'image/jpeg' },
+          { src: 'movie_poster_hd.jpg', sizes: '256x256', type: 'image/jpeg' },
+          { src: 'sandflix_icon.png', sizes: '192x192', type: 'image/png' }
+        ]
+      });
 
-    navigator.mediaSession.setActionHandler('play', () => toggleCurrentOSTTrack());
-    navigator.mediaSession.setActionHandler('pause', () => toggleCurrentOSTTrack());
-    navigator.mediaSession.setActionHandler('previoustrack', () => prevOSTTrack());
-    navigator.mediaSession.setActionHandler('nexttrack', () => nextOSTTrack());
-    navigator.mediaSession.setActionHandler('seekto', (details) => {
-      if (details.seekTime && ostAudio.duration) {
-        ostAudio.currentTime = details.seekTime;
-      }
-    });
+      navigator.mediaSession.playbackState = isOSTPlaying ? 'playing' : 'paused';
+
+      navigator.mediaSession.setActionHandler('play', () => toggleCurrentOSTTrack());
+      navigator.mediaSession.setActionHandler('pause', () => toggleCurrentOSTTrack());
+      navigator.mediaSession.setActionHandler('previoustrack', () => prevOSTTrack());
+      navigator.mediaSession.setActionHandler('nexttrack', () => nextOSTTrack());
+      navigator.mediaSession.setActionHandler('seekto', (details) => {
+        if (details.seekTime && ostAudio.duration) {
+          ostAudio.currentTime = details.seekTime;
+        }
+      });
+    } catch (e) {
+      console.log('MediaSession setup:', e);
+    }
   }
 }
 
 // Audio Event Listeners
 ostAudio.addEventListener('play', () => {
   isOSTPlaying = true;
+
+  // Mobile background mediaSession playbackState
+  if ('mediaSession' in navigator) {
+    navigator.mediaSession.playbackState = 'playing';
+  }
+
+  // Update Spotify Album Master Play Button
+  const spotPlay = document.getElementById('spotifyMasterPlayIcon');
+  const spotPause = document.getElementById('spotifyMasterPauseIcon');
+  if (spotPlay) spotPlay.style.display = 'none';
+  if (spotPause) spotPause.style.display = 'block';
+
+  // Update Spotify Vinyl peeking
+  const spotVinyl = document.getElementById('spotifyVinylPeeking');
+  if (spotVinyl) spotVinyl.classList.add('spinning');
+
+  // Update Spotify Table Rows
+  OST_TRACKS.forEach((t, idx) => {
+    const row = document.getElementById(`sRow${t.id}`);
+    if (row) {
+      if (idx === currentOSTIndex) {
+        row.classList.add('active', 'playing');
+      } else {
+        row.classList.remove('active', 'playing');
+      }
+    }
+  });
 
   // Update Vinyl Spin
   const vinyl = document.getElementById('ostVinylDisc');
@@ -1254,6 +1324,27 @@ ostAudio.addEventListener('play', () => {
 
 ostAudio.addEventListener('pause', () => {
   isOSTPlaying = false;
+
+  // Mobile background mediaSession playbackState
+  if ('mediaSession' in navigator) {
+    navigator.mediaSession.playbackState = 'paused';
+  }
+
+  // Update Spotify Album Master Play Button
+  const spotPlay = document.getElementById('spotifyMasterPlayIcon');
+  const spotPause = document.getElementById('spotifyMasterPauseIcon');
+  if (spotPlay) spotPlay.style.display = 'block';
+  if (spotPause) spotPause.style.display = 'none';
+
+  // Update Spotify Vinyl peeking
+  const spotVinyl = document.getElementById('spotifyVinylPeeking');
+  if (spotVinyl) spotVinyl.classList.remove('spinning');
+
+  // Update Spotify Table Rows (keep active, remove playing animation)
+  OST_TRACKS.forEach((t) => {
+    const row = document.getElementById(`sRow${t.id}`);
+    if (row) row.classList.remove('playing');
+  });
 
   // Pause Vinyl Spin
   const vinyl = document.getElementById('ostVinylDisc');

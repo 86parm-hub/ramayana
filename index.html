@@ -451,86 +451,86 @@
        PAGE 3: STILLS, FRAMES & OFFICIAL SOUNDTRACK VIEW
        ========================================================================= -->
   <section class="page-view" id="gallery-view">
-    <div class="page-inner-header">
-      <div class="ost-top-pill">
-        <span class="pulse-dot"></span>
-        <span>SANDIFY TRACKS &bull; OFFICIAL SOUNDTRACK &amp; GALLERY</span>
-      </div>
-      <h2 class="view-title">Sandify Tracks</h2>
-      <p class="view-subtitle">Official Motion Picture Music by A.R. Rahman &amp; Hans Zimmer with High-Definition
-        Captured Frames</p>
-    </div>
-
+    
     <!-- =========================================================================
-         OFFICIAL MOTION PICTURE SOUNDTRACK HERO SHOWCASE BANNER
+         SPOTIFY / YOUTUBE MUSIC STYLE ALBUM HEADER (SANDIFY TRACKS)
          ========================================================================= -->
-    <div class="ost-hero-banner" id="ostHeroBanner">
-      <div class="ost-banner-bg" style="background-image: url('feature_banner_hd.jpg');"></div>
-      <div class="ost-banner-overlay"></div>
-      <div class="ost-banner-glow"></div>
+    <div class="spotify-album-header">
+      <div class="spotify-header-bg"></div>
+      <div class="spotify-header-gradient"></div>
 
-      <!-- Sacred Embers Animation -->
-      <div class="ost-banner-embers" aria-hidden="true">
-        <span class="ost-ember e1"></span>
-        <span class="ost-ember e2"></span>
-        <span class="ost-ember e3"></span>
-        <span class="ost-ember e4"></span>
-      </div>
-
-      <div class="ost-banner-content">
-        <!-- Vinyl Record Showcase -->
-        <div class="ost-album-art-wrap">
-          <div class="ost-vinyl-disc" id="ostVinylDisc">
-            <div class="ost-vinyl-grooves"></div>
-            <div class="ost-vinyl-label">
-              <img src="sandflix_icon.png" alt="SANDFLIX Vinyl Core">
+      <div class="spotify-header-content">
+        <!-- 3D Album Artwork with Vinyl Peeking -->
+        <div class="spotify-cover-wrap">
+          <img src="movie_poster_hd.jpg" alt="Ramayana: The Divine Symphony" class="spotify-cover-img" id="spotifyCoverImg">
+          <div class="spotify-vinyl-peeking" id="spotifyVinylPeeking">
+            <div class="vinyl-groove-circle"></div>
+            <div class="vinyl-center-dot">
+              <img src="sandflix_icon.png" alt="SANDFLIX">
             </div>
-          </div>
-          <div class="ost-cover-card">
-            <img src="movie_poster_hd.jpg" alt="Ramayana Official Soundtrack Album Cover" class="ost-album-img">
-            <div class="ost-cover-badge">ORIGINAL SCORE</div>
           </div>
         </div>
 
-        <!-- Banner Info & Controls -->
-        <div class="ost-banner-meta">
-          <div class="ost-meta-tags">
-            <span class="ost-pill-gold">OFFICIAL MOTION PICTURE SOUNDTRACK</span>
-            <span class="ost-pill-glass">24-BIT MASTER AUDIO</span>
-            <span class="ost-pill-glass">LOSSLESS STEREO</span>
+        <!-- Album Metadata Stack -->
+        <div class="spotify-meta-stack">
+          <div class="spotify-type-badge">
+            <span class="spotify-verified-dot"></span>
+            <span>OFFICIAL MOTION PICTURE SOUNDTRACK</span>
+            <span class="spotify-tag-pill">24-BIT LOSSLESS</span>
           </div>
 
-          <h1 class="ost-banner-title">RAMAYANA: PART ONE</h1>
-          <p class="ost-banner-composers">
-            Original Music Composed &amp; Produced by <span class="ost-gold-txt">A.R. RAHMAN</span> &times; <span
-              class="ost-gold-txt">HANS ZIMMER</span>
-          </p>
-          <p class="ost-banner-lyrics">
-            Lyrics by <span class="ost-light-txt">Dr. Kumar Vishwas</span> &bull; Featuring <span
-              class="ost-light-txt">Arijit Singh, Shreya Ghoshal, Vishal Dadlani, A.R. Ameen &amp; Budapest Choral
-              Ensemble</span>
+          <h1 class="spotify-album-title">Ramayana: The Divine Symphony</h1>
+          <p class="spotify-album-desc">
+            The celestial orchestral masterpiece and sacred Sanskrit hymns orchestrated by dual Academy Award winners <strong>A.R. Rahman</strong> &amp; <strong>Hans Zimmer</strong>.
           </p>
 
-          <!-- Banner Action Buttons -->
-          <div class="ost-banner-actions">
-            <button class="ost-btn-play-all" id="ostPlayAllBtn" onclick="togglePlayAllOST()">
-              <svg class="ost-icon-play" id="ostPlayAllIcon" viewBox="0 0 24 24" width="20" height="20"
-                fill="currentColor">
-                <path d="M8 5v14l11-7z" />
+          <div class="spotify-credits-line">
+            <span class="spotify-artist-credit">A.R. Rahman</span>
+            <span class="spotify-dot">&bull;</span>
+            <span class="spotify-artist-credit">Hans Zimmer</span>
+            <span class="spotify-dot">&bull;</span>
+            <span class="spotify-meta-dim">2026</span>
+            <span class="spotify-dot">&bull;</span>
+            <span class="spotify-meta-dim">6 songs, 17 min 40 sec</span>
+            <span class="spotify-dot">&bull;</span>
+            <span class="spotify-badge-hires">Dolby Atmos</span>
+          </div>
+
+          <!-- Spotify Action Controls Bar -->
+          <div class="spotify-actions-bar">
+            <!-- Big Spotify Master Play Button -->
+            <button class="spotify-btn-play" id="spotifyMasterPlayBtn" onclick="togglePlayAllOST()" title="Play Album">
+              <svg id="spotifyMasterPlayIcon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                <polygon points="6 4 20 12 6 20 6 4"></polygon>
               </svg>
-              <span id="ostPlayAllLabel">Play All Tracks</span>
+              <svg id="spotifyMasterPauseIcon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" style="display:none;">
+                <rect x="6" y="4" width="4" height="16"></rect>
+                <rect x="14" y="4" width="4" height="16"></rect>
+              </svg>
             </button>
 
-            <button class="ost-btn-shuffle" onclick="shufflePlayOST()" title="Shuffle Play Tracks">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5" />
+            <!-- Shuffle Button -->
+            <button class="spotify-btn-action" onclick="shufflePlayOST()" title="Shuffle Play">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="16 3 21 3 21 8"></polyline>
+                <line x1="4" y1="20" x2="21" y2="3"></line>
+                <polyline points="21 16 21 21 16 21"></polyline>
+                <line x1="15" y1="15" x2="21" y2="21"></line>
+                <line x1="4" y1="4" x2="9" y2="9"></line>
               </svg>
-              <span>Shuffle</span>
             </button>
 
-            <div class="ost-banner-stat">
-              <span class="stat-count">6</span>
-              <span class="stat-label">Official Tracks &bull; 16 Min Runtime</span>
+            <!-- Like / Save to Library Button -->
+            <button class="spotify-btn-action heart" id="spotifyAlbumHeart" onclick="toggleSpotifyHeart(this)" title="Save to Your Library">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+              </svg>
+            </button>
+
+            <!-- Background Play Indicator Badge -->
+            <div class="spotify-bg-play-pill" title="Songs continue playing when you browse other pages or lock your phone">
+              <span class="bg-pulse-dot"></span>
+              <span>Background Play Active</span>
             </div>
           </div>
         </div>
@@ -538,487 +538,200 @@
     </div>
 
     <!-- =========================================================================
-         ORIGINAL SOUNDTRACK TRACKS GRID WITH BANNERS
+         YOUTUBE MUSIC STYLE MOOD / FILTER CHIPS
          ========================================================================= -->
-    <div class="ost-tracks-container">
-      <div class="ost-section-heading-row">
-        <div class="ost-sh-text">
-          <div class="ost-sh-badge">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-              <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
-            </svg>
-            <span>OFFICIAL TRACKLIST</span>
-          </div>
-          <h3 class="ost-sh-title">Stream &amp; Experience Original Compositions</h3>
-          <p class="ost-sh-sub">Direct studio master tracks with high-definition album art and lossless acoustic
-            streaming</p>
-        </div>
-        <div class="ost-sh-specs">
-          <span class="spec-pill">AAC 44.1kHz</span>
-          <span class="spec-pill gold">STUDIO MASTER</span>
-        </div>
-      </div>
-
-      <!-- 6 SONG CARDS WITH BANNERS -->
-      <div class="ost-cards-grid" id="ostCardsGrid">
-
-        <!-- TRACK 01 -->
-        <article class="ost-track-card" id="ostCard1" data-track-id="1">
-          <div class="ost-card-banner">
-            <img src="hero_banner_hd.jpg" alt="Dharthi Hai Ambar Banner" class="ost-card-img" loading="lazy">
-            <div class="ost-card-gradient"></div>
-
-            <div class="ost-card-top-info">
-              <span class="ost-track-idx">01</span>
-              <span class="ost-track-mood">TITLE THEME</span>
-            </div>
-
-            <!-- Animated Sound Wave Visualizer (Active on play) -->
-            <div class="ost-card-visualizer" id="ostCardViz1">
-              <span></span><span></span><span></span><span></span><span></span>
-            </div>
-
-            <!-- Big Floating Play/Pause Button on Banner -->
-            <button class="ost-card-play-btn" onclick="playOSTTrack(1)" aria-label="Play Dharthi Hai Ambar">
-              <svg class="icon-play" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-              <svg class="icon-pause" style="display:none;" viewBox="0 0 24 24" width="22" height="22"
-                fill="currentColor">
-                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
-              </svg>
-            </button>
-
-            <span class="ost-card-duration-badge">01:13</span>
-          </div>
-
-          <div class="ost-card-body">
-            <div class="ost-card-meta-top">
-              <h4 class="ost-card-title">Dharthi Hai Ambar</h4>
-              <span class="ost-card-subtitle">Ramayana Introduction Theme &amp; Sacred Chants</span>
-            </div>
-
-            <p class="ost-card-artists">
-              <strong>A.R. Rahman</strong> &times; <strong>Hans Zimmer</strong>
-            </p>
-
-            <p class="ost-card-desc">
-              Celestial Sanskrit chants and thunderous cinematic symphony announcing the divine incarnation of Lord
-              Rama.
-            </p>
-
-            <!-- Real-time Progress Bar & Seek -->
-            <div class="ost-card-progress-row">
-              <span class="ost-time-cur" id="ostCardCur1">00:00</span>
-              <div class="ost-card-bar-wrap" onclick="seekOSTCard(1, event)">
-                <div class="ost-card-bar-fill" id="ostCardBar1" style="width: 0%;"></div>
-              </div>
-              <span class="ost-time-dur">01:13</span>
-            </div>
-
-            <!-- Card Bottom Bar: Actions -->
-            <div class="ost-card-footer">
-              <span class="ost-format-tag">LOSSLESS AUDIO</span>
-              <div class="ost-card-btn-group">
-                <a href="audio/01_dharthi_hai_ambar_intro.m4a" download="Ramayana - 01 - Dharthi Hai Ambar.m4a"
-                  class="ost-card-btn-action" title="Download Audio File">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                    <path
-                      d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z" />
-                  </svg>
-                  <span>Download</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- TRACK 02 -->
-        <article class="ost-track-card" id="ostCard2" data-track-id="2">
-          <div class="ost-card-banner">
-            <img src="feature_banner_hd.jpg" alt="Sita's Aspiration Banner" class="ost-card-img" loading="lazy">
-            <div class="ost-card-gradient"></div>
-
-            <div class="ost-card-top-info">
-              <span class="ost-track-idx">02</span>
-              <span class="ost-track-mood">SANSKRIT SHLOKA</span>
-            </div>
-
-            <div class="ost-card-visualizer" id="ostCardViz2">
-              <span></span><span></span><span></span><span></span><span></span>
-            </div>
-
-            <button class="ost-card-play-btn" onclick="playOSTTrack(2)" aria-label="Play Sita's Aspiration">
-              <svg class="icon-play" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-              <svg class="icon-pause" style="display:none;" viewBox="0 0 24 24" width="22" height="22"
-                fill="currentColor">
-                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
-              </svg>
-            </button>
-
-            <span class="ost-card-duration-badge">02:40</span>
-          </div>
-
-          <div class="ost-card-body">
-            <div class="ost-card-meta-top">
-              <h4 class="ost-card-title">Sita's Aspiration (Lyrical)</h4>
-              <span class="ost-card-subtitle">Valmiki Ramayana Sanskrit Shloka &amp; Divine Melody</span>
-            </div>
-
-            <p class="ost-card-artists">
-              <strong>A.R. Rahman</strong> &bull; Lyrics: <strong>Dr. Kumar Vishwas</strong>
-            </p>
-
-            <p class="ost-card-desc">
-              Sacred Sanskrit verses from Valmiki Ramayana exploring Mother Sita's eternal devotion and divine presence.
-            </p>
-
-            <div class="ost-card-progress-row">
-              <span class="ost-time-cur" id="ostCardCur2">00:00</span>
-              <div class="ost-card-bar-wrap" onclick="seekOSTCard(2, event)">
-                <div class="ost-card-bar-fill" id="ostCardBar2" style="width: 0%;"></div>
-              </div>
-              <span class="ost-time-dur">02:40</span>
-            </div>
-
-            <div class="ost-card-footer">
-              <span class="ost-format-tag">LOSSLESS AUDIO</span>
-              <div class="ost-card-btn-group">
-                <a href="audio/02_sitas_aspiration_lyrical.m4a" download="Ramayana - 02 - Sitas Aspiration Lyrical.m4a"
-                  class="ost-card-btn-action" title="Download Audio File">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                    <path
-                      d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z" />
-                  </svg>
-                  <span>Download</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- TRACK 03 -->
-        <article class="ost-track-card" id="ostCard3" data-track-id="3">
-          <div class="ost-card-banner">
-            <img src="movie_poster_hd.jpg" alt="Jai Jai Ram Orchestral Banner" class="ost-card-img" loading="lazy">
-            <div class="ost-card-gradient"></div>
-
-            <div class="ost-card-top-info">
-              <span class="ost-track-idx">03</span>
-              <span class="ost-track-mood">HOLLYWOOD SYMPHONY</span>
-            </div>
-
-            <div class="ost-card-visualizer" id="ostCardViz3">
-              <span></span><span></span><span></span><span></span><span></span>
-            </div>
-
-            <button class="ost-card-play-btn" onclick="playOSTTrack(3)" aria-label="Play Jai Jai Ram Orchestral">
-              <svg class="icon-play" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-              <svg class="icon-pause" style="display:none;" viewBox="0 0 24 24" width="22" height="22"
-                fill="currentColor">
-                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
-              </svg>
-            </button>
-
-            <span class="ost-card-duration-badge">03:02</span>
-          </div>
-
-          <div class="ost-card-body">
-            <div class="ost-card-meta-top">
-              <h4 class="ost-card-title">Jai Jai Ram (Orchestral Theme)</h4>
-              <span class="ost-card-subtitle">Hollywood Symphony &amp; Celestial Choral Harmony</span>
-            </div>
-
-            <p class="ost-card-artists">
-              <strong>Hans Zimmer</strong> &times; <strong>A.R. Rahman</strong>
-            </p>
-
-            <p class="ost-card-desc">
-              Monumental orchestral score performed by world-class philharmonic strings and choir crafted for Dolby
-              Atmos theaters.
-            </p>
-
-            <div class="ost-card-progress-row">
-              <span class="ost-time-cur" id="ostCardCur3">00:00</span>
-              <div class="ost-card-bar-wrap" onclick="seekOSTCard(3, event)">
-                <div class="ost-card-bar-fill" id="ostCardBar3" style="width: 0%;"></div>
-              </div>
-              <span class="ost-time-dur">03:02</span>
-            </div>
-
-            <div class="ost-card-footer">
-              <span class="ost-format-tag">LOSSLESS AUDIO</span>
-              <div class="ost-card-btn-group">
-                <a href="audio/03_jai_jai_ram_orchestral.m4a" download="Ramayana - 03 - Jai Jai Ram Orchestral.m4a"
-                  class="ost-card-btn-action" title="Download Audio File">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                    <path
-                      d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z" />
-                  </svg>
-                  <span>Download</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- TRACK 04 -->
-        <article class="ost-track-card" id="ostCard4" data-track-id="4">
-          <div class="ost-card-banner">
-            <img src="movie_cover_hd.jpg" alt="Sita's Aspiration Flute Banner" class="ost-card-img" loading="lazy">
-            <div class="ost-card-gradient"></div>
-
-            <div class="ost-card-top-info">
-              <span class="ost-track-idx">04</span>
-              <span class="ost-track-mood">ACOUSTIC MELODY</span>
-            </div>
-
-            <div class="ost-card-visualizer" id="ostCardViz4">
-              <span></span><span></span><span></span><span></span><span></span>
-            </div>
-
-            <button class="ost-card-play-btn" onclick="playOSTTrack(4)" aria-label="Play Sita's Aspiration Flute">
-              <svg class="icon-play" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-              <svg class="icon-pause" style="display:none;" viewBox="0 0 24 24" width="22" height="22"
-                fill="currentColor">
-                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
-              </svg>
-            </button>
-
-            <span class="ost-card-duration-badge">02:42</span>
-          </div>
-
-          <div class="ost-card-body">
-            <div class="ost-card-meta-top">
-              <h4 class="ost-card-title">Sita's Aspiration (Divine Flute &amp; Vocals)</h4>
-              <span class="ost-card-subtitle">Bamboo Flute, Sitar &amp; Ethereal Choral Resonance</span>
-            </div>
-
-            <p class="ost-card-artists">
-              <strong>A.R. Ameen</strong>, <strong>Vaishali Samant</strong>, <strong>Rakshita Suresh</strong> &amp;
-              <strong>Antra Nandy</strong>
-            </p>
-
-            <p class="ost-card-desc">
-              Serene Indian acoustic instruments resonating with gentle river currents and the spiritual beauty of exile
-              in the forest.
-            </p>
-
-            <div class="ost-card-progress-row">
-              <span class="ost-time-cur" id="ostCardCur4">00:00</span>
-              <div class="ost-card-bar-wrap" onclick="seekOSTCard(4, event)">
-                <div class="ost-card-bar-fill" id="ostCardBar4" style="width: 0%;"></div>
-              </div>
-              <span class="ost-time-dur">02:42</span>
-            </div>
-
-            <div class="ost-card-footer">
-              <span class="ost-format-tag">LOSSLESS AUDIO</span>
-              <div class="ost-card-btn-group">
-                <a href="audio/04_sitas_aspiration_divine.m4a" download="Ramayana - 04 - Sitas Aspiration Flute.m4a"
-                  class="ost-card-btn-action" title="Download Audio File">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                    <path
-                      d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z" />
-                  </svg>
-                  <span>Download</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- TRACK 05 -->
-        <article class="ost-track-card" id="ostCard5" data-track-id="5">
-          <div class="ost-card-banner">
-            <img src="teaser_lanka_hd.jpg" alt="Ravana Tandav Banner" class="ost-card-img" loading="lazy">
-            <div class="ost-card-gradient"></div>
-
-            <div class="ost-card-top-info">
-              <span class="ost-track-idx">05</span>
-              <span class="ost-track-mood">WAR ANTHEM</span>
-            </div>
-
-            <div class="ost-card-visualizer" id="ostCardViz5">
-              <span></span><span></span><span></span><span></span><span></span>
-            </div>
-
-            <button class="ost-card-play-btn" onclick="playOSTTrack(5)" aria-label="Play Ravana Tandav">
-              <svg class="icon-play" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-              <svg class="icon-pause" style="display:none;" viewBox="0 0 24 24" width="22" height="22"
-                fill="currentColor">
-                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
-              </svg>
-            </button>
-
-            <span class="ost-card-duration-badge">03:14</span>
-          </div>
-
-          <div class="ost-card-body">
-            <div class="ost-card-meta-top">
-              <h4 class="ost-card-title">Ravana Tandav (Shiv Tandav Anthem)</h4>
-              <span class="ost-card-subtitle">Lankan War Drums &amp; Lord Shiva's Tandav Stotram</span>
-            </div>
-
-            <p class="ost-card-artists">
-              <strong>A.R. Rahman</strong> &times; <strong>Vishal Dadlani</strong> &bull; Lyrics: <strong>Kumar
-                Vishwas</strong>
-            </p>
-
-            <p class="ost-card-desc">
-              High-energy, thunderous war anthem encapsulating the unstoppable might, ego, and supreme devotion of the
-              Lankan King.
-            </p>
-
-            <div class="ost-card-progress-row">
-              <span class="ost-time-cur" id="ostCardCur5">00:00</span>
-              <div class="ost-card-bar-wrap" onclick="seekOSTCard(5, event)">
-                <div class="ost-card-bar-fill" id="ostCardBar5" style="width: 0%;"></div>
-              </div>
-              <span class="ost-time-dur">03:14</span>
-            </div>
-
-            <div class="ost-card-footer">
-              <span class="ost-format-tag">LOSSLESS AUDIO</span>
-              <div class="ost-card-btn-group">
-                <a href="audio/05_ravana_tandav.m4a" download="Ramayana - 05 - Ravana Tandav.m4a"
-                  class="ost-card-btn-action" title="Download Audio File">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                    <path
-                      d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z" />
-                  </svg>
-                  <span>Download</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- TRACK 06 -->
-        <article class="ost-track-card" id="ostCard6" data-track-id="6">
-          <div class="ost-card-banner">
-            <img src="teaser_archer_hd.jpg" alt="Jai Jai Ram Meri Pooja Banner" class="ost-card-img" loading="lazy">
-            <div class="ost-card-gradient"></div>
-
-            <div class="ost-card-top-info">
-              <span class="ost-track-idx">06</span>
-              <span class="ost-track-mood">DEVOTIONAL CLIMAX</span>
-            </div>
-
-            <div class="ost-card-visualizer" id="ostCardViz6">
-              <span></span><span></span><span></span><span></span><span></span>
-            </div>
-
-            <button class="ost-card-play-btn" onclick="playOSTTrack(6)" aria-label="Play Jai Jai Ram Meri Pooja">
-              <svg class="icon-play" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-              <svg class="icon-pause" style="display:none;" viewBox="0 0 24 24" width="22" height="22"
-                fill="currentColor">
-                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
-              </svg>
-            </button>
-
-            <span class="ost-card-duration-badge">05:20</span>
-          </div>
-
-          <div class="ost-card-body">
-            <div class="ost-card-meta-top">
-              <h4 class="ost-card-title">Jai Jai Ram (Meri Pooja Mere Ram)</h4>
-              <span class="ost-card-subtitle">Monumental Devotional Anthem &amp; Achyutam Keshavam</span>
-            </div>
-
-            <p class="ost-card-artists">
-              <strong>A.R. Rahman</strong> &bull; <strong>Arijit Singh</strong> &bull; <strong>Shreya Ghoshal</strong>
-              &bull; <strong>Kumar Vishwas</strong>
-            </p>
-
-            <p class="ost-card-desc">
-              The heart and soul of Ramayana: an emotional masterpiece expressing boundless devotion and the divine name
-              of Rama.
-            </p>
-
-            <div class="ost-card-progress-row">
-              <span class="ost-time-cur" id="ostCardCur6">00:00</span>
-              <div class="ost-card-bar-wrap" onclick="seekOSTCard(6, event)">
-                <div class="ost-card-bar-fill" id="ostCardBar6" style="width: 0%;"></div>
-              </div>
-              <span class="ost-time-dur">05:20</span>
-            </div>
-
-            <div class="ost-card-footer">
-              <span class="ost-format-tag">LOSSLESS AUDIO</span>
-              <div class="ost-card-btn-group">
-                <a href="audio/06_jai_jai_ram_meri_pooja.m4a" download="Ramayana - 06 - Jai Jai Ram Meri Pooja.m4a"
-                  class="ost-card-btn-action" title="Download Audio File">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                    <path
-                      d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z" />
-                  </svg>
-                  <span>Download</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </article>
-
-      </div>
+    <div class="ytm-chips-container">
+      <button class="ytm-chip active" onclick="filterSandifyTracks('all', this)">All Tracks</button>
+      <button class="ytm-chip" onclick="filterSandifyTracks('devotional', this)">Devotional &amp; Shlokas</button>
+      <button class="ytm-chip" onclick="filterSandifyTracks('symphony', this)">Symphonies &amp; Themes</button>
+      <button class="ytm-chip" onclick="filterSandifyTracks('action', this)">Tandav &amp; Power</button>
     </div>
 
     <!-- =========================================================================
-         DIVIDER TO CINEMATIC STILLS & PRODUCTION FRAMES
+         SPOTIFY STYLE TRACKLIST TABLE
          ========================================================================= -->
-    <div class="gallery-stills-divider">
-      <div class="gsd-line"></div>
-      <div class="gsd-badge">
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-          <path
-            d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
-        </svg>
-        <span>CINEMATIC STILLS &amp; PRODUCTION FRAMES</span>
+    <div class="spotify-tracklist-section">
+      <!-- Table Header -->
+      <div class="spotify-table-header">
+        <div class="th-num">#</div>
+        <div class="th-title">TITLE</div>
+        <div class="th-tag">CATEGORY</div>
+        <div class="th-time">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"></circle>
+            <polyline points="12 6 12 12 16 14" fill="none" stroke="currentColor" stroke-width="2"></polyline>
+          </svg>
+        </div>
       </div>
-      <div class="gsd-line"></div>
+
+      <!-- Tracks Rows -->
+      <div class="spotify-tracks-list" id="spotifyTracksList">
+
+        <!-- Track 01 -->
+        <div class="spotify-row" id="sRow1" data-track-id="1" data-cat="symphony" onclick="playOSTTrack(1)">
+          <div class="s-col-num">
+            <span class="s-track-idx">1</span>
+            <button class="s-row-play-btn" title="Play">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
+            </button>
+            <div class="s-row-equalizer"><span></span><span></span><span></span><span></span></div>
+          </div>
+          <div class="s-col-info">
+            <img src="hero_banner_hd.jpg" alt="Dharthi Hai Ambar" class="s-track-thumb" loading="lazy">
+            <div class="s-track-text">
+              <h4 class="s-track-name">Dharthi Hai Ambar</h4>
+              <p class="s-track-artist">A.R. Rahman &times; Hans Zimmer &bull; <span class="s-lossless-tag">Hi-Res Lossless</span></p>
+            </div>
+          </div>
+          <div class="s-col-tag">
+            <span class="s-genre-pill gold">TITLE THEME</span>
+          </div>
+          <div class="s-col-time">
+            <button class="s-row-heart" onclick="event.stopPropagation(); toggleRowHeart(this);" title="Like song">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            </button>
+            <span class="s-duration">01:13</span>
+          </div>
+        </div>
+
+        <!-- Track 02 -->
+        <div class="spotify-row" id="sRow2" data-track-id="2" data-cat="devotional" onclick="playOSTTrack(2)">
+          <div class="s-col-num">
+            <span class="s-track-idx">2</span>
+            <button class="s-row-play-btn" title="Play">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
+            </button>
+            <div class="s-row-equalizer"><span></span><span></span><span></span><span></span></div>
+          </div>
+          <div class="s-col-info">
+            <img src="feature_banner_hd.jpg" alt="Sita's Aspiration" class="s-track-thumb" loading="lazy">
+            <div class="s-track-text">
+              <h4 class="s-track-name">Sita's Aspiration (Lyrical)</h4>
+              <p class="s-track-artist">A.R. Rahman &bull; Dr. Kumar Vishwas</p>
+            </div>
+          </div>
+          <div class="s-col-tag">
+            <span class="s-genre-pill saffron">SANSKRIT SHLOKA</span>
+          </div>
+          <div class="s-col-time">
+            <button class="s-row-heart" onclick="event.stopPropagation(); toggleRowHeart(this);" title="Like song">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            </button>
+            <span class="s-duration">02:40</span>
+          </div>
+        </div>
+
+        <!-- Track 03 -->
+        <div class="spotify-row" id="sRow3" data-track-id="3" data-cat="symphony" onclick="playOSTTrack(3)">
+          <div class="s-col-num">
+            <span class="s-track-idx">3</span>
+            <button class="s-row-play-btn" title="Play">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
+            </button>
+            <div class="s-row-equalizer"><span></span><span></span><span></span><span></span></div>
+          </div>
+          <div class="s-col-info">
+            <img src="movie_poster_hd.jpg" alt="Jai Jai Ram" class="s-track-thumb" loading="lazy">
+            <div class="s-track-text">
+              <h4 class="s-track-name">Jai Jai Ram (Orchestral Theme)</h4>
+              <p class="s-track-artist">Hans Zimmer &times; A.R. Rahman</p>
+            </div>
+          </div>
+          <div class="s-col-tag">
+            <span class="s-genre-pill gold">HOLLYWOOD SYMPHONY</span>
+          </div>
+          <div class="s-col-time">
+            <button class="s-row-heart" onclick="event.stopPropagation(); toggleRowHeart(this);" title="Like song">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            </button>
+            <span class="s-duration">03:02</span>
+          </div>
+        </div>
+
+        <!-- Track 04 -->
+        <div class="spotify-row" id="sRow4" data-track-id="4" data-cat="devotional" onclick="playOSTTrack(4)">
+          <div class="s-col-num">
+            <span class="s-track-idx">4</span>
+            <button class="s-row-play-btn" title="Play">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
+            </button>
+            <div class="s-row-equalizer"><span></span><span></span><span></span><span></span></div>
+          </div>
+          <div class="s-col-info">
+            <img src="hero_banner_hd.jpg" alt="Sita's Aspiration Divine" class="s-track-thumb" loading="lazy">
+            <div class="s-track-text">
+              <h4 class="s-track-name">Sita's Aspiration (Divine Chorus)</h4>
+              <p class="s-track-artist">A.R. Rahman &bull; Celestial Choral Ensemble</p>
+            </div>
+          </div>
+          <div class="s-col-tag">
+            <span class="s-genre-pill saffron">DIVINE CHORUS</span>
+          </div>
+          <div class="s-col-time">
+            <button class="s-row-heart" onclick="event.stopPropagation(); toggleRowHeart(this);" title="Like song">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            </button>
+            <span class="s-duration">02:43</span>
+          </div>
+        </div>
+
+        <!-- Track 05 -->
+        <div class="spotify-row" id="sRow5" data-track-id="5" data-cat="action" onclick="playOSTTrack(5)">
+          <div class="s-col-num">
+            <span class="s-track-idx">5</span>
+            <button class="s-row-play-btn" title="Play">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
+            </button>
+            <div class="s-row-equalizer"><span></span><span></span><span></span><span></span></div>
+          </div>
+          <div class="s-col-info">
+            <img src="feature_banner_hd.jpg" alt="Ravana Tandav" class="s-track-thumb" loading="lazy">
+            <div class="s-track-text">
+              <h4 class="s-track-name">Ravana's Tandav Stotram</h4>
+              <p class="s-track-artist">Hans Zimmer &times; A.R. Rahman &bull; Sanskrit Choirs</p>
+            </div>
+          </div>
+          <div class="s-col-tag">
+            <span class="s-genre-pill ruby">BATTLE ANTHEM</span>
+          </div>
+          <div class="s-col-time">
+            <button class="s-row-heart" onclick="event.stopPropagation(); toggleRowHeart(this);" title="Like song">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            </button>
+            <span class="s-duration">03:16</span>
+          </div>
+        </div>
+
+        <!-- Track 06 -->
+        <div class="spotify-row" id="sRow6" data-track-id="6" data-cat="devotional" onclick="playOSTTrack(6)">
+          <div class="s-col-num">
+            <span class="s-track-idx">6</span>
+            <button class="s-row-play-btn" title="Play">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
+            </button>
+            <div class="s-row-equalizer"><span></span><span></span><span></span><span></span></div>
+          </div>
+          <div class="s-col-info">
+            <img src="movie_poster_hd.jpg" alt="Jai Jai Ram Meri Pooja" class="s-track-thumb" loading="lazy">
+            <div class="s-track-text">
+              <h4 class="s-track-name">Jai Jai Ram (Meri Pooja)</h4>
+              <p class="s-track-artist">A.R. Rahman &bull; Devotional Choir</p>
+            </div>
+          </div>
+          <div class="s-col-tag">
+            <span class="s-genre-pill gold">SACRED HYMN</span>
+          </div>
+          <div class="s-col-time">
+            <button class="s-row-heart" onclick="event.stopPropagation(); toggleRowHeart(this);" title="Like song">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            </button>
+            <span class="s-duration">04:46</span>
+          </div>
+        </div>
+
+      </div>
     </div>
 
-    <div class="gallery-mosaic">
-      <!-- Stills 1: Dandakaranya Meditation -->
-      <div class="mosaic-item large">
-        <img src="hero_banner_hd.jpg" alt="Sacred Meditation" class="mosaic-img">
-        <div class="mosaic-overlay">
-          <span class="mosaic-tag">SCENE 01 &bull; DANDAKARANYA</span>
-          <h3>Meditation By Sacred Waters</h3>
-          <p>Lord Rama embraces exile with supreme serenity, meditating amidst torrential forest waterfalls.</p>
-        </div>
-      </div>
-
-      <!-- Stills 2: Shiva Dhanush -->
-      <div class="mosaic-item">
-        <img src="feature_banner_hd.jpg" alt="Shiva Dhanush Prophecy" class="mosaic-img">
-        <div class="mosaic-overlay">
-          <span class="mosaic-tag">SCENE 02 &bull; MITHILA PALACE</span>
-          <h3>The Stringing of Pinaka</h3>
-          <p>Prince Rama lifts Lord Shiva's divine bow before the assembly of monarchs.</p>
-        </div>
-      </div>
-
-      <!-- Stills 3: Cosmic Archer -->
-      <div class="mosaic-item">
-        <img src="movie_poster_hd.jpg" alt="Cosmic Archer" class="mosaic-img">
-        <div class="mosaic-overlay">
-          <span class="mosaic-tag">SCENE 03 &bull; CELESTIAL BLESSING</span>
-          <h3>The Golden Avatar</h3>
-          <p>Surrounded by celestial light, Lord Rama prepares to defend Dharma.</p>
-        </div>
-      </div>
-    </div>
   </section>
 
   <!-- =========================================================================
