@@ -165,7 +165,6 @@
         <button class="tab-link active" data-target="home-view" onclick="switchPage('home')">Home</button>
         <button class="tab-link" data-target="movies-view" onclick="switchPage('movies')">Movies</button>
         <button class="tab-link" data-target="trailer-view" onclick="switchPage('trailer')">Movie Trailer</button>
-        <button class="tab-link" data-target="watch-view" onclick="switchPage('watch')">Cinema Theater</button>
         <button class="tab-link" data-target="gallery-view" onclick="switchPage('gallery')">Stills &amp; Frames</button>
       </nav>
 
@@ -350,66 +349,47 @@
       </div>
     </div>
 
-    <!-- Netflix Hero Billboard with Hover Video Preview & Audio Controls (Movies View) -->
-    <div class="netflix-billboard home-billboard" id="moviesHeroBillboard" title="Click anywhere on Billboard to Play Ramayana: Part One">
-      
-      <!-- Backdrop Image (Crisp fallback & initial display) -->
-      <div class="billboard-backdrop" id="moviesBillboardBackdrop" style="background-image: url('hero_banner_hd.jpg');"></div>
-      
-      <!-- Dynamic Full HD 1080p Video Preview Layer (Plays on hover, stops when hover leaves, watermark removed) -->
-      <div class="billboard-video-wrap" id="moviesBillboardVideoWrap">
-        <video id="moviesBillboardVideo" preload="metadata" muted playsinline loop poster="hero_banner_hd.jpg">
-          <source src="banner_preview_hd.mp4" type="video/mp4">
-          <source src="move_trailer.mp4" type="video/mp4">
-        </video>
-      </div>
-
-      <!-- Cinematic Vignettes & Bottom Gradient Fade -->
+    <!-- Netflix Massive Hero Billboard Banner (Ramayana: Part One) - 90% Width -->
+    <div class="netflix-billboard movies-billboard-90" onclick="openNetflixBlackPlayer()" title="Click anywhere on Billboard to Play Ramayana: Part One">
+      <div class="billboard-backdrop" style="background-image: url('feature_banner_hd.jpg');"></div>
       <div class="billboard-vignette"></div>
       <div class="billboard-bottom-fade"></div>
 
-      <!-- LEFT UPPER SIDE: Bold Movie Name Only -->
-      <div class="billboard-upper-left">
-        <h1 class="billboard-title bold-title">RAMAYANA: PART ONE</h1>
-      </div>
+      <div class="billboard-content">
+        <div class="billboard-top-row">
+          <span class="billboard-top10-badge">
+            <span class="top10-num">TOP 10</span>
+            <span class="top10-text">#1 in Movies Today</span>
+          </span>
+          <span class="billboard-tag-gold">SANDFLIX EXCLUSIVE</span>
+        </div>
 
-      <!-- LEFT LOWER SIDE: Play, More Info, and Volume Buttons -->
-      <div class="billboard-lower-left">
+        <h1 class="billboard-title">RAMAYANA: PART ONE</h1>
+        <p class="billboard-subtitle-tag">THE AWAKENING &bull; SACRED SAGA</p>
+
+        <div class="billboard-meta-row">
+          <span class="meta-match">99% Match</span>
+          <span class="meta-year">2026</span>
+          <span class="meta-age">U/A 13+</span>
+          <span class="meta-runtime">3h 12m &bull; Complete Film</span>
+          <span class="meta-quality">4K ULTRA HD</span>
+          <span class="meta-audio">DOLBY ATMOS 5.1</span>
+        </div>
+
+        <p class="billboard-overview">
+          Witness Maryada Purushottam Lord Rama's supreme vow to uphold Dharma. From the golden halls of Ayodhya to the divine breaking of Lord Shiva's Pinaka bow, and the epic journey through the mystic Dandakaranya forest. Complete saga available in full 1080P HEVC.
+        </p>
+
         <div class="billboard-actions" onclick="event.stopPropagation()">
-          <!-- Primary Play Button -->
-          <button class="btn-n-play" onclick="openNetflixBlackPlayer()" title="Play Ramayana: Part One">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-              <polygon points="5 3 19 12 5 21 5 3"></polygon>
-            </svg>
+          <button class="btn-n-play" onclick="openNetflixBlackPlayer()">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
             <span>Play</span>
           </button>
 
-          <!-- More Info Button -->
-          <button class="btn-n-info" onclick="openMovieDetailsModal('part1')" title="More Info">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="12" y1="16" x2="12" y2="12"></line>
-              <line x1="12" y1="8" x2="12.01" y2="8"></line>
-            </svg>
-            <span>More Info</span>
+          <button class="btn-n-info" onclick="switchPage('trailer')">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            <span>Trailer &amp; Info</span>
           </button>
-
-          <!-- Volume Mute/Unmute Button (Grouped on Left Lower Side) -->
-          <button class="billboard-audio-btn left-audio" id="moviesBillboardAudioBtn" onclick="toggleMoviesBillboardAudio(event)" title="Mute/Unmute Audio Preview">
-            <svg id="moviesBBAudioMute" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-              <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
-            </svg>
-            <svg id="moviesBBAudioUnmute" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="display:none;">
-              <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77z"/>
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      <!-- Maturity Rating on Lower Right -->
-      <div class="billboard-aside-controls" onclick="event.stopPropagation()">
-        <div class="billboard-maturity-badge">
-          <span class="bb-maturity-border">U/A 13+</span>
         </div>
       </div>
     </div>
@@ -673,342 +653,6 @@
 
   <!-- =========================================================================
        PAGE 3: CINEMA THEATER VIEW (Immersive Dedicated Player Room)
-       ========================================================================= -->
-  <section class="page-view" id="watch-view">
-    <div class="theater-control-strip">
-      <div class="theater-title-block">
-        <span class="status-live-indicator"><span class="pulse"></span> STREAM READY</span>
-        <h2 class="theater-heading">Ramayana: Part One (2026)</h2>
-      </div>
-      <div class="theater-tools">
-        <button class="tool-btn" id="theaterGlowBtn" onclick="toggleCinemaAmbient()">
-          <span>Ambient Glow</span>
-          <span class="toggle-status">ON</span>
-        </button>
-        <button class="tool-btn" id="theaterLightsBtn" onclick="toggleLightsOut()">
-          <span>Lights Out</span>
-        </button>
-      </div>
-    </div>
-
-    <!-- Cinema Stream Info Bar: Single Unified Film -->
-    <div class="cinema-act-selector-bar">
-      <div class="act-selector-heading">
-        <span class="act-select-tag">COMPLETE FILM</span>
-        <span class="act-select-hint">Streaming Full 3-Hour Uncut Movie in Ultra HD (03:00:23)</span>
-      </div>
-    </div>
-
-    <!-- The Video Screen Container -->
-    <div class="screen-stage" id="screenStage">
-      <div class="screen-ambient-glow" id="screenAmbientGlow"></div>
-
-      <div class="video-chassis" id="videoChassis">
-        <video id="videoPlayer" preload="metadata" playsinline webkit-playsinline x-webkit-airplay="allow"
-          poster="movie_cover_hd.jpg">
-          <source src="https://github.com/86parm-hub/ramayana/releases/download/v1.0/Ramayana.Part1.Act1.mp4#t=3"
-            type="video/mp4">
-          <source src="Ramayana.2026.Part1.Final.mp4" type="video/mp4">
-          <source src="Ramayana.Part1.Act1.mp4" type="video/mp4">
-          Your browser does not support HTML5 video streaming.
-        </video>
-
-        <!-- AI SYNDICAT On-Screen Theater Corner Watermark (Right Upper Corner - Always Crystal Clear) -->
-        <div class="theater-corner-watermark" id="theaterCornerWatermark" title="SANDFLIX">
-          <div class="watermark-emblem-wrap">
-            <img src="sandflix_icon.png" alt="SANDFLIX" class="watermark-emblem-img">
-          </div>
-          <div class="watermark-text-wrap">
-            <div class="watermark-title-row">
-              <span class="watermark-live-dot"></span>
-              <span class="watermark-brand-name">SANDFLIX</span>
-            </div>
-            <span class="watermark-act-label">1080P HEVC</span>
-          </div>
-        </div>
-
-        <!-- AI SYNDICAT Cinematic Outro / Ending Branding Card -->
-        <div class="theater-outro-card" id="theaterOutroCard">
-          <button class="outro-close-btn" onclick="closeOutroCard()" aria-label="Close dialog">&times;</button>
-          <div class="outro-emblem-ring">
-            <img src="sandflix_icon.png" alt="SANDFLIX" class="outro-emblem-img">
-          </div>
-          <span class="outro-super-tag">A SANDFLIX ORIGINAL PRESENTATION</span>
-          <h2 class="outro-title" id="outroTitle">RAMAYANA: PART ONE (THE AWAKENING)</h2>
-          <p class="outro-subtitle" id="outroSubtitle">Thank you for watching the complete 3-hour saga on SANDFLIX.</p>
-
-          <div class="outro-cta-row">
-            <button class="btn-outro-action primary" id="btnOutroNext" onclick="openNetflixBlackPlayer()">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-              <span id="btnOutroNextText">Replay Full Movie</span>
-            </button>
-            <button class="btn-outro-action secondary" onclick="handleOutroReplay()">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M1 4v6h6"></path>
-                <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
-              </svg>
-              <span>Replay Act</span>
-            </button>
-            <a href="https://www.instagram.com/ai.syndicat" target="_blank" rel="noopener noreferrer"
-              class="btn-outro-insta">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                <path
-                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-              </svg>
-              <span>Follow @ai.syndicat</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Big Center Play/Pause Ripple Button -->
-        <div class="center-play-veil" id="centerPlayVeil">
-          <button class="center-play-orb" id="centerPlayOrb" aria-label="Play Video">
-            <svg class="icon-play" viewBox="0 0 24 24">
-              <polygon points="6 3 20 12 6 21 6 3"></polygon>
-            </svg>
-            <svg class="icon-pause" viewBox="0 0 24 24">
-              <rect x="6" y="4" width="4" height="16"></rect>
-              <rect x="14" y="4" width="4" height="16"></rect>
-            </svg>
-          </button>
-        </div>
-
-        <!-- Netflix Style White Loading Spinner Overlay -->
-        <div class="netflix-spinner-veil" id="streamSpinnerVeil" aria-label="Loading stream">
-          <div class="netflix-spinner-ring">
-            <svg class="netflix-spinner-svg" viewBox="0 0 60 60">
-              <circle class="netflix-track" cx="30" cy="30" r="24"></circle>
-              <circle class="netflix-arc" cx="30" cy="30" r="24"></circle>
-            </svg>
-          </div>
-        </div>
-
-        <!-- Custom Studio Controls Bar -->
-        <div class="studio-controls-bar" id="studioControlsBar">
-          <!-- Scrubber Progress Bar -->
-          <div class="scrubber-bar" id="scrubberBar">
-            <div class="scrub-hover-fill" id="scrubHoverFill"></div>
-            <div class="scrub-buffer-fill" id="scrubBufferFill"></div>
-            <div class="scrub-played-fill" id="scrubPlayedFill">
-              <div class="scrub-thumb"></div>
-            </div>
-            <div class="scrub-tooltip" id="scrubTooltip">00:00:00</div>
-          </div>
-
-          <!-- Bottom Control Elements Row -->
-          <div class="controls-action-row">
-            <!-- Left Side Controls -->
-            <div class="controls-group-left">
-              <button class="ctrl-icon-btn" id="btnPlayPause" title="Play/Pause (Space)">
-                <svg class="icon-play" viewBox="0 0 24 24">
-                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                </svg>
-                <svg class="icon-pause" viewBox="0 0 24 24">
-                  <rect x="6" y="4" width="4" height="16"></rect>
-                  <rect x="14" y="4" width="4" height="16"></rect>
-                </svg>
-              </button>
-
-              <button class="ctrl-icon-btn" id="btnRewind10" title="Rewind 10 Seconds (Left Arrow)">
-                <svg viewBox="0 0 24 24">
-                  <path
-                    d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z" />
-                  <text x="12" y="15" text-anchor="middle" font-size="7" font-weight="bold"
-                    fill="currentColor">10</text>
-                </svg>
-              </button>
-
-              <button class="ctrl-icon-btn" id="btnForward10" title="Forward 10 Seconds (Right Arrow)">
-                <svg viewBox="0 0 24 24">
-                  <path
-                    d="M12 5V1l5 5-5 5V7c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6h2c0 4.42-3.58 8-8 8s-8-3.58-8-8 3.58-8 8-8z" />
-                  <text x="12" y="15" text-anchor="middle" font-size="7" font-weight="bold"
-                    fill="currentColor">10</text>
-                </svg>
-              </button>
-
-              <!-- Volume Bundle -->
-              <div class="volume-bundle">
-                <button class="ctrl-icon-btn" id="btnSoundToggle" title="Mute/Unmute (M)">
-                  <svg class="sound-on" viewBox="0 0 24 24">
-                    <path
-                      d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
-                  </svg>
-                  <svg class="sound-off" viewBox="0 0 24 24">
-                    <path
-                      d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z" />
-                  </svg>
-                </button>
-                <div class="vol-slider-rail">
-                  <input type="range" class="vol-slider" id="volSlider" min="0" max="1" step="0.05" value="1">
-                </div>
-              </div>
-
-              <!-- Time Counter -->
-              <div class="time-readout">
-                <span id="txtCurrentTime">00:00:00</span>
-                <span class="sep">/</span>
-                <span id="txtDurationTime">00:00:00</span>
-              </div>
-            </div>
-
-            <!-- Right Side Controls -->
-            <div class="controls-group-right">
-              <!-- Playback Rate Pill -->
-              <div class="speed-picker">
-                <button class="ctrl-pill-btn" id="btnPlaybackRate">1.0x</button>
-                <div class="speed-panel" id="speedPanel">
-                  <div class="speed-choice" data-rate="0.5">0.5x Slower</div>
-                  <div class="speed-choice" data-rate="0.75">0.75x</div>
-                  <div class="speed-choice active" data-rate="1">1.0x Normal</div>
-                  <div class="speed-choice" data-rate="1.25">1.25x</div>
-                  <div class="speed-choice" data-rate="1.5">1.5x</div>
-                  <div class="speed-choice" data-rate="2">2.0x Double</div>
-                </div>
-              </div>
-
-              <!-- Picture In Picture -->
-              <button class="ctrl-icon-btn" id="btnPiP" title="Picture in Picture (P)">
-                <svg viewBox="0 0 24 24">
-                  <path
-                    d="M19 11h-8v6h8v-6zm4 8V4.98C23 3.88 22.1 3 21 3H3c-1.1 0-2 .88-2 1.98V19c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2zm-2 .02H3V4.97h18v14.05z" />
-                </svg>
-              </button>
-
-              <!-- Fullscreen -->
-              <button class="ctrl-icon-btn" id="btnFullscreen" title="Fullscreen (F)">
-                <svg class="fs-enter" viewBox="0 0 24 24">
-                  <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z" />
-                </svg>
-                <svg class="fs-exit" viewBox="0 0 24 24">
-                  <path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-14v3h3v2h-5V5h2z" />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Offline File Picker Modal (Fallback) -->
-        <div class="offline-file-modal" id="offlineFileModal">
-          <div class="modal-card">
-            <button class="modal-close-cross"
-              onclick="document.getElementById('offlineFileModal').classList.remove('visible')"
-              aria-label="Close dialog">&times;</button>
-            <div class="modal-badge-icon">🎬</div>
-            <h3>RAMAYANA: PART 1 STREAM READY</h3>
-            <p>Direct GitHub Cloud CDN stream is active. If your browser prefers playing from local disk, select the
-              video file:</p>
-            <label class="btn-select-file" for="localFileInput">
-              <span>📂 Select Ramayana.2026.Part1.Final.mp4 / .mkv</span>
-            </label>
-            <input type="file" id="localFileInput" accept=".mp4,.mkv,.webm" style="display:none;">
-            <div style="margin-top: 14px; font-size: 13px; color: var(--gold-pri);">
-              <span>💡 Cloud CDN Streaming in 1080P HEVC active 24/7 with zero buffering</span>
-            </div>
-            <span class="file-note" id="fileNote">Auto-trimmed: Intro 1m17s &amp; Outro 2-min removed • 03:00:31 Full
-              Movie</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- =========================================================================
-         CINEMA SHOWCASE: Single Unified Complete 3-Hour Movie
-         ========================================================================= -->
-    <div class="theater-acts-showcase-container">
-      <div class="theater-acts-showcase-card">
-        <div class="acts-showcase-header">
-          <div class="acts-header-left">
-            <h3 class="acts-showcase-title">Ramayana: Part One (The Complete 3-Hour Film)</h3>
-            <p class="acts-showcase-desc">Witness Maryada Purushottam Lord Rama's complete epic journey in full Ultra HD without interruptions:</p>
-          </div>
-        </div>
-
-        <div class="acts-single-grid" style="display:flex; justify-content:center; margin: 18px 0;">
-          <div class="act-feature-card active" style="max-width: 680px; width: 100%; cursor: pointer;" onclick="openNetflixBlackPlayer()">
-            <div class="act-card-inner">
-              <div class="act-card-thumb" style="min-width: 220px;">
-                <img src="hero_banner_hd.jpg" alt="Ramayana: Part One Complete Film">
-                <div class="act-card-play-overlay">
-                  <div class="act-play-circle">
-                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-                      <polygon points="6 3 20 12 6 21 6 3"></polygon>
-                    </svg>
-                  </div>
-                </div>
-                <span class="act-badge-pill live">● FULL MOVIE</span>
-              </div>
-              <div class="act-card-info">
-                <div class="act-meta-row">
-                  <span class="act-num-tag">COMPLETE FILM</span>
-                  <span class="act-runtime-pill">⏱ 03:00:23</span>
-                  <span class="act-studio-tag">SANDFLIX</span>
-                </div>
-                <h4 class="act-name">Ramayana: Part One (The Awakening)</h4>
-                <p class="act-synopsis">Lord Rama's cosmic birth, breaking of Lord Shiva's Pinaka bow, the 14-year forest exile, Dandakaranya journey, and the awakening of Dharma.</p>
-                <button class="btn-stream-act primary" onclick="event.stopPropagation(); openNetflixBlackPlayer();">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                  </svg>
-                  <span>Play Complete Movie (03:00:23)</span>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="acts-showcase-footer">
-          <div class="footer-syndicat-verify">
-            <img src="sandflix_icon.png" alt="SANDFLIX" class="verify-emblem">
-            <span>Official 24/7 Zero-Buffer Cloud CDN Stream presented by <strong>SANDFLIX</strong></span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Theater Trilogy Navigation Bar (Part 1 Playing Now, Part 2 Coming Soon 2028, Part 3 Coming Soon 2029) -->
-    <div class="theater-trilogy-container">
-      <div class="theater-trilogy-bar">
-        <div class="trilogy-bar-lead">
-          <span class="bar-tag">CINEMATIC TRILOGY</span>
-          <span class="bar-sub">Franchise Chapters:</span>
-        </div>
-        <div class="trilogy-bar-items">
-          <!-- Part 1: Active -->
-          <div class="trilogy-bar-pill active" title="Currently Playing in 1080P HEVC">
-            <span class="status-indicator live"></span>
-            <span class="part-name">Part 1: The Awakening (2026)</span>
-            <span class="tag-status live-tag">NOW PLAYING</span>
-          </div>
-
-          <!-- Part 2: Coming Soon 2028 -->
-          <div class="trilogy-bar-pill upcoming" onclick="openComingSoonModal(2)" title="Click to view release details">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
-              <path
-                d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" />
-            </svg>
-            <span class="part-name">Part 2: The Quest &amp; The War</span>
-            <span class="tag-status coming-tag">COMING SOON 2028</span>
-          </div>
-
-          <!-- Part 3: Coming Soon 2029 -->
-          <div class="trilogy-bar-pill upcoming" onclick="openComingSoonModal(3)" title="Click to view release details">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
-              <path
-                d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" />
-            </svg>
-            <span class="part-name">Part 3: The Final Triumph</span>
-            <span class="tag-status coming-tag saffron">COMING SOON 2029</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- =========================================================================
-       PAGE 3: STILLS & FRAMES GALLERY VIEW
        ========================================================================= -->
   <!-- =========================================================================
        PAGE 3: STILLS, FRAMES & OFFICIAL SOUNDTRACK VIEW
@@ -1750,12 +1394,6 @@
         <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
       </svg>
       <span>Trailer</span>
-    </button>
-    <button class="mobile-nav-item" data-target="watch-view" onclick="switchPage('watch')">
-      <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-        <polygon points="5 3 19 12 5 21 5 3"></polygon>
-      </svg>
-      <span>Cinema</span>
     </button>
     <button class="mobile-nav-item" data-target="gallery-view" onclick="switchPage('gallery')">
       <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">

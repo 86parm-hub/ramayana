@@ -1042,142 +1042,7 @@ body.ott-platform {
 
 /* Old film-card block cleaned */
 
-/* ==========================================================================
-   PAGE 2: CINEMA THEATER VIEW (Immersive Player)
-   ========================================================================= */
-#watch-view {
-  padding-bottom: 80px;
-}
-
-.theater-control-strip {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 24px 40px 18px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-
-.theater-title-block {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.status-live-indicator {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 1.5px;
-  color: #10b981;
-}
-
-.status-live-indicator .pulse {
-  width: 6px;
-  height: 6px;
-  background: #10b981;
-  border-radius: 50%;
-  box-shadow: 0 0 8px #10b981;
-}
-
-.theater-heading {
-  font-family: var(--font-display);
-  font-size: clamp(20px, 2.5vw, 28px);
-  font-weight: 800;
-  letter-spacing: 1px;
-  color: #fff;
-}
-
-.theater-tools {
-  display: flex;
-  gap: 10px;
-}
-
-.tool-btn {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid var(--border-subtle);
-  color: var(--text-pure);
-  font-family: var(--font-ui);
-  font-size: 12px;
-  font-weight: 700;
-  padding: 8px 16px;
-  border-radius: 20px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  transition: all 0.2s ease;
-}
-
-.tool-btn:hover {
-  border-color: var(--border-gold);
-  background: rgba(255, 183, 3, 0.12);
-  color: var(--gold-light);
-}
-
-.toggle-status {
-  background: var(--gold-pri);
-  color: #000;
-  font-size: 9px;
-  padding: 2px 6px;
-  border-radius: 10px;
-  font-weight: 800;
-}
-
-/* Screen Stage */
-.screen-stage {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 40px;
-  position: relative;
-}
-
-.screen-ambient-glow {
-  position: absolute;
-  inset: -20px 20px;
-  background: radial-gradient(ellipse at center, rgba(255, 183, 3, 0.25) 0%, rgba(251, 133, 0, 0.1) 40%, transparent 75%);
-  filter: blur(50px);
-  border-radius: var(--radius-xl);
-  pointer-events: none;
-  transition: opacity 0.5s ease;
-  z-index: -1;
-}
-
-.screen-ambient-glow.hidden {
-  opacity: 0;
-}
-
-.video-chassis {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  background: #000;
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  box-shadow: var(--shadow-stage);
-  border: 1px solid var(--border-gold);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.video-chassis:fullscreen {
-  border-radius: 0;
-  border: none;
-  aspect-ratio: auto;
-}
-
-video {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  background: #000;
-  cursor: pointer;
-}
+/* Obsolete Cinema Theater (#watch-view) styles cleaned */
 
 /* ==========================================================================
    Theater On-Screen Corner Watermark (AI SYNDICAT) - Crystal Clear & Prominent
@@ -8734,5 +8599,24 @@ img, video {
   }
   .single-movie-track .n-card-genres {
     display: none;
+  }
+}
+
+/* Movies View Specific - Previous Banner Restored with 90% Width */
+.netflix-billboard.movies-billboard-90 {
+  width: 90% !important;
+  max-width: 1400px;
+  margin: 18px auto 32px !important;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 16px 42px rgba(0, 0, 0, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@media (max-width: 768px) {
+  .netflix-billboard.movies-billboard-90 {
+    width: 92% !important;
+    margin: 12px auto 22px !important;
+    border-radius: 10px;
   }
 }

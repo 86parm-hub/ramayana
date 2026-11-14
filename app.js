@@ -5,12 +5,16 @@
 
 // Global Page Switcher Function
 function switchPage(pageKey) {
+  if (pageKey === 'watch') {
+    openNetflixBlackPlayer('act1');
+    return;
+  }
   const pageMap = {
     'home': 'home-view',
     'movies': 'movies-view',
     'trailer': 'trailer-view',
-    'watch': 'watch-view',
-    'gallery': 'gallery-view'
+    'gallery': 'gallery-view',
+    'sound': 'sound-view'
   };
 
   const targetId = pageMap[pageKey] || 'home-view';
