@@ -185,248 +185,631 @@
        PAGE 1: HOME VIEW (Clean, Pristine, Ultra-Premium Hero Cinema Showcase)
        Hero section cleaned of back clutter, Ramayana banner in full majesty!
        ========================================================================= -->
-  <main class="page-view active" id="home-view">
-    <section class="hero-showcase" id="heroShowcase">
-
-      <!-- Slide 1: Sacred Dandakaranya Meditation (Ranbir Kapoor) -->
-      <div class="hero-slide active" id="slide-1">
-        <div class="slide-media-wrap">
-          <img src="hero_banner_hd.jpg" alt="Ramayana (2026) Banner" class="slide-image">
-          <div class="slide-gradient-left"></div>
-          <div class="slide-gradient-bottom"></div>
-        </div>
-        <div class="slide-content-box">
-          <div class="meta-badges">
-            <span class="badge-gold">PART 1 &bull; NOW STREAMING</span>
-            <span class="badge-glass badge-clickable-part" onclick="openComingSoonModal(2)"
-              title="View Part 2 Details">PART 2 &bull; COMING SOON 2028 🔒</span>
-            <span class="badge-glass badge-clickable-part" onclick="openComingSoonModal(3)"
-              title="View Part 3 Details">PART 3 &bull; COMING SOON 2029 🔒</span>
-            <span class="badge-glass">3h 12m</span>
-            <span class="badge-glass">1080P HEVC</span>
-          </div>
-          <h1 class="hero-title">
-            RAMAYANA
-            <span class="hero-subtitle">PART ONE : THE AWAKENING</span>
-          </h1>
-          <p class="hero-synopsis">
-            An eternal cinematic spectacle chronicling Maryada Purushottam Lord Rama's supreme vow to uphold Dharma.
-            From the sacred courts of Ayodhya to the mystic wilderness of Dandakaranya, witness the beginning of the
-            legendary battle between divine righteousness and untamed evil.
-          </p>
-          <div class="hero-cta-group">
-            <button class="btn-cta-primary" onclick="startCinemaStream()">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-              <span>Play Part 1 Movie</span>
-            </button>
-            <button class="btn-cta-secondary" onclick="scrollToChapters()">
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <polyline points="12 6 12 12 16 14"></polyline>
-              </svg>
-              <span>Explore Chapters &amp; Parts</span>
-            </button>
-            <label for="directPickerInput" class="btn-cta-outline" title="Select custom local video">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                <polyline points="17 8 12 3 7 8"></polyline>
-                <line x1="12" y1="3" x2="12" y2="15"></line>
-              </svg>
-              <span>Select File</span>
-            </label>
-            <input type="file" id="directPickerInput" accept=".mkv,.mp4,.webm" style="display:none;">
-          </div>
-        </div>
-      </div>
-
-      <!-- Slide 2: Breaking The Shiva Dhanush in Mithila -->
-      <div class="hero-slide" id="slide-2">
-        <div class="slide-media-wrap">
-          <img src="feature_banner_hd.jpg" alt="Breaking The Shiva Dhanush" class="slide-image">
-          <div class="slide-gradient-left"></div>
-          <div class="slide-gradient-bottom"></div>
-        </div>
-        <div class="slide-content-box">
-          <div class="meta-badges">
-            <span class="badge-gold">LEGENDARY PROPHECY</span>
-            <span class="badge-glass">SWAYAMVARA</span>
-            <span class="badge-glass">1080P HEVC</span>
-            <span class="badge-glass">CINEMA MAX</span>
-          </div>
-          <h1 class="hero-title">
-            SHIVA DHANUSH
-            <span class="hero-subtitle">THE BREAKING OF PINAKA</span>
-          </h1>
-          <p class="hero-synopsis">
-            In the grand assembly of Mithila, amidst mighty kings and celestial warriors, Prince Rama effortlessly
-            strings the divine bow of Lord Shiva, breaking it into two halves and fulfilling the sacred prophecy to wed
-            Mata Sita.
-          </p>
-          <div class="hero-cta-group">
-            <button class="btn-cta-primary" onclick="startCinemaStream()">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-              <span>Watch Sequence</span>
-            </button>
-            <button class="btn-cta-secondary" onclick="switchPage('gallery')">
-              <span>View Gallery</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Slide 3: The Supreme Archer of Cosmic Dharma -->
-      <div class="hero-slide" id="slide-3">
-        <div class="slide-media-wrap">
-          <img src="movie_poster_hd.jpg" alt="Supreme Archer" class="slide-image">
-          <div class="slide-gradient-left"></div>
-          <div class="slide-gradient-bottom"></div>
-        </div>
-        <div class="slide-content-box">
-          <div class="meta-badges">
-            <span class="badge-gold">COSMIC DESTINY</span>
-            <span class="badge-glass">DHARMA YUDDHA</span>
-            <span class="badge-glass">CINEMA MAX</span>
-          </div>
-          <h1 class="hero-title">
-            THE SUPREME ARCHER
-            <span class="hero-subtitle">IN DEFENCE OF CREATION</span>
-          </h1>
-          <p class="hero-synopsis">
-            Bathed in celestial golden rays and showered with blessings from the Devas, the protector of the universe
-            rises with his inexhaustible quiver to defeat the forces of Lanka and restore universal balance.
-          </p>
-          <div class="hero-cta-group">
-            <button class="btn-cta-primary" onclick="startCinemaStream()">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-              <span>Stream In Cinema</span>
-            </button>
-            <button class="btn-cta-secondary" onclick="switchPage('gallery')">
-              <span>View Stills &amp; Frames</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Slider Controls -->
-      <div class="slider-indicators">
-        <button class="slide-dot active" onclick="gotoSlide(0)"></button>
-        <button class="slide-dot" onclick="gotoSlide(1)"></button>
-        <button class="slide-dot" onclick="gotoSlide(2)"></button>
-      </div>
-    </section>
-
     <!-- =========================================================================
-         ICONIC SEQUENCES & CHAPTERS (Trilogy Parts 1, 2, 3 Built-in)
-         ========================================================================= -->
-    <section class="content-row" id="chaptersRow">
-      <div class="row-header">
-        <div class="row-title-block">
-          <h2 class="row-title">Iconic Sequences &amp; Chapters</h2>
-          <span class="row-sub-tag">Part 1 Now Streaming &bull; Part 2 (2028) &amp; Part 3 (2029) Coming Soon</span>
-        </div>
-        <span class="row-link" onclick="switchPage('gallery')">Explore All &rarr;</span>
+       PAGE 1: HOME VIEW (Authentic Netflix Browse Experience: netflix.com/browse)
+       ========================================================================= -->
+  <main class="page-view active" id="home-view">
+
+    <!-- Netflix Hero Billboard with Hover Video Preview & Audio Controls -->
+    <div class="netflix-billboard home-billboard" id="homeHeroBillboard" title="Click anywhere on Billboard to Play Ramayana: Part One">
+      
+      <!-- Backdrop Image (Crisp fallback & initial display) -->
+      <div class="billboard-backdrop" id="homeBillboardBackdrop" style="background-image: url('hero_banner_hd.jpg');"></div>
+      
+      <!-- Dynamic Video Preview Layer (Plays on hover or auto-preview) -->
+      <div class="billboard-video-wrap" id="homeBillboardVideoWrap">
+        <video id="homeBillboardVideo" preload="metadata" muted playsinline loop poster="hero_banner_hd.jpg">
+          <source src="move_trailer.mp4" type="video/mp4">
+          <source src="move trailer.mp4" type="video/mp4">
+          <source src="https://github.com/86parm-hub/ramayana/releases/download/v1.0/Ramayana.Part1.Act1.mp4#t=120" type="video/mp4">
+        </video>
       </div>
 
-      <div class="cards-rail">
-        <!-- Chapter 01 / Part 1: Full Movie (Now Streaming) -->
-        <div class="film-card card-part-1" onclick="startCinemaStream()" title="Click to Watch Full Movie">
-          <div class="film-card-thumb">
-            <img src="hero_banner_hd.jpg" alt="Ramayana Part 1: The Awakening">
-            <div class="card-play-hover">▶</div>
-            <span class="card-tag tag-streaming-now">
-              <span class="live-dot-green"></span> PART 1 &bull; NOW STREAMING
-            </span>
-          </div>
-          <div class="film-card-info">
-            <div class="film-card-header-line">
-              <h4>Part 1: The Awakening (2026)</h4>
-              <span class="quality-badge-mini">1080P HEVC</span>
-            </div>
-            <p>Maryada Purushottam Lord Rama's fourteen years of exile and forest meditation. Click to watch full movie
-              now.</p>
-            <div class="card-action-bar">
-              <span class="btn-card-action play-action">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
-                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                </svg>
-                Watch Movie Now
-              </span>
-            </div>
-          </div>
+      <!-- Cinematic Vignettes & Bottom Gradient Fade -->
+      <div class="billboard-vignette"></div>
+      <div class="billboard-bottom-fade"></div>
+
+      <!-- Left Content Box (Title, Metas, Synopsis & CTAs) -->
+      <div class="billboard-content">
+        <div class="billboard-top-row">
+          <span class="billboard-top10-badge">
+            <span class="top10-num">TOP 10</span>
+            <span class="top10-text">#1 in Movies Today</span>
+          </span>
+          <span class="billboard-tag-gold">SANDFLIX ORIGINAL &bull; CINEMATIC MASTERPIECE</span>
         </div>
 
-        <!-- Chapter 02 / Part 2: Coming Soon 2028 -->
-        <div class="film-card card-part-2" onclick="openComingSoonModal(2)" title="Click for Coming Soon 2028 Teaser">
-          <div class="film-card-thumb">
-            <img src="feature_banner_hd.jpg" alt="Ramayana Part 2: Coming Soon 2028">
-            <div class="card-lock-hover">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-                <path
-                  d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" />
-              </svg>
-            </div>
-            <span class="card-tag tag-coming-gold">
-              🔒 PART 2 &bull; COMING SOON 2028
-            </span>
-          </div>
-          <div class="film-card-info">
-            <div class="film-card-header-line">
-              <h4>Part 2: The Quest &amp; The War</h4>
-              <span class="coming-badge-mini gold">2028</span>
-            </div>
-            <p>The breaking of Shiva Dhanush, the quest for Mata Sita &amp; Kishkindha. Click to view release details.
-            </p>
-            <div class="card-action-bar">
-              <span class="btn-card-action notify-action-gold">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
-                  <path
-                    d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z" />
-                </svg>
-                Coming Soon 2028
-              </span>
-            </div>
-          </div>
+        <h1 class="billboard-title">RAMAYANA: PART ONE</h1>
+        <p class="billboard-subtitle-tag">THE AWAKENING &bull; SACRED SAGA (2026)</p>
+
+        <div class="billboard-meta-row">
+          <span class="meta-match">99% Match</span>
+          <span class="meta-year">2026</span>
+          <span class="meta-age">U/A 13+</span>
+          <span class="meta-runtime">3h 12m</span>
+          <span class="meta-quality">4K ULTRA HD</span>
+          <span class="meta-audio">DOLBY ATMOS 5.1</span>
         </div>
 
-        <!-- Chapter 03 / Part 3: Coming Soon 2029 -->
-        <div class="film-card card-part-3" onclick="openComingSoonModal(3)" title="Click for Coming Soon 2029 Teaser">
-          <div class="film-card-thumb">
-            <img src="movie_poster_hd.jpg" alt="Ramayana Part 3: Coming Soon 2029">
-            <div class="card-lock-hover">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-                <path
-                  d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" />
-              </svg>
-            </div>
-            <span class="card-tag tag-coming-saffron">
-              🔒 PART 3 &bull; COMING SOON 2029
-            </span>
-          </div>
-          <div class="film-card-info">
-            <div class="film-card-header-line">
-              <h4>Part 3: The Final Triumph</h4>
-              <span class="coming-badge-mini saffron">2029</span>
-            </div>
-            <p>The celestial archer, Dharma Yuddha of Lanka &amp; grand coronation. Click to view release details.</p>
-            <div class="card-action-bar">
-              <span class="btn-card-action notify-action-saffron">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
-                  <path
-                    d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z" />
-                </svg>
-                Coming Soon 2029
-              </span>
-            </div>
-          </div>
+        <p class="billboard-overview">
+          Witness Maryada Purushottam Lord Rama's supreme vow to uphold Dharma. From the golden halls of Ayodhya to the divine breaking of Lord Shiva's Pinaka bow, and the epic journey through the mystic Dandakaranya forest. Streaming in 1080P HEVC master quality.
+        </p>
+
+        <div class="billboard-actions" onclick="event.stopPropagation()">
+          <!-- Primary Play Button (Direct to Netflix Black Screen Cinema Player) -->
+          <button class="btn-n-play" onclick="openNetflixBlackPlayer()" title="Play Ramayana: Part One (3h 12m)">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+            <span>Play</span>
+          </button>
+
+          <!-- More Info Button (Opens Netflix Detail Modal) -->
+          <button class="btn-n-info" onclick="openMovieDetailsModal('part1')" title="View details, cast &amp; languages">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+            <span>More Info</span>
+          </button>
+
+          <!-- Add to My List Toggle Button -->
+          <button class="btn-n-circle" id="homeBtnMyList" onclick="toggleMyList(this)" title="Add to My List">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </button>
         </div>
       </div>
-    </section>
+
+      <!-- Bottom-Right Netflix Billboard Audio / Mute & Maturity Rating Row -->
+      <div class="billboard-aside-controls" onclick="event.stopPropagation()">
+        <!-- Audio Mute / Unmute Button -->
+        <button class="billboard-audio-btn" id="homeBillboardAudioBtn" onclick="toggleBillboardAudio(event)" title="Mute/Unmute Video Preview">
+          <svg id="homeBBAudioMute" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+            <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+          </svg>
+          <svg id="homeBBAudioUnmute" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="display:none;">
+            <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+          </svg>
+        </button>
+
+        <!-- Maturity Badge -->
+        <div class="billboard-maturity-badge">
+          <span class="bb-maturity-border">U/A 13+</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Netflix Category Rows Section with Compact 16:9 Movie Cards -->
+    <div class="netflix-rows-container">
+
+      <!-- =====================================================================
+           ROW 1: Trending Now on SANDFLIX (Compact 16:9 Cards with Carousel)
+           ===================================================================== -->
+      <section class="netflix-row" id="rowTrending">
+        <div class="row-header">
+          <h2 class="row-title">
+            <span>Trending Now</span>
+            <span class="row-title-chevron">&rsaquo;</span>
+          </h2>
+          <span class="row-badge-pill">Popular</span>
+        </div>
+
+        <div class="n-carousel-wrap">
+          <button class="n-slider-btn prev" onclick="scrollNetflixRow('rowTrackTrending', -1)" aria-label="Previous items">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+
+          <div class="netflix-slider-track compact-row" id="rowTrackTrending">
+            <!-- Card 1: Ramayana Part One -->
+            <article class="n-card compact" onclick="openNetflixBlackPlayer()" title="Play Ramayana: Part One">
+              <div class="n-card-thumb">
+                <img src="hero_banner_hd.jpg" alt="Ramayana: Part One" loading="lazy">
+                <span class="n-card-top-tag">99% MATCH</span>
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer();" title="Play">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Liked!');" title="Like">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                    </button>
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('part1');" title="More Info">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">Ramayana: Part One</h4>
+                    <div class="n-card-meta">
+                      <span class="match">99% Match</span>
+                      <span class="age">U/A 13+</span>
+                      <span class="dur">3h 12m</span>
+                      <span class="n-badge">4K</span>
+                    </div>
+                    <p class="n-card-genres">Mythology &bull; Epic &bull; Drama</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 2: Shiva Dhanush -->
+            <article class="n-card compact" onclick="openNetflixBlackPlayer()" title="Play Shiva Dhanush Chapter">
+              <div class="n-card-thumb">
+                <img src="feature_banner_hd.jpg" alt="Breaking of Shiva Dhanush" loading="lazy">
+                <span class="n-card-top-tag gold">SWAYAMVARA</span>
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer();" title="Play">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    </button>
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('shiva');" title="More Info">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">Shiva Dhanush: Pinaka</h4>
+                    <div class="n-card-meta"><span class="match">98% Match</span><span class="age">U/A 13+</span><span class="n-badge">1080P</span></div>
+                    <p class="n-card-genres">Mithila &bull; Prophecy &bull; Divine Bow</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 3: Dandakaranya Exile -->
+            <article class="n-card compact" onclick="openNetflixBlackPlayer()" title="Play Dandakaranya Forest Saga">
+              <div class="n-card-thumb">
+                <img src="movie_cover_hd.jpg" alt="Dandakaranya Exile" loading="lazy">
+                <span class="n-card-top-tag">1080P HEVC</span>
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer();" title="Play">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    </button>
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('exile');" title="More Info">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">The Forest Exile</h4>
+                    <div class="n-card-meta"><span class="match">97% Match</span><span class="age">U/A 13+</span><span class="n-badge">HDR</span></div>
+                    <p class="n-card-genres">Dandakaranya &bull; Panchavati &bull; Vow</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 4: Official Theatrical Cut -->
+            <article class="n-card compact" onclick="openNetflixBlackPlayer()" title="Play Full Film">
+              <div class="n-card-thumb">
+                <img src="movie_poster_hd.jpg" alt="Ramayana Theatrical Cut" loading="lazy">
+                <span class="n-card-top-tag gold">DIRECTOR CUT</span>
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer();" title="Play">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    </button>
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('part1');" title="More Info">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">Ramayana (Director's Master Cut)</h4>
+                    <div class="n-card-meta"><span class="match">99% Match</span><span class="age">U/A 13+</span><span class="n-badge">Atmos</span></div>
+                    <p class="n-card-genres">Uncut Master &bull; Full 3 Hours</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 5: Part 2 Coming Soon 2028 -->
+            <article class="n-card compact" onclick="openComingSoonModal(2)" title="View Part 2 Details">
+              <div class="n-card-thumb">
+                <img src="teaser_lanka_hd.jpg" alt="Ramayana: Part Two" loading="lazy">
+                <span class="n-card-top-tag lock">SOON 2028</span>
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); openComingSoonModal(2);" title="Teaser">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Reminder set for Diwali 2028!');" title="Remind Me">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                    </button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">Part Two: War For Dharma</h4>
+                    <div class="n-card-meta"><span class="match gold">Diwali 2028</span><span class="n-badge">IMAX 3D</span></div>
+                    <p class="n-card-genres">Golden Lanka &bull; Vanar Sena &bull; Setu</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 6: Part 3 Coming Soon 2029 -->
+            <article class="n-card compact" onclick="openComingSoonModal(3)" title="View Part 3 Details">
+              <div class="n-card-thumb">
+                <img src="teaser_archer_hd.jpg" alt="Ramayana: Part Three" loading="lazy">
+                <span class="n-card-top-tag lock">SOON 2029</span>
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); openComingSoonModal(3);" title="Teaser">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Reminder set for Diwali 2029!');" title="Remind Me">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                    </button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">Part Three: The Cosmic Return</h4>
+                    <div class="n-card-meta"><span class="match gold">Diwali 2029</span><span class="n-badge">IMAX 3D</span></div>
+                    <p class="n-card-genres">Final Consecration &bull; Ram Rajya</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <button class="n-slider-btn next" onclick="scrollNetflixRow('rowTrackTrending', 1)" aria-label="Next items">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           ROW 2: Top 10 Movies in India Today (Official Netflix Stylized Numerals)
+           ===================================================================== -->
+      <section class="netflix-row" id="rowTop10">
+        <div class="row-header">
+          <h2 class="row-title">
+            <span>Top 10 Movies in India Today</span>
+            <span class="row-title-chevron">&rsaquo;</span>
+          </h2>
+          <span class="row-badge-pill">Daily Leaderboard</span>
+        </div>
+
+        <div class="n-carousel-wrap">
+          <button class="n-slider-btn prev" onclick="scrollNetflixRow('rowTrackTop10', -1)" aria-label="Previous items">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+
+          <div class="netflix-slider-track top10-row" id="rowTrackTop10">
+            <!-- Rank 1 -->
+            <div class="n-top10-item">
+              <span class="top10-rank-num">1</span>
+              <article class="n-card compact" onclick="openNetflixBlackPlayer()" title="#1 Movie in India Today">
+                <div class="n-card-thumb">
+                  <img src="hero_banner_hd.jpg" alt="#1 Ramayana: Part One" loading="lazy">
+                  <div class="n-card-overlay">
+                    <div class="n-card-actions">
+                      <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer();" title="Play"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg></button>
+                      <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('part1');" title="More Info"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+                    </div>
+                    <div class="n-card-info">
+                      <h4 class="n-movie-name">#1 Ramayana: Part One</h4>
+                      <div class="n-card-meta"><span class="match">99% Match</span><span class="age">U/A 13+</span></div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <!-- Rank 2 -->
+            <div class="n-top10-item">
+              <span class="top10-rank-num">2</span>
+              <article class="n-card compact" onclick="openNetflixBlackPlayer()" title="#2 Pinaka Shiva Dhanush">
+                <div class="n-card-thumb">
+                  <img src="feature_banner_hd.jpg" alt="#2 Pinaka Shiva Dhanush" loading="lazy">
+                  <div class="n-card-overlay">
+                    <div class="n-card-actions">
+                      <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer();" title="Play"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg></button>
+                      <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('shiva');" title="More Info"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+                    </div>
+                    <div class="n-card-info">
+                      <h4 class="n-movie-name">#2 Shiva Dhanush</h4>
+                      <div class="n-card-meta"><span class="match">98% Match</span><span class="age">U/A 13+</span></div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <!-- Rank 3 -->
+            <div class="n-top10-item">
+              <span class="top10-rank-num">3</span>
+              <article class="n-card compact" onclick="openNetflixBlackPlayer()" title="#3 The Forest Exile">
+                <div class="n-card-thumb">
+                  <img src="movie_cover_hd.jpg" alt="#3 The Forest Exile" loading="lazy">
+                  <div class="n-card-overlay">
+                    <div class="n-card-actions">
+                      <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer();" title="Play"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg></button>
+                      <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('exile');" title="More Info"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+                    </div>
+                    <div class="n-card-info">
+                      <h4 class="n-movie-name">#3 Forest Exile</h4>
+                      <div class="n-card-meta"><span class="match">97% Match</span><span class="age">U/A 13+</span></div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <!-- Rank 4 -->
+            <div class="n-top10-item">
+              <span class="top10-rank-num">4</span>
+              <article class="n-card compact" onclick="openComingSoonModal(2)" title="#4 War For Lanka">
+                <div class="n-card-thumb">
+                  <img src="teaser_lanka_hd.jpg" alt="#4 War For Lanka" loading="lazy">
+                  <div class="n-card-overlay">
+                    <div class="n-card-actions">
+                      <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openComingSoonModal(2);" title="Teaser"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+                    </div>
+                    <div class="n-card-info">
+                      <h4 class="n-movie-name">#4 War For Lanka (2028)</h4>
+                      <div class="n-card-meta"><span class="match gold">Anticipated</span></div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <!-- Rank 5 -->
+            <div class="n-top10-item">
+              <span class="top10-rank-num">5</span>
+              <article class="n-card compact" onclick="openComingSoonModal(3)" title="#5 The Cosmic Return">
+                <div class="n-card-thumb">
+                  <img src="teaser_archer_hd.jpg" alt="#5 The Cosmic Return" loading="lazy">
+                  <div class="n-card-overlay">
+                    <div class="n-card-actions">
+                      <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openComingSoonModal(3);" title="Teaser"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+                    </div>
+                    <div class="n-card-info">
+                      <h4 class="n-movie-name">#5 Cosmic Return (2029)</h4>
+                      <div class="n-card-meta"><span class="match gold">Finale</span></div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <button class="n-slider-btn next" onclick="scrollNetflixRow('rowTrackTop10', 1)" aria-label="Next items">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           ROW 3: Epic Mythology & Sagas
+           ===================================================================== -->
+      <section class="netflix-row" id="rowMythology">
+        <div class="row-header">
+          <h2 class="row-title">
+            <span>Epic Mythology &amp; Sagas</span>
+            <span class="row-title-chevron">&rsaquo;</span>
+          </h2>
+          <span class="row-badge-pill">Sacred Lore</span>
+        </div>
+
+        <div class="n-carousel-wrap">
+          <button class="n-slider-btn prev" onclick="scrollNetflixRow('rowTrackMythology', -1)" aria-label="Previous items">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+
+          <div class="netflix-slider-track compact-row" id="rowTrackMythology">
+            <!-- Card 1 -->
+            <article class="n-card compact" onclick="openNetflixBlackPlayer()" title="Play Sacred Ayodhya">
+              <div class="n-card-thumb">
+                <img src="movie_poster_hd.jpg" alt="Sacred Ayodhya" loading="lazy">
+                <span class="n-card-top-tag">AYODHYA</span>
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer();" title="Play"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg></button>
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('part1');" title="More Info"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">The Golden Kingdom</h4>
+                    <div class="n-card-meta"><span class="match">98% Match</span><span class="age">U/A 13+</span></div>
+                    <p class="n-card-genres">Royal Courts &bull; Dharma</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="n-card compact" onclick="openNetflixBlackPlayer()" title="Play Mata Sita Swayamvar">
+              <div class="n-card-thumb">
+                <img src="feature_banner_hd.jpg" alt="Mata Sita Swayamvar" loading="lazy">
+                <span class="n-card-top-tag gold">MITHILA</span>
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer();" title="Play"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg></button>
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('shiva');" title="More Info"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">Mata Sita Swayamvar</h4>
+                    <div class="n-card-meta"><span class="match">99% Match</span><span class="age">U/A 13+</span></div>
+                    <p class="n-card-genres">Divine Union &bull; King Janaka</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="n-card compact" onclick="openNetflixBlackPlayer()" title="Play Dandakaranya Journey">
+              <div class="n-card-thumb">
+                <img src="hero_banner_hd.jpg" alt="Dandakaranya Journey" loading="lazy">
+                <span class="n-card-top-tag">EXILE</span>
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer();" title="Play"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg></button>
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('exile');" title="More Info"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">Dandakaranya Quest</h4>
+                    <div class="n-card-meta"><span class="match">97% Match</span><span class="age">U/A 13+</span></div>
+                    <p class="n-card-genres">Wilderness &bull; Sacred Ashram</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 4 -->
+            <article class="n-card compact" onclick="openComingSoonModal(2)" title="Golden Lanka">
+              <div class="n-card-thumb">
+                <img src="teaser_lanka_hd.jpg" alt="Golden Lanka" loading="lazy">
+                <span class="n-card-top-tag lock">SOON 2028</span>
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openComingSoonModal(2);" title="Teaser"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">Lanka: The Golden Fortress</h4>
+                    <div class="n-card-meta"><span class="match gold">Part 2</span></div>
+                    <p class="n-card-genres">Ocean Crossing &bull; Lanka Empire</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 5 -->
+            <article class="n-card compact" onclick="openComingSoonModal(3)" title="Celestial Archer">
+              <div class="n-card-thumb">
+                <img src="teaser_archer_hd.jpg" alt="Celestial Archer" loading="lazy">
+                <span class="n-card-top-tag lock">SOON 2029</span>
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openComingSoonModal(3);" title="Teaser"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">The Celestial Archer</h4>
+                    <div class="n-card-meta"><span class="match gold">Part 3</span></div>
+                    <p class="n-card-genres">Brahmashira &bull; Triumph of Good</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <button class="n-slider-btn next" onclick="scrollNetflixRow('rowTrackMythology', 1)" aria-label="Next items">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           ROW 4: Action & Dharma Battles
+           ===================================================================== -->
+      <section class="netflix-row" id="rowAction">
+        <div class="row-header">
+          <h2 class="row-title">
+            <span>Action &amp; Dharma Battles</span>
+            <span class="row-title-chevron">&rsaquo;</span>
+          </h2>
+          <span class="row-badge-pill">High Adrenaline</span>
+        </div>
+
+        <div class="n-carousel-wrap">
+          <button class="n-slider-btn prev" onclick="scrollNetflixRow('rowTrackAction', -1)" aria-label="Previous items">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+
+          <div class="netflix-slider-track compact-row" id="rowTrackAction">
+            <!-- Card 1 -->
+            <article class="n-card compact" onclick="openNetflixBlackPlayer()" title="Breaking Pinaka Bow">
+              <div class="n-card-thumb">
+                <img src="feature_banner_hd.jpg" alt="Breaking Pinaka Bow" loading="lazy">
+                <span class="n-card-top-tag">ACTION</span>
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer();" title="Play"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg></button>
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('shiva');" title="More Info"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">The Breaking of Pinaka</h4>
+                    <div class="n-card-meta"><span class="match">99% Match</span><span class="age">U/A 13+</span></div>
+                    <p class="n-card-genres">Bow of Shiva &bull; Celestial Might</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="n-card compact" onclick="openNetflixBlackPlayer()" title="Dandakaranya Defense">
+              <div class="n-card-thumb">
+                <img src="movie_cover_hd.jpg" alt="Dandakaranya Defense" loading="lazy">
+                <span class="n-card-top-tag">COMBAT</span>
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer();" title="Play"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg></button>
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('exile');" title="More Info"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">The Forest Guardians</h4>
+                    <div class="n-card-meta"><span class="match">97% Match</span><span class="age">U/A 13+</span></div>
+                    <p class="n-card-genres">Protection of Hermitages &bull; Divyastras</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="n-card compact" onclick="openComingSoonModal(2)" title="Vanar Sena Alliance">
+              <div class="n-card-thumb">
+                <img src="teaser_lanka_hd.jpg" alt="Vanar Sena Alliance" loading="lazy">
+                <span class="n-card-top-tag lock">SOON 2028</span>
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openComingSoonModal(2);" title="Teaser"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">The Vanar Sena Alliance</h4>
+                    <div class="n-card-meta"><span class="match gold">Part 2</span></div>
+                    <p class="n-card-genres">Sugriva &bull; Hanuman &bull; Ocean March</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 4 -->
+            <article class="n-card compact" onclick="openComingSoonModal(3)" title="The Final Battle">
+              <div class="n-card-thumb">
+                <img src="teaser_archer_hd.jpg" alt="The Final Battle" loading="lazy">
+                <span class="n-card-top-tag lock">SOON 2029</span>
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openComingSoonModal(3);" title="Teaser"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">The Great Dharma Yuddha</h4>
+                    <div class="n-card-meta"><span class="match gold">Part 3</span></div>
+                    <p class="n-card-genres">Ravana &bull; Cosmic Weaponry &bull; Consecration</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <button class="n-slider-btn next" onclick="scrollNetflixRow('rowTrackAction', 1)" aria-label="Next items">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </div>
+      </section>
+
+    </div>
   </main>
 
   
@@ -1997,7 +2380,75 @@
     </div>
   </div>
 
-  <!-- =========================================================================
+    <!-- =========================================================================
+       NETFLIX MORE INFO MODAL (Official Netflix Jawbone / Preview Detail Dialog)
+       ========================================================================= -->
+  <div class="netflix-detail-modal" id="netflixMoreInfoModal" onclick="closeMovieDetailsModal()" aria-hidden="true">
+    <div class="n-modal-dialog" onclick="event.stopPropagation()">
+      <button class="n-modal-close" onclick="closeMovieDetailsModal()" aria-label="Close dialog">&times;</button>
+      
+      <div class="n-modal-hero">
+        <img src="hero_banner_hd.jpg" id="nModalHeroImg" alt="Movie Hero">
+        <div class="n-modal-hero-gradient"></div>
+        <div class="n-modal-hero-content">
+          <h2 class="n-modal-title" id="nModalTitle">RAMAYANA: PART ONE</h2>
+          <div class="n-modal-actions">
+            <button class="btn-n-play" onclick="closeMovieDetailsModal(); openNetflixBlackPlayer();">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+              <span>Play</span>
+            </button>
+            <button class="btn-n-circle" onclick="toggleMyList(this)" title="Add to My List">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </button>
+            <button class="btn-n-circle" onclick="alert('Added to Liked list!');" title="Like">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="n-modal-body">
+        <div class="n-modal-col-main">
+          <div class="n-modal-meta">
+            <span class="match">99% Match</span>
+            <span class="year" id="nModalYear">2026</span>
+            <span class="age" id="nModalAge">U/A 13+</span>
+            <span class="dur" id="nModalDur">3h 12m</span>
+            <span class="badge">4K ULTRA HD</span>
+            <span class="badge">DOLBY ATMOS 5.1</span>
+          </div>
+          <p class="n-modal-desc" id="nModalDesc">
+            Witness Maryada Purushottam Lord Rama's supreme vow to uphold Dharma. From the golden halls of Ayodhya to the divine breaking of Lord Shiva's Pinaka bow, and the epic journey through the mystic Dandakaranya forest. Complete 3-hour saga available in full 1080P HEVC.
+          </p>
+        </div>
+
+        <div class="n-modal-col-side">
+          <div class="n-modal-info-item">
+            <span class="label">Cast:</span>
+            <span class="val">Ranbir Kapoor, Sai Pallavi, Yash, Sunny Deol</span>
+          </div>
+          <div class="n-modal-info-item">
+            <span class="label">Director:</span>
+            <span class="val">Nitesh Tiwari</span>
+          </div>
+          <div class="n-modal-info-item">
+            <span class="label">Music:</span>
+            <span class="val">Hans Zimmer &amp; A. R. Rahman</span>
+          </div>
+          <div class="n-modal-info-item">
+            <span class="label">Genres:</span>
+            <span class="val">Mythology, Action &amp; Adventure, Period Drama</span>
+          </div>
+          <div class="n-modal-info-item">
+            <span class="label">Audio:</span>
+            <span class="val">Hindi [Original] (Dolby Atmos 5.1), English, Tamil, Telugu</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- =========================================================================
        MOBILE BOTTOM NAVIGATION BAR (Fixed Native OTT Tab Bar for Android & Mobile)
        ========================================================================= -->
   <nav class="mobile-bottom-nav" id="mobileBottomNav" aria-label="Mobile Navigation">

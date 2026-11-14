@@ -27,6 +27,14 @@ function switchPage(pageKey) {
   });
 
   const activeView = document.getElementById(targetId);
+  const bbVideo = document.getElementById('homeBillboardVideo');
+  if (bbVideo) {
+    if (pageKey === 'home') {
+      if (typeof initHomeBillboard === 'function') initHomeBillboard();
+    } else {
+      if (!bbVideo.paused) bbVideo.pause();
+    }
+  }
   if (activeView) {
     activeView.classList.add('active');
   }
@@ -1575,6 +1583,9 @@ function openNetflixBlackPlayer(targetTime) {
   const video = document.getElementById('nbpVideo');
   const spinner = document.getElementById('nbpSpinner');
 
+  // Pause billboard video, trailer and OST
+  const bbVideo = document.getElementById('homeBillboardVideo');
+  if (bbVideo && !bbVideo.paused) bbVideo.pause();
   // Pause trailer and OST
   const trailerVideo = document.getElementById('trailerVideo');
   if (trailerVideo && !trailerVideo.paused) trailerVideo.pause();
@@ -2229,3 +2240,187 @@ window.setNbpSpeed = setNbpSpeed;
 window.toggleNbpTimeFormat = toggleNbpTimeFormat;
 window.toggleNbpPiP = toggleNbpPiP;
 window.toggleNbpFullscreen = toggleNbpFullscreen;
+
+/* ==========================================================================
+   NETFLIX HOME BROWSE CONTROLLER (Billboard Hover Video, Carousel & Modals)
+   ========================================================================== */
+
+let billboardPreviewTimer = null;
+
+function initHomeBillboard() {
+  const billboard = document.getElementById('homeHeroBillboard');
+  const video = document.getElementById('homeBillboardVideo');
+  const videoWrap = document.getElementById('homeBillboardVideoWrap');
+
+  if (!billboard || !video || !videoWrap) return;
+
+  function playBillboardPreview() {
+    video.muted = true;
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.then(() => {
+        videoWrap.classList.add('playing');
+      }).catch(err => {
+        console.log('Billboard preview autoplay waiting for interaction:', err);
+      });
+    }
+  }
+
+  function pauseBillboardPreview() {
+    videoWrap.classList.remove('playing');
+    video.pause();
+  }
+
+  // Hover play / pause
+  billboard.addEventListener('mouseenter', () => {
+    playBillboardPreview();
+  });
+
+  // Auto-play after 2s delay if user lands on Home page
+  clearTimeout(billboardPreviewTimer);
+  billboardPreviewTimer = setTimeout(() => {
+    const homeView = document.getElementById('home-view');
+    const blackModal = document.getElementById('netflixBlackPlayerModal');
+    if (homeView && homeView.classList.contains('active') && (!blackModal || !blackModal.classList.contains('active'))) {
+      playBillboardPreview();
+    }
+  }, 2000);
+}
+
+function toggleBillboardAudio(event) {
+  if (event) event.stopPropagation();
+  const video = document.getElementById('homeBillboardVideo');
+  const muteIcon = document.getElementById('homeBBAudioMute');
+  const unmuteIcon = document.getElementById('homeBBAudioUnmute');
+  const videoWrap = document.getElementById('homeBillboardVideoWrap');
+
+  if (!video) return;
+
+  if (video.paused) {
+    video.play();
+    if (videoWrap) videoWrap.classList.add('playing');
+  }
+
+  video.muted = !video.muted;
+  if (video.muted) {
+    if (muteIcon) muteIcon.style.display = 'block';
+    if (unmuteIcon) unmuteIcon.style.display = 'none';
+  } else {
+    if (muteIcon) muteIcon.style.display = 'none';
+    if (unmuteIcon) unmuteIcon.style.display = 'block';
+  }
+}
+
+function scrollNetflixRow(trackId, direction) {
+  const track = document.getElementById(trackId);
+  if (!track) return;
+  const scrollDistance = (track.clientWidth * 0.75) * direction;
+  track.scrollBy({ left: scrollDistance, behavior: 'smooth' });
+}
+
+function toggleMyList(btn) {
+  if (!btn) return;
+  const isAdded = btn.getAttribute('data-added') === 'true';
+  if (isAdded) {
+    btn.setAttribute('data-added', 'false');
+    btn.innerHTML = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>';
+    showToast('Removed from My List');
+  } else {
+    btn.setAttribute('data-added', 'true');
+    btn.innerHTML = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#46d369" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+    showToast('Saved to My List');
+  }
+}
+
+function showToast(message) {
+  let toast = document.getElementById('nToastNotification');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'nToastNotification';
+    toast.style.cssText = 'position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(20px);background:rgba(20,20,20,0.95);color:#fff;padding:12px 24px;border-radius:6px;font-size:14px;font-weight:700;z-index:999999;border:1px solid rgba(255,255,255,0.2);box-shadow:0 10px 30px rgba(0,0,0,0.8);backdrop-filter:blur(10px);opacity:0;transition:all 0.3s ease;pointer-events:none;';
+    document.body.appendChild(toast);
+  }
+  toast.textContent = message;
+  toast.style.opacity = '1';
+  toast.style.transform = 'translateX(-50%) translateY(0)';
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateX(-50%) translateY(20px)';
+  }, 2200);
+}
+
+function openMovieDetailsModal(movieKey) {
+  const modal = document.getElementById('netflixMoreInfoModal');
+  if (!modal) return;
+
+  const data = {
+    'part1': {
+      title: 'RAMAYANA: PART ONE',
+      hero: 'hero_banner_hd.jpg',
+      year: '2026',
+      age: 'U/A 13+',
+      dur: '3h 12m',
+      desc: "Witness Maryada Purushottam Lord Rama\'s supreme vow to uphold Dharma. From the golden halls of Ayodhya to the divine breaking of Lord Shiva\'s Pinaka bow, and the epic journey through the mystic Dandakaranya forest. Complete 3-hour saga available in full 1080P HEVC."
+    },
+    'shiva': {
+      title: 'SHIVA DHANUSH: THE SACRED PINAKA',
+      hero: 'feature_banner_hd.jpg',
+      year: '2026',
+      age: 'U/A 13+',
+      dur: 'Chapter 2',
+      desc: "In the grand court of King Janaka at Mithila, mighty warriors fail to lift the celestial bow of Lord Shiva. Prince Rama effortlessly strings Pinaka, breaking it into two halves to fulfill the sacred prophecy."
+    },
+    'exile': {
+      title: 'THE FOREST EXILE & PANCHAVATI',
+      hero: 'movie_cover_hd.jpg',
+      year: '2026',
+      age: 'U/A 13+',
+      dur: 'Chapter 3',
+      desc: "Lord Rama, Mata Sita, and Lakshmana begin their sacred 14-year exile in the mystical forests of Dandakaranya, establishing peace among hermits and confronting primeval demonic forces."
+    }
+  };
+
+  const item = data[movieKey] || data['part1'];
+  const titleEl = document.getElementById('nModalTitle');
+  const heroImg = document.getElementById('nModalHeroImg');
+  const yearEl = document.getElementById('nModalYear');
+  const ageEl = document.getElementById('nModalAge');
+  const durEl = document.getElementById('nModalDur');
+  const descEl = document.getElementById('nModalDesc');
+
+  if (titleEl) titleEl.textContent = item.title;
+  if (heroImg) heroImg.src = item.hero;
+  if (yearEl) yearEl.textContent = item.year;
+  if (ageEl) ageEl.textContent = item.age;
+  if (durEl) durEl.textContent = item.dur;
+  if (descEl) descEl.textContent = item.desc;
+
+  modal.classList.add('active');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMovieDetailsModal() {
+  const modal = document.getElementById('netflixMoreInfoModal');
+  if (!modal) return;
+  modal.classList.remove('active');
+  modal.setAttribute('aria-hidden', 'true');
+  const blackModal = document.getElementById('netflixBlackPlayerModal');
+  if (!blackModal || !blackModal.classList.contains('active')) {
+    document.body.style.overflow = '';
+  }
+}
+
+window.initHomeBillboard = initHomeBillboard;
+window.toggleBillboardAudio = toggleBillboardAudio;
+window.scrollNetflixRow = scrollNetflixRow;
+window.toggleMyList = toggleMyList;
+window.openMovieDetailsModal = openMovieDetailsModal;
+window.closeMovieDetailsModal = closeMovieDetailsModal;
+
+// Auto-initialize on load
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initHomeBillboard);
+} else {
+  initHomeBillboard();
+}
