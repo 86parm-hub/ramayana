@@ -998,6 +998,32 @@ const OST_TRACKS = [
     src: "audio/06_jai_jai_ram_meri_pooja.m4a",
     banner: "teaser_archer_hd.jpg",
     desc: "The monumental heart-touching devotional anthem with Achyutam Keshavam shlokas."
+  },
+  {
+    id: 7,
+    num: "07",
+    title: "Shree Hanuman Chalisa",
+    subtitle: "Sacred Hymn of Celestial Power & Protection",
+    tag: "SACRED CHANTS",
+    artist: "A.R. Rahman &times; Devotional Choir",
+    duration: "06:58",
+    durationSec: 418,
+    src: "audio/07_hanuman_chalisa_divine.m4a",
+    banner: "movie_cover_hd.jpg",
+    desc: "Divine Sanskrit and Awadhi recitations of Sri Hanuman Chalisa invoking cosmic strength, devotion, and protection."
+  },
+  {
+    id: 8,
+    num: "08",
+    title: "Main Ram - Dasharath Suta",
+    subtitle: "The Divine Vow of Lord Rama & Cosmic Symphony",
+    tag: "DIVINE ANTHEM",
+    artist: "A.R. Rahman • Ranbir Kapoor • Hans Zimmer",
+    duration: "03:41",
+    durationSec: 221,
+    src: "audio/08_main_ram_dasharath_suta.m4a",
+    banner: "hero_banner_hd.jpg",
+    desc: "Soul-stirring divine anthem of Maryada Purushottam Lord Rama upholding supreme Dharma and eternal vows."
   }
 ];
 
@@ -1313,8 +1339,8 @@ function filterSandifyTracks(category, btn) {
 
   const rows = document.querySelectorAll('.spotify-row');
   rows.forEach(r => {
-    const cat = r.getAttribute('data-cat');
-    if (category === 'all' || cat === category) {
+    const cat = r.getAttribute('data-cat') || '';
+    if (category === 'all' || cat === category || cat.split(' ').indexOf(category) !== -1) {
       r.style.display = 'grid';
     } else {
       r.style.display = 'none';
