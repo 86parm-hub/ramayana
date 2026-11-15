@@ -28,7 +28,7 @@
     rel="stylesheet">
   <!-- Zero-Cache Robust Page Switcher Engine -->
   <script>
-    function switchPage(pageKey) {
+    function switchPage(pageKey, fromHistory) {
       try {
         var pageMap = {
           'home': 'home-view',
@@ -80,8 +80,8 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
 
         try {
-          if (window.history && window.history.pushState && window.location.protocol.indexOf('file') === -1) {
-            window.history.pushState(null, null, '#' + pageKey);
+          if (!fromHistory && window.history && window.history.pushState) {
+            window.history.pushState({ type: 'page', page: pageKey }, null, '#' + pageKey);
           }
         } catch(e) {}
       } catch(err) {
@@ -822,7 +822,7 @@
             </svg>
             <span id="notifyBtnText">Get Notified on Release</span>
           </button>
-          <button class="btn-modal-back-part1" onclick="closeComingSoonModal(); startCinemaStream();">
+          <button class="btn-modal-back-part1" onclick="closeComingSoonModal(true); startCinemaStream();">
             <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
               <polygon points="5 3 19 12 5 21 5 3"></polygon>
             </svg>
@@ -846,7 +846,7 @@
         <div class="n-modal-hero-content">
           <h2 class="n-modal-title" id="nModalTitle">RAMAYANA: PART ONE</h2>
           <div class="n-modal-actions">
-            <button class="btn-n-play" onclick="closeMovieDetailsModal(); openNetflixBlackPlayer();">
+            <button class="btn-n-play" onclick="closeMovieDetailsModal(true); openNetflixBlackPlayer();">
               <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
               <span>Play</span>
             </button>

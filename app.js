@@ -3,8 +3,42 @@
    Multi-Page Switching, High-Resolution Carousel, Player & Touch Seeking
    ========================================================================== */
 
+// ==========================================================================
+// UNIFIED HISTORY & DEVICE BACK NAVIGATION ENGINE (Mobile / Tablet / Desktop)
+// ==========================================================================
+
+function pushAppState(stateObj, url) {
+  try {
+    if (window.history && window.history.pushState) {
+      window.history.pushState(stateObj, '', url || window.location.href);
+    }
+  } catch (e) {
+    try {
+      if (url && url.startsWith('#')) {
+        window.location.hash = url;
+      }
+    } catch (err) {}
+  }
+}
+
+function replaceAppState(stateObj, url) {
+  try {
+    if (window.history && window.history.replaceState) {
+      window.history.replaceState(stateObj, '', url || window.location.href);
+    }
+  } catch (e) {}
+}
+
+function getCurrentActivePage() {
+  const activeView = document.querySelector('.page-view.active');
+  if (!activeView) return 'home';
+  if (activeView.id === 'movies-view') return 'movies';
+  if (activeView.id === 'gallery-view') return 'gallery';
+  return 'home';
+}
+
 // Global Page Switcher Function
-function switchPage(pageKey) {
+function switchPage(pageKey, fromHistory) {
   if (pageKey === 'watch') {
     openNetflixBlackPlayer('act1');
     return;
@@ -24,7 +58,7 @@ function switchPage(pageKey) {
   // Pause trailer video if leaving trailer page
   const trailerVideo = document.getElementById('trailerVideo');
   if (trailerVideo && pageKey !== 'trailer' && !trailerVideo.paused) {
-    trailerVideo.pause();
+    try { trailerVideo.pause(); } catch(e){}
   }
 
   // Toggle active view
@@ -71,11 +105,15 @@ function switchPage(pageKey) {
   // Scroll to top of the page smoothly
   window.scrollTo({ top: 0, behavior: 'smooth' });
 
-  // Update URL hash without jumping
-  if (history.pushState) {
-    history.pushState(null, null, `#${pageKey}`);
+  // Update URL hash & push state if not from history popstate
+  if (!fromHistory) {
+    const currentState = window.history.state;
+    if (!currentState || currentState.page !== pageKey || currentState.type !== 'page') {
+      pushAppState({ type: 'page', page: pageKey }, `#${pageKey}`);
+    }
   }
 }
+window.switchPage = switchPage;
 
 // Act Switcher Engine (Act 1: 01:30:07 | Act 2: 01:30:16)
 const ACT_CONFIG = {
@@ -169,7 +207,7 @@ const trilogyData = {
 
 let currentModalPart = 2;
 
-function openComingSoonModal(partNum) {
+function openComingSoonModal(partNum, fromHistory) {
   const modal = document.getElementById('comingSoonModal');
   if (!modal) return;
 
@@ -205,15 +243,32 @@ function openComingSoonModal(partNum) {
 
   modal.classList.add('active');
   document.body.style.overflow = 'hidden';
+
+  if (!fromHistory) {
+    const curPage = getCurrentActivePage();
+    pushAppState({ type: 'coming-soon', partNum: partNum, prevPage: curPage }, '#coming-soon');
+  }
 }
 
-function closeComingSoonModal() {
+function closeComingSoonModal(fromHistory) {
+  if (!fromHistory && window.history && window.history.state && window.history.state.type === 'coming-soon') {
+    window.history.back();
+    return;
+  }
+
   const modal = document.getElementById('comingSoonModal');
   if (modal) {
     modal.classList.remove('active');
     document.body.style.overflow = '';
   }
+
+  if (!fromHistory && window.location.hash === '#coming-soon') {
+    const prevPage = (window.history.state && window.history.state.prevPage) || getCurrentActivePage();
+    replaceAppState({ type: 'page', page: prevPage }, '#' + prevPage);
+  }
 }
+window.openComingSoonModal = openComingSoonModal;
+window.closeComingSoonModal = closeComingSoonModal;
 
 function notifyMeAlert() {
   const btn = document.getElementById('modalNotifyBtn');
@@ -1592,7 +1647,7 @@ const SANDIFY_ALBUMS = {
   }
 };
 
-function openSandifySubpage(albumKey) {
+function openSandifySubpage(albumKey, fromHistory) {
   albumKey = albumKey || 'divine-symphony';
   const album = SANDIFY_ALBUMS[albumKey] || SANDIFY_ALBUMS['divine-symphony'];
 
@@ -1622,9 +1677,18 @@ function openSandifySubpage(albumKey) {
     subpageView.classList.add('fade-in-active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+
+  if (!fromHistory) {
+    pushAppState({ type: 'sandify-subpage', page: 'gallery', albumKey: albumKey }, '#sandify-tracks');
+  }
 }
 
-function closeSandifySubpage() {
+function closeSandifySubpage(fromHistory) {
+  if (!fromHistory && window.history && window.history.state && window.history.state.type === 'sandify-subpage') {
+    window.history.back();
+    return;
+  }
+
   const mainView = document.getElementById('sandifyMainView');
   const subpageView = document.getElementById('sandifySubpageView');
   if (mainView && subpageView) {
@@ -1637,6 +1701,10 @@ function closeSandifySubpage() {
     } else {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+  }
+
+  if (!fromHistory && window.location.hash === '#sandify-tracks') {
+    replaceAppState({ type: 'page', page: 'gallery' }, '#gallery');
   }
 }
 
@@ -1774,10 +1842,21 @@ function playTrailerInNetflixPlayer(startSec) {
 }
 window.playTrailerInNetflixPlayer = playTrailerInNetflixPlayer;
 
-function openNetflixBlackPlayer(targetTime) {
+function openNetflixBlackPlayer(targetTime, fromHistory) {
   const modal = document.getElementById('netflixBlackPlayerModal');
   const video = document.getElementById('nbpVideo');
   const spinner = document.getElementById('nbpSpinner');
+
+  // Close any open info/coming-soon modals cleanly without popping history
+  const infoModal = document.getElementById('netflixMoreInfoModal');
+  if (infoModal && infoModal.classList.contains('active')) {
+    infoModal.classList.remove('active');
+    infoModal.setAttribute('aria-hidden', 'true');
+  }
+  const csModal = document.getElementById('comingSoonModal');
+  if (csModal && csModal.classList.contains('active')) {
+    csModal.classList.remove('active');
+  }
 
   // Pause billboard videos, trailer and OST
   const bbVideo = document.getElementById('homeBillboardVideo');
@@ -1800,6 +1879,16 @@ function openNetflixBlackPlayer(targetTime) {
 
   closeAllNbpPopovers();
 
+  // Push or replace history state for mobile/tablet back button
+  if (!fromHistory) {
+    const curPage = getCurrentActivePage();
+    if (window.history && window.history.state && (window.history.state.type === 'movie-details' || window.history.state.type === 'coming-soon')) {
+      replaceAppState({ type: 'netflix-player', targetTime: targetTime, prevPage: curPage }, '#player');
+    } else {
+      pushAppState({ type: 'netflix-player', targetTime: targetTime, prevPage: curPage }, '#player');
+    }
+  }
+
   // Handle trailer mode
   if (targetTime === 'trailer' || (typeof targetTime === 'number' && nbpIsTrailerMode)) {
     nbpIsTrailerMode = true;
@@ -1815,6 +1904,41 @@ function openNetflixBlackPlayer(targetTime) {
 
   startSubtitleEngine();
   resetNbpIdleTimer();
+}
+
+function closeNetflixBlackPlayer(fromHistory) {
+  if (!fromHistory && window.history && window.history.state && window.history.state.type === 'netflix-player') {
+    window.history.back();
+    return;
+  }
+
+  const modal = document.getElementById('netflixBlackPlayerModal');
+  const video = document.getElementById('nbpVideo');
+  if (video && !video.paused) {
+    video.pause();
+  }
+  if (modal) {
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+  }
+  document.body.style.overflow = '';
+  closeAllNbpPopovers();
+  stopSubtitleEngine();
+
+  if (nbpIsTrailerMode) {
+    nbpIsTrailerMode = false;
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = 'Ramayana: Part One';
+  }
+
+  if (document.fullscreenElement) {
+    document.exitFullscreen().catch(e => {});
+  }
+
+  if (!fromHistory && window.location.hash === '#player') {
+    const prevPage = (window.history.state && window.history.state.prevPage) || getCurrentActivePage();
+    replaceAppState({ type: 'page', page: prevPage }, '#' + prevPage);
+  }
 }
 
 function loadAndPlayTrailerInNbp(startOffset) {
@@ -1900,30 +2024,7 @@ function loadAndPlayContinuous(globalSec) {
   }
 }
 
-function closeNetflixBlackPlayer() {
-  const modal = document.getElementById('netflixBlackPlayerModal');
-  const video = document.getElementById('nbpVideo');
-  if (video && !video.paused) {
-    video.pause();
-  }
-  if (modal) {
-    modal.classList.remove('active');
-    modal.setAttribute('aria-hidden', 'true');
-  }
-  document.body.style.overflow = '';
-  closeAllNbpPopovers();
-  stopSubtitleEngine();
 
-  if (nbpIsTrailerMode) {
-    nbpIsTrailerMode = false;
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Ramayana: Part One';
-  }
-
-  if (document.fullscreenElement) {
-    document.exitFullscreen().catch(e => {});
-  }
-}
 
 // Double Click & Tap Handlers
 let nbpLastTapLeft = 0;
@@ -2615,7 +2716,7 @@ function showToast(message) {
   }, 2200);
 }
 
-function openMovieDetailsModal(movieKey) {
+function openMovieDetailsModal(movieKey, fromHistory) {
   const modal = document.getElementById('netflixMoreInfoModal');
   if (!modal) return;
 
@@ -2664,9 +2765,19 @@ function openMovieDetailsModal(movieKey) {
   modal.classList.add('active');
   modal.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
+
+  if (!fromHistory) {
+    const curPage = getCurrentActivePage();
+    pushAppState({ type: 'movie-details', movieKey: movieKey, prevPage: curPage }, '#movie-info');
+  }
 }
 
-function closeMovieDetailsModal() {
+function closeMovieDetailsModal(fromHistory) {
+  if (!fromHistory && window.history && window.history.state && window.history.state.type === 'movie-details') {
+    window.history.back();
+    return;
+  }
+
   const modal = document.getElementById('netflixMoreInfoModal');
   if (!modal) return;
   modal.classList.remove('active');
@@ -2674,6 +2785,11 @@ function closeMovieDetailsModal() {
   const blackModal = document.getElementById('netflixBlackPlayerModal');
   if (!blackModal || !blackModal.classList.contains('active')) {
     document.body.style.overflow = '';
+  }
+
+  if (!fromHistory && window.location.hash === '#movie-info') {
+    const prevPage = (window.history.state && window.history.state.prevPage) || getCurrentActivePage();
+    replaceAppState({ type: 'page', page: prevPage }, '#' + prevPage);
   }
 }
 
@@ -2771,4 +2887,100 @@ if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initAllBillboards);
 } else {
   initAllBillboards();
+}
+
+// ============================================================================
+// GLOBAL POPSTATE & DEVICE/HARDWARE BACK BUTTON NAVIGATION ENGINE
+// Supports mobile phones (Android, iOS), tablets (iPad, Galaxy Tab) & desktop
+// ============================================================================
+
+window.addEventListener('popstate', function (event) {
+  const state = event.state;
+
+  // 1. Netflix Black Player Modal has highest priority
+  const playerModal = document.getElementById('netflixBlackPlayerModal');
+  if (playerModal && playerModal.classList.contains('active')) {
+    closeNetflixBlackPlayer(true);
+    return;
+  }
+
+  // 2. Movie Details / More Info Modal
+  const movieDetailsModal = document.getElementById('netflixMoreInfoModal');
+  if (movieDetailsModal && movieDetailsModal.classList.contains('active')) {
+    closeMovieDetailsModal(true);
+    return;
+  }
+
+  // 3. Coming Soon Trilogy Modal
+  const comingSoonModal = document.getElementById('comingSoonModal');
+  if (comingSoonModal && comingSoonModal.classList.contains('active')) {
+    closeComingSoonModal(true);
+    return;
+  }
+
+  // 4. Sandify Tracks Sub-page
+  const sandifySubpage = document.getElementById('sandifySubpageView');
+  if (sandifySubpage && sandifySubpage.style.display !== 'none') {
+    if (!state || state.type !== 'sandify-subpage') {
+      closeSandifySubpage(true);
+      return;
+    }
+  }
+
+  // 5. If state specifically says open a modal or subpage (Forward navigation or direct pop)
+  if (state) {
+    if (state.type === 'sandify-subpage') {
+      switchPage('gallery', true);
+      openSandifySubpage(state.albumKey || 'divine-symphony', true);
+      return;
+    }
+    if (state.type === 'netflix-player') {
+      openNetflixBlackPlayer(state.targetTime || 'act1', true);
+      return;
+    }
+    if (state.type === 'movie-details') {
+      openMovieDetailsModal(state.movieKey || 'part1', true);
+      return;
+    }
+    if (state.type === 'coming-soon') {
+      openComingSoonModal(state.partNum || 2, true);
+      return;
+    }
+    if (state.type === 'page' && state.page) {
+      switchPage(state.page, true);
+      return;
+    }
+  }
+
+  // 6. Fallback based on URL hash
+  const hash = (window.location.hash || '').replace('#', '');
+  if (hash === 'movies' || hash === 'gallery' || hash === 'home') {
+    switchPage(hash, true);
+  } else if (hash === 'sandify-tracks') {
+    switchPage('gallery', true);
+    openSandifySubpage('divine-symphony', true);
+  } else {
+    switchPage('home', true);
+  }
+});
+
+// Initialize base state on load if not present
+function initHistoryBaseState() {
+  const hash = (window.location.hash || '').replace('#', '');
+  if (!window.history.state) {
+    if (hash === 'sandify-tracks') {
+      replaceAppState({ type: 'page', page: 'gallery' }, '#gallery');
+      pushAppState({ type: 'sandify-subpage', page: 'gallery', albumKey: 'divine-symphony' }, '#sandify-tracks');
+    } else if (hash === 'movies' || hash === 'gallery') {
+      replaceAppState({ type: 'page', page: hash }, '#' + hash);
+    } else {
+      replaceAppState({ type: 'page', page: 'home' }, '#home');
+    }
+  }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initHistoryBaseState);
+} else {
+  initHistoryBaseState();
 }
