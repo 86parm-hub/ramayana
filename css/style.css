@@ -8737,185 +8737,389 @@ img, video {
 
 
 /* ==========================================================================
-   OFFICIAL MASTER SINGLE MOVIE CARD (SANDFLIX OFFICIAL 16:9 CARD)
-   ========================================================================= */
+   AUTHENTIC NETFLIX RESPONSIVE MOVIE CARDS & LISTING SYSTEM
+   ========================================================================== */
+
+/* 1. Horizontal Netflix Carousel Track (Smooth Swiping + Fluid Sizing) */
 .single-movie-track {
   display: flex;
-  align-items: flex-start;
-  gap: 18px;
-  padding: 12px 0 28px;
+  align-items: stretch;
+  gap: 14px;
+  padding: 14px 6px 30px 6px;
   overflow-x: auto;
-  scrollbar-width: thin;
+  overflow-y: visible;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.single-movie-track::-webkit-scrollbar {
+  display: none;
 }
 
+/* 2. Netflix Catalog Grid (Browse All / Featured Cinema on Movies Page) */
+.netflix-catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px 14px;
+  width: 100%;
+  padding: 16px 2px 42px;
+}
+
+/* Master 16:9 Netflix Movie Card Container */
 .single-movie-track .n-card.official-master-card {
   position: relative;
-  flex: 0 0 250px;
-  width: 250px;
+  flex: 0 0 calc((100% - (14px * 5)) / 6);
+  min-width: 210px;
+  max-width: 300px;
   background: #181818;
   border-radius: 6px;
   overflow: hidden;
   cursor: pointer;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.65);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease, border-color 0.28s ease;
   z-index: 10;
+  display: flex;
+  flex-direction: column;
+  scroll-snap-align: start;
 }
 
-.single-movie-track .n-card.official-master-card:hover {
-  transform: scale(1.08) translateY(-6px);
-  border-color: rgba(229, 9, 20, 0.85);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.95), 0 0 25px rgba(229, 9, 20, 0.4);
-  z-index: 25;
+.netflix-catalog-grid .n-card.official-master-card {
+  position: relative;
+  width: 100%;
+  background: #181818;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.65);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease, border-color 0.28s ease;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
 }
 
-.single-movie-track .n-card-thumb {
+/* Desktop Hover Lift & Cinematic Glow */
+@media (hover: hover) {
+  .single-movie-track .n-card.official-master-card:hover,
+  .netflix-catalog-grid .n-card.official-master-card:hover {
+    transform: scale(1.08) translateY(-6px);
+    border-color: rgba(229, 9, 20, 0.85);
+    box-shadow: 0 18px 42px rgba(0, 0, 0, 0.95), 0 0 24px rgba(229, 9, 20, 0.38);
+    z-index: 35;
+  }
+}
+
+/* Thumbnail: 16:9 Cinema Ratio */
+.n-card.official-master-card .n-card-thumb {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
-  background: #000;
+  background: #0a0a0a;
   overflow: hidden;
 }
 
-.single-movie-track .n-card-thumb img {
+.n-card.official-master-card .n-card-thumb img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
   transition: transform 0.45s ease;
 }
 
-.single-movie-track .n-card.official-master-card:hover .n-card-thumb img {
-  transform: scale(1.08);
+@media (hover: hover) {
+  .n-card.official-master-card:hover .n-card-thumb img {
+    transform: scale(1.08);
+  }
 }
 
-.single-movie-track .n-card-overlay {
+/* Top Badges */
+.n-card.official-master-card .n-card-top-tag {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  padding: 3px 7px;
+  background: #e50914;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 900;
+  border-radius: 3px;
+  letter-spacing: 0.5px;
+  z-index: 5;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.n-card.official-master-card .n-card-quality-tag {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 3px 6px;
+  background: rgba(0, 0, 0, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 800;
+  border-radius: 3px;
+  letter-spacing: 0.4px;
+  z-index: 5;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* Hover Quick Actions Overlay */
+.n-card.official-master-card .n-card-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.85) 100%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(10, 10, 10, 0.88) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
-  transition: opacity 0.25s ease;
+  transition: opacity 0.22s ease;
+  z-index: 6;
 }
 
-.single-movie-track .n-card.official-master-card:hover .n-card-overlay {
-  opacity: 1;
+@media (hover: hover) {
+  .n-card.official-master-card:hover .n-card-overlay {
+    opacity: 1;
+  }
 }
 
-.single-movie-track .n-card-actions {
+.n-card.official-master-card .n-card-actions {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.single-movie-track .n-action-btn {
+.n-card.official-master-card .n-btn-circle {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.2s ease;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  background: rgba(40, 40, 40, 0.85);
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  background: rgba(30, 30, 30, 0.85);
   color: #fff;
+  padding: 0;
 }
 
-.single-movie-track .n-action-btn.play {
-  background: #fff;
+.n-card.official-master-card .n-btn-circle.play {
+  background: #ffffff;
+  color: #000000;
+  border: none;
+}
+
+.n-card.official-master-card .n-btn-circle:hover {
+  transform: scale(1.14);
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.n-card.official-master-card .n-btn-circle.play:hover {
+  background: #e6e6e6;
   color: #000;
-  border-color: #fff;
 }
 
-.single-movie-track .n-action-btn:hover {
-  transform: scale(1.12);
-  border-color: #fff;
-}
-
-.single-movie-track .n-card-info {
-  padding: 10px 12px 12px;
+/* Card Info Panel (Always Visible, Crystal Clear) */
+.n-card.official-master-card .n-card-info {
+  padding: 11px 12px 13px;
   background: #181818;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
-.single-movie-track .n-movie-name {
+.n-card.official-master-card .n-movie-name {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 800;
   color: #fff;
-  margin: 0 0 4px 0;
+  margin: 0 0 5px 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.2px;
 }
 
-.single-movie-track .n-card-meta {
+.n-card.official-master-card .n-card-meta {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 6px;
   font-size: 11px;
-  margin-bottom: 4px;
+  margin-bottom: 5px;
 }
 
-.single-movie-track .n-card-meta .match {
+.n-card.official-master-card .n-card-meta .match {
   color: #46d369;
   font-weight: 800;
+  font-size: 11px;
 }
 
-.single-movie-track .n-card-meta .age,
-.single-movie-track .n-card-meta .dur,
-.single-movie-track .n-card-meta .n-badge {
-  font-size: 9px;
-  padding: 1px 4px;
+.n-card.official-master-card .n-card-meta .age,
+.n-card.official-master-card .n-card-meta .dur,
+.n-card.official-master-card .n-card-meta .n-badge {
+  font-size: 9.5px;
+  padding: 1px 5px;
   border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: 2px;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.88);
   font-weight: 700;
 }
 
-.single-movie-track .n-card-genres {
+.n-card.official-master-card .n-card-genres {
   font-size: 10px;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.65);
   margin: 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-/* Responsive Devices */
-@media (min-width: 1200px) {
+/* Netflix Carousel Slider Buttons (Prev & Next Chevrons) */
+.n-carousel-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.n-slider-btn {
+  position: absolute;
+  top: 14px;
+  bottom: 30px;
+  width: 48px;
+  background: rgba(15, 15, 15, 0.72);
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  z-index: 38;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.25s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.n-carousel-wrap:hover .n-slider-btn {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.n-slider-btn.prev {
+  left: 0;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.n-slider-btn.next {
+  right: 0;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.n-slider-btn:hover {
+  background: rgba(229, 9, 20, 0.88);
+  color: #ffffff;
+  transform: scaleY(1.05);
+}
+
+/* ==========================================================================
+   RESPONSIVE BREAKPOINTS (Fluid Netflix Sizing across All Screens)
+   ========================================================================== */
+
+/* Large Screens & Laptops (1200px - 1440px): 5 per row */
+@media (max-width: 1440px) {
   .single-movie-track .n-card.official-master-card {
-    flex: 0 0 260px;
-    width: 260px;
+    flex: 0 0 calc((100% - (14px * 4)) / 5);
+    min-width: 200px;
+  }
+  .netflix-catalog-grid {
+    grid-template-columns: repeat(5, 1fr);
   }
 }
 
-@media (max-width: 768px) {
+/* Medium Tablets & Small Laptops (992px - 1199px): 4 per row */
+@media (max-width: 1199px) {
   .single-movie-track .n-card.official-master-card {
-    flex: 0 0 200px;
-    width: 200px;
+    flex: 0 0 calc((100% - (12px * 3)) / 4);
+    min-width: 190px;
   }
-  .single-movie-track .n-movie-name {
-    font-size: 12px;
+  .netflix-catalog-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px 12px;
   }
 }
 
+/* Tablets (768px - 991px): 3 per row */
+@media (max-width: 991px) {
+  .single-movie-track .n-card.official-master-card {
+    flex: 0 0 calc((100% - (12px * 2)) / 3);
+    min-width: 175px;
+  }
+  .netflix-catalog-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px 10px;
+  }
+  .n-card.official-master-card .n-movie-name {
+    font-size: 12.5px;
+  }
+}
+
+/* Mobile Devices (481px - 767px): 2 cards + preview peek for touch swipe */
+@media (max-width: 767px) {
+  .single-movie-track {
+    gap: 10px;
+    padding: 10px 4px 22px;
+  }
+  .single-movie-track .n-card.official-master-card {
+    flex: 0 0 calc((100% - 10px) / 2.3);
+    min-width: 155px;
+  }
+  .netflix-catalog-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px 8px;
+  }
+  .n-card.official-master-card .n-card-info {
+    padding: 8px 10px 11px;
+  }
+  .n-card.official-master-card .n-movie-name {
+    font-size: 11.5px;
+  }
+  .n-card.official-master-card .n-card-meta {
+    gap: 4px;
+    font-size: 10px;
+  }
+  .n-card.official-master-card .n-card-genres {
+    display: none;
+  }
+  .n-slider-btn {
+    display: none !important;
+  }
+}
+
+/* Extra Small Phones (< 480px) */
 @media (max-width: 480px) {
   .single-movie-track .n-card.official-master-card {
-    flex: 0 0 170px;
-    width: 170px;
+    flex: 0 0 calc((100% - 8px) / 2.15);
+    min-width: 140px;
   }
-  .single-movie-track .n-action-btn {
-    width: 30px;
-    height: 30px;
+  .netflix-catalog-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 6px;
   }
-  .single-movie-track .n-movie-name {
+  .n-card.official-master-card .n-movie-name {
     font-size: 11px;
   }
-  .single-movie-track .n-card-genres {
-    display: none;
+  .n-card.official-master-card .n-card-top-tag,
+  .n-card.official-master-card .n-card-quality-tag {
+    font-size: 8px;
+    padding: 1px 4px;
   }
 }
 
