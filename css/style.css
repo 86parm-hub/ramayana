@@ -274,6 +274,10 @@ body.ott-platform {
   padding-top: 76px;
   position: relative;
   z-index: 1;
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .page-view.active {
@@ -5902,10 +5906,19 @@ body.ott-platform {
   display: flex;
   flex-direction: column;
   gap: 40px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden; /* Ensures child horizontal scroll never stretches parent page width */
 }
 
 .netflix-row {
   position: relative;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .row-header {
@@ -7923,6 +7936,9 @@ img, video {
 .n-carousel-wrap {
   position: relative;
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 /* Slider Track (Horizontal Flex with Smooth Touch Physics) */
@@ -8076,22 +8092,22 @@ img, video {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 38px;
-  height: 68px;
-  border-radius: 34px;
-  background: rgba(18, 18, 18, 0.76);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 44px;
+  height: 76px;
+  border-radius: 38px;
+  background: rgba(18, 18, 18, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   color: #ffffff;
   cursor: pointer;
-  z-index: 50;
+  z-index: 100;
   display: flex;
   align-items: center;
   justify-content: center;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.75);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  opacity: 0.85;
+  opacity: 0.95;
 }
 
 .n-carousel-wrap:hover .n-slider-btn {
@@ -8111,7 +8127,8 @@ img, video {
   border-color: rgba(229, 9, 20, 1);
   color: #ffffff;
   transform: translateY(-50%) scale(1.08);
-  box-shadow: 0 6px 22px rgba(229, 9, 20, 0.55);
+  box-shadow: 0 6px 24px rgba(229, 9, 20, 0.6);
+  opacity: 1;
 }
 
 .n-slider-btn svg {
@@ -8368,9 +8385,6 @@ img, video {
     right: 28px;
     bottom: 28%;
   }
-  .n-slider-btn {
-    display: none !important; /* Touch swipe preferred on tablets */
-  }
   .n-card.compact {
     flex: 0 0 195px;
     width: 195px;
@@ -8396,6 +8410,9 @@ img, video {
 
 /* Mobile Devices: Android & iOS (768px and below) */
 @media screen and (max-width: 768px) {
+  .n-slider-btn {
+    display: none !important; /* Touch swipe on mobile screens */
+  }
   .netflix-billboard.home-billboard {
     min-height: 420px;
     padding: 0 16px;
@@ -8759,7 +8776,12 @@ img, video {
   align-items: flex-start;
   gap: 18px;
   padding: 12px 0 28px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
   overflow-x: auto;
+  overflow-y: hidden;
   scroll-behavior: smooth;
   scrollbar-width: none; /* Hide scrollbar on Firefox / standard */
   -ms-overflow-style: none; /* Hide scrollbar on IE/Edge */

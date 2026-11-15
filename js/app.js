@@ -1784,19 +1784,20 @@ function slideNetflixRow(trackId, direction) {
   const firstCard = track.querySelector('.n-card') || track.firstElementChild;
   const cardWidth = firstCard ? firstCard.offsetWidth : 250;
   const gap = 18;
-  const scrollDistance = (cardWidth + gap) * 2;
+  const visibleCards = Math.max(1, Math.floor(track.clientWidth / (cardWidth + gap))) || 2;
+  const scrollDistance = (cardWidth + gap) * Math.min(visibleCards, 3);
   const maxScroll = track.scrollWidth - track.clientWidth;
 
   if (direction > 0) {
     // Scroll Right: if at or near the end, loop smoothly to start
-    if (track.scrollLeft >= maxScroll - 25) {
+    if (track.scrollLeft >= maxScroll - 20) {
       track.scrollTo({ left: 0, behavior: 'smooth' });
     } else {
       track.scrollBy({ left: scrollDistance, behavior: 'smooth' });
     }
   } else {
     // Scroll Left: if at start, loop smoothly to the very end
-    if (track.scrollLeft <= 25) {
+    if (track.scrollLeft <= 20) {
       track.scrollTo({ left: maxScroll, behavior: 'smooth' });
     } else {
       track.scrollBy({ left: -scrollDistance, behavior: 'smooth' });
