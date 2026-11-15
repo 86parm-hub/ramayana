@@ -1976,6 +1976,28 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
+  // Handle Embed Movie Mode (The Paradise TMDB 1376856 via Peachify)
+  if (targetTime === 'paradise' || targetTime === 'theparadise' || targetTime === '1376856') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = 'The Paradise (2026) • TMDB 1376856';
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1376856';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
   // Restore non-embed state if switching back to normal video
   if (nbpIsEmbedMode) {
     nbpIsEmbedMode = false;
@@ -2866,6 +2888,14 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       age: 'TV-MA',
       dur: '5 Episodes • Season 1',
       desc: "Set in a fictional South Indian town ruled by women in the 1980s, an intense power struggle erupts between powerful matriarch Bhavani and a ruthless rebel Rudra. Starring Keerthy Suresh, Radhika Apte, Tanvi Azmi. Directed by Dharmaraj Shetty, produced by YRF Entertainment."
+    },
+    'paradise': {
+      title: 'THE PARADISE',
+      hero: 'assets/images/the_paradise_landscape.jpg',
+      year: '2026',
+      age: 'U/A 16+',
+      dur: '2h 45m',
+      desc: "Set in 1980s Secunderabad, a marginalized group rises to fight against systemic oppression, discrimination, and brutal injustice for their identity and citizenship. Starring Nani, Mohan Babu, Kayadu Lohar, Sonali Kulkarni. Directed by Srikanth Odela. Streamed in 1080P HEVC via Peachify TMDB 1376856."
     },
     'shiva': {
       title: 'SHIVA DHANUSH: THE SACRED PINAKA',
