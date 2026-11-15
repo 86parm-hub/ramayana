@@ -1776,7 +1776,7 @@ window.playMovieInCinema = playMovieInCinema;
 window.filterMoviesCatalog = filterMoviesCatalog;
 
 /* ==========================================================================
-   NETFLIX ROW CAROUSEL SMOOTH SLIDER (Desktop & Laptop Arrow Controls)
+   NETFLIX ROW CAROUSEL SMOOTH SLIDER & INFINITE LOOP CONTROLS
    ========================================================================== */
 function slideNetflixRow(trackId, direction) {
   const track = document.getElementById(trackId);
@@ -1784,10 +1784,54 @@ function slideNetflixRow(trackId, direction) {
   const firstCard = track.querySelector('.n-card') || track.firstElementChild;
   const cardWidth = firstCard ? firstCard.offsetWidth : 250;
   const gap = 18;
-  const scrollDistance = (cardWidth + gap) * 2 * direction;
-  track.scrollBy({ left: scrollDistance, behavior: 'smooth' });
+  const scrollDistance = (cardWidth + gap) * 2;
+  const maxScroll = track.scrollWidth - track.clientWidth;
+
+  if (direction > 0) {
+    // Scroll Right: if at or near the end, loop smoothly to start
+    if (track.scrollLeft >= maxScroll - 25) {
+      track.scrollTo({ left: 0, behavior: 'smooth' });
+    } else {
+      track.scrollBy({ left: scrollDistance, behavior: 'smooth' });
+    }
+  } else {
+    // Scroll Left: if at start, loop smoothly to the very end
+    if (track.scrollLeft <= 25) {
+      track.scrollTo({ left: maxScroll, behavior: 'smooth' });
+    } else {
+      track.scrollBy({ left: -scrollDistance, behavior: 'smooth' });
+    }
+  }
 }
 window.slideNetflixRow = slideNetflixRow;
+
+// Continuous Loop Auto-Scrolling (Pauses automatically on hover or touch)
+function initNetflixCarouselAutoLoop() {
+  const rowTracks = ['rowTrackTrending', 'rowTrackCatalog'];
+  rowTracks.forEach(trackId => {
+    const track = document.getElementById(trackId);
+    if (!track) return;
+    const parentWrap = track.closest('.n-carousel-wrap') || track;
+    let isPaused = false;
+
+    parentWrap.addEventListener('mouseenter', () => { isPaused = true; });
+    parentWrap.addEventListener('mouseleave', () => { isPaused = false; });
+    parentWrap.addEventListener('touchstart', () => { isPaused = true; }, { passive: true });
+    parentWrap.addEventListener('touchend', () => {
+      setTimeout(() => { isPaused = false; }, 2500);
+    }, { passive: true });
+
+    setInterval(() => {
+      if (isPaused || document.hidden) return;
+      const rect = track.getBoundingClientRect();
+      // Only auto-slide if visible within viewport
+      if (rect.bottom > 80 && rect.top < window.innerHeight - 80) {
+        slideNetflixRow(trackId, 1);
+      }
+    }, 4500);
+  });
+}
+window.initNetflixCarouselAutoLoop = initNetflixCarouselAutoLoop;
 
 
 /* ==========================================================================
@@ -3222,7 +3266,11 @@ function initHistoryBaseState() {
 }
 
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initHistoryBaseState);
+  document.addEventListener('DOMContentLoaded', () => {
+    initHistoryBaseState();
+    initNetflixCarouselAutoLoop();
+  });
 } else {
   initHistoryBaseState();
+  initNetflixCarouselAutoLoop();
 }
