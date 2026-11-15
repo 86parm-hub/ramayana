@@ -339,6 +339,32 @@
         return;
       }
 
+      // Embed movie handler: Adipurush (TMDB 734253)
+      if (targetTime === 'adipurush' || targetTime === '734253' || targetTime === 'prabhas_adipurush') {
+        if (modal) {
+          modal.classList.add('active');
+          modal.classList.add('is-embed-active');
+          modal.setAttribute('aria-hidden', 'false');
+        }
+        document.body.style.overflow = 'hidden';
+        if (video) {
+          try { video.pause(); video.currentTime = 0; } catch(e){}
+          video.style.display = 'none';
+        }
+        if (titleDisplay) titleDisplay.textContent = "Adipurush • TMDB 734253";
+        if (embedIframe) {
+          embedIframe.style.display = 'block';
+          embedIframe.src = 'https://peachify.net/movie/734253';
+        }
+        if (spinner) spinner.classList.remove('active');
+        try {
+          if (!fromHistory && window.history && window.history.pushState) {
+            window.history.pushState({ type: 'netflix-player', targetTime: 'adipurush' }, null, '#player');
+          }
+        } catch(e){}
+        return;
+      }
+
       // Delegate native Ramayana playback to full engine
       if (typeof window.__realOpenNetflixBlackPlayer === 'function') {
         window.__realOpenNetflixBlackPlayer(targetTime, fromHistory);
@@ -777,7 +803,7 @@
             <span>Critically Acclaimed Cinema</span>
             <span class="row-title-chevron">&rsaquo;</span>
           </h2>
-          <span class="row-badge-pill">3 Titles Streaming</span>
+          <span class="row-badge-pill">4 Titles Streaming</span>
         </div>
 
         <div class="n-carousel-wrap">
@@ -870,6 +896,36 @@
                   <div class="n-card-info">
                     <h4 class="n-movie-name">Jurassic World Rebirth</h4>
                     <p class="n-card-genres">Sci-Fi &bull; Action &bull; Dinosaur Adventure &bull; 4K</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Official Movie Card 4: Adipurush (TMDB 734253) -->
+            <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('adipurush')" title="Play Adipurush - TMDB 734253">
+              <div class="n-card-thumb">
+                <img src="assets/images/adipurush_landscape.jpg" alt="Adipurush" loading="lazy">
+                <span class="n-card-top-tag">PRABHAS &bull; KRITI SANON</span>
+                <span class="n-card-quality-tag">1080P HEVC</span>
+
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('adipurush');" title="Play Movie">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                    </button>
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('adipurush');" title="More Info">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">Adipurush</h4>
+                    <p class="n-card-genres">Mythology &bull; Epic Action &bull; Ramayana Saga</p>
                   </div>
                 </div>
               </div>
@@ -984,7 +1040,7 @@
       <section class="netflix-row" id="row-movies-catalog" data-genre-category="all">
         <div class="row-header">
           <h2 class="row-title">Featured Cinema <span class="row-title-chevron">&rsaquo;</span></h2>
-          <span class="row-badge-pill">10 Titles Streaming</span>
+          <span class="row-badge-pill">11 Titles Streaming</span>
         </div>
 
         <div class="n-carousel-wrap">
@@ -1287,6 +1343,36 @@
                 <div class="n-card-info">
                   <h4 class="n-movie-name">Jurassic World Rebirth</h4>
                   <p class="n-card-genres">Sci-Fi &bull; Action &bull; Dinosaur Adventure &bull; 4K</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Official Movie Card 11: Adipurush (TMDB 734253) -->
+          <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('adipurush')" title="Play Adipurush - TMDB 734253">
+            <div class="n-card-thumb">
+              <img src="assets/images/adipurush_landscape.jpg" alt="Adipurush" loading="lazy">
+              <span class="n-card-top-tag">PRABHAS &bull; KRITI SANON</span>
+              <span class="n-card-quality-tag">1080P HEVC</span>
+
+              <div class="n-card-overlay">
+                <div class="n-card-actions">
+                  <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('adipurush');" title="Play Movie">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                  </button>
+                  <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                  </button>
+                  <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                  </button>
+                  <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('adipurush');" title="More Info">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  </button>
+                </div>
+                <div class="n-card-info">
+                  <h4 class="n-movie-name">Adipurush</h4>
+                  <p class="n-card-genres">Mythology &bull; Epic Action &bull; Ramayana Saga</p>
                 </div>
               </div>
             </div>
@@ -1823,7 +1909,7 @@
     </button>
   </nav>
 
-  <script src="js/app.js?v=20261116_v23_jurassic_rebirth_release"></script>
+  <script src="js/app.js?v=20261116_v24_adipurush_release"></script>
 
   <!-- =========================================================================
        SPOTIFY NOW PLAYING BOTTOM BAR (AUTHENTIC 3-COLUMN DESKTOP DOCK)

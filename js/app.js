@@ -2188,6 +2188,29 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (spinner) spinner.classList.remove('active');
     return;
   }
+
+  // Handle Embed Movie Mode (Adipurush TMDB 734253 via Peachify)
+  if (targetTime === 'adipurush' || targetTime === '734253' || targetTime === 'prabhas_adipurush') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = "Adipurush • TMDB 734253";
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/734253';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
   if (nbpIsEmbedMode) {
     nbpIsEmbedMode = false;
     modal.classList.remove('is-embed-active');
@@ -3139,6 +3162,14 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       age: 'U/A 13+',
       dur: '2h 14m',
       desc: "Five years after Jurassic World Dominion, covert operations expert Zora Bennett (Scarlett Johansson) leads an elite expedition into isolated equatorial biomes to extract genetic material from the planet's three most colossal surviving prehistoric titans. When their mission crosses paths with a shipwrecked civilian family, they unearth a sinister conspiracy hidden from humanity for decades. Directed by Gareth Edwards, starring Scarlett Johansson, Mahershala Ali, Jonathan Bailey, Rupert Friend. Streamed in 4K / 1080P HEVC via Peachify TMDB 1234821."
+    },
+    'adipurush': {
+      title: 'ADIPURUSH',
+      hero: 'assets/images/adipurush_landscape.jpg',
+      year: '2023',
+      age: 'U/A 13+',
+      dur: '2h 59m',
+      desc: "7,000 years ago, Ayodhya's righteous Prince Raghava and Prince Sesh, accompanied by the mighty Vanara Sena led by Sugriva and Bajrang, march across the ocean to the golden island citadel of Lanka to rescue Janaki from the clutches of the ten-headed demon king Lankesh. Starring Prabhas, Kriti Sanon, Saif Ali Khan, Sunny Singh, Devdatta Nage. Directed by Om Raut, music by Ajay-Atul and Sachet-Parampara. Streamed in 1080P HEVC via Peachify TMDB 734253."
     },
     'shiva': {
       title: 'SHIVA DHANUSH: THE SACRED PINAKA',
