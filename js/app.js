@@ -1808,7 +1808,7 @@ window.slideNetflixRow = slideNetflixRow;
 
 // Continuous Loop Auto-Scrolling (Pauses automatically on hover or touch)
 function initNetflixCarouselAutoLoop() {
-  const rowTracks = ['rowTrackTrending', 'rowTrackCatalog'];
+  const rowTracks = ['rowTrackTrending', 'rowTrackAcclaimed', 'rowTrackCatalog'];
   rowTracks.forEach(trackId => {
     const track = document.getElementById(trackId);
     if (!track) return;
@@ -2115,6 +2115,28 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (embedIframe) {
       embedIframe.style.display = 'block';
       const peachifyUrl = 'https://peachify.net/movie/857598';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
+  // Handle Embed Movie Mode (Dorothy TMDB 1578079 via Peachify)
+  if (targetTime === 'dorothy' || targetTime === 'dorothi' || targetTime === '1578079') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = 'Dorothy • TMDB 1578079';
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1578079';
       if (embedIframe.src !== peachifyUrl) {
         embedIframe.src = peachifyUrl;
       }
@@ -3051,6 +3073,14 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       age: 'U/A 16+',
       dur: '3h 21m',
       desc: "Pushpa Raj expands his red sandalwood smuggling empire across borders while fiercely defending his reign against SP Bhanwar Singh Shekhawat and rival syndicates in an explosive clash of power and dominance. Starring Allu Arjun, Rashmika Mandanna, Fahadh Faasil. Directed by Sukumar, music by Devi Sri Prasad. Streamed in 1080P HEVC via Peachify TMDB 857598."
+    },
+    'dorothy': {
+      title: 'DOROTHY',
+      hero: 'assets/images/dorothy_landscape.jpg',
+      year: '2026',
+      age: 'U/A 16+',
+      dur: '2h 28m',
+      desc: "In a rural Tamil Nadu village shaped by traditional norms and toxic masculinity, the unexpected arrival of Dorothy (Keerthy Suresh) — a bold, independent woman — transforms the lives and worldview of two inseparable friends. Directed by Karthik Subbaraj with music by Maestro Ilaiyaraaja. World premiered at TIFF 2026. Streamed in 1080P HEVC via Peachify TMDB 1578079."
     },
     'shiva': {
       title: 'SHIVA DHANUSH: THE SACRED PINAKA',
