@@ -2167,7 +2167,27 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Restore non-embed state if switching back to normal video
+  // Handle Embed Movie Mode (Jurassic World Rebirth TMDB 1234821 via Peachify)
+  if (targetTime === 'jurassic_rebirth' || targetTime === 'jurassicworld' || targetTime === 'jurassic' || targetTime === '1234821' || targetTime === 'jurassicworldrebirth') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = "Jurassic World Rebirth • TMDB 1234821";
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1234821';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
   if (nbpIsEmbedMode) {
     nbpIsEmbedMode = false;
     modal.classList.remove('is-embed-active');
@@ -3111,6 +3131,14 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       age: 'U/A 7+',
       dur: '1h 48m',
       desc: "Based on W. Bruce Cameron's bestselling novel, the Goss family faces mounting chaos and hardship when an unexpected crisis strikes during the holidays. Their loyal basset hound Winstead and an energetic corgi puppy Ruby embark on an unforgettable mission to heal the family and bring them home for Christmas Eve. Starring Dennis Quaid, Milo Ventimiglia, Jennifer Tilly, Mary Steenburgen. Streamed in 1080P HEVC via Peachify TMDB 1570488."
+    },
+    'jurassic_rebirth': {
+      title: 'JURASSIC WORLD REBIRTH',
+      hero: 'assets/images/jurassic_rebirth_landscape.jpg',
+      year: '2025',
+      age: 'U/A 13+',
+      dur: '2h 14m',
+      desc: "Five years after Jurassic World Dominion, covert operations expert Zora Bennett (Scarlett Johansson) leads an elite expedition into isolated equatorial biomes to extract genetic material from the planet's three most colossal surviving prehistoric titans. When their mission crosses paths with a shipwrecked civilian family, they unearth a sinister conspiracy hidden from humanity for decades. Directed by Gareth Edwards, starring Scarlett Johansson, Mahershala Ali, Jonathan Bailey, Rupert Friend. Streamed in 4K / 1080P HEVC via Peachify TMDB 1234821."
     },
     'shiva': {
       title: 'SHIVA DHANUSH: THE SACRED PINAKA',
