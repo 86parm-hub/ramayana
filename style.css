@@ -9570,13 +9570,15 @@ img, video {
 
 /* Authentic Spotify Card Grid & Size */
 .spotify-card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 20px;
   width: 100%;
 }
 
 .spotify-music-card {
+  width: 190px;
+  max-width: 100%;
   background: #181818;
   border-radius: 8px;
   padding: 14px;
