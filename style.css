@@ -9514,10 +9514,10 @@ img, video {
 }
 
 /* ==========================================================================
-   SANDIFY TRACKS: MAIN PAGE CARDS SECTION & BRAND THEMED SUB-PAGE
+   SANDIFY TRACKS: SPOTIFY STYLE CARDS SECTION & BRAND THEMED SUB-PAGE
    ========================================================================== */
 
-/* Main Page: Sub-Page Album Card Section */
+/* Main Page: Spotify Style Cards Section */
 .sandify-cards-section {
   max-width: 1320px;
   margin: 40px auto;
@@ -9568,191 +9568,113 @@ img, video {
   color: #ff3b47;
 }
 
-/* Master Album Sub-Page Card */
-.sandify-subpage-card {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-  background: linear-gradient(135deg, rgba(28, 28, 28, 0.95) 0%, rgba(18, 18, 18, 0.98) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 14px;
-  padding: 24px;
+/* Authentic Spotify Card Grid & Size */
+.spotify-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+  width: 100%;
+}
+
+.spotify-music-card {
+  background: #181818;
+  border-radius: 8px;
+  padding: 14px;
   cursor: pointer;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  transition: background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
   position: relative;
-  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.04);
 }
 
-.sandify-subpage-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 4px;
-  height: 100%;
-  background: linear-gradient(180deg, #e50914, #ff8c00);
-  opacity: 0.8;
-  transition: width 0.35s ease, opacity 0.35s ease;
-}
-
-.sandify-subpage-card:hover {
+.spotify-music-card:hover {
+  background: #282828;
   transform: translateY(-4px);
-  background: linear-gradient(135deg, rgba(38, 38, 38, 0.98) 0%, rgba(24, 24, 24, 1) 100%);
-  border-color: rgba(229, 9, 20, 0.45);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(229, 9, 20, 0.25);
+  border-color: rgba(229, 9, 20, 0.3);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(229, 9, 20, 0.15);
 }
 
-.sandify-subpage-card:hover::before {
-  width: 6px;
-  opacity: 1;
-}
-
-.subpage-card-art-wrap {
+.spotify-card-art-box {
   position: relative;
-  flex: 0 0 160px;
-  width: 160px;
-  height: 160px;
-  border-radius: 10px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 6px;
   overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
+  margin-bottom: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6);
+  background: #121212;
 }
 
-.subpage-card-art-img {
+.spotify-card-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.4s ease;
+  display: block;
+  transition: transform 0.3s ease;
 }
 
-.sandify-subpage-card:hover .subpage-card-art-img {
-  transform: scale(1.06);
+.spotify-music-card:hover .spotify-card-img {
+  transform: scale(1.04);
 }
 
-.subpage-card-play-hover {
+/* Floating Play Button on Bottom-Right of Cover (Brand Theme) */
+.spotify-card-play {
   position: absolute;
-  bottom: 12px;
-  right: 12px;
-  width: 46px;
-  height: 46px;
+  bottom: 8px;
+  right: 8px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background: #e50914;
-  color: #fff;
+  color: #ffffff;
   border: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 16px rgba(229, 9, 20, 0.6);
+  box-shadow: 0 6px 18px rgba(229, 9, 20, 0.6), 0 2px 8px rgba(0, 0, 0, 0.5);
   opacity: 0;
   transform: translateY(8px);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
+  z-index: 2;
 }
 
-.sandify-subpage-card:hover .subpage-card-play-hover {
+.spotify-music-card:hover .spotify-card-play {
   opacity: 1;
   transform: translateY(0);
 }
 
-.subpage-card-play-hover:hover {
-  transform: scale(1.1) !important;
+.spotify-card-play:hover {
   background: #ff1f2d;
-  box-shadow: 0 6px 20px rgba(229, 9, 20, 0.8);
+  transform: scale(1.08) !important;
+  box-shadow: 0 8px 24px rgba(229, 9, 20, 0.8);
 }
 
-.subpage-card-info {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.subpage-card-pills {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.subpage-pill-red {
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.8px;
-  padding: 3px 8px;
-  border-radius: 4px;
-  background: rgba(229, 9, 20, 0.2);
-  color: #ff3b47;
-  border: 1px solid rgba(229, 9, 20, 0.35);
-}
-
-.subpage-pill-gold {
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.8px;
-  padding: 3px 8px;
-  border-radius: 4px;
-  background: rgba(255, 179, 0, 0.15);
-  color: #ffb703;
-  border: 1px solid rgba(255, 179, 0, 0.3);
-}
-
-.subpage-card-title {
+/* Card Title (15px bold white, ellipsis truncation) */
+.spotify-card-name {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 22px;
-  font-weight: 800;
-  color: #ffffff;
-  margin: 0;
-  line-height: 1.2;
-}
-
-.subpage-card-artist {
-  font-size: 14px;
-  font-weight: 600;
-  color: #e50914;
-  margin: 0;
-}
-
-.subpage-card-desc {
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.65);
-  line-height: 1.5;
-  margin: 0;
-  max-width: 750px;
-}
-
-.subpage-card-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 8px;
-  padding-top: 12px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.subpage-card-meta {
-  font-size: 12px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.subpage-card-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 16px;
-  background: rgba(229, 9, 20, 0.15);
-  border: 1px solid rgba(229, 9, 20, 0.35);
-  border-radius: 6px;
-  color: #ffffff;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 700;
-  cursor: pointer;
-  transition: all 0.25s ease;
+  color: #ffffff;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.sandify-subpage-card:hover .subpage-card-cta {
-  background: #e50914;
-  border-color: #e50914;
-  box-shadow: 0 4px 14px rgba(229, 9, 20, 0.5);
+/* Card Subtitle / Artists (13px dim grey, line clamped to 2 lines) */
+.spotify-card-artists {
+  font-size: 13px;
+  color: #a7a7a7;
+  margin: 0;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* ==========================================================================
@@ -10007,19 +9929,26 @@ img, video {
     padding: 0 16px;
     margin: 24px auto;
   }
-  .sandify-subpage-card {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-    padding: 16px;
+  .spotify-card-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
   }
-  .subpage-card-art-wrap {
-    width: 100%;
-    height: 200px;
+  .spotify-music-card {
+    padding: 10px;
   }
-  .subpage-card-play-hover {
+  .spotify-card-name {
+    font-size: 14px;
+  }
+  .spotify-card-artists {
+    font-size: 12px;
+  }
+  .spotify-card-play {
     opacity: 1;
     transform: translateY(0);
+    width: 38px;
+    height: 38px;
+    bottom: 6px;
+    right: 6px;
   }
   .subpage-brand-bar {
     padding: 12px 16px;
@@ -10048,7 +9977,14 @@ img, video {
     justify-content: center;
     width: 100%;
   }
-  .subpage-right-badge {
-    display: none;
+}
+
+@media (max-width: 420px) {
+  .spotify-card-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .spotify-music-card {
+    padding: 8px;
   }
 }

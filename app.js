@@ -1541,7 +1541,79 @@ window.scrollToActiveTrack = scrollToActiveTrack;
    SANDIFY TRACKS: SUB-PAGE (BRAND LOGO THEME) NAVIGATION CONTROLLER
    ========================================================================== */
 
-function openSandifySubpage() {
+const SANDIFY_ALBUMS = {
+  'divine-symphony': {
+    title: 'Ramayana: The Divine Symphony',
+    subtitle: 'The celestial orchestral masterpiece and sacred Sanskrit hymns orchestrated by dual Academy Award winners <strong>A.R. Rahman</strong> &amp; <strong>Hans Zimmer</strong>.',
+    artist1: 'A.R. Rahman',
+    artist2: 'Hans Zimmer',
+    cover: 'movie_poster_hd.jpg',
+    category: 'all'
+  },
+  'sacred-shlokas': {
+    title: 'Sacred Shlokas & Vedic Chants',
+    subtitle: 'Sacred Sanskrit verses from Valmiki Ramayana depicting devotion, purity, and the eternal spiritual essence of Ayodhya.',
+    artist1: 'A.R. Rahman',
+    artist2: 'Dr. Kumar Vishwas',
+    cover: 'feature_banner_hd.jpg',
+    category: 'devotional'
+  },
+  'battle-anthems': {
+    title: 'Lanka Kanda: Battle Anthems',
+    subtitle: 'Thunderous war percussion, Ravana’s Tandav Stotram, and high-octane orchestral battle themes for the supreme clash.',
+    artist1: 'Hans Zimmer',
+    artist2: 'A.R. Rahman',
+    cover: 'hero_banner_hd.jpg',
+    category: 'action'
+  },
+  'sita-rama': {
+    title: 'Sita Rama Vivaha & Themes',
+    subtitle: 'Soulful choral harmonies, acoustic strings, and divine romance reflecting the auspicious wedding of Sri Rama and Mata Sita.',
+    artist1: 'A.R. Rahman',
+    artist2: 'Celestial Choirs',
+    cover: 'movie_poster_hd.jpg',
+    category: 'devotional'
+  },
+  'hans-zimmer': {
+    title: 'Hans Zimmer: Grand Orchestration',
+    subtitle: 'Hollywood legendary symphonic suites with monumental brass, sweeping strings, and primal rhythm by Hans Zimmer.',
+    artist1: 'Hans Zimmer',
+    artist2: 'Symphonic Orchestra',
+    cover: 'feature_banner_hd.jpg',
+    category: 'symphony'
+  },
+  'ar-rahman': {
+    title: 'A.R. Rahman: Sacred Melodies',
+    subtitle: 'Soul-stirring classical ragas, devotional choirs, and sacred hymns composed by maestro A.R. Rahman.',
+    artist1: 'A.R. Rahman',
+    artist2: 'Devotional Choir',
+    cover: 'hero_banner_hd.jpg',
+    category: 'score'
+  }
+};
+
+function openSandifySubpage(albumKey) {
+  albumKey = albumKey || 'divine-symphony';
+  const album = SANDIFY_ALBUMS[albumKey] || SANDIFY_ALBUMS['divine-symphony'];
+
+  const titleEl = document.querySelector('.subpage-main-title');
+  const descEl = document.querySelector('.subpage-main-desc');
+  const coverEl = document.getElementById('subpageCoverImg');
+  if (titleEl && album.title) titleEl.textContent = album.title;
+  if (descEl && album.subtitle) descEl.innerHTML = album.subtitle;
+  if (coverEl && album.cover) coverEl.src = album.cover;
+
+  if (typeof filterSandifyTracks === 'function' && album.category) {
+    const chipCat = (album.category === 'score' || album.category === 'all') ? 'all' : album.category;
+    const chips = document.querySelectorAll('.subpage-chips .ytm-chip');
+    chips.forEach(c => {
+      const onclickAttr = c.getAttribute('onclick') || '';
+      if (onclickAttr.includes(`'${chipCat}'`)) {
+        filterSandifyTracks(chipCat, c);
+      }
+    });
+  }
+
   const mainView = document.getElementById('sandifyMainView');
   const subpageView = document.getElementById('sandifySubpageView');
   if (mainView && subpageView) {
