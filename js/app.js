@@ -1941,7 +1941,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Ranabaali (2026) • TMDB 1389379';
+    if (titleDisplay) titleDisplay.textContent = 'Ranabaali • TMDB 1389379';
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -1963,7 +1963,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Akka (2026) • TMDB 243555 (YRF / Netflix)';
+    if (titleDisplay) titleDisplay.textContent = 'Akka • TMDB 243555 (YRF / Netflix)';
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -1985,7 +1985,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'The Paradise (2026) • TMDB 1376856';
+    if (titleDisplay) titleDisplay.textContent = 'The Paradise • TMDB 1376856';
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -2007,7 +2007,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Alpha (2026) • TMDB 1122030 (YRF Spy Universe)';
+    if (titleDisplay) titleDisplay.textContent = 'Alpha • TMDB 1122030 (YRF Spy Universe)';
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -2029,7 +2029,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Tere Ishk Mein (2025) • TMDB 1142921';
+    if (titleDisplay) titleDisplay.textContent = 'Tere Ishk Mein • TMDB 1142921';
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
