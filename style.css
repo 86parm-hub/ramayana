@@ -9769,21 +9769,20 @@ img, video {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Brand Bar at Top of Sub-Page */
+/* Navigation Bar at Top of Sub-Page */
 .subpage-brand-bar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 16px 32px;
   background: rgba(14, 14, 14, 0.95);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(229, 9, 20, 0.25);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   position: sticky;
   top: 0;
   z-index: 20;
 }
 
-/* Simple Back Arrow Button (Design replaced, functionality intact) */
+/* Simple Back Arrow Button */
 .subpage-back-arrow-btn {
   display: inline-flex;
   align-items: center;
@@ -9813,32 +9812,6 @@ img, video {
 
 .subpage-back-arrow-btn:hover svg {
   transform: translateX(-1px);
-}
-
-/* Centered Brand Logo in Subpage Bar */
-.subpage-brand-center {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.subpage-brand-logo-wrap {
-  width: 36px;
-  height: 36px;
-  filter: drop-shadow(0 0 10px rgba(229, 9, 20, 0.6));
-}
-
-.subpage-brand-wordmark img {
-  height: 24px;
-  width: auto;
-  filter: drop-shadow(0 0 10px rgba(229, 9, 20, 0.4));
-}
-
-/* Spacer for perfect center alignment */
-.subpage-bar-spacer {
-  width: 40px;
-  height: 40px;
-  flex-shrink: 0;
 }
 
 /* Subpage Album Header Showcase */
