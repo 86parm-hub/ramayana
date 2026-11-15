@@ -1877,6 +1877,7 @@ const NBP_CONTINUOUS_SUBS = [
 ];
 
 let nbpIsTrailerMode = false;
+let nbpIsEmbedMode = false;
 
 function playTrailerInNetflixPlayer(startSec) {
   openNetflixBlackPlayer(typeof startSec === 'number' ? startSec : 'trailer');
@@ -1887,6 +1888,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
   const modal = document.getElementById('netflixBlackPlayerModal');
   const video = document.getElementById('nbpVideo');
   const spinner = document.getElementById('nbpSpinner');
+  const embedIframe = document.getElementById('nbpEmbedIframe');
 
   // Close any open info/coming-soon modals cleanly without popping history
   const infoModal = document.getElementById('netflixMoreInfoModal');
@@ -1912,7 +1914,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
   const cinemaVideo = document.getElementById('videoPlayer');
   if (cinemaVideo && !cinemaVideo.paused) cinemaVideo.pause();
 
-  if (!modal || !video) return;
+  if (!modal) return;
 
   modal.classList.add('active');
   modal.setAttribute('aria-hidden', 'false');
@@ -1928,6 +1930,39 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     } else {
       pushAppState({ type: 'netflix-player', targetTime: targetTime, prevPage: curPage }, '#player');
     }
+  }
+
+  // Handle Embed Movie Mode (e.g. Ranabaali TMDB 1389379 via Peachify)
+  if (targetTime === 'ranabaali' || targetTime === '1389379') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = 'Ranabaali (2026) • TMDB 1389379';
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1389379';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
+  // Restore non-embed state if switching back to normal video
+  if (nbpIsEmbedMode) {
+    nbpIsEmbedMode = false;
+    modal.classList.remove('is-embed-active');
+    if (embedIframe) {
+      embedIframe.src = 'about:blank';
+      embedIframe.style.display = 'none';
+    }
+    if (video) video.style.display = 'block';
   }
 
   // Handle trailer mode
@@ -1955,13 +1990,25 @@ function closeNetflixBlackPlayer(fromHistory) {
 
   const modal = document.getElementById('netflixBlackPlayerModal');
   const video = document.getElementById('nbpVideo');
-  if (video && !video.paused) {
-    video.pause();
+  const embedIframe = document.getElementById('nbpEmbedIframe');
+
+  if (embedIframe) {
+    embedIframe.src = 'about:blank';
+    embedIframe.style.display = 'none';
   }
   if (modal) {
+    modal.classList.remove('is-embed-active');
     modal.classList.remove('active');
     modal.setAttribute('aria-hidden', 'true');
   }
+  if (video) {
+    video.style.display = 'block';
+    if (!video.paused) {
+      video.pause();
+    }
+  }
+
+  nbpIsEmbedMode = false;
   document.body.style.overflow = '';
   closeAllNbpPopovers();
   stopSubtitleEngine();
@@ -2757,9 +2804,20 @@ function showToast(message) {
   }, 2200);
 }
 
+let currentModalMovieKey = 'part1';
+
+function playCurrentModalMovie() {
+  const targetKey = currentModalMovieKey || 'part1';
+  closeMovieDetailsModal(true);
+  openNetflixBlackPlayer(targetKey);
+}
+window.playCurrentModalMovie = playCurrentModalMovie;
+
 function openMovieDetailsModal(movieKey, fromHistory) {
   const modal = document.getElementById('netflixMoreInfoModal');
   if (!modal) return;
+
+  currentModalMovieKey = movieKey || 'part1';
 
   const data = {
     'part1': {
@@ -2769,6 +2827,14 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       age: 'U/A 13+',
       dur: '3h 12m',
       desc: "Witness Maryada Purushottam Lord Rama\'s supreme vow to uphold Dharma. From the golden halls of Ayodhya to the divine breaking of Lord Shiva\'s Pinaka bow, and the epic journey through the mystic Dandakaranya forest. Complete 3-hour saga available in full 1080P HEVC."
+    },
+    'ranabaali': {
+      title: 'RANABAALI',
+      hero: 'assets/images/ranabaali_landscape.jpg',
+      year: '2026',
+      age: 'U/A 16+',
+      dur: '2h 59m',
+      desc: "Set in 19th-century British India, a fierce leader rises from a drought-stricken land to fight colonial oppression and brutal injustice. Starring Vijay Deverakonda, Rashmika Mandanna, directed by Rahul Sankrityan. Streamed in 1080P HEVC via Peachify TMDB 1389379."
     },
     'shiva': {
       title: 'SHIVA DHANUSH: THE SACRED PINAKA',

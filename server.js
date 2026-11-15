@@ -30,6 +30,23 @@ const MIME_TYPES = {
 
 const server = http.createServer((req, res) => {
   let reqPath = decodeURIComponent(req.url.split('?')[0]);
+
+  // REST API: Peachify TMDB Movie Stream Endpoint
+  if (reqPath.startsWith('/api/stream/movie/')) {
+    const tmdbId = reqPath.replace('/api/stream/movie/', '').trim();
+    res.writeHead(200, {
+      'Content-Type': 'application/json; charset=utf-8',
+      'Access-Control-Allow-Origin': '*'
+    });
+    return res.end(JSON.stringify({
+      success: true,
+      provider: 'Peachify',
+      tmdbId: tmdbId,
+      embedUrl: `https://peachify.net/movie/${tmdbId}`,
+      playerType: 'iframe'
+    }));
+  }
+
   if (reqPath === '/' || reqPath === '') reqPath = '/index.html';
 
   const filePath = path.join(ROOT_DIR, reqPath);
