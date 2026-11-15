@@ -2211,6 +2211,28 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
+  // Handle Embed Movie Mode (Don't Trouble the Trouble TMDB 1261763 via Peachify)
+  if (targetTime === 'dont_trouble' || targetTime === 'donttrouble' || targetTime === '1261763' || targetTime === 'donttroublethetrouble') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = "Don't Trouble the Trouble • TMDB 1261763";
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1261763';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
   if (nbpIsEmbedMode) {
     nbpIsEmbedMode = false;
     modal.classList.remove('is-embed-active');
@@ -3170,6 +3192,14 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       age: 'U/A 13+',
       dur: '2h 59m',
       desc: "7,000 years ago, Ayodhya's righteous Prince Raghava and Prince Sesh, accompanied by the mighty Vanara Sena led by Sugriva and Bajrang, march across the ocean to the golden island citadel of Lanka to rescue Janaki from the clutches of the ten-headed demon king Lankesh. Starring Prabhas, Kriti Sanon, Saif Ali Khan, Sunny Singh, Devdatta Nage. Directed by Om Raut, music by Ajay-Atul and Sachet-Parampara. Streamed in 1080P HEVC via Peachify TMDB 734253."
+    },
+    'dont_trouble': {
+      title: "DON'T TROUBLE THE TROUBLE",
+      hero: 'assets/images/dont_trouble_landscape.jpg',
+      year: '2026',
+      age: 'U/A 7+',
+      dur: '2h 36m',
+      desc: "Suri (Fahadh Faasil), a down-on-his-luck street magician, accidentally casts an ancient spell that makes an enigmatic young girl vanish. But when she re-emerges as a powerful, wish-granting genie who wanders the nocturnal city streets and unleashes reality-bending magic whenever angered, Suri must navigate high-stakes chaos to protect her and set things right. Directed by Shashank Yeleti, produced by Arka Media Works. Streamed in 1080P HEVC via Peachify TMDB 1261763."
     },
     'shiva': {
       title: 'SHIVA DHANUSH: THE SACRED PINAKA',
