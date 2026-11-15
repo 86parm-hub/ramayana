@@ -2233,6 +2233,28 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
+  // Handle Embed Movie Mode (Maharaj TMDB 1171099 via Peachify)
+  if (targetTime === 'maharaj' || targetTime === '1171099' || targetTime === 'junaid_maharaj') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = "Maharaj • TMDB 1171099";
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1171099';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
   if (nbpIsEmbedMode) {
     nbpIsEmbedMode = false;
     modal.classList.remove('is-embed-active');
@@ -3200,6 +3222,14 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       age: 'U/A 7+',
       dur: '2h 36m',
       desc: "Suri (Fahadh Faasil), a down-on-his-luck street magician, accidentally casts an ancient spell that makes an enigmatic young girl vanish. But when she re-emerges as a powerful, wish-granting genie who wanders the nocturnal city streets and unleashes reality-bending magic whenever angered, Suri must navigate high-stakes chaos to protect her and set things right. Directed by Shashank Yeleti, produced by Arka Media Works. Streamed in 1080P HEVC via Peachify TMDB 1261763."
+    },
+    'maharaj': {
+      title: 'MAHARAJ',
+      hero: 'assets/images/maharaj_landscape.jpg',
+      year: '2024',
+      age: 'U/A 16+',
+      dur: '2h 12m',
+      desc: "Set in pre-independence 1862 Bombay and based on the historic Maharaj Libel Case, fearless reformer and journalist Karsandas Mulji (Junaid Khan) bravely challenges the exploitation of female devotees by the venerated, untouchable religious figure Jadunath Maharaj (Jaideep Ahlawat) in an epic courtroom reckoning. Directed by Siddharth P. Malhotra, starring Junaid Khan, Jaideep Ahlawat, Sharvari, Shalini Pandey. Streamed in 1080P HEVC via Peachify TMDB 1171099."
     },
     'shiva': {
       title: 'SHIVA DHANUSH: THE SACRED PINAKA',
