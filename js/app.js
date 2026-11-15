@@ -1998,6 +1998,28 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
+  // Handle Embed Movie Mode (Alpha TMDB 1122030 via Peachify)
+  if (targetTime === 'alpha' || targetTime === '1122030') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = 'Alpha (2026) • TMDB 1122030 (YRF Spy Universe)';
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1122030';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
   // Restore non-embed state if switching back to normal video
   if (nbpIsEmbedMode) {
     nbpIsEmbedMode = false;
@@ -2896,6 +2918,14 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       age: 'U/A 16+',
       dur: '2h 45m',
       desc: "Set in 1980s Secunderabad, a marginalized group rises to fight against systemic oppression, discrimination, and brutal injustice for their identity and citizenship. Starring Nani, Mohan Babu, Kayadu Lohar, Sonali Kulkarni. Directed by Srikanth Odela. Streamed in 1080P HEVC via Peachify TMDB 1376856."
+    },
+    'alpha': {
+      title: 'ALPHA',
+      hero: 'assets/images/alpha_landscape.jpg',
+      year: '2026',
+      age: 'U/A 16+',
+      dur: '2h 38m',
+      desc: "Two elite female super-agents unite in the lethal espionage world of the YRF Spy Universe to execute a covert global counter-strike against a ruthless criminal cabal. Starring Alia Bhatt, Sharvari, Bobby Deol, Anil Kapoor. Directed by Shiv Rawail. Streamed in 1080P HEVC via Peachify TMDB 1122030."
     },
     'shiva': {
       title: 'SHIVA DHANUSH: THE SACRED PINAKA',
