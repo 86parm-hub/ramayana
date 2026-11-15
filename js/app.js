@@ -2145,6 +2145,28 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
+  // Handle Embed Movie Mode (A Dog's Perfect Christmas TMDB 1570488 via Peachify)
+  if (targetTime === 'dogs_christmas' || targetTime === 'dogschristmas' || targetTime === '1570488' || targetTime === 'adogsperfectchristmas') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = "A Dog's Perfect Christmas • TMDB 1570488";
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1570488';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
   // Restore non-embed state if switching back to normal video
   if (nbpIsEmbedMode) {
     nbpIsEmbedMode = false;
@@ -3081,6 +3103,14 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       age: 'U/A 16+',
       dur: '2h 28m',
       desc: "In a rural Tamil Nadu village shaped by traditional norms and toxic masculinity, the unexpected arrival of Dorothy (Keerthy Suresh) — a bold, independent woman — transforms the lives and worldview of two inseparable friends. Directed by Karthik Subbaraj with music by Maestro Ilaiyaraaja. World premiered at TIFF 2026. Streamed in 1080P HEVC via Peachify TMDB 1578079."
+    },
+    'dogs_christmas': {
+      title: "A DOG'S PERFECT CHRISTMAS",
+      hero: 'assets/images/dogs_christmas_landscape.jpg',
+      year: '2026',
+      age: 'U/A 7+',
+      dur: '1h 48m',
+      desc: "Based on W. Bruce Cameron's bestselling novel, the Goss family faces mounting chaos and hardship when an unexpected crisis strikes during the holidays. Their loyal basset hound Winstead and an energetic corgi puppy Ruby embark on an unforgettable mission to heal the family and bring them home for Christmas Eve. Starring Dennis Quaid, Milo Ventimiglia, Jennifer Tilly, Mary Steenburgen. Streamed in 1080P HEVC via Peachify TMDB 1570488."
     },
     'shiva': {
       title: 'SHIVA DHANUSH: THE SACRED PINAKA',
