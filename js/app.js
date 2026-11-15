@@ -2020,6 +2020,28 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
+  // Handle Embed Movie Mode (Tere Ishk Mein TMDB 1142921 via Peachify)
+  if (targetTime === 'tereishkmein' || targetTime === 'tere_ishk_mein' || targetTime === '1142921') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = 'Tere Ishk Mein (2025) • TMDB 1142921';
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1142921';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
   // Restore non-embed state if switching back to normal video
   if (nbpIsEmbedMode) {
     nbpIsEmbedMode = false;
@@ -2926,6 +2948,14 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       age: 'U/A 16+',
       dur: '2h 38m',
       desc: "Two elite female super-agents unite in the lethal espionage world of the YRF Spy Universe to execute a covert global counter-strike against a ruthless criminal cabal. Starring Alia Bhatt, Sharvari, Bobby Deol, Anil Kapoor. Directed by Shiv Rawail. Streamed in 1080P HEVC via Peachify TMDB 1122030."
+    },
+    'tereishkmein': {
+      title: 'TERE ISHK MEIN',
+      hero: 'assets/images/tere_ishk_mein_landscape.jpg',
+      year: '2025',
+      age: 'U/A 16+',
+      dur: '2h 42m',
+      desc: "From the world of Raanjhanaa, a fiery, unyielding saga of intense love, rebellion, and sacrifice in Varanasi. Shankar wages an all-consuming battle against destiny and societal divides for an eternal romance. Starring Dhanush, Kriti Sanon. Directed by Aanand L. Rai, music by A.R. Rahman. Streamed in 1080P HEVC via Peachify TMDB 1142921."
     },
     'shiva': {
       title: 'SHIVA DHANUSH: THE SACRED PINAKA',

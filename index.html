@@ -209,6 +209,32 @@
         return;
       }
 
+      // Embed movie handler: Tere Ishk Mein (2025) TMDB 1142921 (Dhanush & Kriti Sanon)
+      if (targetTime === 'tereishkmein' || targetTime === 'tere_ishk_mein' || targetTime === '1142921') {
+        if (modal) {
+          modal.classList.add('active');
+          modal.classList.add('is-embed-active');
+          modal.setAttribute('aria-hidden', 'false');
+        }
+        document.body.style.overflow = 'hidden';
+        if (video) {
+          try { video.pause(); video.currentTime = 0; } catch(e){}
+          video.style.display = 'none';
+        }
+        if (titleDisplay) titleDisplay.textContent = 'Tere Ishk Mein (2025) • TMDB 1142921';
+        if (embedIframe) {
+          embedIframe.style.display = 'block';
+          embedIframe.src = 'https://peachify.net/movie/1142921';
+        }
+        if (spinner) spinner.classList.remove('active');
+        try {
+          if (!fromHistory && window.history && window.history.pushState) {
+            window.history.pushState({ type: 'netflix-player', targetTime: 'tereishkmein' }, null, '#player');
+          }
+        } catch(e){}
+        return;
+      }
+
       // Delegate native Ramayana playback to full engine
       if (typeof window.__realOpenNetflixBlackPlayer === 'function') {
         window.__realOpenNetflixBlackPlayer(targetTime, fromHistory);
@@ -373,7 +399,7 @@
             <span>Trending on SANDFLIX</span>
             <span class="row-title-chevron">&rsaquo;</span>
           </h2>
-          <span class="row-badge-pill">5 Titles Streaming</span>
+          <span class="row-badge-pill">6 Titles Streaming</span>
         </div>
 
         <div class="n-carousel-wrap">
@@ -562,6 +588,43 @@
                 </div>
               </div>
             </article>
+
+            <!-- Official Movie Card 6: Tere Ishk Mein (TMDB 1142921) -->
+            <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('tereishkmein')" title="Play Tere Ishk Mein (2025) - TMDB 1142921">
+              <div class="n-card-thumb">
+                <img src="assets/images/tere_ishk_mein_landscape.jpg" alt="Tere Ishk Mein (2025)" loading="lazy">
+                <span class="n-card-top-tag">TOP 10</span>
+                <span class="n-card-quality-tag">1080P HEVC</span>
+
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('tereishkmein');" title="Play Movie">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                    </button>
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('tereishkmein');" title="More Info">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">Tere Ishk Mein (2025)</h4>
+                    <div class="n-card-meta">
+                      <span class="match">99% Match</span>
+                      <span class="age">U/A 16+</span>
+                      <span class="dur">2h 42m</span>
+                      <span class="n-badge">4K UHD</span>
+                      <span class="n-badge">Atmos</span>
+                    </div>
+                    <p class="n-card-genres">Romantic Drama &bull; Intense &bull; Musical Epic</p>
+                  </div>
+                </div>
+              </div>
+            </article>
           </div>
         </div>
       </section>
@@ -669,7 +732,7 @@
       <section class="netflix-row" id="row-movies-catalog" data-genre-category="all">
         <div class="row-header">
           <h2 class="row-title">Featured Cinema <span class="row-title-chevron">&rsaquo;</span></h2>
-          <span class="row-badge-pill">5 Titles Streaming</span>
+          <span class="row-badge-pill">6 Titles Streaming</span>
         </div>
 
         <div class="netflix-slider-track single-movie-track">
@@ -853,6 +916,43 @@
                     <span class="n-badge">Atmos</span>
                   </div>
                   <p class="n-card-genres">Spy Thriller &bull; Action &bull; Espionage &bull; YRF</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Official Movie Card 6: Tere Ishk Mein (TMDB 1142921) -->
+          <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('tereishkmein')" title="Play Tere Ishk Mein (2025) - TMDB 1142921">
+            <div class="n-card-thumb">
+              <img src="assets/images/tere_ishk_mein_landscape.jpg" alt="Tere Ishk Mein (2025)" loading="lazy">
+              <span class="n-card-top-tag">TOP 10</span>
+              <span class="n-card-quality-tag">1080P HEVC</span>
+
+              <div class="n-card-overlay">
+                <div class="n-card-actions">
+                  <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('tereishkmein');" title="Play Movie">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                  </button>
+                  <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                  </button>
+                  <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                  </button>
+                  <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('tereishkmein');" title="More Info">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  </button>
+                </div>
+                <div class="n-card-info">
+                  <h4 class="n-movie-name">Tere Ishk Mein (2025)</h4>
+                  <div class="n-card-meta">
+                    <span class="match">99% Match</span>
+                    <span class="age">U/A 16+</span>
+                    <span class="dur">2h 42m</span>
+                    <span class="n-badge">4K UHD</span>
+                    <span class="n-badge">Atmos</span>
+                  </div>
+                  <p class="n-card-genres">Romantic Drama &bull; Intense &bull; Musical Epic</p>
                 </div>
               </div>
             </div>
@@ -1385,7 +1485,7 @@
     </button>
   </nav>
 
-  <script src="js/app.js?v=20261116_v11_alpha"></script>
+  <script src="js/app.js?v=20261116_v12_tereishkmein"></script>
 
   <!-- =========================================================================
        SPOTIFY NOW PLAYING BOTTOM BAR (AUTHENTIC 3-COLUMN DESKTOP DOCK)
