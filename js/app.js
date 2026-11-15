@@ -1954,6 +1954,28 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
+  // Handle Embed Series Mode (e.g. Akka TMDB 243555 via Peachify)
+  if (targetTime === 'akka' || targetTime === '243555') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = 'Akka (2026) • TMDB 243555 (YRF / Netflix)';
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/tv/243555/1/1';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
   // Restore non-embed state if switching back to normal video
   if (nbpIsEmbedMode) {
     nbpIsEmbedMode = false;
@@ -2835,6 +2857,14 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       age: 'U/A 16+',
       dur: '2h 59m',
       desc: "Set in 19th-century British India, a fierce leader rises from a drought-stricken land to fight colonial oppression and brutal injustice. Starring Vijay Deverakonda, Rashmika Mandanna, directed by Rahul Sankrityan. Streamed in 1080P HEVC via Peachify TMDB 1389379."
+    },
+    'akka': {
+      title: 'AKKA',
+      hero: 'assets/images/akka_landscape.jpg',
+      year: '2026',
+      age: 'TV-MA',
+      dur: '5 Episodes • Season 1',
+      desc: "Set in a fictional South Indian town ruled by women in the 1980s, an intense power struggle erupts between powerful matriarch Bhavani and a ruthless rebel Rudra. Starring Keerthy Suresh, Radhika Apte, Tanvi Azmi. Directed by Dharmaraj Shetty, produced by YRF Entertainment."
     },
     'shiva': {
       title: 'SHIVA DHANUSH: THE SACRED PINAKA',

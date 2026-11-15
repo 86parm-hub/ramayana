@@ -47,6 +47,27 @@ const server = http.createServer((req, res) => {
     }));
   }
 
+  // REST API: Peachify TMDB TV/Series Stream Endpoint
+  if (reqPath.startsWith('/api/stream/tv/')) {
+    const parts = reqPath.replace('/api/stream/tv/', '').split('/');
+    const tmdbId = parts[0] || '243555';
+    const season = parts[1] || '1';
+    const episode = parts[2] || '1';
+    res.writeHead(200, {
+      'Content-Type': 'application/json; charset=utf-8',
+      'Access-Control-Allow-Origin': '*'
+    });
+    return res.end(JSON.stringify({
+      success: true,
+      provider: 'Peachify',
+      tmdbId: tmdbId,
+      season: season,
+      episode: episode,
+      embedUrl: `https://peachify.net/tv/${tmdbId}/${season}/${episode}`,
+      playerType: 'iframe'
+    }));
+  }
+
   if (reqPath === '/' || reqPath === '') reqPath = '/index.html';
 
   const filePath = path.join(ROOT_DIR, reqPath);
