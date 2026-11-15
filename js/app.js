@@ -1967,7 +1967,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/tv/243555/1/1';
+      const peachifyUrl = 'https://peachify.net/movie/243555';
       if (embedIframe.src !== peachifyUrl) {
         embedIframe.src = peachifyUrl;
       }
@@ -2695,6 +2695,7 @@ function startCinemaStream() {
 }
 window.startCinemaStream = startCinemaStream;
 
+window.__realOpenNetflixBlackPlayer = openNetflixBlackPlayer;
 window.openNetflixBlackPlayer = openNetflixBlackPlayer;
 window.closeNetflixBlackPlayer = closeNetflixBlackPlayer;
 window.handleNbpZoneClick = handleNbpZoneClick;

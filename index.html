@@ -18,7 +18,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/android-chrome-192x192.png?v=3">
   <link rel="icon" type="image/png" sizes="512x512" href="assets/icons/android-chrome-512x512.png?v=3">
 
-  <link rel="stylesheet" href="css/style.css?v=20261114_universal_v4">
+  <link rel="stylesheet" href="css/style.css?v=20261116_v8_final">
 
   <!-- Premium Fonts: Cinzel, Cinzel Decorative, Marcellus, Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -90,10 +90,76 @@
     }
     window.switchPage = switchPage;
 
-    function openNetflixBlackPlayer(actKey) {
-      actKey = actKey || 'act1';
-      if (typeof window.openNetflixBlackPlayer === 'function') {
-        window.openNetflixBlackPlayer(actKey);
+    function openNetflixBlackPlayer(targetTime, fromHistory) {
+      targetTime = targetTime || 'part1';
+
+      var infoModal = document.getElementById('netflixMoreInfoModal');
+      if (infoModal && infoModal.classList.contains('active')) {
+        infoModal.classList.remove('active');
+        infoModal.setAttribute('aria-hidden', 'true');
+      }
+
+      var modal = document.getElementById('netflixBlackPlayerModal');
+      var video = document.getElementById('nbpVideo');
+      var embedIframe = document.getElementById('nbpEmbedIframe');
+      var titleDisplay = document.getElementById('nbpCenterTitle');
+      var spinner = document.getElementById('nbpSpinner');
+
+      // Embed series handler: Akka (2026) TMDB 243555
+      if (targetTime === 'akka' || targetTime === '243555') {
+        if (modal) {
+          modal.classList.add('active');
+          modal.classList.add('is-embed-active');
+          modal.setAttribute('aria-hidden', 'false');
+        }
+        document.body.style.overflow = 'hidden';
+        if (video) {
+          try { video.pause(); video.currentTime = 0; } catch(e){}
+          video.style.display = 'none';
+        }
+        if (titleDisplay) titleDisplay.textContent = 'Akka (2026) • TMDB 243555 (YRF / Netflix)';
+        if (embedIframe) {
+          embedIframe.style.display = 'block';
+          embedIframe.src = 'https://peachify.net/movie/243555';
+        }
+        if (spinner) spinner.classList.remove('active');
+        try {
+          if (!fromHistory && window.history && window.history.pushState) {
+            window.history.pushState({ type: 'netflix-player', targetTime: 'akka' }, null, '#player');
+          }
+        } catch(e){}
+        return;
+      }
+
+      // Embed movie handler: Ranabaali (2026) TMDB 1389379
+      if (targetTime === 'ranabaali' || targetTime === '1389379') {
+        if (modal) {
+          modal.classList.add('active');
+          modal.classList.add('is-embed-active');
+          modal.setAttribute('aria-hidden', 'false');
+        }
+        document.body.style.overflow = 'hidden';
+        if (video) {
+          try { video.pause(); video.currentTime = 0; } catch(e){}
+          video.style.display = 'none';
+        }
+        if (titleDisplay) titleDisplay.textContent = 'Ranabaali (2026) • TMDB 1389379';
+        if (embedIframe) {
+          embedIframe.style.display = 'block';
+          embedIframe.src = 'https://peachify.net/movie/1389379';
+        }
+        if (spinner) spinner.classList.remove('active');
+        try {
+          if (!fromHistory && window.history && window.history.pushState) {
+            window.history.pushState({ type: 'netflix-player', targetTime: 'ranabaali' }, null, '#player');
+          }
+        } catch(e){}
+        return;
+      }
+
+      // Delegate native Ramayana playback to full engine
+      if (typeof window.__realOpenNetflixBlackPlayer === 'function') {
+        window.__realOpenNetflixBlackPlayer(targetTime, fromHistory);
       }
     }
     window.openNetflixBlackPlayer = openNetflixBlackPlayer;
@@ -1119,7 +1185,7 @@
     </button>
   </nav>
 
-  <script src="js/app.js?v=20261115_tracks_v5"></script>
+  <script src="js/app.js?v=20261116_v8_final"></script>
 
   <!-- =========================================================================
        SPOTIFY NOW PLAYING BOTTOM BAR (AUTHENTIC 3-COLUMN DESKTOP DOCK)
