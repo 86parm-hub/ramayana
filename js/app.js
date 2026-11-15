@@ -1775,6 +1775,20 @@ function playMovieInCinema(actKey) {
 window.playMovieInCinema = playMovieInCinema;
 window.filterMoviesCatalog = filterMoviesCatalog;
 
+/* ==========================================================================
+   NETFLIX ROW CAROUSEL SMOOTH SLIDER (Desktop & Laptop Arrow Controls)
+   ========================================================================== */
+function slideNetflixRow(trackId, direction) {
+  const track = document.getElementById(trackId);
+  if (!track) return;
+  const firstCard = track.querySelector('.n-card') || track.firstElementChild;
+  const cardWidth = firstCard ? firstCard.offsetWidth : 250;
+  const gap = 18;
+  const scrollDistance = (cardWidth + gap) * 2 * direction;
+  track.scrollBy({ left: scrollDistance, behavior: 'smooth' });
+}
+window.slideNetflixRow = slideNetflixRow;
+
 
 /* ==========================================================================
    NETFLIX GENRE BROWSE INTERACTIVITY

@@ -403,6 +403,9 @@
         </div>
 
         <div class="n-carousel-wrap">
+          <button class="n-slider-btn prev" onclick="slideNetflixRow('rowTrackTrending', -1)" aria-label="Previous titles">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
           <div class="netflix-slider-track single-movie-track" id="rowTrackTrending">
             <!-- Sole Official Movie Card: Ramayana Part One -->
             <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer()" title="Play Ramayana: Part One (3h 12m)">
@@ -584,6 +587,9 @@
               </div>
             </article>
           </div>
+          <button class="n-slider-btn next" onclick="slideNetflixRow('rowTrackTrending', 1)" aria-label="Next titles">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
         </div>
       </section>
 
@@ -693,7 +699,11 @@
           <span class="row-badge-pill">6 Titles Streaming</span>
         </div>
 
-        <div class="netflix-slider-track single-movie-track">
+        <div class="n-carousel-wrap">
+          <button class="n-slider-btn prev" onclick="slideNetflixRow('rowTrackCatalog', -1)" aria-label="Previous titles">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+          <div class="netflix-slider-track single-movie-track" id="rowTrackCatalog">
           <!-- Sole Official Movie Card: Ramayana Part One -->
           <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer()" title="Play Ramayana: Part One (3h 12m)">
             <div class="n-card-thumb">
@@ -874,7 +884,11 @@
             </div>
           </article>
         </div>
-      </section>
+        <button class="n-slider-btn next" onclick="slideNetflixRow('rowTrackCatalog', 1)" aria-label="Next titles">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+      </div>
+    </section>
     </div>
   </section>
 
@@ -1401,7 +1415,7 @@
     </button>
   </nav>
 
-  <script src="js/app.js?v=20261116_v14_clean_titles"></script>
+  <script src="js/app.js?v=20261116_v15_desktop_arrows"></script>
 
   <!-- =========================================================================
        SPOTIFY NOW PLAYING BOTTOM BAR (AUTHENTIC 3-COLUMN DESKTOP DOCK)
