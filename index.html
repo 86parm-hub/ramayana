@@ -457,260 +457,59 @@
   <section class="page-view" id="gallery-view" oncontextmenu="return false;">
     
     <!-- =========================================================================
-         AUTHENTIC SPOTIFY WEB PLAYER: MUSIC HOME (facet=music-chip)
+         SPOTIFY / YOUTUBE MUSIC STYLE ALBUM HEADER (SANDIFY TRACKS)
          ========================================================================= -->
-    <header class="spotify-web-nav">
-      <div class="spotify-facets-bar">
-        <div class="spotify-facet-pills">
-          <button class="sp-facet-pill" onclick="switchSpotifyFacet('all', this)">All</button>
-          <button class="sp-facet-pill active" onclick="switchSpotifyFacet('music', this)">Music</button>
-          <button class="sp-facet-pill" onclick="switchSpotifyFacet('podcasts', this)">Podcasts &amp; Lore</button>
-          <button class="sp-facet-pill" onclick="switchSpotifyFacet('audiobooks', this)">Audiobooks</button>
+    <div class="spotify-album-header">
+      <div class="spotify-header-bg"></div>
+      <div class="spotify-header-gradient"></div>
+
+      <div class="spotify-header-content">
+        <!-- 3D Album Artwork with Vinyl Peeking -->
+        <div class="spotify-cover-wrap">
+          <img src="movie_poster_hd.jpg" alt="Ramayana: The Divine Symphony" class="spotify-cover-img" id="spotifyCoverImg">
+          <div class="spotify-vinyl-peeking" id="spotifyVinylPeeking">
+            <div class="vinyl-groove-circle"></div>
+            <div class="vinyl-center-dot">
+              <img src="sandflix_icon.png" alt="SANDFLIX">
+            </div>
+          </div>
         </div>
 
-        <!-- Spotify Instant Search Bar -->
-        <div class="spotify-search-box">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-            <path d="M10.533 1.27893C5.42321 1.27893 1.27893 5.42321 1.27893 10.533C1.27893 15.6428 5.42321 19.7871 10.533 19.7871C12.7937 19.7871 14.8624 18.9749 16.4674 17.6206L21.4234 22.5766C21.7423 22.8955 22.2597 22.8955 22.5786 22.5766C22.8975 22.2577 22.8975 21.7403 22.5786 21.4214L17.6226 16.4654C18.9769 14.8604 19.7891 12.7917 19.7891 10.533C19.7891 5.42321 15.6448 1.27893 10.533 1.27893ZM2.67893 10.533C2.67893 6.19535 6.19535 2.67893 10.533 2.67893C14.8707 2.67893 18.3871 6.19535 18.3871 10.533C18.3871 14.8707 14.8707 18.3871 10.533 18.3871C6.19535 18.3871 2.67893 14.8707 2.67893 10.533Z"/>
-          </svg>
-          <input type="text" id="spotifySearchInput" placeholder="What do you want to play?" oninput="filterSpotifyTracksBySearch(this.value)" autocomplete="off">
-          <button class="sp-search-clear" id="spotifySearchClear" onclick="clearSpotifySearch()" style="display:none;" title="Clear Search">&times;</button>
-        </div>
-      </div>
+        <!-- Album Metadata Stack -->
+        <div class="spotify-meta-stack">
+          <h1 class="spotify-album-title">Ramayana: The Divine Symphony</h1>
+          <p class="spotify-album-desc">
+            The celestial orchestral masterpiece and sacred Sanskrit hymns orchestrated by dual Academy Award winners <strong>A.R. Rahman</strong> &amp; <strong>Hans Zimmer</strong>.
+          </p>
 
-      <!-- Secondary Mood / Sub-Genre Filter Chips -->
-      <div class="spotify-sub-chips">
-        <button class="sp-sub-chip active" onclick="filterSandifyTracks('all', this)">All Songs</button>
-        <button class="sp-sub-chip" onclick="filterSandifyTracks('symphony', this)">Symphonies &amp; Themes</button>
-        <button class="sp-sub-chip" onclick="filterSandifyTracks('devotional', this)">Vedic &amp; Shlokas</button>
-        <button class="sp-sub-chip" onclick="filterSandifyTracks('action', this)">War &amp; Tandav</button>
-        <button class="sp-sub-chip" onclick="filterSandifyTracks('acoustic', this)">Acoustic &amp; Flute</button>
-      </div>
-    </header>
+          <div class="spotify-credits-line">
+            <span class="spotify-artist-credit">A.R. Rahman</span>
+            <span class="spotify-dot">&bull;</span>
+            <span class="spotify-artist-credit">Hans Zimmer</span>
+            <span class="spotify-dot">&bull;</span>
+            <span class="spotify-meta-dim">2026</span>
+            <span class="spotify-dot">&bull;</span>
+            <span class="spotify-meta-dim">6 songs, 17 min 40 sec</span>
+            <span class="spotify-dot">&bull;</span>
+            <span class="spotify-badge-hires">Dolby Atmos</span>
+          </div>
 
-    <div class="spotify-home-body">
-
-      <!-- =========================================================================
-           SPOTIFY QUICK PICKS / JUMP BACK IN (2x3 Compact Grid)
-           ========================================================================= -->
-      <section class="spotify-quick-section">
-        <h2 class="spotify-section-greeting" id="spotifyGreeting">Good afternoon</h2>
-        
-        <div class="spotify-quick-grid">
-          <!-- Quick Card 1 -->
-          <div class="sp-quick-card" onclick="playOSTTrack(1)">
-            <img src="hero_banner_hd.jpg" alt="Ramayana Theme" class="sp-quick-img">
-            <span class="sp-quick-title">Dharthi Hai Ambar (Main Theme)</span>
-            <button class="sp-quick-play-btn" onclick="event.stopPropagation(); playOSTTrack(1);" title="Play Track">
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
+          <!-- Spotify Action Controls Bar -->
+          <div class="spotify-actions-bar">
+            <!-- Big Spotify Master Play Button -->
+            <button class="spotify-btn-play" id="spotifyMasterPlayBtn" onclick="togglePlayAllOST()" title="Play Album">
+              <svg id="spotifyMasterPlayIcon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                <polygon points="6 4 20 12 6 20 6 4"></polygon>
+              </svg>
+              <svg id="spotifyMasterPauseIcon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" style="display:none;">
+                <rect x="6" y="4" width="4" height="16"></rect>
+                <rect x="14" y="4" width="4" height="16"></rect>
+              </svg>
             </button>
-          </div>
 
-          <!-- Quick Card 2 -->
-          <div class="sp-quick-card" onclick="playOSTTrack(2)">
-            <img src="feature_banner_hd.jpg" alt="Sita's Aspiration" class="sp-quick-img">
-            <span class="sp-quick-title">Sita's Aspiration (Sanskrit Shloka)</span>
-            <button class="sp-quick-play-btn" onclick="event.stopPropagation(); playOSTTrack(2);" title="Play Track">
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
-            </button>
-          </div>
-
-          <!-- Quick Card 3 -->
-          <div class="sp-quick-card" onclick="playOSTTrack(3)">
-            <img src="movie_poster_hd.jpg" alt="Jai Jai Ram" class="sp-quick-img">
-            <span class="sp-quick-title">Jai Jai Ram (Hollywood Symphony)</span>
-            <button class="sp-quick-play-btn" onclick="event.stopPropagation(); playOSTTrack(3);" title="Play Track">
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
-            </button>
-          </div>
-
-          <!-- Quick Card 4 -->
-          <div class="sp-quick-card" onclick="playOSTTrack(4)">
-            <img src="movie_cover_hd.jpg" alt="Sita's Aspiration Flute" class="sp-quick-img">
-            <span class="sp-quick-title">Divine Flute &amp; Forest Chimes</span>
-            <button class="sp-quick-play-btn" onclick="event.stopPropagation(); playOSTTrack(4);" title="Play Track">
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
-            </button>
-          </div>
-
-          <!-- Quick Card 5 -->
-          <div class="sp-quick-card" onclick="playOSTTrack(5)">
-            <img src="teaser_lanka_hd.jpg" alt="Ravana Tandav" class="sp-quick-img">
-            <span class="sp-quick-title">Ravana's Tandav Stotram (War)</span>
-            <button class="sp-quick-play-btn" onclick="event.stopPropagation(); playOSTTrack(5);" title="Play Track">
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
-            </button>
-          </div>
-
-          <!-- Quick Card 6 -->
-          <div class="sp-quick-card" onclick="playOSTTrack(6)">
-            <img src="movie_poster_hd.jpg" alt="Meri Pooja" class="sp-quick-img">
-            <span class="sp-quick-title">Jai Jai Ram (Meri Pooja Mere Ram)</span>
-            <button class="sp-quick-play-btn" onclick="event.stopPropagation(); playOSTTrack(6);" title="Play Track">
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <!-- =========================================================================
-           SHELF 1: FEATURED ALBUMS & SOUNDTRACKS (HORIZONTAL CAROUSEL / GRID)
-           ========================================================================= -->
-      <section class="spotify-shelf-section">
-        <div class="spotify-shelf-header">
-          <div class="sp-shelf-title-wrap">
-            <h2 class="spotify-shelf-title">Official Albums &amp; Master Soundtracks</h2>
-            <span class="spotify-shelf-subtitle">Orchestrated by Academy Award winners A.R. Rahman &amp; Hans Zimmer</span>
-          </div>
-          <button class="spotify-show-all-btn" onclick="filterSandifyTracks('all'); scrollToSpotifyTracklist();">Show all</button>
-        </div>
-
-        <div class="spotify-cards-grid">
-          <!-- Album Card 1 -->
-          <div class="sp-card" onclick="playOSTTrack(1)">
-            <div class="sp-card-art">
-              <img src="hero_banner_hd.jpg" alt="Ramayana: Part One" loading="lazy">
-              <button class="sp-floating-play-btn" onclick="event.stopPropagation(); playOSTTrack(1);" title="Play Ramayana Master Album">
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
-              </button>
-            </div>
-            <h3 class="sp-card-title">Ramayana: Part One</h3>
-            <p class="sp-card-desc">Official Original Motion Picture Soundtrack • 6 Tracks • Dolby Atmos</p>
-          </div>
-
-          <!-- Album Card 2 -->
-          <div class="sp-card" onclick="playOSTTrack(2)">
-            <div class="sp-card-art">
-              <img src="feature_banner_hd.jpg" alt="Ayodhya Mahotsav" loading="lazy">
-              <button class="sp-floating-play-btn" onclick="event.stopPropagation(); playOSTTrack(2);" title="Play Ayodhya Suite">
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
-              </button>
-            </div>
-            <h3 class="sp-card-title">Ayodhya &amp; Pinaka Bow</h3>
-            <p class="sp-card-desc">Vedic Sanskrit hymns &amp; royal coronation orchestral melodies</p>
-          </div>
-
-          <!-- Album Card 3 -->
-          <div class="sp-card" onclick="playOSTTrack(3)">
-            <div class="sp-card-art">
-              <img src="movie_poster_hd.jpg" alt="Hollywood Symphony" loading="lazy">
-              <button class="sp-floating-play-btn" onclick="event.stopPropagation(); playOSTTrack(3);" title="Play Hollywood Symphony">
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
-              </button>
-            </div>
-            <h3 class="sp-card-title">Hollywood Symphony Suite</h3>
-            <p class="sp-card-desc">Hans Zimmer monumental brass &amp; world-class choir harmonies</p>
-          </div>
-
-          <!-- Album Card 4 -->
-          <div class="sp-card" onclick="playOSTTrack(5)">
-            <div class="sp-card-art">
-              <img src="teaser_lanka_hd.jpg" alt="Lanka War Drums" loading="lazy">
-              <button class="sp-floating-play-btn" onclick="event.stopPropagation(); playOSTTrack(5);" title="Play War of Lanka">
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
-              </button>
-            </div>
-            <h3 class="sp-card-title">War of Lanka &amp; Tandav</h3>
-            <p class="sp-card-desc">Lord Shiva Stotram &amp; Lankan war percussion anthems</p>
-          </div>
-
-          <!-- Album Card 5 -->
-          <div class="sp-card" onclick="playOSTTrack(6)">
-            <div class="sp-card-art">
-              <img src="movie_cover_hd.jpg" alt="Devotional Bhakti" loading="lazy">
-              <button class="sp-floating-play-btn" onclick="event.stopPropagation(); playOSTTrack(6);" title="Play Bhakti Sangeet">
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
-              </button>
-            </div>
-            <h3 class="sp-card-title">Bhakti &amp; Temple Anthems</h3>
-            <p class="sp-card-desc">Soulful prayer choruses &amp; Achyutam Keshavam devotional suite</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- =========================================================================
-           SHELF 2: CURATED PLAYLISTS & MOOD FOLDERS
-           ========================================================================= -->
-      <section class="spotify-shelf-section">
-        <div class="spotify-shelf-header">
-          <div class="sp-shelf-title-wrap">
-            <h2 class="spotify-shelf-title">Curated Playlists &amp; Mood Folders</h2>
-            <span class="spotify-shelf-subtitle">Handpicked collections for meditation, energy &amp; devotion</span>
-          </div>
-          <button class="spotify-show-all-btn" onclick="filterSandifyTracks('devotional'); scrollToSpotifyTracklist();">Show all</button>
-        </div>
-
-        <div class="spotify-cards-grid">
-          <!-- Playlist Folder 1 -->
-          <div class="sp-card" onclick="filterSandifyTracks('devotional'); scrollToSpotifyTracklist();">
-            <div class="sp-card-art">
-              <img src="feature_banner_hd.jpg" alt="Vedic Meditation" loading="lazy">
-              <span class="sp-card-badge">PLAYLIST</span>
-              <button class="sp-floating-play-btn" onclick="event.stopPropagation(); playOSTTrack(2);" title="Play Vedic Meditation">
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
-              </button>
-            </div>
-            <h3 class="sp-card-title">Vedic Meditation &amp; Shlokas</h3>
-            <p class="sp-card-desc">Calm your mind with authentic sacred Sanskrit chants from Sage Valmiki</p>
-          </div>
-
-          <!-- Playlist Folder 2 -->
-          <div class="sp-card" onclick="filterSandifyTracks('action'); scrollToSpotifyTracklist();">
-            <div class="sp-card-art">
-              <img src="teaser_lanka_hd.jpg" alt="Battle Anthem" loading="lazy">
-              <span class="sp-card-badge">PLAYLIST</span>
-              <button class="sp-floating-play-btn" onclick="event.stopPropagation(); playOSTTrack(5);" title="Play Battle Anthems">
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
-              </button>
-            </div>
-            <h3 class="sp-card-title">Epic War &amp; High Energy</h3>
-            <p class="sp-card-desc">Heavy war horns, roaring tandav stotrams and adrenaline battle anthems</p>
-          </div>
-
-          <!-- Playlist Folder 3 -->
-          <div class="sp-card" onclick="filterSandifyTracks('symphony'); scrollToSpotifyTracklist();">
-            <div class="sp-card-art">
-              <img src="hero_banner_hd.jpg" alt="Symphonic Themes" loading="lazy">
-              <span class="sp-card-badge">PLAYLIST</span>
-              <button class="sp-floating-play-btn" onclick="event.stopPropagation(); playOSTTrack(3);" title="Play Symphonic Themes">
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
-              </button>
-            </div>
-            <h3 class="sp-card-title">Celestial Symphonic Suite</h3>
-            <p class="sp-card-desc">Dual Oscar-winning composition blending London Philharmonic with Indian ragas</p>
-          </div>
-
-          <!-- Playlist Folder 4 -->
-          <div class="sp-card" onclick="filterSandifyTracks('acoustic'); scrollToSpotifyTracklist();">
-            <div class="sp-card-art">
-              <img src="movie_cover_hd.jpg" alt="Forest Acoustics" loading="lazy">
-              <span class="sp-card-badge">PLAYLIST</span>
-              <button class="sp-floating-play-btn" onclick="event.stopPropagation(); playOSTTrack(4);" title="Play Forest Acoustics">
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
-              </button>
-            </div>
-            <h3 class="sp-card-title">Dandakaranya Acoustic Echoes</h3>
-            <p class="sp-card-desc">Peaceful bamboo flutes, sitar chords and ambient nature whispers</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- =========================================================================
-           SHELF 3: MASTER TRACKLIST TABLE (SPOTIFY FULL INTERACTIVE TRACKLIST)
-           ========================================================================= -->
-      <section class="spotify-tracklist-section" id="spotifyTracklistSection">
-        <div class="spotify-shelf-header tracklist-header">
-          <div class="sp-shelf-title-wrap">
-            <h2 class="spotify-shelf-title" id="tracklistHeading">All Songs &amp; Complete Tracklist</h2>
-            <span class="spotify-shelf-subtitle" id="tracklistSubtitle">6 Songs • 17 min 40 sec</span>
-          </div>
-          <div class="spotify-table-actions">
-            <button class="spotify-btn-play-all" onclick="togglePlayAllOST()" title="Play All Songs">
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
-              <span>Play All</span>
-            </button>
-            <button class="spotify-btn-shuffle" onclick="shufflePlayOST()" title="Shuffle All">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <!-- Shuffle Button -->
+            <button class="spotify-btn-action" onclick="shufflePlayOST()" title="Shuffle Play">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
                 <polyline points="16 3 21 3 21 8"></polyline>
                 <line x1="4" y1="20" x2="21" y2="3"></line>
                 <polyline points="21 16 21 21 16 21"></polyline>
@@ -718,235 +517,150 @@
                 <line x1="4" y1="4" x2="9" y2="9"></line>
               </svg>
             </button>
+
+            <!-- Like / Save to Library Button -->
+            <button class="spotify-btn-action heart" id="spotifyAlbumHeart" onclick="toggleSpotifyHeart(this)" title="Save to Your Library">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+              </svg>
+            </button>
           </div>
         </div>
+      </div>
+    </div>
 
-        <!-- Table Header (Spotify Web Standard 4 Columns: #, TITLE, ALBUM, DURATION) -->
-        <div class="spotify-table-header">
-          <div class="th-num">#</div>
-          <div class="th-title">TITLE</div>
-          <div class="th-album">ALBUM / PLAYLIST</div>
-          <div class="th-time">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-              <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"></circle>
-              <polyline points="12 6 12 12 16 14" fill="none" stroke="currentColor" stroke-width="2"></polyline>
-            </svg>
+    <!-- =========================================================================
+         YOUTUBE MUSIC STYLE MOOD / FILTER CHIPS
+         ========================================================================= -->
+    <div class="ytm-chips-container">
+      <button class="ytm-chip active" onclick="filterSandifyTracks('all', this)">All Tracks</button>
+      <button class="ytm-chip" onclick="filterSandifyTracks('devotional', this)">Devotional &amp; Shlokas</button>
+      <button class="ytm-chip" onclick="filterSandifyTracks('symphony', this)">Symphonies &amp; Themes</button>
+      <button class="ytm-chip" onclick="filterSandifyTracks('action', this)">Tandav &amp; Power</button>
+    </div>
+
+    <!-- =========================================================================
+         SPOTIFY STYLE TRACKLIST TABLE
+         ========================================================================= -->
+    <div class="spotify-tracklist-section">
+      <!-- Table Header -->
+      <div class="spotify-table-header">
+        <div class="th-num">#</div>
+        <div class="th-title">TITLE</div>
+      </div>
+
+      <!-- Tracks Rows -->
+      <div class="spotify-tracks-list" id="spotifyTracksList">
+
+        <!-- Track 01 -->
+        <div class="spotify-row" id="sRow1" data-track-id="1" data-cat="symphony" onclick="playOSTTrack(1)">
+          <div class="s-col-num">
+            <span class="s-track-idx">1</span>
+            <button class="s-row-play-btn" title="Play">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
+            </button>
+            <div class="s-row-equalizer"><span></span><span></span><span></span><span></span></div>
           </div>
-        </div>
-
-        <!-- Dynamic Track Rows Container -->
-        <div class="spotify-tracks-list" id="spotifyTracksList">
-          <!-- Track 01 -->
-          <div class="spotify-row" id="sRow1" data-track-id="1" data-cat="symphony" onclick="playOSTTrack(1)">
-            <div class="s-col-num">
-              <span class="s-track-idx">1</span>
-              <button class="s-row-play-btn" title="Play"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg></button>
-              <div class="s-row-equalizer"><span></span><span></span><span></span><span></span></div>
-            </div>
-            <div class="s-col-info">
-              <img src="hero_banner_hd.jpg" alt="Dharthi Hai Ambar" class="s-track-thumb" loading="lazy">
-              <div class="s-track-text">
-                <h4 class="s-track-name">Dharthi Hai Ambar</h4>
-                <p class="s-track-artist">A.R. Rahman &times; Hans Zimmer &bull; <span class="s-lossless-tag">Hi-Res Lossless</span></p>
-              </div>
-            </div>
-            <div class="s-col-album">Ramayana: Part One (Master Score)</div>
-            <div class="s-col-time">
-              <button class="s-row-heart" onclick="event.stopPropagation(); toggleRowHeart(this);" title="Save to Liked Songs">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-              </button>
-              <span class="s-duration">01:13</span>
-            </div>
-          </div>
-
-          <!-- Track 02 -->
-          <div class="spotify-row" id="sRow2" data-track-id="2" data-cat="devotional" onclick="playOSTTrack(2)">
-            <div class="s-col-num">
-              <span class="s-track-idx">2</span>
-              <button class="s-row-play-btn" title="Play"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg></button>
-              <div class="s-row-equalizer"><span></span><span></span><span></span><span></span></div>
-            </div>
-            <div class="s-col-info">
-              <img src="feature_banner_hd.jpg" alt="Sita's Aspiration" class="s-track-thumb" loading="lazy">
-              <div class="s-track-text">
-                <h4 class="s-track-name">Sita's Aspiration (Lyrical)</h4>
-                <p class="s-track-artist">A.R. Rahman &bull; Dr. Kumar Vishwas</p>
-              </div>
-            </div>
-            <div class="s-col-album">Ayodhya &amp; Pinaka Bow</div>
-            <div class="s-col-time">
-              <button class="s-row-heart" onclick="event.stopPropagation(); toggleRowHeart(this);" title="Save to Liked Songs">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-              </button>
-              <span class="s-duration">02:40</span>
-            </div>
-          </div>
-
-          <!-- Track 03 -->
-          <div class="spotify-row" id="sRow3" data-track-id="3" data-cat="symphony" onclick="playOSTTrack(3)">
-            <div class="s-col-num">
-              <span class="s-track-idx">3</span>
-              <button class="s-row-play-btn" title="Play"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg></button>
-              <div class="s-row-equalizer"><span></span><span></span><span></span><span></span></div>
-            </div>
-            <div class="s-col-info">
-              <img src="movie_poster_hd.jpg" alt="Jai Jai Ram" class="s-track-thumb" loading="lazy">
-              <div class="s-track-text">
-                <h4 class="s-track-name">Jai Jai Ram (Orchestral Theme)</h4>
-                <p class="s-track-artist">Hans Zimmer &times; A.R. Rahman</p>
-              </div>
-            </div>
-            <div class="s-col-album">Hollywood Symphony Suite</div>
-            <div class="s-col-time">
-              <button class="s-row-heart" onclick="event.stopPropagation(); toggleRowHeart(this);" title="Save to Liked Songs">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-              </button>
-              <span class="s-duration">03:02</span>
-            </div>
-          </div>
-
-          <!-- Track 04 -->
-          <div class="spotify-row" id="sRow4" data-track-id="4" data-cat="acoustic" onclick="playOSTTrack(4)">
-            <div class="s-col-num">
-              <span class="s-track-idx">4</span>
-              <button class="s-row-play-btn" title="Play"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg></button>
-              <div class="s-row-equalizer"><span></span><span></span><span></span><span></span></div>
-            </div>
-            <div class="s-col-info">
-              <img src="movie_cover_hd.jpg" alt="Divine Flute" class="s-track-thumb" loading="lazy">
-              <div class="s-track-text">
-                <h4 class="s-track-name">Sita's Aspiration (Divine Flute)</h4>
-                <p class="s-track-artist">A.R. Rahman &bull; Celestial Choral Ensemble</p>
-              </div>
-            </div>
-            <div class="s-col-album">Dandakaranya Forest Suite</div>
-            <div class="s-col-time">
-              <button class="s-row-heart" onclick="event.stopPropagation(); toggleRowHeart(this);" title="Save to Liked Songs">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-              </button>
-              <span class="s-duration">02:43</span>
-            </div>
-          </div>
-
-          <!-- Track 05 -->
-          <div class="spotify-row" id="sRow5" data-track-id="5" data-cat="action" onclick="playOSTTrack(5)">
-            <div class="s-col-num">
-              <span class="s-track-idx">5</span>
-              <button class="s-row-play-btn" title="Play"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg></button>
-              <div class="s-row-equalizer"><span></span><span></span><span></span><span></span></div>
-            </div>
-            <div class="s-col-info">
-              <img src="teaser_lanka_hd.jpg" alt="Ravana Tandav" class="s-track-thumb" loading="lazy">
-              <div class="s-track-text">
-                <h4 class="s-track-name">Ravana's Tandav Stotram</h4>
-                <p class="s-track-artist">Hans Zimmer &times; A.R. Rahman &bull; Sanskrit Choirs</p>
-              </div>
-            </div>
-            <div class="s-col-album">War of Lanka &amp; Tandav</div>
-            <div class="s-col-time">
-              <button class="s-row-heart" onclick="event.stopPropagation(); toggleRowHeart(this);" title="Save to Liked Songs">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-              </button>
-              <span class="s-duration">03:16</span>
-            </div>
-          </div>
-
-          <!-- Track 06 -->
-          <div class="spotify-row" id="sRow6" data-track-id="6" data-cat="devotional" onclick="playOSTTrack(6)">
-            <div class="s-col-num">
-              <span class="s-track-idx">6</span>
-              <button class="s-row-play-btn" title="Play"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg></button>
-              <div class="s-row-equalizer"><span></span><span></span><span></span><span></span></div>
-            </div>
-            <div class="s-col-info">
-              <img src="movie_poster_hd.jpg" alt="Jai Jai Ram Meri Pooja" class="s-track-thumb" loading="lazy">
-              <div class="s-track-text">
-                <h4 class="s-track-name">Jai Jai Ram (Meri Pooja)</h4>
-                <p class="s-track-artist">A.R. Rahman &bull; Devotional Choir</p>
-              </div>
-            </div>
-            <div class="s-col-album">Bhakti &amp; Temple Anthems</div>
-            <div class="s-col-time">
-              <button class="s-row-heart" onclick="event.stopPropagation(); toggleRowHeart(this);" title="Save to Liked Songs">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-              </button>
-              <span class="s-duration">04:46</span>
+          <div class="s-col-info">
+            <img src="hero_banner_hd.jpg" alt="Dharthi Hai Ambar" class="s-track-thumb" loading="lazy">
+            <div class="s-track-text">
+              <h4 class="s-track-name">Dharthi Hai Ambar</h4>
+              <p class="s-track-artist">A.R. Rahman &times; Hans Zimmer &bull; <span class="s-lossless-tag">Hi-Res Lossless</span></p>
             </div>
           </div>
         </div>
 
-        <div id="spotifySearchNoResults" class="spotify-no-results" style="display:none;">
-          <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-          <h3>No tracks found</h3>
-          <p>Try searching for a different song name, artist, or raga.</p>
-        </div>
-      </section>
-
-      <!-- =========================================================================
-           SHELF 4: LEGENDARY COMPOSERS & ARTISTS (ROUND AVATARS)
-           ========================================================================= -->
-      <section class="spotify-shelf-section">
-        <div class="spotify-shelf-header">
-          <div class="sp-shelf-title-wrap">
-            <h2 class="spotify-shelf-title">Featured Artists &amp; Composers</h2>
-            <span class="spotify-shelf-subtitle">The legendary musical visionaries behind Ramayana</span>
+        <!-- Track 02 -->
+        <div class="spotify-row" id="sRow2" data-track-id="2" data-cat="devotional" onclick="playOSTTrack(2)">
+          <div class="s-col-num">
+            <span class="s-track-idx">2</span>
+            <button class="s-row-play-btn" title="Play">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
+            </button>
+            <div class="s-row-equalizer"><span></span><span></span><span></span><span></span></div>
+          </div>
+          <div class="s-col-info">
+            <img src="feature_banner_hd.jpg" alt="Sita's Aspiration" class="s-track-thumb" loading="lazy">
+            <div class="s-track-text">
+              <h4 class="s-track-name">Sita's Aspiration (Lyrical)</h4>
+              <p class="s-track-artist">A.R. Rahman &bull; Dr. Kumar Vishwas</p>
+            </div>
           </div>
         </div>
 
-        <div class="spotify-artists-grid">
-          <!-- Artist 1 -->
-          <div class="sp-artist-card" onclick="filterSandifyTracks('symphony'); scrollToSpotifyTracklist();">
-            <div class="sp-artist-avatar-wrap">
-              <img src="movie_poster_hd.jpg" alt="A.R. Rahman" class="sp-artist-avatar">
-              <button class="sp-floating-play-btn" onclick="event.stopPropagation(); playOSTTrack(1);" title="Play A.R. Rahman Tracks">
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
-              </button>
-            </div>
-            <h3 class="sp-artist-name">A.R. Rahman</h3>
-            <span class="sp-artist-role">Lead Composer &bull; Dual Oscar Winner</span>
+        <!-- Track 03 -->
+        <div class="spotify-row" id="sRow3" data-track-id="3" data-cat="symphony" onclick="playOSTTrack(3)">
+          <div class="s-col-num">
+            <span class="s-track-idx">3</span>
+            <button class="s-row-play-btn" title="Play">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
+            </button>
+            <div class="s-row-equalizer"><span></span><span></span><span></span><span></span></div>
           </div>
-
-          <!-- Artist 2 -->
-          <div class="sp-artist-card" onclick="filterSandifyTracks('symphony'); scrollToSpotifyTracklist();">
-            <div class="sp-artist-avatar-wrap">
-              <img src="hero_banner_hd.jpg" alt="Hans Zimmer" class="sp-artist-avatar">
-              <button class="sp-floating-play-btn" onclick="event.stopPropagation(); playOSTTrack(3);" title="Play Hans Zimmer Tracks">
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
-              </button>
+          <div class="s-col-info">
+            <img src="movie_poster_hd.jpg" alt="Jai Jai Ram" class="s-track-thumb" loading="lazy">
+            <div class="s-track-text">
+              <h4 class="s-track-name">Jai Jai Ram (Orchestral Theme)</h4>
+              <p class="s-track-artist">Hans Zimmer &times; A.R. Rahman</p>
             </div>
-            <h3 class="sp-artist-name">Hans Zimmer</h3>
-            <span class="sp-artist-role">Hollywood Orchestrator &bull; Dual Oscar Winner</span>
-          </div>
-
-          <!-- Artist 3 -->
-          <div class="sp-artist-card" onclick="filterSandifyTracks('devotional'); scrollToSpotifyTracklist();">
-            <div class="sp-artist-avatar-wrap">
-              <img src="feature_banner_hd.jpg" alt="Dr. Kumar Vishwas" class="sp-artist-avatar">
-              <button class="sp-floating-play-btn" onclick="event.stopPropagation(); playOSTTrack(2);" title="Play Kumar Vishwas Tracks">
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
-              </button>
-            </div>
-            <h3 class="sp-artist-name">Dr. Kumar Vishwas</h3>
-            <span class="sp-artist-role">Sanskrit Lyricist &bull; Poet &bull; Scholar</span>
-          </div>
-
-          <!-- Artist 4 -->
-          <div class="sp-artist-card" onclick="filterSandifyTracks('action'); scrollToSpotifyTracklist();">
-            <div class="sp-artist-avatar-wrap">
-              <img src="teaser_lanka_hd.jpg" alt="Sanskrit Choral Choir" class="sp-artist-avatar">
-              <button class="sp-floating-play-btn" onclick="event.stopPropagation(); playOSTTrack(5);" title="Play Choir Tracks">
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
-              </button>
-            </div>
-            <h3 class="sp-artist-name">Sanskrit Choral Choir</h3>
-            <span class="sp-artist-role">Vedic Chants &bull; London Ensemble</span>
           </div>
         </div>
-      </section>
 
+        <!-- Track 04 -->
+        <div class="spotify-row" id="sRow4" data-track-id="4" data-cat="devotional" onclick="playOSTTrack(4)">
+          <div class="s-col-num">
+            <span class="s-track-idx">4</span>
+            <button class="s-row-play-btn" title="Play">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
+            </button>
+            <div class="s-row-equalizer"><span></span><span></span><span></span><span></span></div>
+          </div>
+          <div class="s-col-info">
+            <img src="hero_banner_hd.jpg" alt="Sita's Aspiration Divine" class="s-track-thumb" loading="lazy">
+            <div class="s-track-text">
+              <h4 class="s-track-name">Sita's Aspiration (Divine Chorus)</h4>
+              <p class="s-track-artist">A.R. Rahman &bull; Celestial Choral Ensemble</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Track 05 -->
+        <div class="spotify-row" id="sRow5" data-track-id="5" data-cat="action" onclick="playOSTTrack(5)">
+          <div class="s-col-num">
+            <span class="s-track-idx">5</span>
+            <button class="s-row-play-btn" title="Play">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
+            </button>
+            <div class="s-row-equalizer"><span></span><span></span><span></span><span></span></div>
+          </div>
+          <div class="s-col-info">
+            <img src="feature_banner_hd.jpg" alt="Ravana Tandav" class="s-track-thumb" loading="lazy">
+            <div class="s-track-text">
+              <h4 class="s-track-name">Ravana's Tandav Stotram</h4>
+              <p class="s-track-artist">Hans Zimmer &times; A.R. Rahman &bull; Sanskrit Choirs</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Track 06 -->
+        <div class="spotify-row" id="sRow6" data-track-id="6" data-cat="devotional" onclick="playOSTTrack(6)">
+          <div class="s-col-num">
+            <span class="s-track-idx">6</span>
+            <button class="s-row-play-btn" title="Play">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
+            </button>
+            <div class="s-row-equalizer"><span></span><span></span><span></span><span></span></div>
+          </div>
+          <div class="s-col-info">
+            <img src="movie_poster_hd.jpg" alt="Jai Jai Ram Meri Pooja" class="s-track-thumb" loading="lazy">
+            <div class="s-track-text">
+              <h4 class="s-track-name">Jai Jai Ram (Meri Pooja)</h4>
+              <p class="s-track-artist">A.R. Rahman &bull; Devotional Choir</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
 
   </section>
