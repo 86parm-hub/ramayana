@@ -1005,10 +1005,11 @@ const OST_TRACKS = [
     title: "Shree Hanuman Chalisa",
     subtitle: "Sacred Hymn of Celestial Power & Protection",
     tag: "SACRED CHANTS",
-    artist: "A.R. Rahman &times; Devotional Choir",
+    artist: "A.R. Rahman &times; Shankar Mahadevan &times; Sukhwinder Singh",
     duration: "06:58",
     durationSec: 418,
-    src: "audio/07_hanuman_chalisa_divine.m4a",
+    src: "audio/07_hanuman_chalisa_divine.mp3",
+    fallbackSrc: "audio/07_hanuman_chalisa_divine.m4a",
     banner: "movie_cover_hd.jpg",
     desc: "Divine Sanskrit and Awadhi recitations of Sri Hanuman Chalisa invoking cosmic strength, devotion, and protection."
   },
@@ -1018,10 +1019,11 @@ const OST_TRACKS = [
     title: "Main Ram - Dasharath Suta",
     subtitle: "The Divine Vow of Lord Rama & Cosmic Symphony",
     tag: "DIVINE ANTHEM",
-    artist: "A.R. Rahman • Ranbir Kapoor • Hans Zimmer",
+    artist: "JAM8 • Sachet Tandon • Kumar Vishwas",
     duration: "03:41",
     durationSec: 221,
-    src: "audio/08_main_ram_dasharath_suta.m4a",
+    src: "audio/08_main_ram_dasharath_suta.mp3",
+    fallbackSrc: "audio/08_main_ram_dasharath_suta.m4a",
     banner: "hero_banner_hd.jpg",
     desc: "Soul-stirring divine anthem of Maryada Purushottam Lord Rama upholding supreme Dharma and eternal vows."
   }
@@ -1035,7 +1037,17 @@ let isOSTMuted = false;
 let ostSavedVolume = 0.9;
 
 ostAudio.volume = ostSavedVolume;
-ostAudio.preload = 'metadata';
+ostAudio.preload = 'auto';
+
+// Global error listener for fallback audio loading
+ostAudio.addEventListener('error', (e) => {
+  const track = OST_TRACKS[currentOSTIndex];
+  if (track && track.fallbackSrc && ostAudio.src.indexOf(track.fallbackSrc) === -1) {
+    console.log('Main audio failed, trying fallback source:', track.fallbackSrc);
+    ostAudio.src = track.fallbackSrc;
+    ostAudio.play().catch(err => console.warn('Fallback play error:', err));
+  }
+});
 
 // Format seconds into MM:SS
 function formatOSTTime(seconds) {
@@ -1065,7 +1077,7 @@ function playOSTTrack(trackId) {
   pauseActiveVideosForAudio();
 
   // If already playing this track, toggle play/pause
-  if (currentOSTIndex === targetIndex && ostAudio.src && (ostAudio.src.endsWith(OST_TRACKS[targetIndex].src) || ostAudio.src.includes(encodeURI(OST_TRACKS[targetIndex].src)))) {
+  if (currentOSTIndex === targetIndex && ostAudio.src && (ostAudio.src.endsWith(OST_TRACKS[targetIndex].src) || ostAudio.src.includes(encodeURI(OST_TRACKS[targetIndex].src)) || (OST_TRACKS[targetIndex].fallbackSrc && ostAudio.src.endsWith(OST_TRACKS[targetIndex].fallbackSrc)))) {
     if (ostAudio.paused) {
       const p = ostAudio.play();
       if (p !== undefined) p.catch(e => console.warn('Audio play error:', e));
@@ -1085,13 +1097,16 @@ function playOSTTrack(trackId) {
   } catch(e) {}
 
   ostAudio.src = track.src;
-  ostAudio.load();
   const playPromise = ostAudio.play();
   if (playPromise !== undefined) {
     playPromise.then(() => {
       isOSTPlaying = true;
     }).catch(e => {
       console.warn('Audio play rejected by browser:', e);
+      if (track.fallbackSrc && ostAudio.src.indexOf(track.fallbackSrc) === -1) {
+        ostAudio.src = track.fallbackSrc;
+        ostAudio.play().catch(err => console.warn('Fallback play error:', err));
+      }
     });
   }
 
