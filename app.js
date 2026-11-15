@@ -872,6 +872,8 @@ const OST_TRACKS = [
     title: "Dharthi Hai Ambar",
     subtitle: "Ramayana Introduction Theme & Chants",
     tag: "TITLE THEME",
+    cat: "symphony",
+    album: "Ramayana: Part One (Master Score)",
     artist: "A.R. Rahman × Hans Zimmer",
     duration: "01:13",
     durationSec: 73,
@@ -885,6 +887,8 @@ const OST_TRACKS = [
     title: "Sita's Aspiration (Lyrical)",
     subtitle: "Valmiki Ramayana Sanskrit Shloka",
     tag: "SANSKRIT SHLOKA",
+    cat: "devotional",
+    album: "Ayodhya & Pinaka Bow",
     artist: "A.R. Rahman • Dr. Kumar Vishwas",
     duration: "02:40",
     durationSec: 160,
@@ -898,6 +902,8 @@ const OST_TRACKS = [
     title: "Jai Jai Ram (Orchestral Theme)",
     subtitle: "Hollywood Symphony & Celestial Choral Harmony",
     tag: "HOLLYWOOD SYMPHONY",
+    cat: "symphony",
+    album: "Hollywood Symphony Suite",
     artist: "Hans Zimmer × A.R. Rahman",
     duration: "03:02",
     durationSec: 182,
@@ -911,7 +917,9 @@ const OST_TRACKS = [
     title: "Sita's Aspiration (Divine Flute)",
     subtitle: "Bamboo Flute, Sitar & Ethereal Choral Resonance",
     tag: "ACOUSTIC MELODY",
-    artist: "A.R. Ameen, Vaishali Samant, Rakshita Suresh",
+    cat: "acoustic",
+    album: "Dandakaranya Forest Suite",
+    artist: "A.R. Rahman • Celestial Choral Ensemble",
     duration: "02:42",
     durationSec: 162,
     src: "audio/04_sitas_aspiration_divine.m4a",
@@ -924,7 +932,9 @@ const OST_TRACKS = [
     title: "Ravana Tandav (Shiv Tandav Anthem)",
     subtitle: "Lankan War Drums & Lord Shiva's Tandav Stotram",
     tag: "WAR ANTHEM",
-    artist: "A.R. Rahman, Vishal Dadlani, Kumar Vishwas",
+    cat: "action",
+    album: "War of Lanka & Tandav",
+    artist: "Hans Zimmer × A.R. Rahman • Sanskrit Choirs",
     duration: "03:14",
     durationSec: 194,
     src: "audio/05_ravana_tandav.m4a",
@@ -937,11 +947,13 @@ const OST_TRACKS = [
     title: "Jai Jai Ram (Meri Pooja Mere Ram)",
     subtitle: "Monumental Devotional Anthem & Achyutam Keshavam",
     tag: "DEVOTIONAL CLIMAX",
-    artist: "A.R. Rahman, Arijit Singh, Shreya Ghoshal, Kumar Vishwas",
+    cat: "devotional",
+    album: "Bhakti & Temple Anthems",
+    artist: "A.R. Rahman • Devotional Choir",
     duration: "05:20",
     durationSec: 320,
     src: "audio/06_jai_jai_ram_meri_pooja.m4a",
-    banner: "teaser_archer_hd.jpg",
+    banner: "movie_poster_hd.jpg",
     desc: "The monumental heart-touching devotional anthem with Achyutam Keshavam shlokas."
   }
 ];
@@ -1251,22 +1263,127 @@ function updateFloatingPlayerUI() {
 
 // Web Media Session API for Lock Screen & Bluetooth Headsets
 
-// Spotify / YouTube Music Filter Chips
-function filterSandifyTracks(category, btn) {
-  document.querySelectorAll('.ytm-chip').forEach(c => c.classList.remove('active'));
+// Spotify Greeting (Good morning / afternoon / evening)
+function updateSpotifyGreeting() {
+  const greetingEl = document.getElementById('spotifyGreeting');
+  if (!greetingEl) return;
+  const hour = new Date().getHours();
+  if (hour < 12) {
+    greetingEl.textContent = 'Good morning';
+  } else if (hour < 18) {
+    greetingEl.textContent = 'Good afternoon';
+  } else {
+    greetingEl.textContent = 'Good evening';
+  }
+}
+
+// Spotify Facet Pills Switcher (All, Music, Podcasts, Audiobooks)
+function switchSpotifyFacet(facet, btn) {
+  document.querySelectorAll('.sp-facet-pill').forEach(p => p.classList.remove('active'));
   if (btn) btn.classList.add('active');
 
+  if (facet === 'podcasts' || facet === 'audiobooks') {
+    showToast('Podcasts & Audiobooks releasing with Ramayana Chapter 2! Enjoying the Complete Music Score.');
+  }
+}
+
+// Sub-genre & Mood Filter
+function filterSandifyTracks(category, btn) {
+  category = category || 'all';
+  // Update chip active classes
+  document.querySelectorAll('.sp-sub-chip').forEach(c => c.classList.remove('active'));
+  if (btn) {
+    btn.classList.add('active');
+  } else {
+    const chips = document.querySelectorAll('.sp-sub-chip');
+    chips.forEach(c => {
+      if (category === 'all' && c.textContent.toLowerCase().includes('all')) {
+        c.classList.add('active');
+      } else if (category !== 'all' && c.getAttribute('onclick') && c.getAttribute('onclick').includes(category)) {
+        c.classList.add('active');
+      }
+    });
+  }
+
   const rows = document.querySelectorAll('.spotify-row');
+  let visibleCount = 0;
   rows.forEach(r => {
-    const cat = r.getAttribute('data-cat');
-    if (category === 'all' || cat === category) {
+    const cat = r.getAttribute('data-cat') || '';
+    if (category === 'all' || cat.toLowerCase().includes(category.toLowerCase())) {
       r.style.display = 'grid';
+      visibleCount++;
     } else {
       r.style.display = 'none';
     }
   });
+
+  const subtitle = document.getElementById('tracklistSubtitle');
+  if (subtitle) {
+    if (category === 'all') {
+      subtitle.textContent = `${OST_TRACKS.length} Songs • 17 min 40 sec`;
+    } else {
+      subtitle.textContent = `${visibleCount} ${visibleCount === 1 ? 'Song' : 'Songs'} • Filtered by ${category.toUpperCase()}`;
+    }
+  }
+
+  const noResults = document.getElementById('spotifySearchNoResults');
+  if (noResults) {
+    noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+  }
 }
+
+// Instant Live Search across songs, artists, albums
+function filterSpotifyTracksBySearch(query) {
+  query = (query || '').trim().toLowerCase();
+  const clearBtn = document.getElementById('spotifySearchClear');
+  if (clearBtn) clearBtn.style.display = query.length > 0 ? 'block' : 'none';
+
+  const rows = document.querySelectorAll('.spotify-row');
+  let visibleCount = 0;
+  rows.forEach(r => {
+    const text = r.textContent.toLowerCase();
+    if (!query || text.includes(query)) {
+      r.style.display = 'grid';
+      visibleCount++;
+    } else {
+      r.style.display = 'none';
+    }
+  });
+
+  const subtitle = document.getElementById('tracklistSubtitle');
+  if (subtitle) {
+    if (query) {
+      subtitle.textContent = `${visibleCount} ${visibleCount === 1 ? 'Song' : 'Songs'} found for "${query}"`;
+    } else {
+      subtitle.textContent = `${OST_TRACKS.length} Songs • 17 min 40 sec`;
+    }
+  }
+
+  const noResults = document.getElementById('spotifySearchNoResults');
+  if (noResults) {
+    noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+  }
+}
+
+function clearSpotifySearch() {
+  const input = document.getElementById('spotifySearchInput');
+  if (input) input.value = '';
+  filterSpotifyTracksBySearch('');
+}
+
+function scrollToSpotifyTracklist() {
+  const section = document.getElementById('spotifyTracklistSection');
+  if (section) {
+    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+window.updateSpotifyGreeting = updateSpotifyGreeting;
+window.switchSpotifyFacet = switchSpotifyFacet;
 window.filterSandifyTracks = filterSandifyTracks;
+window.filterSpotifyTracksBySearch = filterSpotifyTracksBySearch;
+window.clearSpotifySearch = clearSpotifySearch;
+window.scrollToSpotifyTracklist = scrollToSpotifyTracklist;
 
 function toggleSpotifyHeart(btn) {
   if (!btn) return;
@@ -1505,6 +1622,7 @@ ostAudio.addEventListener('ended', () => {
 
 // Auto-pause audio if user starts watching movie trailer or cinema video
 window.addEventListener('DOMContentLoaded', () => {
+  updateSpotifyGreeting();
   const trailerVid = document.getElementById('trailerVideo');
   if (trailerVid) {
     trailerVid.addEventListener('play', () => {
