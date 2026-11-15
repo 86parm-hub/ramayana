@@ -35,24 +35,16 @@ function switchPage(pageKey) {
   const activeView = document.getElementById(targetId);
   const homeBbVideo = document.getElementById('homeBillboardVideo');
   const moviesBbVideo = document.getElementById('moviesBillboardVideo');
-  const sandifyBbVideo = document.getElementById('sandifyBillboardVideo');
 
   if (pageKey === 'home') {
     if (typeof initHomeBillboard === 'function') initHomeBillboard();
     if (moviesBbVideo && !moviesBbVideo.paused) moviesBbVideo.pause();
-    if (sandifyBbVideo && !sandifyBbVideo.paused) sandifyBbVideo.pause();
   } else if (pageKey === 'movies') {
     if (typeof initMoviesBillboard === 'function') initMoviesBillboard();
     if (homeBbVideo && !homeBbVideo.paused) homeBbVideo.pause();
-    if (sandifyBbVideo && !sandifyBbVideo.paused) sandifyBbVideo.pause();
-  } else if (pageKey === 'gallery') {
-    if (typeof initSandifyBillboard === 'function') initSandifyBillboard();
-    if (homeBbVideo && !homeBbVideo.paused) homeBbVideo.pause();
-    if (moviesBbVideo && !moviesBbVideo.paused) moviesBbVideo.pause();
   } else {
     if (homeBbVideo && !homeBbVideo.paused) homeBbVideo.pause();
     if (moviesBbVideo && !moviesBbVideo.paused) moviesBbVideo.pause();
-    if (sandifyBbVideo && !sandifyBbVideo.paused) sandifyBbVideo.pause();
   }
   if (activeView) {
     activeView.classList.add('active');
@@ -982,18 +974,6 @@ function pauseActiveVideosForAudio() {
   if (cinemaVid && !cinemaVid.paused) {
     cinemaVid.pause();
   }
-  const homeBbVid = document.getElementById('homeBillboardVideo');
-  if (homeBbVid && !homeBbVid.paused) {
-    homeBbVid.pause();
-  }
-  const moviesBbVid = document.getElementById('moviesBillboardVideo');
-  if (moviesBbVid && !moviesBbVid.paused) {
-    moviesBbVid.pause();
-  }
-  const sandifyBbVid = document.getElementById('sandifyBillboardVideo');
-  if (sandifyBbVid && !sandifyBbVid.paused) {
-    sandifyBbVid.pause();
-  }
 }
 
 // Play specific track by 1-based ID
@@ -1558,256 +1538,48 @@ window.restoreFloatingPlayer = restoreFloatingPlayer;
 window.scrollToActiveTrack = scrollToActiveTrack;
 
 /* ==========================================================================
-   SANDIFY TRACKS MUSIC HUB & DEDICATED ALBUM CONTROLLER
+   SANDIFY TRACKS: SUB-PAGE (BRAND LOGO THEME) NAVIGATION CONTROLLER
    ========================================================================== */
 
-const SANDIFY_ALBUMS = {
-  'divine-symphony': {
-    title: 'Ramayana: The Divine Symphony',
-    subtitle: 'The celestial orchestral masterpiece and sacred Sanskrit hymns orchestrated by dual Academy Award winners <strong>A.R. Rahman</strong> &amp; <strong>Hans Zimmer</strong>.',
-    artist1: 'A.R. Rahman',
-    artist2: 'Hans Zimmer',
-    year: '2026',
-    tracksCount: '6 songs, 17 min 40 sec',
-    badge: 'Dolby Atmos',
-    cover: 'movie_poster_hd.jpg',
-    category: 'all',
-    startTrack: 1
-  },
-  'sacred-shlokas': {
-    title: 'Sacred Shlokas & Vedic Chants',
-    subtitle: 'Sacred Sanskrit verses from Valmiki Ramayana depicting devotion, purity, and the eternal spiritual essence of Ayodhya.',
-    artist1: 'A.R. Rahman',
-    artist2: 'Dr. Kumar Vishwas',
-    year: '2026',
-    tracksCount: '3 songs, 9 min 39 sec',
-    badge: 'Vedic Choirs',
-    cover: 'feature_banner_hd.jpg',
-    category: 'devotional',
-    startTrack: 2
-  },
-  'battle-anthems': {
-    title: 'Lanka Kanda: Battle Anthems',
-    subtitle: 'Thunderous war percussion, Ravana’s Tandav Stotram, and high-octane orchestral battle themes for the supreme clash.',
-    artist1: 'Hans Zimmer',
-    artist2: 'A.R. Rahman',
-    year: '2026',
-    tracksCount: '3 songs, 8 min 59 sec',
-    badge: 'Hi-Res 24-Bit',
-    cover: 'hero_banner_hd.jpg',
-    category: 'action',
-    startTrack: 5
-  },
-  'sita-rama': {
-    title: 'Sita Rama Vivaha & Themes',
-    subtitle: 'Soulful choral harmonies, acoustic strings, and divine romance reflecting the auspicious wedding of Sri Rama and Mata Sita.',
-    artist1: 'A.R. Rahman',
-    artist2: 'Celestial Choirs',
-    year: '2026',
-    tracksCount: '3 songs, 9 min 49 sec',
-    badge: 'Celestial Choirs',
-    cover: 'movie_poster_hd.jpg',
-    category: 'devotional',
-    startTrack: 4
-  },
-  'hans-zimmer': {
-    title: 'Hans Zimmer: Grand Orchestration',
-    subtitle: 'Hollywood legendary symphonic suites with monumental brass, sweeping strings, and primal rhythm by Hans Zimmer.',
-    artist1: 'Hans Zimmer',
-    artist2: 'Symphonic Orchestra',
-    year: '2026',
-    tracksCount: '3 songs, 8 min 55 sec',
-    badge: 'Hollywood Symphony',
-    cover: 'feature_banner_hd.jpg',
-    category: 'symphony',
-    startTrack: 3
-  },
-  'ar-rahman': {
-    title: 'A.R. Rahman: Sacred Melodies',
-    subtitle: 'Soul-stirring classical ragas, devotional choirs, and sacred hymns composed by maestro A.R. Rahman.',
-    artist1: 'A.R. Rahman',
-    artist2: 'Devotional Choir',
-    year: '2026',
-    tracksCount: '4 songs, 12 min 59 sec',
-    badge: 'Sacred Classical',
-    cover: 'hero_banner_hd.jpg',
-    category: 'score',
-    startTrack: 6
-  }
-};
-
-let currentSandifyAlbumKey = 'divine-symphony';
-
-function openSandifyAlbum(albumKey) {
-  albumKey = albumKey || 'divine-symphony';
-  currentSandifyAlbumKey = albumKey;
-  const album = SANDIFY_ALBUMS[albumKey] || SANDIFY_ALBUMS['divine-symphony'];
-
-  const hubView = document.getElementById('sandifyHubView');
-  const detailView = document.getElementById('sandifyAlbumDetailView');
-
-  // Update dynamic album content in detail view
-  const titleEl = document.getElementById('sandifyAlbumTitle');
-  const descEl = document.getElementById('sandifyAlbumDesc');
-  const coverImg = document.getElementById('spotifyCoverImg');
-  const artist1El = document.getElementById('sandifyArtistCredit1');
-  const artist2El = document.getElementById('sandifyArtistCredit2');
-  const yearEl = document.getElementById('sandifyReleaseYear');
-  const countEl = document.getElementById('sandifyTracksCount');
-  const badgeEl = document.getElementById('sandifyAudioBadge');
-  const breadcrumbEl = document.getElementById('sandifyBreadcrumbTitle');
-
-  if (titleEl) titleEl.textContent = album.title;
-  if (descEl) descEl.innerHTML = album.subtitle;
-  if (coverImg) coverImg.src = album.cover;
-  if (artist1El) artist1El.textContent = album.artist1;
-  if (artist2El) artist2El.textContent = album.artist2;
-  if (yearEl) yearEl.textContent = album.year;
-  if (countEl) countEl.textContent = album.tracksCount;
-  if (badgeEl) badgeEl.textContent = album.badge;
-  if (breadcrumbEl) breadcrumbEl.textContent = album.title;
-
-  // Filter tracks to match album category or show all if score/all
-  if (typeof filterSandifyTracks === 'function') {
-    const chipCat = (album.category === 'score' || album.category === 'all') ? 'all' : album.category;
-    const chips = document.querySelectorAll('.ytm-chip');
-    chips.forEach(c => {
-      const onclickAttr = c.getAttribute('onclick') || '';
-      if (onclickAttr.includes(`'${chipCat}'`)) {
-        filterSandifyTracks(chipCat, c);
-      }
-    });
-  }
-
-  // Smooth switch
-  if (hubView && detailView) {
-    hubView.style.display = 'none';
-    detailView.style.display = 'block';
-  }
-
-  // Smooth scroll to top of album
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function closeSandifyAlbum() {
-  const hubView = document.getElementById('sandifyHubView');
-  const detailView = document.getElementById('sandifyAlbumDetailView');
-
-  if (hubView && detailView) {
-    detailView.style.display = 'none';
-    hubView.style.display = 'block';
-  }
-
-  // Scroll to cards section smoothly
-  const cardsGrid = document.getElementById('sandifyCardsGrid');
-  if (cardsGrid) {
-    cardsGrid.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-  } else {
+function openSandifySubpage() {
+  const mainView = document.getElementById('sandifyMainView');
+  const subpageView = document.getElementById('sandifySubpageView');
+  if (mainView && subpageView) {
+    mainView.style.display = 'none';
+    subpageView.style.display = 'block';
+    subpageView.classList.add('fade-in-active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }
 
-function filterSandifyCards(category, btnEl) {
-  if (btnEl) {
-    document.querySelectorAll('.sandify-genre-bar .n-pill').forEach(pill => {
-      pill.classList.remove('active');
-    });
-    btnEl.classList.add('active');
-  }
-
-  const cards = document.querySelectorAll('.spotify-album-card');
-  cards.forEach(card => {
-    const cardCat = card.getAttribute('data-category');
-    if (category === 'all' || cardCat === category) {
-      card.style.display = 'flex';
-      card.style.opacity = '1';
+function closeSandifySubpage() {
+  const mainView = document.getElementById('sandifyMainView');
+  const subpageView = document.getElementById('sandifySubpageView');
+  if (mainView && subpageView) {
+    subpageView.style.display = 'none';
+    subpageView.classList.remove('fade-in-active');
+    mainView.style.display = 'block';
+    const cardSec = document.querySelector('.sandify-cards-section');
+    if (cardSec) {
+      cardSec.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     } else {
-      card.style.display = 'none';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-  });
-}
-
-// Sandify Billboard Video Preview & Audio Controls
-let isSandifyBillboardAudioEnabled = false;
-
-function initSandifyBillboard() {
-  const billboard = document.getElementById('sandifyHeroBillboard');
-  const video = document.getElementById('sandifyBillboardVideo');
-  const videoWrap = document.getElementById('sandifyBillboardVideoWrap');
-
-  if (!billboard || !video || !videoWrap) return;
-
-  function playSandifyBillboardPreview() {
-    video.muted = !isSandifyBillboardAudioEnabled;
-    video.volume = 1.0;
-    const playPromise = video.play();
-    if (playPromise !== undefined) {
-      playPromise.then(() => {
-        videoWrap.classList.add('playing');
-      }).catch(err => {
-        console.log('Sandify billboard preview waiting for interaction:', err);
-      });
-    }
-  }
-
-  function pauseSandifyBillboardPreview() {
-    video.pause();
-    videoWrap.classList.remove('playing');
-  }
-
-  billboard.addEventListener('mouseenter', playSandifyBillboardPreview);
-  billboard.addEventListener('mouseleave', pauseSandifyBillboardPreview);
-}
-
-function toggleSandifyBillboardAudio(event) {
-  if (event) event.stopPropagation();
-  const video = document.getElementById('sandifyBillboardVideo');
-  const muteIcon = document.getElementById('sandifyBBAudioMute');
-  const unmuteIcon = document.getElementById('sandifyBBAudioUnmute');
-  const videoWrap = document.getElementById('sandifyBillboardVideoWrap');
-
-  if (!video) return;
-
-  isSandifyBillboardAudioEnabled = !isSandifyBillboardAudioEnabled;
-  video.muted = !isSandifyBillboardAudioEnabled;
-  video.volume = 1.0;
-
-  if (video.paused) {
-    const playPromise = video.play();
-    if (playPromise !== undefined) {
-      playPromise.then(() => {
-        if (videoWrap) videoWrap.classList.add('playing');
-      }).catch(err => console.log('Sandify billboard play error:', err));
-    }
-  } else {
-    if (videoWrap) videoWrap.classList.add('playing');
-  }
-
-  if (video.muted) {
-    if (muteIcon) muteIcon.style.display = 'block';
-    if (unmuteIcon) unmuteIcon.style.display = 'none';
-  } else {
-    if (muteIcon) muteIcon.style.display = 'none';
-    if (unmuteIcon) unmuteIcon.style.display = 'block';
   }
 }
 
-// Global Escape key listener to close album detail view
+// Global escape key listener to close subpage
 window.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
-    const detailView = document.getElementById('sandifyAlbumDetailView');
-    if (detailView && detailView.style.display !== 'none') {
-      closeSandifyAlbum();
+    const subpageView = document.getElementById('sandifySubpageView');
+    if (subpageView && subpageView.style.display !== 'none') {
+      closeSandifySubpage();
     }
   }
 });
 
-// Window exports
-window.openSandifyAlbum = openSandifyAlbum;
-window.closeSandifyAlbum = closeSandifyAlbum;
-window.filterSandifyCards = filterSandifyCards;
-window.initSandifyBillboard = initSandifyBillboard;
-window.toggleSandifyBillboardAudio = toggleSandifyBillboardAudio;
+window.openSandifySubpage = openSandifySubpage;
+window.closeSandifySubpage = closeSandifySubpage;
 
 
 
@@ -2921,7 +2693,6 @@ window.closeMovieDetailsModal = closeMovieDetailsModal;
 function initAllBillboards() {
   initHomeBillboard();
   initMoviesBillboard();
-  initSandifyBillboard();
 }
 
 if (document.readyState === 'loading') {

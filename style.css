@@ -8897,427 +8897,6 @@ img, video {
    SPOTIFY & YOUTUBE MUSIC DESIGN SYSTEM (SANDIFY TRACKS)
    ========================================================================== */
 
-/* Main Hub View & Detail View Smooth Display */
-.sandify-hub-view {
-  width: 100%;
-  animation: sandifyFadeIn 0.35s ease;
-}
-
-.sandify-album-detail-view {
-  width: 100%;
-  animation: sandifyFadeIn 0.35s ease;
-}
-
-@keyframes sandifyFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Top Sub-Header & Genre Bar */
-.sandify-genre-bar {
-  margin-bottom: 0;
-}
-
-.sandify-hub-badge {
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-  color: #ffb300;
-  background: rgba(255, 179, 0, 0.12);
-  border: 1px solid rgba(255, 179, 0, 0.35);
-  padding: 3px 9px;
-  border-radius: 20px;
-  margin-left: 10px;
-}
-
-/* Grand Music Billboard Banner */
-.sandify-music-billboard {
-  min-height: 520px;
-  margin-bottom: 36px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.sandify-tag-gold {
-  display: inline-flex;
-  align-items: center;
-  background: linear-gradient(135deg, #ffb300, #ff8c00);
-  color: #000;
-  font-size: 11px;
-  font-weight: 900;
-  letter-spacing: 0.6px;
-  padding: 3px 8px;
-  border-radius: 4px;
-}
-
-.sandify-tag-dim {
-  font-size: 11px;
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.7);
-  letter-spacing: 0.5px;
-}
-
-.sandify-banner-artists {
-  font-size: 15px;
-  color: rgba(255, 255, 255, 0.85);
-  margin-top: 8px;
-  line-height: 1.4;
-  max-width: 600px;
-}
-
-/* Cards Section Container */
-.sandify-cards-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 48px 60px;
-}
-
-.sandify-section-header {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  margin-bottom: 24px;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.sandify-section-title {
-  font-size: 24px;
-  font-weight: 800;
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  letter-spacing: -0.3px;
-  margin: 0;
-}
-
-.sandify-title-chevron {
-  color: #ffb300;
-  font-size: 28px;
-  line-height: 1;
-  transition: transform 0.2s ease;
-}
-
-.sandify-section-subtitle {
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.6);
-  margin: 4px 0 0;
-}
-
-.sandify-collection-count {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.5);
-  background: rgba(255, 255, 255, 0.08);
-  padding: 4px 12px;
-  border-radius: 12px;
-  font-weight: 600;
-}
-
-/* Spotify Cards Grid */
-.spotify-cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 24px;
-}
-
-/* Individual Spotify Album Card */
-.spotify-album-card {
-  position: relative;
-  background: #181818;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
-  padding: 16px;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  transition: background 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.spotify-album-card:hover {
-  background: #252525;
-  transform: translateY(-6px);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 24px rgba(255, 179, 0, 0.15);
-  border-color: rgba(255, 179, 0, 0.25);
-}
-
-/* Card Cover Image Wrap */
-.spotify-card-cover-wrap {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  border-radius: 8px;
-  overflow: hidden;
-  margin-bottom: 14px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-  background: #121212;
-}
-
-.spotify-card-cover-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.35s ease;
-}
-
-.spotify-album-card:hover .spotify-card-cover-img {
-  transform: scale(1.05);
-}
-
-/* Spotify Floating Hover Play Button */
-.spotify-card-hover-play {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #ffb300, #ff8c00);
-  color: #000;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), 0 0 16px rgba(255, 179, 0, 0.5);
-  opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.2, 0.9, 0.3, 1), box-shadow 0.2s ease, background 0.2s ease;
-  z-index: 4;
-}
-
-.spotify-card-hover-play svg {
-  margin-left: 2px;
-}
-
-.spotify-album-card:hover .spotify-card-hover-play {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.spotify-card-hover-play:hover {
-  transform: scale(1.1) translateY(0);
-  background: linear-gradient(135deg, #ffc107, #ffa000);
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.6), 0 0 22px rgba(255, 179, 0, 0.7);
-}
-
-/* Card Details Typography */
-.spotify-card-details {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
-.spotify-card-tag {
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.6px;
-  color: #ffb300;
-  margin-bottom: 6px;
-  text-transform: uppercase;
-}
-
-.spotify-card-tag.devotional {
-  color: #fbbf24;
-}
-
-.spotify-card-tag.action {
-  color: #ff4757;
-}
-
-.spotify-card-tag.divine {
-  color: #38bdf8;
-}
-
-.spotify-card-tag.symphony {
-  color: #a78bfa;
-}
-
-.spotify-card-tag.gold {
-  color: #f59e0b;
-}
-
-.spotify-card-heading {
-  font-size: 15px;
-  font-weight: 700;
-  color: #ffffff;
-  margin: 0 0 6px;
-  line-height: 1.3;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.spotify-card-desc {
-  font-size: 12px;
-  color: #a7a7a7;
-  line-height: 1.4;
-  margin: 0 0 10px;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  flex-grow: 1;
-}
-
-.spotify-card-meta-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: auto;
-  padding-top: 8px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  font-size: 11px;
-}
-
-.spotify-card-artist-name {
-  color: rgba(255, 255, 255, 0.55);
-  font-weight: 600;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 120px;
-}
-
-.spotify-card-track-badge {
-  color: #ffb300;
-  background: rgba(255, 179, 0, 0.12);
-  border: 1px solid rgba(255, 179, 0, 0.3);
-  padding: 1px 6px;
-  border-radius: 4px;
-  font-weight: 700;
-  font-size: 10px;
-}
-
-/* Dedicated Album Detail View: Back Bar */
-.sandify-back-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 18px 48px;
-  background: #101010;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  position: sticky;
-  top: 68px;
-  z-index: 40;
-  backdrop-filter: blur(16px);
-}
-
-.sandify-back-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: rgba(255, 255, 255, 0.08);
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  padding: 8px 18px;
-  border-radius: 30px;
-  font-size: 13px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.sandify-back-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 179, 0, 0.5);
-  color: #ffb300;
-  transform: translateX(-3px);
-}
-
-.sandify-breadcrumb {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13px;
-}
-
-.breadcrumb-root {
-  color: rgba(255, 255, 255, 0.5);
-  cursor: pointer;
-  transition: color 0.2s ease;
-}
-
-.breadcrumb-root:hover {
-  color: #ffffff;
-}
-
-.breadcrumb-sep {
-  color: rgba(255, 255, 255, 0.3);
-}
-
-.breadcrumb-current {
-  color: #ffb300;
-  font-weight: 700;
-}
-
-/* Responsive Rules for Hub & Cards */
-@media (max-width: 1024px) {
-  .sandify-cards-container {
-    padding: 0 28px 50px;
-  }
-  .sandify-back-bar {
-    padding: 14px 28px;
-  }
-  .spotify-cards-grid {
-    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-    gap: 18px;
-  }
-}
-
-@media (max-width: 768px) {
-  .sandify-cards-container {
-    padding: 0 16px 40px;
-  }
-  .sandify-back-bar {
-    padding: 12px 16px;
-    top: 56px;
-  }
-  .sandify-music-billboard {
-    min-height: 440px;
-  }
-  .spotify-cards-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
-  }
-  .spotify-album-card {
-    padding: 12px;
-  }
-  .spotify-card-hover-play {
-    opacity: 1;
-    transform: translateY(0);
-    width: 38px;
-    height: 38px;
-  }
-  .spotify-card-hover-play svg {
-    width: 16px;
-    height: 16px;
-  }
-  .spotify-card-heading {
-    font-size: 13px;
-  }
-  .spotify-card-desc {
-    display: none;
-  }
-}
-
-@media (max-width: 480px) {
-  .spotify-cards-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
-  .sandify-breadcrumb {
-    display: none;
-  }
-}
-
 /* 1. Album Header Section (Spotify Desktop / App Standard) */
 .spotify-album-header {
   position: relative;
@@ -9932,4 +9511,576 @@ img, video {
   -webkit-touch-callout: none !important;
   -webkit-user-select: none !important;
   user-select: none !important;
+}
+
+/* ==========================================================================
+   SANDIFY TRACKS: MAIN PAGE CARDS SECTION & BRAND THEMED SUB-PAGE
+   ========================================================================== */
+
+/* Main Page: Sub-Page Album Card Section */
+.sandify-cards-section {
+  max-width: 1320px;
+  margin: 40px auto;
+  padding: 0 32px;
+}
+
+.sandify-cards-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sandify-section-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 6px 0;
+}
+
+.sandify-chevron {
+  color: #e50914;
+  font-size: 26px;
+  line-height: 1;
+}
+
+.sandify-section-desc {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+
+.sandify-badge-count {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  background: rgba(229, 9, 20, 0.15);
+  border: 1px solid rgba(229, 9, 20, 0.35);
+  color: #ff3b47;
+}
+
+/* Master Album Sub-Page Card */
+.sandify-subpage-card {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  background: linear-gradient(135deg, rgba(28, 28, 28, 0.95) 0%, rgba(18, 18, 18, 0.98) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 24px;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  position: relative;
+  overflow: hidden;
+}
+
+.sandify-subpage-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #e50914, #ff8c00);
+  opacity: 0.8;
+  transition: width 0.35s ease, opacity 0.35s ease;
+}
+
+.sandify-subpage-card:hover {
+  transform: translateY(-4px);
+  background: linear-gradient(135deg, rgba(38, 38, 38, 0.98) 0%, rgba(24, 24, 24, 1) 100%);
+  border-color: rgba(229, 9, 20, 0.45);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(229, 9, 20, 0.25);
+}
+
+.sandify-subpage-card:hover::before {
+  width: 6px;
+  opacity: 1;
+}
+
+.subpage-card-art-wrap {
+  position: relative;
+  flex: 0 0 160px;
+  width: 160px;
+  height: 160px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
+}
+
+.subpage-card-art-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.sandify-subpage-card:hover .subpage-card-art-img {
+  transform: scale(1.06);
+}
+
+.subpage-card-play-hover {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #e50914;
+  color: #fff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(229, 9, 20, 0.6);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.sandify-subpage-card:hover .subpage-card-play-hover {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.subpage-card-play-hover:hover {
+  transform: scale(1.1) !important;
+  background: #ff1f2d;
+  box-shadow: 0 6px 20px rgba(229, 9, 20, 0.8);
+}
+
+.subpage-card-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.subpage-card-pills {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.subpage-pill-red {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: rgba(229, 9, 20, 0.2);
+  color: #ff3b47;
+  border: 1px solid rgba(229, 9, 20, 0.35);
+}
+
+.subpage-pill-gold {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: rgba(255, 179, 0, 0.15);
+  color: #ffb703;
+  border: 1px solid rgba(255, 179, 0, 0.3);
+}
+
+.subpage-card-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.subpage-card-artist {
+  font-size: 14px;
+  font-weight: 600;
+  color: #e50914;
+  margin: 0;
+}
+
+.subpage-card-desc {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.5;
+  margin: 0;
+  max-width: 750px;
+}
+
+.subpage-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.subpage-card-meta {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.subpage-card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: rgba(229, 9, 20, 0.15);
+  border: 1px solid rgba(229, 9, 20, 0.35);
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.sandify-subpage-card:hover .subpage-card-cta {
+  background: #e50914;
+  border-color: #e50914;
+  box-shadow: 0 4px 14px rgba(229, 9, 20, 0.5);
+}
+
+/* ==========================================================================
+   SANDIFY TRACKS: DEDICATED SUB-PAGE (BRAND LOGO THEME)
+   ========================================================================== */
+
+.sandify-subpage-view {
+  width: 100%;
+  animation: sandifyFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes sandifyFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Brand Bar at Top of Sub-Page */
+.subpage-brand-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  background: rgba(14, 14, 14, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(229, 9, 20, 0.25);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.subpage-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.subpage-back-btn:hover {
+  background: #e50914;
+  border-color: #e50914;
+  transform: translateX(-3px);
+  box-shadow: 0 4px 14px rgba(229, 9, 20, 0.5);
+}
+
+/* Centered Brand Logo in Subpage Bar */
+.subpage-brand-center {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.subpage-brand-logo-wrap {
+  width: 36px;
+  height: 36px;
+  filter: drop-shadow(0 0 10px rgba(229, 9, 20, 0.6));
+}
+
+.subpage-brand-wordmark img {
+  height: 24px;
+  width: auto;
+  filter: drop-shadow(0 0 10px rgba(229, 9, 20, 0.4));
+}
+
+.subpage-soundtrack-tag {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #ffb703;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: rgba(255, 183, 3, 0.12);
+  border: 1px solid rgba(255, 183, 3, 0.3);
+}
+
+.subpage-lossless-badge {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Subpage Album Header Showcase */
+.subpage-album-header {
+  position: relative;
+  width: 100%;
+  padding: 48px 32px 36px;
+  background: radial-gradient(circle at 15% 30%, rgba(229, 9, 20, 0.32) 0%, rgba(20, 20, 20, 0.95) 65%, #121212 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+
+.subpage-header-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  gap: 36px;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+.subpage-cover-wrap {
+  position: relative;
+  flex: 0 0 240px;
+  width: 240px;
+  height: 240px;
+  border-radius: 10px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 40px rgba(229, 9, 20, 0.35);
+}
+
+.subpage-cover-img {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.subpage-vinyl-peeking {
+  position: absolute;
+  top: 5px;
+  right: -26px;
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #1a1a1a 0%, #0d0d0d 60%, #000000 100%);
+  border: 2px solid #222;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s ease, right 0.4s ease;
+}
+
+.subpage-cover-wrap:hover .subpage-vinyl-peeking {
+  right: -48px;
+}
+
+.subpage-vinyl-peeking.spinning {
+  animation: spotifyVinylSpin 4s linear infinite;
+  right: -48px;
+}
+
+.subpage-meta-stack {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.subpage-top-pill-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.subpage-pill-badge {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: rgba(229, 9, 20, 0.25);
+  color: #ff3b47;
+  border: 1px solid rgba(229, 9, 20, 0.4);
+}
+
+.subpage-pill-badge.gold {
+  background: rgba(255, 183, 3, 0.15);
+  color: #ffb703;
+  border: 1px solid rgba(255, 183, 3, 0.35);
+}
+
+.subpage-main-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(30px, 4.5vw, 56px);
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  margin: 0;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.8);
+}
+
+.subpage-main-desc {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.5;
+  margin: 2px 0;
+  max-width: 720px;
+}
+
+.subpage-credits-line {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 600;
+}
+
+.subpage-artist {
+  color: #ffffff;
+  font-weight: 800;
+}
+
+.subpage-dot {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.subpage-meta-dim {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.subpage-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.subpage-btn-play {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  background: #e50914;
+  color: #ffffff;
+  border: none;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px rgba(229, 9, 20, 0.5);
+}
+
+.subpage-btn-play:hover {
+  background: #ff1f2d;
+  transform: scale(1.05);
+  box-shadow: 0 6px 25px rgba(229, 9, 20, 0.7);
+}
+
+.subpage-btn-shuffle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.subpage-btn-shuffle:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: scale(1.03);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .sandify-cards-section {
+    padding: 0 16px;
+    margin: 24px auto;
+  }
+  .sandify-subpage-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px;
+  }
+  .subpage-card-art-wrap {
+    width: 100%;
+    height: 200px;
+  }
+  .subpage-card-play-hover {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .subpage-brand-bar {
+    padding: 12px 16px;
+  }
+  .subpage-album-header {
+    padding: 24px 16px 20px;
+  }
+  .subpage-header-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+  }
+  .subpage-cover-wrap {
+    flex: 0 0 160px;
+    width: 160px;
+    height: 160px;
+  }
+  .subpage-vinyl-peeking {
+    display: none;
+  }
+  .subpage-meta-stack {
+    align-items: center;
+  }
+  .subpage-actions-row {
+    justify-content: center;
+    width: 100%;
+  }
+  .subpage-right-badge {
+    display: none;
+  }
 }

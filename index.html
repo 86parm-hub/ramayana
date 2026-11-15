@@ -457,248 +457,12 @@
   <section class="page-view" id="gallery-view" oncontextmenu="return false;">
     
     <!-- =========================================================================
-         VIEW A: SANDIFY TRACKS MAIN HUB (HERO BANNER & SPOTIFY ALBUM CARDS)
+         SANDIFY TRACKS: MAIN PAGE VIEW
+         (Exact 3D Vinyl Album Banner from screenshot + Sub-Page Album Card Below)
          ========================================================================= -->
-    <div class="sandify-hub-view" id="sandifyHubView">
+    <div class="sandify-main-view" id="sandifyMainView">
       
-      <!-- Sub-Header & Genre Filter Bar (Sandify Hub) -->
-      <div class="movies-genre-bar sandify-genre-bar">
-        <div class="genre-left">
-          <span class="genre-title">Sandify Tracks</span>
-          <span class="sandify-hub-badge">Official Music Hub</span>
-        </div>
-        <div class="genre-pills">
-          <button class="n-pill active" onclick="filterSandifyCards('all', this)">All Collections</button>
-          <button class="n-pill" onclick="filterSandifyCards('score', this)">Original Score</button>
-          <button class="n-pill" onclick="filterSandifyCards('devotional', this)">Devotional &amp; Shlokas</button>
-          <button class="n-pill" onclick="filterSandifyCards('action', this)">Battle &amp; Tandav</button>
-          <button class="n-pill" onclick="filterSandifyCards('symphony', this)">Symphonies</button>
-        </div>
-      </div>
-
-      <!-- Grand Music Hero Billboard Banner (Hover Video Preview & Audio Controls) -->
-      <div class="netflix-billboard sandify-music-billboard" id="sandifyHeroBillboard" onclick="openSandifyAlbum('divine-symphony')" title="Click anywhere on Billboard to Open Ramayana: The Divine Symphony">
-        <!-- Backdrop Image -->
-        <div class="billboard-backdrop" id="sandifyBillboardBackdrop" style="background-image: url('hero_banner_hd.jpg');"></div>
-
-        <!-- Dynamic Full HD 1080p Video Preview Layer -->
-        <div class="billboard-video-wrap" id="sandifyBillboardVideoWrap">
-          <video id="sandifyBillboardVideo" preload="metadata" muted playsinline loop poster="hero_banner_hd.jpg">
-            <source src="banner_preview_hd.mp4" type="video/mp4">
-            <source src="move_trailer.mp4" type="video/mp4">
-          </video>
-        </div>
-
-        <!-- Cinematic Vignettes & Bottom Gradient Fade -->
-        <div class="billboard-vignette"></div>
-        <div class="billboard-bottom-fade"></div>
-
-        <!-- LEFT UPPER SIDE: Badges and Bold Title -->
-        <div class="billboard-upper-left">
-          <div class="billboard-top-row">
-            <span class="sandify-tag-gold">ORIGINAL SOUNDTRACK</span>
-            <span class="sandify-tag-dim">DOLBY ATMOS &bull; 24-BIT LOSSLESS</span>
-          </div>
-          <h1 class="billboard-title bold-title">RAMAYANA: THE DIVINE SYMPHONY</h1>
-          <p class="sandify-banner-artists">Composed by Academy Award winners <strong>A.R. Rahman</strong> &amp; <strong>Hans Zimmer</strong></p>
-        </div>
-
-        <!-- LEFT LOWER SIDE: Action Buttons -->
-        <div class="billboard-lower-left">
-          <div class="billboard-actions" onclick="event.stopPropagation()">
-            <!-- Primary Play Button -->
-            <button class="btn-n-play" onclick="playOSTTrack(1)" title="Play Master Soundtrack">
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-              <span>Play Album</span>
-            </button>
-
-            <!-- Explore Album Button -->
-            <button class="btn-n-info" onclick="openSandifyAlbum('divine-symphony')" title="Explore Album &amp; Tracks">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="12" y1="16" x2="12" y2="12"></line>
-                <line x1="12" y1="8" x2="12.01" y2="8"></line>
-              </svg>
-              <span>Explore Tracks</span>
-            </button>
-
-            <!-- Volume Mute/Unmute Button -->
-            <button class="billboard-audio-btn left-audio" id="sandifyBillboardAudioBtn" onclick="toggleSandifyBillboardAudio(event)" title="Mute/Unmute Audio Preview">
-              <svg id="sandifyBBAudioMute" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
-              </svg>
-              <svg id="sandifyBBAudioUnmute" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="display:none;">
-                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Spotify Song & Album Cards Section -->
-      <div class="sandify-cards-container">
-        <div class="sandify-section-header">
-          <div class="sandify-section-title-wrap">
-            <h2 class="sandify-section-title">Official Albums &amp; Playlists <span class="sandify-title-chevron">&rsaquo;</span></h2>
-            <p class="sandify-section-subtitle">Select any album to open its dedicated tracklist and vinyl disc player</p>
-          </div>
-          <span class="sandify-collection-count">6 Musical Collections</span>
-        </div>
-
-        <div class="spotify-cards-grid" id="sandifyCardsGrid">
-          <!-- Card 1: Master Album -->
-          <article class="spotify-album-card" data-category="score" onclick="openSandifyAlbum('divine-symphony')">
-            <div class="spotify-card-cover-wrap">
-              <img src="movie_poster_hd.jpg" alt="Ramayana: The Divine Symphony" class="spotify-card-cover-img" loading="lazy">
-              <button class="spotify-card-hover-play" onclick="event.stopPropagation(); playOSTTrack(1);" title="Play Album">
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-                  <polygon points="6 4 20 12 6 20 6 4"></polygon>
-                </svg>
-              </button>
-            </div>
-            <div class="spotify-card-details">
-              <span class="spotify-card-tag">OFFICIAL SOUNDTRACK</span>
-              <h3 class="spotify-card-heading">Ramayana: The Divine Symphony</h3>
-              <p class="spotify-card-desc">The complete original score and sacred orchestral hymns.</p>
-              <div class="spotify-card-meta-row">
-                <span class="spotify-card-artist-name">A.R. Rahman &times; Hans Zimmer</span>
-                <span class="spotify-card-track-badge">6 Tracks</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Card 2: Sacred Shlokas & Vedic Chants -->
-          <article class="spotify-album-card" data-category="devotional" onclick="openSandifyAlbum('sacred-shlokas')">
-            <div class="spotify-card-cover-wrap">
-              <img src="feature_banner_hd.jpg" alt="Sacred Shlokas &amp; Vedic Chants" class="spotify-card-cover-img" loading="lazy">
-              <button class="spotify-card-hover-play" onclick="event.stopPropagation(); playOSTTrack(2);" title="Play Sacred Shlokas">
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-                  <polygon points="6 4 20 12 6 20 6 4"></polygon>
-                </svg>
-              </button>
-            </div>
-            <div class="spotify-card-details">
-              <span class="spotify-card-tag devotional">DEVOTIONAL HYMNS</span>
-              <h3 class="spotify-card-heading">Sacred Shlokas &amp; Vedic Chants</h3>
-              <p class="spotify-card-desc">Ancient Valmiki Sanskrit shlokas rendered with celestial acoustic ragas.</p>
-              <div class="spotify-card-meta-row">
-                <span class="spotify-card-artist-name">A.R. Rahman &bull; Dr. Kumar Vishwas</span>
-                <span class="spotify-card-track-badge">Sanskrit Hymns</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Card 3: Lanka Kanda Battle Anthems -->
-          <article class="spotify-album-card" data-category="action" onclick="openSandifyAlbum('battle-anthems')">
-            <div class="spotify-card-cover-wrap">
-              <img src="hero_banner_hd.jpg" alt="Lanka Kanda: Battle Anthems" class="spotify-card-cover-img" loading="lazy">
-              <button class="spotify-card-hover-play" onclick="event.stopPropagation(); playOSTTrack(5);" title="Play Battle Anthems">
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-                  <polygon points="6 4 20 12 6 20 6 4"></polygon>
-                </svg>
-              </button>
-            </div>
-            <div class="spotify-card-details">
-              <span class="spotify-card-tag action">WAR &amp; TANDAV</span>
-              <h3 class="spotify-card-heading">Lanka Kanda: Battle Anthems</h3>
-              <p class="spotify-card-desc">Ravana's Tandav Stotram &amp; thunderous cinematic battle orchestrations.</p>
-              <div class="spotify-card-meta-row">
-                <span class="spotify-card-artist-name">Hans Zimmer &times; A.R. Rahman</span>
-                <span class="spotify-card-track-badge">Tandav &amp; War</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Card 4: Sita Rama Vivaha & Divine Themes -->
-          <article class="spotify-album-card" data-category="devotional" onclick="openSandifyAlbum('sita-rama')">
-            <div class="spotify-card-cover-wrap">
-              <img src="movie_poster_hd.jpg" alt="Sita Rama Vivaha &amp; Divine Themes" class="spotify-card-cover-img" loading="lazy">
-              <button class="spotify-card-hover-play" onclick="event.stopPropagation(); playOSTTrack(4);" title="Play Sita Rama Themes">
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-                  <polygon points="6 4 20 12 6 20 6 4"></polygon>
-                </svg>
-              </button>
-            </div>
-            <div class="spotify-card-details">
-              <span class="spotify-card-tag divine">DIVINE HARMONY</span>
-              <h3 class="spotify-card-heading">Sita Rama Vivaha &amp; Themes</h3>
-              <p class="spotify-card-desc">Soulful choral melodies and serene devotional flute &amp; string passages.</p>
-              <div class="spotify-card-meta-row">
-                <span class="spotify-card-artist-name">A.R. Rahman &bull; Celestial Choirs</span>
-                <span class="spotify-card-track-badge">Celestial Choral</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Card 5: Hans Zimmer Epic Orchestrations -->
-          <article class="spotify-album-card" data-category="symphony" onclick="openSandifyAlbum('hans-zimmer')">
-            <div class="spotify-card-cover-wrap">
-              <img src="feature_banner_hd.jpg" alt="Hans Zimmer: Grand Orchestration" class="spotify-card-cover-img" loading="lazy">
-              <button class="spotify-card-hover-play" onclick="event.stopPropagation(); playOSTTrack(3);" title="Play Zimmer Orchestrations">
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-                  <polygon points="6 4 20 12 6 20 6 4"></polygon>
-                </svg>
-              </button>
-            </div>
-            <div class="spotify-card-details">
-              <span class="spotify-card-tag symphony">HOLLYWOOD SCORE</span>
-              <h3 class="spotify-card-heading">Hans Zimmer: Grand Orchestration</h3>
-              <p class="spotify-card-desc">Monumental brass, sweeping Hollywood strings, and primal rhythm by Hans Zimmer.</p>
-              <div class="spotify-card-meta-row">
-                <span class="spotify-card-artist-name">Hans Zimmer &bull; Symphonic Orchestra</span>
-                <span class="spotify-card-track-badge">Symphony</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Card 6: A.R. Rahman Sacred Melodies -->
-          <article class="spotify-album-card" data-category="score" onclick="openSandifyAlbum('ar-rahman')">
-            <div class="spotify-card-cover-wrap">
-              <img src="hero_banner_hd.jpg" alt="A.R. Rahman: Sacred Melodies" class="spotify-card-cover-img" loading="lazy">
-              <button class="spotify-card-hover-play" onclick="event.stopPropagation(); playOSTTrack(6);" title="Play Rahman Sacred Melodies">
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-                  <polygon points="6 4 20 12 6 20 6 4"></polygon>
-                </svg>
-              </button>
-            </div>
-            <div class="spotify-card-details">
-              <span class="spotify-card-tag gold">SPIRITUAL MASTERPIECE</span>
-              <h3 class="spotify-card-heading">A.R. Rahman: Sacred Melodies</h3>
-              <p class="spotify-card-desc">Dual Oscar-winning maestro's soulful Sanskrit and devotional raga compositions.</p>
-              <div class="spotify-card-meta-row">
-                <span class="spotify-card-artist-name">A.R. Rahman &bull; Devotional Choir</span>
-                <span class="spotify-card-track-badge">Devotional Classical</span>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </div>
-
-    <!-- =========================================================================
-         VIEW B: DEDICATED ALBUM TRACKS PAGE (WITH BACK BUTTON & VINYL DISC)
-         ========================================================================= -->
-    <div class="sandify-album-detail-view" id="sandifyAlbumDetailView" style="display: none;">
-      
-      <!-- Top Navigation & Back Bar -->
-      <div class="sandify-back-bar">
-        <button class="sandify-back-btn" onclick="closeSandifyAlbum()" title="Back to All Albums">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="19" y1="12" x2="5" y2="12"></line>
-            <polyline points="12 19 5 12 12 5"></polyline>
-          </svg>
-          <span>Back to Soundtracks</span>
-        </button>
-        <div class="sandify-breadcrumb">
-          <span class="breadcrumb-root" onclick="closeSandifyAlbum()">Sandify Music</span>
-          <span class="breadcrumb-sep">/</span>
-          <span class="breadcrumb-current" id="sandifyBreadcrumbTitle">Ramayana: The Divine Symphony</span>
-        </div>
-      </div>
-
-      <!-- 3D Vinyl Album Header -->
+      <!-- Exact Spotify / YouTube Music Style Album Header (Banner from screenshot) -->
       <div class="spotify-album-header">
         <div class="spotify-header-bg"></div>
         <div class="spotify-header-gradient"></div>
@@ -717,21 +481,21 @@
 
           <!-- Album Metadata Stack -->
           <div class="spotify-meta-stack">
-            <h1 class="spotify-album-title" id="sandifyAlbumTitle">Ramayana: The Divine Symphony</h1>
-            <p class="spotify-album-desc" id="sandifyAlbumDesc">
+            <h1 class="spotify-album-title">Ramayana: The Divine Symphony</h1>
+            <p class="spotify-album-desc">
               The celestial orchestral masterpiece and sacred Sanskrit hymns orchestrated by dual Academy Award winners <strong>A.R. Rahman</strong> &amp; <strong>Hans Zimmer</strong>.
             </p>
 
-            <div class="spotify-credits-line" id="sandifyCreditsLine">
-              <span class="spotify-artist-credit" id="sandifyArtistCredit1">A.R. Rahman</span>
+            <div class="spotify-credits-line">
+              <span class="spotify-artist-credit">A.R. Rahman</span>
               <span class="spotify-dot">&bull;</span>
-              <span class="spotify-artist-credit" id="sandifyArtistCredit2">Hans Zimmer</span>
+              <span class="spotify-artist-credit">Hans Zimmer</span>
               <span class="spotify-dot">&bull;</span>
-              <span class="spotify-meta-dim" id="sandifyReleaseYear">2026</span>
+              <span class="spotify-meta-dim">2026</span>
               <span class="spotify-dot">&bull;</span>
-              <span class="spotify-meta-dim" id="sandifyTracksCount">6 songs, 17 min 40 sec</span>
+              <span class="spotify-meta-dim">6 songs, 17 min 40 sec</span>
               <span class="spotify-dot">&bull;</span>
-              <span class="spotify-badge-hires" id="sandifyAudioBadge">Dolby Atmos</span>
+              <span class="spotify-badge-hires">Dolby Atmos</span>
             </div>
 
             <!-- Spotify Action Controls Bar -->
@@ -769,16 +533,149 @@
         </div>
       </div>
 
-      <!-- YOUTUBE MUSIC STYLE MOOD / FILTER CHIPS -->
-      <div class="ytm-chips-container">
+      <!-- Below Banner: Sub-Page Album Card Section -->
+      <div class="sandify-cards-section">
+        <div class="sandify-cards-header">
+          <div class="sandify-header-left">
+            <h2 class="sandify-section-title">Official Soundtrack Album <span class="sandify-chevron">&rsaquo;</span></h2>
+            <p class="sandify-section-desc">Click the card below to enter the full tracklist and listen to all songs</p>
+          </div>
+          <span class="sandify-badge-count">1 Master Album Available</span>
+        </div>
+
+        <div class="sandify-album-cards-grid">
+          <!-- Album Sub-Page Card -->
+          <article class="sandify-subpage-card" onclick="openSandifySubpage()" title="Click to Open Full Album Tracklist">
+            <div class="subpage-card-art-wrap">
+              <img src="movie_poster_hd.jpg" alt="Ramayana: The Divine Symphony" class="subpage-card-art-img" loading="lazy">
+              <button class="subpage-card-play-hover" onclick="event.stopPropagation(); playOSTTrack(1);" title="Play Master Album">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                  <polygon points="6 4 20 12 6 20 6 4"></polygon>
+                </svg>
+              </button>
+            </div>
+            <div class="subpage-card-info">
+              <div class="subpage-card-pills">
+                <span class="subpage-pill-red">OFFICIAL MASTER</span>
+                <span class="subpage-pill-gold">DOLBY ATMOS &bull; 24-BIT</span>
+              </div>
+              <h3 class="subpage-card-title">Ramayana: The Divine Symphony</h3>
+              <p class="subpage-card-artist">A.R. Rahman &times; Hans Zimmer</p>
+              <p class="subpage-card-desc">The complete original motion picture score featuring sacred Sanskrit hymns, Hollywood orchestral themes, and devotional choruses.</p>
+              <div class="subpage-card-footer">
+                <span class="subpage-card-meta">6 Tracks &bull; 17 min 40 sec</span>
+                <button class="subpage-card-cta" onclick="event.stopPropagation(); openSandifySubpage();">
+                  <span>Explore Tracks</span>
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- =========================================================================
+         SANDIFY TRACKS: DEDICATED SUB-PAGE (SANDFLIX BRAND LOGO THEME)
+         ========================================================================= -->
+    <div class="sandify-subpage-view" id="sandifySubpageView" style="display: none;">
+      
+      <!-- Top Brand Navigation Bar -->
+      <div class="subpage-brand-bar">
+        <button class="subpage-back-btn" onclick="closeSandifySubpage()" title="Back to Sandify Tracks">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          <span>Back to Sandify Tracks</span>
+        </button>
+
+        <!-- Brand Logo Center Theme -->
+        <div class="subpage-brand-center">
+          <div class="brand-logo-wrap subpage-brand-logo-wrap">
+            <img src="sandflix_icon.png" alt="SANDFLIX Icon" class="brand-logo-img">
+          </div>
+          <div class="brand-wordmark-wrap subpage-brand-wordmark">
+            <img src="sandflix_logo.png" alt="SANDFLIX" class="brand-wordmark-img">
+          </div>
+          <span class="subpage-soundtrack-tag">ORIGINAL SOUNDTRACK</span>
+        </div>
+
+        <div class="subpage-right-badge">
+          <span class="subpage-lossless-badge">24-BIT LOSSLESS</span>
+        </div>
+      </div>
+
+      <!-- Sub-Page Brand Header Showcase -->
+      <div class="subpage-album-header">
+        <div class="subpage-header-glow"></div>
+        <div class="subpage-header-content">
+          <!-- 3D Artwork -->
+          <div class="subpage-cover-wrap">
+            <img src="movie_poster_hd.jpg" alt="Ramayana: The Divine Symphony" class="subpage-cover-img" id="subpageCoverImg">
+            <div class="subpage-vinyl-peeking" id="subpageVinylPeeking">
+              <div class="vinyl-groove-circle"></div>
+              <div class="vinyl-center-dot">
+                <img src="sandflix_icon.png" alt="SANDFLIX">
+              </div>
+            </div>
+          </div>
+
+          <div class="subpage-meta-stack">
+            <div class="subpage-top-pill-row">
+              <span class="subpage-pill-badge">SANDFLIX EXCLUSIVE</span>
+              <span class="subpage-pill-badge gold">DOLBY ATMOS</span>
+            </div>
+            <h1 class="subpage-main-title">Ramayana: The Divine Symphony</h1>
+            <p class="subpage-main-desc">
+              The celestial orchestral masterpiece and sacred Sanskrit hymns orchestrated by dual Academy Award winners <strong>A.R. Rahman</strong> &amp; <strong>Hans Zimmer</strong>.
+            </p>
+            <div class="subpage-credits-line">
+              <span class="subpage-artist">A.R. Rahman</span>
+              <span class="subpage-dot">&bull;</span>
+              <span class="subpage-artist">Hans Zimmer</span>
+              <span class="subpage-dot">&bull;</span>
+              <span class="subpage-meta-dim">2026</span>
+              <span class="subpage-dot">&bull;</span>
+              <span class="subpage-meta-dim">6 songs, 17 min 40 sec</span>
+            </div>
+
+            <!-- Action buttons in sub-page -->
+            <div class="subpage-actions-row">
+              <button class="subpage-btn-play" onclick="togglePlayAllOST()" title="Play All Tracks">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                  <polygon points="6 4 20 12 6 20 6 4"></polygon>
+                </svg>
+                <span>Play Album</span>
+              </button>
+              <button class="subpage-btn-shuffle" onclick="shufflePlayOST()" title="Shuffle Play">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="16 3 21 3 21 8"></polyline>
+                  <line x1="4" y1="20" x2="21" y2="3"></line>
+                  <polyline points="21 16 21 21 16 21"></polyline>
+                  <line x1="15" y1="15" x2="21" y2="21"></line>
+                  <line x1="4" y1="4" x2="9" y2="9"></line>
+                </svg>
+                <span>Shuffle</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mood / Filter Chips inside Subpage -->
+      <div class="ytm-chips-container subpage-chips">
         <button class="ytm-chip active" onclick="filterSandifyTracks('all', this)">All Tracks</button>
         <button class="ytm-chip" onclick="filterSandifyTracks('devotional', this)">Devotional &amp; Shlokas</button>
         <button class="ytm-chip" onclick="filterSandifyTracks('symphony', this)">Symphonies &amp; Themes</button>
         <button class="ytm-chip" onclick="filterSandifyTracks('action', this)">Tandav &amp; Power</button>
       </div>
 
-      <!-- SPOTIFY STYLE TRACKLIST TABLE -->
-      <div class="spotify-tracklist-section">
+      <!-- Spotify Style Tracklist Table -->
+      <div class="spotify-tracklist-section subpage-tracklist">
         <!-- Table Header -->
         <div class="spotify-table-header">
           <div class="th-num">#</div>
