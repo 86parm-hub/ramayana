@@ -1954,7 +1954,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Series Mode (e.g. Akka TMDB 243555 via Peachify)
+  // Handle Embed Series Mode (e.g. Akka TMDB 243555 via EmbedWave)
   if (targetTime === 'akka' || targetTime === '243555') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -1967,9 +1967,9 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/243555';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
+      const embedUrl = 'https://embedwave.cc/embed/tv/243555/1/1';
+      if (embedIframe.src !== embedUrl) {
+        embedIframe.src = embedUrl;
       }
     }
     if (spinner) spinner.classList.remove('active');
