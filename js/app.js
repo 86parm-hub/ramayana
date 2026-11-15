@@ -1782,8 +1782,8 @@ function slideNetflixRow(trackId, direction) {
   const track = document.getElementById(trackId);
   if (!track) return;
   const firstCard = track.querySelector('.n-card') || track.firstElementChild;
-  const cardWidth = firstCard ? firstCard.offsetWidth : 250;
-  const gap = 18;
+  const cardWidth = firstCard ? firstCard.offsetWidth : 240;
+  const gap = 6;
   const visibleCards = Math.max(1, Math.floor(track.clientWidth / (cardWidth + gap))) || 2;
   const scrollDistance = (cardWidth + gap) * Math.min(visibleCards, 3);
   const maxScroll = track.scrollWidth - track.clientWidth;
