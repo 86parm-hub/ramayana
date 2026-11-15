@@ -2106,8 +2106,8 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     nbpIsEmbedMode = false;
     modal.classList.remove('is-embed-active');
     if (embedIframe) {
-      embedIframe.src = 'about:blank';
       embedIframe.style.display = 'none';
+      embedIframe.removeAttribute('src');
     }
     if (video) video.style.display = 'block';
   }
@@ -2130,29 +2130,27 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
 }
 
 function closeNetflixBlackPlayer(fromHistory) {
-  if (!fromHistory && window.history && window.history.state && window.history.state.type === 'netflix-player') {
-    window.history.back();
-    return;
-  }
-
   const modal = document.getElementById('netflixBlackPlayerModal');
   const video = document.getElementById('nbpVideo');
   const embedIframe = document.getElementById('nbpEmbedIframe');
 
-  if (embedIframe) {
-    embedIframe.src = 'about:blank';
-    embedIframe.style.display = 'none';
-  }
+  // 1. Immediately close modal and hide elements to guarantee ZERO white flash or blank screen
   if (modal) {
     modal.classList.remove('is-embed-active');
     modal.classList.remove('active');
     modal.setAttribute('aria-hidden', 'true');
   }
+
+  if (embedIframe) {
+    embedIframe.style.display = 'none';
+    embedIframe.removeAttribute('src');
+  }
+
   if (video) {
     video.style.display = 'block';
-    if (!video.paused) {
-      video.pause();
-    }
+    try {
+      if (!video.paused) video.pause();
+    } catch (e) {}
   }
 
   nbpIsEmbedMode = false;
@@ -2167,14 +2165,22 @@ function closeNetflixBlackPlayer(fromHistory) {
   }
 
   if (document.fullscreenElement) {
-    document.exitFullscreen().catch(e => {});
+    try { document.exitFullscreen(); } catch (e) {}
   }
 
-  if (!fromHistory && window.location.hash === '#player') {
-    const prevPage = (window.history.state && window.history.state.prevPage) || getCurrentActivePage();
-    replaceAppState({ type: 'page', page: prevPage }, '#' + prevPage);
+  // 2. Clean URL hash & history state safely without getting trapped by iframe navigation history
+  try {
+    if (!fromHistory) {
+      const prevPage = (window.history.state && window.history.state.prevPage) || getCurrentActivePage() || 'home';
+      if (window.location.hash === '#player') {
+        replaceAppState({ type: 'page', page: prevPage }, '#' + prevPage);
+      }
+    }
+  } catch (err) {
+    console.warn('History clean error on close:', err);
   }
 }
+window.closeNetflixBlackPlayer = closeNetflixBlackPlayer;
 
 function loadAndPlayTrailerInNbp(startOffset) {
   const video = document.getElementById('nbpVideo');

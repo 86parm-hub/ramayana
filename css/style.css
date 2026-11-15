@@ -6456,8 +6456,17 @@ body.ott-platform {
   width: 100%;
   height: 100%;
   border: none;
-  background: #000;
+  background: #000000 !important;
+  color-scheme: dark !important;
   z-index: 5;
+}
+
+.nbp-video-container {
+  background: #000000 !important;
+}
+
+.netflix-black-modal {
+  background: #000000 !important;
 }
 
 .netflix-black-modal.is-embed-active .nbp-top-header {
