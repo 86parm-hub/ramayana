@@ -2101,6 +2101,28 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
+  // Handle Embed Movie Mode (Pushpa 2: The Rule TMDB 857598 via Peachify)
+  if (targetTime === 'pushpa2' || targetTime === 'pushpa_2' || targetTime === 'pushpa' || targetTime === '857598') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = 'Pushpa 2: The Rule • TMDB 857598';
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/857598';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
   // Restore non-embed state if switching back to normal video
   if (nbpIsEmbedMode) {
     nbpIsEmbedMode = false;
@@ -3021,6 +3043,14 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       age: 'U/A 16+',
       dur: '2h 42m',
       desc: "From the world of Raanjhanaa, a fiery, unyielding saga of intense love, rebellion, and sacrifice in Varanasi. Shankar wages an all-consuming battle against destiny and societal divides for an eternal romance. Starring Dhanush, Kriti Sanon. Directed by Aanand L. Rai, music by A.R. Rahman. Streamed in 1080P HEVC via Peachify TMDB 1142921."
+    },
+    'pushpa2': {
+      title: 'PUSHPA 2: THE RULE',
+      hero: 'assets/images/pushpa2_landscape.jpg',
+      year: '2024',
+      age: 'U/A 16+',
+      dur: '3h 21m',
+      desc: "Pushpa Raj expands his red sandalwood smuggling empire across borders while fiercely defending his reign against SP Bhanwar Singh Shekhawat and rival syndicates in an explosive clash of power and dominance. Starring Allu Arjun, Rashmika Mandanna, Fahadh Faasil. Directed by Sukumar, music by Devi Sri Prasad. Streamed in 1080P HEVC via Peachify TMDB 857598."
     },
     'shiva': {
       title: 'SHIVA DHANUSH: THE SACRED PINAKA',
