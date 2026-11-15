@@ -2895,18 +2895,6 @@ function showToast(message) {
 
 let currentModalMovieKey = 'part1';
 
-function slideNetflixRow(trackId, direction) {
-  const track = document.getElementById(trackId);
-  if (!track) return;
-  const firstCard = track.querySelector('.n-card');
-  const cardWidth = firstCard ? firstCard.offsetWidth : 240;
-  const gap = 14;
-  const visibleCards = Math.max(1, Math.floor(track.clientWidth / (cardWidth + gap)));
-  const scrollAmount = (cardWidth + gap) * visibleCards * direction;
-  track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-}
-window.slideNetflixRow = slideNetflixRow;
-
 function playCurrentModalMovie() {
   const targetKey = currentModalMovieKey || 'part1';
   closeMovieDetailsModal(true);
