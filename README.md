@@ -2,12 +2,15 @@
 
 Aapki local video file ke liye ek modern, full-featured OTT/Cinema style web player ready hai!
 
-## 📁 Files:
+## 📁 Professional Project Structure:
 - [index.html](file:///C:/Users/HP/Downloads/Ramayana/index.html) - Main Cinema Web Player (HTML5 UI)
-- [style.css](file:///C:/Users/HP/Downloads/Ramayana/style.css) - Modern Dark OTT Theme styling
-- [app.js](file:///C:/Users/HP/Downloads/Ramayana/app.js) - Player controls, keyboard shortcuts, scrubbing logic
+- [css/style.css](file:///C:/Users/HP/Downloads/Ramayana/css/style.css) - Modern Dark OTT Theme styling
+- [js/app.js](file:///C:/Users/HP/Downloads/Ramayana/js/app.js) - Player controls, keyboard shortcuts, scrubbing logic
+- [audio/](file:///C:/Users/HP/Downloads/Ramayana/audio) - Official 8 Soundtracks in MP3 & M4A
+- [assets/images/](file:///C:/Users/HP/Downloads/Ramayana/assets/images) - HD movie posters, banners, and logos
+- [assets/icons/](file:///C:/Users/HP/Downloads/Ramayana/assets/icons) - Favicons and PWA icons
+- [assets/videos/](file:///C:/Users/HP/Downloads/Ramayana/assets/videos) - HD previews and trailers
 - [server.js](file:///C:/Users/HP/Downloads/Ramayana/server.js) - High-speed local Node.js streaming server (HTTP 206 Partial Content / Range support)
-- [server.py](file:///C:/Users/HP/Downloads/Ramayana/server.py) - Python 3 alternative streaming server
 - [start_player.bat](file:///C:/Users/HP/Downloads/Ramayana/start_player.bat) - 1-Click launcher (double-click to start server & open browser)
 
 ---

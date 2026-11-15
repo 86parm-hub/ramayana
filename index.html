@@ -8,17 +8,17 @@
   <title>SANDFLIX</title>
 
   <!-- Browser Tab Favicon (Official Metallic Insignia - Full Bleed HD) -->
-  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=3">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg?v=3">
   <link rel="icon" type="image/x-icon" href="favicon.ico?v=3">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=3">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=3">
-  <link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png?v=3">
-  <link rel="icon" type="image/png" sizes="64x64" href="favicon-64x64.png?v=3">
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=3">
-  <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png?v=3">
-  <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png?v=3">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png?v=3">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png?v=3">
+  <link rel="icon" type="image/png" sizes="48x48" href="assets/icons/favicon-48x48.png?v=3">
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/icons/favicon-64x64.png?v=3">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png?v=3">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/android-chrome-192x192.png?v=3">
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/icons/android-chrome-512x512.png?v=3">
 
-  <link rel="stylesheet" href="style.css?v=20261114_universal_v4">
+  <link rel="stylesheet" href="css/style.css?v=20261114_universal_v4">
 
   <!-- Premium Fonts: Cinzel, Cinzel Decorative, Marcellus, Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -153,10 +153,10 @@
     <div class="header-content">
       <div class="brand-container" onclick="switchPage('home')" title="SANDFLIX - Watch Online">
         <div class="brand-logo-wrap">
-          <img src="sandflix_icon.png" alt="SANDFLIX Icon" class="brand-logo-img">
+          <img src="assets/images/sandflix_icon.png" alt="SANDFLIX Icon" class="brand-logo-img">
         </div>
         <div class="brand-wordmark-wrap">
-          <img src="sandflix_logo.png" alt="SANDFLIX" class="brand-wordmark-img">
+          <img src="assets/images/sandflix_logo.png" alt="SANDFLIX" class="brand-wordmark-img">
         </div>
       </div>
 
@@ -192,13 +192,13 @@
     <div class="netflix-billboard home-billboard" id="homeHeroBillboard" title="Click anywhere on Billboard to Play Ramayana: Part One">
       
       <!-- Backdrop Image (Crisp fallback & initial display) -->
-      <div class="billboard-backdrop" id="homeBillboardBackdrop" style="background-image: url('hero_banner_hd.jpg');"></div>
+      <div class="billboard-backdrop" id="homeBillboardBackdrop" style="background-image: url('assets/images/hero_banner_hd.jpg');"></div>
       
       <!-- Dynamic Full HD 1080p Video Preview Layer (Plays on hover, stops when hover leaves, watermark removed) -->
       <div class="billboard-video-wrap" id="homeBillboardVideoWrap">
-        <video id="homeBillboardVideo" preload="metadata" muted playsinline loop poster="hero_banner_hd.jpg">
-          <source src="banner_preview_hd.mp4" type="video/mp4">
-          <source src="move_trailer.mp4" type="video/mp4">
+        <video id="homeBillboardVideo" preload="metadata" muted playsinline loop poster="assets/images/hero_banner_hd.jpg">
+          <source src="assets/videos/banner_preview_hd.mp4" type="video/mp4">
+          <source src="assets/videos/move_trailer_hd.mp4" type="video/mp4">
         </video>
       </div>
 
@@ -263,7 +263,7 @@
             <!-- Sole Official Movie Card: Ramayana Part One -->
             <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer()" title="Play Ramayana: Part One (3h 12m)">
               <div class="n-card-thumb">
-                <img src="hero_banner_hd.jpg" alt="Ramayana: Part One" loading="lazy">
+                <img src="assets/images/hero_banner_hd.jpg" alt="Ramayana: Part One" loading="lazy">
                 <span class="n-card-top-tag">99% MATCH</span>
                 <span class="n-card-quality-tag">1080P HEVC</span>
 
@@ -345,13 +345,13 @@
     <div class="netflix-billboard home-billboard" id="moviesHeroBillboard" title="Click anywhere on Billboard to Play Ramayana: Part One">
       
       <!-- Backdrop Image (Crisp fallback & initial display - Different Poster) -->
-      <div class="billboard-backdrop" id="moviesBillboardBackdrop" style="background-image: url('feature_banner_hd.jpg');"></div>
+      <div class="billboard-backdrop" id="moviesBillboardBackdrop" style="background-image: url('assets/images/feature_banner_hd.jpg');"></div>
       
       <!-- Dynamic Full HD 1080p Video Preview Layer (Plays on hover, stops when hover leaves, watermark removed) -->
       <div class="billboard-video-wrap" id="moviesBillboardVideoWrap">
-        <video id="moviesBillboardVideo" preload="metadata" muted playsinline loop poster="feature_banner_hd.jpg">
-          <source src="banner_preview_hd.mp4" type="video/mp4">
-          <source src="move_trailer.mp4" type="video/mp4">
+        <video id="moviesBillboardVideo" preload="metadata" muted playsinline loop poster="assets/images/feature_banner_hd.jpg">
+          <source src="assets/videos/banner_preview_hd.mp4" type="video/mp4">
+          <source src="assets/videos/move_trailer_hd.mp4" type="video/mp4">
         </video>
       </div>
 
@@ -410,7 +410,7 @@
           <!-- Sole Official Movie Card: Ramayana Part One -->
           <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer()" title="Play Ramayana: Part One (3h 12m)">
             <div class="n-card-thumb">
-              <img src="hero_banner_hd.jpg" alt="Ramayana: Part One" loading="lazy">
+              <img src="assets/images/hero_banner_hd.jpg" alt="Ramayana: Part One" loading="lazy">
               <span class="n-card-top-tag">99% MATCH</span>
               <span class="n-card-quality-tag">1080P HEVC</span>
 
@@ -470,11 +470,11 @@
         <div class="spotify-header-content">
           <!-- 3D Album Artwork with Vinyl Peeking -->
           <div class="spotify-cover-wrap">
-            <img src="movie_poster_hd.jpg" alt="Ramayana: The Divine Symphony" class="spotify-cover-img" id="spotifyCoverImg">
+            <img src="assets/images/movie_poster_hd.jpg" alt="Ramayana: The Divine Symphony" class="spotify-cover-img" id="spotifyCoverImg">
             <div class="spotify-vinyl-peeking" id="spotifyVinylPeeking">
               <div class="vinyl-groove-circle"></div>
               <div class="vinyl-center-dot">
-                <img src="sandflix_icon.png" alt="SANDFLIX">
+                <img src="assets/images/sandflix_icon.png" alt="SANDFLIX">
               </div>
             </div>
           </div>
@@ -547,7 +547,7 @@
           <!-- Card 1: Master Album (Only Card) -->
           <article class="spotify-music-card" onclick="openSandifySubpage('divine-symphony')" title="Ramayana: The Divine Symphony">
             <div class="spotify-card-art-box">
-              <img src="movie_poster_hd.jpg" alt="Ramayana: The Divine Symphony" class="spotify-card-img" loading="lazy">
+              <img src="assets/images/movie_poster_hd.jpg" alt="Ramayana: The Divine Symphony" class="spotify-card-img" loading="lazy">
               <button class="spotify-card-play" onclick="event.stopPropagation(); playOSTTrack(1);" title="Play Album">
                 <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
                   <polygon points="6 4 20 12 6 20 6 4"></polygon>
@@ -581,11 +581,11 @@
         <div class="subpage-header-content">
           <!-- 3D Artwork -->
           <div class="subpage-cover-wrap">
-            <img src="movie_poster_hd.jpg" alt="Ramayana: The Divine Symphony" class="subpage-cover-img" id="subpageCoverImg">
+            <img src="assets/images/movie_poster_hd.jpg" alt="Ramayana: The Divine Symphony" class="subpage-cover-img" id="subpageCoverImg">
             <div class="subpage-vinyl-peeking" id="subpageVinylPeeking">
               <div class="vinyl-groove-circle"></div>
               <div class="vinyl-center-dot">
-                <img src="sandflix_icon.png" alt="SANDFLIX">
+                <img src="assets/images/sandflix_icon.png" alt="SANDFLIX">
               </div>
             </div>
           </div>
@@ -661,7 +661,7 @@
               <div class="s-row-equalizer"><span></span><span></span><span></span><span></span></div>
             </div>
             <div class="s-col-info">
-              <img src="hero_banner_hd.jpg" alt="Dharthi Hai Ambar" class="s-track-thumb" loading="lazy">
+              <img src="assets/images/hero_banner_hd.jpg" alt="Dharthi Hai Ambar" class="s-track-thumb" loading="lazy">
               <div class="s-track-text">
                 <h4 class="s-track-name">Dharthi Hai Ambar</h4>
                 <p class="s-track-artist">A.R. Rahman &times; Hans Zimmer &bull; <span class="s-lossless-tag">Hi-Res Lossless</span></p>
@@ -679,7 +679,7 @@
               <div class="s-row-equalizer"><span></span><span></span><span></span><span></span></div>
             </div>
             <div class="s-col-info">
-              <img src="feature_banner_hd.jpg" alt="Sita's Aspiration" class="s-track-thumb" loading="lazy">
+              <img src="assets/images/feature_banner_hd.jpg" alt="Sita's Aspiration" class="s-track-thumb" loading="lazy">
               <div class="s-track-text">
                 <h4 class="s-track-name">Sita's Aspiration (Lyrical)</h4>
                 <p class="s-track-artist">A.R. Rahman &bull; Dr. Kumar Vishwas</p>
@@ -697,7 +697,7 @@
               <div class="s-row-equalizer"><span></span><span></span><span></span><span></span></div>
             </div>
             <div class="s-col-info">
-              <img src="movie_poster_hd.jpg" alt="Jai Jai Ram" class="s-track-thumb" loading="lazy">
+              <img src="assets/images/movie_poster_hd.jpg" alt="Jai Jai Ram" class="s-track-thumb" loading="lazy">
               <div class="s-track-text">
                 <h4 class="s-track-name">Jai Jai Ram (Orchestral Theme)</h4>
                 <p class="s-track-artist">Hans Zimmer &times; A.R. Rahman</p>
@@ -715,7 +715,7 @@
               <div class="s-row-equalizer"><span></span><span></span><span></span><span></span></div>
             </div>
             <div class="s-col-info">
-              <img src="hero_banner_hd.jpg" alt="Sita's Aspiration Divine" class="s-track-thumb" loading="lazy">
+              <img src="assets/images/hero_banner_hd.jpg" alt="Sita's Aspiration Divine" class="s-track-thumb" loading="lazy">
               <div class="s-track-text">
                 <h4 class="s-track-name">Sita's Aspiration (Divine Chorus)</h4>
                 <p class="s-track-artist">A.R. Rahman &bull; Celestial Choral Ensemble</p>
@@ -733,7 +733,7 @@
               <div class="s-row-equalizer"><span></span><span></span><span></span><span></span></div>
             </div>
             <div class="s-col-info">
-              <img src="feature_banner_hd.jpg" alt="Ravana Tandav" class="s-track-thumb" loading="lazy">
+              <img src="assets/images/feature_banner_hd.jpg" alt="Ravana Tandav" class="s-track-thumb" loading="lazy">
               <div class="s-track-text">
                 <h4 class="s-track-name">Ravana's Tandav Stotram</h4>
                 <p class="s-track-artist">Hans Zimmer &times; A.R. Rahman &bull; Sanskrit Choirs</p>
@@ -751,7 +751,7 @@
               <div class="s-row-equalizer"><span></span><span></span><span></span><span></span></div>
             </div>
             <div class="s-col-info">
-              <img src="movie_poster_hd.jpg" alt="Jai Jai Ram Meri Pooja" class="s-track-thumb" loading="lazy">
+              <img src="assets/images/movie_poster_hd.jpg" alt="Jai Jai Ram Meri Pooja" class="s-track-thumb" loading="lazy">
               <div class="s-track-text">
                 <h4 class="s-track-name">Jai Jai Ram (Meri Pooja)</h4>
                 <p class="s-track-artist">A.R. Rahman &bull; Devotional Choir</p>
@@ -769,7 +769,7 @@
               <div class="s-row-equalizer"><span></span><span></span><span></span><span></span></div>
             </div>
             <div class="s-col-info">
-              <img src="movie_cover_hd.jpg" alt="Shree Hanuman Chalisa" class="s-track-thumb" loading="lazy">
+              <img src="assets/images/movie_cover_hd.jpg" alt="Shree Hanuman Chalisa" class="s-track-thumb" loading="lazy">
               <div class="s-track-text">
                 <h4 class="s-track-name">Shree Hanuman Chalisa</h4>
                 <p class="s-track-artist">A.R. Rahman &times; Shankar Mahadevan &bull; <span class="s-lossless-tag">Hi-Res Lossless</span></p>
@@ -787,7 +787,7 @@
               <div class="s-row-equalizer"><span></span><span></span><span></span><span></span></div>
             </div>
             <div class="s-col-info">
-              <img src="hero_banner_hd.jpg" alt="Main Ram - Dasharath Suta" class="s-track-thumb" loading="lazy">
+              <img src="assets/images/hero_banner_hd.jpg" alt="Main Ram - Dasharath Suta" class="s-track-thumb" loading="lazy">
               <div class="s-track-text">
                 <h4 class="s-track-name">Main Ram (Dasharath Suta)</h4>
                 <p class="s-track-artist">JAM8 &bull; Sachet Tandon &bull; Kumar Vishwas &bull; <span class="s-lossless-tag">Hi-Res Lossless</span></p>
@@ -809,7 +809,7 @@
       <button class="modal-close-cross" onclick="closeComingSoonModal()" aria-label="Close dialog">&times;</button>
 
       <div class="modal-media-header">
-        <img src="feature_banner_hd.jpg" id="modalBannerImg" alt="Coming Soon Banner" class="modal-banner-img">
+        <img src="assets/images/feature_banner_hd.jpg" id="modalBannerImg" alt="Coming Soon Banner" class="modal-banner-img">
         <div class="modal-banner-gradient"></div>
         <div class="modal-status-badge-wrap">
           <span class="modal-status-badge" id="modalPartBadge">COMING SOON 2028</span>
@@ -877,7 +877,7 @@
       <button class="n-modal-close" onclick="closeMovieDetailsModal()" aria-label="Close dialog">&times;</button>
       
       <div class="n-modal-hero">
-        <img src="hero_banner_hd.jpg" id="nModalHeroImg" alt="Movie Hero">
+        <img src="assets/images/hero_banner_hd.jpg" id="nModalHeroImg" alt="Movie Hero">
         <div class="n-modal-hero-gradient"></div>
         <div class="n-modal-hero-content">
           <h2 class="n-modal-title" id="nModalTitle">RAMAYANA: PART ONE</h2>
@@ -971,7 +971,7 @@
     </button>
   </nav>
 
-  <script src="app.js?v=20261115_tracks_v5"></script>
+  <script src="js/app.js?v=20261115_tracks_v5"></script>
 
   <!-- =========================================================================
        SPOTIFY NOW PLAYING BOTTOM BAR (AUTHENTIC 3-COLUMN DESKTOP DOCK)
@@ -986,7 +986,7 @@
       <!-- Left: Track Cover & Details & Heart -->
       <div class="ost-fp-track-info" onclick="scrollToActiveTrack()">
         <div class="ost-fp-thumb-wrap">
-          <img src="hero_banner_hd.jpg" alt="Track Art" id="ostFpThumb" class="ost-fp-thumb">
+          <img src="assets/images/hero_banner_hd.jpg" alt="Track Art" id="ostFpThumb" class="ost-fp-thumb">
           <div class="ost-fp-equalizer" id="ostFpEqualizer">
             <span></span><span></span><span></span><span></span>
           </div>
@@ -1189,7 +1189,7 @@
           <!-- Floating Scrubber Tooltip with Scene Preview -->
           <div class="nbp-scrubber-tooltip" id="nbpScrubberTooltip">
             <div class="nbp-tooltip-thumb" id="nbpTooltipThumb">
-              <img src="feature_banner_hd.jpg" alt="Scene Preview" id="nbpTooltipImg">
+              <img src="assets/images/feature_banner_hd.jpg" alt="Scene Preview" id="nbpTooltipImg">
             </div>
             <span class="nbp-tooltip-time" id="nbpTooltipTime">00:00:00</span>
           </div>

@@ -190,7 +190,7 @@ const trilogyData = {
     statusBadge: "IN PRE-PRODUCTION • RELEASING 2028",
     description: "Witness the monumental saga continue. Lord Rama, Mata Sita, and Lakshmana journey deep into Panchavati. From the fateful deception of the Golden Deer to the supreme devotion of Lord Hanuman in Kishkindha, the stage is set for the epic crossing of the southern ocean.",
     cast: "Ranbir Kapoor (Lord Rama) • Sai Pallavi (Mata Sita) • Yash (Ravana) • Sunny Deol (Lord Hanuman) • Directed by Nitesh Tiwari",
-    image: "feature_banner_hd.jpg"
+    image: "assets/images/feature_banner_hd.jpg"
   },
   3: {
     part: "PART THREE",
@@ -201,7 +201,7 @@ const trilogyData = {
     statusBadge: "IN CONCEPT & VFX • RELEASING 2029",
     description: "The grand cinematic climax. The architectural miracle of Ram Setu across the vast ocean, the fierce cosmic clash between the Vanara Sena and the legions of Lanka, the historic destruction of Dashanana Ravana, and the celestial coronation of Lord Rama in Ayodhya.",
     cast: "Ranbir Kapoor (Lord Rama) • Yash (Ravana) • Sai Pallavi (Mata Sita) • Sunny Deol (Lord Hanuman) • Music by A.R. Rahman & Hans Zimmer",
-    image: "movie_poster_hd.jpg"
+    image: "assets/images/movie_poster_hd.jpg"
   }
 };
 
@@ -335,7 +335,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   video.src = isLocal ? LOCAL_STREAM_URL : CLOUD_STREAM_URL;
-  video.poster = 'movie_cover_hd.jpg';
+  video.poster = 'assets/images/movie_cover_hd.jpg';
   video.load();
 
   // Auto carousel interval removed (Billboard is active)
@@ -931,7 +931,7 @@ const OST_TRACKS = [
     duration: "01:13",
     durationSec: 73,
     src: "audio/01_dharthi_hai_ambar_intro.m4a",
-    banner: "hero_banner_hd.jpg",
+    banner: "assets/images/hero_banner_hd.jpg",
     desc: "Celestial Sanskrit chants & divine symphony heralding the birth of Sri Rama."
   },
   {
@@ -944,7 +944,7 @@ const OST_TRACKS = [
     duration: "02:40",
     durationSec: 160,
     src: "audio/02_sitas_aspiration_lyrical.m4a",
-    banner: "feature_banner_hd.jpg",
+    banner: "assets/images/feature_banner_hd.jpg",
     desc: "Sacred Sanskrit verses from Valmiki Ramayana depicting Princess Sita's devotion."
   },
   {
@@ -957,7 +957,7 @@ const OST_TRACKS = [
     duration: "03:02",
     durationSec: 182,
     src: "audio/03_jai_jai_ram_orchestral.m4a",
-    banner: "movie_poster_hd.jpg",
+    banner: "assets/images/movie_poster_hd.jpg",
     desc: "Monumental symphonic score performed by world-class strings & choir."
   },
   {
@@ -970,7 +970,7 @@ const OST_TRACKS = [
     duration: "02:42",
     durationSec: 162,
     src: "audio/04_sitas_aspiration_divine.m4a",
-    banner: "movie_cover_hd.jpg",
+    banner: "assets/images/movie_cover_hd.jpg",
     desc: "Serene Indian acoustic instruments celebrating the quiet sanctity of Dandakaranya."
   },
   {
@@ -983,7 +983,7 @@ const OST_TRACKS = [
     duration: "03:14",
     durationSec: 194,
     src: "audio/05_ravana_tandav.m4a",
-    banner: "teaser_lanka_hd.jpg",
+    banner: "assets/images/teaser_lanka_hd.jpg",
     desc: "High-octane war anthem encapsulating the unstoppable might and devotion of the Lankan King."
   },
   {
@@ -996,7 +996,7 @@ const OST_TRACKS = [
     duration: "05:20",
     durationSec: 320,
     src: "audio/06_jai_jai_ram_meri_pooja.m4a",
-    banner: "teaser_archer_hd.jpg",
+    banner: "assets/images/teaser_archer_hd.jpg",
     desc: "The monumental heart-touching devotional anthem with Achyutam Keshavam shlokas."
   },
   {
@@ -1010,7 +1010,7 @@ const OST_TRACKS = [
     durationSec: 418,
     src: "audio/07_hanuman_chalisa_divine.mp3",
     fallbackSrc: "audio/07_hanuman_chalisa_divine.m4a",
-    banner: "movie_cover_hd.jpg",
+    banner: "assets/images/movie_cover_hd.jpg",
     desc: "Divine Sanskrit and Awadhi recitations of Sri Hanuman Chalisa invoking cosmic strength, devotion, and protection."
   },
   {
@@ -1024,7 +1024,7 @@ const OST_TRACKS = [
     durationSec: 221,
     src: "audio/08_main_ram_dasharath_suta.mp3",
     fallbackSrc: "audio/08_main_ram_dasharath_suta.m4a",
-    banner: "hero_banner_hd.jpg",
+    banner: "assets/images/hero_banner_hd.jpg",
     desc: "Soul-stirring divine anthem of Maryada Purushottam Lord Rama upholding supreme Dharma and eternal vows."
   }
 ];
@@ -1403,8 +1403,8 @@ function updateMediaSession(track) {
         album: 'Ramayana: The Divine Symphony (Sandify Tracks)',
         artwork: [
           { src: track.banner, sizes: '512x512', type: 'image/jpeg' },
-          { src: 'movie_poster_hd.jpg', sizes: '256x256', type: 'image/jpeg' },
-          { src: 'sandflix_icon.png', sizes: '192x192', type: 'image/png' }
+          { src: 'assets/images/movie_poster_hd.jpg', sizes: '256x256', type: 'image/jpeg' },
+          { src: 'assets/images/sandflix_icon.png', sizes: '192x192', type: 'image/png' }
         ]
       });
 
@@ -1643,7 +1643,7 @@ const SANDIFY_ALBUMS = {
     subtitle: 'The celestial orchestral masterpiece and sacred Sanskrit hymns orchestrated by dual Academy Award winners <strong>A.R. Rahman</strong> &amp; <strong>Hans Zimmer</strong>.',
     artist1: 'A.R. Rahman',
     artist2: 'Hans Zimmer',
-    cover: 'movie_poster_hd.jpg',
+    cover: 'assets/images/movie_poster_hd.jpg',
     category: 'all'
   },
   'sacred-shlokas': {
@@ -1651,7 +1651,7 @@ const SANDIFY_ALBUMS = {
     subtitle: 'Sacred Sanskrit verses from Valmiki Ramayana depicting devotion, purity, and the eternal spiritual essence of Ayodhya.',
     artist1: 'A.R. Rahman',
     artist2: 'Dr. Kumar Vishwas',
-    cover: 'feature_banner_hd.jpg',
+    cover: 'assets/images/feature_banner_hd.jpg',
     category: 'devotional'
   },
   'battle-anthems': {
@@ -1659,7 +1659,7 @@ const SANDIFY_ALBUMS = {
     subtitle: 'Thunderous war percussion, Ravana’s Tandav Stotram, and high-octane orchestral battle themes for the supreme clash.',
     artist1: 'Hans Zimmer',
     artist2: 'A.R. Rahman',
-    cover: 'hero_banner_hd.jpg',
+    cover: 'assets/images/hero_banner_hd.jpg',
     category: 'action'
   },
   'sita-rama': {
@@ -1667,7 +1667,7 @@ const SANDIFY_ALBUMS = {
     subtitle: 'Soulful choral harmonies, acoustic strings, and divine romance reflecting the auspicious wedding of Sri Rama and Mata Sita.',
     artist1: 'A.R. Rahman',
     artist2: 'Celestial Choirs',
-    cover: 'movie_poster_hd.jpg',
+    cover: 'assets/images/movie_poster_hd.jpg',
     category: 'devotional'
   },
   'hans-zimmer': {
@@ -1675,7 +1675,7 @@ const SANDIFY_ALBUMS = {
     subtitle: 'Hollywood legendary symphonic suites with monumental brass, sweeping strings, and primal rhythm by Hans Zimmer.',
     artist1: 'Hans Zimmer',
     artist2: 'Symphonic Orchestra',
-    cover: 'feature_banner_hd.jpg',
+    cover: 'assets/images/feature_banner_hd.jpg',
     category: 'symphony'
   },
   'ar-rahman': {
@@ -1683,7 +1683,7 @@ const SANDIFY_ALBUMS = {
     subtitle: 'Soul-stirring classical ragas, devotional choirs, and sacred hymns composed by maestro A.R. Rahman.',
     artist1: 'A.R. Rahman',
     artist2: 'Devotional Choir',
-    cover: 'hero_banner_hd.jpg',
+    cover: 'assets/images/hero_banner_hd.jpg',
     category: 'score'
   }
 };
@@ -1991,7 +1991,7 @@ function loadAndPlayTrailerInNbp(startOffset) {
   }
   if (!video) return;
 
-  const trailerUrl = 'move_trailer_hd.mp4';
+  const trailerUrl = 'assets/videos/move_trailer_hd.mp4';
   if (video.getAttribute('data-loaded-src') !== trailerUrl) {
     video.src = trailerUrl;
     video.setAttribute('data-loaded-src', trailerUrl);
@@ -2764,7 +2764,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
   const data = {
     'part1': {
       title: 'RAMAYANA: PART ONE',
-      hero: 'hero_banner_hd.jpg',
+      hero: 'assets/images/hero_banner_hd.jpg',
       year: '2026',
       age: 'U/A 13+',
       dur: '3h 12m',
@@ -2772,7 +2772,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
     },
     'shiva': {
       title: 'SHIVA DHANUSH: THE SACRED PINAKA',
-      hero: 'feature_banner_hd.jpg',
+      hero: 'assets/images/feature_banner_hd.jpg',
       year: '2026',
       age: 'U/A 13+',
       dur: 'Chapter 2',
@@ -2780,7 +2780,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
     },
     'exile': {
       title: 'THE FOREST EXILE & PANCHAVATI',
-      hero: 'movie_cover_hd.jpg',
+      hero: 'assets/images/movie_cover_hd.jpg',
       year: '2026',
       age: 'U/A 13+',
       dur: 'Chapter 3',
