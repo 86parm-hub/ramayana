@@ -9783,26 +9783,36 @@ img, video {
   z-index: 20;
 }
 
-.subpage-back-btn {
+/* Simple Back Arrow Button (Design replaced, functionality intact) */
+.subpage-back-arrow-btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
   background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   color: #ffffff;
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-size: 13px;
-  font-weight: 700;
+  border-radius: 50%;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 0;
+  flex-shrink: 0;
 }
 
-.subpage-back-btn:hover {
+.subpage-back-arrow-btn:hover {
   background: #e50914;
   border-color: #e50914;
-  transform: translateX(-3px);
-  box-shadow: 0 4px 14px rgba(229, 9, 20, 0.5);
+  transform: translateX(-3px) scale(1.05);
+  box-shadow: 0 4px 16px rgba(229, 9, 20, 0.6);
+}
+
+.subpage-back-arrow-btn svg {
+  transition: transform 0.2s ease;
+}
+
+.subpage-back-arrow-btn:hover svg {
+  transform: translateX(-1px);
 }
 
 /* Centered Brand Logo in Subpage Bar */
@@ -9824,26 +9834,11 @@ img, video {
   filter: drop-shadow(0 0 10px rgba(229, 9, 20, 0.4));
 }
 
-.subpage-soundtrack-tag {
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  color: #ffb703;
-  padding: 3px 8px;
-  border-radius: 4px;
-  background: rgba(255, 183, 3, 0.12);
-  border: 1px solid rgba(255, 183, 3, 0.3);
-}
-
-.subpage-lossless-badge {
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.5px;
-  color: #fff;
-  padding: 4px 10px;
-  border-radius: 4px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+/* Spacer for perfect center alignment */
+.subpage-bar-spacer {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
 }
 
 /* Subpage Album Header Showcase */
