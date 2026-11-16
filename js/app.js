@@ -2327,7 +2327,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Irumudi IMDb tt39108319 via Autoembed)
+  // Handle Embed Movie Mode (Irumudi TMDB 1441228 / IMDb tt39108319 via EmbedWave)
   if (targetTime === 'irumudi' || targetTime === 'tt39108319' || targetTime === '1441228' || targetTime === 'raviteja_irumudi') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -2336,13 +2336,13 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Irumudi • Ravi Teja • IMDb tt39108319";
+    if (titleDisplay) titleDisplay.textContent = "Irumudi • Ravi Teja • TMDB 1441228";
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
-      const autoembedUrl = 'https://autoembed.me/movie/imdb/tt39108319';
-      if (embedIframe.src !== autoembedUrl) {
-        embedIframe.src = autoembedUrl;
+      const embedUrl = 'https://embedwave.cc/embed/movie/1441228';
+      if (embedIframe.src !== embedUrl) {
+        embedIframe.src = embedUrl;
       }
     }
     if (spinner) spinner.classList.remove('active');
@@ -3413,7 +3413,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'U/A 16+',
       dur: '2h 32m',
-      desc: "Mass Maharaja Ravi Teja stars as an alcoholic father with a violent, concealed past living in tranquil seclusion with his beloved daughter beside a roaring waterfall. Fulfilling her earnest plea, he takes the rigorous 41-day sacred Ayyappa Deeksha vow. But as ruthless adversaries resurface seeking retribution, he must navigate intense faith and explosive mass fury to safeguard his family. Directed by Shiva Nirvana, starring Ravi Teja, Nakshathra C M, Priya Bhavani Shankar, Sai Kumar. Streamed in 1080P HEVC via Autoembed IMDb tt39108319."
+      desc: "An alcoholic with a violent, concealed past, Trinadh Rama Kasu lives peacefully in seclusion with his beloved young daughter Manikanta beside a roaring waterfall. Fulfilling her heartfelt plea, he undertakes the sacred 41-day Ayyappa Deeksha spiritual vow of intense austerity. But when ruthless adversaries resurface seeking retribution, he is pushed to the ultimate test of devotion and explosive mass fury to safeguard his family. Starring Mass Maharaja Ravi Teja, Nakshathra C M, Priya Bhavani Shankar, Sai Kumar, Ajay Ghosh. Directed by Shiva Nirvana. TMDB ID: 1441228."
     },
     'made_in_korea': {
       title: 'MADE IN KOREA',

@@ -580,7 +580,7 @@
         return;
       }
 
-      // Embed movie handler: Irumudi (IMDb tt39108319 / Autoembed)
+      // Embed movie handler: Irumudi (TMDB 1441228 / IMDb tt39108319)
       if (targetTime === 'irumudi' || targetTime === 'tt39108319' || targetTime === '1441228' || targetTime === 'raviteja_irumudi') {
         if (modal) {
           modal.classList.add('active');
@@ -592,10 +592,10 @@
           try { video.pause(); video.currentTime = 0; } catch(e){}
           video.style.display = 'none';
         }
-        if (titleDisplay) titleDisplay.textContent = "Irumudi • Ravi Teja • IMDb tt39108319";
+        if (titleDisplay) titleDisplay.textContent = "Irumudi • Ravi Teja • TMDB 1441228";
         if (embedIframe) {
           embedIframe.style.display = 'block';
-          embedIframe.src = 'https://autoembed.me/movie/imdb/tt39108319';
+          embedIframe.src = 'https://embedwave.cc/embed/movie/1441228';
         }
         if (spinner) spinner.classList.remove('active');
         try {
@@ -1391,8 +1391,8 @@
             <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
           </button>
           <div class="netflix-slider-track single-movie-track" id="rowTrackAction">
-            <!-- Official Movie Card 1: Irumudi (2026) - Ravi Teja -->
-            <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('irumudi')" title="Play Irumudi - IMDb tt39108319">
+            <!-- Official Movie Card 1: Irumudi (2026) - Ravi Teja (TMDB 1441228) -->
+            <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('irumudi')" title="Play Irumudi - TMDB 1441228">
               <div class="n-card-thumb">
                 <img src="assets/images/irumudi_landscape.jpg" alt="Irumudi" loading="lazy">
                 <span class="n-card-top-tag">RAVI TEJA</span>
@@ -2078,8 +2078,8 @@
             </div>
           </article>
 
-          <!-- Official Movie Card 16: Irumudi (2026) - Ravi Teja -->
-          <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('irumudi')" title="Play Irumudi - IMDb tt39108319">
+          <!-- Official Movie Card 16: Irumudi (2026) - Ravi Teja (TMDB 1441228) -->
+          <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('irumudi')" title="Play Irumudi - TMDB 1441228">
             <div class="n-card-thumb">
               <img src="assets/images/irumudi_landscape.jpg" alt="Irumudi" loading="lazy">
               <span class="n-card-top-tag">RAVI TEJA</span>
@@ -2729,7 +2729,7 @@
     </button>
   </nav>
 
-  <script src="js/app.js?v=20261116_v34_gajabraat_release"></script>
+  <script src="js/app.js?v=20261116_v35_irumudi_tmdb1441228"></script>
 
   <!-- =========================================================================
        SPOTIFY NOW PLAYING BOTTOM BAR (AUTHENTIC 3-COLUMN DESKTOP DOCK)
