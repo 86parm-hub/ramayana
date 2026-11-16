@@ -2349,7 +2349,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Peddi TMDB 1057265 / IMDb tt23865918 via EmbedWave)
+  // Handle Embed Movie Mode (Peddi TMDB 1057265 / Peachify)
   if (targetTime === 'peddi' || targetTime === '1057265' || targetTime === 'tt23865918' || targetTime === 'ramcharan_peddi') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -2362,9 +2362,53 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
-      const embedUrl = 'https://embedwave.cc/embed/movie/1057265';
-      if (embedIframe.src !== embedUrl) {
-        embedIframe.src = embedUrl;
+      const peachifyUrl = 'https://peachify.net/movie/1057265';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
+  // Handle Embed Movie Mode (Cocktail 2 TMDB 1392469 / Peachify)
+  if (targetTime === 'cocktail2' || targetTime === 'cocktail_2' || targetTime === '1392469' || targetTime === 'shahid_cocktail2') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = "Cocktail 2 • Shahid Kapoor • TMDB 1392469";
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1392469';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
+  // Handle Embed Movie Mode (Avaraachan & Sons TMDB 1290035 / Peachify)
+  if (targetTime === 'avarachan' || targetTime === 'avarachan_sons' || targetTime === '1290035' || targetTime === 'bijumenon_avarachan') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = "Avaraachan & Sons • Biju Menon • TMDB 1290035";
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1290035';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
       }
     }
     if (spinner) spinner.classList.remove('active');
@@ -3377,7 +3421,23 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'U/A 16+',
       dur: '3h 09m',
-      desc: "In an isolated, unmapped rural hinterland that does not officially exist on government records, a fierce laborer's unmatched athletic prowess and wrestling talent become his ultimate weapon. Rising against oppressive exploitation, he wages an uncompromising battle for his community's dignity, identity, and right to be recognized. Starring Mega Power Star Ram Charan as Peddi Pehelwan, Janhvi Kapoor as Achiyyamma, Shiva Rajkumar, Jagapati Babu, Divyendu Sharma, Boman Irani, Ravi Kishan. Directed by Buchi Babu Sana. Music by A. R. Rahman. Streamed in 1080P HEVC via EmbedWave TMDB 1057265."
+      desc: "In an isolated, unmapped rural hinterland that does not officially exist on government records, a fierce laborer's unmatched athletic prowess and wrestling talent become his ultimate weapon. Rising against oppressive exploitation, he wages an uncompromising battle for his community's dignity, identity, and right to be recognized. Starring Mega Power Star Ram Charan as Peddi Pehelwan, Janhvi Kapoor as Achiyyamma, Shiva Rajkumar, Jagapati Babu, Divyendu Sharma, Boman Irani, Ravi Kishan. Directed by Buchi Babu Sana. Music by A. R. Rahman. Streamed in 1080P HEVC via Peachify TMDB 1057265."
+    },
+    'cocktail2': {
+      title: 'COCKTAIL 2',
+      hero: 'assets/images/cocktail2_landscape.jpg',
+      year: '2026',
+      age: 'U/A 16+',
+      dur: '2h 30m',
+      desc: "A bold, modern romantic dramedy exploring turbulent friendships, love triangles, and emotional vulnerabilities amidst high-stakes metropolitan life. Starring Shahid Kapoor, Kriti Sanon, Rashmika Mandanna. Directed by Homi Adajania, written by Imtiaz Ali. Streamed in 1080P HEVC via Peachify TMDB 1392469."
+    },
+    'avarachan': {
+      title: 'AVARAACHAN & SONS',
+      hero: 'assets/images/avarachan_landscape.jpg',
+      year: '2026',
+      age: 'U/A 13+',
+      dur: '2h 30m',
+      desc: "A humorous and heartwarming family drama chronicling the quirks, squabbles, and unyielding bonds within a traditional family business in Kerala. Starring Biju Menon, Sreenath Bhasi, Vinay Forrt, Grace Antony. Directed by Thamby. Streamed in 1080P HEVC via Peachify TMDB 1290035."
     },
     'shiva': {
       title: 'SHIVA DHANUSH: THE SACRED PINAKA',

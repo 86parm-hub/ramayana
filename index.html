@@ -606,8 +606,8 @@
         return;
       }
 
-      // Embed movie handler: Peddi (TMDB 1057265 / IMDb tt23865918 via EmbedWave)
-      if (targetTime === 'peddi' || targetTime === '1057265' || targetTime === 'tt23865918' || targetTime === 'ramcharan_peddi') {
+      // Embed movie handler: Peddi (TMDB 1057265 / Peachify)
+      if (targetTime === 'peddi' || targetTime === '1057265' || targetTime === 'ramcharan_peddi') {
         if (modal) {
           modal.classList.add('active');
           modal.classList.add('is-embed-active');
@@ -621,12 +621,64 @@
         if (titleDisplay) titleDisplay.textContent = "Peddi • Ram Charan • TMDB 1057265";
         if (embedIframe) {
           embedIframe.style.display = 'block';
-          embedIframe.src = 'https://embedwave.cc/embed/movie/1057265';
+          embedIframe.src = 'https://peachify.net/movie/1057265';
         }
         if (spinner) spinner.classList.remove('active');
         try {
           if (!fromHistory && window.history && window.history.pushState) {
             window.history.pushState({ type: 'netflix-player', targetTime: 'peddi' }, null, '#player');
+          }
+        } catch(e){}
+        return;
+      }
+
+      // Embed movie handler: Cocktail 2 (TMDB 1392469 / Peachify)
+      if (targetTime === 'cocktail2' || targetTime === 'cocktail_2' || targetTime === '1392469' || targetTime === 'shahid_cocktail2') {
+        if (modal) {
+          modal.classList.add('active');
+          modal.classList.add('is-embed-active');
+          modal.setAttribute('aria-hidden', 'false');
+        }
+        document.body.style.overflow = 'hidden';
+        if (video) {
+          try { video.pause(); video.currentTime = 0; } catch(e){}
+          video.style.display = 'none';
+        }
+        if (titleDisplay) titleDisplay.textContent = "Cocktail 2 • Shahid Kapoor • TMDB 1392469";
+        if (embedIframe) {
+          embedIframe.style.display = 'block';
+          embedIframe.src = 'https://peachify.net/movie/1392469';
+        }
+        if (spinner) spinner.classList.remove('active');
+        try {
+          if (!fromHistory && window.history && window.history.pushState) {
+            window.history.pushState({ type: 'netflix-player', targetTime: 'cocktail2' }, null, '#player');
+          }
+        } catch(e){}
+        return;
+      }
+
+      // Embed movie handler: Avaraachan & Sons (TMDB 1290035 / Peachify)
+      if (targetTime === 'avarachan' || targetTime === 'avarachan_sons' || targetTime === '1290035' || targetTime === 'bijumenon_avarachan') {
+        if (modal) {
+          modal.classList.add('active');
+          modal.classList.add('is-embed-active');
+          modal.setAttribute('aria-hidden', 'false');
+        }
+        document.body.style.overflow = 'hidden';
+        if (video) {
+          try { video.pause(); video.currentTime = 0; } catch(e){}
+          video.style.display = 'none';
+        }
+        if (titleDisplay) titleDisplay.textContent = "Avaraachan & Sons • Biju Menon • TMDB 1290035";
+        if (embedIframe) {
+          embedIframe.style.display = 'block';
+          embedIframe.src = 'https://peachify.net/movie/1290035';
+        }
+        if (spinner) spinner.classList.remove('active');
+        try {
+          if (!fromHistory && window.history && window.history.pushState) {
+            window.history.pushState({ type: 'netflix-player', targetTime: 'avarachan' }, null, '#player');
           }
         } catch(e){}
         return;
@@ -1331,7 +1383,7 @@
             <span>Action &amp; Mass Cinema</span>
             <span class="row-title-chevron">&rsaquo;</span>
           </h2>
-          <span class="row-badge-pill">2 Titles Streaming</span>
+          <span class="row-badge-pill">4 Titles Streaming</span>
         </div>
 
         <div class="n-carousel-wrap">
@@ -1373,7 +1425,7 @@
             <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('peddi')" title="Play Peddi - TMDB 1057265">
               <div class="n-card-thumb">
                 <img src="assets/images/peddi_landscape.jpg" alt="Peddi" loading="lazy">
-                <span class="n-card-top-tag">RAM CHARAN &bull; JANHVI</span>
+                <span class="n-card-top-tag">RAM CHARAN &bull; JANHVI KAPOOR</span>
                 <span class="n-card-quality-tag">1080P HEVC</span>
 
                 <div class="n-card-overlay">
@@ -1393,7 +1445,67 @@
                   </div>
                   <div class="n-card-info">
                     <h4 class="n-movie-name">Peddi</h4>
-                    <p class="n-card-genres">Action &bull; Mass Drama &bull; Sports Fury</p>
+                    <p class="n-card-genres">Action &bull; Mass Sports Drama &bull; Buchi Babu</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Official Movie Card 3: Cocktail 2 (2026) - Shahid Kapoor (TMDB 1392469) -->
+            <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('cocktail2')" title="Play Cocktail 2 - TMDB 1392469">
+              <div class="n-card-thumb">
+                <img src="assets/images/cocktail2_landscape.jpg" alt="Cocktail 2" loading="lazy">
+                <span class="n-card-top-tag">SHAHID &bull; KRITI &bull; RASHMIKA</span>
+                <span class="n-card-quality-tag">1080P HEVC</span>
+
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('cocktail2');" title="Play Movie">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                    </button>
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('cocktail2');" title="More Info">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">Cocktail 2</h4>
+                    <p class="n-card-genres">Romance &bull; Modern Comedy &bull; Drama</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Official Movie Card 4: Avaraachan & Sons (2026) - Biju Menon (TMDB 1290035) -->
+            <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('avarachan')" title="Play Avaraachan &amp; Sons - TMDB 1290035">
+              <div class="n-card-thumb">
+                <img src="assets/images/avarachan_landscape.jpg" alt="Avaraachan &amp; Sons" loading="lazy">
+                <span class="n-card-top-tag">BIJU MENON &bull; SREENATH BHASI</span>
+                <span class="n-card-quality-tag">1080P HEVC</span>
+
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('avarachan');" title="Play Movie">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                    </button>
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('avarachan');" title="More Info">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">Avaraachan &amp; Sons</h4>
+                    <p class="n-card-genres">Family Drama &bull; Relationships &bull; Malayalam</p>
                   </div>
                 </div>
               </div>
@@ -2000,7 +2112,7 @@
           <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('peddi')" title="Play Peddi - TMDB 1057265">
             <div class="n-card-thumb">
               <img src="assets/images/peddi_landscape.jpg" alt="Peddi" loading="lazy">
-              <span class="n-card-top-tag">RAM CHARAN &bull; JANHVI</span>
+              <span class="n-card-top-tag">RAM CHARAN &bull; JANHVI KAPOOR</span>
               <span class="n-card-quality-tag">1080P HEVC</span>
 
               <div class="n-card-overlay">
@@ -2020,7 +2132,67 @@
                 </div>
                 <div class="n-card-info">
                   <h4 class="n-movie-name">Peddi</h4>
-                  <p class="n-card-genres">Action &bull; Mass Drama &bull; Sports Fury</p>
+                  <p class="n-card-genres">Action &bull; Mass Sports Drama &bull; Buchi Babu</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Official Movie Card 18: Cocktail 2 (2026) - Shahid Kapoor (TMDB 1392469) -->
+          <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('cocktail2')" title="Play Cocktail 2 - TMDB 1392469">
+            <div class="n-card-thumb">
+              <img src="assets/images/cocktail2_landscape.jpg" alt="Cocktail 2" loading="lazy">
+              <span class="n-card-top-tag">SHAHID &bull; KRITI &bull; RASHMIKA</span>
+              <span class="n-card-quality-tag">1080P HEVC</span>
+
+              <div class="n-card-overlay">
+                <div class="n-card-actions">
+                  <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('cocktail2');" title="Play Movie">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                  </button>
+                  <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                  </button>
+                  <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                  </button>
+                  <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('cocktail2');" title="More Info">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  </button>
+                </div>
+                <div class="n-card-info">
+                  <h4 class="n-movie-name">Cocktail 2</h4>
+                  <p class="n-card-genres">Romance &bull; Modern Comedy &bull; Drama</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Official Movie Card 19: Avaraachan & Sons (2026) - Biju Menon (TMDB 1290035) -->
+          <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('avarachan')" title="Play Avaraachan &amp; Sons - TMDB 1290035">
+            <div class="n-card-thumb">
+              <img src="assets/images/avarachan_landscape.jpg" alt="Avaraachan &amp; Sons" loading="lazy">
+              <span class="n-card-top-tag">BIJU MENON &bull; SREENATH BHASI</span>
+              <span class="n-card-quality-tag">1080P HEVC</span>
+
+              <div class="n-card-overlay">
+                <div class="n-card-actions">
+                  <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('avarachan');" title="Play Movie">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                  </button>
+                  <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                  </button>
+                  <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                  </button>
+                  <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('avarachan');" title="More Info">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  </button>
+                </div>
+                <div class="n-card-info">
+                  <h4 class="n-movie-name">Avaraachan &amp; Sons</h4>
+                  <p class="n-card-genres">Family Drama &bull; Relationships &bull; Malayalam</p>
                 </div>
               </div>
             </div>
@@ -2557,7 +2729,7 @@
     </button>
   </nav>
 
-  <script src="js/app.js?v=20261116_v38_peddi_release"></script>
+  <script src="js/app.js?v=20261116_v38_peddi_cocktail2_avarachan"></script>
 
   <!-- =========================================================================
        SPOTIFY NOW PLAYING BOTTOM BAR (AUTHENTIC 3-COLUMN DESKTOP DOCK)
