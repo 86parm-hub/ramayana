@@ -1806,31 +1806,9 @@ function slideNetflixRow(trackId, direction) {
 }
 window.slideNetflixRow = slideNetflixRow;
 
-// Continuous Loop Auto-Scrolling (Pauses automatically on hover or touch)
+// Automatic Scrolling Disabled: Rows only move on user interaction (arrow click, swipe, or drag)
 function initNetflixCarouselAutoLoop() {
-  const rowTracks = ['rowTrackTrending', 'rowTrackAcclaimed', 'rowTrackCatalog'];
-  rowTracks.forEach(trackId => {
-    const track = document.getElementById(trackId);
-    if (!track) return;
-    const parentWrap = track.closest('.n-carousel-wrap') || track;
-    let isPaused = false;
-
-    parentWrap.addEventListener('mouseenter', () => { isPaused = true; });
-    parentWrap.addEventListener('mouseleave', () => { isPaused = false; });
-    parentWrap.addEventListener('touchstart', () => { isPaused = true; }, { passive: true });
-    parentWrap.addEventListener('touchend', () => {
-      setTimeout(() => { isPaused = false; }, 2500);
-    }, { passive: true });
-
-    setInterval(() => {
-      if (isPaused || document.hidden) return;
-      const rect = track.getBoundingClientRect();
-      // Only auto-slide if visible within viewport
-      if (rect.bottom > 80 && rect.top < window.innerHeight - 80) {
-        slideNetflixRow(trackId, 1);
-      }
-    }, 4500);
-  });
+  // Intentionally disabled: automatic movement removed per user preference.
 }
 window.initNetflixCarouselAutoLoop = initNetflixCarouselAutoLoop;
 

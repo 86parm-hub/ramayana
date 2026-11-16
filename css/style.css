@@ -8107,7 +8107,7 @@ img, video {
   width: 40px;
   height: 72px;
   border-radius: 36px;
-  background: rgba(15, 15, 15, 0.78);
+  background: rgba(15, 15, 15, 0.82);
   border: 1px solid rgba(255, 255, 255, 0.22);
   color: #ffffff;
   cursor: pointer;
@@ -8118,12 +8118,18 @@ img, video {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.75);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  opacity: 0.92;
+  transition: opacity 0.28s ease, visibility 0.28s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
+/* Show arrows ONLY when hovering over the row or the carousel wrapper */
+.netflix-row:hover .n-slider-btn,
 .n-carousel-wrap:hover .n-slider-btn {
   opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 .n-slider-btn.prev {
@@ -8141,6 +8147,8 @@ img, video {
   transform: translateY(-50%) scale(1.08);
   box-shadow: 0 6px 24px rgba(229, 9, 20, 0.6);
   opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 .n-slider-btn svg {
