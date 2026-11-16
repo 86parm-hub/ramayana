@@ -2415,6 +2415,28 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
+  // Handle Embed Movie Mode (Reporting Live TMDB 1389172 / Peachify)
+  if (targetTime === 'reporting_live' || targetTime === 'reportinglive' || targetTime === '1389172' || targetTime === 'parineeti_reporting') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = "Reporting Live • Parineeti Chopra • TMDB 1389172";
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1389172';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
   if (nbpIsEmbedMode) {
     nbpIsEmbedMode = false;
     modal.classList.remove('is-embed-active');
@@ -3438,6 +3460,14 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       age: 'U/A 13+',
       dur: '2h 30m',
       desc: "A humorous and heartwarming family drama chronicling the quirks, squabbles, and unyielding bonds within a traditional family business in Kerala. Starring Biju Menon, Sreenath Bhasi, Vinay Forrt, Grace Antony. Directed by Thamby. Streamed in 1080P HEVC via Peachify TMDB 1290035."
+    },
+    'reporting_live': {
+      title: 'REPORTING LIVE',
+      hero: 'assets/images/reporting_live_landscape.jpg',
+      year: '2026',
+      age: 'U/A 16+',
+      dur: '1h 56m',
+      desc: "A gritty investigative crime thriller following an ambitious young reporter and her cynical cameraman whose routine coverage spirals into perilous territory when they uncover an illicit sand-mining cartel governed by dangerous political figures. Starring Parineeti Chopra, Deven Bhojani, Adil Hussain, Shekhar Suman, Amol Palekar, Nassar. Directed by Dhruv Tripathi. Streamed in 1080P HEVC via Peachify TMDB 1389172."
     },
     'shiva': {
       title: 'SHIVA DHANUSH: THE SACRED PINAKA',
