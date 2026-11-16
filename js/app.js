@@ -3994,15 +3994,15 @@ if (document.readyState === 'loading') {
 }
 
 // =========================================================================
-// AUTHENTIC NETFLIX HOVER EXPANSION (3-SECOND INTENTIONAL DWELL DELAY)
-// Hovering a movie card waits exactly 3 seconds before expanding.
-// Moving cursor away before 3 seconds cancels expansion immediately.
+// AUTHENTIC NETFLIX HOVER EXPANSION (1-SECOND INTENTIONAL DWELL DELAY)
+// Hovering a movie card waits exactly 1 second before expanding.
+// Moving cursor away before 1 second cancels expansion immediately.
 // When moving away after expansion, the card smoothly collapses.
 // =========================================================================
-(function initNetflixHover3sDelay() {
+(function initNetflixHover1sDelay() {
   let hoverTimer = null;
   let activeExpandedCard = null;
-  const HOVER_DELAY_MS = 3000; // Exact 3-second gap requested by user
+  const HOVER_DELAY_MS = 1000; // Exact 1-second gap requested by user
 
   function updateTransformOrigin(card) {
     if (!card) return;
