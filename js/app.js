@@ -3992,3 +3992,23 @@ if (document.readyState === 'loading') {
   initHistoryBaseState();
   initNetflixCarouselAutoLoop();
 }
+
+// =========================================================================
+// AUTHENTIC NETFLIX HOVER EXPANSION SMART ORIGIN ALGORITHM
+// Ensures cards near left/right screen edges expand inward without clipping
+// =========================================================================
+document.addEventListener('mouseover', function(e) {
+  var card = e.target.closest && e.target.closest('.n-card.compact');
+  if (card) {
+    var rect = card.getBoundingClientRect();
+    var windowWidth = window.innerWidth;
+    if (rect.left < 140) {
+      card.style.transformOrigin = 'left center';
+    } else if (windowWidth - rect.right < 140) {
+      card.style.transformOrigin = 'right center';
+    } else {
+      card.style.transformOrigin = 'center center';
+    }
+  }
+}, { passive: true });
+

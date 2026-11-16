@@ -5910,7 +5910,7 @@ body.ott-platform {
   max-width: 100%;
   min-width: 0;
   box-sizing: border-box;
-  overflow: hidden; /* Ensures child horizontal scroll never stretches parent page width */
+  overflow: visible !important;
 }
 
 .netflix-row {
@@ -8079,13 +8079,44 @@ img, video {
   box-sizing: border-box;
 }
 
-/* Slider Track (Horizontal Flex with Smooth Touch Physics) */
+/* ==========================================================================
+   AUTHENTIC NETFLIX HOVER POP-OUT EXPANSION (1:1 PIXEL-PERFECT CLONE)
+   ========================================================================== */
+.netflix-row {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0 0 28px 0;
+  overflow: visible !important;
+  z-index: 1;
+  transition: z-index 0.2s ease;
+}
+
+.netflix-row:hover {
+  z-index: 250 !important; /* Ensure hovered row floats above subsequent rows */
+}
+
+.n-carousel-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: visible !important;
+}
+
+/* Slider Track (Ample vertical headroom so 1.5x scaled card never clips) */
 .netflix-slider-track.compact-row {
   display: flex;
   gap: 12px;
   overflow-x: auto;
-  overflow-y: visible;
-  padding: 18px 4px 28px 4px;
+  overflow-y: visible !important;
+  padding: 40px 10px 220px 10px !important;
+  margin-top: -30px !important;
+  margin-bottom: -190px !important;
   scroll-behavior: smooth;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -8096,25 +8127,29 @@ img, video {
   display: none;
 }
 
-/* Compact Netflix 16:9 Card */
+/* Compact Netflix 16:9 Card (Unhovered State) */
 .n-card.compact {
   flex: 0 0 230px;
   width: 230px;
   position: relative;
   background: #181818;
-  border-radius: 5px;
-  overflow: hidden;
+  border-radius: 6px;
+  overflow: visible !important;
   cursor: pointer;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+  transition: transform 0.32s cubic-bezier(0.2, 0, 0.2, 1), box-shadow 0.32s ease, border-color 0.32s ease;
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  z-index: 1;
 }
 
-.n-card.compact:hover {
-  transform: scale(1.16) translateY(-6px);
-  border-color: rgba(229, 9, 20, 0.7);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.95), 0 0 22px rgba(229, 9, 20, 0.4);
-  z-index: 40;
+/* Edge Smart Transform Origins */
+.netflix-slider-track.compact-row > .n-card.compact:first-child,
+.netflix-slider-track.compact-row > .n-card.compact:nth-child(1) {
+  transform-origin: left center !important;
+}
+
+.netflix-slider-track.compact-row > .n-card.compact:last-child {
+  transform-origin: right center !important;
 }
 
 .n-card.compact .n-card-thumb {
@@ -8122,74 +8157,216 @@ img, video {
   width: 100%;
   position: relative;
   overflow: hidden;
-  background: #000;
+  background: #000000;
+  border-radius: 6px;
+  transition: border-radius 0.25s ease;
 }
 
 .n-card.compact .n-card-thumb img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.45s ease;
+  display: block;
+  transition: transform 0.4s ease;
 }
 
-.n-card.compact:hover .n-card-thumb img {
-  transform: scale(1.08);
+/* Large 1.5x Netflix Pop-Out on Desktop Mouse Hover */
+@media (min-width: 769px) {
+  .n-card.compact:hover,
+  .n-card.compact.is-hovered {
+    transform: scale(1.48) translateY(-14%) !important;
+    border-color: rgba(255, 255, 255, 0.25) !important;
+    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.98), 0 0 32px rgba(0, 0, 0, 0.9) !important;
+    z-index: 99999 !important;
+    border-bottom: none !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+
+  .n-card.compact:hover .n-card-thumb,
+  .n-card.compact.is-hovered .n-card-thumb {
+    overflow: visible !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+
+  .n-card.compact .n-card-thumb img {
+    border-top-left-radius: 6px !important;
+    border-top-right-radius: 6px !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+
+  .n-card.compact:hover .n-card-thumb img,
+  .n-card.compact.is-hovered .n-card-thumb img {
+    transform: scale(1.05);
+  }
+
+  /* Hide quality tag on hover so thumbnail stays clean like Netflix */
+  .single-movie-track .n-card.official-master-card:hover .n-card-quality-tag,
+  .single-movie-track .n-card.official-master-card.is-hovered .n-card-quality-tag,
+  .n-card.compact:hover .n-card-quality-tag,
+  .n-card.compact.is-hovered .n-card-quality-tag {
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  /* Authentic Netflix Speaker Pill on Thumbnail Bottom-Right (from user photo) */
+  .n-card.compact:hover .n-card-thumb::after,
+  .n-card.compact.is-hovered .n-card-thumb::after {
+    content: "";
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: rgba(18, 18, 18, 0.8) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolygon points='11 5 6 9 2 9 2 15 6 15 11 19 11 5'%3E%3C/polygon%3E%3Cpath d='M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07'%3E%3C/path%3E%3C/svg%3E") no-repeat center / 13px 13px;
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    pointer-events: none;
+    z-index: 6;
+    animation: nbpFadeIn 0.2s ease forwards;
+  }
+
+  /* Solid Expanded Dropdown Info Panel Attached Below Thumbnail */
+  .n-card.compact .n-card-overlay {
+    position: absolute !important;
+    top: 100% !important;
+    bottom: auto !important;
+    left: -1px !important;
+    right: -1px !important;
+    width: calc(100% + 2px) !important;
+    height: auto !important;
+    background: #181818 !important;
+    padding: 12px 14px 14px 14px !important;
+    border-bottom-left-radius: 8px !important;
+    border-bottom-right-radius: 8px !important;
+    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.98), 0 0 25px rgba(0, 0, 0, 0.85) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    border-top: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.25s !important;
+    z-index: 100000 !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+  }
+
+  .n-card.compact:hover .n-card-overlay,
+  .n-card.compact.is-hovered .n-card-overlay {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
 }
 
-/* Card Micro Actions Row on Hover */
+/* Micro Action Buttons Row (Netflix Circle Controls) */
 .n-card-actions {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
+  width: 100%;
+  order: 1 !important;
 }
 
 .n-btn-circle {
-  width: 30px;
-  height: 30px;
+  width: 34px;
+  height: 34px;
+  min-width: 34px;
+  min-height: 34px;
   border-radius: 50%;
-  border: 1.5px solid rgba(255, 255, 255, 0.7);
-  background: rgba(30, 30, 30, 0.8);
+  border: 1.8px solid rgba(255, 255, 255, 0.7);
+  background: rgba(42, 42, 42, 0.65);
   color: #ffffff;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
   padding: 0;
+  outline: none;
+}
+
+.n-btn-circle:hover {
+  border-color: #ffffff;
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.1);
 }
 
 .n-btn-circle.play {
   background: #ffffff;
   color: #000000;
   border: none;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.n-btn-circle.play svg {
+  fill: #000000;
 }
 
 .n-btn-circle.play:hover {
   background: #e6e6e6;
-  transform: scale(1.14);
-}
-
-.n-btn-circle:hover {
-  border-color: #ffffff;
-  background: rgba(255, 255, 255, 0.25);
-  transform: scale(1.14);
+  transform: scale(1.1);
 }
 
 .n-btn-circle.chevron {
   margin-left: auto;
 }
 
+/* Authentic Netflix Red Progress Bar with Timestamp (User Screenshot Exact Feature) */
+.n-card.compact .n-card-overlay::before {
+  content: "6 of 144m";
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  color: rgba(255, 255, 255, 0.72) !important;
+  width: 100% !important;
+  height: 14px !important;
+  margin: 2px 0 8px 0 !important;
+  background: linear-gradient(to right, #e50914 0%, #e50914 42%, rgba(255, 255, 255, 0.28) 42%, rgba(255, 255, 255, 0.28) 60%, transparent 60%) !important;
+  background-size: 100% 2.8px !important;
+  background-repeat: no-repeat !important;
+  background-position: left center !important;
+  order: 2 !important;
+}
+
 /* Card Info typography in compact card */
+.n-card.compact .n-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  order: 3 !important;
+}
+
 .n-card.compact .n-movie-name {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 800;
   color: #ffffff;
-  margin: 0 0 4px 0;
+  margin: 0 0 2px 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  letter-spacing: 0.2px;
+}
+
+/* Metadata Badges line: 98% Match, U/A 16+, 2h 24m, HD */
+.n-card.compact .n-card-info::after {
+  content: "98% Match   U/A 16+   2h 24m   HD";
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.65);
+  letter-spacing: 0.4px;
+  margin-bottom: 2px;
 }
 
 .n-card.compact .n-card-meta {
@@ -8217,8 +8394,8 @@ img, video {
 }
 
 .n-card.compact .n-card-genres {
-  font-size: 10px;
-  color: rgba(255, 255, 255, 0.7);
+  font-size: 10.5px;
+  color: rgba(255, 255, 255, 0.68);
   margin: 0;
   white-space: nowrap;
   overflow: hidden;
@@ -8920,17 +9097,19 @@ img, video {
 .single-movie-track {
   display: flex;
   align-items: flex-start;
-  gap: 6px; /* Tight 6px Netflix card gap */
-  padding: 6px 0 18px 0; /* Zero side padding: true edge-to-edge bleed */
+  gap: 10px;
+  padding: 40px 10px 220px 10px !important;
+  margin-top: -30px !important;
+  margin-bottom: -190px !important;
   width: 100%;
   max-width: 100%;
   min-width: 0;
   box-sizing: border-box;
   overflow-x: auto;
-  overflow-y: hidden;
+  overflow-y: visible !important;
   scroll-behavior: smooth;
-  scrollbar-width: none; /* Hide scrollbar on Firefox / standard */
-  -ms-overflow-style: none; /* Hide scrollbar on IE/Edge */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -8942,23 +9121,26 @@ img, video {
 
 .single-movie-track .n-card.official-master-card {
   position: relative;
-  flex: 0 0 clamp(190px, 17.5vw, 280px);
-  width: clamp(190px, 17.5vw, 280px);
+  flex: 0 0 clamp(200px, 17.5vw, 260px);
+  width: clamp(200px, 17.5vw, 260px);
   background: #181818;
-  border-radius: 4px;
-  overflow: hidden;
+  border-radius: 6px;
+  overflow: visible !important;
   cursor: pointer;
   border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
-  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease, border-color 0.28s ease;
-  z-index: 10;
+  transition: transform 0.32s cubic-bezier(0.2, 0, 0.2, 1), box-shadow 0.32s ease, border-color 0.32s ease;
+  z-index: 1;
 }
 
-.single-movie-track .n-card.official-master-card:hover {
-  transform: scale(1.06) translateY(-4px);
-  border-color: rgba(229, 9, 20, 0.85);
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.95), 0 0 20px rgba(229, 9, 20, 0.35);
-  z-index: 25;
+/* Edge Smart Transform Origins */
+.single-movie-track > .n-card.official-master-card:first-child,
+.single-movie-track > .n-card.official-master-card:nth-child(1) {
+  transform-origin: left center !important;
+}
+
+.single-movie-track > .n-card.official-master-card:last-child {
+  transform-origin: right center !important;
 }
 
 .single-movie-track .n-card-thumb {
@@ -8967,145 +9149,257 @@ img, video {
   aspect-ratio: 16 / 9;
   background: #000;
   overflow: hidden;
+  border-radius: 6px;
+  transition: border-radius 0.25s ease;
 }
 
 .single-movie-track .n-card-thumb img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.45s ease;
+  display: block;
+  transition: transform 0.4s ease;
 }
 
-.single-movie-track .n-card.official-master-card:hover .n-card-thumb img {
-  transform: scale(1.08);
+/* Authentic Netflix 1.5x Hover Pop-Out Expansion (Matching User Screenshot Exactly) */
+@media (min-width: 769px) {
+  .single-movie-track .n-card.official-master-card:hover,
+  .single-movie-track .n-card.official-master-card.is-hovered {
+    transform: scale(1.48) translateY(-14%) !important;
+    border-color: rgba(255, 255, 255, 0.28) !important;
+    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.98), 0 0 35px rgba(0, 0, 0, 0.9) !important;
+    z-index: 99999 !important;
+    border-bottom: none !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+
+  .single-movie-track .n-card.official-master-card:hover .n-card-thumb,
+  .single-movie-track .n-card.official-master-card.is-hovered .n-card-thumb {
+    overflow: visible !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+
+  .single-movie-track .n-card-thumb img {
+    border-top-left-radius: 6px !important;
+    border-top-right-radius: 6px !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+
+  .single-movie-track .n-card.official-master-card:hover .n-card-thumb img,
+  .single-movie-track .n-card.official-master-card.is-hovered .n-card-thumb img {
+    transform: scale(1.05);
+  }
+
+  /* Hide quality tag on hover so thumbnail stays clean like Netflix */
+  .single-movie-track .n-card.official-master-card:hover .n-card-quality-tag,
+  .single-movie-track .n-card.official-master-card.is-hovered .n-card-quality-tag,
+  .n-card.compact:hover .n-card-quality-tag,
+  .n-card.compact.is-hovered .n-card-quality-tag {
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  /* Authentic Netflix Speaker Pill on Thumbnail Bottom-Right (from user photo) */
+  .single-movie-track .n-card.official-master-card:hover .n-card-thumb::after,
+  .single-movie-track .n-card.official-master-card.is-hovered .n-card-thumb::after {
+    content: "";
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: rgba(18, 18, 18, 0.8) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolygon points='11 5 6 9 2 9 2 15 6 15 11 19 11 5'%3E%3C/polygon%3E%3Cpath d='M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07'%3E%3C/path%3E%3C/svg%3E") no-repeat center / 13px 13px;
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    pointer-events: none;
+    z-index: 6;
+    animation: nbpFadeIn 0.2s ease forwards;
+  }
+
+  /* Solid Expanded Dropdown Info Panel Attached Below Thumbnail */
+  .single-movie-track .n-card.official-master-card .n-card-overlay {
+    position: absolute !important;
+    top: 100% !important;
+    bottom: auto !important;
+    left: -1px !important;
+    right: -1px !important;
+    width: calc(100% + 2px) !important;
+    height: auto !important;
+    background: #181818 !important;
+    padding: 12px 14px 14px 14px !important;
+    border-bottom-left-radius: 8px !important;
+    border-bottom-right-radius: 8px !important;
+    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.98), 0 0 25px rgba(0, 0, 0, 0.85) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    border-top: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.25s !important;
+    z-index: 100000 !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+  }
+
+  .single-movie-track .n-card.official-master-card:hover .n-card-overlay,
+  .single-movie-track .n-card.official-master-card.is-hovered .n-card-overlay {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
 }
 
-.single-movie-track .n-card-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.85) 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.25s ease;
-}
-
-.single-movie-track .n-card.official-master-card:hover .n-card-overlay {
-  opacity: 1;
-}
-
+/* Micro Action Buttons Row (Netflix Circle Controls) */
 .single-movie-track .n-card-actions {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin-bottom: 6px !important;
+  width: 100% !important;
+  order: 1 !important;
 }
 
-.single-movie-track .n-action-btn {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  background: rgba(40, 40, 40, 0.85);
-  color: #fff;
+.single-movie-track .n-btn-circle {
+  width: 34px !important;
+  height: 34px !important;
+  min-width: 34px !important;
+  min-height: 34px !important;
+  border-radius: 50% !important;
+  border: 1.8px solid rgba(255, 255, 255, 0.7) !important;
+  background: rgba(42, 42, 42, 0.65) !important;
+  color: #ffffff !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+  padding: 0 !important;
+  outline: none !important;
 }
 
-.single-movie-track .n-action-btn.play {
-  background: #fff;
-  color: #000;
-  border-color: #fff;
+.single-movie-track .n-btn-circle:hover {
+  border-color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.25) !important;
+  transform: scale(1.1) !important;
 }
 
-.single-movie-track .n-action-btn:hover {
-  transform: scale(1.12);
-  border-color: #fff;
+.single-movie-track .n-btn-circle.play {
+  background: #ffffff !important;
+  color: #000000 !important;
+  border: none !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5) !important;
 }
 
+.single-movie-track .n-btn-circle.play svg {
+  fill: #000000 !important;
+}
+
+.single-movie-track .n-btn-circle.play:hover {
+  background: #e6e6e6 !important;
+  transform: scale(1.1) !important;
+}
+
+.single-movie-track .n-btn-circle.chevron {
+  margin-left: auto !important;
+}
+
+/* Authentic Netflix Red Progress Bar with Timestamp (User Screenshot Exact Feature) */
+.single-movie-track .n-card.official-master-card .n-card-overlay::before {
+  content: "6 of 144m";
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  color: rgba(255, 255, 255, 0.72) !important;
+  width: 100% !important;
+  height: 14px !important;
+  margin: 2px 0 8px 0 !important;
+  background: linear-gradient(to right, #e50914 0%, #e50914 42%, rgba(255, 255, 255, 0.28) 42%, rgba(255, 255, 255, 0.28) 60%, transparent 60%) !important;
+  background-size: 100% 2.8px !important;
+  background-repeat: no-repeat !important;
+  background-position: left center !important;
+  order: 2 !important;
+}
+
+/* Card Info typography in compact card */
 .single-movie-track .n-card-info {
-  padding: 10px 12px 12px;
-  background: #181818;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 3px !important;
+  padding: 0 !important;
+  background: transparent !important;
+  order: 3 !important;
 }
 
 .single-movie-track .n-movie-name {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 13.5px !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+  margin: 0 0 2px 0 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  letter-spacing: 0.2px !important;
+}
+
+/* Metadata Badges line: 98% Match, U/A 16+, 2h 24m, HD */
+.single-movie-track .n-card.official-master-card .n-card-info::after {
+  content: "98% Match   U/A 16+   2h 24m   HD";
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 13px;
-  font-weight: 800;
-  color: #fff;
-  margin: 0 0 4px 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  letter-spacing: 0.3px;
-}
-
-.n-card-meta,
-.n-card .n-card-meta,
-.single-movie-track .n-card-meta {
-  display: none !important;
-}
-
-.single-movie-track .n-card-meta .match {
-  color: #46d369;
-  font-weight: 800;
-}
-
-.single-movie-track .n-card-meta .age,
-.single-movie-track .n-card-meta .dur,
-.single-movie-track .n-card-meta .n-badge {
-  font-size: 9px;
-  padding: 1px 4px;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  border-radius: 2px;
-  color: rgba(255, 255, 255, 0.85);
+  font-size: 10px;
   font-weight: 700;
+  color: rgba(255, 255, 255, 0.65);
+  letter-spacing: 0.4px;
+  margin-bottom: 2px;
 }
 
 .single-movie-track .n-card-genres {
-  font-size: 10px;
-  color: rgba(255, 255, 255, 0.7);
-  margin: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-size: 10.5px !important;
+  color: rgba(255, 255, 255, 0.68) !important;
+  margin: 0 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
 }
 
-/* Responsive Devices */
-@media (min-width: 1200px) {
-  .single-movie-track .n-card.official-master-card {
-    flex: 0 0 260px;
-    width: 260px;
-  }
-}
-
+/* Responsive Devices on Touch / Mobile */
 @media (max-width: 768px) {
+  .single-movie-track {
+    padding: 10px 4px 20px 4px !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
   .single-movie-track .n-card.official-master-card {
-    flex: 0 0 200px;
-    width: 200px;
+    flex: 0 0 200px !important;
+    width: 200px !important;
+  }
+  .single-movie-track .n-card.official-master-card:hover {
+    transform: none !important; /* Disable hover jumps on mobile touch */
   }
   .single-movie-track .n-movie-name {
-    font-size: 12px;
+    font-size: 12px !important;
   }
 }
 
 @media (max-width: 480px) {
   .single-movie-track .n-card.official-master-card {
-    flex: 0 0 170px;
-    width: 170px;
-  }
-  .single-movie-track .n-action-btn {
-    width: 30px;
-    height: 30px;
+    flex: 0 0 160px !important;
+    width: 160px !important;
   }
   .single-movie-track .n-movie-name {
-    font-size: 11px;
+    font-size: 11px !important;
   }
   .single-movie-track .n-card-genres {
-    display: none;
+    display: none !important;
   }
 }
 
