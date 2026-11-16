@@ -2723,6 +2723,28 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
+  // Handle Embed Movie Mode (Maa TMDB 1389158 / Peachify)
+  if (targetTime === 'maa' || targetTime === 'maa_2025' || targetTime === '1389158' || targetTime === 'kajol_maa') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = "Maa (2025) • Kajol & Ronit Roy • TMDB 1389158";
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const embedUrl = 'https://peachify.net/movie/1389158';
+      if (embedIframe.src !== embedUrl) {
+        embedIframe.src = embedUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
   // Generalized CodeSpecters / Custom Embed Routing
   if (typeof targetTime === 'string' && (targetTime.startsWith('codespecters:') || targetTime.startsWith('cs:') || targetTime.startsWith('https://api.codespecters.com/'))) {
     nbpIsEmbedMode = true;
@@ -3882,6 +3904,14 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       age: 'U/A 16+',
       dur: '2h 41m',
       desc: "An epic historical action saga chronicling the valiant life and fearless battles of Chhatrapati Sambhaji Maharaj, the lion of the Maratha Empire, as he fiercely defends Swarajya against Mughal Emperor Aurangzeb. Starring Vicky Kaushal, Rashmika Mandanna, Akshaye Khanna, Ashutosh Rana, Divya Dutta, Vineet Kumar Singh. Directed by Laxman Utekar, produced by Dinesh Vijan, music by A. R. Rahman. Streamed in 4K UHD via Peachify TMDB 1196943."
+    },
+    'maa': {
+      title: 'MAA',
+      hero: 'assets/images/maa_landscape.jpg',
+      year: '2025',
+      age: 'U/A 16+',
+      dur: '2h 13m',
+      desc: "In a cursed remote village shadowed by ancient demonic forces, a determined mother unleashes the fierce divine wrath of Goddess Kali to rescue her abducted daughter from a child-devouring entity. Starring Kajol, Ronit Roy, Indraneil Sengupta, Kherin Sharma, Jitin Gulati. Directed by Vishal Furia, produced by Ajay Devgn and Jyoti Deshpande. Streamed in 1080P HEVC via Peachify TMDB 1389158."
     },
     'shiva': {
       title: 'SHIVA DHANUSH: THE SACRED PINAKA',
