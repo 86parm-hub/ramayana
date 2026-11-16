@@ -769,6 +769,18 @@
         return;
       }
 
+      // Embed movie handler: Hi Papa (TMDB 1068452 / Peachify)
+      if (targetTime === 'hi_papa' || targetTime === 'hipapa' || targetTime === 'hi_nanna' || targetTime === 'hinanna' || targetTime === '1068452' || targetTime === 'nani_hipapa') {
+        openEmbedPlayer('1068452', "Hi Papa • Nani & Mrunal Thakur • TMDB 1068452", 1, 'hi_papa');
+        return;
+      }
+
+      // Embed movie handler: Dragon (TMDB 1273049 / Peachify)
+      if (targetTime === 'dragon' || targetTime === 'dragon_2025' || targetTime === '1273049' || targetTime === 'pradeep_dragon') {
+        openEmbedPlayer('1273049', "Dragon • Pradeep Ranganathan • TMDB 1273049", 1, 'dragon');
+        return;
+      }
+
       // Universal numeric TMDB embed handler for any new movie IDs
       if (targetTime && /^\d{5,8}$/.test(String(targetTime).trim())) {
         openEmbedPlayer(String(targetTime).trim(), "Movie TMDB " + targetTime, 1, 'embed_' + targetTime);
@@ -1898,6 +1910,66 @@
                 </div>
               </div>
             </article>
+
+            <!-- Official Movie Card 7: Hi Papa (2023) - Nani, Mrunal Thakur (TMDB 1068452) -->
+            <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('hi_papa')" title="Play Hi Papa - TMDB 1068452">
+              <div class="n-card-thumb">
+                <img src="assets/images/hi_papa_landscape.jpg" data-poster="assets/images/hi_papa_poster.jpg" alt="Hi Papa" loading="lazy">
+                <span class="n-card-top-tag">NANI &bull; MRUNAL</span>
+                <span class="n-card-quality-tag">4K UHD</span>
+
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('hi_papa');" title="Play Movie">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                    </button>
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('hi_papa');" title="More Info">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">Hi Papa</h4>
+                    <p class="n-card-genres">Emotional Drama &bull; Romance &bull; Fatherhood &bull; Heartfelt</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Official Movie Card 8: Dragon (2025) - Pradeep Ranganathan (TMDB 1273049) -->
+            <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('dragon')" title="Play Dragon - TMDB 1273049">
+              <div class="n-card-thumb">
+                <img src="assets/images/dragon_landscape.jpg" data-poster="assets/images/dragon_poster.jpg" alt="Dragon" loading="lazy">
+                <span class="n-card-top-tag">PRADEEP RANGANATHAN</span>
+                <span class="n-card-quality-tag">1080P HEVC</span>
+
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('dragon');" title="Play Movie">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                    </button>
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('dragon');" title="More Info">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">Dragon</h4>
+                    <p class="n-card-genres">Coming-of-Age Comedy &bull; Romance &bull; College Life &bull; AGS</p>
+                  </div>
+                </div>
+              </div>
+            </article>
           </div>
           <button class="n-slider-btn next" onclick="slideNetflixRow('rowTrackSciFi', 1)" aria-label="Next titles">
             <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
@@ -2936,6 +3008,66 @@
               </div>
             </div>
           </article>
+
+          <!-- Official Movie Card 30: Hi Papa (2023) - Nani, Mrunal Thakur (TMDB 1068452) -->
+          <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('hi_papa')" title="Play Hi Papa - TMDB 1068452">
+            <div class="n-card-thumb">
+              <img src="assets/images/hi_papa_landscape.jpg" data-poster="assets/images/hi_papa_poster.jpg" alt="Hi Papa" loading="lazy">
+              <span class="n-card-top-tag">NANI &bull; MRUNAL</span>
+              <span class="n-card-quality-tag">4K UHD</span>
+
+              <div class="n-card-overlay">
+                <div class="n-card-actions">
+                  <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('hi_papa');" title="Play Movie">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                  </button>
+                  <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                  </button>
+                  <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                  </button>
+                  <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('hi_papa');" title="More Info">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  </button>
+                </div>
+                <div class="n-card-info">
+                  <h4 class="n-movie-name">Hi Papa</h4>
+                  <p class="n-card-genres">Emotional Drama &bull; Romance &bull; Fatherhood &bull; Heartfelt</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Official Movie Card 31: Dragon (2025) - Pradeep Ranganathan (TMDB 1273049) -->
+          <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('dragon')" title="Play Dragon - TMDB 1273049">
+            <div class="n-card-thumb">
+              <img src="assets/images/dragon_landscape.jpg" data-poster="assets/images/dragon_poster.jpg" alt="Dragon" loading="lazy">
+              <span class="n-card-top-tag">PRADEEP RANGANATHAN</span>
+              <span class="n-card-quality-tag">1080P HEVC</span>
+
+              <div class="n-card-overlay">
+                <div class="n-card-actions">
+                  <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('dragon');" title="Play Movie">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                  </button>
+                  <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                  </button>
+                  <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                  </button>
+                  <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('dragon');" title="More Info">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  </button>
+                </div>
+                <div class="n-card-info">
+                  <h4 class="n-movie-name">Dragon</h4>
+                  <p class="n-card-genres">Coming-of-Age Comedy &bull; Romance &bull; College Life &bull; AGS</p>
+                </div>
+              </div>
+            </div>
+          </article>
         </div>
         <button class="n-slider-btn next" onclick="slideNetflixRow('rowTrackCatalog', 1)" aria-label="Next titles">
           <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
@@ -3468,7 +3600,7 @@
     </button>
   </nav>
 
-  <script src="js/app.js?v=20261116_v53_demon_slayer_row5"></script>
+  <script src="js/app.js?v=20261116_v54_hipapa_dragon"></script>
 
   <!-- =========================================================================
        SPOTIFY NOW PLAYING BOTTOM BAR (AUTHENTIC 3-COLUMN DESKTOP DOCK)

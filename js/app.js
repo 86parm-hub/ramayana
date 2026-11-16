@@ -2635,6 +2635,50 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
+  // Handle Embed Movie Mode (Hi Papa TMDB 1068452 / Peachify)
+  if (targetTime === 'hi_papa' || targetTime === 'hipapa' || targetTime === 'hi_nanna' || targetTime === 'hinanna' || targetTime === '1068452' || targetTime === 'nani_hipapa') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = "Hi Papa • Nani & Mrunal Thakur • TMDB 1068452";
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const embedUrl = 'https://peachify.net/movie/1068452';
+      if (embedIframe.src !== embedUrl) {
+        embedIframe.src = embedUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
+  // Handle Embed Movie Mode (Dragon TMDB 1273049 / Peachify)
+  if (targetTime === 'dragon' || targetTime === 'dragon_2025' || targetTime === '1273049' || targetTime === 'pradeep_dragon') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = "Dragon • Pradeep Ranganathan • TMDB 1273049";
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const embedUrl = 'https://peachify.net/movie/1273049';
+      if (embedIframe.src !== embedUrl) {
+        embedIframe.src = embedUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
   // Generalized CodeSpecters / Custom Embed Routing
   if (typeof targetTime === 'string' && (targetTime.startsWith('codespecters:') || targetTime.startsWith('cs:') || targetTime.startsWith('https://api.codespecters.com/'))) {
     nbpIsEmbedMode = true;
@@ -3762,6 +3806,22 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       age: 'U/A 16+',
       dur: '2h 15m',
       desc: "The Demon Slayer Corps plunges into the terrifying, dimension-warping Infinity Castle to confront Muzan Kibutsuji and the deadly Upper Rank demons in the climactic war of survival. Spectacular animation by ufotable, directed by Haruo Sotozaki, music by Yuki Kajiura and Go Shiina. Streamed in 4K UHD via Peachify TMDB 1311031."
+    },
+    'hi_papa': {
+      title: 'HI PAPA (HI NANNA)',
+      hero: 'assets/images/hi_papa_landscape.jpg',
+      year: '2023',
+      age: 'U/A 13+',
+      dur: '2h 35m',
+      desc: "A doting single father raising his precocious daughter begins narrating stories of her absent mother, unaware that serendipitous encounters with a compassionate woman are about to unravel buried memories and destiny. Starring Nani, Mrunal Thakur, Baby Kiara Khanna, Jayaram, Priyadarshi Pulikonda. Directed by Shouryuv, music by Hesham Abdul Wahab. Streamed in 4K UHD via Peachify TMDB 1068452."
+    },
+    'dragon': {
+      title: 'DRAGON',
+      hero: 'assets/images/dragon_landscape.jpg',
+      year: '2025',
+      age: 'U/A 16+',
+      dur: '2h 32m',
+      desc: "A carefree, backbencher college student dubbed 'Dragon' seeks shortcuts to success and wealth, sparking hilarious chaos, unexpected romance, and heartfelt coming-of-age life lessons. Starring Pradeep Ranganathan, Anupama Parameswaran, Kayadu Lohar, Mysskin, Gautham Vasudev Menon. Directed by Ashwath Marimuthu, produced by AGS Entertainment. Streamed in 1080P HEVC via Peachify TMDB 1273049."
     },
     'shiva': {
       title: 'SHIVA DHANUSH: THE SACRED PINAKA',
