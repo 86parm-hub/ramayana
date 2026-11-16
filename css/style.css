@@ -10200,3 +10200,79 @@ img, video {
     padding: 8px;
   }
 }
+
+/* =========================================================================
+   CINEMA PLAYER MULTI-SERVER SWITCHER BAR (NETFLIX PREMIUM STYLE)
+   ========================================================================= */
+.nbp-embed-server-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(18, 18, 18, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 5px 12px;
+  border-radius: 26px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  z-index: 30;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.nbp-server-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #9e9e9e;
+  text-transform: uppercase;
+  letter-spacing: 0.9px;
+  user-select: none;
+}
+
+.nbp-server-pill {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #d1d1d1;
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 4px 11px;
+  border-radius: 18px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.nbp-server-pill:hover {
+  background: rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.nbp-server-pill.active {
+  background: #e50914 !important;
+  border-color: #ff2b36 !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 12px rgba(229, 9, 20, 0.6);
+}
+
+@media (max-width: 768px) {
+  .nbp-embed-server-bar {
+    gap: 5px;
+    padding: 4px 8px;
+    max-width: 66vw;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nbp-embed-server-bar::-webkit-scrollbar {
+    display: none;
+  }
+  .nbp-server-label {
+    display: none;
+  }
+  .nbp-server-pill {
+    font-size: 0.68rem;
+    padding: 3px 8px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+}
+

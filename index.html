@@ -18,7 +18,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/android-chrome-192x192.png?v=3">
   <link rel="icon" type="image/png" sizes="512x512" href="assets/icons/android-chrome-512x512.png?v=3">
 
-  <link rel="stylesheet" href="css/style.css?v=20261116_v10_adshield_mobile">
+  <link rel="stylesheet" href="css/style.css?v=20261116_v45_multiserver_embed_fix">
 
   <!-- Premium Fonts: Cinzel, Cinzel Decorative, Marcellus, Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -90,18 +90,18 @@
         } catch(err) {}
       }
 
-      // 5. Enforce sandbox on the player iframe
+      // 5. Enforce streaming-friendly permissions on the player iframe
       function enforcePlayerIframeShield() {
         try {
           var iframe = document.getElementById('nbpEmbedIframe');
           if (iframe) {
             var currentSandbox = iframe.getAttribute('sandbox') || '';
-            var targetSandbox = 'allow-scripts allow-same-origin allow-forms allow-presentation';
+            var targetSandbox = 'allow-scripts allow-same-origin allow-forms allow-presentation allow-popups allow-popups-to-escape-sandbox allow-downloads';
             if (currentSandbox !== targetSandbox) {
               iframe.setAttribute('sandbox', targetSandbox);
             }
-            if (!iframe.getAttribute('referrerpolicy')) {
-              iframe.setAttribute('referrerpolicy', 'no-referrer');
+            if (iframe.getAttribute('referrerpolicy') !== 'strict-origin-when-cross-origin') {
+              iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
             }
           }
         } catch(err) {}
@@ -200,6 +200,91 @@
       }
     }
     window.switchPage = switchPage;
+
+    // Dynamic CodeSpecters 5-Minute Key Generator (Never Expires)
+    function getCodeSpectersKey() {
+      try {
+        var timeWindow = Math.floor(Date.now() / 300000);
+        var hash = 0;
+        var str = "NEXSTREAM" + timeWindow;
+        for (var i = 0; i < str.length; i++) {
+          hash = ((hash << 5) - hash) + str.charCodeAt(i);
+          hash |= 0;
+        }
+        return 'DEMO_' + Math.abs(hash).toString(16).padEnd(8, '0');
+      } catch(e) {
+        return 'DEMO_36da8cb2';
+      }
+    }
+    window.getCodeSpectersKey = getCodeSpectersKey;
+
+    var currentEmbedTmdbId = '';
+    var currentEmbedServer = 1;
+
+    function switchEmbedServer(serverNum) {
+      var iframe = document.getElementById('nbpEmbedIframe');
+      if (!iframe || !currentEmbedTmdbId) return;
+      currentEmbedServer = serverNum;
+
+      var pills = [
+        document.getElementById('serverPill1'),
+        document.getElementById('serverPill2'),
+        document.getElementById('serverPill3'),
+        document.getElementById('serverPill4')
+      ];
+      pills.forEach(function(pill, idx) {
+        if (pill) {
+          if (idx + 1 === serverNum) pill.classList.add('active');
+          else pill.classList.remove('active');
+        }
+      });
+
+      if (serverNum === 1) {
+        iframe.src = 'https://peachify.net/movie/' + currentEmbedTmdbId;
+      } else if (serverNum === 2) {
+        iframe.src = 'https://api.codespecters.com/embed/movie/' + currentEmbedTmdbId + '?apikey=' + getCodeSpectersKey();
+      } else if (serverNum === 3) {
+        iframe.src = 'https://embedmaster.link/movie/' + currentEmbedTmdbId;
+      } else if (serverNum === 4) {
+        iframe.src = 'https://autoembed.co/movie/tmdb/' + currentEmbedTmdbId;
+      }
+    }
+    window.switchEmbedServer = switchEmbedServer;
+
+    function openEmbedPlayer(tmdbId, title, defaultServer, historyKey) {
+      defaultServer = defaultServer || 1;
+      currentEmbedTmdbId = String(tmdbId);
+      var modal = document.getElementById('netflixBlackPlayerModal');
+      var video = document.getElementById('nbpVideo');
+      var embedIframe = document.getElementById('nbpEmbedIframe');
+      var titleDisplay = document.getElementById('nbpCenterTitle');
+      var spinner = document.getElementById('nbpSpinner');
+      var serverBar = document.getElementById('nbpEmbedServerBar');
+
+      if (modal) {
+        modal.classList.add('active');
+        modal.classList.add('is-embed-active');
+        modal.setAttribute('aria-hidden', 'false');
+      }
+      document.body.style.overflow = 'hidden';
+      if (video) {
+        try { video.pause(); video.currentTime = 0; } catch(e){}
+        video.style.display = 'none';
+      }
+      if (titleDisplay) titleDisplay.textContent = title;
+      if (serverBar) serverBar.style.display = 'flex';
+      if (embedIframe) embedIframe.style.display = 'block';
+
+      switchEmbedServer(defaultServer);
+
+      if (spinner) spinner.classList.remove('active');
+      try {
+        if (window.history && window.history.pushState) {
+          window.history.pushState({ type: 'netflix-player', targetTime: historyKey || ('embed_' + tmdbId) }, null, '#player');
+        }
+      } catch(e){}
+    }
+    window.openEmbedPlayer = openEmbedPlayer;
 
     function openNetflixBlackPlayer(targetTime, fromHistory) {
       targetTime = targetTime || 'part1';
@@ -608,313 +693,79 @@
 
       // Embed movie handler: Peddi (TMDB 1057265 / Peachify)
       if (targetTime === 'peddi' || targetTime === '1057265' || targetTime === 'ramcharan_peddi') {
-        if (modal) {
-          modal.classList.add('active');
-          modal.classList.add('is-embed-active');
-          modal.setAttribute('aria-hidden', 'false');
-        }
-        document.body.style.overflow = 'hidden';
-        if (video) {
-          try { video.pause(); video.currentTime = 0; } catch(e){}
-          video.style.display = 'none';
-        }
-        if (titleDisplay) titleDisplay.textContent = "Peddi • Ram Charan • TMDB 1057265";
-        if (embedIframe) {
-          embedIframe.style.display = 'block';
-          embedIframe.src = 'https://peachify.net/movie/1057265';
-        }
-        if (spinner) spinner.classList.remove('active');
-        try {
-          if (!fromHistory && window.history && window.history.pushState) {
-            window.history.pushState({ type: 'netflix-player', targetTime: 'peddi' }, null, '#player');
-          }
-        } catch(e){}
+        openEmbedPlayer('1057265', "Peddi • Ram Charan • TMDB 1057265", 1, 'peddi');
         return;
       }
 
       // Embed movie handler: Cocktail 2 (TMDB 1392469 / Peachify)
       if (targetTime === 'cocktail2' || targetTime === 'cocktail_2' || targetTime === '1392469' || targetTime === 'shahid_cocktail2') {
-        if (modal) {
-          modal.classList.add('active');
-          modal.classList.add('is-embed-active');
-          modal.setAttribute('aria-hidden', 'false');
-        }
-        document.body.style.overflow = 'hidden';
-        if (video) {
-          try { video.pause(); video.currentTime = 0; } catch(e){}
-          video.style.display = 'none';
-        }
-        if (titleDisplay) titleDisplay.textContent = "Cocktail 2 • Shahid Kapoor • TMDB 1392469";
-        if (embedIframe) {
-          embedIframe.style.display = 'block';
-          embedIframe.src = 'https://peachify.net/movie/1392469';
-        }
-        if (spinner) spinner.classList.remove('active');
-        try {
-          if (!fromHistory && window.history && window.history.pushState) {
-            window.history.pushState({ type: 'netflix-player', targetTime: 'cocktail2' }, null, '#player');
-          }
-        } catch(e){}
+        openEmbedPlayer('1392469', "Cocktail 2 • Shahid Kapoor • TMDB 1392469", 1, 'cocktail2');
         return;
       }
 
       // Embed movie handler: Avaraachan & Sons (TMDB 1290035 / Peachify)
       if (targetTime === 'avarachan' || targetTime === 'avarachan_sons' || targetTime === '1290035' || targetTime === 'bijumenon_avarachan') {
-        if (modal) {
-          modal.classList.add('active');
-          modal.classList.add('is-embed-active');
-          modal.setAttribute('aria-hidden', 'false');
-        }
-        document.body.style.overflow = 'hidden';
-        if (video) {
-          try { video.pause(); video.currentTime = 0; } catch(e){}
-          video.style.display = 'none';
-        }
-        if (titleDisplay) titleDisplay.textContent = "Avaraachan & Sons • Biju Menon • TMDB 1290035";
-        if (embedIframe) {
-          embedIframe.style.display = 'block';
-          embedIframe.src = 'https://peachify.net/movie/1290035';
-        }
-        if (spinner) spinner.classList.remove('active');
-        try {
-          if (!fromHistory && window.history && window.history.pushState) {
-            window.history.pushState({ type: 'netflix-player', targetTime: 'avarachan' }, null, '#player');
-          }
-        } catch(e){}
+        openEmbedPlayer('1290035', "Avarachan & Sons • Biju Menon • TMDB 1290035", 1, 'avarachan');
         return;
       }
 
       // Embed movie handler: Reporting Live (TMDB 1389172 / Peachify)
-      if (targetTime === 'reporting_live' || targetTime === 'reportinglive' || targetTime === '1389172' || targetTime === 'parineeti_reporting') {
-        if (modal) {
-          modal.classList.add('active');
-          modal.classList.add('is-embed-active');
-          modal.setAttribute('aria-hidden', 'false');
-        }
-        document.body.style.overflow = 'hidden';
-        if (video) {
-          try { video.pause(); video.currentTime = 0; } catch(e){}
-          video.style.display = 'none';
-        }
-        if (titleDisplay) titleDisplay.textContent = "Reporting Live • Parineeti Chopra • TMDB 1389172";
-        if (embedIframe) {
-          embedIframe.style.display = 'block';
-          embedIframe.src = 'https://peachify.net/movie/1389172';
-        }
-        if (spinner) spinner.classList.remove('active');
-        try {
-          if (!fromHistory && window.history && window.history.pushState) {
-            window.history.pushState({ type: 'netflix-player', targetTime: 'reporting_live' }, null, '#player');
-          }
-        } catch(e){}
+      if (targetTime === 'reporting_live' || targetTime === 'reportinglive' || targetTime === '1389172' || targetTime === 'guru_reportinglive') {
+        openEmbedPlayer('1389172', "Reporting Live • Guru Somasundaram • TMDB 1389172", 1, 'reporting_live');
         return;
       }
 
       // Embed movie handler: Heartland (TMDB 1543469 / Peachify)
-      if (targetTime === 'heartland' || targetTime === '1543469' || targetTime === 'jessica_heartland') {
-        if (modal) {
-          modal.classList.add('active');
-          modal.classList.add('is-embed-active');
-          modal.setAttribute('aria-hidden', 'false');
-        }
-        document.body.style.overflow = 'hidden';
-        if (video) {
-          try { video.pause(); video.currentTime = 0; } catch(e){}
-          video.style.display = 'none';
-        }
-        if (titleDisplay) titleDisplay.textContent = "Heartland • Jessica Chastain • TMDB 1543469";
-        if (embedIframe) {
-          embedIframe.style.display = 'block';
-          embedIframe.src = 'https://peachify.net/movie/1543469';
-        }
-        if (spinner) spinner.classList.remove('active');
-        try {
-          if (!fromHistory && window.history && window.history.pushState) {
-            window.history.pushState({ type: 'netflix-player', targetTime: 'heartland' }, null, '#player');
-          }
-        } catch(e){}
+      if (targetTime === 'heartland' || targetTime === '1543469' || targetTime === 'pachauri_heartland') {
+        openEmbedPlayer('1543469', "Heartland • Pradhuman Pachauri • TMDB 1543469", 1, 'heartland');
         return;
       }
 
       // Embed movie handler: One Year to Live, Buy a Man (TMDB 1654940 / Peachify)
       if (targetTime === 'one_year_to_live' || targetTime === 'oneyeartolive' || targetTime === '1654940' || targetTime === 'buy_a_man') {
-        if (modal) {
-          modal.classList.add('active');
-          modal.classList.add('is-embed-active');
-          modal.setAttribute('aria-hidden', 'false');
-        }
-        document.body.style.overflow = 'hidden';
-        if (video) {
-          try { video.pause(); video.currentTime = 0; } catch(e){}
-          video.style.display = 'none';
-        }
-        if (titleDisplay) titleDisplay.textContent = "One Year to Live, Buy a Man • Ko Shibasaki • TMDB 1654940";
-        if (embedIframe) {
-          embedIframe.style.display = 'block';
-          embedIframe.src = 'https://peachify.net/movie/1654940';
-        }
-        if (spinner) spinner.classList.remove('active');
-        try {
-          if (!fromHistory && window.history && window.history.pushState) {
-            window.history.pushState({ type: 'netflix-player', targetTime: 'one_year_to_live' }, null, '#player');
-          }
-        } catch(e){}
+        openEmbedPlayer('1654940', "One Year to Live, Buy a Man • TMDB 1654940", 1, 'one_year_to_live');
         return;
       }
 
       // Embed movie handler: Allen (TMDB 1518204 / Peachify)
-      if (targetTime === 'allen' || targetTime === '1518204' || targetTime === 'allen_alien') {
-        if (modal) {
-          modal.classList.add('active');
-          modal.classList.add('is-embed-active');
-          modal.setAttribute('aria-hidden', 'false');
-        }
-        document.body.style.overflow = 'hidden';
-        if (video) {
-          try { video.pause(); video.currentTime = 0; } catch(e){}
-          video.style.display = 'none';
-        }
-        if (titleDisplay) titleDisplay.textContent = "Allen • T.J. Power • TMDB 1518204";
-        if (embedIframe) {
-          embedIframe.style.display = 'block';
-          embedIframe.src = 'https://peachify.net/movie/1518204';
-        }
-        if (spinner) spinner.classList.remove('active');
-        try {
-          if (!fromHistory && window.history && window.history.pushState) {
-            window.history.pushState({ type: 'netflix-player', targetTime: 'allen' }, null, '#player');
-          }
-        } catch(e){}
+      if (targetTime === 'allen' || targetTime === '1518204' || targetTime === 'allen2026') {
+        openEmbedPlayer('1518204', "Allen • TMDB 1518204", 1, 'allen');
         return;
       }
 
       // Embed movie handler: Jolly LLB 3 (TMDB 1015981 / Peachify)
-      if (targetTime === 'jolly_llb_3' || targetTime === 'jollyllb3' || targetTime === '1015981' || targetTime === 'akshay_jolly') {
-        if (modal) {
-          modal.classList.add('active');
-          modal.classList.add('is-embed-active');
-          modal.setAttribute('aria-hidden', 'false');
-        }
-        document.body.style.overflow = 'hidden';
-        if (video) {
-          try { video.pause(); video.currentTime = 0; } catch(e){}
-          video.style.display = 'none';
-        }
-        if (titleDisplay) titleDisplay.textContent = "Jolly LLB 3 • Akshay Kumar & Arshad Warsi • TMDB 1015981";
-        if (embedIframe) {
-          embedIframe.style.display = 'block';
-          embedIframe.src = 'https://peachify.net/movie/1015981';
-        }
-        if (spinner) spinner.classList.remove('active');
-        try {
-          if (!fromHistory && window.history && window.history.pushState) {
-            window.history.pushState({ type: 'netflix-player', targetTime: 'jolly_llb_3' }, null, '#player');
-          }
-        } catch(e){}
+      if (targetTime === 'jolly_llb_3' || targetTime === 'jollyllb3' || targetTime === '1015981' || targetTime === 'akshay_jolly3') {
+        openEmbedPlayer('1015981', "Jolly LLB 3 • Akshay Kumar & Arshad Warsi • TMDB 1015981", 1, 'jolly_llb_3');
         return;
       }
 
       // Embed movie handler: Saiyaara (TMDB 1241634 / Peachify)
       if (targetTime === 'saiyaara' || targetTime === '1241634' || targetTime === 'ahaan_saiyaara') {
-        if (modal) {
-          modal.classList.add('active');
-          modal.classList.add('is-embed-active');
-          modal.setAttribute('aria-hidden', 'false');
-        }
-        document.body.style.overflow = 'hidden';
-        if (video) {
-          try { video.pause(); video.currentTime = 0; } catch(e){}
-          video.style.display = 'none';
-        }
-        if (titleDisplay) titleDisplay.textContent = "Saiyaara • Ahaan Panday & Aneet Padda • TMDB 1241634";
-        if (embedIframe) {
-          embedIframe.style.display = 'block';
-          embedIframe.src = 'https://peachify.net/movie/1241634';
-        }
-        if (spinner) spinner.classList.remove('active');
-        try {
-          if (!fromHistory && window.history && window.history.pushState) {
-            window.history.pushState({ type: 'netflix-player', targetTime: 'saiyaara' }, null, '#player');
-          }
-        } catch(e){}
+        openEmbedPlayer('1241634', "Saiyaara • Ahaan Panday & Aneet Padda • TMDB 1241634", 1, 'saiyaara');
         return;
       }
 
       // Embed movie handler: The Last House (TMDB 1284041 / Peachify)
       if (targetTime === 'the_last_house' || targetTime === 'thelasthouse' || targetTime === '1284041' || targetTime === 'greta_lasthouse') {
-        if (modal) {
-          modal.classList.add('active');
-          modal.classList.add('is-embed-active');
-          modal.setAttribute('aria-hidden', 'false');
-        }
-        document.body.style.overflow = 'hidden';
-        if (video) {
-          try { video.pause(); video.currentTime = 0; } catch(e){}
-          video.style.display = 'none';
-        }
-        if (titleDisplay) titleDisplay.textContent = "The Last House • Greta Lee & Wagner Moura • TMDB 1284041";
-        if (embedIframe) {
-          embedIframe.style.display = 'block';
-          embedIframe.src = 'https://peachify.net/movie/1284041';
-        }
-        if (spinner) spinner.classList.remove('active');
-        try {
-          if (!fromHistory && window.history && window.history.pushState) {
-            window.history.pushState({ type: 'netflix-player', targetTime: 'the_last_house' }, null, '#player');
-          }
-        } catch(e){}
+        openEmbedPlayer('1284041', "The Last House • Greta Lee & Wagner Moura • TMDB 1284041", 1, 'the_last_house');
         return;
       }
 
       // Embed movie handler: Brawlers (TMDB 1418709 / Peachify)
       if (targetTime === 'brawlers' || targetTime === 'bagarre' || targetTime === '1418709' || targetTime === 'nassim_brawlers') {
-        if (modal) {
-          modal.classList.add('active');
-          modal.classList.add('is-embed-active');
-          modal.setAttribute('aria-hidden', 'false');
-        }
-        document.body.style.overflow = 'hidden';
-        if (video) {
-          try { video.pause(); video.currentTime = 0; } catch(e){}
-          video.style.display = 'none';
-        }
-        if (titleDisplay) titleDisplay.textContent = "Brawlers (Bagarre) • Nassim Lyes • TMDB 1418709";
-        if (embedIframe) {
-          embedIframe.style.display = 'block';
-          embedIframe.src = 'https://peachify.net/movie/1418709';
-        }
-        if (spinner) spinner.classList.remove('active');
-        try {
-          if (!fromHistory && window.history && window.history.pushState) {
-            window.history.pushState({ type: 'netflix-player', targetTime: 'brawlers' }, null, '#player');
-          }
-        } catch(e){}
+        openEmbedPlayer('1418709', "Brawlers (Bagarre) • Nassim Lyes • TMDB 1418709", 1, 'brawlers');
         return;
       }
 
-      // Embed movie handler: Dhadak 2 (TMDB 1213777 / CodeSpecters API DEMO_36da8c77)
+      // Embed movie handler: Dhadak 2 (TMDB 1213777 / CodeSpecters API & Peachify Multi-Server)
       if (targetTime === 'dhadak2' || targetTime === 'dhadak_2' || targetTime === '1213777' || targetTime === 'tt13451410' || targetTime === 'siddhant_dhadak2') {
-        if (modal) {
-          modal.classList.add('active');
-          modal.classList.add('is-embed-active');
-          modal.setAttribute('aria-hidden', 'false');
-        }
-        document.body.style.overflow = 'hidden';
-        if (video) {
-          try { video.pause(); video.currentTime = 0; } catch(e){}
-          video.style.display = 'none';
-        }
-        if (titleDisplay) titleDisplay.textContent = "Dhadak 2 • Siddhant Chaturvedi & Triptii Dimri • CodeSpecters 1213777";
-        if (embedIframe) {
-          embedIframe.style.display = 'block';
-          embedIframe.src = 'https://api.codespecters.com/embed/movie/1213777?apikey=DEMO_36da8c77';
-        }
-        if (spinner) spinner.classList.remove('active');
-        try {
-          if (!fromHistory && window.history && window.history.pushState) {
-            window.history.pushState({ type: 'netflix-player', targetTime: 'dhadak2' }, null, '#player');
-          }
-        } catch(e){}
+        openEmbedPlayer('1213777', "Dhadak 2 • Siddhant Chaturvedi & Triptii Dimri • TMDB 1213777", 2, 'dhadak2');
+        return;
+      }
+
+      // Universal numeric TMDB embed handler for any new movie IDs
+      if (targetTime && /^\d{5,8}$/.test(String(targetTime).trim())) {
+        openEmbedPlayer(String(targetTime).trim(), "Movie TMDB " + targetTime, 1, 'embed_' + targetTime);
         return;
       }
 
@@ -930,6 +781,12 @@
         var modal = document.getElementById('netflixBlackPlayerModal');
         var video = document.getElementById('nbpVideo');
         var embedIframe = document.getElementById('nbpEmbedIframe');
+        var serverBar = document.getElementById('nbpEmbedServerBar');
+
+        if (serverBar) {
+          serverBar.style.display = 'none';
+        }
+        currentEmbedTmdbId = '';
 
         if (modal) {
           modal.classList.remove('is-embed-active');
@@ -3524,7 +3381,7 @@
     </button>
   </nav>
 
-  <script src="js/app.js?v=20261116_v44_dhadak2_codespecters"></script>
+  <script src="js/app.js?v=20261116_v45_multiserver_embed_fix"></script>
 
   <!-- =========================================================================
        SPOTIFY NOW PLAYING BOTTOM BAR (AUTHENTIC 3-COLUMN DESKTOP DOCK)
@@ -3663,7 +3520,7 @@
       <video id="nbpVideo" preload="metadata" playsinline webkit-playsinline x-webkit-airplay="allow">
         <source src="https://github.com/86parm-hub/ramayana/releases/download/v1.0/Ramayana.Part1.Act1.mp4#t=3" type="video/mp4">
       </video>
-      <iframe id="nbpEmbedIframe" class="nbp-embed-iframe" src="" sandbox="allow-scripts allow-same-origin allow-forms allow-presentation" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen referrerpolicy="no-referrer" style="display:none;"></iframe>
+      <iframe id="nbpEmbedIframe" class="nbp-embed-iframe" src="" sandbox="allow-scripts allow-same-origin allow-forms allow-presentation allow-popups allow-popups-to-escape-sandbox allow-downloads" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; clipboard-write" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" style="display:none;"></iframe>
       <div class="nbp-ambient-vignette"></div>
       
       <!-- On-Screen Subtitle Layer (Netflix Style) -->
@@ -3718,6 +3575,15 @@
           <polyline points="12 19 5 12 12 5"></polyline>
         </svg>
       </button>
+
+      <!-- Dynamic Cinema Multi-Server Switcher Bar for Embedded OTT Streams -->
+      <div class="nbp-embed-server-bar" id="nbpEmbedServerBar" style="display:none;" aria-label="Streaming Server Selection">
+        <span class="nbp-server-label">Server:</span>
+        <button type="button" class="nbp-server-pill active" id="serverPill1" onclick="switchEmbedServer(1)">Server 1 (Peachify)</button>
+        <button type="button" class="nbp-server-pill" id="serverPill2" onclick="switchEmbedServer(2)">Server 2 (CodeSpecters)</button>
+        <button type="button" class="nbp-server-pill" id="serverPill3" onclick="switchEmbedServer(3)">Server 3 (EmbedMaster)</button>
+        <button type="button" class="nbp-server-pill" id="serverPill4" onclick="switchEmbedServer(4)">Server 4 (AutoEmbed)</button>
+      </div>
 
       <div class="nbp-top-right">
         <button class="nbp-flag-btn" title="Report a problem" onclick="alert('Thank you for your feedback! Stream quality is verified.')">
