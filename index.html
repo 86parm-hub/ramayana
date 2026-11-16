@@ -788,6 +788,84 @@
         return;
       }
 
+      // Embed movie handler: Jolly LLB 3 (TMDB 1015981 / Peachify)
+      if (targetTime === 'jolly_llb_3' || targetTime === 'jollyllb3' || targetTime === '1015981' || targetTime === 'akshay_jolly') {
+        if (modal) {
+          modal.classList.add('active');
+          modal.classList.add('is-embed-active');
+          modal.setAttribute('aria-hidden', 'false');
+        }
+        document.body.style.overflow = 'hidden';
+        if (video) {
+          try { video.pause(); video.currentTime = 0; } catch(e){}
+          video.style.display = 'none';
+        }
+        if (titleDisplay) titleDisplay.textContent = "Jolly LLB 3 • Akshay Kumar & Arshad Warsi • TMDB 1015981";
+        if (embedIframe) {
+          embedIframe.style.display = 'block';
+          embedIframe.src = 'https://peachify.net/movie/1015981';
+        }
+        if (spinner) spinner.classList.remove('active');
+        try {
+          if (!fromHistory && window.history && window.history.pushState) {
+            window.history.pushState({ type: 'netflix-player', targetTime: 'jolly_llb_3' }, null, '#player');
+          }
+        } catch(e){}
+        return;
+      }
+
+      // Embed movie handler: Saiyaara (TMDB 1241634 / Peachify)
+      if (targetTime === 'saiyaara' || targetTime === '1241634' || targetTime === 'ahaan_saiyaara') {
+        if (modal) {
+          modal.classList.add('active');
+          modal.classList.add('is-embed-active');
+          modal.setAttribute('aria-hidden', 'false');
+        }
+        document.body.style.overflow = 'hidden';
+        if (video) {
+          try { video.pause(); video.currentTime = 0; } catch(e){}
+          video.style.display = 'none';
+        }
+        if (titleDisplay) titleDisplay.textContent = "Saiyaara • Ahaan Panday & Aneet Padda • TMDB 1241634";
+        if (embedIframe) {
+          embedIframe.style.display = 'block';
+          embedIframe.src = 'https://peachify.net/movie/1241634';
+        }
+        if (spinner) spinner.classList.remove('active');
+        try {
+          if (!fromHistory && window.history && window.history.pushState) {
+            window.history.pushState({ type: 'netflix-player', targetTime: 'saiyaara' }, null, '#player');
+          }
+        } catch(e){}
+        return;
+      }
+
+      // Embed movie handler: The Last House (TMDB 1284041 / Peachify)
+      if (targetTime === 'the_last_house' || targetTime === 'thelasthouse' || targetTime === '1284041' || targetTime === 'greta_lasthouse') {
+        if (modal) {
+          modal.classList.add('active');
+          modal.classList.add('is-embed-active');
+          modal.setAttribute('aria-hidden', 'false');
+        }
+        document.body.style.overflow = 'hidden';
+        if (video) {
+          try { video.pause(); video.currentTime = 0; } catch(e){}
+          video.style.display = 'none';
+        }
+        if (titleDisplay) titleDisplay.textContent = "The Last House • Greta Lee & Wagner Moura • TMDB 1284041";
+        if (embedIframe) {
+          embedIframe.style.display = 'block';
+          embedIframe.src = 'https://peachify.net/movie/1284041';
+        }
+        if (spinner) spinner.classList.remove('active');
+        try {
+          if (!fromHistory && window.history && window.history.pushState) {
+            window.history.pushState({ type: 'netflix-player', targetTime: 'the_last_house' }, null, '#player');
+          }
+        } catch(e){}
+        return;
+      }
+
       // Delegate native Ramayana playback to full engine
       if (typeof window.__realOpenNetflixBlackPlayer === 'function') {
         window.__realOpenNetflixBlackPlayer(targetTime, fromHistory);
@@ -1711,14 +1789,14 @@
         </div>
       </section>
 
-      <!-- Official Movie Row 4: Sci-Fi & New Premieres -->
+      <!-- Official Movie Row 4: New Premieres & Blockbusters -->
       <section class="netflix-row" id="rowSciFi">
         <div class="row-header">
           <h2 class="row-title">
-            <span>Sci-Fi &amp; New Premieres</span>
+            <span>New Premieres &amp; Blockbusters</span>
             <span class="row-title-chevron">&rsaquo;</span>
           </h2>
-          <span class="row-badge-pill">1 Title Streaming</span>
+          <span class="row-badge-pill">4 Titles Streaming</span>
         </div>
 
         <div class="n-carousel-wrap">
@@ -1751,6 +1829,96 @@
                   <div class="n-card-info">
                     <h4 class="n-movie-name">Allen</h4>
                     <p class="n-card-genres">Sci-Fi &bull; Comedy &bull; Alien Encounter</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Official Movie Card 2: Jolly LLB 3 (2025) - Akshay Kumar, Arshad Warsi (TMDB 1015981) -->
+            <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('jolly_llb_3')" title="Play Jolly LLB 3 - TMDB 1015981">
+              <div class="n-card-thumb">
+                <img src="assets/images/jolly_llb_3_landscape.jpg" alt="Jolly LLB 3" loading="lazy">
+                <span class="n-card-top-tag">AKSHAY &bull; ARSHAD &bull; SAURABH</span>
+                <span class="n-card-quality-tag">1080P HEVC</span>
+
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('jolly_llb_3');" title="Play Movie">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                    </button>
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('jolly_llb_3');" title="More Info">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">Jolly LLB 3</h4>
+                    <p class="n-card-genres">Courtroom Comedy &bull; Drama &bull; Legal Battle</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Official Movie Card 3: Saiyaara (2025) - Ahaan Panday, Aneet Padda (TMDB 1241634) -->
+            <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('saiyaara')" title="Play Saiyaara - TMDB 1241634">
+              <div class="n-card-thumb">
+                <img src="assets/images/saiyaara_landscape.jpg" alt="Saiyaara" loading="lazy">
+                <span class="n-card-top-tag">AHAAN PANDAY &bull; ANEET PADDA</span>
+                <span class="n-card-quality-tag">1080P HEVC</span>
+
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('saiyaara');" title="Play Movie">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                    </button>
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('saiyaara');" title="More Info">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">Saiyaara</h4>
+                    <p class="n-card-genres">Romantic Musical &bull; Mohit Suri &bull; Love Story</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Official Movie Card 4: The Last House (2026) - Greta Lee, Wagner Moura (TMDB 1284041) -->
+            <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('the_last_house')" title="Play The Last House - TMDB 1284041">
+              <div class="n-card-thumb">
+                <img src="assets/images/the_last_house_landscape.jpg" alt="The Last House" loading="lazy">
+                <span class="n-card-top-tag">GRETA LEE &bull; WAGNER MOURA</span>
+                <span class="n-card-quality-tag">1080P HEVC</span>
+
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('the_last_house');" title="Play Movie">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                    </button>
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('the_last_house');" title="More Info">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">The Last House</h4>
+                    <p class="n-card-genres">Survival Thriller &bull; Mystery &bull; Suspense</p>
                   </div>
                 </div>
               </div>
@@ -2562,6 +2730,96 @@
               </div>
             </div>
           </article>
+
+          <!-- Official Movie Card 24: Jolly LLB 3 (2025) - Akshay Kumar, Arshad Warsi (TMDB 1015981) -->
+          <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('jolly_llb_3')" title="Play Jolly LLB 3 - TMDB 1015981">
+            <div class="n-card-thumb">
+              <img src="assets/images/jolly_llb_3_landscape.jpg" alt="Jolly LLB 3" loading="lazy">
+              <span class="n-card-top-tag">AKSHAY &bull; ARSHAD &bull; SAURABH</span>
+              <span class="n-card-quality-tag">1080P HEVC</span>
+
+              <div class="n-card-overlay">
+                <div class="n-card-actions">
+                  <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('jolly_llb_3');" title="Play Movie">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                  </button>
+                  <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                  </button>
+                  <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                  </button>
+                  <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('jolly_llb_3');" title="More Info">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  </button>
+                </div>
+                <div class="n-card-info">
+                  <h4 class="n-movie-name">Jolly LLB 3</h4>
+                  <p class="n-card-genres">Courtroom Comedy &bull; Drama &bull; Legal Battle</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Official Movie Card 25: Saiyaara (2025) - Ahaan Panday, Aneet Padda (TMDB 1241634) -->
+          <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('saiyaara')" title="Play Saiyaara - TMDB 1241634">
+            <div class="n-card-thumb">
+              <img src="assets/images/saiyaara_landscape.jpg" alt="Saiyaara" loading="lazy">
+              <span class="n-card-top-tag">AHAAN PANDAY &bull; ANEET PADDA</span>
+              <span class="n-card-quality-tag">1080P HEVC</span>
+
+              <div class="n-card-overlay">
+                <div class="n-card-actions">
+                  <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('saiyaara');" title="Play Movie">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                  </button>
+                  <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                  </button>
+                  <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                  </button>
+                  <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('saiyaara');" title="More Info">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  </button>
+                </div>
+                <div class="n-card-info">
+                  <h4 class="n-movie-name">Saiyaara</h4>
+                  <p class="n-card-genres">Romantic Musical &bull; Mohit Suri &bull; Love Story</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Official Movie Card 26: The Last House (2026) - Greta Lee, Wagner Moura (TMDB 1284041) -->
+          <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('the_last_house')" title="Play The Last House - TMDB 1284041">
+            <div class="n-card-thumb">
+              <img src="assets/images/the_last_house_landscape.jpg" alt="The Last House" loading="lazy">
+              <span class="n-card-top-tag">GRETA LEE &bull; WAGNER MOURA</span>
+              <span class="n-card-quality-tag">1080P HEVC</span>
+
+              <div class="n-card-overlay">
+                <div class="n-card-actions">
+                  <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('the_last_house');" title="Play Movie">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                  </button>
+                  <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                  </button>
+                  <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                  </button>
+                  <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('the_last_house');" title="More Info">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  </button>
+                </div>
+                <div class="n-card-info">
+                  <h4 class="n-movie-name">The Last House</h4>
+                  <p class="n-card-genres">Survival Thriller &bull; Mystery &bull; Suspense</p>
+                </div>
+              </div>
+            </div>
+          </article>
         </div>
         <button class="n-slider-btn next" onclick="slideNetflixRow('rowTrackCatalog', 1)" aria-label="Next titles">
           <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
@@ -3094,7 +3352,7 @@
     </button>
   </nav>
 
-  <script src="js/app.js?v=20261116_v41_allen"></script>
+  <script src="js/app.js?v=20261116_v42_jolly_saiyaara_lasthouse"></script>
 
   <!-- =========================================================================
        SPOTIFY NOW PLAYING BOTTOM BAR (AUTHENTIC 3-COLUMN DESKTOP DOCK)

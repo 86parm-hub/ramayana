@@ -2503,6 +2503,72 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
+  // Handle Embed Movie Mode (Jolly LLB 3 TMDB 1015981 / Peachify)
+  if (targetTime === 'jolly_llb_3' || targetTime === 'jollyllb3' || targetTime === '1015981' || targetTime === 'akshay_jolly') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = "Jolly LLB 3 • Akshay Kumar & Arshad Warsi • TMDB 1015981";
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1015981';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
+  // Handle Embed Movie Mode (Saiyaara TMDB 1241634 / Peachify)
+  if (targetTime === 'saiyaara' || targetTime === '1241634' || targetTime === 'ahaan_saiyaara') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = "Saiyaara • Ahaan Panday & Aneet Padda • TMDB 1241634";
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1241634';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
+  // Handle Embed Movie Mode (The Last House TMDB 1284041 / Peachify)
+  if (targetTime === 'the_last_house' || targetTime === 'thelasthouse' || targetTime === '1284041' || targetTime === 'greta_lasthouse') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = "The Last House • Greta Lee & Wagner Moura • TMDB 1284041";
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1284041';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
   if (nbpIsEmbedMode) {
     nbpIsEmbedMode = false;
     modal.classList.remove('is-embed-active');
@@ -3558,6 +3624,30 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       age: 'U/A 13+',
       dur: '1h 47m',
       desc: "Twenty years following a bizarre childhood encounter with an extra-terrestrial, Petey's routine life is upended when his eccentric alien friend abruptly resurfaces with a wildly unexpected mission. Starring T.J. Power, Charlotte Nicdao, Josh Helman, Emily Barclay, Benedict Hardie, Elijah Tamati. Directed by Daley Pearson and Jeffrey Walker. Streamed in 1080P HEVC via Peachify TMDB 1518204."
+    },
+    'jolly_llb_3': {
+      title: 'JOLLY LLB 3',
+      hero: 'assets/images/jolly_llb_3_landscape.jpg',
+      year: '2025',
+      age: 'U/A 13+',
+      dur: '2h 36m',
+      desc: "The third part of the Jolly LLB trilogy brings back Jagdish Tyagi and Jagdishwar Mishra for the biggest courtroom showdown as penurious widow Janki Devi Solanki seeks justice against an arrogant industrialist in a sharp satire on the judiciary and social disparity. Starring Akshay Kumar, Arshad Warsi, Saurabh Shukla, Gajraj Rao, Amrita Rao, Huma Qureshi. Directed by Subhash Kapoor. Streamed in 1080P HEVC via Peachify TMDB 1015981."
+    },
+    'saiyaara': {
+      title: 'SAIYAARA',
+      hero: 'assets/images/saiyaara_landscape.jpg',
+      year: '2025',
+      age: 'U/A 13+',
+      dur: '2h 30m',
+      desc: "Two artistic souls find soulful harmony through musical expression despite their starkly contrasting social backgrounds. As emotional bonds deepen, unexpected circumstances and social expectations test their connection. Starring Ahaan Panday, Aneet Padda, Alam Khan, Rajesh Kumar, Geeta Agrawal Sharma. Directed by Mohit Suri. Streamed in 1080P HEVC via Peachify TMDB 1241634."
+    },
+    'the_last_house': {
+      title: 'THE LAST HOUSE',
+      hero: 'assets/images/the_last_house_landscape.jpg',
+      year: '2026',
+      age: 'U/A 16+',
+      dur: '1h 50m',
+      desc: "A family suddenly sealed inside their high-tech home must work together to survive against dwindling food, psychological tension, and the ominous menace keeping them trapped. Starring Greta Lee, Wagner Moura, Riley Chung, Noah Alexander Sosnowski, Emma Ho. Directed by Louis Leterrier. Streamed in 1080P HEVC via Peachify TMDB 1284041."
     },
     'shiva': {
       title: 'SHIVA DHANUSH: THE SACRED PINAKA',
