@@ -2437,6 +2437,50 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
+  // Handle Embed Movie Mode (Heartland TMDB 1543469 / Peachify)
+  if (targetTime === 'heartland' || targetTime === '1543469' || targetTime === 'jessica_heartland') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = "Heartland • Jessica Chastain • TMDB 1543469";
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1543469';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
+  // Handle Embed Movie Mode (One Year to Live, Buy a Man TMDB 1654940 / Peachify)
+  if (targetTime === 'one_year_to_live' || targetTime === 'oneyeartolive' || targetTime === '1654940' || targetTime === 'buy_a_man') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = "One Year to Live, Buy a Man • Ko Shibasaki • TMDB 1654940";
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1654940';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
   if (nbpIsEmbedMode) {
     nbpIsEmbedMode = false;
     modal.classList.remove('is-embed-active');
@@ -3468,6 +3512,22 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       age: 'U/A 16+',
       dur: '1h 56m',
       desc: "A gritty investigative crime thriller following an ambitious young reporter and her cynical cameraman whose routine coverage spirals into perilous territory when they uncover an illicit sand-mining cartel governed by dangerous political figures. Starring Parineeti Chopra, Deven Bhojani, Adil Hussain, Shekhar Suman, Amol Palekar, Nassar. Directed by Dhruv Tripathi. Streamed in 1080P HEVC via Peachify TMDB 1389172."
+    },
+    'heartland': {
+      title: 'HEARTLAND',
+      hero: 'assets/images/heartland_landscape.jpg',
+      year: '2026',
+      age: 'U/A 16+',
+      dur: '1h 54m',
+      desc: "Former country music icon Misty Jones travels back into the intense Nashville music scene determined to unravel the elusive truth behind the sudden and mysterious disappearance of her rising-star niece. Starring Jessica Chastain, Carter Faith, Ross Lynch, John Hawkes, Garrett Hedlund, Norbert Leo Butz. Directed by Shana Feste. Streamed in 1080P HEVC via Peachify TMDB 1543469."
+    },
+    'one_year_to_live': {
+      title: 'ONE YEAR TO LIVE, BUY A MAN',
+      hero: 'assets/images/one_year_to_live_landscape.jpg',
+      year: '2026',
+      age: 'U/A 16+',
+      dur: '1h 49m',
+      desc: "Given only a single year left to live, an intensely frugal 40-year-old woman decides to spend her hard-earned life savings on hiring a popular nightclub host Sena, sparking a profound emotional transformation that challenges both of their worlds. Starring Ko Shibasaki, Eiji Akaso, Michitaka Tsutsui, Naomi Nishida, Yui Narumi. Directed by Hiroki Kazama. Streamed in 1080P HEVC via Peachify TMDB 1654940."
     },
     'shiva': {
       title: 'SHIVA DHANUSH: THE SACRED PINAKA',
