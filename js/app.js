@@ -4,6 +4,56 @@
    ========================================================================== */
 
 // ==========================================================================
+// SANDFLIX ADVANCED AD-SHIELD & LINK NEUTRALIZER (Strict Ad Protection)
+// ==========================================================================
+(function() {
+  // Override window.open globally to prevent popup ad screens
+  if (!window._adShieldActive) {
+    window._adShieldActive = true;
+    const _origOpen = window.open;
+    window.open = function(url, target, features) {
+      console.warn('[Sandflix AdShield] Blocked popup window.open attempt:', url);
+      return null;
+    };
+
+    // Unlink all ad anchors
+    window.unlinkAdElements = function() {
+      const adKeywords = [
+        'ad.', 'ads.', 'adserver', 'doubleclick', 'googleadservices', 'histats', 
+        'propellerads', 'adsterra', 'popads', 'popcash', 'exoclick', 'clickadu',
+        'hilltopads', 'juicyads', 'trafficjunky', 'betting', 'casino', 'redirect',
+        'syndication', 'gussiessmutchy', 'outbrain', 'taboola', 'asb.html', 'popunder'
+      ];
+      try {
+        const anchors = document.querySelectorAll('a[href]');
+        anchors.forEach(a => {
+          const href = (a.getAttribute('href') || '').toLowerCase();
+          if (href && !href.startsWith('javascript:') && href !== '#') {
+            if (adKeywords.some(k => href.includes(k))) {
+              a.setAttribute('data-original-href', href);
+              a.setAttribute('href', 'javascript:void(0);');
+              a.removeAttribute('target');
+              a.setAttribute('data-ad-blocked', 'true');
+              a.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+              }, true);
+            }
+          }
+        });
+      } catch(e) {}
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', window.unlinkAdElements);
+    } else {
+      window.unlinkAdElements();
+    }
+  }
+})();
+
+// ==========================================================================
 // UNIFIED HISTORY & DEVICE BACK NAVIGATION ENGINE (Mobile / Tablet / Desktop)
 // ==========================================================================
 
@@ -2299,7 +2349,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Made in Korea IMDb tt38674977 via Autoembed)
+  // Handle Embed Movie Mode (Made in Korea IMDb tt38674977 / Peachify Ad-Free)
   if (targetTime === 'made_in_korea' || targetTime === 'madeinkorea' || targetTime === 'tt38674977' || targetTime === '1561687' || targetTime === 'priyanka_korea') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -2312,16 +2362,16 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
-      const autoembedUrl = 'https://autoembed.me/movie/imdb/tt38674977';
-      if (embedIframe.src !== autoembedUrl) {
-        embedIframe.src = autoembedUrl;
+      const peachifyUrl = 'https://peachify.net/movie/1561687';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
       }
     }
     if (spinner) spinner.classList.remove('active');
     return;
   }
 
-  // Handle Embed Movie Mode (29 IMDb tt37737315 via Autoembed)
+  // Handle Embed Movie Mode (29 IMDb tt37737315 / Peachify Ad-Free)
   if (targetTime === 'm29' || targetTime === '29' || targetTime === 'tt37737315' || targetTime === '1510769' || targetTime === 'movie29') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -2334,9 +2384,9 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
-      const autoembedUrl = 'https://autoembed.me/movie/imdb/tt37737315';
-      if (embedIframe.src !== autoembedUrl) {
-        embedIframe.src = autoembedUrl;
+      const peachifyUrl = 'https://peachify.net/movie/1510769';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
       }
     }
     if (spinner) spinner.classList.remove('active');

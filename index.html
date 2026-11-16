@@ -18,7 +18,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/android-chrome-192x192.png?v=3">
   <link rel="icon" type="image/png" sizes="512x512" href="assets/icons/android-chrome-512x512.png?v=3">
 
-  <link rel="stylesheet" href="css/style.css?v=20261116_v9_hover_arrows">
+  <link rel="stylesheet" href="css/style.css?v=20261116_v10_adshield_mobile">
 
   <!-- Premium Fonts: Cinzel, Cinzel Decorative, Marcellus, Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,6 +26,117 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@600;700;800;900&family=Marcellus&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet">
+
+  <!-- =========================================================================
+       SANDFLIX ENTERPRISE AD-SHIELD & LINK NEUTRALIZER (Advanced Ad Blocking)
+       ========================================================================= -->
+  <script>
+    (function initSandflixAdShield() {
+      // 1. Intercept and completely block window.open popup ads
+      var _nativeOpen = window.open;
+      window.open = function(url, target, features) {
+        console.warn('[Sandflix AdShield] Blocked popup window.open attempt:', url);
+        return null; // Suppress all popup windows & ad tabs!
+      };
+
+      // 2. Prevent Top-level URL hijacking / redirects while player is active
+      window.addEventListener('beforeunload', function(e) {
+        var modal = document.getElementById('netflixBlackPlayerModal');
+        if (modal && modal.classList.contains('is-embed-active')) {
+          e.preventDefault();
+          e.returnValue = '';
+          return '';
+        }
+      });
+
+      // 3. Known ad networks, tracker domains, and keyword patterns
+      var adBlockList = [
+        'ad.', 'ads.', 'adserver', 'doubleclick', 'googleadservices', 'histats', 
+        'propellerads', 'adsterra', 'popads', 'popcash', 'exoclick', 'clickadu',
+        'hilltopads', 'juicyads', 'trafficjunky', 'betting', 'casino', 'redirect',
+        'syndication', 'gussiessmutchy', 'outbrain', 'taboola', 'asb.html', 'popunder'
+      ];
+
+      function isBlockedAdUrl(url) {
+        if (!url || typeof url !== 'string') return false;
+        var lower = url.toLowerCase();
+        for (var i = 0; i < adBlockList.length; i++) {
+          if (lower.indexOf(adBlockList[i]) !== -1) return true;
+        }
+        return false;
+      }
+
+      // 4. Universal Ad Link Unlinker & Neutralizer across entire DOM
+      function unlinkAllAdLinks() {
+        try {
+          var links = document.querySelectorAll('a[href], button[data-url], [data-href]');
+          for (var i = 0; i < links.length; i++) {
+            var el = links[i];
+            var href = el.getAttribute('href') || el.getAttribute('data-url') || el.getAttribute('data-href') || '';
+            if (!href || href === '#' || href.indexOf('javascript:') === 0) continue;
+
+            if (isBlockedAdUrl(href)) {
+              el.setAttribute('data-original-ad-href', href);
+              el.setAttribute('href', 'javascript:void(0);');
+              el.removeAttribute('target');
+              el.setAttribute('data-ad-blocked', 'true');
+              el.onclick = function(ev) {
+                if (ev) { ev.preventDefault(); ev.stopPropagation(); }
+                console.warn('[Sandflix AdShield] Blocked click on ad link:', href);
+                return false;
+              };
+            }
+          }
+        } catch(err) {}
+      }
+
+      // 5. Enforce sandbox on the player iframe
+      function enforcePlayerIframeShield() {
+        try {
+          var iframe = document.getElementById('nbpEmbedIframe');
+          if (iframe) {
+            var currentSandbox = iframe.getAttribute('sandbox') || '';
+            var targetSandbox = 'allow-scripts allow-same-origin allow-forms allow-presentation';
+            if (currentSandbox !== targetSandbox) {
+              iframe.setAttribute('sandbox', targetSandbox);
+            }
+            if (!iframe.getAttribute('referrerpolicy')) {
+              iframe.setAttribute('referrerpolicy', 'no-referrer');
+            }
+          }
+        } catch(err) {}
+      }
+
+      window.SandflixAdShield = {
+        unlinkAllAdLinks: unlinkAllAdLinks,
+        enforcePlayerIframeShield: enforcePlayerIframeShield,
+        isBlockedAdUrl: isBlockedAdUrl
+      };
+
+      // Run on DOM events and observer
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() {
+          unlinkAllAdLinks();
+          enforcePlayerIframeShield();
+        });
+      } else {
+        unlinkAllAdLinks();
+        enforcePlayerIframeShield();
+      }
+      window.addEventListener('load', function() {
+        unlinkAllAdLinks();
+        enforcePlayerIframeShield();
+      });
+
+      try {
+        var observer = new MutationObserver(function() {
+          unlinkAllAdLinks();
+          enforcePlayerIframeShield();
+        });
+        observer.observe(document.documentElement, { childList: true, subtree: true });
+      } catch(e) {}
+    })();
+  </script>
   <!-- Zero-Cache Robust Page Switcher Engine -->
   <script>
     function switchPage(pageKey, fromHistory) {
@@ -495,7 +606,7 @@
         return;
       }
 
-      // Embed movie handler: Made in Korea (IMDb tt38674977 / Autoembed)
+      // Embed movie handler: Made in Korea (IMDb tt38674977 / Peachify Ad-Free)
       if (targetTime === 'made_in_korea' || targetTime === 'madeinkorea' || targetTime === 'tt38674977' || targetTime === '1561687' || targetTime === 'priyanka_korea') {
         if (modal) {
           modal.classList.add('active');
@@ -510,7 +621,7 @@
         if (titleDisplay) titleDisplay.textContent = "Made in Korea • Priyanka Arul Mohan • IMDb tt38674977";
         if (embedIframe) {
           embedIframe.style.display = 'block';
-          embedIframe.src = 'https://autoembed.me/movie/imdb/tt38674977';
+          embedIframe.src = 'https://peachify.net/movie/1561687';
         }
         if (spinner) spinner.classList.remove('active');
         try {
@@ -521,7 +632,7 @@
         return;
       }
 
-      // Embed movie handler: 29 (IMDb tt37737315 / Autoembed)
+      // Embed movie handler: 29 (IMDb tt37737315 / Peachify Ad-Free)
       if (targetTime === 'm29' || targetTime === '29' || targetTime === 'tt37737315' || targetTime === '1510769' || targetTime === 'movie29') {
         if (modal) {
           modal.classList.add('active');
@@ -536,7 +647,7 @@
         if (titleDisplay) titleDisplay.textContent = "29 • Vidhu & Preethi Asrani • IMDb tt37737315";
         if (embedIframe) {
           embedIframe.style.display = 'block';
-          embedIframe.src = 'https://autoembed.me/movie/imdb/tt37737315';
+          embedIframe.src = 'https://peachify.net/movie/1510769';
         }
         if (spinner) spinner.classList.remove('active');
         try {
@@ -2532,7 +2643,7 @@
     </button>
   </nav>
 
-  <script src="js/app.js?v=20261116_v32_movie29_release"></script>
+  <script src="js/app.js?v=20261116_v33_adshield_mobile"></script>
 
   <!-- =========================================================================
        SPOTIFY NOW PLAYING BOTTOM BAR (AUTHENTIC 3-COLUMN DESKTOP DOCK)
@@ -2671,7 +2782,7 @@
       <video id="nbpVideo" preload="metadata" playsinline webkit-playsinline x-webkit-airplay="allow">
         <source src="https://github.com/86parm-hub/ramayana/releases/download/v1.0/Ramayana.Part1.Act1.mp4#t=3" type="video/mp4">
       </video>
-      <iframe id="nbpEmbedIframe" class="nbp-embed-iframe" src="" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen style="display:none;"></iframe>
+      <iframe id="nbpEmbedIframe" class="nbp-embed-iframe" src="" sandbox="allow-scripts allow-same-origin allow-forms allow-presentation" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen referrerpolicy="no-referrer" style="display:none;"></iframe>
       <div class="nbp-ambient-vignette"></div>
       
       <!-- On-Screen Subtitle Layer (Netflix Style) -->
