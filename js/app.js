@@ -2569,6 +2569,28 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
+  // Handle Embed Movie Mode (Brawlers TMDB 1418709 / Peachify)
+  if (targetTime === 'brawlers' || targetTime === 'bagarre' || targetTime === '1418709' || targetTime === 'nassim_brawlers') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = "Brawlers (Bagarre) • Nassim Lyes • TMDB 1418709";
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1418709';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
   if (nbpIsEmbedMode) {
     nbpIsEmbedMode = false;
     modal.classList.remove('is-embed-active');
@@ -3648,6 +3670,14 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       age: 'U/A 16+',
       dur: '1h 50m',
       desc: "A family suddenly sealed inside their high-tech home must work together to survive against dwindling food, psychological tension, and the ominous menace keeping them trapped. Starring Greta Lee, Wagner Moura, Riley Chung, Noah Alexander Sosnowski, Emma Ho. Directed by Louis Leterrier. Streamed in 1080P HEVC via Peachify TMDB 1284041."
+    },
+    'brawlers': {
+      title: 'BRAWLERS (BAGARRE)',
+      hero: 'assets/images/brawlers_landscape.jpg',
+      year: '2026',
+      age: 'U/A 16+',
+      dur: '1h 38m',
+      desc: "Naïm is gentle and warm in ordinary life, but possesses beast-like martial fury in combat. Desperate to finance medical care for his aging dog, he joins 'Hello Brawl', a clandestine underground service resolving high-stakes disputes with fists. Starring Nassim Lyes, Anaïde Rozam, Ramzy Bedia, Hedi Bouchenafa, Arriles Amrani. Directed by Julien Royal. Streamed in 1080P HEVC via Peachify TMDB 1418709."
     },
     'shiva': {
       title: 'SHIVA DHANUSH: THE SACRED PINAKA',
