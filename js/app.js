@@ -2393,6 +2393,28 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
+  // Handle Embed Movie Mode (Gajab Raat Netflix 81987289 / EmbedWave)
+  if (targetTime === 'gajab_raat' || targetTime === 'gajabraat' || targetTime === '81987289' || targetTime === '890006' || targetTime === 'ghooskhor') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = "Gajab Raat • Manoj Bajpayee • Netflix 81987289";
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const embedUrl = 'https://embedwave.cc/embed/movie/81987289';
+      if (embedIframe.src !== embedUrl) {
+        embedIframe.src = embedUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
   if (nbpIsEmbedMode) {
     nbpIsEmbedMode = false;
     modal.classList.remove('is-embed-active');
@@ -3408,6 +3430,14 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       age: 'U/A 13+',
       dur: '2h 29m',
       desc: "A quirky 29-year-old named Sathya embarks on an unexpected journey of laughter, unlikely friendships, and heartwarming self-discovery across Chennai. Through hilarious misadventures, romantic chemistry, and chance encounters, he slowly sees life's bigger picture, newfound love, and second chances. Starring Vidhu, Preethi Asrani, Mahendran, Sindhu Shyam. Directed by Rathna Kumar. Available in Hindi & Tamil. Streamed in 1080P HEVC via Autoembed IMDb tt37737315."
+    },
+    'gajab_raat': {
+      title: 'GAJAB RAAT',
+      hero: 'assets/images/gajab_raat_landscape.jpg',
+      year: '2026',
+      age: 'A 18+',
+      dur: '2h 03m',
+      desc: "Set over the course of a single, fateful night in Delhi, troubled and corrupt police officer Ajay Nirvit's routine extortion takes a treacherous detour when an injured woman is thrown from a speeding vehicle. As he digs deeper, a dangerous conspiracy unfolds involving top crime syndicates, corrupt officials, and high-stakes survival. Starring Manoj Bajpayee, Nushrratt Bharuccha, Saqib Saleem, Divya Dutta, Akshay Oberoi. Directed by Ritesh Shah, written by Neeraj Pandey. Streamed in 1080P HEVC via EmbedWave (Netflix 81987289)."
     },
     'shiva': {
       title: 'SHIVA DHANUSH: THE SACRED PINAKA',
