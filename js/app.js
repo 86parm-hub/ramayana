@@ -2613,6 +2613,28 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
+  // Handle Embed Movie Mode (Demon Slayer: Kimetsu no Yaiba – Infinity Castle TMDB 1311031)
+  if (targetTime === 'demon_slayer' || targetTime === 'demonslayer' || targetTime === 'infinity_castle' || targetTime === '1311031' || targetTime === 'kimetsu_no_yaiba') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = "Demon Slayer: Kimetsu no Yaiba – Infinity Castle (2025) • TMDB 1311031";
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const embedUrl = 'https://peachify.net/movie/1311031';
+      if (embedIframe.src !== embedUrl) {
+        embedIframe.src = embedUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
   // Generalized CodeSpecters / Custom Embed Routing
   if (typeof targetTime === 'string' && (targetTime.startsWith('codespecters:') || targetTime.startsWith('cs:') || targetTime.startsWith('https://api.codespecters.com/'))) {
     nbpIsEmbedMode = true;
@@ -3732,6 +3754,14 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       age: 'U/A 16+',
       dur: '2h 26m',
       desc: "When Neelesh, an idealistic law student from an oppressed social background, enters an elite academic institution, he is confronted with institutional prejudice and systemic hierarchies. His profound relationship with Vidhi challenges caste divisions in a powerful fight for love and equality. Starring Siddhant Chaturvedi, Triptii Dimri, Saad Bilgrami, Saurabh Sachdeva, Vipin Sharma, Zakir Hussain. Directed by Shazia Iqbal, produced by Dharma Productions. Streamed in 1080P HEVC via CodeSpecters TMDB 1213777."
+    },
+    'demon_slayer': {
+      title: 'DEMON SLAYER: KIMETSU NO YAIBA – INFINITY CASTLE',
+      hero: 'assets/images/demon_slayer_landscape.jpg',
+      year: '2025',
+      age: 'U/A 16+',
+      dur: '2h 15m',
+      desc: "The Demon Slayer Corps plunges into the terrifying, dimension-warping Infinity Castle to confront Muzan Kibutsuji and the deadly Upper Rank demons in the climactic war of survival. Spectacular animation by ufotable, directed by Haruo Sotozaki, music by Yuki Kajiura and Go Shiina. Streamed in 4K UHD via Peachify TMDB 1311031."
     },
     'shiva': {
       title: 'SHIVA DHANUSH: THE SACRED PINAKA',
