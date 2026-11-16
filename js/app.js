@@ -2745,6 +2745,28 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
+  // Handle Embed Movie Mode (Retro TMDB 1265827 / Peachify)
+  if (targetTime === 'retro' || targetTime === 'retro_2025' || targetTime === '1265827' || targetTime === 'suriya_retro' || targetTime === 'suriya44') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = "Retro (Suriya 44) (2025) • Suriya & Pooja Hegde • TMDB 1265827";
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const embedUrl = 'https://peachify.net/movie/1265827';
+      if (embedIframe.src !== embedUrl) {
+        embedIframe.src = embedUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
   // Generalized CodeSpecters / Custom Embed Routing
   if (typeof targetTime === 'string' && (targetTime.startsWith('codespecters:') || targetTime.startsWith('cs:') || targetTime.startsWith('https://api.codespecters.com/'))) {
     nbpIsEmbedMode = true;
@@ -3912,6 +3934,14 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       age: 'U/A 16+',
       dur: '2h 13m',
       desc: "In a cursed remote village shadowed by ancient demonic forces, a determined mother unleashes the fierce divine wrath of Goddess Kali to rescue her abducted daughter from a child-devouring entity. Starring Kajol, Ronit Roy, Indraneil Sengupta, Kherin Sharma, Jitin Gulati. Directed by Vishal Furia, produced by Ajay Devgn and Jyoti Deshpande. Streamed in 1080P HEVC via Peachify TMDB 1389158."
+    },
+    'retro': {
+      title: 'RETRO (SURIYA 44)',
+      hero: 'assets/images/retro_landscape.jpg',
+      year: '2025',
+      age: 'U/A 16+',
+      dur: '2h 38m',
+      desc: "A stylized retro action-gangster romance following a ruthless yet charismatic lone wolf driven by love, laughter, and relentless war. Starring Suriya, Pooja Hegde, Jayaram, Karunakaran, Joju George. Directed by Karthik Subbaraj, music composed by Santhosh Narayanan, produced by 2D Entertainment. Streamed in 4K UHD via Peachify TMDB 1265827."
     },
     'shiva': {
       title: 'SHIVA DHANUSH: THE SACRED PINAKA',
