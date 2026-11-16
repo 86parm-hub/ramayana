@@ -2255,6 +2255,28 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
+  // Handle Embed Movie Mode (With Love TMDB 1508564 via Peachify)
+  if (targetTime === 'with_love' || targetTime === 'withlove' || targetTime === '1508564' || targetTime === 'withlovetamil') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = "With Love • TMDB 1508564";
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1508564';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
   if (nbpIsEmbedMode) {
     nbpIsEmbedMode = false;
     modal.classList.remove('is-embed-active');
@@ -3230,6 +3252,14 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       age: 'U/A 16+',
       dur: '2h 12m',
       desc: "Set in pre-independence 1862 Bombay and based on the historic Maharaj Libel Case, fearless reformer and journalist Karsandas Mulji (Junaid Khan) bravely challenges the exploitation of female devotees by the venerated, untouchable religious figure Jadunath Maharaj (Jaideep Ahlawat) in an epic courtroom reckoning. Directed by Siddharth P. Malhotra, starring Junaid Khan, Jaideep Ahlawat, Sharvari, Shalini Pandey. Streamed in 1080P HEVC via Peachify TMDB 1171099."
+    },
+    'with_love': {
+      title: 'WITH LOVE',
+      hero: 'assets/images/with_love_landscape.jpg',
+      year: '2026',
+      age: 'U/A 13+',
+      dur: '2h 21m',
+      desc: "Sathya reluctantly agrees to a blind date arranged by his sister and meets Monisha. To their astonishment, they discover they attended the same high school years ago. Reminiscing over teenage crushes and nostalgia, their past sparks an endearing modern connection. Starring Abishan Jeevinth, Anaswara Rajan, Harish Kumar. Directed by Madhan. Streamed in 1080P HEVC via Peachify TMDB 1508564."
     },
     'shiva': {
       title: 'SHIVA DHANUSH: THE SACRED PINAKA',
