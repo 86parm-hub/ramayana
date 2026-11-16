@@ -580,32 +580,6 @@
         return;
       }
 
-      // Embed movie handler: Irumudi (TMDB 1441228 / IMDb tt39108319)
-      if (targetTime === 'irumudi' || targetTime === 'tt39108319' || targetTime === '1441228' || targetTime === 'raviteja_irumudi') {
-        if (modal) {
-          modal.classList.add('active');
-          modal.classList.add('is-embed-active');
-          modal.setAttribute('aria-hidden', 'false');
-        }
-        document.body.style.overflow = 'hidden';
-        if (video) {
-          try { video.pause(); video.currentTime = 0; } catch(e){}
-          video.style.display = 'none';
-        }
-        if (titleDisplay) titleDisplay.textContent = "Irumudi • Ravi Teja • TMDB 1441228";
-        if (embedIframe) {
-          embedIframe.style.display = 'block';
-          embedIframe.src = 'https://embedwave.cc/embed/movie/1441228';
-        }
-        if (spinner) spinner.classList.remove('active');
-        try {
-          if (!fromHistory && window.history && window.history.pushState) {
-            window.history.pushState({ type: 'netflix-player', targetTime: 'irumudi' }, null, '#player');
-          }
-        } catch(e){}
-        return;
-      }
-
       // Embed movie handler: Made in Korea (IMDb tt38674977 / Peachify Ad-Free)
       if (targetTime === 'made_in_korea' || targetTime === 'madeinkorea' || targetTime === 'tt38674977' || targetTime === '1561687' || targetTime === 'priyanka_korea') {
         if (modal) {
@@ -627,58 +601,6 @@
         try {
           if (!fromHistory && window.history && window.history.pushState) {
             window.history.pushState({ type: 'netflix-player', targetTime: 'made_in_korea' }, null, '#player');
-          }
-        } catch(e){}
-        return;
-      }
-
-      // Embed movie handler: 29 (IMDb tt37737315 / Peachify Ad-Free)
-      if (targetTime === 'm29' || targetTime === '29' || targetTime === 'tt37737315' || targetTime === '1510769' || targetTime === 'movie29') {
-        if (modal) {
-          modal.classList.add('active');
-          modal.classList.add('is-embed-active');
-          modal.setAttribute('aria-hidden', 'false');
-        }
-        document.body.style.overflow = 'hidden';
-        if (video) {
-          try { video.pause(); video.currentTime = 0; } catch(e){}
-          video.style.display = 'none';
-        }
-        if (titleDisplay) titleDisplay.textContent = "29 • Vidhu & Preethi Asrani • IMDb tt37737315";
-        if (embedIframe) {
-          embedIframe.style.display = 'block';
-          embedIframe.src = 'https://peachify.net/movie/1510769';
-        }
-        if (spinner) spinner.classList.remove('active');
-        try {
-          if (!fromHistory && window.history && window.history.pushState) {
-            window.history.pushState({ type: 'netflix-player', targetTime: 'm29' }, null, '#player');
-          }
-        } catch(e){}
-        return;
-      }
-
-      // Embed movie handler: Gajab Raat (Netflix 81987289 / EmbedWave)
-      if (targetTime === 'gajab_raat' || targetTime === 'gajabraat' || targetTime === '81987289' || targetTime === '890006' || targetTime === 'ghooskhor') {
-        if (modal) {
-          modal.classList.add('active');
-          modal.classList.add('is-embed-active');
-          modal.setAttribute('aria-hidden', 'false');
-        }
-        document.body.style.overflow = 'hidden';
-        if (video) {
-          try { video.pause(); video.currentTime = 0; } catch(e){}
-          video.style.display = 'none';
-        }
-        if (titleDisplay) titleDisplay.textContent = "Gajab Raat • Manoj Bajpayee • Netflix 81987289";
-        if (embedIframe) {
-          embedIframe.style.display = 'block';
-          embedIframe.src = 'https://embedwave.cc/embed/movie/81987289';
-        }
-        if (spinner) spinner.classList.remove('active');
-        try {
-          if (!fromHistory && window.history && window.history.pushState) {
-            window.history.pushState({ type: 'netflix-player', targetTime: 'gajab_raat' }, null, '#player');
           }
         } catch(e){}
         return;
@@ -1383,7 +1305,7 @@
             <span>Action &amp; Mass Cinema</span>
             <span class="row-title-chevron">&rsaquo;</span>
           </h2>
-          <span class="row-badge-pill">4 Titles Streaming</span>
+          <span class="row-badge-pill">1 Title Streaming</span>
         </div>
 
         <div class="n-carousel-wrap">
@@ -1391,37 +1313,7 @@
             <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
           </button>
           <div class="netflix-slider-track single-movie-track" id="rowTrackAction">
-            <!-- Official Movie Card 1: Irumudi (2026) - Ravi Teja (TMDB 1441228) -->
-            <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('irumudi')" title="Play Irumudi - TMDB 1441228">
-              <div class="n-card-thumb">
-                <img src="assets/images/irumudi_landscape.jpg" alt="Irumudi" loading="lazy">
-                <span class="n-card-top-tag">RAVI TEJA</span>
-                <span class="n-card-quality-tag">1080P HEVC</span>
-
-                <div class="n-card-overlay">
-                  <div class="n-card-actions">
-                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('irumudi');" title="Play Movie">
-                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
-                    </button>
-                    <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
-                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                    </button>
-                    <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
-                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
-                    </button>
-                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('irumudi');" title="More Info">
-                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                    </button>
-                  </div>
-                  <div class="n-card-info">
-                    <h4 class="n-movie-name">Irumudi</h4>
-                    <p class="n-card-genres">Action &bull; Mass Drama &bull; Devotional Thriller</p>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <!-- Official Movie Card 2: Made in Korea (IMDb tt38674977) -->
+            <!-- Official Movie Card 1: Made in Korea (IMDb tt38674977) -->
             <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('made_in_korea')" title="Play Made in Korea - IMDb tt38674977">
               <div class="n-card-thumb">
                 <img src="assets/images/made_in_korea_landscape.jpg" alt="Made in Korea" loading="lazy">
@@ -1450,66 +1342,12 @@
                 </div>
               </div>
             </article>
-
-            <!-- Official Movie Card 3: 29 (2026) - Vidhu & Preethi Asrani (IMDb tt37737315) -->
-            <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('m29')" title="Play 29 - IMDb tt37737315">
-              <div class="n-card-thumb">
-                <img src="assets/images/m29_landscape.jpg" alt="29" loading="lazy">
-                <span class="n-card-top-tag">VIDHU &bull; PREETHI ASRANI</span>
-                <span class="n-card-quality-tag">1080P HEVC</span>
-
-                <div class="n-card-overlay">
-                  <div class="n-card-actions">
-                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('m29');" title="Play Movie">
-                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
-                    </button>
-                    <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
-                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                    </button>
-                    <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
-                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
-                    </button>
-                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('m29');" title="More Info">
-                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                    </button>
-                  </div>
-                  <div class="n-card-info">
-                    <h4 class="n-movie-name">29</h4>
-                    <p class="n-card-genres">Romance &bull; Comedy &bull; Hindi &amp; Tamil</p>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <!-- Official Movie Card 4: Gajab Raat (2026) - Manoj Bajpayee (Netflix 81987289) -->
-            <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('gajab_raat')" title="Play Gajab Raat - Netflix 81987289">
-              <div class="n-card-thumb">
-                <img src="assets/images/gajab_raat_landscape.jpg" alt="Gajab Raat" loading="lazy">
-                <span class="n-card-top-tag">MANOJ BAJPAYEE &bull; NUSHRRATT</span>
-                <span class="n-card-quality-tag">1080P HEVC</span>
-
-                <div class="n-card-overlay">
-                  <div class="n-card-actions">
-                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('gajab_raat');" title="Play Movie">
-                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
-                    </button>
-                    <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
-                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                    </button>
-                    <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
-                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
-                    </button>
-                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('gajab_raat');" title="More Info">
-                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                    </button>
-                  </div>
-                  <div class="n-card-info">
-                    <h4 class="n-movie-name">Gajab Raat</h4>
-                    <p class="n-card-genres">Crime Thriller &bull; Mystery &bull; Neeraj Pandey</p>
-                  </div>
-                </div>
-              </div>
-            </article>
+          </div>
+          <button class="n-slider-btn next" onclick="slideNetflixRow('rowTrackAction', 1)" aria-label="Next titles">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </div>
+      </section>
           </div>
           <button class="n-slider-btn next" onclick="slideNetflixRow('rowTrackAction', 1)" aria-label="Next titles">
             <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
@@ -2078,37 +1916,7 @@
             </div>
           </article>
 
-          <!-- Official Movie Card 16: Irumudi (2026) - Ravi Teja (TMDB 1441228) -->
-          <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('irumudi')" title="Play Irumudi - TMDB 1441228">
-            <div class="n-card-thumb">
-              <img src="assets/images/irumudi_landscape.jpg" alt="Irumudi" loading="lazy">
-              <span class="n-card-top-tag">RAVI TEJA</span>
-              <span class="n-card-quality-tag">1080P HEVC</span>
-
-              <div class="n-card-overlay">
-                <div class="n-card-actions">
-                  <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('irumudi');" title="Play Movie">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
-                  </button>
-                  <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
-                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                  </button>
-                  <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
-                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
-                  </button>
-                  <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('irumudi');" title="More Info">
-                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                  </button>
-                </div>
-                <div class="n-card-info">
-                  <h4 class="n-movie-name">Irumudi</h4>
-                  <p class="n-card-genres">Action &bull; Mass Drama &bull; Devotional Thriller</p>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <!-- Official Movie Card 17: Made in Korea (IMDb tt38674977) -->
+          <!-- Official Movie Card 16: Made in Korea (IMDb tt38674977) -->
           <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('made_in_korea')" title="Play Made in Korea - IMDb tt38674977">
             <div class="n-card-thumb">
               <img src="assets/images/made_in_korea_landscape.jpg" alt="Made in Korea" loading="lazy">
@@ -2133,66 +1941,6 @@
                 <div class="n-card-info">
                   <h4 class="n-movie-name">Made in Korea</h4>
                   <p class="n-card-genres">Drama &bull; Feel Good &bull; Cross-Cultural Journey</p>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <!-- Official Movie Card 18: 29 (2026) - Vidhu & Preethi Asrani (IMDb tt37737315) -->
-          <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('m29')" title="Play 29 - IMDb tt37737315">
-            <div class="n-card-thumb">
-              <img src="assets/images/m29_landscape.jpg" alt="29" loading="lazy">
-              <span class="n-card-top-tag">VIDHU &bull; PREETHI ASRANI</span>
-              <span class="n-card-quality-tag">1080P HEVC</span>
-
-              <div class="n-card-overlay">
-                <div class="n-card-actions">
-                  <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('m29');" title="Play Movie">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
-                  </button>
-                  <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
-                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                  </button>
-                  <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
-                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
-                  </button>
-                  <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('m29');" title="More Info">
-                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                  </button>
-                </div>
-                <div class="n-card-info">
-                  <h4 class="n-movie-name">29</h4>
-                  <p class="n-card-genres">Romance &bull; Comedy &bull; Hindi &amp; Tamil</p>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <!-- Official Movie Card 19: Gajab Raat (2026) - Manoj Bajpayee (Netflix 81987289) -->
-          <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('gajab_raat')" title="Play Gajab Raat - Netflix 81987289">
-            <div class="n-card-thumb">
-              <img src="assets/images/gajab_raat_landscape.jpg" alt="Gajab Raat" loading="lazy">
-              <span class="n-card-top-tag">MANOJ BAJPAYEE &bull; NUSHRRATT</span>
-              <span class="n-card-quality-tag">1080P HEVC</span>
-
-              <div class="n-card-overlay">
-                <div class="n-card-actions">
-                  <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('gajab_raat');" title="Play Movie">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
-                  </button>
-                  <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
-                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                  </button>
-                  <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
-                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
-                  </button>
-                  <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('gajab_raat');" title="More Info">
-                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                  </button>
-                </div>
-                <div class="n-card-info">
-                  <h4 class="n-movie-name">Gajab Raat</h4>
-                  <p class="n-card-genres">Crime Thriller &bull; Mystery &bull; Neeraj Pandey</p>
                 </div>
               </div>
             </div>
@@ -2729,7 +2477,7 @@
     </button>
   </nav>
 
-  <script src="js/app.js?v=20261116_v35_irumudi_tmdb1441228"></script>
+  <script src="js/app.js?v=20261116_v37_clean_roster"></script>
 
   <!-- =========================================================================
        SPOTIFY NOW PLAYING BOTTOM BAR (AUTHENTIC 3-COLUMN DESKTOP DOCK)

@@ -2327,28 +2327,6 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Irumudi TMDB 1441228 / IMDb tt39108319 via EmbedWave)
-  if (targetTime === 'irumudi' || targetTime === 'tt39108319' || targetTime === '1441228' || targetTime === 'raviteja_irumudi') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Irumudi • Ravi Teja • TMDB 1441228";
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const embedUrl = 'https://embedwave.cc/embed/movie/1441228';
-      if (embedIframe.src !== embedUrl) {
-        embedIframe.src = embedUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
   // Handle Embed Movie Mode (Made in Korea IMDb tt38674977 / Peachify Ad-Free)
   if (targetTime === 'made_in_korea' || targetTime === 'madeinkorea' || targetTime === 'tt38674977' || targetTime === '1561687' || targetTime === 'priyanka_korea') {
     nbpIsEmbedMode = true;
@@ -2365,50 +2343,6 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
       const peachifyUrl = 'https://peachify.net/movie/1561687';
       if (embedIframe.src !== peachifyUrl) {
         embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (29 IMDb tt37737315 / Peachify Ad-Free)
-  if (targetTime === 'm29' || targetTime === '29' || targetTime === 'tt37737315' || targetTime === '1510769' || targetTime === 'movie29') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "29 • Vidhu & Preethi Asrani • IMDb tt37737315";
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/1510769';
-      if (embedIframe.src !== peachifyUrl) {
-        embedIframe.src = peachifyUrl;
-      }
-    }
-    if (spinner) spinner.classList.remove('active');
-    return;
-  }
-
-  // Handle Embed Movie Mode (Gajab Raat Netflix 81987289 / EmbedWave)
-  if (targetTime === 'gajab_raat' || targetTime === 'gajabraat' || targetTime === '81987289' || targetTime === '890006' || targetTime === 'ghooskhor') {
-    nbpIsEmbedMode = true;
-    nbpIsTrailerMode = false;
-    modal.classList.add('is-embed-active');
-    if (video && !video.paused) video.pause();
-    if (video) video.style.display = 'none';
-
-    const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Gajab Raat • Manoj Bajpayee • Netflix 81987289";
-
-    if (embedIframe) {
-      embedIframe.style.display = 'block';
-      const embedUrl = 'https://embedwave.cc/embed/movie/81987289';
-      if (embedIframe.src !== embedUrl) {
-        embedIframe.src = embedUrl;
       }
     }
     if (spinner) spinner.classList.remove('active');
@@ -3407,14 +3341,6 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       dur: '2h 20m',
       desc: "When a ruthless mercenary syndicate descends upon a remote mountain homestead, an estranged veteran with a haunted past and his grandchildren must unite their survival instincts to wage an uncompromising counter-offensive. Starring Lukman Sardi, Callista Arum, Sulthan Hamonangan, Derby Romero, Donny Alamsyah. Directed by Sidharta Tata. Streamed in 1080P HEVC via Peachify TMDB 1616687."
     },
-    'irumudi': {
-      title: 'IRUMUDI',
-      hero: 'assets/images/irumudi_landscape.jpg',
-      year: '2026',
-      age: 'U/A 16+',
-      dur: '2h 32m',
-      desc: "An alcoholic with a violent, concealed past, Trinadh Rama Kasu lives peacefully in seclusion with his beloved young daughter Manikanta beside a roaring waterfall. Fulfilling her heartfelt plea, he undertakes the sacred 41-day Ayyappa Deeksha spiritual vow of intense austerity. But when ruthless adversaries resurface seeking retribution, he is pushed to the ultimate test of devotion and explosive mass fury to safeguard his family. Starring Mass Maharaja Ravi Teja, Nakshathra C M, Priya Bhavani Shankar, Sai Kumar, Ajay Ghosh. Directed by Shiva Nirvana. TMDB ID: 1441228."
-    },
     'made_in_korea': {
       title: 'MADE IN KOREA',
       hero: 'assets/images/made_in_korea_landscape.jpg',
@@ -3422,22 +3348,6 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       age: 'U/A 13+',
       dur: '1h 53m',
       desc: "An ambitious and spirited young woman from a small town in Tamil Nadu embarks on a life-changing journey to Seoul, South Korea — a land she has passionately dreamed of for years. Navigating language barriers, cultural shocks, and emotional highs, she discovers resilience, unexpected friendship, and belonging in an unfamiliar world. Starring Priyanka Arul Mohan, Rishikanth, Park Hye-jin, Baek Si-hun. Directed by Ra. Karthik. Streamed in 1080P HEVC via Autoembed IMDb tt38674977."
-    },
-    'm29': {
-      title: '29',
-      hero: 'assets/images/m29_landscape.jpg',
-      year: '2026',
-      age: 'U/A 13+',
-      dur: '2h 29m',
-      desc: "A quirky 29-year-old named Sathya embarks on an unexpected journey of laughter, unlikely friendships, and heartwarming self-discovery across Chennai. Through hilarious misadventures, romantic chemistry, and chance encounters, he slowly sees life's bigger picture, newfound love, and second chances. Starring Vidhu, Preethi Asrani, Mahendran, Sindhu Shyam. Directed by Rathna Kumar. Available in Hindi & Tamil. Streamed in 1080P HEVC via Autoembed IMDb tt37737315."
-    },
-    'gajab_raat': {
-      title: 'GAJAB RAAT',
-      hero: 'assets/images/gajab_raat_landscape.jpg',
-      year: '2026',
-      age: 'A 18+',
-      dur: '2h 03m',
-      desc: "Set over the course of a single, fateful night in Delhi, troubled and corrupt police officer Ajay Nirvit's routine extortion takes a treacherous detour when an injured woman is thrown from a speeding vehicle. As he digs deeper, a dangerous conspiracy unfolds involving top crime syndicates, corrupt officials, and high-stakes survival. Starring Manoj Bajpayee, Nushrratt Bharuccha, Saqib Saleem, Divya Dutta, Akshay Oberoi. Directed by Ritesh Shah, written by Neeraj Pandey. Streamed in 1080P HEVC via EmbedWave (Netflix 81987289)."
     },
     'shiva': {
       title: 'SHIVA DHANUSH: THE SACRED PINAKA',
