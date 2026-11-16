@@ -44,7 +44,9 @@
 }
 
 /* Reset */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -71,7 +73,7 @@ body.ott-platform {
 .glow-backdrop {
   position: fixed;
   inset: 0;
-  background: 
+  background:
     radial-gradient(circle at 50% -15%, rgba(255, 183, 3, 0.14) 0%, transparent 65%),
     radial-gradient(circle at 95% 30%, rgba(251, 133, 0, 0.06) 0%, transparent 50%),
     radial-gradient(circle at 5% 75%, rgba(139, 92, 246, 0.04) 0%, transparent 50%);
@@ -229,8 +231,17 @@ body.ott-platform {
 }
 
 @keyframes pulseGreen {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.85); }
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.4;
+    transform: scale(0.85);
+  }
 }
 
 .quality-txt {
@@ -348,8 +359,16 @@ body.ott-platform {
 }
 
 @keyframes bannerGleamPulse {
-  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.55; }
-  100% { transform: translate(-50%, -50%) scale(1.03); opacity: 0.78; filter: contrast(1.25) brightness(1.2) drop-shadow(0 0 50px rgba(255, 42, 68, 0.55)); }
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.55;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(1.03);
+    opacity: 0.78;
+    filter: contrast(1.25) brightness(1.2) drop-shadow(0 0 50px rgba(255, 42, 68, 0.55));
+  }
 }
 
 .syndicat-glow-radial {
@@ -413,8 +432,14 @@ body.ott-platform {
 }
 
 @keyframes shineSweep {
-  0% { transform: translateY(-100%) rotate(45deg); }
-  25%, 100% { transform: translateY(100%) rotate(45deg); }
+  0% {
+    transform: translateY(-100%) rotate(45deg);
+  }
+
+  25%,
+  100% {
+    transform: translateY(100%) rotate(45deg);
+  }
 }
 
 .emblem-text-stack {
@@ -1121,8 +1146,17 @@ body.ott-platform {
 }
 
 @keyframes pulseWatermark {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.85); }
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.4;
+    transform: scale(0.85);
+  }
 }
 
 .watermark-brand-name {
@@ -1455,8 +1489,15 @@ body.ott-platform {
 }
 
 @keyframes fadeInOutro {
-  from { opacity: 0; transform: scale(0.97); }
-  to { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .theater-outro-card.active {
@@ -1498,8 +1539,15 @@ body.ott-platform {
 }
 
 @keyframes floatEmblem {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
 }
 
 .outro-emblem-img {
@@ -1681,7 +1729,7 @@ body.ott-platform {
 /* Hide center play button when Netflix spinner is active so they never overlap */
 .video-chassis:has(.netflix-spinner-veil.active) .center-play-veil,
 .trailer-chassis:has(.netflix-spinner-veil.active) .trailer-play-overlay,
-.stream-spinner-veil.active ~ .center-play-veil {
+.stream-spinner-veil.active~.center-play-veil {
   opacity: 0 !important;
   pointer-events: none !important;
 }
@@ -1721,6 +1769,7 @@ body.ott-platform {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -1731,10 +1780,12 @@ body.ott-platform {
     stroke-dasharray: 1, 150;
     stroke-dashoffset: 0;
   }
+
   50% {
     stroke-dasharray: 100, 150;
     stroke-dashoffset: -35;
   }
+
   100% {
     stroke-dasharray: 100, 150;
     stroke-dashoffset: -125;
@@ -1746,6 +1797,7 @@ body.ott-platform {
     width: 52px;
     height: 52px;
   }
+
   .netflix-track,
   .netflix-arc {
     stroke-width: 4;
@@ -1865,7 +1917,8 @@ body.ott-platform {
   justify-content: space-between;
 }
 
-.controls-group-left, .controls-group-right {
+.controls-group-left,
+.controls-group-right {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -2773,36 +2826,45 @@ body.ott-platform {
   .header-content {
     padding: 0 20px;
   }
+
   .brand-name {
     font-size: 19px;
     letter-spacing: 2px;
   }
+
   .nav-tabs {
     gap: 6px;
   }
+
   .tab-link {
     padding: 6px 12px;
     font-size: 13px;
   }
+
   .quality-pill {
     display: none;
   }
+
   .btn-play-header {
     padding: 6px 14px;
     font-size: 12px;
   }
+
   /* .hero-slide cleaned */
   .hero-title {
     font-size: clamp(32px, 5vw, 48px);
   }
+
   .cards-rail {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }
+
   .gallery-mosaic {
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
   }
+
   .mosaic-item.large {
     grid-row: span 1;
   }
@@ -2812,8 +2874,10 @@ body.ott-platform {
    Responsive Adaptations: Android Mobile Devices & Tablets (max-width: 768px)
    ========================================================================= */
 @media (max-width: 768px) {
+
   /* Prevent horizontal spill */
-  html, body {
+  html,
+  body {
     width: 100%;
     max-width: 100vw;
     overflow-x: hidden;
@@ -2889,32 +2953,41 @@ body.ott-platform {
   .studio-header {
     height: 60px;
   }
+
   .header-content {
     padding: 0 14px;
   }
+
   .nav-tabs {
     display: none;
   }
+
   .brand-container {
     gap: 8px;
   }
+
   .brand-logo-wrap {
     width: 32px;
     height: 32px;
   }
+
   .sacred-emblem {
     font-size: 22px;
   }
+
   .brand-name {
     font-size: 17px;
     letter-spacing: 2px;
   }
+
   .brand-edition {
     display: none;
   }
+
   .quality-pill {
     display: none;
   }
+
   .btn-play-header {
     padding: 6px 12px;
     font-size: 11.5px;
@@ -2926,6 +2999,7 @@ body.ott-platform {
     padding-top: 60px;
     min-height: calc(100vh - 60px);
   }
+
   .page-inner-header,
   .theater-control-strip,
   .cinema-act-selector-bar,
@@ -2935,10 +3009,12 @@ body.ott-platform {
     padding-left: 14px;
     padding-right: 14px;
   }
+
   .screen-stage {
     padding-left: 0 !important;
     padding-right: 0 !important;
   }
+
   .video-chassis {
     border-radius: 0 !important;
     border-left: none !important;
@@ -2953,21 +3029,26 @@ body.ott-platform {
     gap: 6px;
     margin-bottom: 12px;
   }
-  .badge-gold, .badge-glass {
+
+  .badge-gold,
+  .badge-glass {
     font-size: 10px;
     padding: 4px 8px;
   }
+
   .hero-title {
     font-size: clamp(26px, 7vw, 42px);
     line-height: 1.15;
     margin-bottom: 12px;
     word-break: break-word;
   }
+
   .hero-subtitle {
     font-size: clamp(12px, 3.2vw, 15px);
     letter-spacing: 2px;
     margin-top: 6px;
   }
+
   .hero-synopsis {
     font-size: clamp(12px, 3.4vw, 14px);
     line-height: 1.5;
@@ -2978,11 +3059,13 @@ body.ott-platform {
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+
   .hero-cta-group {
     flex-direction: column;
     width: 100%;
     gap: 10px;
   }
+
   .hero-cta-group button,
   .hero-cta-group label {
     width: 100%;
@@ -2990,6 +3073,7 @@ body.ott-platform {
     padding: 12px 18px;
     font-size: 14px;
   }
+
   /* .slider-indicators cleaned */
 
   /* Cinema Theater */
@@ -3000,27 +3084,33 @@ body.ott-platform {
     padding-top: 14px;
     padding-bottom: 14px;
   }
+
   .theater-heading {
     font-size: clamp(18px, 5vw, 24px);
   }
+
   .theater-tools {
     width: 100%;
     justify-content: flex-start;
     gap: 8px;
   }
+
   .tool-btn {
     padding: 6px 12px;
     font-size: 11px;
   }
+
   .cinema-act-selector-bar {
     flex-direction: column;
     align-items: stretch;
     gap: 8px;
   }
+
   .act-pills-row {
     flex-direction: column;
     width: 100%;
   }
+
   .act-pill-btn {
     width: 100%;
     justify-content: space-between;
@@ -3032,24 +3122,30 @@ body.ott-platform {
     padding-right: 12px !important;
     margin: 16px auto 25px !important;
   }
+
   .theater-acts-showcase-card {
     padding: 16px !important;
   }
+
   .acts-dual-grid {
     grid-template-columns: 1fr !important;
     gap: 14px !important;
   }
+
   .act-card-inner {
     flex-direction: column !important;
     align-items: stretch !important;
   }
+
   .act-card-thumb {
     width: 100% !important;
     height: 140px !important;
   }
+
   .act-name {
     white-space: normal !important;
   }
+
   .btn-stream-act {
     width: 100% !important;
     justify-content: center !important;
@@ -3064,14 +3160,17 @@ body.ott-platform {
     z-index: 100 !important;
     opacity: 1 !important;
   }
+
   .watermark-emblem-wrap {
     width: 26px !important;
     height: 26px !important;
     border-width: 1.5px !important;
   }
+
   .watermark-brand-name {
     font-size: 10px !important;
   }
+
   .watermark-act-tag {
     font-size: 7px !important;
   }
@@ -3080,27 +3179,34 @@ body.ott-platform {
   .theater-outro-card {
     padding: 16px;
   }
+
   .outro-emblem-ring {
     width: 54px;
     height: 54px;
   }
+
   .outro-super-tag {
     font-size: 9px;
     letter-spacing: 2px;
   }
+
   .outro-title {
     font-size: 20px;
   }
+
   .outro-subtitle {
     font-size: 11px;
     margin-bottom: 14px;
   }
+
   .outro-cta-row {
     flex-direction: column;
     width: 100%;
     gap: 8px;
   }
-  .btn-outro-action, .btn-outro-insta {
+
+  .btn-outro-action,
+  .btn-outro-insta {
     width: 100%;
     justify-content: center;
     padding: 9px 16px;
@@ -3111,18 +3217,22 @@ body.ott-platform {
   .studio-controls-bar {
     padding: 8px 12px;
   }
+
   .vol-slider-rail {
     display: none;
   }
+
   .time-readout {
     font-size: 11px;
     gap: 4px;
   }
+
   .controls-action-row {
     flex-wrap: wrap;
     gap: 6px;
     justify-content: space-between;
   }
+
   .ctrl-icon-btn {
     width: 34px;
     height: 34px;
@@ -3141,9 +3251,11 @@ body.ott-platform {
     padding-left: 14px !important;
     padding-right: 14px !important;
   }
+
   .cards-rail::-webkit-scrollbar {
     display: none !important;
   }
+
   /* .film-card cleaned */
 
   .gallery-mosaic {
@@ -3151,6 +3263,7 @@ body.ott-platform {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
   }
+
   .mosaic-item.large {
     grid-row: span 1;
   }
@@ -3161,10 +3274,12 @@ body.ott-platform {
     align-items: stretch;
     gap: 12px;
   }
+
   .trilogy-bar-items {
     flex-direction: column;
     width: 100%;
   }
+
   .trilogy-bar-pill {
     width: 100%;
     justify-content: space-between;
@@ -3178,21 +3293,27 @@ body.ott-platform {
     border-radius: 14px;
     overflow-y: auto;
   }
+
   .modal-media-header {
     height: 160px;
   }
+
   .modal-content-body {
     padding: 16px;
   }
+
   .modal-meta-grid {
     grid-template-columns: 1fr;
     gap: 8px;
   }
+
   .modal-action-row {
     flex-direction: column;
     gap: 10px;
   }
-  .btn-modal-notify, .btn-modal-back-part1 {
+
+  .btn-modal-notify,
+  .btn-modal-back-part1 {
     width: 100%;
   }
 
@@ -3206,35 +3327,43 @@ body.ott-platform {
   .trailer-header-section {
     padding: 20px 14px 12px;
   }
+
   .trailer-main-title {
     font-size: 26px;
     letter-spacing: 1px;
   }
+
   .trailer-sub-title {
     font-size: 14px;
     letter-spacing: 2px;
   }
+
   .trailer-stage {
     padding: 8px 0 20px;
   }
+
   .trailer-chassis {
     border-radius: 0 !important;
     border-left: none !important;
     border-right: none !important;
   }
+
   .trailer-selector-container,
   .trailer-features-grid {
     padding-left: 14px;
     padding-right: 14px;
   }
+
   .trailer-cuts-grid {
     grid-template-columns: 1fr;
     gap: 14px;
   }
+
   .trailer-features-grid {
     grid-template-columns: 1fr;
     gap: 12px;
   }
+
   .trailer-cta-banner {
     flex-direction: column;
     align-items: stretch;
@@ -3242,14 +3371,17 @@ body.ott-platform {
     padding: 24px 18px;
     text-align: center;
   }
+
   .trailer-cta-actions {
     flex-direction: column;
     width: 100%;
   }
+
   .trailer-cta-actions button {
     width: 100%;
     justify-content: center;
   }
+
   .trailer-play-orb {
     width: 60px;
     height: 60px;
@@ -3263,28 +3395,36 @@ body.ott-platform {
   .header-content {
     padding: 0 10px;
   }
+
   .brand-name {
     font-size: 15px;
     letter-spacing: 1.5px;
   }
+
   .brand-edition {
     display: none;
   }
+
   /* .hero-slide cleaned */
   .hero-title {
     font-size: 26px;
   }
+
   .hero-subtitle {
     font-size: 11px;
     letter-spacing: 1px;
   }
-  .hero-cta-group button, .hero-cta-group label {
+
+  .hero-cta-group button,
+  .hero-cta-group label {
     font-size: 13px;
     padding: 11px 14px;
   }
+
   .time-readout {
     font-size: 10px;
   }
+
   .ctrl-icon-btn {
     width: 30px;
     height: 30px;
@@ -3324,8 +3464,17 @@ body.ott-platform {
 }
 
 @keyframes ostDotPulse {
-  0%, 100% { transform: scale(1); opacity: 0.9; }
-  50% { transform: scale(1.6); opacity: 0.4; }
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+
+  50% {
+    transform: scale(1.6);
+    opacity: 0.4;
+  }
 }
 
 /* ==========================================================================
@@ -3363,7 +3512,7 @@ body.ott-platform {
   position: absolute;
   inset: 0;
   background: linear-gradient(135deg, rgba(8, 10, 16, 0.94) 0%, rgba(13, 17, 26, 0.8) 50%, rgba(8, 10, 16, 0.94) 100%),
-              radial-gradient(ellipse at 80% 50%, rgba(255, 183, 3, 0.15) 0%, transparent 70%);
+    radial-gradient(ellipse at 80% 50%, rgba(255, 183, 3, 0.15) 0%, transparent 70%);
 }
 
 .ost-banner-glow {
@@ -3395,16 +3544,44 @@ body.ott-platform {
   animation: ostEmberFloat 6s infinite ease-in;
 }
 
-.ost-ember.e1 { left: 15%; animation-delay: 0s; }
-.ost-ember.e2 { left: 45%; animation-delay: 1.5s; }
-.ost-ember.e3 { left: 75%; animation-delay: 3s; }
-.ost-ember.e4 { left: 90%; animation-delay: 4.5s; }
+.ost-ember.e1 {
+  left: 15%;
+  animation-delay: 0s;
+}
+
+.ost-ember.e2 {
+  left: 45%;
+  animation-delay: 1.5s;
+}
+
+.ost-ember.e3 {
+  left: 75%;
+  animation-delay: 3s;
+}
+
+.ost-ember.e4 {
+  left: 90%;
+  animation-delay: 4.5s;
+}
 
 @keyframes ostEmberFloat {
-  0% { transform: translateY(350px) scale(0.6); opacity: 0; }
-  20% { opacity: 0.8; }
-  80% { opacity: 0.6; }
-  100% { transform: translateY(-40px) scale(1.2); opacity: 0; }
+  0% {
+    transform: translateY(350px) scale(0.6);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0.8;
+  }
+
+  80% {
+    opacity: 0.6;
+  }
+
+  100% {
+    transform: translateY(-40px) scale(1.2);
+    opacity: 0;
+  }
 }
 
 /* Banner Content */
@@ -3452,8 +3629,13 @@ body.ott-platform {
 }
 
 @keyframes ostVinylSpin {
-  from { transform: translateX(45px) rotate(0deg); }
-  to { transform: translateX(45px) rotate(360deg); }
+  from {
+    transform: translateX(45px) rotate(0deg);
+  }
+
+  to {
+    transform: translateX(45px) rotate(360deg);
+  }
 }
 
 .ost-vinyl-grooves {
@@ -3462,9 +3644,9 @@ body.ott-platform {
   border-radius: 50%;
   border: 1px dashed rgba(255, 255, 255, 0.12);
   box-shadow: inset 0 0 0 8px rgba(0, 0, 0, 0.4),
-              inset 0 0 0 16px rgba(255, 255, 255, 0.05),
-              inset 0 0 0 24px rgba(0, 0, 0, 0.3),
-              inset 0 0 0 32px rgba(255, 255, 255, 0.04);
+    inset 0 0 0 16px rgba(255, 255, 255, 0.05),
+    inset 0 0 0 24px rgba(0, 0, 0, 0.3),
+    inset 0 0 0 32px rgba(255, 255, 255, 0.04);
 }
 
 .ost-vinyl-label {
@@ -3885,16 +4067,38 @@ body.ott-platform {
   animation: ostEqBounce 1s infinite ease-in-out alternate;
 }
 
-.ost-card-visualizer span:nth-child(1) { animation-delay: 0.1s; }
-.ost-card-visualizer span:nth-child(2) { animation-delay: 0.3s; }
-.ost-card-visualizer span:nth-child(3) { animation-delay: 0.5s; }
-.ost-card-visualizer span:nth-child(4) { animation-delay: 0.2s; }
-.ost-card-visualizer span:nth-child(5) { animation-delay: 0.4s; }
+.ost-card-visualizer span:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.ost-card-visualizer span:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.ost-card-visualizer span:nth-child(3) {
+  animation-delay: 0.5s;
+}
+
+.ost-card-visualizer span:nth-child(4) {
+  animation-delay: 0.2s;
+}
+
+.ost-card-visualizer span:nth-child(5) {
+  animation-delay: 0.4s;
+}
 
 @keyframes ostEqBounce {
-  0% { height: 4px; }
-  50% { height: 22px; }
-  100% { height: 8px; }
+  0% {
+    height: 4px;
+  }
+
+  50% {
+    height: 22px;
+  }
+
+  100% {
+    height: 8px;
+  }
 }
 
 /* Big Play Button on Banner */
@@ -4135,8 +4339,8 @@ body.ott-platform {
   visibility: visible !important;
   pointer-events: auto !important;
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              visibility 0.35s ease !important;
+    opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0.35s ease !important;
 }
 
 /* Initially hidden before user starts playing any track */
@@ -4223,10 +4427,21 @@ body.ott-platform {
   animation: ostEqBounce 0.8s infinite ease-in-out alternate !important;
 }
 
-.ost-fp-equalizer span:nth-child(1) { animation-delay: 0.1s !important; }
-.ost-fp-equalizer span:nth-child(2) { animation-delay: 0.3s !important; }
-.ost-fp-equalizer span:nth-child(3) { animation-delay: 0.2s !important; }
-.ost-fp-equalizer span:nth-child(4) { animation-delay: 0.4s !important; }
+.ost-fp-equalizer span:nth-child(1) {
+  animation-delay: 0.1s !important;
+}
+
+.ost-fp-equalizer span:nth-child(2) {
+  animation-delay: 0.3s !important;
+}
+
+.ost-fp-equalizer span:nth-child(3) {
+  animation-delay: 0.2s !important;
+}
+
+.ost-fp-equalizer span:nth-child(4) {
+  animation-delay: 0.4s !important;
+}
 
 .ost-fp-meta {
   display: flex !important;
@@ -4565,11 +4780,11 @@ body.ott-platform {
   visibility: hidden !important;
   pointer-events: none !important;
   transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1),
-              opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1),
-              visibility 0.32s ease,
-              background 0.2s ease,
-              box-shadow 0.2s ease,
-              border-color 0.2s ease !important;
+    opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0.32s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease !important;
 }
 
 .ost-restore-pill.visible {
@@ -4604,9 +4819,20 @@ body.ott-platform {
 }
 
 @keyframes ostPillPulse {
-  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(229, 9, 20, 0.6); }
-  70% { transform: scale(1.05); box-shadow: 0 0 0 6px rgba(229, 9, 20, 0); }
-  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(229, 9, 20, 0); }
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(229, 9, 20, 0.6);
+  }
+
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 6px rgba(229, 9, 20, 0);
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(229, 9, 20, 0);
+  }
 }
 
 .ost-restore-pill-text {
@@ -4638,6 +4864,7 @@ body.ott-platform {
     right: 14px !important;
     padding: 7px 14px 7px 8px !important;
   }
+
   .ost-restore-pill-text {
     max-width: 110px !important;
     font-size: 11.5px !important;
@@ -4652,21 +4879,26 @@ body.ott-platform {
     grid-template-columns: 1fr;
     gap: 20px;
   }
+
   .ost-banner-content {
     flex-direction: column;
     text-align: center;
     gap: 24px;
     padding: 30px 24px;
   }
+
   .ost-album-art-wrap {
     margin: 0 auto;
   }
+
   .ost-meta-tags {
     justify-content: center;
   }
+
   .ost-banner-actions {
     justify-content: center;
   }
+
   .ost-banner-title {
     font-size: 28px;
   }
@@ -4677,29 +4909,36 @@ body.ott-platform {
     margin-bottom: 30px;
     border-radius: 14px;
   }
+
   .ost-banner-content {
     padding: 24px 16px;
   }
+
   .ost-banner-title {
     font-size: 24px;
   }
+
   .ost-banner-composers {
     font-size: 14px;
   }
+
   .ost-tracks-container {
     padding: 0 16px;
   }
+
   .ost-card-banner {
     height: 170px;
   }
+
   .ost-card-body {
     padding: 16px;
   }
+
   .gallery-stills-divider {
     padding: 0 16px;
     margin: 40px auto 24px;
   }
-  
+
   /* Mobile Floating Player docked above Mobile Bottom Nav */
   .ost-floating-player {
     bottom: calc(64px + env(safe-area-inset-bottom, 0px) + 8px);
@@ -4713,53 +4952,67 @@ body.ott-platform {
     z-index: 9990;
     overflow: hidden;
   }
+
   .ost-fp-mobile-progress {
     display: block !important;
   }
+
   .ost-fp-container {
     gap: 10px;
   }
+
   .ost-fp-track-info {
     min-width: auto;
     max-width: 160px;
   }
+
   .ost-fp-thumb-wrap {
     width: 40px;
     height: 40px;
   }
+
   .ost-fp-track-name {
     font-size: 12px;
     max-width: 110px;
   }
+
   .ost-fp-track-tag {
     display: none;
   }
+
   .ost-fp-artist {
     font-size: 10px;
     max-width: 110px;
   }
+
   .ost-fp-right-controls {
     min-width: auto;
     gap: 6px;
   }
+
   .ost-fp-volume-slider,
   .ost-fp-vol-btn {
     display: none;
   }
+
   .ost-fp-center-controls {
     max-width: none;
   }
+
   .ost-fp-buttons {
     gap: 10px;
   }
+
   .ost-fp-btn-main {
     width: 36px;
     height: 36px;
   }
+
   .ost-fp-btn-main svg {
     width: 18px;
     height: 18px;
   }
+
   .ost-fp-btn svg {
     width: 15px;
     height: 15px;
@@ -4822,6 +5075,7 @@ body.ott-platform {
   .brand-wordmark-img {
     height: 28px;
   }
+
   .brand-logo-wrap {
     width: 36px;
     height: 36px;
@@ -4832,10 +5086,12 @@ body.ott-platform {
   .brand-container {
     gap: 8px;
   }
+
   .brand-logo-wrap {
     width: 32px;
     height: 32px;
   }
+
   .brand-wordmark-img {
     height: 24px;
   }
@@ -4846,6 +5102,7 @@ body.ott-platform {
     width: 28px;
     height: 28px;
   }
+
   .brand-wordmark-img {
     height: 20px;
   }
@@ -4952,7 +5209,7 @@ body.ott-platform {
   position: absolute;
   inset: 0;
   background: linear-gradient(90deg, rgba(8, 10, 16, 0.96) 0%, rgba(8, 10, 16, 0.82) 45%, rgba(8, 10, 16, 0.4) 100%),
-              linear-gradient(0deg, rgba(8, 10, 16, 0.95) 0%, transparent 60%);
+    linear-gradient(0deg, rgba(8, 10, 16, 0.95) 0%, transparent 60%);
 }
 
 .spotlight-glow-fx {
@@ -5508,9 +5765,11 @@ body.ott-platform {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }
+
   .spotlight-content-wrap {
     padding: 36px 30px;
   }
+
   .spotlight-title {
     font-size: 32px;
   }
@@ -5522,22 +5781,28 @@ body.ott-platform {
     margin: 10px 16px 30px;
     border-radius: 14px;
   }
+
   .spotlight-content-wrap {
     padding: 28px 18px;
   }
+
   .spotlight-title {
     font-size: 26px;
   }
+
   .spotlight-corner-play {
     display: none;
   }
+
   .movies-catalog-section {
     padding: 0 16px;
   }
+
   .movies-grid {
     grid-template-columns: 1fr;
     gap: 18px;
   }
+
   .movie-banner-img-wrap {
     height: 180px;
   }
@@ -5810,7 +6075,9 @@ body.ott-platform {
   font-weight: 800;
 }
 
-.meta-age, .meta-quality, .meta-audio {
+.meta-age,
+.meta-quality,
+.meta-audio {
   padding: 2px 6px;
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 3px;
@@ -5902,7 +6169,8 @@ body.ott-platform {
    NETFLIX CATEGORY ROWS & CARDS
    ========================================================================== */
 .netflix-rows-container {
-  padding: 0; /* Authentic Netflix: 0 side padding for true edge-to-edge full bleed */
+  padding: 0;
+  /* Authentic Netflix: 0 side padding for true edge-to-edge full bleed */
   display: flex;
   flex-direction: column;
   gap: 32px;
@@ -5919,7 +6187,8 @@ body.ott-platform {
   max-width: 100%;
   min-width: 0;
   box-sizing: border-box;
-  padding: 0; /* Zero side padding: cards span 100% edge-to-edge */
+  padding: 0;
+  /* Zero side padding: cards span 100% edge-to-edge */
   margin: 0 0 28px 0;
 }
 
@@ -5928,7 +6197,8 @@ body.ott-platform {
   align-items: center;
   gap: 12px;
   margin-bottom: 8px;
-  padding: 0 4%; /* Elegant title alignment with site brand/navbar */
+  padding: 0 4%;
+  /* Elegant title alignment with site brand/navbar */
 }
 
 .row-title {
@@ -6000,11 +6270,14 @@ body.ott-platform {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  display: block;
+  transform: none !important;
+  transition: none !important;
 }
 
 .n-card:hover .n-card-thumb img {
-  transform: scale(1.08);
+  transform: none !important;
+  transition: none !important;
 }
 
 .n-card-top-tag {
@@ -6146,17 +6419,21 @@ body.ott-platform {
   .netflix-genre-header {
     padding: 16px 24px;
   }
+
   .netflix-billboard {
     padding: 0 24px;
     min-height: 480px;
   }
+
   .billboard-title {
     font-size: 38px;
   }
+
   .netflix-rows-container {
     padding: 0 24px;
     gap: 32px;
   }
+
   .netflix-slider-track {
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   }
@@ -6167,19 +6444,24 @@ body.ott-platform {
     padding: 12px 16px;
     top: 60px;
   }
+
   .netflix-genre-title {
     font-size: 26px;
   }
+
   .netflix-genre-pills {
     display: none;
   }
+
   .netflix-billboard {
     padding: 0 16px;
     min-height: 400px;
   }
+
   .billboard-title {
     font-size: 28px;
   }
+
   .billboard-overview {
     font-size: 13px;
     -webkit-line-clamp: 3;
@@ -6187,10 +6469,12 @@ body.ott-platform {
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+
   .netflix-rows-container {
     padding: 0 16px;
     gap: 24px;
   }
+
   .netflix-slider-track {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
@@ -6420,6 +6704,7 @@ body.ott-platform {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -6430,10 +6715,12 @@ body.ott-platform {
     stroke-dasharray: 1, 150;
     stroke-dashoffset: 0;
   }
+
   50% {
     stroke-dasharray: 95, 150;
     stroke-dashoffset: -35;
   }
+
   100% {
     stroke-dasharray: 95, 150;
     stroke-dashoffset: -125;
@@ -6445,6 +6732,7 @@ body.ott-platform {
     width: 58px;
     height: 58px;
   }
+
   .nbp-spinner-track,
   .nbp-spinner-arc {
     stroke-width: 4;
@@ -6873,7 +7161,8 @@ body.ott-platform {
   width: 100%;
 }
 
-.nbp-ctrl-left, .nbp-ctrl-right {
+.nbp-ctrl-left,
+.nbp-ctrl-right {
   display: flex;
   align-items: center;
   gap: 16px;
@@ -6915,9 +7204,9 @@ body.ott-platform {
   cursor: pointer;
   border-radius: 50%;
   position: relative;
-  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), 
-              filter 0.22s ease, 
-              opacity 0.2s ease;
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
+    filter 0.22s ease,
+    opacity 0.2s ease;
 }
 
 .nbp-ctrl-btn:hover {
@@ -7140,9 +7429,11 @@ body.ott-platform {
   .nbp-top-header {
     padding: max(20px, env(safe-area-inset-top)) max(28px, env(safe-area-inset-right)) 12px max(28px, env(safe-area-inset-left));
   }
+
   .nbp-controls-bar {
     padding: 0 max(28px, env(safe-area-inset-right)) max(20px, env(safe-area-inset-bottom)) max(28px, env(safe-area-inset-left));
   }
+
   .nbp-center-title {
     max-width: 280px;
     font-size: 15px;
@@ -7176,7 +7467,8 @@ body.ott-platform {
   }
 
   .nbp-scrubber-wrapper {
-    height: 28px; /* Taller touch hit-area */
+    height: 28px;
+    /* Taller touch hit-area */
   }
 
   .nbp-scrubber-thumb {
@@ -7194,7 +7486,8 @@ body.ott-platform {
     display: none;
   }
 
-  .nbp-ctrl-left, .nbp-ctrl-right {
+  .nbp-ctrl-left,
+  .nbp-ctrl-right {
     gap: 10px;
   }
 
@@ -7256,7 +7549,8 @@ body.ott-platform {
     gap: 8px;
   }
 
-  .nbp-ctrl-left, .nbp-ctrl-right {
+  .nbp-ctrl-left,
+  .nbp-ctrl-right {
     gap: 6px;
   }
 
@@ -7329,7 +7623,8 @@ body.ott-platform {
     font-size: 16px;
   }
 
-  .nbp-audio-popover, .nbp-speed-popover {
+  .nbp-audio-popover,
+  .nbp-speed-popover {
     max-height: 220px;
     overflow-y: auto;
     bottom: calc(100% + 8px);
@@ -7343,18 +7638,22 @@ body.ott-platform {
    ========================================================================= */
 
 /* 1. Global Box-Sizing & Viewport Containment */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   width: 100%;
   max-width: 100vw;
   overflow-x: hidden !important;
   -webkit-text-size-adjust: 100%;
 }
 
-img, video {
+img,
+video {
   max-width: 100%;
   height: auto;
 }
@@ -7367,40 +7666,48 @@ img, video {
     max-width: 1600px;
     padding: 0 48px;
   }
+
   .netflix-genre-header {
     max-width: 1600px;
     margin: 0 auto;
     padding: 24px 48px;
   }
+
   .netflix-billboard {
     max-width: 1600px;
     margin: 0 auto 28px;
     min-height: 600px;
     border-radius: 12px;
   }
+
   .netflix-row {
     max-width: 100%;
     margin: 0 0 32px 0;
     padding: 0;
   }
+
   .content-row {
     max-width: 1600px;
     margin: 0 auto;
     padding: 0 48px;
   }
+
   .theater-acts-showcase-container {
     max-width: 1400px;
     margin: 32px auto;
   }
+
   .trailer-player-wrap {
     max-width: 1400px;
     margin: 0 auto;
   }
+
   .gallery-mosaic {
     max-width: 1600px;
     margin: 0 auto;
     grid-template-columns: repeat(4, 1fr);
   }
+
   .footer-content {
     max-width: 1600px;
     margin: 0 auto;
@@ -7414,29 +7721,36 @@ img, video {
   .header-content {
     padding: 0 32px;
   }
+
   .netflix-genre-header {
     padding: 18px 36px;
   }
+
   .netflix-billboard {
     min-height: 500px;
     padding: 0 36px;
     margin-bottom: 24px;
   }
+
   .billboard-title {
     font-size: 42px;
   }
+
   .billboard-overview {
     max-width: 600px;
     font-size: 14px;
   }
+
   .netflix-row {
     padding: 0;
     margin-bottom: 28px;
   }
+
   .netflix-slider-track {
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: 14px;
   }
+
   .gallery-mosaic {
     grid-template-columns: repeat(3, 1fr);
     padding: 0 36px;
@@ -7450,66 +7764,83 @@ img, video {
   .studio-header {
     height: 68px;
   }
+
   .header-content {
     padding: 0 24px;
   }
+
   .nav-tabs {
     gap: 6px;
   }
+
   .tab-link {
     padding: 6px 12px;
     font-size: 12.5px;
   }
+
   .btn-play-header {
     padding: 6px 14px;
     font-size: 12px;
   }
+
   .page-view {
     padding-top: 68px;
     min-height: calc(100vh - 68px);
   }
+
   .netflix-genre-header {
     padding: 16px 24px;
   }
+
   .netflix-billboard {
     min-height: 440px;
     padding: 0 24px;
     margin-bottom: 20px;
   }
+
   .billboard-title {
     font-size: 34px;
   }
+
   .billboard-overview {
     max-width: 520px;
     font-size: 13px;
     -webkit-line-clamp: 3;
   }
+
   .netflix-row {
     padding: 0;
     margin-bottom: 24px;
   }
+
   .netflix-slider-track {
     grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
     gap: 12px;
   }
+
   .theater-acts-showcase-container {
     padding: 24px 20px;
     margin: 20px auto;
   }
+
   .acts-single-grid {
     margin: 14px 0;
   }
+
   .trailer-player-wrap {
     padding: 0 24px;
   }
+
   .trailer-cta-banner {
     padding: 28px 24px;
   }
+
   .gallery-mosaic {
     grid-template-columns: repeat(2, 1fr);
     gap: 14px;
     padding: 0 24px;
   }
+
   .site-footer {
     padding: 40px 24px 24px;
   }
@@ -7519,30 +7850,37 @@ img, video {
    MOBILE PHONES: Android & iOS Portrait (max-width: 768px)
    ========================================================================= */
 @media (max-width: 768px) {
+
   /* Studio Header Mobile Optimization */
   .studio-header {
     height: 58px !important;
     background: rgba(6, 8, 12, 0.96) !important;
   }
+
   .header-content {
     padding: 0 14px !important;
   }
+
   .nav-tabs {
     display: none !important;
   }
+
   .brand-logo-wrap {
     width: 32px !important;
     height: 32px !important;
   }
+
   .brand-wordmark-wrap img {
     height: 22px !important;
     width: auto !important;
   }
+
   .btn-play-header {
     padding: 6px 10px !important;
     font-size: 11px !important;
     gap: 4px !important;
   }
+
   .btn-play-header svg {
     width: 13px !important;
     height: 13px !important;
@@ -7567,6 +7905,7 @@ img, video {
     padding: 0 4px !important;
     padding-bottom: max(6px, env(safe-area-inset-bottom, 0px)) !important;
   }
+
   .mobile-nav-item {
     flex: 1 !important;
     display: flex !important;
@@ -7576,10 +7915,12 @@ img, video {
     gap: 3px !important;
     padding: 6px 2px !important;
   }
+
   .mobile-nav-item span {
     font-size: 10px !important;
     font-weight: 700 !important;
   }
+
   .mobile-nav-item svg {
     width: 20px !important;
     height: 20px !important;
@@ -7600,13 +7941,16 @@ img, video {
     gap: 8px !important;
     background: rgba(20, 20, 20, 0.95) !important;
   }
+
   .netflix-genre-title {
     font-size: 22px !important;
   }
+
   .genre-select-btn {
     padding: 5px 10px !important;
     font-size: 11.5px !important;
   }
+
   .netflix-genre-pills {
     display: flex !important;
     overflow-x: auto !important;
@@ -7616,9 +7960,11 @@ img, video {
     width: 100% !important;
     padding-bottom: 2px !important;
   }
+
   .netflix-genre-pills::-webkit-scrollbar {
     display: none;
   }
+
   .n-pill {
     padding: 4px 11px !important;
     font-size: 11px !important;
@@ -7632,37 +7978,45 @@ img, video {
     margin-bottom: 16px !important;
     border-radius: 0 !important;
   }
+
   .billboard-content {
     padding: 20px 0 16px !important;
     width: 100% !important;
     max-width: 100% !important;
   }
+
   .billboard-top-row {
     gap: 8px !important;
     margin-bottom: 6px !important;
   }
+
   .billboard-top10-badge {
     font-size: 9px !important;
   }
+
   .billboard-tag-gold {
     font-size: 9.5px !important;
     padding: 2px 6px !important;
   }
+
   .billboard-title {
     font-size: 24px !important;
     line-height: 1.15 !important;
     margin-bottom: 4px !important;
   }
+
   .billboard-subtitle-tag {
     font-size: 10px !important;
     margin-bottom: 6px !important;
   }
+
   .billboard-meta-row {
     flex-wrap: wrap !important;
     gap: 4px 8px !important;
     font-size: 10.5px !important;
     margin-bottom: 8px !important;
   }
+
   .billboard-overview {
     font-size: 12px !important;
     line-height: 1.4 !important;
@@ -7672,13 +8026,16 @@ img, video {
     overflow: hidden !important;
     margin-bottom: 12px !important;
   }
+
   .billboard-btn-group {
     display: flex !important;
     flex-direction: row !important;
     gap: 8px !important;
     width: 100% !important;
   }
-  .btn-billboard-play, .btn-billboard-info {
+
+  .btn-billboard-play,
+  .btn-billboard-info {
     flex: 1 !important;
     padding: 8px 12px !important;
     font-size: 12px !important;
@@ -7690,10 +8047,12 @@ img, video {
     padding: 0 !important;
     margin-bottom: 20px !important;
   }
+
   .row-title {
     font-size: 15px !important;
     margin-bottom: 10px !important;
   }
+
   .netflix-slider-track {
     display: flex !important;
     overflow-x: auto !important;
@@ -7703,20 +8062,26 @@ img, video {
     gap: 10px !important;
     padding-bottom: 6px !important;
   }
+
   .netflix-slider-track::-webkit-scrollbar {
     display: none;
   }
+
   .n-card {
     flex: 0 0 200px !important;
     min-width: 180px !important;
     scroll-snap-align: start !important;
   }
+
   .n-card:hover {
-    transform: none !important; /* Disable hover jumps on mobile touch */
+    transform: none !important;
+    /* Disable hover jumps on mobile touch */
   }
+
   .n-movie-name {
     font-size: 12.5px !important;
   }
+
   .n-card-genres {
     font-size: 10px !important;
   }
@@ -7727,37 +8092,47 @@ img, video {
     margin: 16px 10px !important;
     border-radius: 12px !important;
   }
+
   .acts-showcase-title {
     font-size: 17px !important;
   }
+
   .acts-showcase-desc {
     font-size: 11.5px !important;
   }
+
   .acts-single-grid {
     margin: 10px 0 !important;
   }
+
   .acts-single-grid .act-feature-card {
     width: 100% !important;
     max-width: 100% !important;
   }
+
   .acts-single-grid .act-card-inner {
     flex-direction: column !important;
   }
+
   .acts-single-grid .act-card-thumb {
     width: 100% !important;
     min-width: 100% !important;
     height: 160px !important;
   }
+
   .acts-single-grid .act-card-info {
     padding: 12px !important;
   }
+
   .acts-single-grid .act-name {
     font-size: 15px !important;
   }
+
   .acts-single-grid .act-synopsis {
     font-size: 11.5px !important;
     line-height: 1.4 !important;
   }
+
   .acts-single-grid .btn-stream-act {
     width: 100% !important;
     justify-content: center !important;
@@ -7769,15 +8144,18 @@ img, video {
   .trailer-player-wrap {
     padding: 0 10px !important;
   }
+
   .trailer-cta-banner {
     padding: 20px 14px !important;
     flex-direction: column !important;
     text-align: center !important;
     gap: 14px !important;
   }
+
   .trailer-cta-actions {
     width: 100% !important;
   }
+
   .btn-cta-primary {
     width: 100% !important;
     justify-content: center !important;
@@ -7789,6 +8167,7 @@ img, video {
     gap: 8px !important;
     padding: 0 10px !important;
   }
+
   .mosaic-item.large {
     grid-row: span 1 !important;
     grid-column: span 2 !important;
@@ -7837,59 +8216,70 @@ img, video {
     transition: width 0.12s linear !important;
     pointer-events: none !important;
   }
+
   .ost-fp-thumb-wrap {
     width: 42px !important;
     height: 42px !important;
     border-radius: 4px !important;
   }
+
   .ost-fp-track-info {
     width: auto !important;
     min-width: 0 !important;
     flex: 1 !important;
     gap: 10px !important;
   }
+
   .ost-fp-meta {
     max-width: 140px !important;
     min-width: 0 !important;
   }
+
   .ost-fp-track-name {
     font-size: 13px !important;
     max-width: 140px !important;
   }
+
   .ost-fp-artist {
     font-size: 10px !important;
     max-width: 140px !important;
   }
+
   .ost-fp-center-controls {
     width: auto !important;
     flex: 0 0 auto !important;
   }
+
   .ost-fp-scrubber-row,
   .ost-fp-btn,
   .ost-fp-btn-icon {
     display: none !important;
   }
+
   .ost-fp-btn-main {
     width: 32px !important;
     height: 32px !important;
   }
+
   .ost-fp-right-controls {
     width: auto !important;
     min-width: 0 !important;
     gap: 6px !important;
   }
+
   .ost-fp-vol-btn,
   .ost-fp-vol-slider-wrap,
   .ost-fp-volume-slider {
     display: none !important;
   }
+
   .ost-fp-close-btn {
     font-size: 16px !important;
     padding: 4px !important;
   }
 
   /* Modals Mobile Centering & Safe Max-Width */
-  .modal-card, 
+  .modal-card,
   .offline-file-modal .modal-card,
   .feedback-modal .modal-card {
     width: calc(100% - 24px) !important;
@@ -7904,6 +8294,7 @@ img, video {
     padding: 30px 14px 85px !important;
     text-align: center !important;
   }
+
   .footer-content {
     grid-template-columns: 1fr !important;
     gap: 20px !important;
@@ -7917,20 +8308,26 @@ img, video {
   .billboard-title {
     font-size: 21px !important;
   }
-  .btn-billboard-play, .btn-billboard-info {
+
+  .btn-billboard-play,
+  .btn-billboard-info {
     font-size: 11px !important;
     padding: 7px 10px !important;
   }
+
   .n-card {
     flex: 0 0 165px !important;
     min-width: 155px !important;
   }
+
   .acts-single-grid .act-card-thumb {
     height: 140px !important;
   }
+
   .gallery-mosaic {
     grid-template-columns: 1fr !important;
   }
+
   .mosaic-item.large {
     grid-column: span 1 !important;
   }
@@ -7944,23 +8341,29 @@ img, video {
     height: 48px !important;
     padding: 0 20px !important;
   }
+
   .page-view {
     padding-top: 48px !important;
     padding-bottom: 56px !important;
   }
+
   .mobile-bottom-nav {
     height: 50px !important;
   }
+
   .mobile-nav-item span {
     font-size: 9px !important;
   }
+
   .mobile-nav-item svg {
     width: 16px !important;
     height: 16px !important;
   }
+
   .netflix-billboard {
     min-height: 280px !important;
   }
+
   .billboard-title {
     font-size: 22px !important;
   }
@@ -8096,7 +8499,8 @@ img, video {
 }
 
 .netflix-row:hover {
-  z-index: 250 !important; /* Ensure hovered row floats above subsequent rows */
+  z-index: 250 !important;
+  /* Ensure hovered row floats above subsequent rows */
 }
 
 .n-carousel-wrap {
@@ -8143,12 +8547,12 @@ img, video {
 }
 
 /* Edge Smart Transform Origins */
-.netflix-slider-track.compact-row > .n-card.compact:first-child,
-.netflix-slider-track.compact-row > .n-card.compact:nth-child(1) {
+.netflix-slider-track.compact-row>.n-card.compact:first-child,
+.netflix-slider-track.compact-row>.n-card.compact:nth-child(1) {
   transform-origin: left center !important;
 }
 
-.netflix-slider-track.compact-row > .n-card.compact:last-child {
+.netflix-slider-track.compact-row>.n-card.compact:last-child {
   transform-origin: right center !important;
 }
 
@@ -8167,11 +8571,13 @@ img, video {
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.4s ease;
+  transform: none !important;
+  transition: none !important;
 }
 
 /* Large 1.5x Netflix Pop-Out on Desktop Mouse Hover */
 @media (min-width: 769px) {
+
   .n-card.compact:hover,
   .n-card.compact.is-hovered {
     transform: scale(1.48) translateY(-14%) !important;
@@ -8191,15 +8597,17 @@ img, video {
   }
 
   .n-card.compact .n-card-thumb img {
-    border-top-left-radius: 6px !important;
-    border-top-right-radius: 6px !important;
-    border-bottom-left-radius: 0 !important;
-    border-bottom-right-radius: 0 !important;
+    border-radius: 6px !important;
   }
 
   .n-card.compact:hover .n-card-thumb img,
   .n-card.compact.is-hovered .n-card-thumb img {
-    transform: scale(1.05);
+    border-top-left-radius: 6px !important;
+    border-top-right-radius: 6px !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    transform: none !important;
+    transition: none !important;
   }
 
   /* Hide quality tag on hover so thumbnail stays clean like Netflix */
@@ -8658,12 +9066,14 @@ img, video {
   font-weight: 800;
 }
 
-.n-modal-meta .year, .n-modal-meta .dur {
+.n-modal-meta .year,
+.n-modal-meta .dur {
   color: #a3a3a3;
   font-weight: 600;
 }
 
-.n-modal-meta .age, .n-modal-meta .badge {
+.n-modal-meta .age,
+.n-modal-meta .badge {
   padding: 2px 6px;
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 3px;
@@ -8708,22 +9118,27 @@ img, video {
     right: 28px;
     bottom: 28%;
   }
+
   .n-card.compact {
     flex: 0 0 195px;
     width: 195px;
   }
+
   .n-top10-item {
     flex: 0 0 230px;
     width: 230px;
   }
+
   .top10-rank-num {
     font-size: 110px;
     letter-spacing: -12px;
   }
+
   .n-top10-item .n-card.compact {
     flex: 0 0 165px;
     width: 165px;
   }
+
   .n-modal-body {
     grid-template-columns: 1fr;
     gap: 20px;
@@ -8734,29 +9149,36 @@ img, video {
 /* Mobile Devices: Android & iOS (768px and below) */
 @media screen and (max-width: 768px) {
   .n-slider-btn {
-    display: none !important; /* Touch swipe on mobile screens */
+    display: none !important;
+    /* Touch swipe on mobile screens */
   }
+
   .netflix-billboard.home-billboard {
     min-height: 420px;
     padding: 0 16px;
     margin-bottom: 12px;
   }
+
   .billboard-aside-controls {
     right: 14px;
     bottom: 16px;
     gap: 8px;
   }
+
   .billboard-audio-btn {
     width: 34px;
     height: 34px;
   }
+
   .billboard-title {
     font-size: 32px !important;
   }
+
   .billboard-subtitle-tag {
     font-size: 11px !important;
     margin-bottom: 10px !important;
   }
+
   .billboard-overview {
     font-size: 13px !important;
     line-height: 1.45 !important;
@@ -8766,34 +9188,43 @@ img, video {
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+
   .netflix-rows-container {
     padding: 0 !important;
     gap: 20px !important;
   }
+
   .row-title {
     font-size: 16px !important;
   }
+
   .netflix-slider-track.compact-row {
     padding: 8px 0 16px 0;
     gap: 10px;
   }
+
   .n-card.compact {
     flex: 0 0 148px;
     width: 148px;
   }
+
   .n-card.compact .n-movie-name {
     font-size: 11px;
   }
+
   .n-card.compact .n-card-meta {
     font-size: 9px;
   }
+
   .n-card.compact .n-card-genres {
     display: none;
   }
+
   .n-top10-item {
     flex: 0 0 185px;
     width: 185px;
   }
+
   .top10-rank-num {
     font-size: 85px;
     letter-spacing: -10px;
@@ -8801,16 +9232,20 @@ img, video {
     text-stroke: 3px #595959;
     margin-right: -14px;
   }
+
   .n-top10-item .n-card.compact {
     flex: 0 0 130px;
     width: 130px;
   }
+
   .n-modal-dialog {
     max-width: 95%;
   }
+
   .n-modal-title {
     font-size: 26px;
   }
+
   .n-modal-body {
     padding: 16px;
   }
@@ -8821,21 +9256,26 @@ img, video {
   .netflix-billboard.home-billboard {
     min-height: 380px;
   }
+
   .billboard-title {
     font-size: 26px !important;
   }
+
   .n-card.compact {
     flex: 0 0 136px;
     width: 136px;
   }
+
   .n-top10-item {
     flex: 0 0 168px;
     width: 168px;
   }
+
   .top10-rank-num {
     font-size: 75px;
     margin-right: -12px;
   }
+
   .n-top10-item .n-card.compact {
     flex: 0 0 118px;
     width: 118px;
@@ -8875,7 +9315,7 @@ img, video {
   padding: 8px 0 !important;
   line-height: 1.25 !important;
   overflow: visible !important;
-  text-shadow: 
+  text-shadow:
     0 4px 20px rgba(0, 0, 0, 1),
     0 2px 6px rgba(0, 0, 0, 1),
     0 8px 30px rgba(0, 0, 0, 0.95),
@@ -8900,10 +9340,12 @@ img, video {
     max-height: 400px !important;
     padding: 0 32px 32px 32px !important;
   }
+
   .billboard-title.bold-title {
     font-size: 38px !important;
     margin-bottom: 14px !important;
   }
+
   .billboard-aside-controls {
     right: 28px !important;
     bottom: 34px !important;
@@ -8918,34 +9360,42 @@ img, video {
     padding: 0 16px 20px 16px !important;
     margin-bottom: 10px !important;
   }
+
   .billboard-title.bold-title {
     font-size: 26px !important;
     letter-spacing: 1px !important;
     margin-bottom: 12px !important;
   }
+
   .billboard-actions {
     gap: 8px !important;
   }
+
   .btn-n-play {
     padding: 8px 18px !important;
     font-size: 13px !important;
   }
+
   .btn-n-info {
     padding: 8px 16px !important;
     font-size: 12px !important;
   }
+
   .billboard-aside-controls {
     right: 14px !important;
     bottom: 20px !important;
     gap: 6px !important;
   }
+
   .billboard-audio-btn {
     width: 32px !important;
     height: 32px !important;
   }
+
   .billboard-maturity-badge {
     padding: 3px 8px !important;
   }
+
   .bb-maturity-border {
     font-size: 10px !important;
   }
@@ -8958,14 +9408,17 @@ img, video {
     max-height: 290px !important;
     padding: 0 12px 16px 12px !important;
   }
+
   .billboard-title.bold-title {
     font-size: 22px !important;
     margin-bottom: 10px !important;
   }
+
   .btn-n-play {
     padding: 6px 14px !important;
     font-size: 12px !important;
   }
+
   .btn-n-info {
     padding: 6px 12px !important;
     font-size: 11px !important;
@@ -9032,6 +9485,7 @@ img, video {
     top: 32px !important;
     left: 32px !important;
   }
+
   .billboard-lower-left {
     bottom: 32px !important;
     left: 32px !important;
@@ -9043,10 +9497,12 @@ img, video {
     top: 20px !important;
     left: 16px !important;
   }
+
   .billboard-lower-left {
     bottom: 20px !important;
     left: 16px !important;
   }
+
   .billboard-audio-btn.left-audio {
     width: 34px !important;
     height: 34px !important;
@@ -9058,10 +9514,12 @@ img, video {
     top: 14px !important;
     left: 12px !important;
   }
+
   .billboard-lower-left {
     bottom: 14px !important;
     left: 12px !important;
   }
+
   .billboard-audio-btn.left-audio {
     width: 30px !important;
     height: 30px !important;
@@ -9072,7 +9530,7 @@ img, video {
 .netflix-billboard.home-billboard .billboard-vignette {
   position: absolute !important;
   inset: 0 !important;
-  background: 
+  background:
     linear-gradient(90deg, rgba(14, 14, 14, 0.94) 0%, rgba(14, 14, 14, 0.8) 32%, rgba(14, 14, 14, 0.4) 62%, transparent 100%),
     linear-gradient(180deg, rgba(14, 14, 14, 0.85) 0%, rgba(14, 14, 14, 0.35) 28%, transparent 60%) !important;
   z-index: 2 !important;
@@ -9134,12 +9592,12 @@ img, video {
 }
 
 /* Edge Smart Transform Origins */
-.single-movie-track > .n-card.official-master-card:first-child,
-.single-movie-track > .n-card.official-master-card:nth-child(1) {
+.single-movie-track>.n-card.official-master-card:first-child,
+.single-movie-track>.n-card.official-master-card:nth-child(1) {
   transform-origin: left center !important;
 }
 
-.single-movie-track > .n-card.official-master-card:last-child {
+.single-movie-track>.n-card.official-master-card:last-child {
   transform-origin: right center !important;
 }
 
@@ -9158,11 +9616,13 @@ img, video {
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.4s ease;
+  transform: none !important;
+  transition: none !important;
 }
 
 /* Authentic Netflix 1.5x Hover Pop-Out Expansion (Matching User Screenshot Exactly) */
 @media (min-width: 769px) {
+
   .single-movie-track .n-card.official-master-card:hover,
   .single-movie-track .n-card.official-master-card.is-hovered {
     transform: scale(1.48) translateY(-14%) !important;
@@ -9182,15 +9642,17 @@ img, video {
   }
 
   .single-movie-track .n-card-thumb img {
-    border-top-left-radius: 6px !important;
-    border-top-right-radius: 6px !important;
-    border-bottom-left-radius: 0 !important;
-    border-bottom-right-radius: 0 !important;
+    border-radius: 6px !important;
   }
 
   .single-movie-track .n-card.official-master-card:hover .n-card-thumb img,
   .single-movie-track .n-card.official-master-card.is-hovered .n-card-thumb img {
-    transform: scale(1.05);
+    border-top-left-radius: 6px !important;
+    border-top-right-radius: 6px !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    transform: none !important;
+    transition: none !important;
   }
 
   /* Hide quality tag on hover so thumbnail stays clean like Netflix */
@@ -9378,13 +9840,17 @@ img, video {
     margin-top: 0 !important;
     margin-bottom: 0 !important;
   }
+
   .single-movie-track .n-card.official-master-card {
     flex: 0 0 200px !important;
     width: 200px !important;
   }
+
   .single-movie-track .n-card.official-master-card:hover {
-    transform: none !important; /* Disable hover jumps on mobile touch */
+    transform: none !important;
+    /* Disable hover jumps on mobile touch */
   }
+
   .single-movie-track .n-movie-name {
     font-size: 12px !important;
   }
@@ -9395,9 +9861,11 @@ img, video {
     flex: 0 0 160px !important;
     width: 160px !important;
   }
+
   .single-movie-track .n-movie-name {
     font-size: 11px !important;
   }
+
   .single-movie-track .n-card-genres {
     display: none !important;
   }
@@ -9477,8 +9945,13 @@ img, video {
 }
 
 @keyframes spotifyVinylSpin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .vinyl-groove-circle {
@@ -9664,9 +10137,21 @@ img, video {
 }
 
 @keyframes pulseBgDot {
-  0% { transform: scale(0.9); opacity: 0.6; }
-  50% { transform: scale(1.4); opacity: 1; box-shadow: 0 0 10px #e50914; }
-  100% { transform: scale(0.9); opacity: 0.6; }
+  0% {
+    transform: scale(0.9);
+    opacity: 0.6;
+  }
+
+  50% {
+    transform: scale(1.4);
+    opacity: 1;
+    box-shadow: 0 0 10px #e50914;
+  }
+
+  100% {
+    transform: scale(0.9);
+    opacity: 0.6;
+  }
 }
 
 /* 2. YouTube Music Style Filter Chips */
@@ -9801,14 +10286,34 @@ img, video {
   animation: eqBounce 1s ease-in-out infinite alternate;
 }
 
-.s-row-equalizer span:nth-child(1) { height: 60%; animation-delay: 0.1s; }
-.s-row-equalizer span:nth-child(2) { height: 100%; animation-delay: 0.3s; }
-.s-row-equalizer span:nth-child(3) { height: 40%; animation-delay: 0.2s; }
-.s-row-equalizer span:nth-child(4) { height: 80%; animation-delay: 0.4s; }
+.s-row-equalizer span:nth-child(1) {
+  height: 60%;
+  animation-delay: 0.1s;
+}
+
+.s-row-equalizer span:nth-child(2) {
+  height: 100%;
+  animation-delay: 0.3s;
+}
+
+.s-row-equalizer span:nth-child(3) {
+  height: 40%;
+  animation-delay: 0.2s;
+}
+
+.s-row-equalizer span:nth-child(4) {
+  height: 80%;
+  animation-delay: 0.4s;
+}
 
 @keyframes eqBounce {
-  0% { height: 20%; }
-  100% { height: 100%; }
+  0% {
+    height: 20%;
+  }
+
+  100% {
+    height: 100%;
+  }
 }
 
 .spotify-row.active.playing .s-track-idx {
@@ -9942,45 +10447,57 @@ img, video {
   .spotify-album-header {
     padding: 30px 20px 24px;
   }
+
   .spotify-header-content {
     flex-direction: column;
     align-items: center;
     text-align: center;
     gap: 20px;
   }
+
   .spotify-cover-wrap {
     flex: 0 0 180px;
     width: 180px;
     height: 180px;
   }
+
   .spotify-vinyl-peeking {
     display: none;
   }
+
   .spotify-meta-stack {
     align-items: center;
   }
+
   .spotify-actions-bar {
     justify-content: center;
     width: 100%;
   }
+
   .spotify-bg-play-pill {
     margin: 10px auto 0;
   }
+
   .spotify-table-header {
     grid-template-columns: 36px 1fr;
   }
+
   .th-tag {
     display: none;
   }
+
   .spotify-row {
     grid-template-columns: 36px 1fr;
   }
+
   .s-col-tag {
     display: none;
   }
+
   .ytm-chips-container {
     padding: 14px 20px 10px;
   }
+
   .spotify-tracklist-section {
     padding: 0 20px 100px;
   }
@@ -9990,23 +10507,29 @@ img, video {
   .spotify-album-title {
     font-size: 24px;
   }
+
   .spotify-album-desc {
     font-size: 12px;
   }
+
   .spotify-credits-line {
     font-size: 11px;
     justify-content: center;
   }
+
   .spotify-track-thumb {
     width: 38px;
     height: 38px;
   }
+
   .s-track-name {
     font-size: 13px;
   }
+
   .s-track-artist {
     font-size: 11px;
   }
+
   .s-duration {
     font-size: 11px;
   }
@@ -10202,8 +10725,15 @@ img, video {
 }
 
 @keyframes sandifyFadeIn {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Simple Back Arrow Directly on Banner (No top bar / space, pure arrow icon) */
@@ -10430,19 +10960,24 @@ img, video {
     padding: 0 16px;
     margin: 24px auto;
   }
+
   .spotify-card-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 14px;
   }
+
   .spotify-music-card {
     padding: 10px;
   }
+
   .spotify-card-name {
     font-size: 14px;
   }
+
   .spotify-card-artists {
     font-size: 12px;
   }
+
   .spotify-card-play {
     opacity: 1;
     transform: translateY(0);
@@ -10451,34 +10986,42 @@ img, video {
     bottom: 6px;
     right: 6px;
   }
+
   .subpage-banner-back-arrow {
     top: 14px;
     left: 14px;
   }
+
   .subpage-banner-back-arrow svg {
     width: 24px;
     height: 24px;
   }
+
   .subpage-album-header {
     padding: 44px 16px 20px;
   }
+
   .subpage-header-content {
     flex-direction: column;
     align-items: center;
     text-align: center;
     gap: 16px;
   }
+
   .subpage-cover-wrap {
     flex: 0 0 160px;
     width: 160px;
     height: 160px;
   }
+
   .subpage-vinyl-peeking {
     display: none;
   }
+
   .subpage-meta-stack {
     align-items: center;
   }
+
   .subpage-actions-row {
     justify-content: center;
     width: 100%;
@@ -10490,6 +11033,7 @@ img, video {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
   }
+
   .spotify-music-card {
     padding: 8px;
   }
@@ -10556,12 +11100,15 @@ img, video {
     overflow-x: auto;
     scrollbar-width: none;
   }
+
   .nbp-embed-server-bar::-webkit-scrollbar {
     display: none;
   }
+
   .nbp-server-label {
     display: none;
   }
+
   .nbp-server-pill {
     font-size: 0.68rem;
     padding: 3px 8px;
@@ -10569,4 +11116,3 @@ img, video {
     flex-shrink: 0;
   }
 }
-
