@@ -2321,6 +2321,28 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
+  // Handle Embed Movie Mode (29 IMDb tt37737315 via Autoembed)
+  if (targetTime === 'm29' || targetTime === '29' || targetTime === 'tt37737315' || targetTime === '1510769' || targetTime === 'movie29') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = "29 • Vidhu & Preethi Asrani • IMDb tt37737315";
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const autoembedUrl = 'https://autoembed.me/movie/imdb/tt37737315';
+      if (embedIframe.src !== autoembedUrl) {
+        embedIframe.src = autoembedUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
   if (nbpIsEmbedMode) {
     nbpIsEmbedMode = false;
     modal.classList.remove('is-embed-active');
@@ -3328,6 +3350,14 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       age: 'U/A 13+',
       dur: '1h 53m',
       desc: "An ambitious and spirited young woman from a small town in Tamil Nadu embarks on a life-changing journey to Seoul, South Korea — a land she has passionately dreamed of for years. Navigating language barriers, cultural shocks, and emotional highs, she discovers resilience, unexpected friendship, and belonging in an unfamiliar world. Starring Priyanka Arul Mohan, Rishikanth, Park Hye-jin, Baek Si-hun. Directed by Ra. Karthik. Streamed in 1080P HEVC via Autoembed IMDb tt38674977."
+    },
+    'm29': {
+      title: '29',
+      hero: 'assets/images/m29_landscape.jpg',
+      year: '2026',
+      age: 'U/A 13+',
+      dur: '2h 29m',
+      desc: "A quirky 29-year-old named Sathya embarks on an unexpected journey of laughter, unlikely friendships, and heartwarming self-discovery across Chennai. Through hilarious misadventures, romantic chemistry, and chance encounters, he slowly sees life's bigger picture, newfound love, and second chances. Starring Vidhu, Preethi Asrani, Mahendran, Sindhu Shyam. Directed by Rathna Kumar. Available in Hindi & Tamil. Streamed in 1080P HEVC via Autoembed IMDb tt37737315."
     },
     'shiva': {
       title: 'SHIVA DHANUSH: THE SACRED PINAKA',
