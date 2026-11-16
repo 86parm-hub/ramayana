@@ -2679,6 +2679,28 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
+  // Handle Embed Movie Mode (Youth TMDB 1542352 / Peachify)
+  if (targetTime === 'youth' || targetTime === 'youth_2026' || targetTime === '1542352' || targetTime === 'ken_youth' || targetTime === 'ken_karunas') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = "Youth (2026) • Ken Karunas • TMDB 1542352";
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const embedUrl = 'https://peachify.net/movie/1542352';
+      if (embedIframe.src !== embedUrl) {
+        embedIframe.src = embedUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
   // Generalized CodeSpecters / Custom Embed Routing
   if (typeof targetTime === 'string' && (targetTime.startsWith('codespecters:') || targetTime.startsWith('cs:') || targetTime.startsWith('https://api.codespecters.com/'))) {
     nbpIsEmbedMode = true;
@@ -3822,6 +3844,14 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       age: 'U/A 16+',
       dur: '2h 32m',
       desc: "A carefree, backbencher college student dubbed 'Dragon' seeks shortcuts to success and wealth, sparking hilarious chaos, unexpected romance, and heartfelt coming-of-age life lessons. Starring Pradeep Ranganathan, Anupama Parameswaran, Kayadu Lohar, Mysskin, Gautham Vasudev Menon. Directed by Ashwath Marimuthu, produced by AGS Entertainment. Streamed in 1080P HEVC via Peachify TMDB 1273049."
+    },
+    'youth': {
+      title: 'YOUTH',
+      hero: 'assets/images/youth_landscape.jpg',
+      year: '2026',
+      age: 'U/A 13+',
+      dur: '2h 10m',
+      desc: "A fun-filled coming-of-age romantic comedy following 16-year-old carefree schoolboy Praveen and his tight-knit gang as they navigate school life, friendship, teenage romance, and heartfelt life lessons. Written, directed by, and starring Ken Karunas, alongside Anishma Anilkumar, Suraj Venjaramoodu, Devadarshini, Meenakshi Dinesh, Priyanshi Yadav. Music by G. V. Prakash Kumar. Streamed in 1080P HEVC via Peachify TMDB 1542352."
     },
     'shiva': {
       title: 'SHIVA DHANUSH: THE SACRED PINAKA',
