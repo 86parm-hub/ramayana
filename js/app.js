@@ -2349,6 +2349,28 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
+  // Handle Embed Movie Mode (Peddi TMDB 1057265 / IMDb tt23865918 via EmbedWave)
+  if (targetTime === 'peddi' || targetTime === '1057265' || targetTime === 'tt23865918' || targetTime === 'ramcharan_peddi') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = "Peddi • Ram Charan • TMDB 1057265";
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const embedUrl = 'https://embedwave.cc/embed/movie/1057265';
+      if (embedIframe.src !== embedUrl) {
+        embedIframe.src = embedUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
   if (nbpIsEmbedMode) {
     nbpIsEmbedMode = false;
     modal.classList.remove('is-embed-active');
@@ -3348,6 +3370,14 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       age: 'U/A 13+',
       dur: '1h 53m',
       desc: "An ambitious and spirited young woman from a small town in Tamil Nadu embarks on a life-changing journey to Seoul, South Korea — a land she has passionately dreamed of for years. Navigating language barriers, cultural shocks, and emotional highs, she discovers resilience, unexpected friendship, and belonging in an unfamiliar world. Starring Priyanka Arul Mohan, Rishikanth, Park Hye-jin, Baek Si-hun. Directed by Ra. Karthik. Streamed in 1080P HEVC via Autoembed IMDb tt38674977."
+    },
+    'peddi': {
+      title: 'PEDDI',
+      hero: 'assets/images/peddi_landscape.jpg',
+      year: '2026',
+      age: 'U/A 16+',
+      dur: '3h 09m',
+      desc: "In an isolated, unmapped rural hinterland that does not officially exist on government records, a fierce laborer's unmatched athletic prowess and wrestling talent become his ultimate weapon. Rising against oppressive exploitation, he wages an uncompromising battle for his community's dignity, identity, and right to be recognized. Starring Mega Power Star Ram Charan as Peddi Pehelwan, Janhvi Kapoor as Achiyyamma, Shiva Rajkumar, Jagapati Babu, Divyendu Sharma, Boman Irani, Ravi Kishan. Directed by Buchi Babu Sana. Music by A. R. Rahman. Streamed in 1080P HEVC via EmbedWave TMDB 1057265."
     },
     'shiva': {
       title: 'SHIVA DHANUSH: THE SACRED PINAKA',
