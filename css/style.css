@@ -8575,10 +8575,15 @@ video {
   transition: none !important;
 }
 
-/* Large 1.5x Netflix Pop-Out on Desktop Mouse Hover */
+/* Subtle Resting Hover Cue (Before 3s intentional dwell completes) */
+.n-card.compact:hover:not(.is-hovered) {
+  border-color: rgba(255, 255, 255, 0.28) !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.65) !important;
+}
+
+/* Large 1.5x Netflix Pop-Out (Triggered strictly after 3-second continuous hover dwell) */
 @media (min-width: 769px) {
 
-  .n-card.compact:hover,
   .n-card.compact.is-hovered {
     transform: scale(1.48) translateY(-14%) !important;
     border-color: rgba(255, 255, 255, 0.25) !important;
@@ -8589,7 +8594,6 @@ video {
     border-bottom-right-radius: 0 !important;
   }
 
-  .n-card.compact:hover .n-card-thumb,
   .n-card.compact.is-hovered .n-card-thumb {
     overflow: visible !important;
     border-bottom-left-radius: 0 !important;
@@ -8600,7 +8604,6 @@ video {
     border-radius: 6px !important;
   }
 
-  .n-card.compact:hover .n-card-thumb img,
   .n-card.compact.is-hovered .n-card-thumb img {
     border-top-left-radius: 6px !important;
     border-top-right-radius: 6px !important;
@@ -8611,16 +8614,13 @@ video {
   }
 
   /* Hide quality tag on hover so thumbnail stays clean like Netflix */
-  .single-movie-track .n-card.official-master-card:hover .n-card-quality-tag,
   .single-movie-track .n-card.official-master-card.is-hovered .n-card-quality-tag,
-  .n-card.compact:hover .n-card-quality-tag,
   .n-card.compact.is-hovered .n-card-quality-tag {
     opacity: 0 !important;
     pointer-events: none !important;
   }
 
   /* Authentic Netflix Speaker Pill on Thumbnail Bottom-Right (from user photo) */
-  .n-card.compact:hover .n-card-thumb::after,
   .n-card.compact.is-hovered .n-card-thumb::after {
     content: "";
     position: absolute;
@@ -8664,7 +8664,6 @@ video {
     justify-content: flex-start !important;
   }
 
-  .n-card.compact:hover .n-card-overlay,
   .n-card.compact.is-hovered .n-card-overlay {
     opacity: 1 !important;
     visibility: visible !important;
@@ -9620,10 +9619,15 @@ video {
   transition: none !important;
 }
 
-/* Authentic Netflix 1.5x Hover Pop-Out Expansion (Matching User Screenshot Exactly) */
+/* Subtle Resting Hover Cue (Before 3s intentional dwell completes) */
+.single-movie-track .n-card.official-master-card:hover:not(.is-hovered) {
+  border-color: rgba(255, 255, 255, 0.28) !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.65) !important;
+}
+
+/* Authentic Netflix 1.5x Hover Pop-Out Expansion (Triggered strictly after 3-second continuous hover dwell) */
 @media (min-width: 769px) {
 
-  .single-movie-track .n-card.official-master-card:hover,
   .single-movie-track .n-card.official-master-card.is-hovered {
     transform: scale(1.48) translateY(-14%) !important;
     border-color: rgba(255, 255, 255, 0.28) !important;
@@ -9634,7 +9638,6 @@ video {
     border-bottom-right-radius: 0 !important;
   }
 
-  .single-movie-track .n-card.official-master-card:hover .n-card-thumb,
   .single-movie-track .n-card.official-master-card.is-hovered .n-card-thumb {
     overflow: visible !important;
     border-bottom-left-radius: 0 !important;
@@ -9645,7 +9648,6 @@ video {
     border-radius: 6px !important;
   }
 
-  .single-movie-track .n-card.official-master-card:hover .n-card-thumb img,
   .single-movie-track .n-card.official-master-card.is-hovered .n-card-thumb img {
     border-top-left-radius: 6px !important;
     border-top-right-radius: 6px !important;
@@ -9656,16 +9658,12 @@ video {
   }
 
   /* Hide quality tag on hover so thumbnail stays clean like Netflix */
-  .single-movie-track .n-card.official-master-card:hover .n-card-quality-tag,
-  .single-movie-track .n-card.official-master-card.is-hovered .n-card-quality-tag,
-  .n-card.compact:hover .n-card-quality-tag,
-  .n-card.compact.is-hovered .n-card-quality-tag {
+  .single-movie-track .n-card.official-master-card.is-hovered .n-card-quality-tag {
     opacity: 0 !important;
     pointer-events: none !important;
   }
 
   /* Authentic Netflix Speaker Pill on Thumbnail Bottom-Right (from user photo) */
-  .single-movie-track .n-card.official-master-card:hover .n-card-thumb::after,
   .single-movie-track .n-card.official-master-card.is-hovered .n-card-thumb::after {
     content: "";
     position: absolute;
@@ -9709,7 +9707,6 @@ video {
     justify-content: flex-start !important;
   }
 
-  .single-movie-track .n-card.official-master-card:hover .n-card-overlay,
   .single-movie-track .n-card.official-master-card.is-hovered .n-card-overlay {
     opacity: 1 !important;
     visibility: visible !important;

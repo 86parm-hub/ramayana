@@ -3994,21 +3994,94 @@ if (document.readyState === 'loading') {
 }
 
 // =========================================================================
-// AUTHENTIC NETFLIX HOVER EXPANSION SMART ORIGIN ALGORITHM
-// Ensures cards near left/right screen edges expand inward without clipping
+// AUTHENTIC NETFLIX HOVER EXPANSION (3-SECOND INTENTIONAL DWELL DELAY)
+// Hovering a movie card waits exactly 3 seconds before expanding.
+// Moving cursor away before 3 seconds cancels expansion immediately.
+// When moving away after expansion, the card smoothly collapses.
 // =========================================================================
-document.addEventListener('mouseover', function(e) {
-  var card = e.target.closest && e.target.closest('.n-card.compact');
-  if (card) {
-    var rect = card.getBoundingClientRect();
-    var windowWidth = window.innerWidth;
-    if (rect.left < 140) {
-      card.style.transformOrigin = 'left center';
-    } else if (windowWidth - rect.right < 140) {
-      card.style.transformOrigin = 'right center';
-    } else {
-      card.style.transformOrigin = 'center center';
-    }
+(function initNetflixHover3sDelay() {
+  let hoverTimer = null;
+  let activeExpandedCard = null;
+  const HOVER_DELAY_MS = 3000; // Exact 3-second gap requested by user
+
+  function updateTransformOrigin(card) {
+    if (!card) return;
+    try {
+      const rect = card.getBoundingClientRect();
+      const windowWidth = window.innerWidth;
+      if (rect.left < 140) {
+        card.style.transformOrigin = 'left center';
+      } else if (windowWidth - rect.right < 140) {
+        card.style.transformOrigin = 'right center';
+      } else {
+        card.style.transformOrigin = 'center center';
+      }
+    } catch (e) {}
   }
-}, { passive: true });
+
+  document.addEventListener('mouseover', function(e) {
+    const card = e.target.closest && e.target.closest('.n-card.compact, .n-card.official-master-card');
+    if (!card) return;
+
+    // If mouse is already within the expanded card, keep it active
+    if (activeExpandedCard === card) return;
+
+    // Set origin early so any transition uses the correct focal point
+    updateTransformOrigin(card);
+
+    // If moving between different cards, cancel pending timer for previous card
+    if (hoverTimer) {
+      clearTimeout(hoverTimer);
+      hoverTimer = null;
+    }
+
+    // Collapse any previously expanded card when moving onto a new one
+    if (activeExpandedCard && activeExpandedCard !== card) {
+      activeExpandedCard.classList.remove('is-hovered');
+      activeExpandedCard = null;
+    }
+
+    // Start 3-second intentional hover countdown
+    hoverTimer = setTimeout(function() {
+      // Confirm the cursor is still hovering this card after 3 seconds
+      if (card.matches(':hover')) {
+        updateTransformOrigin(card);
+        card.classList.add('is-hovered');
+        activeExpandedCard = card;
+      }
+    }, HOVER_DELAY_MS);
+  });
+
+  document.addEventListener('mouseout', function(e) {
+    const card = e.target.closest && e.target.closest('.n-card.compact, .n-card.official-master-card');
+    if (!card) return;
+
+    // If moving into a child element of the same card (buttons, overlay, tags), stay expanded
+    if (e.relatedTarget && card.contains(e.relatedTarget)) {
+      return;
+    }
+
+    // Cursor exited card boundary: cancel pending 3s timer
+    if (hoverTimer) {
+      clearTimeout(hoverTimer);
+      hoverTimer = null;
+    }
+
+    // If card was expanded, collapse it back to normal immediately
+    if (card.classList.contains('is-hovered')) {
+      card.classList.remove('is-hovered');
+    }
+    if (activeExpandedCard === card) {
+      activeExpandedCard = null;
+    }
+  });
+
+  // Cancel pending timers when user scrolls so cards don't pop open while scrolling
+  window.addEventListener('scroll', function() {
+    if (hoverTimer) {
+      clearTimeout(hoverTimer);
+      hoverTimer = null;
+    }
+  }, { passive: true });
+})();
 
