@@ -8575,13 +8575,13 @@ video {
   transition: none !important;
 }
 
-/* Subtle Resting Hover Cue (Before 1s intentional dwell completes) */
+/* Subtle Resting Hover Cue (Before 0.5s intentional dwell completes) */
 .n-card.compact:hover:not(.is-hovered) {
   border-color: rgba(255, 255, 255, 0.28) !important;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.65) !important;
 }
 
-/* Large 1.5x Netflix Pop-Out (Triggered strictly after 1-second continuous hover dwell) */
+/* Large 1.5x Netflix Pop-Out (Triggered strictly after 0.5-second continuous hover dwell) */
 @media (min-width: 769px) {
 
   .n-card.compact.is-hovered {
@@ -9619,13 +9619,13 @@ video {
   transition: none !important;
 }
 
-/* Subtle Resting Hover Cue (Before 1s intentional dwell completes) */
+/* Subtle Resting Hover Cue (Before 0.5s intentional dwell completes) */
 .single-movie-track .n-card.official-master-card:hover:not(.is-hovered) {
   border-color: rgba(255, 255, 255, 0.28) !important;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.65) !important;
 }
 
-/* Authentic Netflix 1.5x Hover Pop-Out Expansion (Triggered strictly after 1-second continuous hover dwell) */
+/* Authentic Netflix 1.5x Hover Pop-Out Expansion (Triggered strictly after 0.5-second continuous hover dwell) */
 @media (min-width: 769px) {
 
   .single-movie-track .n-card.official-master-card.is-hovered {
