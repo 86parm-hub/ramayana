@@ -2591,6 +2591,52 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
+  // Handle Embed Movie Mode (Dhadak 2 TMDB 1213777 / CodeSpecters API DEMO_36da8c77)
+  if (targetTime === 'dhadak2' || targetTime === 'dhadak_2' || targetTime === '1213777' || targetTime === 'tt13451410' || targetTime === 'siddhant_dhadak2') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = "Dhadak 2 • Siddhant Chaturvedi & Triptii Dimri • CodeSpecters 1213777";
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const embedUrl = 'https://api.codespecters.com/embed/movie/1213777?apikey=DEMO_36da8c77';
+      if (embedIframe.src !== embedUrl) {
+        embedIframe.src = embedUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
+  // Generalized CodeSpecters / Custom Embed Routing
+  if (typeof targetTime === 'string' && (targetTime.startsWith('codespecters:') || targetTime.startsWith('cs:') || targetTime.startsWith('https://api.codespecters.com/'))) {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const rawId = targetTime.replace(/^(codespecters:|cs:)/, '').trim();
+    const targetUrl = targetTime.startsWith('https://') ? targetTime : `https://api.codespecters.com/embed/movie/${rawId}?apikey=DEMO_36da8c77`;
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = `Streaming via CodeSpecters • ${rawId}`;
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      if (embedIframe.src !== targetUrl) {
+        embedIframe.src = targetUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
   if (nbpIsEmbedMode) {
     nbpIsEmbedMode = false;
     modal.classList.remove('is-embed-active');
@@ -3678,6 +3724,14 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       age: 'U/A 16+',
       dur: '1h 38m',
       desc: "Naïm is gentle and warm in ordinary life, but possesses beast-like martial fury in combat. Desperate to finance medical care for his aging dog, he joins 'Hello Brawl', a clandestine underground service resolving high-stakes disputes with fists. Starring Nassim Lyes, Anaïde Rozam, Ramzy Bedia, Hedi Bouchenafa, Arriles Amrani. Directed by Julien Royal. Streamed in 1080P HEVC via Peachify TMDB 1418709."
+    },
+    'dhadak2': {
+      title: 'DHADAK 2',
+      hero: 'assets/images/dhadak2_landscape.jpg',
+      year: '2025',
+      age: 'U/A 16+',
+      dur: '2h 26m',
+      desc: "When Neelesh, an idealistic law student from an oppressed social background, enters an elite academic institution, he is confronted with institutional prejudice and systemic hierarchies. His profound relationship with Vidhi challenges caste divisions in a powerful fight for love and equality. Starring Siddhant Chaturvedi, Triptii Dimri, Saad Bilgrami, Saurabh Sachdeva, Vipin Sharma, Zakir Hussain. Directed by Shazia Iqbal, produced by Dharma Productions. Streamed in 1080P HEVC via CodeSpecters TMDB 1213777."
     },
     'shiva': {
       title: 'SHIVA DHANUSH: THE SACRED PINAKA',
