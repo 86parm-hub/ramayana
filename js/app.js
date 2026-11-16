@@ -2277,6 +2277,28 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
+  // Handle Embed Movie Mode (Irumudi IMDb tt39108319 via Autoembed)
+  if (targetTime === 'irumudi' || targetTime === 'tt39108319' || targetTime === '1441228' || targetTime === 'raviteja_irumudi') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = "Irumudi • Ravi Teja • IMDb tt39108319";
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const autoembedUrl = 'https://autoembed.me/movie/imdb/tt39108319';
+      if (embedIframe.src !== autoembedUrl) {
+        embedIframe.src = autoembedUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
   if (nbpIsEmbedMode) {
     nbpIsEmbedMode = false;
     modal.classList.remove('is-embed-active');
@@ -3268,6 +3290,14 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       age: 'U/A 16+',
       dur: '2h 20m',
       desc: "When a ruthless mercenary syndicate descends upon a remote mountain homestead, an estranged veteran with a haunted past and his grandchildren must unite their survival instincts to wage an uncompromising counter-offensive. Starring Lukman Sardi, Callista Arum, Sulthan Hamonangan, Derby Romero, Donny Alamsyah. Directed by Sidharta Tata. Streamed in 1080P HEVC via Peachify TMDB 1616687."
+    },
+    'irumudi': {
+      title: 'IRUMUDI',
+      hero: 'assets/images/irumudi_landscape.jpg',
+      year: '2026',
+      age: 'U/A 16+',
+      dur: '2h 32m',
+      desc: "Mass Maharaja Ravi Teja stars as an alcoholic father with a violent, concealed past living in tranquil seclusion with his beloved daughter beside a roaring waterfall. Fulfilling her earnest plea, he takes the rigorous 41-day sacred Ayyappa Deeksha vow. But as ruthless adversaries resurface seeking retribution, he must navigate intense faith and explosive mass fury to safeguard his family. Directed by Shiva Nirvana, starring Ravi Teja, Nakshathra C M, Priya Bhavani Shankar, Sai Kumar. Streamed in 1080P HEVC via Autoembed IMDb tt39108319."
     },
     'shiva': {
       title: 'SHIVA DHANUSH: THE SACRED PINAKA',
