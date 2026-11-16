@@ -2481,6 +2481,28 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
+  // Handle Embed Movie Mode (Allen TMDB 1518204 / Peachify)
+  if (targetTime === 'allen' || targetTime === '1518204' || targetTime === 'allen_alien') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = "Allen • T.J. Power • TMDB 1518204";
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1518204';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
   if (nbpIsEmbedMode) {
     nbpIsEmbedMode = false;
     modal.classList.remove('is-embed-active');
@@ -3528,6 +3550,14 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       age: 'U/A 16+',
       dur: '1h 49m',
       desc: "Given only a single year left to live, an intensely frugal 40-year-old woman decides to spend her hard-earned life savings on hiring a popular nightclub host Sena, sparking a profound emotional transformation that challenges both of their worlds. Starring Ko Shibasaki, Eiji Akaso, Michitaka Tsutsui, Naomi Nishida, Yui Narumi. Directed by Hiroki Kazama. Streamed in 1080P HEVC via Peachify TMDB 1654940."
+    },
+    'allen': {
+      title: 'ALLEN',
+      hero: 'assets/images/allen_landscape.jpg',
+      year: '2026',
+      age: 'U/A 13+',
+      dur: '1h 47m',
+      desc: "Twenty years following a bizarre childhood encounter with an extra-terrestrial, Petey's routine life is upended when his eccentric alien friend abruptly resurfaces with a wildly unexpected mission. Starring T.J. Power, Charlotte Nicdao, Josh Helman, Emily Barclay, Benedict Hardie, Elijah Tamati. Directed by Daley Pearson and Jeffrey Walker. Streamed in 1080P HEVC via Peachify TMDB 1518204."
     },
     'shiva': {
       title: 'SHIVA DHANUSH: THE SACRED PINAKA',
