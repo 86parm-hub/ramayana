@@ -2299,6 +2299,28 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
+  // Handle Embed Movie Mode (Made in Korea IMDb tt38674977 via Autoembed)
+  if (targetTime === 'made_in_korea' || targetTime === 'madeinkorea' || targetTime === 'tt38674977' || targetTime === '1561687' || targetTime === 'priyanka_korea') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = "Made in Korea • Priyanka Arul Mohan • IMDb tt38674977";
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const autoembedUrl = 'https://autoembed.me/movie/imdb/tt38674977';
+      if (embedIframe.src !== autoembedUrl) {
+        embedIframe.src = autoembedUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
   if (nbpIsEmbedMode) {
     nbpIsEmbedMode = false;
     modal.classList.remove('is-embed-active');
@@ -3298,6 +3320,14 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       age: 'U/A 16+',
       dur: '2h 32m',
       desc: "Mass Maharaja Ravi Teja stars as an alcoholic father with a violent, concealed past living in tranquil seclusion with his beloved daughter beside a roaring waterfall. Fulfilling her earnest plea, he takes the rigorous 41-day sacred Ayyappa Deeksha vow. But as ruthless adversaries resurface seeking retribution, he must navigate intense faith and explosive mass fury to safeguard his family. Directed by Shiva Nirvana, starring Ravi Teja, Nakshathra C M, Priya Bhavani Shankar, Sai Kumar. Streamed in 1080P HEVC via Autoembed IMDb tt39108319."
+    },
+    'made_in_korea': {
+      title: 'MADE IN KOREA',
+      hero: 'assets/images/made_in_korea_landscape.jpg',
+      year: '2026',
+      age: 'U/A 13+',
+      dur: '1h 53m',
+      desc: "An ambitious and spirited young woman from a small town in Tamil Nadu embarks on a life-changing journey to Seoul, South Korea — a land she has passionately dreamed of for years. Navigating language barriers, cultural shocks, and emotional highs, she discovers resilience, unexpected friendship, and belonging in an unfamiliar world. Starring Priyanka Arul Mohan, Rishikanth, Park Hye-jin, Baek Si-hun. Directed by Ra. Karthik. Streamed in 1080P HEVC via Autoembed IMDb tt38674977."
     },
     'shiva': {
       title: 'SHIVA DHANUSH: THE SACRED PINAKA',

@@ -495,6 +495,32 @@
         return;
       }
 
+      // Embed movie handler: Made in Korea (IMDb tt38674977 / Autoembed)
+      if (targetTime === 'made_in_korea' || targetTime === 'madeinkorea' || targetTime === 'tt38674977' || targetTime === '1561687' || targetTime === 'priyanka_korea') {
+        if (modal) {
+          modal.classList.add('active');
+          modal.classList.add('is-embed-active');
+          modal.setAttribute('aria-hidden', 'false');
+        }
+        document.body.style.overflow = 'hidden';
+        if (video) {
+          try { video.pause(); video.currentTime = 0; } catch(e){}
+          video.style.display = 'none';
+        }
+        if (titleDisplay) titleDisplay.textContent = "Made in Korea • Priyanka Arul Mohan • IMDb tt38674977";
+        if (embedIframe) {
+          embedIframe.style.display = 'block';
+          embedIframe.src = 'https://autoembed.me/movie/imdb/tt38674977';
+        }
+        if (spinner) spinner.classList.remove('active');
+        try {
+          if (!fromHistory && window.history && window.history.pushState) {
+            window.history.pushState({ type: 'netflix-player', targetTime: 'made_in_korea' }, null, '#player');
+          }
+        } catch(e){}
+        return;
+      }
+
       // Delegate native Ramayana playback to full engine
       if (typeof window.__realOpenNetflixBlackPlayer === 'function') {
         window.__realOpenNetflixBlackPlayer(targetTime, fromHistory);
@@ -1194,7 +1220,7 @@
             <span>Action &amp; Mass Cinema</span>
             <span class="row-title-chevron">&rsaquo;</span>
           </h2>
-          <span class="row-badge-pill">1 Title Streaming</span>
+          <span class="row-badge-pill">2 Titles Streaming</span>
         </div>
 
         <div class="n-carousel-wrap">
@@ -1227,6 +1253,36 @@
                   <div class="n-card-info">
                     <h4 class="n-movie-name">Irumudi</h4>
                     <p class="n-card-genres">Action &bull; Mass Drama &bull; Devotional Thriller</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Official Movie Card 2: Made in Korea (IMDb tt38674977) -->
+            <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('made_in_korea')" title="Play Made in Korea - IMDb tt38674977">
+              <div class="n-card-thumb">
+                <img src="assets/images/made_in_korea_landscape.jpg" alt="Made in Korea" loading="lazy">
+                <span class="n-card-top-tag">PRIYANKA ARUL MOHAN</span>
+                <span class="n-card-quality-tag">1080P HEVC</span>
+
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('made_in_korea');" title="Play Movie">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                    </button>
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('made_in_korea');" title="More Info">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">Made in Korea</h4>
+                    <p class="n-card-genres">Drama &bull; Feel Good &bull; Cross-Cultural Journey</p>
                   </div>
                 </div>
               </div>
@@ -1341,7 +1397,7 @@
       <section class="netflix-row" id="row-movies-catalog" data-genre-category="all">
         <div class="row-header">
           <h2 class="row-title">Featured Cinema <span class="row-title-chevron">&rsaquo;</span></h2>
-          <span class="row-badge-pill">16 Titles Streaming</span>
+          <span class="row-badge-pill">17 Titles Streaming</span>
         </div>
 
         <div class="n-carousel-wrap">
@@ -1824,6 +1880,36 @@
                 <div class="n-card-info">
                   <h4 class="n-movie-name">Irumudi</h4>
                   <p class="n-card-genres">Action &bull; Mass Drama &bull; Devotional Thriller</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Official Movie Card 17: Made in Korea (IMDb tt38674977) -->
+          <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('made_in_korea')" title="Play Made in Korea - IMDb tt38674977">
+            <div class="n-card-thumb">
+              <img src="assets/images/made_in_korea_landscape.jpg" alt="Made in Korea" loading="lazy">
+              <span class="n-card-top-tag">PRIYANKA ARUL MOHAN</span>
+              <span class="n-card-quality-tag">1080P HEVC</span>
+
+              <div class="n-card-overlay">
+                <div class="n-card-actions">
+                  <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('made_in_korea');" title="Play Movie">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                  </button>
+                  <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                  </button>
+                  <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                  </button>
+                  <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('made_in_korea');" title="More Info">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  </button>
+                </div>
+                <div class="n-card-info">
+                  <h4 class="n-movie-name">Made in Korea</h4>
+                  <p class="n-card-genres">Drama &bull; Feel Good &bull; Cross-Cultural Journey</p>
                 </div>
               </div>
             </div>
@@ -2360,7 +2446,7 @@
     </button>
   </nav>
 
-  <script src="js/app.js?v=20261116_v30_irumudi_release"></script>
+  <script src="js/app.js?v=20261116_v31_madeinkorea_release"></script>
 
   <!-- =========================================================================
        SPOTIFY NOW PLAYING BOTTOM BAR (AUTHENTIC 3-COLUMN DESKTOP DOCK)
