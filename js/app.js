@@ -2277,6 +2277,28 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
+  // Handle Embed Movie Mode (Never Surrender TMDB 1616687 via Peachify)
+  if (targetTime === 'never_surrender' || targetTime === 'neversurrender' || targetTime === '1616687' || targetTime === 'seranganbalik') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = "Never Surrender • TMDB 1616687";
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1616687';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
   if (nbpIsEmbedMode) {
     nbpIsEmbedMode = false;
     modal.classList.remove('is-embed-active');
@@ -3260,6 +3282,14 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       age: 'U/A 13+',
       dur: '2h 21m',
       desc: "Sathya reluctantly agrees to a blind date arranged by his sister and meets Monisha. To their astonishment, they discover they attended the same high school years ago. Reminiscing over teenage crushes and nostalgia, their past sparks an endearing modern connection. Starring Abishan Jeevinth, Anaswara Rajan, Harish Kumar. Directed by Madhan. Streamed in 1080P HEVC via Peachify TMDB 1508564."
+    },
+    'never_surrender': {
+      title: 'NEVER SURRENDER',
+      hero: 'assets/images/never_surrender_landscape.jpg',
+      year: '2026',
+      age: 'U/A 16+',
+      dur: '2h 20m',
+      desc: "When a ruthless mercenary syndicate descends upon a remote mountain homestead, an estranged veteran with a haunted past and his grandchildren must unite their survival instincts to wage an uncompromising counter-offensive. Starring Lukman Sardi, Callista Arum, Sulthan Hamonangan, Derby Romero, Donny Alamsyah. Directed by Sidharta Tata. Streamed in 1080P HEVC via Peachify TMDB 1616687."
     },
     'shiva': {
       title: 'SHIVA DHANUSH: THE SACRED PINAKA',

@@ -443,6 +443,32 @@
         return;
       }
 
+      // Embed movie handler: Never Surrender (TMDB 1616687)
+      if (targetTime === 'never_surrender' || targetTime === 'neversurrender' || targetTime === '1616687' || targetTime === 'seranganbalik') {
+        if (modal) {
+          modal.classList.add('active');
+          modal.classList.add('is-embed-active');
+          modal.setAttribute('aria-hidden', 'false');
+        }
+        document.body.style.overflow = 'hidden';
+        if (video) {
+          try { video.pause(); video.currentTime = 0; } catch(e){}
+          video.style.display = 'none';
+        }
+        if (titleDisplay) titleDisplay.textContent = "Never Surrender • TMDB 1616687";
+        if (embedIframe) {
+          embedIframe.style.display = 'block';
+          embedIframe.src = 'https://peachify.net/movie/1616687';
+        }
+        if (spinner) spinner.classList.remove('active');
+        try {
+          if (!fromHistory && window.history && window.history.pushState) {
+            window.history.pushState({ type: 'netflix-player', targetTime: 'never_surrender' }, null, '#player');
+          }
+        } catch(e){}
+        return;
+      }
+
       // Delegate native Ramayana playback to full engine
       if (typeof window.__realOpenNetflixBlackPlayer === 'function') {
         window.__realOpenNetflixBlackPlayer(targetTime, fromHistory);
@@ -881,7 +907,7 @@
             <span>Critically Acclaimed Cinema</span>
             <span class="row-title-chevron">&rsaquo;</span>
           </h2>
-          <span class="row-badge-pill">7 Titles Streaming</span>
+          <span class="row-badge-pill">8 Titles Streaming</span>
         </div>
 
         <div class="n-carousel-wrap">
@@ -1098,6 +1124,36 @@
                 </div>
               </div>
             </article>
+
+            <!-- Official Movie Card 8: Never Surrender (TMDB 1616687) -->
+            <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('never_surrender')" title="Play Never Surrender - TMDB 1616687">
+              <div class="n-card-thumb">
+                <img src="assets/images/never_surrender_landscape.jpg" alt="Never Surrender" loading="lazy">
+                <span class="n-card-top-tag">LUKMAN SARDI &bull; CALLISTA ARUM</span>
+                <span class="n-card-quality-tag">1080P HEVC</span>
+
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('never_surrender');" title="Play Movie">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                    </button>
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('never_surrender');" title="More Info">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">Never Surrender</h4>
+                    <p class="n-card-genres">Action &bull; Survival Thriller &bull; Crime Combat</p>
+                  </div>
+                </div>
+              </div>
+            </article>
           </div>
           <button class="n-slider-btn next" onclick="slideNetflixRow('rowTrackAcclaimed', 1)" aria-label="Next titles">
             <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
@@ -1208,7 +1264,7 @@
       <section class="netflix-row" id="row-movies-catalog" data-genre-category="all">
         <div class="row-header">
           <h2 class="row-title">Featured Cinema <span class="row-title-chevron">&rsaquo;</span></h2>
-          <span class="row-badge-pill">14 Titles Streaming</span>
+          <span class="row-badge-pill">15 Titles Streaming</span>
         </div>
 
         <div class="n-carousel-wrap">
@@ -1631,6 +1687,36 @@
                 <div class="n-card-info">
                   <h4 class="n-movie-name">With Love</h4>
                   <p class="n-card-genres">Tamil Romance &bull; Romantic Comedy &bull; Feel Good</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Official Movie Card 15: Never Surrender (TMDB 1616687) -->
+          <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('never_surrender')" title="Play Never Surrender - TMDB 1616687">
+            <div class="n-card-thumb">
+              <img src="assets/images/never_surrender_landscape.jpg" alt="Never Surrender" loading="lazy">
+              <span class="n-card-top-tag">LUKMAN SARDI &bull; CALLISTA ARUM</span>
+              <span class="n-card-quality-tag">1080P HEVC</span>
+
+              <div class="n-card-overlay">
+                <div class="n-card-actions">
+                  <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('never_surrender');" title="Play Movie">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                  </button>
+                  <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                  </button>
+                  <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                  </button>
+                  <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('never_surrender');" title="More Info">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  </button>
+                </div>
+                <div class="n-card-info">
+                  <h4 class="n-movie-name">Never Surrender</h4>
+                  <p class="n-card-genres">Action &bull; Survival Thriller &bull; Crime Combat</p>
                 </div>
               </div>
             </div>
@@ -2167,7 +2253,7 @@
     </button>
   </nav>
 
-  <script src="js/app.js?v=20261116_v27_withlove_release"></script>
+  <script src="js/app.js?v=20261116_v28_never_surrender_release"></script>
 
   <!-- =========================================================================
        SPOTIFY NOW PLAYING BOTTOM BAR (AUTHENTIC 3-COLUMN DESKTOP DOCK)
