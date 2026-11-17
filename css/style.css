@@ -5028,19 +5028,19 @@ body.ott-platform {
 
 @media (max-width: 1024px) {
   .brand-wordmark-img {
-    height: 34px;
+    height: 30px;
   }
 }
 
 @media (max-width: 768px) {
   .brand-wordmark-img {
-    height: 28px;
+    height: 25px;
   }
 }
 
 @media (max-width: 480px) {
   .brand-wordmark-img {
-    height: 22px;
+    height: 20px;
   }
 }
 
