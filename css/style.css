@@ -6305,6 +6305,14 @@ body.ott-platform {
   color: #ffb703;
 }
 
+/* Explicitly remove red top tags on Movie Cards in Rows 2, 3, 4, 5 */
+#rowAcclaimed .n-card-top-tag,
+#rowAction .n-card-top-tag,
+#rowSciFi .n-card-top-tag,
+#rowAnime .n-card-top-tag {
+  display: none !important;
+}
+
 /* Card Hover Overlay (Netflix Expand info style) */
 .n-card-overlay {
   position: absolute;
