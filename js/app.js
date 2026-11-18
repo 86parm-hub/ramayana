@@ -857,7 +857,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // URL Hash Routing on page load
   const hash = window.location.hash.replace('#', '');
-  if (hash && ['home', 'movies', 'trailer', 'watch', 'gallery'].includes(hash)) {
+  if (hash && ['home', 'movies', 'trailer', 'watch', 'gallery', 'search'].includes(hash)) {
     switchPage(hash);
   }
 });
@@ -5993,7 +5993,11 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'U/A 16+',
       dur: '1h 49m',
-      desc: "Local police officer Inspector Pawan Malik (Saif Ali Khan) is assigned to guard a fearless investigative journalist exposing a high-profile corruption racket tied to an influential spiritual cult. When the journalist is assassinated on his watch, Pawan must risk everything against political pressure and family threats to fulfill his sworn duty. Produced by Gauri Khan (Red Chillies Entertainment), directed by Pulkit. Starring Saif Ali Khan, Rasika Dugal, Sanjay Mishra. Streamed in 4K UHD via Peachify TMDB 1628367."
+      desc: "Local police officer Inspector Pawan Malik (Saif Ali Khan) is assigned to guard a fearless investigative journalist exposing a high-profile corruption racket tied to an influential spiritual cult. When the journalist is assassinated on his watch, Pawan must risk everything against political pressure and family threats to fulfill his sworn duty. Produced by Gauri Khan (Red Chillies Entertainment), directed by Pulkit. Starring Saif Ali Khan, Rasika Dugal, Sanjay Mishra. Streamed in 4K UHD via Peachify TMDB 1628367.",
+      cast: 'Saif Ali Khan, Rasika Dugal, Sanjay Mishra, Zakir Hussain',
+      director: 'Pulkit (Red Chillies Entertainment)',
+      music: 'Shankar-Ehsaan-Loy',
+      genres: 'Crime, Police Procedural, Drama, Thriller'
     },
     'gandhari': {
       title: 'GANDHARI',
@@ -6001,7 +6005,11 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'A 18+',
       dur: '2h 10m',
-      desc: "When her young daughter is abducted from a crowded railway platform, mother Bani (Taapsee Pannu) is left temporarily blinded in the assault. Channeling the fierce mythical spirit of Gandhari, she transforms into an unstoppable lethal force of maternal vengeance to crush an interstate child trafficking syndicate and reclaim her child. Written & produced by Kanika Dhillon, directed by Devashish Makhija. Starring Taapsee Pannu, Ishwak Singh, Swastika Mukherjee. Streamed in 4K UHD via Peachify TMDB 1355228."
+      desc: "When her young daughter is abducted from a crowded railway platform, mother Bani (Taapsee Pannu) is left temporarily blinded in the assault. Channeling the fierce mythical spirit of Gandhari, she transforms into an unstoppable lethal force of maternal vengeance to crush an interstate child trafficking syndicate and reclaim her child. Written & produced by Kanika Dhillon, directed by Devashish Makhija. Starring Taapsee Pannu, Ishwak Singh, Swastika Mukherjee. Streamed in 4K UHD via Peachify TMDB 1355228.",
+      cast: 'Taapsee Pannu, Ishwak Singh, Swastika Mukherjee, Chhaya Kadam',
+      director: 'Devashish Makhija (Written by Kanika Dhillon)',
+      music: 'Amit Trivedi',
+      genres: 'Action, Maternal Revenge Thriller'
     },
     'toaster': {
       title: 'TOASTER',
@@ -6009,7 +6017,11 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'U/A 16+',
       dur: '1h 55m',
-      desc: "A hilarious and dark comic thriller following Ramakant (Rajkummar Rao), a hilariously stingy man who goes to absurdly extreme lengths to retrieve a luxury toaster he gifted after a wedding is suddenly called off. His relentless obsession inadvertently lands him straight into a chaotic web of murder, extortion, and absurd criminal mayhem. Produced by Patralekhaa & Rajkummar Rao, directed by Vivek Das Chaudhary. Starring Rajkummar Rao, Sanya Malhotra, Abhishek Banerjee, Farah Khan. Streamed in 4K UHD via Peachify TMDB 1416391."
+      desc: "A hilarious and dark comic thriller following Ramakant (Rajkummar Rao), a hilariously stingy man who goes to absurdly extreme lengths to retrieve a luxury toaster he gifted after a wedding is suddenly called off. His relentless obsession inadvertently lands him straight into a chaotic web of murder, extortion, and absurd criminal mayhem. Produced by Patralekhaa & Rajkummar Rao, directed by Vivek Das Chaudhary. Starring Rajkummar Rao, Sanya Malhotra, Abhishek Banerjee, Farah Khan. Streamed in 4K UHD via Peachify TMDB 1416391.",
+      cast: 'Rajkummar Rao, Sanya Malhotra, Abhishek Banerjee, Farah Khan',
+      director: 'Vivek Das Chaudhary (Produced by Patralekhaa)',
+      music: 'Sachin-Jigar',
+      genres: 'Dark Comedy, Crime, Mystery'
     },
     'shiva': {
       title: 'SHIVA DHANUSH: THE SACRED PINAKA',
@@ -6043,6 +6055,16 @@ function openMovieDetailsModal(movieKey, fromHistory) {
   if (ageEl) ageEl.textContent = item.age;
   if (durEl) durEl.textContent = item.dur;
   if (descEl) descEl.textContent = item.desc;
+
+  const castEl = document.getElementById('nModalCast');
+  const dirEl = document.getElementById('nModalDirector');
+  const musicEl = document.getElementById('nModalMusic');
+  const genEl = document.getElementById('nModalGenres');
+
+  if (castEl) castEl.textContent = item.cast || (item.title === 'RAMAYANA: PART ONE' ? 'Ranbir Kapoor, Sai Pallavi, Yash, Sunny Deol' : 'Ensemble Cast');
+  if (dirEl) dirEl.textContent = item.director || (item.title === 'RAMAYANA: PART ONE' ? 'Nitesh Tiwari' : 'Acclaimed Director');
+  if (musicEl) musicEl.textContent = item.music || (item.title === 'RAMAYANA: PART ONE' ? 'Hans Zimmer & A. R. Rahman' : 'Original Motion Picture Score');
+  if (genEl) genEl.textContent = item.genres || (item.title === 'RAMAYANA: PART ONE' ? 'Mythology, Action & Adventure, Period Drama' : 'Cinema, Drama');
 
   modal.classList.add('active');
   modal.setAttribute('aria-hidden', 'false');
