@@ -7034,23 +7034,17 @@ const sandflixCatalog = [
   }
 ];
 
-const topSearchesKeys = [
-  'part1', 'coolie', 'dhurandhar', 'jailer_2', 'the_odyssey', 
-  'michael', 'mario_galaxy', 'minions_monsters', 'mortal_kombat_2', 'disclosure_day',
-  'wuthering_heights', 'hoppers', 'pushpa2', 'chhaava'
-];
-
-let netflixSearchQuery = '';
-let netflixSearchPill = 'all';
+let currentSearchQuery = '';
+let currentSearchCategory = 'all';
 let prevPageBeforeSearch = 'home';
 
 document.addEventListener('DOMContentLoaded', function() {
-  initNetflixSearch();
+  initUnifiedSearchEngine();
 });
 
-function initNetflixSearch() {
-  renderTopSearches();
-  renderNetflixSearchResults(sandflixCatalog, '');
+function initUnifiedSearchEngine() {
+  // Immediately render all 48 movies on load so grid is never empty
+  renderSearchResults(sandflixCatalog, '');
 
   // Click outside to collapse desktop search if input is empty
   document.addEventListener('click', function(e) {
@@ -7060,6 +7054,17 @@ function initNetflixSearch() {
       if (dInput && dInput.value.trim() === '') {
         widget.classList.remove('open');
       }
+    }
+  });
+
+  // Shortcut key: press '/' to focus desktop search on PC
+  document.addEventListener('keydown', function(e) {
+    if (e.key === '/' && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+      e.preventDefault();
+      const widget = document.getElementById('netflixSearchWidget');
+      const dInput = document.getElementById('desktopSearchInput');
+      if (widget) widget.classList.add('open');
+      if (dInput) dInput.focus();
     }
   });
 }
@@ -7081,19 +7086,18 @@ function toggleNetflixSearch(event) {
     if (dInput) {
       setTimeout(() => dInput.focus(), 150);
     }
-    // Record current page before switching to search
     const curActive = getCurrentActivePage();
     if (curActive !== 'search') prevPageBeforeSearch = curActive;
   }
 }
 
-function handleNetflixSearchKeyDown(event) {
+function handleDesktopSearchKeyDown(event) {
   if (event.key === 'Escape') {
     const widget = document.getElementById('netflixSearchWidget');
     const dInput = document.getElementById('desktopSearchInput');
     if (dInput) dInput.value = '';
     if (widget) widget.classList.remove('open');
-    clearNetflixSearch('desktop');
+    clearUnifiedSearch('desktop');
     if (prevPageBeforeSearch && prevPageBeforeSearch !== 'search') {
       switchPage(prevPageBeforeSearch);
     }
@@ -7103,8 +7107,8 @@ function handleNetflixSearchKeyDown(event) {
   }
 }
 
-function handleNetflixSearchInput(value, source) {
-  netflixSearchQuery = value.trim();
+function handleUnifiedSearch(value, source) {
+  currentSearchQuery = value.trim();
 
   const dInput = document.getElementById('desktopSearchInput');
   const mInput = document.getElementById('mobileSearchInput');
@@ -7117,22 +7121,21 @@ function handleNetflixSearchInput(value, source) {
   if (dClear) dClear.style.display = value ? 'flex' : 'none';
   if (mClear) mClear.style.display = value ? 'flex' : 'none';
 
-  // If user is typing on desktop navbar, seamlessly bring up the search-view canvas
+  // If user is typing on desktop navbar, seamlessly bring up the search-view
   if (source === 'desktop' && value.length > 0) {
     const curPage = getCurrentActivePage();
     if (curPage !== 'search') {
       prevPageBeforeSearch = curPage;
       switchPage('search');
-      // Keep focus on desktop input
       if (dInput) setTimeout(() => dInput.focus(), 50);
     }
   }
 
-  applyNetflixSearchFilter();
+  applySearchFilters();
 }
 
-function clearNetflixSearch(source) {
-  netflixSearchQuery = '';
+function clearUnifiedSearch(source) {
+  currentSearchQuery = '';
   const dInput = document.getElementById('desktopSearchInput');
   const mInput = document.getElementById('mobileSearchInput');
   const dClear = document.getElementById('desktopSearchClear');
@@ -7143,7 +7146,7 @@ function clearNetflixSearch(source) {
   if (dClear) dClear.style.display = 'none';
   if (mClear) mClear.style.display = 'none';
 
-  applyNetflixSearchFilter();
+  applySearchFilters();
 
   if (source === 'desktop') {
     if (dInput) dInput.focus();
@@ -7152,65 +7155,43 @@ function clearNetflixSearch(source) {
   }
 }
 
-function quickSearchTag(tagName) {
-  const dInput = document.getElementById('desktopSearchInput');
-  const mInput = document.getElementById('mobileSearchInput');
-  if (dInput) dInput.value = tagName;
-  if (mInput) mInput.value = tagName;
-  handleNetflixSearchInput(tagName, 'quick');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function filterSearchByPill(pillCategory, btnEl) {
-  netflixSearchPill = pillCategory;
-  document.querySelectorAll('#searchFilterPills .n-search-pill').forEach(b => {
-    b.classList.remove('active');
+function filterSearchCategory(category, buttonEl) {
+  currentSearchCategory = category;
+  document.querySelectorAll('#searchFilterPills .s-pill').forEach(btn => {
+    btn.classList.remove('active');
   });
-  if (btnEl) btnEl.classList.add('active');
-  applyNetflixSearchFilter();
+  if (buttonEl) buttonEl.classList.add('active');
+  applySearchFilters();
 }
 
-function applyNetflixSearchFilter() {
-  const topSection = document.getElementById('topSearchesSection');
-  const liveSection = document.getElementById('liveSearchResultsSection');
-  const emptyState = document.getElementById('searchEmptyState');
-
-  // If search query is empty and pill is 'all', show Top Searches list!
-  if (!netflixSearchQuery && netflixSearchPill === 'all') {
-    if (topSection) topSection.style.display = 'block';
-    if (liveSection) liveSection.style.display = 'none';
-    if (emptyState) emptyState.style.display = 'none';
-    renderTopSearches();
-    return;
-  }
-
-  // Otherwise, we are in live search results mode!
-  if (topSection) topSection.style.display = 'none';
-  if (liveSection) liveSection.style.display = 'block';
-
-  let results = sandflixCatalog;
+function applySearchFilters() {
+  let filtered = sandflixCatalog;
 
   // Filter by category pill
-  if (netflixSearchPill === 'trending') {
-    results = results.filter(m => topSearchesKeys.includes(m.key));
-  } else if (netflixSearchPill === 'action') {
-    results = results.filter(m => m.genres.includes('Action') || m.desc.toLowerCase().includes('action') || m.desc.toLowerCase().includes('mass'));
-  } else if (netflixSearchPill === 'hollywood') {
-    results = results.filter(m => m.industry === 'Hollywood' || m.desc.toLowerCase().includes('hollywood') || m.desc.toLowerCase().includes('universal') || m.desc.toLowerCase().includes('warner bros'));
-  } else if (netflixSearchPill === 'south') {
-    results = results.filter(m => m.industry === 'South Indian' || m.desc.toLowerCase().includes('south indian') || m.desc.toLowerCase().includes('tamil') || m.desc.toLowerCase().includes('telugu'));
-  } else if (netflixSearchPill === '4k') {
-    results = results.filter(m => m.quality === '4K UHD' || m.desc.toLowerCase().includes('4k'));
-  } else if (netflixSearchPill === 'animation') {
-    results = results.filter(m => m.genres.includes('Animation') || m.desc.toLowerCase().includes('animation') || m.desc.toLowerCase().includes('pixar') || m.desc.toLowerCase().includes('nintendo'));
-  } else if (netflixSearchPill === 'comedy') {
-    results = results.filter(m => m.genres.includes('Comedy') || m.desc.toLowerCase().includes('comedy'));
+  if (currentSearchCategory === 'trending') {
+    filtered = filtered.filter(m => [
+      'part1', 'coolie', 'dhurandhar', 'jailer_2', 'the_odyssey', 
+      'michael', 'mario_galaxy', 'minions_monsters', 'mortal_kombat_2',
+      'disclosure_day', 'pushpa2', 'chhaava'
+    ].includes(m.key));
+  } else if (currentSearchCategory === 'action') {
+    filtered = filtered.filter(m => m.genres.includes('Action') || m.desc.toLowerCase().includes('action') || m.desc.toLowerCase().includes('mass'));
+  } else if (currentSearchCategory === 'hollywood') {
+    filtered = filtered.filter(m => m.industry === 'Hollywood' || m.desc.toLowerCase().includes('hollywood') || m.desc.toLowerCase().includes('universal') || m.desc.toLowerCase().includes('warner'));
+  } else if (currentSearchCategory === 'south') {
+    filtered = filtered.filter(m => m.industry === 'South Indian' || m.desc.toLowerCase().includes('south indian') || m.desc.toLowerCase().includes('tamil') || m.desc.toLowerCase().includes('telugu'));
+  } else if (currentSearchCategory === '4k') {
+    filtered = filtered.filter(m => m.quality === '4K UHD' || m.desc.toLowerCase().includes('4k'));
+  } else if (currentSearchCategory === 'animation') {
+    filtered = filtered.filter(m => m.genres.includes('Animation') || m.desc.toLowerCase().includes('animation') || m.desc.toLowerCase().includes('pixar') || m.desc.toLowerCase().includes('nintendo'));
+  } else if (currentSearchCategory === 'comedy') {
+    filtered = filtered.filter(m => m.genres.includes('Comedy') || m.desc.toLowerCase().includes('comedy'));
   }
 
   // Filter by search query
-  if (netflixSearchQuery) {
-    const q = netflixSearchQuery.toLowerCase();
-    results = results.filter(m => {
+  if (currentSearchQuery) {
+    const q = currentSearchQuery.toLowerCase();
+    filtered = filtered.filter(m => {
       const inTitle = m.title.toLowerCase().includes(q);
       const inDesc = m.desc.toLowerCase().includes(q);
       const inGenres = m.genres.some(g => g.toLowerCase().includes(q));
@@ -7220,48 +7201,28 @@ function applyNetflixSearchFilter() {
     });
   }
 
-  renderNetflixSearchResults(results, netflixSearchQuery);
+  renderSearchResults(filtered, currentSearchQuery);
 }
 
-function renderTopSearches() {
-  const listEl = document.getElementById('topSearchesList');
-  if (!listEl) return;
-
-  const topItems = sandflixCatalog.filter(m => topSearchesKeys.includes(m.key));
-
-  listEl.innerHTML = topItems.map((item, idx) => `
-    <div class="top-search-row" onclick="openNetflixBlackPlayer('${item.key}')" title="Play ${item.title}">
-      <div class="top-search-thumb-wrap">
-        <img src="${item.hero}" alt="${item.title}" loading="lazy" />
-        <span class="top-search-quality-tag">${item.quality}</span>
-      </div>
-      <div class="top-search-info">
-        <span class="top-search-title">${item.title}</span>
-        <span class="top-search-meta">${item.year} &bull; ${item.genres[0] || 'Blockbuster'}</span>
-      </div>
-      <button class="top-search-play-btn" onclick="event.stopPropagation(); openNetflixBlackPlayer('${item.key}')" title="Play Movie" aria-label="Play ${item.title}">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-          <polygon points="6 3 20 12 6 21 6 3"></polygon>
-        </svg>
-      </button>
-    </div>
-  `).join('');
-}
-
-function renderNetflixSearchResults(results, query) {
+function renderSearchResults(results, query) {
   const grid = document.getElementById('searchResultsGrid');
-  const heading = document.getElementById('searchResultsHeading');
-  const badge = document.getElementById('searchResultsBadge');
   const emptyState = document.getElementById('searchEmptyState');
-  const emptyHighlight = document.getElementById('emptyQueryHighlight');
+  const statusTitle = document.getElementById('searchStatusTitle');
+  const statusBadge = document.getElementById('searchStatusBadge');
 
-  if (heading && badge) {
+  if (statusTitle && statusBadge) {
     if (query) {
-      heading.textContent = `Results for "${query}"`;
-      badge.textContent = `${results.length} ${results.length === 1 ? 'Title' : 'Titles'}`;
+      statusTitle.textContent = 'Results for "' + query + '"';
+      statusBadge.textContent = results.length + ' ' + (results.length === 1 ? 'Title' : 'Titles');
     } else {
-      heading.textContent = netflixSearchPill === 'all' ? 'All Titles' : `${netflixSearchPill.toUpperCase()} Titles`;
-      badge.textContent = `${results.length} Titles`;
+      if (currentSearchCategory === 'all') {
+        statusTitle.textContent = 'All Available Movies & Sagas';
+      } else if (currentSearchCategory === 'trending') {
+        statusTitle.textContent = '🔥 Trending Searches & Blockbusters';
+      } else {
+        statusTitle.textContent = currentSearchCategory.toUpperCase() + ' Cinema';
+      }
+      statusBadge.textContent = results.length + ' Titles';
     }
   }
 
@@ -7269,7 +7230,10 @@ function renderNetflixSearchResults(results, query) {
     if (grid) grid.style.display = 'none';
     if (emptyState) {
       emptyState.style.display = 'flex';
-      if (emptyHighlight) emptyHighlight.textContent = `"${query}"`;
+      const emptyHeading = document.getElementById('searchEmptyHeading');
+      const emptyText = document.getElementById('searchEmptyText');
+      if (emptyHeading) emptyHeading.textContent = 'No movies found matching "' + query + '"';
+      if (emptyText) emptyText.textContent = 'Try searching for Ramayana, Coolie, Dhurandhar, The Odyssey, Michael, or browse by category.';
     }
     return;
   }
@@ -7308,3 +7272,10 @@ function renderNetflixSearchResults(results, query) {
     `).join('');
   }
 }
+
+// Aliases for compatibility
+function handleNetflixSearchInput(val, src) { handleUnifiedSearch(val, src); }
+function clearNetflixSearch(src) { clearUnifiedSearch(src); }
+function filterSearchByPill(cat, el) { filterSearchCategory(cat, el); }
+function handleNetflixSearchKeyDown(e) { handleDesktopSearchKeyDown(e); }
+function initNetflixSearch() { initUnifiedSearchEngine(); }

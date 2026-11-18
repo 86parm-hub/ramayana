@@ -11206,7 +11206,9 @@ video {
 
 
 /* ==========================================================================
-   OFFICIAL NETFLIX REAL-TIME SEARCH ENGINE (PC, LAPTOP & MOBILE)
+   SANDFLIX UNIFIED SEARCH ENGINE (PC & MOBILE COMBINED)
+   PC/Laptop: Desktop navbar Netflix slide-out search widget + 5/6-col grid
+   Mobile: Dedicated mobile page with hero search bar, quick pills & 2-col grid
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -11311,313 +11313,198 @@ video {
 }
 
 /* --------------------------------------------------------------------------
-   2. Search View Canvas (#search-view)
+   2. Dedicated Mobile & Full Search Page (#search-view)
    -------------------------------------------------------------------------- */
 #search-view {
   background: #141414;
   min-height: 100vh;
-  box-sizing: border-box;
-  width: 100%;
 }
 
-.netflix-search-canvas {
-  max-width: 1560px;
+.search-view-container {
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 24px 32px 100px 32px;
-  box-sizing: border-box;
+  padding: 24px 20px 90px 20px;
 }
 
-/* Mobile Search Bar Wrap (Sticky on mobile, hidden on PC) */
-.m-search-bar-wrap {
-  display: none;
+/* Mobile Search Hero Input Bar */
+.search-hero-bar {
   margin-bottom: 20px;
 }
 
-.m-search-input-box {
+.search-hero-input-wrap {
+  position: relative;
   display: flex;
   align-items: center;
-  background: #2b2b2b;
-  border-radius: 6px;
-  height: 46px;
-  padding: 0 14px;
-  border: 1px solid transparent;
-  transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
+  background: rgba(36, 36, 36, 0.95);
+  border: 1.5px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  padding: 0 16px;
+  height: 52px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  transition: all 0.25s ease;
 }
 
-.m-search-input-box:focus-within {
-  background: #333;
-  border-color: rgba(255, 255, 255, 0.4);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+.search-hero-input-wrap:focus-within {
+  border-color: #e50914;
+  box-shadow: 0 0 0 3px rgba(229, 9, 20, 0.25), 0 8px 28px rgba(0, 0, 0, 0.6);
+  background: rgba(28, 28, 28, 0.98);
 }
 
-.m-search-icon {
-  color: #8c8c8c;
-  margin-right: 10px;
+.search-hero-icon {
+  color: #999;
+  margin-right: 12px;
   flex-shrink: 0;
 }
 
-.m-search-input-field {
+.search-hero-input {
   flex: 1;
   background: transparent;
   border: none;
   outline: none;
   color: #fff;
-  font-size: 14.5px;
+  font-size: 16px;
+  font-weight: 500;
   font-family: inherit;
 }
 
-.m-search-input-field::placeholder {
-  color: #8c8c8c;
+.search-hero-input::placeholder {
+  color: #777;
 }
 
-.m-search-clear-btn {
+.search-hero-clear {
   background: transparent;
   border: none;
-  color: #8c8c8c;
+  color: #888;
   cursor: pointer;
-  padding: 4px;
+  padding: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 50%;
+  transition: color 0.2s, background 0.2s;
 }
 
-.m-search-clear-btn:hover {
+.search-hero-clear:hover {
   color: #fff;
+  background: rgba(255, 255, 255, 0.1);
 }
 
-/* Explore Categories Section ("Explore titles related to:") */
-.search-explore-section {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 28px;
-  padding-bottom: 8px;
+/* --------------------------------------------------------------------------
+   3. Quick Filter Category Pills
+   -------------------------------------------------------------------------- */
+.search-filter-pills-wrap {
+  margin-bottom: 24px;
   overflow-x: auto;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
 }
 
-.search-explore-section::-webkit-scrollbar {
+.search-filter-pills-wrap::-webkit-scrollbar {
   display: none;
 }
 
-.search-explore-label {
+.search-filter-pills {
+  display: flex;
+  gap: 10px;
+  padding: 4px 2px;
+  white-space: nowrap;
+}
+
+.s-pill {
+  background: rgba(255, 255, 255, 0.08);
+  color: #e0e0e0;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 20px;
+  padding: 7px 16px;
   font-size: 13.5px;
   font-weight: 500;
-  color: #8c8c8c;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.search-pills-row {
-  display: flex;
-  gap: 8px;
-  flex-shrink: 0;
-}
-
-.n-search-pill {
-  background: rgba(45, 45, 45, 0.85);
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 4px;
-  padding: 6px 14px;
-  font-size: 13px;
-  font-weight: 500;
   cursor: pointer;
+  transition: all 0.2s ease;
   white-space: nowrap;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   font-family: inherit;
 }
 
-.n-search-pill:hover {
-  background: #3e3e3e;
-  border-color: #fff;
+.s-pill:hover {
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
-.n-search-pill.active {
+.s-pill.active {
   background: #e50914;
-  border-color: #e50914;
   color: #fff;
-  font-weight: 700;
+  border-color: #e50914;
   box-shadow: 0 2px 10px rgba(229, 9, 20, 0.4);
+  font-weight: 600;
 }
 
 /* --------------------------------------------------------------------------
-   3. Top Searches Section (Exact Netflix Mobile List View)
+   4. Search Status Bar
    -------------------------------------------------------------------------- */
-.top-searches-wrapper {
-  margin-bottom: 40px;
-}
-
-.top-searches-title {
-  font-size: 20px;
-  font-weight: 700;
-  color: #fff;
-  margin: 0 0 16px 0;
-  letter-spacing: 0.3px;
-}
-
-.top-searches-list {
+.search-status-bar {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.top-search-row {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  background: rgba(30, 30, 30, 0.7);
-  border-radius: 6px;
-  padding: 8px 14px;
-  cursor: pointer;
-  transition: background 0.22s ease, transform 0.2s ease;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.top-search-row:hover {
-  background: rgba(50, 50, 50, 0.95);
-  transform: translateX(4px);
-  border-color: rgba(255, 255, 255, 0.18);
-}
-
-.top-search-thumb-wrap {
-  width: 128px;
-  height: 72px;
-  aspect-ratio: 16 / 9;
-  border-radius: 4px;
-  overflow: hidden;
-  position: relative;
-  flex-shrink: 0;
-  background: #1e1e1e;
-}
-
-.top-search-thumb-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.top-search-quality-tag {
-  position: absolute;
-  bottom: 2px;
-  right: 3px;
-  font-size: 8px;
-  font-weight: 800;
-  background: rgba(0, 0, 0, 0.85);
-  color: #fff;
-  padding: 1px 4px;
-  border-radius: 2px;
-  letter-spacing: 0.3px;
-}
-
-.top-search-info {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.top-search-title {
-  font-size: 15px;
-  font-weight: 700;
-  color: #fff;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.top-search-meta {
-  font-size: 12.5px;
-  color: #8c8c8c;
-}
-
-.top-search-play-btn {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(255, 255, 255, 0.85);
-  background: rgba(0, 0, 0, 0.4);
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  flex-shrink: 0;
-}
-
-.top-search-row:hover .top-search-play-btn {
-  background: #e50914;
-  border-color: #e50914;
-  transform: scale(1.1);
-}
-
-/* --------------------------------------------------------------------------
-   4. Live Search Results Grid (Responsive Netflix Cards)
-   -------------------------------------------------------------------------- */
-.search-results-header-bar {
-  display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 20px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.search-results-heading {
-  font-size: 20px;
+.search-status-title {
+  font-size: 18px;
   font-weight: 700;
   color: #fff;
+  letter-spacing: 0.3px;
   margin: 0;
-  letter-spacing: 0.2px;
 }
 
-.search-results-badge {
+.search-status-badge {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ccc;
   font-size: 12px;
-  font-weight: 700;
-  background: rgba(229, 9, 20, 0.15);
-  color: #e50914;
-  border: 1px solid rgba(229, 9, 20, 0.35);
-  padding: 3px 10px;
+  padding: 4px 10px;
   border-radius: 12px;
+  font-weight: 600;
 }
 
-.netflix-search-grid {
+/* --------------------------------------------------------------------------
+   5. Search Results Grid (Responsive 2-col on mobile, 5-col on desktop)
+   -------------------------------------------------------------------------- */
+.search-results-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 18px;
+  gap: 20px;
 }
 
 @media (min-width: 1600px) {
-  .netflix-search-grid {
+  .search-results-grid {
     grid-template-columns: repeat(6, 1fr);
+    gap: 22px;
   }
 }
 
-@media (max-width: 1280px) {
-  .netflix-search-grid {
+@media (max-width: 1200px) {
+  .search-results-grid {
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
   }
 }
 
 @media (max-width: 900px) {
-  .netflix-search-grid {
+  .search-results-grid {
     grid-template-columns: repeat(3, 1fr);
     gap: 14px;
   }
 }
 
 @media (max-width: 600px) {
-  .netflix-search-grid {
+  .search-results-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    gap: 12px;
   }
 }
 
-/* Search Card Elements */
+/* Search Card Styling */
 .search-card {
   width: 100% !important;
   margin: 0 !important;
@@ -11632,7 +11519,7 @@ video {
 
 .search-card .n-card-thumb {
   aspect-ratio: 16 / 9;
-  border-radius: 4px;
+  border-radius: 6px;
   overflow: hidden;
   background: #1e1e1e;
   position: relative;
@@ -11650,116 +11537,104 @@ video {
 }
 
 /* --------------------------------------------------------------------------
-   5. Netflix Empty State (Exact Netflix Styling)
+   6. Search Empty State
    -------------------------------------------------------------------------- */
-.netflix-search-empty-state {
+.search-empty-state {
   display: flex;
   flex-direction: column;
-  padding: 40px 16px;
-  max-width: 680px;
-  margin: 0 auto;
-  color: #8c8c8c;
-  text-align: left;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
 }
 
-.empty-msg {
-  font-size: 16px;
-  color: #fff;
-  margin: 0 0 20px 0;
-  line-height: 1.5;
+.search-empty-icon {
+  color: #555;
+  margin-bottom: 16px;
 }
 
-.empty-suggestions-box {
-  margin-bottom: 24px;
-}
-
-.empty-suggestions-title {
-  font-size: 14px;
-  font-weight: 600;
-  color: #ccc;
+.search-empty-heading {
+  font-size: 20px;
+  font-weight: 700;
+  color: #eee;
   margin: 0 0 8px 0;
 }
 
-.empty-suggestions-box ul {
-  margin: 0;
-  padding-left: 20px;
-  line-height: 1.8;
-  font-size: 13.5px;
+.search-empty-text {
+  font-size: 14px;
+  color: #888;
+  max-width: 440px;
+  margin: 0 0 24px 0;
+  line-height: 1.5;
 }
 
-.empty-quick-pills {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.empty-quick-label {
-  font-size: 13px;
-  font-weight: 600;
-  color: #fff;
-  margin-right: 4px;
-}
-
-.empty-quick-btn {
-  background: rgba(45, 45, 45, 0.85);
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 4px;
-  padding: 6px 14px;
-  font-size: 12.5px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s;
-  font-family: inherit;
-}
-
-.empty-quick-btn:hover {
+.search-empty-reset-btn {
   background: #e50914;
-  border-color: #e50914;
+  color: #fff;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.search-empty-reset-btn:hover {
+  background: #ff1a26;
 }
 
 /* --------------------------------------------------------------------------
-   6. Mobile Specific Responsive Adjustments
+   7. Responsive Adaptations (PC vs Mobile Combined)
    -------------------------------------------------------------------------- */
+/* Desktop Screens (> 768px): Hide mobile hero bar so desktop navbar search is the clean input */
+@media (min-width: 769px) {
+  .search-hero-bar {
+    display: none !important;
+  }
+
+  .search-view-container {
+    padding-top: 28px;
+  }
+}
+
+/* Mobile Screens (<= 768px): Hide desktop navbar widget; activate dedicated mobile UI */
 @media (max-width: 768px) {
-  /* On mobile, search bar in navbar is hidden; native search box on page is shown */
   .netflix-search-widget {
     display: none !important;
   }
 
-  .m-search-bar-wrap {
+  .search-hero-bar {
     display: block !important;
   }
 
-  .netflix-search-canvas {
+  .search-view-container {
     padding: 12px 14px 84px 14px;
   }
 
-  .search-explore-section {
-    margin-bottom: 20px;
+  .search-hero-input-wrap {
+    height: 46px;
+    padding: 0 12px;
   }
 
-  .top-search-thumb-wrap {
-    width: 104px;
-    height: 58px;
+  .search-hero-input {
+    font-size: 14.5px;
   }
 
-  .top-search-title {
-    font-size: 14px;
+  .search-status-title {
+    font-size: 15px;
   }
 
-  .top-search-play-btn {
-    width: 32px;
-    height: 32px;
+  .s-pill {
+    padding: 6px 12px;
+    font-size: 12px;
   }
 
-  .top-search-play-btn svg {
-    width: 14px;
-    height: 14px;
+  .search-card .n-movie-name {
+    font-size: 12px;
   }
 
-  .search-results-heading {
-    font-size: 16px;
+  .search-card .n-card-genres {
+    font-size: 10px;
   }
 }
