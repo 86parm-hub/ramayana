@@ -3629,8 +3629,8 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Series Mode (e.g. Akka TMDB 243555 via Peachify)
-  if (targetTime === 'akka' || targetTime === '243555') {
+  // Handle Embed Movie Mode: Never Surrender (2026 / Netflix Original)
+  if (targetTime === 'never-surrender' || targetTime === 'neversurrender' || targetTime === 'akka' || targetTime === '243555') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
     modal.classList.add('is-embed-active');
@@ -3638,11 +3638,11 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Akka • TMDB 243555 (YRF / Netflix)';
+    if (titleDisplay) titleDisplay.textContent = 'Never Surrender (2026) • A Netflix Original Film';
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/243555';
+      const peachifyUrl = 'https://peachify.net/movie/81958252';
       if (embedIframe.src !== peachifyUrl) {
         embedIframe.src = peachifyUrl;
       }
@@ -5619,13 +5619,38 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       dur: '2h 59m',
       desc: "Set in 19th-century British India, a fierce leader rises from a drought-stricken land to fight colonial oppression and brutal injustice. Starring Vijay Deverakonda, Rashmika Mandanna, directed by Rahul Sankrityan. Streamed in 1080P HEVC via Peachify TMDB 1389379."
     },
-    'akka': {
-      title: 'AKKA',
-      hero: 'assets/images/akka_landscape.jpg',
+    'never-surrender': {
+      title: 'NEVER SURRENDER',
+      hero: 'assets/images/never_surrender_landscape.jpg',
       year: '2026',
-      age: 'TV-MA',
-      dur: '5 Episodes • Season 1',
-      desc: "Set in a fictional South Indian town ruled by women in the 1980s, an intense power struggle erupts between powerful matriarch Bhavani and a ruthless rebel Rudra. Starring Keerthy Suresh, Radhika Apte, Tanvi Azmi. Directed by Dharmaraj Shetty, produced by YRF Entertainment."
+      age: 'TV-MA 18+',
+      dur: '2h 17m',
+      desc: "Hari (Lukman Sardi), an aging former special forces veteran living in a remote village, must protect his estranged grandchildren when a ruthless Jakarta crime syndicate storms their home seeking crucial evidence. Forced into survival, Hari unleashes his dormant combat skills to turn the house into an impenetrable fortress. Directed by Sidharta Tata, produced by Kimo Stamboel. Starring Lukman Sardi, Callista Arum, Donny Alamsyah, Derby Romero. Streamed in 4K UHD via Netflix / Peachify.",
+      cast: 'Lukman Sardi, Callista Arum, Sulthan Hamonangan, Derby Romero, Donny Alamsyah',
+      director: 'Sidharta Tata (Produced by Kimo Stamboel & Edwin Nazir)',
+      genres: 'Action, Crime, Thriller, Special Forces'
+    },
+    'neversurrender': {
+      title: 'NEVER SURRENDER',
+      hero: 'assets/images/never_surrender_landscape.jpg',
+      year: '2026',
+      age: 'TV-MA 18+',
+      dur: '2h 17m',
+      desc: "Hari (Lukman Sardi), an aging former special forces veteran living in a remote village, must protect his estranged grandchildren when a ruthless Jakarta crime syndicate storms their home seeking crucial evidence. Forced into survival, Hari unleashes his dormant combat skills to turn the house into an impenetrable fortress. Directed by Sidharta Tata, produced by Kimo Stamboel. Starring Lukman Sardi, Callista Arum, Donny Alamsyah, Derby Romero. Streamed in 4K UHD via Netflix / Peachify.",
+      cast: 'Lukman Sardi, Callista Arum, Sulthan Hamonangan, Derby Romero, Donny Alamsyah',
+      director: 'Sidharta Tata (Produced by Kimo Stamboel & Edwin Nazir)',
+      genres: 'Action, Crime, Thriller, Special Forces'
+    },
+    'akka': {
+      title: 'NEVER SURRENDER',
+      hero: 'assets/images/never_surrender_landscape.jpg',
+      year: '2026',
+      age: 'TV-MA 18+',
+      dur: '2h 17m',
+      desc: "Hari (Lukman Sardi), an aging former special forces veteran living in a remote village, must protect his estranged grandchildren when a ruthless Jakarta crime syndicate storms their home seeking crucial evidence. Forced into survival, Hari unleashes his dormant combat skills to turn the house into an impenetrable fortress. Directed by Sidharta Tata, produced by Kimo Stamboel. Starring Lukman Sardi, Callista Arum, Donny Alamsyah, Derby Romero. Streamed in 4K UHD via Netflix / Peachify.",
+      cast: 'Lukman Sardi, Callista Arum, Sulthan Hamonangan, Derby Romero, Donny Alamsyah',
+      director: 'Sidharta Tata (Produced by Kimo Stamboel & Edwin Nazir)',
+      genres: 'Action, Crime, Thriller, Special Forces'
     },
     'paradise': {
       title: 'THE PARADISE',
@@ -6425,19 +6450,20 @@ const sandflixCatalog = [
     "quality": "4K UHD"
   },
   {
-    "key": "akka",
-    "title": "AKKA",
+    "key": "never-surrender",
+    "title": "Never Surrender",
     "year": "2026",
     "age": "TV-MA",
-    "dur": "5 Episodes \u2022 Season 1",
-    "desc": "Set in a fictional South Indian town ruled by women in the 1980s, an intense power struggle erupts between powerful matriarch Bhavani and a ruthless rebel Rudra. Starring Keerthy Suresh, Radhika Apte, Tanvi Azmi. Directed by Dharmaraj Shetty, produced by YRF Entertainment.",
-    "hero": "assets/images/akka_landscape.jpg",
-    "poster": "assets/images/akka_poster.jpg",
+    "dur": "2h 17m",
+    "desc": "Hari (Lukman Sardi), an aging former special forces veteran living in a remote village, must protect his estranged grandchildren when a ruthless Jakarta crime syndicate storms their home seeking crucial evidence. Forced into survival, Hari unleashes his dormant combat skills to turn the house into an impenetrable fortress. Directed by Sidharta Tata, produced by Kimo Stamboel. Starring Lukman Sardi, Callista Arum, Donny Alamsyah, Derby Romero.",
+    "hero": "assets/images/never_surrender_landscape.jpg",
+    "poster": "assets/images/never_surrender_poster.jpg",
     "genres": [
-      "Cinema",
-      "Drama"
+      "Action",
+      "Crime",
+      "Thriller"
     ],
-    "industry": "South Indian",
+    "industry": "Hollywood",
     "quality": "4K UHD"
   },
   {

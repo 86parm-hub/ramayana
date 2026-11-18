@@ -18,7 +18,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/android-chrome-192x192.png?v=3">
   <link rel="icon" type="image/png" sizes="512x512" href="assets/icons/android-chrome-512x512.png?v=3">
 
-  <link rel="stylesheet" href="css/style.css?v=20261118_v91_netflix_pill_search">
+  <link rel="stylesheet" href="css/style.css?v=20261118_v92_never_surrender">
 
   <!-- Exact Netflix Desktop Pill Search Capsule Styling (1:1 Replica of Netflix Desktop Reference) -->
   <style id="netflixPillSearchExplicit">
@@ -507,8 +507,8 @@
         if (spinner) spinner.classList.remove('active');
         return;
       }
-      // Embed series handler: Akka (2026) TMDB 243555
-      if (targetTime === 'akka' || targetTime === '243555') {
+      // Embed movie handler: Never Surrender (2026) / Serangan Balik
+      if (targetTime === 'never-surrender' || targetTime === 'neversurrender' || targetTime === 'akka' || targetTime === '243555') {
         if (modal) {
           modal.classList.add('active');
           modal.classList.add('is-embed-active');
@@ -519,15 +519,15 @@
           try { video.pause(); video.currentTime = 0; } catch(e){}
           video.style.display = 'none';
         }
-        if (titleDisplay) titleDisplay.textContent = 'Akka • TMDB 243555 (YRF / Netflix)';
+        if (titleDisplay) titleDisplay.textContent = 'Never Surrender (2026) • A Netflix Original Film';
         if (embedIframe) {
           embedIframe.style.display = 'block';
-          embedIframe.src = 'https://peachify.net/movie/243555';
+          embedIframe.src = 'https://peachify.net/movie/81958252';
         }
         if (spinner) spinner.classList.remove('active');
         try {
           if (!fromHistory && window.history && window.history.pushState) {
-            window.history.pushState({ type: 'netflix-player', targetTime: 'akka' }, null, '#player');
+            window.history.pushState({ type: 'netflix-player', targetTime: 'never-surrender' }, null, '#player');
           }
         } catch(e){}
         return;
@@ -1145,6 +1145,33 @@
           cast: 'Rajkummar Rao, Sanya Malhotra, Abhishek Banerjee, Farah Khan',
           director: 'Vivek Das Chaudhary (Produced by Patralekhaa)',
           genres: 'Dark Comedy, Crime, Mystery'
+        },
+        'never-surrender': {
+          title: 'NEVER SURRENDER',
+          hero: 'assets/images/never_surrender_landscape.jpg',
+          year: '2026', age: 'TV-MA 18+', dur: '2h 17m',
+          desc: 'Hari (Lukman Sardi), an aging former special forces veteran living in a remote village, must protect his estranged grandchildren when a ruthless Jakarta crime syndicate storms their home seeking crucial evidence. Forced into survival, Hari unleashes his dormant combat skills to turn the house into an impenetrable fortress. Directed by Sidharta Tata, produced by Kimo Stamboel. Starring Lukman Sardi, Callista Arum, Donny Alamsyah, Derby Romero. Streamed in 4K UHD via Netflix / Peachify.',
+          cast: 'Lukman Sardi, Callista Arum, Sulthan Hamonangan, Derby Romero, Donny Alamsyah',
+          director: 'Sidharta Tata (Produced by Kimo Stamboel & Edwin Nazir)',
+          genres: 'Action, Crime, Thriller, Special Forces'
+        },
+        'neversurrender': {
+          title: 'NEVER SURRENDER',
+          hero: 'assets/images/never_surrender_landscape.jpg',
+          year: '2026', age: 'TV-MA 18+', dur: '2h 17m',
+          desc: 'Hari (Lukman Sardi), an aging former special forces veteran living in a remote village, must protect his estranged grandchildren when a ruthless Jakarta crime syndicate storms their home seeking crucial evidence. Forced into survival, Hari unleashes his dormant combat skills to turn the house into an impenetrable fortress. Directed by Sidharta Tata, produced by Kimo Stamboel. Starring Lukman Sardi, Callista Arum, Donny Alamsyah, Derby Romero. Streamed in 4K UHD via Netflix / Peachify.',
+          cast: 'Lukman Sardi, Callista Arum, Sulthan Hamonangan, Derby Romero, Donny Alamsyah',
+          director: 'Sidharta Tata (Produced by Kimo Stamboel & Edwin Nazir)',
+          genres: 'Action, Crime, Thriller, Special Forces'
+        },
+        'akka': {
+          title: 'NEVER SURRENDER',
+          hero: 'assets/images/never_surrender_landscape.jpg',
+          year: '2026', age: 'TV-MA 18+', dur: '2h 17m',
+          desc: 'Hari (Lukman Sardi), an aging former special forces veteran living in a remote village, must protect his estranged grandchildren when a ruthless Jakarta crime syndicate storms their home seeking crucial evidence. Forced into survival, Hari unleashes his dormant combat skills to turn the house into an impenetrable fortress. Directed by Sidharta Tata, produced by Kimo Stamboel. Starring Lukman Sardi, Callista Arum, Donny Alamsyah, Derby Romero. Streamed in 4K UHD via Netflix / Peachify.',
+          cast: 'Lukman Sardi, Callista Arum, Sulthan Hamonangan, Derby Romero, Donny Alamsyah',
+          director: 'Sidharta Tata (Produced by Kimo Stamboel & Edwin Nazir)',
+          genres: 'Action, Crime, Thriller, Special Forces'
         }
       };
 
@@ -1419,16 +1446,16 @@
               </div>
             </article>
 
-            <!-- Official Movie/Series Card 3: Akka (TMDB 243555) -->
-            <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('akka')" title="Play Akka - TMDB 243555">
+            <!-- Official Movie Card 3: Never Surrender (2026 / Netflix Original) -->
+            <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('never-surrender')" title="Play Never Surrender (2026)">
               <div class="n-card-thumb">
-                <img src="assets/images/akka_landscape.jpg" alt="Akka" loading="lazy">
+                <img src="assets/images/never_surrender_landscape.jpg" data-poster="assets/images/never_surrender_poster.jpg" alt="Never Surrender" loading="lazy">
                 <span class="n-card-top-tag">TOP 10</span>
-                <span class="n-card-quality-tag">1080P HEVC</span>
+                <span class="n-card-quality-tag">4K UHD</span>
 
                 <div class="n-card-overlay">
                   <div class="n-card-actions">
-                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('akka');" title="Play Series">
+                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('never-surrender');" title="Play Movie">
                       <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
                     </button>
                     <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
@@ -1437,13 +1464,13 @@
                     <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
                       <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
                     </button>
-                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('akka');" title="More Info">
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('never-surrender');" title="More Info">
                       <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </button>
                   </div>
                   <div class="n-card-info">
-                    <h4 class="n-movie-name">Akka</h4>
-                    <p class="n-card-genres">Crime &bull; Drama &bull; Thriller &bull; Period</p>
+                    <h4 class="n-movie-name">Never Surrender</h4>
+                    <p class="n-card-genres">Action &bull; Crime &bull; Thriller &bull; Special Forces</p>
                   </div>
                 </div>
               </div>
@@ -3510,16 +3537,16 @@
             </div>
           </article>
 
-          <!-- Official Movie/Series Card 3: Akka (TMDB 243555) -->
-          <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('akka')" title="Play Akka - TMDB 243555">
+          <!-- Official Movie Card 3: Never Surrender (2026 / Netflix Original) -->
+          <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('never-surrender')" title="Play Never Surrender (2026)">
             <div class="n-card-thumb">
-              <img src="assets/images/akka_landscape.jpg" alt="Akka" loading="lazy">
+              <img src="assets/images/never_surrender_landscape.jpg" data-poster="assets/images/never_surrender_poster.jpg" alt="Never Surrender" loading="lazy">
               <span class="n-card-top-tag">TOP 10</span>
-              <span class="n-card-quality-tag">1080P HEVC</span>
+              <span class="n-card-quality-tag">4K UHD</span>
 
               <div class="n-card-overlay">
                 <div class="n-card-actions">
-                  <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('akka');" title="Play Series">
+                  <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('never-surrender');" title="Play Movie">
                     <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
                   </button>
                   <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
@@ -3528,13 +3555,13 @@
                   <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
                     <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
                   </button>
-                  <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('akka');" title="More Info">
+                  <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('never-surrender');" title="More Info">
                     <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
                   </button>
                 </div>
                 <div class="n-card-info">
-                  <h4 class="n-movie-name">Akka</h4>
-                  <p class="n-card-genres">Crime &bull; Drama &bull; Thriller &bull; Period</p>
+                  <h4 class="n-movie-name">Never Surrender</h4>
+                  <p class="n-card-genres">Action &bull; Crime &bull; Thriller &bull; Special Forces</p>
                 </div>
               </div>
             </div>
@@ -7278,7 +7305,7 @@
   </div>
 
   <!-- Main Application Script (Production Ready - Fast Cached) -->
-  <script src="js/app.js?v=20261118_v91_netflix_pill_search"></script>
+  <script src="js/app.js?v=20261118_v92_never_surrender"></script>
 </body>
 
 </html>
