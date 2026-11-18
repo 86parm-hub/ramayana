@@ -981,7 +981,7 @@ const OST_TRACKS = [
     duration: "01:13",
     durationSec: 73,
     src: "audio/01_dharthi_hai_ambar_intro.m4a",
-    banner: "assets/images/hero_banner_hd.jpg",
+    banner: "assets/images/tracks/track_01.jpg",
     desc: "Celestial Sanskrit chants & divine symphony heralding the birth of Sri Rama."
   },
   {
@@ -994,7 +994,7 @@ const OST_TRACKS = [
     duration: "02:40",
     durationSec: 160,
     src: "audio/02_sitas_aspiration_lyrical.m4a",
-    banner: "assets/images/feature_banner_hd.jpg",
+    banner: "assets/images/tracks/track_02.jpg",
     desc: "Sacred Sanskrit verses from Valmiki Ramayana depicting Princess Sita's devotion."
   },
   {
@@ -1007,7 +1007,7 @@ const OST_TRACKS = [
     duration: "03:02",
     durationSec: 182,
     src: "audio/03_jai_jai_ram_orchestral.m4a",
-    banner: "assets/images/movie_poster_hd.jpg",
+    banner: "assets/images/tracks/track_03.jpg",
     desc: "Monumental symphonic score performed by world-class strings & choir."
   },
   {
@@ -1020,7 +1020,7 @@ const OST_TRACKS = [
     duration: "02:42",
     durationSec: 162,
     src: "audio/04_sitas_aspiration_divine.m4a",
-    banner: "assets/images/movie_cover_hd.jpg",
+    banner: "assets/images/tracks/track_04.jpg",
     desc: "Serene Indian acoustic instruments celebrating the quiet sanctity of Dandakaranya."
   },
   {
@@ -1033,7 +1033,7 @@ const OST_TRACKS = [
     duration: "03:14",
     durationSec: 194,
     src: "audio/05_ravana_tandav.m4a",
-    banner: "assets/images/teaser_lanka_hd.jpg",
+    banner: "assets/images/tracks/track_05.jpg",
     desc: "High-octane war anthem encapsulating the unstoppable might and devotion of the Lankan King."
   },
   {
@@ -1046,7 +1046,7 @@ const OST_TRACKS = [
     duration: "05:20",
     durationSec: 320,
     src: "audio/06_jai_jai_ram_meri_pooja.m4a",
-    banner: "assets/images/teaser_archer_hd.jpg",
+    banner: "assets/images/tracks/track_06.jpg",
     desc: "The monumental heart-touching devotional anthem with Achyutam Keshavam shlokas."
   },
   {
@@ -1060,7 +1060,7 @@ const OST_TRACKS = [
     durationSec: 418,
     src: "audio/07_hanuman_chalisa_divine.mp3",
     fallbackSrc: "audio/07_hanuman_chalisa_divine.m4a",
-    banner: "assets/images/movie_cover_hd.jpg",
+    banner: "assets/images/tracks/track_07.jpg",
     desc: "Divine Sanskrit and Awadhi recitations of Sri Hanuman Chalisa invoking cosmic strength, devotion, and protection."
   },
   {
@@ -1074,7 +1074,7 @@ const OST_TRACKS = [
     durationSec: 221,
     src: "audio/08_main_ram_dasharath_suta.mp3",
     fallbackSrc: "audio/08_main_ram_dasharath_suta.m4a",
-    banner: "assets/images/hero_banner_hd.jpg",
+    banner: "assets/images/tracks/track_08.jpg",
     desc: "Soul-stirring divine anthem of Maryada Purushottam Lord Rama upholding supreme Dharma and eternal vows."
   },
   {
@@ -1088,7 +1088,7 @@ const OST_TRACKS = [
     duration: "02:40",
     durationSec: 160,
     src: "audio/09_balwan_hanuman.m4a",
-    banner: "assets/images/hanuman_meditation_hd.jpg",
+    banner: "assets/images/tracks/track_09.jpg",
     desc: "Soul-stirring divine chants of Balwan Hanuman praising the supreme strength and humility of Bajrangbali."
   },
   {
@@ -1102,7 +1102,7 @@ const OST_TRACKS = [
     duration: "03:12",
     durationSec: 192,
     src: "audio/10_shendur_laal_chadhayo.m4a",
-    banner: "assets/images/hanuman_meditation_hd.jpg",
+    banner: "assets/images/tracks/track_10.jpg",
     desc: "The sacred Ganpati Aarti with traditional dhol-tasha rhythms invoking prosperity and removing all obstacles."
   },
   {
@@ -1116,7 +1116,7 @@ const OST_TRACKS = [
     duration: "03:58",
     durationSec: 238,
     src: "audio/11_mahabharat_story_rap.m4a",
-    banner: "assets/images/hanuman_meditation_hd.jpg",
+    banner: "assets/images/tracks/track_11.jpg",
     desc: "Powerful storytelling rap narrating the Kurukshetra war, Dharma, and the eternal teachings of the Bhagavad Gita."
   },
   {
@@ -1130,7 +1130,7 @@ const OST_TRACKS = [
     duration: "03:29",
     durationSec: 209,
     src: "audio/12_shoorveer_3_shivaji_maharaj.m4a",
-    banner: "assets/images/hanuman_meditation_hd.jpg",
+    banner: "assets/images/tracks/track_12.jpg",
     desc: "Electrifying patriotic tribute commemorating the valor, vision, and immortal glory of Chhatrapati Shivaji Maharaj."
   },
   {
@@ -1144,7 +1144,7 @@ const OST_TRACKS = [
     duration: "03:34",
     durationSec: 214,
     src: "audio/13_gajanana_shree_ganesha.m4a",
-    banner: "assets/images/hanuman_meditation_hd.jpg",
+    banner: "assets/images/tracks/track_13.jpg",
     desc: "Thunderous, heart-racing celebratory ode to Lord Ganesha with high brass, traditional shankh, and folk drums."
   },
   {
@@ -1158,7 +1158,7 @@ const OST_TRACKS = [
     duration: "03:29",
     durationSec: 209,
     src: "audio/14_bolo_har_har_har_shivaay.m4a",
-    banner: "assets/images/hanuman_meditation_hd.jpg",
+    banner: "assets/images/tracks/track_14.jpg",
     desc: "A roaring, cosmic fusion of ancient Sanskrit Rudrastakam with modern bass honoring Lord Shiva the Supreme Destroyer."
   },
   {
@@ -1172,7 +1172,7 @@ const OST_TRACKS = [
     duration: "02:17",
     durationSec: 137,
     src: "audio/15_babam_bam.m4a",
-    banner: "assets/images/hanuman_meditation_hd.jpg",
+    banner: "assets/images/tracks/track_15.jpg",
     desc: "Explosive devotional hip-hop tribute praising Mahadev's infinite glory with thunderous beats and raw energy."
   },
   {
@@ -1186,7 +1186,7 @@ const OST_TRACKS = [
     duration: "03:18",
     durationSec: 198,
     src: "audio/16_bhagwadhari.m4a",
-    banner: "assets/images/hanuman_meditation_hd.jpg",
+    banner: "assets/images/tracks/track_16.jpg",
     desc: "Fierce anthem celebrating the eternal spirit of Sanatan Dharma, strength, and unwavering devotion."
   },
   {
@@ -1200,7 +1200,7 @@ const OST_TRACKS = [
     duration: "03:49",
     durationSec: 229,
     src: "audio/17_kalki.m4a",
-    banner: "assets/images/hanuman_meditation_hd.jpg",
+    banner: "assets/images/tracks/track_17.jpg",
     desc: "Hypnotic cinematic score capturing the prophesied awakening of Lord Kalki to restore righteousness."
   },
   {
@@ -1214,7 +1214,7 @@ const OST_TRACKS = [
     duration: "03:54",
     durationSec: 235,
     src: "audio/18_aathma_raama.m4a",
-    banner: "assets/images/hanuman_meditation_hd.jpg",
+    banner: "assets/images/tracks/track_18.jpg",
     desc: "Legendary blend of sacred Carnatic classical vocals with hard-hitting conscious lyricism and flow."
   },
   {
@@ -1228,7 +1228,7 @@ const OST_TRACKS = [
     duration: "03:58",
     durationSec: 238,
     src: "audio/19_shoorveer.m4a",
-    banner: "assets/images/hanuman_meditation_hd.jpg",
+    banner: "assets/images/tracks/track_19.jpg",
     desc: "Stirring historic war ballad honoring the unyielding pride and freedom of Maharana Pratap."
   },
   {
@@ -1242,8 +1242,36 @@ const OST_TRACKS = [
     duration: "04:00",
     durationSec: 240,
     src: "audio/20_aigiri_nandini.m4a",
-    banner: "assets/images/hanuman_meditation_hd.jpg",
+    banner: "assets/images/tracks/track_20.jpg",
     desc: "Adrenaline-fueled rendition of Adi Shankaracharya's sacred verses invoking Goddess Durga's cosmic power."
+  },
+  {
+    id: 21,
+    num: "13",
+    album: "hanuman-divine",
+    title: "Danveer Karna Mahabharat",
+    subtitle: "Tragic Glory & Supreme Valor of Angaraj Karna",
+    tag: "EPIC WAR RAP",
+    artist: "Abby Viral",
+    duration: "04:51",
+    durationSec: 291,
+    src: "audio/21_danveer_karna.m4a",
+    banner: "assets/images/tracks/track_21.jpg",
+    desc: "A stirring, raw lyrical tribute to the legendary archer and tragic hero Angaraj Karna, recounting his valor and supreme sacrifice."
+  },
+  {
+    id: 22,
+    num: "14",
+    album: "hanuman-divine",
+    title: "Rudra Shiva Stuti",
+    subtitle: "Cosmic Vedic Invocations & Supreme Tandav Chants",
+    tag: "SHIVA STUTI",
+    artist: "Anubhav Mishra • Abhishek Prajapati • Siddharth Dwivedi",
+    duration: "08:29",
+    durationSec: 509,
+    src: "audio/22_rudra_shiva_stuti.m4a",
+    banner: "assets/images/tracks/track_22.jpg",
+    desc: "Monumental 8-minute cosmic Vedic chant honoring Lord Shiva's fierce Rudra avatar with thundering dhol, bells, and sacred mantras."
   }
 ];
 
@@ -1881,9 +1909,9 @@ const SANDIFY_ALBUMS = {
   'hanuman-divine': {
     title: 'Hanuman & Shiv Shakti: Divine Warriors',
     subtitle: 'Thunderous devotional anthems, sacred stotrams, epic war rap, and timeless invocations to <strong>Bajrangbali</strong> and <strong>Lord Shiva</strong>.',
-    artist1: 'Devotional Folk • Brodha V',
-    artist2: 'Rapperiya Baalam • Paradox',
-    meta: '2026 • 12 songs, 41 min 39 sec',
+    artist1: 'Devotional Folk • Abby Viral',
+    artist2: 'Rapperiya Baalam • Brodha V • Anubhav Mishra',
+    meta: '2026 • 14 songs, 54 min 59 sec',
     cover: 'assets/images/hanuman_meditation_hd.jpg',
     category: 'all',
     startTrack: 9
