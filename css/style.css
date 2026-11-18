@@ -11218,7 +11218,7 @@ video {
   display: inline-flex;
   align-items: center;
   position: relative;
-  height: 40px;
+  height: 38px;
 }
 
 .n-search-toggle-btn {
@@ -11226,7 +11226,7 @@ video {
   border: none;
   color: #fff;
   cursor: pointer;
-  padding: 9px;
+  padding: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11244,16 +11244,16 @@ video {
   opacity: 0;
   pointer-events: none;
   border: 1px solid transparent;
-  background: rgba(12, 12, 12, 0.82);
+  background: rgba(18, 18, 18, 0.94);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   display: flex;
   align-items: center;
-  height: 40px;
+  height: 38px;
   box-sizing: border-box;
   padding: 0;
   overflow: hidden;
-  border-radius: 9999px; /* Exact Capsule Pill shape matching uploaded Netflix image */
+  border-radius: 9999px; /* Complete Semicircular Capsule Pill shape */
   transition: width 0.32s cubic-bezier(0.16, 1, 0.3, 1), 
               opacity 0.22s ease, 
               border-color 0.22s ease,
@@ -11265,26 +11265,27 @@ video {
 }
 
 .netflix-search-widget.open .n-search-input-wrap {
-  width: 320px;
+  width: 390px;
+  max-width: calc(100vw - 320px);
   opacity: 1;
   pointer-events: auto;
-  border: 1px solid rgba(255, 255, 255, 0.32); /* Thin subtle translucent border as in Netflix image */
-  background: rgba(10, 10, 10, 0.82); /* Netflix dark glass */
+  border: 1px solid rgba(255, 255, 255, 0.38); /* Exact #616161 sampled border from Netflix screenshot */
+  background: rgba(18, 18, 18, 0.94); /* Exact #141414 deep dark background */
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  padding: 0 16px 0 16px; /* Semicircular cap spacing */
+  padding: 0 10px 0 16px; /* 16px left curve to icon, 10px right curve */
   border-radius: 9999px; /* 100% Semicircular Pill ends */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .netflix-search-widget.open .n-search-input-wrap:focus-within {
-  border-color: rgba(255, 255, 255, 0.62);
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2), 0 8px 26px rgba(0, 0, 0, 0.85);
+  border-color: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.22), 0 8px 26px rgba(0, 0, 0, 0.85);
 }
 
 .n-search-inner-icon {
   color: #ffffff;
-  margin-right: 11px;
+  margin-right: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11300,36 +11301,44 @@ video {
   border: none;
   outline: none;
   color: #ffffff;
-  font-size: 14.5px;
+  font-size: 15px;
   font-weight: 400;
   width: 100%;
-  font-family: inherit;
-  letter-spacing: 0.15px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  letter-spacing: 0.1px;
 }
 
 .n-search-input-field::placeholder {
-  color: rgba(255, 255, 255, 0.5); /* Soft greyish white matching image */
+  color: rgba(255, 255, 255, 0.45); /* Exact soft grey placeholder */
   font-weight: 400;
 }
 
 .n-search-clear-btn {
-  background: transparent;
+  background: #464646; /* Exact sampled grey circle badge rgb(64,64,64) from Netflix screenshot */
   border: none;
-  color: rgba(255, 255, 255, 0.6);
+  color: #161616; /* Dark cross inside */
   cursor: pointer;
-  padding: 4px;
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  min-height: 22px;
+  padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   border-radius: 50%;
-  transition: color 0.2s, background 0.2s;
-  margin-left: 4px;
+  transition: background 0.18s ease, transform 0.15s ease;
+  margin-left: 6px;
 }
 
 .n-search-clear-btn:hover {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.14);
+  background: #5c5c5c;
+  transform: scale(1.06);
+}
+
+.n-search-clear-btn svg {
+  display: block;
 }
 
 /* --------------------------------------------------------------------------
