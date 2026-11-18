@@ -4475,6 +4475,94 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
+  // Handle Embed Movie Mode (Disclosure Day TMDB 1275779 via Peachify)
+  if (targetTime === 'disclosure_day' || targetTime === 'disclosureday' || targetTime === '1275779') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = 'Disclosure Day (2026) • TMDB 1275779 (Steven Spielberg / Universal)';
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1275779';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
+  // Handle Embed Movie Mode (Wuthering Heights TMDB 1316092 via Peachify)
+  if (targetTime === 'wuthering_heights' || targetTime === 'wutheringheights' || targetTime === '1316092') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = 'Wuthering Heights (2026) • TMDB 1316092 (Emerald Fennell / Warner Bros)';
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1316092';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
+  // Handle Embed Movie Mode (Hoppers TMDB 1327819 via Peachify)
+  if (targetTime === 'hoppers' || targetTime === '1327819') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = 'Hoppers (2026) • TMDB 1327819 (Disney & Pixar Animation)';
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1327819';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
+  // Handle Embed Movie Mode (Michael TMDB 936075 via Peachify)
+  if (targetTime === 'michael' || targetTime === '936075') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = 'Michael (2026) • TMDB 936075 (Antoine Fuqua / Lionsgate)';
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/936075';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
   // Generalized CodeSpecters / Custom Embed Routing
   if (typeof targetTime === 'string' && (targetTime.startsWith('codespecters:') || targetTime.startsWith('cs:') || targetTime.startsWith('https://api.codespecters.com/'))) {
     nbpIsEmbedMode = true;
@@ -5698,6 +5786,38 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       age: 'U/A 16+',
       dur: '2h 55m',
       desc: "Tiger Muthuvel Pandian (Superstar Rajinikanth) returns in Nelson Dilipkumar's high-octane sequel to the global blockbuster Jailer. Forced out of retirement when an international syndicate targets his family and alliances, the lethal retired jailer unleashes his trademark calm ruthlessness to dismantle criminal syndicates across borders. Music by Anirudh Ravichander, produced by Sun Pictures. Streamed in 4K UHD via Peachify TMDB 1234139."
+    },
+    'disclosure_day': {
+      title: 'DISCLOSURE DAY',
+      hero: 'assets/images/disclosure_day_landscape.jpg',
+      year: '2026',
+      age: 'U/A 16+',
+      dur: '2h 35m',
+      desc: "A gripping science-fiction thriller directed by Steven Spielberg and written by David Koepp. When undeniable proof of extraterrestrial existence surfaces, a resilient television meteorologist and an intrepid cybersecurity analyst brave a deadly government pursuit to disclose the epochal truth to seven billion people. Starring Emily Blunt, Josh O'Connor, Colin Firth, Eve Hewson, Colman Domingo. Universal Pictures & Amblin. Streamed in 4K UHD via Peachify TMDB 1275779."
+    },
+    'wuthering_heights': {
+      title: 'WUTHERING HEIGHTS',
+      hero: 'assets/images/wuthering_heights_landscape.jpg',
+      year: '2026',
+      age: 'U/A 16+',
+      dur: '2h 25m',
+      desc: "Academy Award winner Emerald Fennell directs a visceral, intoxicating reimagining of Emily Brontë's immortal gothic romance on the wind-swept Yorkshire moors. Catherine Earnshaw and Heathcliff's obsessive, all-consuming passion defies social hierarchy, vengeance, and mortality itself. Starring Margot Robbie and Jacob Elordi. Produced by LuckyChap Entertainment and Warner Bros. Pictures. Streamed in 4K UHD via Peachify TMDB 1316092."
+    },
+    'hoppers': {
+      title: 'HOPPERS (2026)',
+      hero: 'assets/images/hoppers_landscape.jpg',
+      year: '2026',
+      age: 'U/A 7+',
+      dur: '1h 42m',
+      desc: "A witty, heartwarming sci-fi comedy adventure from Disney and Pixar Animation Studios. An animal-loving college student Mabel utilizes revolutionary neuro-link science to hop her consciousness into an ultra-realistic robotic beaver. Infiltrating the wilderness, she befriends charismatic woodland creatures to protect their forest realm from ruthless urban expansion. Directed by Daniel Chong. Voices by Piper Curda, Bobby Moynihan, Jon Hamm. Streamed in 4K UHD via Peachify TMDB 1327819."
+    },
+    'michael': {
+      title: 'MICHAEL (THE KING OF POP)',
+      hero: 'assets/images/michael_landscape.jpg',
+      year: '2026',
+      age: 'U/A 16+',
+      dur: '2h 50m',
+      desc: "The monumental biographical musical drama directed by Antoine Fuqua and produced by Graham King (Bohemian Rhapsody). Chronicling the triumphant yet turbulent life and enduring legacy of global music icon Michael Jackson, from child prodigy in the Jackson 5 to the undisputed King of Pop. Starring nephew Jaafar Jackson in an electric tour-de-force performance alongside Colman Domingo, Nia Long, Miles Teller. Lionsgate & Universal Pictures. Streamed in 4K UHD via Peachify TMDB 936075."
     },
     'shiva': {
       title: 'SHIVA DHANUSH: THE SACRED PINAKA',

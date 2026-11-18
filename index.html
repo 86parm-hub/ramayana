@@ -361,6 +361,46 @@
         if (spinner) spinner.classList.remove('active');
         return;
       }
+      // Disclosure Day (2026) TMDB 1275779
+      if (targetTime === 'disclosure_day' || targetTime === 'disclosureday' || targetTime === '1275779') {
+        if (modal) { modal.classList.add('active', 'is-embed-active'); modal.setAttribute('aria-hidden', 'false'); }
+        document.body.style.overflow = 'hidden';
+        if (video) { try { video.pause(); video.currentTime = 0; } catch(e){} video.style.display = 'none'; }
+        if (titleDisplay) titleDisplay.textContent = 'Disclosure Day (2026) • TMDB 1275779 (Steven Spielberg / Universal)';
+        if (embedIframe) { embedIframe.style.display = 'block'; embedIframe.src = 'https://peachify.net/movie/1275779'; }
+        if (spinner) spinner.classList.remove('active');
+        return;
+      }
+      // Wuthering Heights (2026) TMDB 1316092
+      if (targetTime === 'wuthering_heights' || targetTime === 'wutheringheights' || targetTime === '1316092') {
+        if (modal) { modal.classList.add('active', 'is-embed-active'); modal.setAttribute('aria-hidden', 'false'); }
+        document.body.style.overflow = 'hidden';
+        if (video) { try { video.pause(); video.currentTime = 0; } catch(e){} video.style.display = 'none'; }
+        if (titleDisplay) titleDisplay.textContent = 'Wuthering Heights (2026) • TMDB 1316092 (Emerald Fennell / Warner Bros)';
+        if (embedIframe) { embedIframe.style.display = 'block'; embedIframe.src = 'https://peachify.net/movie/1316092'; }
+        if (spinner) spinner.classList.remove('active');
+        return;
+      }
+      // Hoppers (2026) TMDB 1327819
+      if (targetTime === 'hoppers' || targetTime === '1327819') {
+        if (modal) { modal.classList.add('active', 'is-embed-active'); modal.setAttribute('aria-hidden', 'false'); }
+        document.body.style.overflow = 'hidden';
+        if (video) { try { video.pause(); video.currentTime = 0; } catch(e){} video.style.display = 'none'; }
+        if (titleDisplay) titleDisplay.textContent = 'Hoppers (2026) • TMDB 1327819 (Disney & Pixar Animation)';
+        if (embedIframe) { embedIframe.style.display = 'block'; embedIframe.src = 'https://peachify.net/movie/1327819'; }
+        if (spinner) spinner.classList.remove('active');
+        return;
+      }
+      // Michael (2026) TMDB 936075
+      if (targetTime === 'michael' || targetTime === '936075') {
+        if (modal) { modal.classList.add('active', 'is-embed-active'); modal.setAttribute('aria-hidden', 'false'); }
+        document.body.style.overflow = 'hidden';
+        if (video) { try { video.pause(); video.currentTime = 0; } catch(e){} video.style.display = 'none'; }
+        if (titleDisplay) titleDisplay.textContent = 'Michael (2026) • TMDB 936075 (Antoine Fuqua / Lionsgate)';
+        if (embedIframe) { embedIframe.style.display = 'block'; embedIframe.src = 'https://peachify.net/movie/936075'; }
+        if (spinner) spinner.classList.remove('active');
+        return;
+      }
       // Embed series handler: Akka (2026) TMDB 243555
       if (targetTime === 'akka' || targetTime === '243555') {
         if (modal) {
@@ -2195,6 +2235,122 @@
               </div>
             </article>
 
+            <!-- Official Movie Card 35: Disclosure Day (2026) (TMDB 1275779) -->
+            <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('disclosure_day')" title="Play Disclosure Day - TMDB 1275779">
+              <div class="n-card-thumb">
+                <img src="assets/images/disclosure_day_landscape.jpg" data-poster="assets/images/disclosure_day_poster.jpg" alt="Disclosure Day" loading="lazy">
+                <span class="n-card-quality-tag">4K UHD</span>
+
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('disclosure_day');" title="Play Movie">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                    </button>
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('disclosure_day');" title="More Info">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">Disclosure Day</h4>
+                    <p class="n-card-genres">Sci-Fi Thriller &bull; Steven Spielberg &bull; Emily Blunt &bull; Universal</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Official Movie Card 36: Wuthering Heights (2026) (TMDB 1316092) -->
+            <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('wuthering_heights')" title="Play Wuthering Heights - TMDB 1316092">
+              <div class="n-card-thumb">
+                <img src="assets/images/wuthering_heights_landscape.jpg" data-poster="assets/images/wuthering_heights_poster.jpg" alt="Wuthering Heights" loading="lazy">
+                <span class="n-card-quality-tag">4K UHD</span>
+
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('wuthering_heights');" title="Play Movie">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                    </button>
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('wuthering_heights');" title="More Info">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">Wuthering Heights</h4>
+                    <p class="n-card-genres">Gothic Romance &bull; Margot Robbie &bull; Jacob Elordi &bull; Warner Bros</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Official Movie Card 37: Hoppers (2026) (TMDB 1327819) -->
+            <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('hoppers')" title="Play Hoppers - TMDB 1327819">
+              <div class="n-card-thumb">
+                <img src="assets/images/hoppers_landscape.jpg" data-poster="assets/images/hoppers_poster.jpg" alt="Hoppers" loading="lazy">
+                <span class="n-card-quality-tag">4K UHD</span>
+
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('hoppers');" title="Play Movie">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                    </button>
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('hoppers');" title="More Info">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">Hoppers</h4>
+                    <p class="n-card-genres">Animation &bull; Sci-Fi Comedy &bull; Disney &bull; Pixar</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Official Movie Card 38: Michael (2026) (TMDB 936075) -->
+            <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('michael')" title="Play Michael - TMDB 936075">
+              <div class="n-card-thumb">
+                <img src="assets/images/michael_landscape.jpg" data-poster="assets/images/michael_poster.jpg" alt="Michael" loading="lazy">
+                <span class="n-card-quality-tag">4K UHD</span>
+
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('michael');" title="Play Movie">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                    </button>
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('michael');" title="More Info">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">Michael</h4>
+                    <p class="n-card-genres">Biographical Musical &bull; King of Pop &bull; Jaafar Jackson &bull; Lionsgate</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
             <!-- Official Movie Card 4: The Odyssey (2026) (TMDB 1368337) -->
             <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('the_odyssey')" title="Play The Odyssey - TMDB 1368337">
               <div class="n-card-thumb">
@@ -2370,6 +2526,143 @@
             </article>
           </div>
           <button class="n-slider-btn next" onclick="slideNetflixRow('rowTrackAnime', 1)" aria-label="Next titles">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- Official Movie Row 6: Hollywood & International Premieres -->
+      <section class="netflix-row" id="rowHollywood">
+        <div class="row-header">
+          <h2 class="row-title">
+            <span>Hollywood &amp; International Premieres</span>
+            <span class="row-title-chevron">&rsaquo;</span>
+          </h2>
+          <span class="row-badge-pill">4 Titles Streaming</span>
+        </div>
+
+        <div class="n-carousel-wrap">
+          <button class="n-slider-btn prev" onclick="slideNetflixRow('rowTrackHollywood', -1)" aria-label="Previous titles">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+          <div class="netflix-slider-track single-movie-track" id="rowTrackHollywood">
+            <!-- Movie Card 1: Disclosure Day (2026) (TMDB 1275779) -->
+            <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('disclosure_day')" title="Play Disclosure Day - TMDB 1275779">
+              <div class="n-card-thumb">
+                <img src="assets/images/disclosure_day_landscape.jpg" data-poster="assets/images/disclosure_day_poster.jpg" alt="Disclosure Day" loading="lazy">
+                <span class="n-card-quality-tag">4K UHD</span>
+
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('disclosure_day');" title="Play Movie">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                    </button>
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('disclosure_day');" title="More Info">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">Disclosure Day</h4>
+                    <p class="n-card-genres">Sci-Fi Thriller &bull; Steven Spielberg &bull; Emily Blunt &bull; Universal</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Movie Card 2: Wuthering Heights (2026) (TMDB 1316092) -->
+            <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('wuthering_heights')" title="Play Wuthering Heights - TMDB 1316092">
+              <div class="n-card-thumb">
+                <img src="assets/images/wuthering_heights_landscape.jpg" data-poster="assets/images/wuthering_heights_poster.jpg" alt="Wuthering Heights" loading="lazy">
+                <span class="n-card-quality-tag">4K UHD</span>
+
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('wuthering_heights');" title="Play Movie">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                    </button>
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('wuthering_heights');" title="More Info">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">Wuthering Heights</h4>
+                    <p class="n-card-genres">Gothic Romance &bull; Margot Robbie &bull; Jacob Elordi &bull; Warner Bros</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Movie Card 3: Hoppers (2026) (TMDB 1327819) -->
+            <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('hoppers')" title="Play Hoppers - TMDB 1327819">
+              <div class="n-card-thumb">
+                <img src="assets/images/hoppers_landscape.jpg" data-poster="assets/images/hoppers_poster.jpg" alt="Hoppers" loading="lazy">
+                <span class="n-card-quality-tag">4K UHD</span>
+
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('hoppers');" title="Play Movie">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                    </button>
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('hoppers');" title="More Info">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">Hoppers</h4>
+                    <p class="n-card-genres">Animation &bull; Sci-Fi Comedy &bull; Disney &bull; Pixar</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Movie Card 4: Michael (2026) (TMDB 936075) -->
+            <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('michael')" title="Play Michael - TMDB 936075">
+              <div class="n-card-thumb">
+                <img src="assets/images/michael_landscape.jpg" data-poster="assets/images/michael_poster.jpg" alt="Michael" loading="lazy">
+                <span class="n-card-quality-tag">4K UHD</span>
+
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('michael');" title="Play Movie">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                    </button>
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('michael');" title="More Info">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">Michael</h4>
+                    <p class="n-card-genres">Biographical Musical &bull; King of Pop &bull; Jaafar Jackson &bull; Lionsgate</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+          <button class="n-slider-btn next" onclick="slideNetflixRow('rowTrackHollywood', 1)" aria-label="Next titles">
             <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
           </button>
         </div>
