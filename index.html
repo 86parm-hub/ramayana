@@ -146,7 +146,8 @@
           'movies': 'movies-view',
           'trailer': 'trailer-view',
           'watch': 'watch-view',
-          'gallery': 'gallery-view'
+          'gallery': 'gallery-view',
+          'search': 'search-view'
         };
         var targetId = pageMap[pageKey] || 'home-view';
 
@@ -1065,34 +1066,25 @@
 
       <!-- Header Right Utilities: Search & Watch CTA -->
       <div class="header-actions">
-        <!-- Desktop Real-Time Expandable Search Widget -->
-        <div class="header-search-wrap" id="headerSearchWrap">
-          <button class="header-search-btn" id="headerSearchBtn" onclick="toggleDesktopSearch(event)" title="Search Movies &amp; Sagas (Press /)" aria-label="Search">
+        <!-- Netflix Desktop Search Widget -->
+        <div class="netflix-search-widget" id="netflixSearchWidget">
+          <button class="n-search-toggle-btn" id="nSearchToggleBtn" onclick="toggleNetflixSearch(event)" title="Search titles, people, genres" aria-label="Search">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="11" cy="11" r="8"></circle>
               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
           </button>
-          <div class="header-search-box" id="headerSearchBox" onclick="event.stopPropagation()">
-            <svg class="header-search-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-            <input type="text" id="desktopSearchInput" class="header-search-input" placeholder="Search titles, actors, genres..." autocomplete="off" oninput="handleSearchInput(this.value, 'desktop')" onkeydown="handleSearchKeyDown(event)" />
-            <button class="header-search-clear" id="desktopSearchClear" onclick="clearSearch('desktop')" title="Clear Search" style="display: none;">
+          <div class="n-search-input-wrap" id="nSearchInputWrap">
+            <span class="n-search-inner-icon">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </span>
+            <input type="text" id="desktopSearchInput" class="n-search-input-field" placeholder="Titles, people, genres" autocomplete="off" oninput="handleNetflixSearchInput(this.value, 'desktop')" onkeydown="handleNetflixSearchKeyDown(event)" />
+            <button class="n-search-clear-btn" id="desktopSearchClear" onclick="clearNetflixSearch('desktop')" title="Clear" aria-label="Clear Search" style="display: none;">
               <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </button>
-          </div>
-
-          <!-- Desktop Real-Time Search Results Dropdown Overlay -->
-          <div class="desktop-search-dropdown" id="desktopSearchDropdown" onclick="event.stopPropagation()">
-            <div class="desktop-search-header" id="desktopSearchHeader">
-              <span class="desktop-search-count" id="desktopSearchCount">0 movies found</span>
-              <button class="desktop-search-view-all" onclick="openFullSearchViewFromDesktop()">View in Grid &rsaquo;</button>
-            </div>
-            <div class="desktop-search-results-list" id="desktopSearchResultsList">
-              <!-- Live dynamic real-time search cards -->
-            </div>
           </div>
         </div>
 
@@ -2969,58 +2961,77 @@
        PAGE: SEARCH VIEW (Dedicated Real-Time Movie Search Engine - Mobile & PC)
        ========================================================================= -->
   <section class="page-view" id="search-view">
-    <div class="search-view-container">
-      <!-- Search Input Bar -->
-      <div class="search-hero-bar">
-        <div class="search-hero-input-wrap">
-          <svg class="search-hero-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5">
+    <div class="netflix-search-canvas">
+      <!-- Mobile Native Search Input (Visible on mobile/tablet) -->
+      <div class="m-search-bar-wrap">
+        <div class="m-search-input-box">
+          <svg class="m-search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5">
             <circle cx="11" cy="11" r="8"></circle>
             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
           </svg>
-          <input type="text" id="mobileSearchInput" class="search-hero-input" placeholder="Search movies, actors, genres, directors..." autocomplete="off" oninput="handleSearchInput(this.value, 'mobile')" />
-          <button class="search-hero-clear" id="mobileSearchClear" onclick="clearSearch('mobile')" title="Clear Search" style="display: none;">
+          <input type="text" id="mobileSearchInput" class="m-search-input-field" placeholder="Search for a movie, actor, genre..." autocomplete="off" oninput="handleNetflixSearchInput(this.value, 'mobile')" />
+          <button class="m-search-clear-btn" id="mobileSearchClear" onclick="clearNetflixSearch('mobile')" title="Clear" style="display: none;">
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
           </button>
         </div>
       </div>
 
-      <!-- Quick Filter Category Pills -->
-      <div class="search-filter-pills-wrap">
-        <div class="search-filter-pills" id="searchFilterPills">
-          <button class="s-pill active" onclick="filterSearchCategory('all', this)">All Titles (48)</button>
-          <button class="s-pill" onclick="filterSearchCategory('trending', this)">🔥 Trending</button>
-          <button class="s-pill" onclick="filterSearchCategory('action', this)">⚔️ Action &amp; Mass</button>
-          <button class="s-pill" onclick="filterSearchCategory('hollywood', this)">🎬 Hollywood</button>
-          <button class="s-pill" onclick="filterSearchCategory('south', this)">⚡ South Indian</button>
-          <button class="s-pill" onclick="filterSearchCategory('4k', this)">💎 4K UHD</button>
-          <button class="s-pill" onclick="filterSearchCategory('animation', this)">🎨 Animation</button>
-          <button class="s-pill" onclick="filterSearchCategory('comedy', this)">😄 Comedy</button>
+      <!-- Explore Category Pills ("Explore titles related to:") -->
+      <div class="search-explore-section">
+        <span class="search-explore-label">Explore titles related to:</span>
+        <div class="search-pills-row" id="searchFilterPills">
+          <button class="n-search-pill active" onclick="filterSearchByPill('all', this)">All Titles (48)</button>
+          <button class="n-search-pill" onclick="filterSearchByPill('trending', this)">🔥 Trending</button>
+          <button class="n-search-pill" onclick="filterSearchByPill('action', this)">⚔️ Action &amp; Mass</button>
+          <button class="n-search-pill" onclick="filterSearchByPill('hollywood', this)">🎬 Hollywood</button>
+          <button class="n-search-pill" onclick="filterSearchByPill('south', this)">⚡ South Indian</button>
+          <button class="n-search-pill" onclick="filterSearchByPill('4k', this)">💎 4K UHD</button>
+          <button class="n-search-pill" onclick="filterSearchByPill('animation', this)">🎨 Animation</button>
+          <button class="n-search-pill" onclick="filterSearchByPill('comedy', this)">😄 Comedy</button>
         </div>
       </div>
 
-      <!-- Search Status & Count Bar -->
-      <div class="search-status-bar" id="searchStatusBar">
-        <h3 class="search-status-title" id="searchStatusTitle">All Available Movies &amp; Sagas</h3>
-        <span class="search-status-badge" id="searchStatusBadge">48 Titles</span>
-      </div>
-
-      <!-- Search Results Grid (Real-Time Dynamic) -->
-      <div class="search-results-grid" id="searchResultsGrid">
-        <!-- Dynamic Movie Cards rendered by JS -->
-      </div>
-
-      <!-- Empty State (when no search query matches) -->
-      <div class="search-empty-state" id="searchEmptyState" style="display: none;">
-        <div class="search-empty-icon">
-          <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            <line x1="8" y1="11" x2="14" y2="11"></line>
-          </svg>
+      <!-- STATE A: Top Searches (Displayed when search input is empty) -->
+      <div class="top-searches-wrapper" id="topSearchesSection">
+        <h3 class="top-searches-title">Top Searches</h3>
+        <div class="top-searches-list" id="topSearchesList">
+          <!-- Rendered dynamically by JS with 16:9 thumbnail, title, play icon -->
         </div>
-        <h4 class="search-empty-heading" id="searchEmptyHeading">No matches found</h4>
-        <p class="search-empty-text" id="searchEmptyText">Try searching by title (e.g. Ramayana, Coolie, Dhurandhar, The Odyssey) or actor name.</p>
-        <button class="search-empty-reset-btn" onclick="clearSearch('mobile')">View All Movies</button>
+      </div>
+
+      <!-- STATE B: Live Real-Time Search Results Grid (Displayed when user types) -->
+      <div class="live-search-section" id="liveSearchResultsSection" style="display: none;">
+        <div class="search-results-header-bar">
+          <h3 class="search-results-heading" id="searchResultsHeading">Results for "..."</h3>
+          <span class="search-results-badge" id="searchResultsBadge">0 Titles</span>
+        </div>
+        <div class="netflix-search-grid" id="searchResultsGrid">
+          <!-- Rendered dynamically by JS with Netflix responsive cards -->
+        </div>
+      </div>
+
+      <!-- STATE C: Netflix Empty State (when 0 matches) -->
+      <div class="netflix-search-empty-state" id="searchEmptyState" style="display: none;">
+        <p class="empty-msg">Your search for <strong id="emptyQueryHighlight">"..."</strong> did not have any matches.</p>
+        <div class="empty-suggestions-box">
+          <p class="empty-suggestions-title">Suggestions:</p>
+          <ul>
+            <li>Try different keywords or check spelling</li>
+            <li>Looking for a movie or saga?</li>
+            <li>Try searching an actor, director, or franchise</li>
+          </ul>
+        </div>
+        <div class="empty-quick-pills">
+          <span class="empty-quick-label">Try searching:</span>
+          <button class="empty-quick-btn" onclick="quickSearchTag('Ramayana')">Ramayana</button>
+          <button class="empty-quick-btn" onclick="quickSearchTag('Coolie')">Coolie</button>
+          <button class="empty-quick-btn" onclick="quickSearchTag('Dhurandhar')">Dhurandhar</button>
+          <button class="empty-quick-btn" onclick="quickSearchTag('Jailer 2')">Jailer 2</button>
+          <button class="empty-quick-btn" onclick="quickSearchTag('The Odyssey')">The Odyssey</button>
+          <button class="empty-quick-btn" onclick="quickSearchTag('Michael')">Michael</button>
+          <button class="empty-quick-btn" onclick="quickSearchTag('Super Mario')">Super Mario</button>
+          <button class="empty-quick-btn" onclick="quickSearchTag('Hollywood')">Hollywood</button>
+        </div>
       </div>
     </div>
   </section>

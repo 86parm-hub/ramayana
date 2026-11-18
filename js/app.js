@@ -6268,8 +6268,9 @@ if (document.readyState === 'loading') {
 
 
 
+
 /* =========================================================================
-   SANDFLIX REAL-TIME PRODUCTION SEARCH ENGINE (PC, LAPTOP & MOBILE)
+   OFFICIAL NETFLIX REAL-TIME SEARCH ENGINE (DESKTOP & MOBILE)
    ========================================================================= */
 
 const sandflixCatalog = [
@@ -7033,111 +7034,77 @@ const sandflixCatalog = [
   }
 ];
 
-let currentSearchQuery = '';
-let currentSearchCategory = 'all';
+const topSearchesKeys = [
+  'part1', 'coolie', 'dhurandhar', 'jailer_2', 'the_odyssey', 
+  'michael', 'mario_galaxy', 'minions_monsters', 'mortal_kombat_2', 'disclosure_day',
+  'wuthering_heights', 'hoppers', 'pushpa2', 'chhaava'
+];
 
-// Initialize search listeners
+let netflixSearchQuery = '';
+let netflixSearchPill = 'all';
+let prevPageBeforeSearch = 'home';
+
 document.addEventListener('DOMContentLoaded', function() {
-  initSearchEngine();
+  initNetflixSearch();
 });
 
-function initSearchEngine() {
-  // Initial render of all/trending movies on search view
-  if (document.getElementById('searchResultsGrid')) {
-    renderSearchResults(sandflixCatalog, '');
-  }
+function initNetflixSearch() {
+  renderTopSearches();
+  renderNetflixSearchResults(sandflixCatalog, '');
 
-  // Close desktop search dropdown on click outside
+  // Click outside to collapse desktop search if input is empty
   document.addEventListener('click', function(e) {
-    const wrap = document.getElementById('headerSearchWrap');
-    if (wrap && !wrap.contains(e.target)) {
-      closeDesktopSearch();
-    }
-  });
-}
-
-function toggleDesktopSearch(event) {
-  if (event) event.stopPropagation();
-  const wrap = document.getElementById('headerSearchWrap');
-  const input = document.getElementById('desktopSearchInput');
-  if (!wrap) return;
-
-  if (wrap.classList.contains('active')) {
-    if (input && input.value.trim() !== '') {
-      openFullSearchViewFromDesktop();
-    } else {
-      closeDesktopSearch();
-    }
-  } else {
-    wrap.classList.add('active');
-    if (input) {
-      input.focus();
-      if (input.value.trim() !== '') {
-        handleSearchInput(input.value, 'desktop');
+    const widget = document.getElementById('netflixSearchWidget');
+    const dInput = document.getElementById('desktopSearchInput');
+    if (widget && !widget.contains(e.target)) {
+      if (dInput && dInput.value.trim() === '') {
+        widget.classList.remove('open');
       }
     }
-  }
-}
-
-function closeDesktopSearch() {
-  const wrap = document.getElementById('headerSearchWrap');
-  const dropdown = document.getElementById('desktopSearchDropdown');
-  if (wrap) wrap.classList.remove('active');
-  if (dropdown) dropdown.classList.remove('active');
-}
-
-function openFullSearchViewFromDesktop() {
-  closeDesktopSearch();
-  const desktopInput = document.getElementById('desktopSearchInput');
-  const mobileInput = document.getElementById('mobileSearchInput');
-  const q = desktopInput ? desktopInput.value.trim() : '';
-
-  switchPage('search');
-  if (mobileInput) {
-    mobileInput.value = q;
-    handleSearchInput(q, 'mobile');
-    mobileInput.focus();
-  }
-}
-
-function handleSearchKeyDown(event) {
-  if (event.key === 'Enter') {
-    event.preventDefault();
-    openFullSearchViewFromDesktop();
-  } else if (event.key === 'Escape') {
-    closeDesktopSearch();
-  }
-}
-
-function clearSearch(source) {
-  currentSearchQuery = '';
-  const dInput = document.getElementById('desktopSearchInput');
-  const mInput = document.getElementById('mobileSearchInput');
-  const dClear = document.getElementById('desktopSearchClear');
-  const mClear = document.getElementById('mobileSearchClear');
-
-  if (dInput) dInput.value = '';
-  if (mInput) mInput.value = '';
-  if (dClear) dClear.style.display = 'none';
-  if (mClear) mClear.style.display = 'none';
-
-  const dropdown = document.getElementById('desktopSearchDropdown');
-  if (dropdown) dropdown.classList.remove('active');
-
-  applySearchFilters();
-}
-
-function filterSearchCategory(category, buttonEl) {
-  currentSearchCategory = category;
-  document.querySelectorAll('#searchFilterPills .s-pill').forEach(btn => {
-    btn.classList.remove('active');
   });
-  if (buttonEl) buttonEl.classList.add('active');
-  applySearchFilters();
 }
 
-function handleSearchInput(value, source) {
-  currentSearchQuery = value.trim().toLowerCase();
+function toggleNetflixSearch(event) {
+  if (event) event.stopPropagation();
+  const widget = document.getElementById('netflixSearchWidget');
+  const dInput = document.getElementById('desktopSearchInput');
+  if (!widget) return;
+
+  if (widget.classList.contains('open')) {
+    if (dInput && dInput.value.trim() !== '') {
+      switchPage('search');
+    } else {
+      widget.classList.remove('open');
+    }
+  } else {
+    widget.classList.add('open');
+    if (dInput) {
+      setTimeout(() => dInput.focus(), 150);
+    }
+    // Record current page before switching to search
+    const curActive = getCurrentActivePage();
+    if (curActive !== 'search') prevPageBeforeSearch = curActive;
+  }
+}
+
+function handleNetflixSearchKeyDown(event) {
+  if (event.key === 'Escape') {
+    const widget = document.getElementById('netflixSearchWidget');
+    const dInput = document.getElementById('desktopSearchInput');
+    if (dInput) dInput.value = '';
+    if (widget) widget.classList.remove('open');
+    clearNetflixSearch('desktop');
+    if (prevPageBeforeSearch && prevPageBeforeSearch !== 'search') {
+      switchPage(prevPageBeforeSearch);
+    }
+  } else if (event.key === 'Enter') {
+    event.preventDefault();
+    switchPage('search');
+  }
+}
+
+function handleNetflixSearchInput(value, source) {
+  netflixSearchQuery = value.trim();
 
   const dInput = document.getElementById('desktopSearchInput');
   const mInput = document.getElementById('mobileSearchInput');
@@ -7150,33 +7117,100 @@ function handleSearchInput(value, source) {
   if (dClear) dClear.style.display = value ? 'flex' : 'none';
   if (mClear) mClear.style.display = value ? 'flex' : 'none';
 
-  applySearchFilters(source);
+  // If user is typing on desktop navbar, seamlessly bring up the search-view canvas
+  if (source === 'desktop' && value.length > 0) {
+    const curPage = getCurrentActivePage();
+    if (curPage !== 'search') {
+      prevPageBeforeSearch = curPage;
+      switchPage('search');
+      // Keep focus on desktop input
+      if (dInput) setTimeout(() => dInput.focus(), 50);
+    }
+  }
+
+  applyNetflixSearchFilter();
 }
 
-function applySearchFilters(source) {
-  let filtered = sandflixCatalog;
+function clearNetflixSearch(source) {
+  netflixSearchQuery = '';
+  const dInput = document.getElementById('desktopSearchInput');
+  const mInput = document.getElementById('mobileSearchInput');
+  const dClear = document.getElementById('desktopSearchClear');
+  const mClear = document.getElementById('mobileSearchClear');
+
+  if (dInput) dInput.value = '';
+  if (mInput) mInput.value = '';
+  if (dClear) dClear.style.display = 'none';
+  if (mClear) mClear.style.display = 'none';
+
+  applyNetflixSearchFilter();
+
+  if (source === 'desktop') {
+    if (dInput) dInput.focus();
+  } else {
+    if (mInput) mInput.focus();
+  }
+}
+
+function quickSearchTag(tagName) {
+  const dInput = document.getElementById('desktopSearchInput');
+  const mInput = document.getElementById('mobileSearchInput');
+  if (dInput) dInput.value = tagName;
+  if (mInput) mInput.value = tagName;
+  handleNetflixSearchInput(tagName, 'quick');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function filterSearchByPill(pillCategory, btnEl) {
+  netflixSearchPill = pillCategory;
+  document.querySelectorAll('#searchFilterPills .n-search-pill').forEach(b => {
+    b.classList.remove('active');
+  });
+  if (btnEl) btnEl.classList.add('active');
+  applyNetflixSearchFilter();
+}
+
+function applyNetflixSearchFilter() {
+  const topSection = document.getElementById('topSearchesSection');
+  const liveSection = document.getElementById('liveSearchResultsSection');
+  const emptyState = document.getElementById('searchEmptyState');
+
+  // If search query is empty and pill is 'all', show Top Searches list!
+  if (!netflixSearchQuery && netflixSearchPill === 'all') {
+    if (topSection) topSection.style.display = 'block';
+    if (liveSection) liveSection.style.display = 'none';
+    if (emptyState) emptyState.style.display = 'none';
+    renderTopSearches();
+    return;
+  }
+
+  // Otherwise, we are in live search results mode!
+  if (topSection) topSection.style.display = 'none';
+  if (liveSection) liveSection.style.display = 'block';
+
+  let results = sandflixCatalog;
 
   // Filter by category pill
-  if (currentSearchCategory === 'trending') {
-    filtered = filtered.filter(m => ['part1', 'coolie', 'dhurandhar', 'jailer_2', 'the_odyssey', 'michael', 'pushpa2', 'chhaava'].includes(m.key));
-  } else if (currentSearchCategory === 'action') {
-    filtered = filtered.filter(m => m.genres.includes('Action') || m.desc.toLowerCase().includes('action'));
-  } else if (currentSearchCategory === 'hollywood') {
-    filtered = filtered.filter(m => m.industry === 'Hollywood' || m.desc.toLowerCase().includes('hollywood'));
-  } else if (currentSearchCategory === 'south') {
-    filtered = filtered.filter(m => m.industry === 'South Indian' || m.desc.toLowerCase().includes('south indian') || m.desc.toLowerCase().includes('tamil') || m.desc.toLowerCase().includes('telugu'));
-  } else if (currentSearchCategory === '4k') {
-    filtered = filtered.filter(m => m.quality === '4K UHD' || m.desc.toLowerCase().includes('4k'));
-  } else if (currentSearchCategory === 'animation') {
-    filtered = filtered.filter(m => m.genres.includes('Animation') || m.desc.toLowerCase().includes('animation'));
-  } else if (currentSearchCategory === 'comedy') {
-    filtered = filtered.filter(m => m.genres.includes('Comedy') || m.desc.toLowerCase().includes('comedy'));
+  if (netflixSearchPill === 'trending') {
+    results = results.filter(m => topSearchesKeys.includes(m.key));
+  } else if (netflixSearchPill === 'action') {
+    results = results.filter(m => m.genres.includes('Action') || m.desc.toLowerCase().includes('action') || m.desc.toLowerCase().includes('mass'));
+  } else if (netflixSearchPill === 'hollywood') {
+    results = results.filter(m => m.industry === 'Hollywood' || m.desc.toLowerCase().includes('hollywood') || m.desc.toLowerCase().includes('universal') || m.desc.toLowerCase().includes('warner bros'));
+  } else if (netflixSearchPill === 'south') {
+    results = results.filter(m => m.industry === 'South Indian' || m.desc.toLowerCase().includes('south indian') || m.desc.toLowerCase().includes('tamil') || m.desc.toLowerCase().includes('telugu'));
+  } else if (netflixSearchPill === '4k') {
+    results = results.filter(m => m.quality === '4K UHD' || m.desc.toLowerCase().includes('4k'));
+  } else if (netflixSearchPill === 'animation') {
+    results = results.filter(m => m.genres.includes('Animation') || m.desc.toLowerCase().includes('animation') || m.desc.toLowerCase().includes('pixar') || m.desc.toLowerCase().includes('nintendo'));
+  } else if (netflixSearchPill === 'comedy') {
+    results = results.filter(m => m.genres.includes('Comedy') || m.desc.toLowerCase().includes('comedy'));
   }
 
   // Filter by search query
-  if (currentSearchQuery) {
-    const q = currentSearchQuery;
-    filtered = filtered.filter(m => {
+  if (netflixSearchQuery) {
+    const q = netflixSearchQuery.toLowerCase();
+    results = results.filter(m => {
       const inTitle = m.title.toLowerCase().includes(q);
       const inDesc = m.desc.toLowerCase().includes(q);
       const inGenres = m.genres.some(g => g.toLowerCase().includes(q));
@@ -7186,130 +7220,91 @@ function applySearchFilters(source) {
     });
   }
 
-  // Update Desktop dropdown if on desktop
-  const dropdown = document.getElementById('desktopSearchDropdown');
-  if (source === 'desktop' && dropdown) {
-    if (currentSearchQuery) {
-      dropdown.classList.add('active');
-      renderDesktopDropdownResults(filtered, currentSearchQuery);
-    } else {
-      dropdown.classList.remove('active');
-    }
-  }
-
-  // Always update the full search grid
-  renderSearchResults(filtered, currentSearchQuery);
+  renderNetflixSearchResults(results, netflixSearchQuery);
 }
 
-function renderDesktopDropdownResults(results, query) {
-  const countEl = document.getElementById('desktopSearchCount');
-  const listEl = document.getElementById('desktopSearchResultsList');
+function renderTopSearches() {
+  const listEl = document.getElementById('topSearchesList');
   if (!listEl) return;
 
-  if (countEl) {
-    countEl.textContent = results.length > 0 
-      ? results.length + ' ' + (results.length === 1 ? 'title' : 'titles') + ' for "' + query + '"'
-      : 'No titles found for "' + query + '"';
-  }
+  const topItems = sandflixCatalog.filter(m => topSearchesKeys.includes(m.key));
 
-  if (results.length === 0) {
-    listEl.innerHTML = '<div class="desktop-search-no-results"><p>No movies match <strong>"' + query + '"</strong></p><span class="desktop-search-hint">Try searching Ramayana, Coolie, Dhurandhar, or Hollywood</span></div>';
-    return;
-  }
-
-  listEl.innerHTML = results.slice(0, 7).map(item => `
-    <div class="desktop-search-item" onclick="openNetflixBlackPlayer('${item.key}')">
-      <div class="desktop-search-thumb">
-        <img src="${item.poster}" alt="${item.title}" loading="lazy" />
-        <span class="desktop-search-quality">${item.quality}</span>
+  listEl.innerHTML = topItems.map((item, idx) => `
+    <div class="top-search-row" onclick="openNetflixBlackPlayer('${item.key}')" title="Play ${item.title}">
+      <div class="top-search-thumb-wrap">
+        <img src="${item.hero}" alt="${item.title}" loading="lazy" />
+        <span class="top-search-quality-tag">${item.quality}</span>
       </div>
-      <div class="desktop-search-details">
-        <h4 class="desktop-search-title">${item.title}</h4>
-        <div class="desktop-search-meta">
-          <span class="desktop-search-year">${item.year}</span>
-          <span class="desktop-search-age">${item.age}</span>
-          <span class="desktop-search-dur">${item.dur}</span>
-        </div>
-        <p class="desktop-search-genres">${item.genres.join(' • ')}</p>
+      <div class="top-search-info">
+        <span class="top-search-title">${item.title}</span>
+        <span class="top-search-meta">${item.year} &bull; ${item.genres[0] || 'Blockbuster'}</span>
       </div>
-      <div class="desktop-search-actions">
-        <button class="desktop-search-play-btn" onclick="event.stopPropagation(); openNetflixBlackPlayer('${item.key}')" title="Play Movie">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
-        </button>
-        <button class="desktop-search-info-btn" onclick="event.stopPropagation(); openMovieDetailsModal('${item.key}')" title="More Info">
-          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </button>
-      </div>
+      <button class="top-search-play-btn" onclick="event.stopPropagation(); openNetflixBlackPlayer('${item.key}')" title="Play Movie" aria-label="Play ${item.title}">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+          <polygon points="6 3 20 12 6 21 6 3"></polygon>
+        </svg>
+      </button>
     </div>
   `).join('');
 }
 
-function renderSearchResults(results, query) {
+function renderNetflixSearchResults(results, query) {
   const grid = document.getElementById('searchResultsGrid');
+  const heading = document.getElementById('searchResultsHeading');
+  const badge = document.getElementById('searchResultsBadge');
   const emptyState = document.getElementById('searchEmptyState');
-  const statusTitle = document.getElementById('searchStatusTitle');
-  const statusBadge = document.getElementById('searchStatusBadge');
+  const emptyHighlight = document.getElementById('emptyQueryHighlight');
 
-  if (!grid) return;
-
-  if (statusTitle && statusBadge) {
+  if (heading && badge) {
     if (query) {
-      statusTitle.textContent = 'Results for "' + query + '"';
-      statusBadge.textContent = results.length + ' ' + (results.length === 1 ? 'Title' : 'Titles');
+      heading.textContent = `Results for "${query}"`;
+      badge.textContent = `${results.length} ${results.length === 1 ? 'Title' : 'Titles'}`;
     } else {
-      if (currentSearchCategory === 'all') {
-        statusTitle.textContent = 'All Available Movies & Sagas';
-      } else if (currentSearchCategory === 'trending') {
-        statusTitle.textContent = '🔥 Trending Searches & Blockbusters';
-      } else {
-        statusTitle.textContent = currentSearchCategory.toUpperCase() + ' Cinema';
-      }
-      statusBadge.textContent = results.length + ' Titles';
+      heading.textContent = netflixSearchPill === 'all' ? 'All Titles' : `${netflixSearchPill.toUpperCase()} Titles`;
+      badge.textContent = `${results.length} Titles`;
     }
   }
 
   if (results.length === 0) {
-    grid.style.display = 'none';
+    if (grid) grid.style.display = 'none';
     if (emptyState) {
       emptyState.style.display = 'flex';
-      const emptyHeading = document.getElementById('searchEmptyHeading');
-      const emptyText = document.getElementById('searchEmptyText');
-      if (emptyHeading) emptyHeading.textContent = 'No movies found matching "' + query + '"';
-      if (emptyText) emptyText.textContent = 'Try searching for Ramayana, Coolie, Dhurandhar, The Odyssey, Michael, or browse by category.';
+      if (emptyHighlight) emptyHighlight.textContent = `"${query}"`;
     }
     return;
   }
 
   if (emptyState) emptyState.style.display = 'none';
-  grid.style.display = 'grid';
+  if (grid) {
+    grid.style.display = 'grid';
+    grid.innerHTML = results.map(item => `
+      <article class="n-card compact search-card official-master-card" onclick="openNetflixBlackPlayer('${item.key}')" title="Play ${item.title} (${item.year})">
+        <div class="n-card-thumb">
+          <img src="${item.hero}" data-poster="${item.poster}" alt="${item.title}" loading="lazy" />
+          <span class="n-card-quality-tag">${item.quality}</span>
 
-  grid.innerHTML = results.map(item => `
-    <article class="n-card compact search-card official-master-card" onclick="openNetflixBlackPlayer('${item.key}')" title="Play ${item.title} (${item.year})">
-      <div class="n-card-thumb">
-        <img src="${item.hero}" data-poster="${item.poster}" alt="${item.title}" loading="lazy" />
-        <span class="n-card-quality-tag">${item.quality}</span>
-
-        <div class="n-card-overlay">
-          <div class="n-card-actions">
-            <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('${item.key}');" title="Play Movie">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
-            </button>
-            <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
-              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-            </button>
-            <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
-              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
-            </button>
-            <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('${item.key}');" title="More Info">
-              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </button>
-          </div>
-          <div class="n-card-info">
-            <h4 class="n-movie-name">${item.title}</h4>
-            <p class="n-card-genres">${item.genres.join(' • ')} &bull; ${item.year}</p>
+          <div class="n-card-overlay">
+            <div class="n-card-actions">
+              <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('${item.key}');" title="Play Movie">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+              </button>
+              <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              </button>
+              <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+              </button>
+              <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('${item.key}');" title="More Info">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+            </div>
+            <div class="n-card-info">
+              <h4 class="n-movie-name">${item.title}</h4>
+              <p class="n-card-genres">${item.genres.join(' • ')} &bull; ${item.year}</p>
+            </div>
           </div>
         </div>
-      </div>
-    </article>
-  `).join('');
+      </article>
+    `).join('');
+  }
 }

@@ -11203,439 +11203,361 @@ video {
   }
 }
 
+
+
 /* ==========================================================================
-   SANDFLIX REAL-TIME SEARCH ENGINE STYLES (PC, LAPTOP & MOBILE)
+   OFFICIAL NETFLIX REAL-TIME SEARCH ENGINE (PC, LAPTOP & MOBILE)
    ========================================================================== */
 
-/* 1. Desktop Nav Search Widget */
-.header-search-wrap {
-  position: relative;
-  display: flex;
+/* --------------------------------------------------------------------------
+   1. Desktop Navbar Search Widget (Exact Netflix Horizontal Slide-In)
+   -------------------------------------------------------------------------- */
+.netflix-search-widget {
+  display: inline-flex;
   align-items: center;
+  position: relative;
+  height: 36px;
 }
 
-.header-search-btn {
+.n-search-toggle-btn {
   background: transparent;
   border: none;
-  color: #e5e5e5;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  padding: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  transition: all 0.25s ease;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s;
+  border-radius: 50%;
 }
 
-.header-search-btn:hover {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.12);
-  transform: scale(1.05);
+.n-search-toggle-btn:hover {
+  transform: scale(1.12);
+  color: #e50914;
 }
 
-.header-search-box {
-  display: none;
-  align-items: center;
-  gap: 8px;
-  background: rgba(14, 14, 14, 0.95);
-  border: 1px solid rgba(255, 255, 255, 0.65);
-  border-radius: 4px;
-  padding: 4px 10px;
-  width: 280px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.header-search-wrap.active .header-search-btn {
-  display: none;
-}
-
-.header-search-wrap.active .header-search-box {
+.n-search-input-wrap {
+  width: 0;
+  opacity: 0;
+  pointer-events: none;
+  border: 1px solid transparent;
+  background: transparent;
   display: flex;
-  animation: searchExpand 0.25s ease-out forwards;
+  align-items: center;
+  height: 36px;
+  box-sizing: border-box;
+  padding: 0;
+  overflow: hidden;
+  transition: width 0.32s cubic-bezier(0.16, 1, 0.3, 1), 
+              opacity 0.2s ease, 
+              border-color 0.25s ease, 
+              background 0.25s ease;
 }
 
-@keyframes searchExpand {
-  from {
-    opacity: 0;
-    width: 60px;
-    transform: scaleX(0.7);
-  }
-  to {
-    opacity: 1;
-    width: 280px;
-    transform: scaleX(1);
-  }
+.netflix-search-widget.open .n-search-toggle-btn {
+  display: none;
 }
 
-.header-search-icon {
-  color: #bbb;
+.netflix-search-widget.open .n-search-input-wrap {
+  width: 270px;
+  opacity: 1;
+  pointer-events: auto;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  background: rgba(0, 0, 0, 0.9);
+  padding: 0 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.7);
+}
+
+.n-search-inner-icon {
+  color: #fff;
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
   flex-shrink: 0;
 }
 
-.header-search-input {
+.n-search-input-field {
   background: transparent;
   border: none;
   outline: none;
   color: #fff;
   font-size: 13.5px;
+  font-weight: 400;
   width: 100%;
   font-family: inherit;
+  letter-spacing: 0.2px;
 }
 
-.header-search-input::placeholder {
-  color: #888;
+.n-search-input-field::placeholder {
+  color: #8c8c8c;
 }
 
-.header-search-clear {
+.n-search-clear-btn {
   background: transparent;
   border: none;
-  color: #888;
+  color: #8c8c8c;
   cursor: pointer;
-  padding: 2px;
+  padding: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  transition: color 0.2s ease;
-}
-
-.header-search-clear:hover {
-  color: #fff;
-}
-
-/* Desktop Search Floating Results Dropdown */
-.desktop-search-dropdown {
-  display: none;
-  position: absolute;
-  top: calc(100% + 12px);
-  right: 0;
-  width: 380px;
-  max-height: 480px;
-  background: rgba(18, 18, 18, 0.97);
-  backdrop-filter: blur(28px) saturate(180%);
-  -webkit-backdrop-filter: blur(28px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 8px;
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.85);
-  z-index: 1200;
-  overflow: hidden;
-  flex-direction: column;
-}
-
-.desktop-search-dropdown.active {
-  display: flex;
-  animation: dropdownFade 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-@keyframes dropdownFade {
-  from {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.desktop-search-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 16px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(24, 24, 24, 0.6);
-}
-
-.desktop-search-count {
-  font-size: 12px;
-  font-weight: 600;
-  color: #aaa;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.desktop-search-view-all {
-  background: none;
-  border: none;
-  color: #e50914;
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
+  flex-shrink: 0;
   transition: color 0.2s;
 }
 
-.desktop-search-view-all:hover {
-  color: #ff3333;
-  text-decoration: underline;
-}
-
-.desktop-search-results-list {
-  overflow-y: auto;
-  max-height: 410px;
-  padding: 6px 0;
-}
-
-.desktop-search-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 8px 16px;
-  cursor: pointer;
-  transition: background 0.2s ease;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-}
-
-.desktop-search-item:hover {
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.desktop-search-thumb {
-  position: relative;
-  width: 52px;
-  height: 74px;
-  border-radius: 4px;
-  overflow: hidden;
-  flex-shrink: 0;
-  background: #222;
-}
-
-.desktop-search-thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.desktop-search-quality {
-  position: absolute;
-  bottom: 2px;
-  right: 2px;
-  font-size: 7.5px;
-  font-weight: 800;
-  background: rgba(229, 9, 20, 0.95);
+.n-search-clear-btn:hover {
   color: #fff;
-  padding: 1px 3px;
-  border-radius: 2px;
 }
 
-.desktop-search-details {
-  flex: 1;
-  min-width: 0;
-}
-
-.desktop-search-title {
-  font-size: 13.5px;
-  font-weight: 700;
-  color: #fff;
-  margin: 0 0 3px 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.desktop-search-meta {
-  display: flex;
-  gap: 8px;
-  font-size: 11px;
-  color: #999;
-  margin-bottom: 2px;
-}
-
-.desktop-search-genres {
-  font-size: 11px;
-  color: #bbb;
-  margin: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.desktop-search-actions {
-  display: flex;
-  gap: 6px;
-  align-items: center;
-  flex-shrink: 0;
-}
-
-.desktop-search-play-btn {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: #e50914;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.2s, background 0.2s;
-}
-
-.desktop-search-play-btn:hover {
-  background: #ff1a26;
-  transform: scale(1.1);
-}
-
-.desktop-search-info-btn {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.15);
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s;
-}
-
-.desktop-search-info-btn:hover {
-  background: rgba(255, 255, 255, 0.3);
-}
-
-.desktop-search-no-results {
-  padding: 32px 20px;
-  text-align: center;
-  color: #aaa;
-}
-
-.desktop-search-no-results p {
-  margin: 0 0 6px 0;
-  font-size: 14px;
-  color: #eee;
-}
-
-.desktop-search-hint {
-  font-size: 11.5px;
-  color: #777;
-}
-
-/* ==========================================================================
-   2. Dedicated Mobile & Full Search Page (#search-view)
-   ========================================================================== */
+/* --------------------------------------------------------------------------
+   2. Search View Canvas (#search-view)
+   -------------------------------------------------------------------------- */
 #search-view {
   background: #141414;
   min-height: 100vh;
+  box-sizing: border-box;
+  width: 100%;
 }
 
-.search-view-container {
-  max-width: 1400px;
+.netflix-search-canvas {
+  max-width: 1560px;
   margin: 0 auto;
-  padding: 24px 20px 80px 20px;
+  padding: 24px 32px 100px 32px;
+  box-sizing: border-box;
 }
 
-/* Search Hero Input Bar */
-.search-hero-bar {
+/* Mobile Search Bar Wrap (Sticky on mobile, hidden on PC) */
+.m-search-bar-wrap {
+  display: none;
   margin-bottom: 20px;
 }
 
-.search-hero-input-wrap {
-  position: relative;
+.m-search-input-box {
   display: flex;
   align-items: center;
-  background: rgba(36, 36, 36, 0.95);
-  border: 1.5px solid rgba(255, 255, 255, 0.18);
-  border-radius: 8px;
-  padding: 0 16px;
-  height: 52px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-  transition: all 0.25s ease;
+  background: #2b2b2b;
+  border-radius: 6px;
+  height: 46px;
+  padding: 0 14px;
+  border: 1px solid transparent;
+  transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
 }
 
-.search-hero-input-wrap:focus-within {
-  border-color: #e50914;
-  box-shadow: 0 0 0 3px rgba(229, 9, 20, 0.25), 0 8px 28px rgba(0, 0, 0, 0.6);
-  background: rgba(28, 28, 28, 0.98);
+.m-search-input-box:focus-within {
+  background: #333;
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
 }
 
-.search-hero-icon {
-  color: #999;
-  margin-right: 12px;
+.m-search-icon {
+  color: #8c8c8c;
+  margin-right: 10px;
   flex-shrink: 0;
 }
 
-.search-hero-input {
+.m-search-input-field {
   flex: 1;
   background: transparent;
   border: none;
   outline: none;
   color: #fff;
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 14.5px;
   font-family: inherit;
 }
 
-.search-hero-input::placeholder {
-  color: #777;
+.m-search-input-field::placeholder {
+  color: #8c8c8c;
 }
 
-.search-hero-clear {
+.m-search-clear-btn {
   background: transparent;
   border: none;
-  color: #888;
+  color: #8c8c8c;
   cursor: pointer;
-  padding: 6px;
-  border-radius: 50%;
+  padding: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: color 0.2s;
 }
 
-.search-hero-clear:hover {
+.m-search-clear-btn:hover {
   color: #fff;
 }
 
-/* Filter Pills */
-.search-filter-pills-wrap {
-  margin-bottom: 24px;
+/* Explore Categories Section ("Explore titles related to:") */
+.search-explore-section {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+  padding-bottom: 8px;
   overflow-x: auto;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
 }
 
-.search-filter-pills-wrap::-webkit-scrollbar {
+.search-explore-section::-webkit-scrollbar {
   display: none;
 }
 
-.search-filter-pills {
-  display: flex;
-  gap: 8px;
-  padding-bottom: 4px;
+.search-explore-label {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #8c8c8c;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
-.s-pill {
-  background: rgba(255, 255, 255, 0.08);
-  color: #ccc;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  padding: 8px 16px;
-  border-radius: 20px;
+.search-pills-row {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.n-search-pill {
+  background: rgba(45, 45, 45, 0.85);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  padding: 6px 14px;
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
   white-space: nowrap;
-  transition: all 0.2s ease;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   font-family: inherit;
 }
 
-.s-pill:hover {
-  background: rgba(255, 255, 255, 0.15);
-  color: #fff;
-  border-color: rgba(255, 255, 255, 0.25);
+.n-search-pill:hover {
+  background: #3e3e3e;
+  border-color: #fff;
 }
 
-.s-pill.active {
+.n-search-pill.active {
   background: #e50914;
-  color: #fff;
   border-color: #e50914;
+  color: #fff;
+  font-weight: 700;
   box-shadow: 0 2px 10px rgba(229, 9, 20, 0.4);
 }
 
-/* Status Bar */
-.search-status-bar {
+/* --------------------------------------------------------------------------
+   3. Top Searches Section (Exact Netflix Mobile List View)
+   -------------------------------------------------------------------------- */
+.top-searches-wrapper {
+  margin-bottom: 40px;
+}
+
+.top-searches-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 16px 0;
+  letter-spacing: 0.3px;
+}
+
+.top-searches-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.top-search-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(30, 30, 30, 0.7);
+  border-radius: 6px;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: background 0.22s ease, transform 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.top-search-row:hover {
+  background: rgba(50, 50, 50, 0.95);
+  transform: translateX(4px);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.top-search-thumb-wrap {
+  width: 128px;
+  height: 72px;
+  aspect-ratio: 16 / 9;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  background: #1e1e1e;
+}
+
+.top-search-thumb-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.top-search-quality-tag {
+  position: absolute;
+  bottom: 2px;
+  right: 3px;
+  font-size: 8px;
+  font-weight: 800;
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  padding: 1px 4px;
+  border-radius: 2px;
+  letter-spacing: 0.3px;
+}
+
+.top-search-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.top-search-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.top-search-meta {
+  font-size: 12.5px;
+  color: #8c8c8c;
+}
+
+.top-search-play-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+}
+
+.top-search-row:hover .top-search-play-btn {
+  background: #e50914;
+  border-color: #e50914;
+  transform: scale(1.1);
+}
+
+/* --------------------------------------------------------------------------
+   4. Live Search Results Grid (Responsive Netflix Cards)
+   -------------------------------------------------------------------------- */
+.search-results-header-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -11644,61 +11566,73 @@ video {
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.search-status-title {
-  font-size: 18px;
+.search-results-heading {
+  font-size: 20px;
   font-weight: 700;
   color: #fff;
   margin: 0;
   letter-spacing: 0.2px;
 }
 
-.search-status-badge {
+.search-results-badge {
   font-size: 12px;
-  font-weight: 600;
-  background: rgba(255, 255, 255, 0.1);
-  color: #bbb;
-  padding: 4px 10px;
+  font-weight: 700;
+  background: rgba(229, 9, 20, 0.15);
+  color: #e50914;
+  border: 1px solid rgba(229, 9, 20, 0.35);
+  padding: 3px 10px;
   border-radius: 12px;
 }
 
-/* Search Results Grid */
-.search-results-grid {
+.netflix-search-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
+  gap: 18px;
 }
 
-@media (max-width: 1200px) {
-  .search-results-grid {
+@media (min-width: 1600px) {
+  .netflix-search-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@media (max-width: 1280px) {
+  .netflix-search-grid {
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
   }
 }
 
 @media (max-width: 900px) {
-  .search-results-grid {
+  .netflix-search-grid {
     grid-template-columns: repeat(3, 1fr);
     gap: 14px;
   }
 }
 
 @media (max-width: 600px) {
-  .search-results-grid {
+  .netflix-search-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+    gap: 10px;
   }
 }
 
-/* Search Card Styling */
+/* Search Card Elements */
 .search-card {
   width: 100% !important;
   margin: 0 !important;
   cursor: pointer;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease;
+}
+
+.search-card:hover {
+  transform: translateY(-4px) scale(1.03);
+  z-index: 10;
 }
 
 .search-card .n-card-thumb {
   aspect-ratio: 16 / 9;
-  border-radius: 6px;
+  border-radius: 4px;
   overflow: hidden;
   background: #1e1e1e;
   position: relative;
@@ -11715,77 +11649,117 @@ video {
   transform: scale(1.06);
 }
 
-/* Empty State */
-.search-empty-state {
+/* --------------------------------------------------------------------------
+   5. Netflix Empty State (Exact Netflix Styling)
+   -------------------------------------------------------------------------- */
+.netflix-search-empty-state {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 60px 20px;
-  text-align: center;
+  padding: 40px 16px;
+  max-width: 680px;
+  margin: 0 auto;
+  color: #8c8c8c;
+  text-align: left;
 }
 
-.search-empty-icon {
-  color: #555;
-  margin-bottom: 16px;
-}
-
-.search-empty-heading {
-  font-size: 20px;
-  font-weight: 700;
-  color: #eee;
-  margin: 0 0 8px 0;
-}
-
-.search-empty-text {
-  font-size: 14px;
-  color: #888;
-  max-width: 440px;
-  margin: 0 0 24px 0;
+.empty-msg {
+  font-size: 16px;
+  color: #fff;
+  margin: 0 0 20px 0;
   line-height: 1.5;
 }
 
-.search-empty-reset-btn {
-  background: #e50914;
-  color: #fff;
-  border: none;
-  padding: 10px 24px;
-  border-radius: 4px;
+.empty-suggestions-box {
+  margin-bottom: 24px;
+}
+
+.empty-suggestions-title {
   font-size: 14px;
   font-weight: 600;
+  color: #ccc;
+  margin: 0 0 8px 0;
+}
+
+.empty-suggestions-box ul {
+  margin: 0;
+  padding-left: 20px;
+  line-height: 1.8;
+  font-size: 13.5px;
+}
+
+.empty-quick-pills {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.empty-quick-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  margin-right: 4px;
+}
+
+.empty-quick-btn {
+  background: rgba(45, 45, 45, 0.85);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  padding: 6px 14px;
+  font-size: 12.5px;
+  font-weight: 500;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all 0.2s;
+  font-family: inherit;
 }
 
-.search-empty-reset-btn:hover {
-  background: #ff1a26;
+.empty-quick-btn:hover {
+  background: #e50914;
+  border-color: #e50914;
 }
 
-/* Mobile Search Page Adjustments */
+/* --------------------------------------------------------------------------
+   6. Mobile Specific Responsive Adjustments
+   -------------------------------------------------------------------------- */
 @media (max-width: 768px) {
-  .header-search-wrap {
-    display: none !important; /* On mobile, search is housed in its dedicated bottom nav tab */
+  /* On mobile, search bar in navbar is hidden; native search box on page is shown */
+  .netflix-search-widget {
+    display: none !important;
   }
 
-  .search-view-container {
+  .m-search-bar-wrap {
+    display: block !important;
+  }
+
+  .netflix-search-canvas {
     padding: 12px 14px 84px 14px;
   }
 
-  .search-hero-input-wrap {
-    height: 46px;
-    padding: 0 12px;
+  .search-explore-section {
+    margin-bottom: 20px;
   }
 
-  .search-hero-input {
-    font-size: 14.5px;
+  .top-search-thumb-wrap {
+    width: 104px;
+    height: 58px;
   }
 
-  .search-status-title {
-    font-size: 15px;
+  .top-search-title {
+    font-size: 14px;
   }
 
-  .s-pill {
-    padding: 6px 12px;
-    font-size: 12px;
+  .top-search-play-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .top-search-play-btn svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .search-results-heading {
+    font-size: 16px;
   }
 }
