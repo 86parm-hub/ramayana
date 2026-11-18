@@ -90,10 +90,11 @@ body.ott-platform {
   left: 0;
   right: 0;
   height: 76px;
-  background: rgba(4, 5, 8, 0.88);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border-subtle);
+  background: rgba(14, 14, 14, 0.72);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -153,30 +154,38 @@ body.ott-platform {
 }
 
 .tab-link {
-  background: none;
-  border: none;
-  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #b3b3b3;
   font-family: var(--font-ui);
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.3px;
-  padding: 8px 16px;
+  padding: 8px 18px;
   border-radius: 20px;
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
 }
 
 .tab-link:hover {
-  color: var(--text-pure);
-  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  transform: translateY(-1px);
 }
 
 .tab-link.active {
-  color: #040508;
-  background: var(--gold-pri);
+  color: #ffffff;
+  background: rgba(20, 20, 20, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.28);
   font-weight: 700;
-  box-shadow: 0 2px 14px var(--gold-glow-bright);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.65), inset 0 1px 1px rgba(255, 255, 255, 0.2);
 }
 
 .header-actions {
@@ -231,22 +240,26 @@ body.ott-platform {
   display: flex;
   align-items: center;
   gap: 8px;
-  background: linear-gradient(135deg, var(--gold-pri) 0%, var(--saffron-deep) 100%);
-  color: #040508;
+  background: rgba(229, 9, 20, 0.88);
+  color: #ffffff;
   font-family: var(--font-ui);
   font-size: 13px;
-  font-weight: 800;
+  font-weight: 700;
   padding: 8px 18px;
   border-radius: 20px;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   cursor: pointer;
-  box-shadow: 0 4px 18px var(--gold-glow-subtle);
-  transition: all 0.2s ease;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.6), 0 0 14px rgba(229, 9, 20, 0.35);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-play-header:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 24px var(--gold-glow-bright);
+  background: rgba(229, 9, 20, 1);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 6px 24px rgba(229, 9, 20, 0.6), 0 0 20px rgba(229, 9, 20, 0.5);
 }
 
 /* ==========================================================================
@@ -2863,7 +2876,7 @@ body.ott-platform {
     padding-bottom: 72px;
   }
 
-  /* Fixed Mobile Bottom Nav */
+  /* Fixed Mobile Bottom Nav - Black Glass Theme */
   .mobile-bottom-nav {
     display: flex;
     position: fixed;
@@ -2871,11 +2884,11 @@ body.ott-platform {
     left: 0;
     right: 0;
     height: 64px;
-    background: rgba(8, 10, 16, 0.96);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-top: 1px solid rgba(255, 183, 3, 0.22);
-    box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.85);
+    background: rgba(12, 12, 12, 0.85);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.85);
     z-index: 9999;
     align-items: center;
     justify-content: space-around;
@@ -7798,7 +7811,10 @@ video {
   /* Studio Header Mobile Optimization */
   .studio-header {
     height: 58px !important;
-    background: rgba(6, 8, 12, 0.96) !important;
+    background: rgba(12, 12, 12, 0.85) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
   }
 
   .header-content {
@@ -7825,7 +7841,7 @@ video {
     height: 13px !important;
   }
 
-  /* Fixed Native Mobile Bottom Navigation */
+  /* Fixed Native Mobile Bottom Navigation - Black Glass */
   .mobile-bottom-nav {
     display: flex !important;
     position: fixed !important;
@@ -7833,11 +7849,11 @@ video {
     left: 0 !important;
     right: 0 !important;
     height: 62px !important;
-    background: rgba(8, 10, 16, 0.98) !important;
+    background: rgba(12, 12, 12, 0.88) !important;
     backdrop-filter: blur(24px) saturate(180%) !important;
     -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
-    border-top: 1px solid rgba(255, 183, 3, 0.22) !important;
-    box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.85) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.85) !important;
     z-index: 9999 !important;
     align-items: center !important;
     justify-content: space-around !important;
@@ -8748,26 +8764,26 @@ video {
   text-overflow: ellipsis;
 }
 
-/* Carousel Slider Buttons (Left & Right Chevrons - Vertical Capsule Pills) */
+/* Carousel Slider Buttons (Left & Right Chevrons - Premium Netflix Black Glass Theme) */
 .n-slider-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 40px;
-  height: 72px;
-  border-radius: 36px;
-  background: rgba(15, 15, 15, 0.82);
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  width: 42px;
+  height: 76px;
+  border-radius: 38px;
+  background: rgba(10, 10, 10, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   color: #ffffff;
   cursor: pointer;
   z-index: 100;
   display: flex;
   align-items: center;
   justify-content: center;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.75);
-  transition: opacity 0.28s ease, visibility 0.28s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.75), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  transition: opacity 0.28s ease, visibility 0.28s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -8790,11 +8806,13 @@ video {
 }
 
 .n-slider-btn:hover {
-  background: rgba(229, 9, 20, 0.95);
-  border-color: rgba(229, 9, 20, 1);
+  background: rgba(20, 20, 20, 0.88);
+  border-color: rgba(255, 255, 255, 0.38);
   color: #ffffff;
   transform: translateY(-50%) scale(1.08);
-  box-shadow: 0 6px 24px rgba(229, 9, 20, 0.6);
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.9), 0 0 16px rgba(255, 255, 255, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(20px) saturate(200%);
+  -webkit-backdrop-filter: blur(20px) saturate(200%);
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
@@ -8814,6 +8832,7 @@ video {
 
 .n-slider-btn:active {
   transform: translateY(-50%) scale(0.96);
+  background: rgba(5, 5, 5, 0.95);
 }
 
 /* ==========================================================================
