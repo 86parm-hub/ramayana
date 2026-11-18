@@ -100,7 +100,8 @@ function switchPage(pageKey, fromHistory) {
   const pageMap = {
     'home': 'home-view',
     'movies': 'movies-view',
-    'gallery': 'gallery-view'
+    'gallery': 'gallery-view',
+    'search': 'search-view'
   };
 
   const targetId = pageMap[pageKey] || 'home-view';
@@ -126,6 +127,10 @@ function switchPage(pageKey, fromHistory) {
   } else if (pageKey === 'movies') {
     if (typeof initMoviesBillboard === 'function') initMoviesBillboard();
     if (homeBbVideo && !homeBbVideo.paused) homeBbVideo.pause();
+  } else if (pageKey === 'search') {
+    if (homeBbVideo && !homeBbVideo.paused) homeBbVideo.pause();
+    if (moviesBbVideo && !moviesBbVideo.paused) moviesBbVideo.pause();
+    if (typeof applySearchFilters === 'function') applySearchFilters();
   } else {
     if (homeBbVideo && !homeBbVideo.paused) homeBbVideo.pause();
     if (moviesBbVideo && !moviesBbVideo.paused) moviesBbVideo.pause();
@@ -6261,3 +6266,1050 @@ if (document.readyState === 'loading') {
   }, { passive: true });
 })();
 
+
+
+/* =========================================================================
+   SANDFLIX REAL-TIME PRODUCTION SEARCH ENGINE (PC, LAPTOP & MOBILE)
+   ========================================================================= */
+
+const sandflixCatalog = [
+  {
+    "key": "part1",
+    "title": "RAMAYANA: PART ONE",
+    "year": "2026",
+    "age": "U/A 13+",
+    "dur": "3h 12m",
+    "desc": "Witness Maryada Purushottam Lord Rama\\",
+    "hero": "assets/images/feature_banner_hd.jpg",
+    "poster": "assets/images/hero_banner_hd.jpg",
+    "genres": [
+      "Cinema",
+      "Drama"
+    ],
+    "industry": "Indian Cinema",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "ranabaali",
+    "title": "RANABAALI",
+    "year": "2026",
+    "age": "U/A 16+",
+    "dur": "2h 59m",
+    "desc": "Set in 19th-century British India, a fierce leader rises from a drought-stricken land to fight colonial oppression and brutal injustice. Starring Vijay Deverakonda, Rashmika Mandanna, directed by Rahul Sankrityan. Streamed in 1080P HEVC via Peachify TMDB 1389379.",
+    "hero": "assets/images/ranabaali_landscape.jpg",
+    "poster": "assets/images/ranabaali_poster.jpg",
+    "genres": [
+      "Action"
+    ],
+    "industry": "Indian Cinema",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "akka",
+    "title": "AKKA",
+    "year": "2026",
+    "age": "TV-MA",
+    "dur": "5 Episodes \u2022 Season 1",
+    "desc": "Set in a fictional South Indian town ruled by women in the 1980s, an intense power struggle erupts between powerful matriarch Bhavani and a ruthless rebel Rudra. Starring Keerthy Suresh, Radhika Apte, Tanvi Azmi. Directed by Dharmaraj Shetty, produced by YRF Entertainment.",
+    "hero": "assets/images/akka_landscape.jpg",
+    "poster": "assets/images/akka_poster.jpg",
+    "genres": [
+      "Cinema",
+      "Drama"
+    ],
+    "industry": "South Indian",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "paradise",
+    "title": "THE PARADISE",
+    "year": "2026",
+    "age": "U/A 16+",
+    "dur": "2h 45m",
+    "desc": "Set in 1980s Secunderabad, a marginalized group rises to fight against systemic oppression, discrimination, and brutal injustice for their identity and citizenship. Starring Nani, Mohan Babu, Kayadu Lohar, Sonali Kulkarni. Directed by Srikanth Odela. Streamed in 1080P HEVC via Peachify TMDB 1376856.",
+    "hero": "assets/images/the_paradise_landscape.jpg",
+    "poster": "assets/images/the_paradise_poster.jpg",
+    "genres": [
+      "Action"
+    ],
+    "industry": "South Indian",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "alpha",
+    "title": "ALPHA",
+    "year": "2026",
+    "age": "U/A 16+",
+    "dur": "2h 38m",
+    "desc": "Two elite female super-agents unite in the lethal espionage world of the YRF Spy Universe to execute a covert global counter-strike against a ruthless criminal cabal. Starring Alia Bhatt, Sharvari, Bobby Deol, Anil Kapoor. Directed by Shiv Rawail. Streamed in 1080P HEVC via Peachify TMDB 1122030.",
+    "hero": "assets/images/alpha_landscape.jpg",
+    "poster": "assets/images/alpha_poster.jpg",
+    "genres": [
+      "Thriller"
+    ],
+    "industry": "Bollywood",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "tereishkmein",
+    "title": "TERE ISHK MEIN",
+    "year": "2025",
+    "age": "U/A 16+",
+    "dur": "2h 42m",
+    "desc": "From the world of Raanjhanaa, a fiery, unyielding saga of intense love, rebellion, and sacrifice in Varanasi. Shankar wages an all-consuming battle against destiny and societal divides for an eternal romance. Starring Dhanush, Kriti Sanon. Directed by Aanand L. Rai, music by A.R. Rahman. Streamed in 1080P HEVC via Peachify TMDB 1142921.",
+    "hero": "assets/images/tere_ishk_mein_landscape.jpg",
+    "poster": "assets/images/tere_ishk_mein_poster.jpg",
+    "genres": [
+      "Romance",
+      "Musical"
+    ],
+    "industry": "Indian Cinema",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "pushpa2",
+    "title": "PUSHPA 2: THE RULE",
+    "year": "2024",
+    "age": "U/A 16+",
+    "dur": "3h 21m",
+    "desc": "Pushpa Raj expands his red sandalwood smuggling empire across borders while fiercely defending his reign against SP Bhanwar Singh Shekhawat and rival syndicates in an explosive clash of power and dominance. Starring Allu Arjun, Rashmika Mandanna, Fahadh Faasil. Directed by Sukumar, music by Devi Sri Prasad. Streamed in 1080P HEVC via Peachify TMDB 857598.",
+    "hero": "assets/images/pushpa2_landscape.jpg",
+    "poster": "assets/images/pushpa2_poster.jpg",
+    "genres": [
+      "Action",
+      "Musical"
+    ],
+    "industry": "Indian Cinema",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "dorothy",
+    "title": "DOROTHY",
+    "year": "2026",
+    "age": "U/A 16+",
+    "dur": "2h 28m",
+    "desc": "In a rural Tamil Nadu village shaped by traditional norms and toxic masculinity, the unexpected arrival of Dorothy (Keerthy Suresh) \u2014 a bold, independent woman \u2014 transforms the lives and worldview of two inseparable friends. Directed by Karthik Subbaraj with music by Maestro Ilaiyaraaja. World premiered at TIFF 2026. Streamed in 1080P HEVC via Peachify TMDB 1578079.",
+    "hero": "assets/images/dorothy_landscape.jpg",
+    "poster": "assets/images/dorothy_poster.jpg",
+    "genres": [
+      "Musical"
+    ],
+    "industry": "South Indian",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "jurassic_rebirth",
+    "title": "JURASSIC WORLD REBIRTH",
+    "year": "2025",
+    "age": "U/A 13+",
+    "dur": "2h 14m",
+    "desc": "Five years after Jurassic World Dominion, covert operations expert Zora Bennett (Scarlett Johansson) leads an elite expedition into isolated equatorial biomes to extract genetic material from the planet",
+    "hero": "assets/images/jurassic_rebirth_landscape.jpg",
+    "poster": "assets/images/jurassic_rebirth_poster.jpg",
+    "genres": [
+      "Cinema",
+      "Drama"
+    ],
+    "industry": "Indian Cinema",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "adipurush",
+    "title": "ADIPURUSH",
+    "year": "2023",
+    "age": "U/A 13+",
+    "dur": "2h 59m",
+    "desc": "7,000 years ago, Ayodhya",
+    "hero": "assets/images/adipurush_landscape.jpg",
+    "poster": "assets/images/adipurush_poster.jpg",
+    "genres": [
+      "Cinema",
+      "Drama"
+    ],
+    "industry": "Indian Cinema",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "maharaj",
+    "title": "MAHARAJ",
+    "year": "2024",
+    "age": "U/A 16+",
+    "dur": "2h 12m",
+    "desc": "Set in pre-independence 1862 Bombay and based on the historic Maharaj Libel Case, fearless reformer and journalist Karsandas Mulji (Junaid Khan) bravely challenges the exploitation of female devotees by the venerated, untouchable religious figure Jadunath Maharaj (Jaideep Ahlawat) in an epic courtroom reckoning. Directed by Siddharth P. Malhotra, starring Junaid Khan, Jaideep Ahlawat, Sharvari, Shalini Pandey. Streamed in 1080P HEVC via Peachify TMDB 1171099.",
+    "hero": "assets/images/maharaj_landscape.jpg",
+    "poster": "assets/images/maharaj_poster.jpg",
+    "genres": [
+      "Cinema",
+      "Drama"
+    ],
+    "industry": "Indian Cinema",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "with_love",
+    "title": "WITH LOVE",
+    "year": "2026",
+    "age": "U/A 13+",
+    "dur": "2h 21m",
+    "desc": "Sathya reluctantly agrees to a blind date arranged by his sister and meets Monisha. To their astonishment, they discover they attended the same high school years ago. Reminiscing over teenage crushes and nostalgia, their past sparks an endearing modern connection. Starring Abishan Jeevinth, Anaswara Rajan, Harish Kumar. Directed by Madhan. Streamed in 1080P HEVC via Peachify TMDB 1508564.",
+    "hero": "assets/images/with_love_landscape.jpg",
+    "poster": "assets/images/with_love_poster.jpg",
+    "genres": [
+      "Action"
+    ],
+    "industry": "Indian Cinema",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "never_surrender",
+    "title": "NEVER SURRENDER",
+    "year": "2026",
+    "age": "U/A 16+",
+    "dur": "2h 20m",
+    "desc": "When a ruthless mercenary syndicate descends upon a remote mountain homestead, an estranged veteran with a haunted past and his grandchildren must unite their survival instincts to wage an uncompromising counter-offensive. Starring Lukman Sardi, Callista Arum, Sulthan Hamonangan, Derby Romero, Donny Alamsyah. Directed by Sidharta Tata. Streamed in 1080P HEVC via Peachify TMDB 1616687.",
+    "hero": "assets/images/never_surrender_landscape.jpg",
+    "poster": "assets/images/never_surrender_poster.jpg",
+    "genres": [
+      "Cinema",
+      "Drama"
+    ],
+    "industry": "Indian Cinema",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "made_in_korea",
+    "title": "MADE IN KOREA",
+    "year": "2026",
+    "age": "U/A 13+",
+    "dur": "1h 53m",
+    "desc": "An ambitious and spirited young woman from a small town in Tamil Nadu embarks on a life-changing journey to Seoul, South Korea \u2014 a land she has passionately dreamed of for years. Navigating language barriers, cultural shocks, and emotional highs, she discovers resilience, unexpected friendship, and belonging in an unfamiliar world. Starring Priyanka Arul Mohan, Rishikanth, Park Hye-jin, Baek Si-hun. Directed by Ra. Karthik. Streamed in 1080P HEVC via Autoembed IMDb tt38674977.",
+    "hero": "assets/images/made_in_korea_landscape.jpg",
+    "poster": "assets/images/made_in_korea_poster.jpg",
+    "genres": [
+      "Cinema",
+      "Drama"
+    ],
+    "industry": "South Indian",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "peddi",
+    "title": "PEDDI",
+    "year": "2026",
+    "age": "U/A 16+",
+    "dur": "3h 09m",
+    "desc": "In an isolated, unmapped rural hinterland that does not officially exist on government records, a fierce laborer",
+    "hero": "assets/images/peddi_landscape.jpg",
+    "poster": "assets/images/peddi_poster.jpg",
+    "genres": [
+      "Cinema",
+      "Drama"
+    ],
+    "industry": "Indian Cinema",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "cocktail2",
+    "title": "COCKTAIL 2",
+    "year": "2026",
+    "age": "U/A 16+",
+    "dur": "2h 30m",
+    "desc": "A bold, modern romantic dramedy exploring turbulent friendships, love triangles, and emotional vulnerabilities amidst high-stakes metropolitan life. Starring Shahid Kapoor, Kriti Sanon, Rashmika Mandanna. Directed by Homi Adajania, written by Imtiaz Ali. Streamed in 1080P HEVC via Peachify TMDB 1392469.",
+    "hero": "assets/images/cocktail2_landscape.jpg",
+    "poster": "assets/images/cocktail2_poster.jpg",
+    "genres": [
+      "Romance"
+    ],
+    "industry": "Indian Cinema",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "avarachan",
+    "title": "AVARAACHAN & SONS",
+    "year": "2026",
+    "age": "U/A 13+",
+    "dur": "2h 30m",
+    "desc": "A humorous and heartwarming family drama chronicling the quirks, squabbles, and unyielding bonds within a traditional family business in Kerala. Starring Biju Menon, Sreenath Bhasi, Vinay Forrt, Grace Antony. Directed by Thamby. Streamed in 1080P HEVC via Peachify TMDB 1290035.",
+    "hero": "assets/images/avarachan_landscape.jpg",
+    "poster": "assets/images/avarachan_poster.jpg",
+    "genres": [
+      "Action",
+      "Comedy",
+      "Drama"
+    ],
+    "industry": "South Indian",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "reporting_live",
+    "title": "REPORTING LIVE",
+    "year": "2026",
+    "age": "U/A 16+",
+    "dur": "1h 56m",
+    "desc": "A gritty investigative crime thriller following an ambitious young reporter and her cynical cameraman whose routine coverage spirals into perilous territory when they uncover an illicit sand-mining cartel governed by dangerous political figures. Starring Parineeti Chopra, Deven Bhojani, Adil Hussain, Shekhar Suman, Amol Palekar, Nassar. Directed by Dhruv Tripathi. Streamed in 1080P HEVC via Peachify TMDB 1389172.",
+    "hero": "assets/images/reporting_live_landscape.jpg",
+    "poster": "assets/images/reporting_live_poster.jpg",
+    "genres": [
+      "Thriller"
+    ],
+    "industry": "Indian Cinema",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "heartland",
+    "title": "HEARTLAND",
+    "year": "2026",
+    "age": "U/A 16+",
+    "dur": "1h 54m",
+    "desc": "Former country music icon Misty Jones travels back into the intense Nashville music scene determined to unravel the elusive truth behind the sudden and mysterious disappearance of her rising-star niece. Starring Jessica Chastain, Carter Faith, Ross Lynch, John Hawkes, Garrett Hedlund, Norbert Leo Butz. Directed by Shana Feste. Streamed in 1080P HEVC via Peachify TMDB 1543469.",
+    "hero": "assets/images/heartland_landscape.jpg",
+    "poster": "assets/images/heartland_poster.jpg",
+    "genres": [
+      "Musical"
+    ],
+    "industry": "Indian Cinema",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "one_year_to_live",
+    "title": "ONE YEAR TO LIVE, BUY A MAN",
+    "year": "2026",
+    "age": "U/A 16+",
+    "dur": "1h 49m",
+    "desc": "Given only a single year left to live, an intensely frugal 40-year-old woman decides to spend her hard-earned life savings on hiring a popular nightclub host Sena, sparking a profound emotional transformation that challenges both of their worlds. Starring Ko Shibasaki, Eiji Akaso, Michitaka Tsutsui, Naomi Nishida, Yui Narumi. Directed by Hiroki Kazama. Streamed in 1080P HEVC via Peachify TMDB 1654940.",
+    "hero": "assets/images/one_year_to_live_landscape.jpg",
+    "poster": "assets/images/one_year_to_live_poster.jpg",
+    "genres": [
+      "Cinema",
+      "Drama"
+    ],
+    "industry": "Indian Cinema",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "allen",
+    "title": "ALLEN",
+    "year": "2026",
+    "age": "U/A 13+",
+    "dur": "1h 47m",
+    "desc": "Twenty years following a bizarre childhood encounter with an extra-terrestrial, Petey",
+    "hero": "assets/images/allen_landscape.jpg",
+    "poster": "assets/images/allen_poster.jpg",
+    "genres": [
+      "Cinema",
+      "Drama"
+    ],
+    "industry": "Indian Cinema",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "jolly_llb_3",
+    "title": "JOLLY LLB 3",
+    "year": "2025",
+    "age": "U/A 13+",
+    "dur": "2h 36m",
+    "desc": "The third part of the Jolly LLB trilogy brings back Jagdish Tyagi and Jagdishwar Mishra for the biggest courtroom showdown as penurious widow Janki Devi Solanki seeks justice against an arrogant industrialist in a sharp satire on the judiciary and social disparity. Starring Akshay Kumar, Arshad Warsi, Saurabh Shukla, Gajraj Rao, Amrita Rao, Huma Qureshi. Directed by Subhash Kapoor. Streamed in 1080P HEVC via Peachify TMDB 1015981.",
+    "hero": "assets/images/jolly_llb_3_landscape.jpg",
+    "poster": "assets/images/jolly_llb_3_poster.jpg",
+    "genres": [
+      "Action"
+    ],
+    "industry": "Indian Cinema",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "saiyaara",
+    "title": "SAIYAARA",
+    "year": "2025",
+    "age": "U/A 13+",
+    "dur": "2h 30m",
+    "desc": "Two artistic souls find soulful harmony through musical expression despite their starkly contrasting social backgrounds. As emotional bonds deepen, unexpected circumstances and social expectations test their connection. Starring Ahaan Panday, Aneet Padda, Alam Khan, Rajesh Kumar, Geeta Agrawal Sharma. Directed by Mohit Suri. Streamed in 1080P HEVC via Peachify TMDB 1241634.",
+    "hero": "assets/images/saiyaara_landscape.jpg",
+    "poster": "assets/images/saiyaara_poster.jpg",
+    "genres": [
+      "Musical"
+    ],
+    "industry": "Indian Cinema",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "the_last_house",
+    "title": "THE LAST HOUSE",
+    "year": "2026",
+    "age": "U/A 16+",
+    "dur": "1h 50m",
+    "desc": "A family suddenly sealed inside their high-tech home must work together to survive against dwindling food, psychological tension, and the ominous menace keeping them trapped. Starring Greta Lee, Wagner Moura, Riley Chung, Noah Alexander Sosnowski, Emma Ho. Directed by Louis Leterrier. Streamed in 1080P HEVC via Peachify TMDB 1284041.",
+    "hero": "assets/images/the_last_house_landscape.jpg",
+    "poster": "assets/images/the_last_house_poster.jpg",
+    "genres": [
+      "Cinema",
+      "Drama"
+    ],
+    "industry": "Indian Cinema",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "brawlers",
+    "title": "BRAWLERS (BAGARRE)",
+    "year": "2026",
+    "age": "U/A 16+",
+    "dur": "1h 38m",
+    "desc": "Na\u00efm is gentle and warm in ordinary life, but possesses beast-like martial fury in combat. Desperate to finance medical care for his aging dog, he joins ",
+    "hero": "assets/images/brawlers_landscape.jpg",
+    "poster": "assets/images/brawlers_poster.jpg",
+    "genres": [
+      "Action"
+    ],
+    "industry": "Indian Cinema",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "dhadak2",
+    "title": "DHADAK 2",
+    "year": "2025",
+    "age": "U/A 16+",
+    "dur": "2h 26m",
+    "desc": "When Neelesh, an idealistic law student from an oppressed social background, enters an elite academic institution, he is confronted with institutional prejudice and systemic hierarchies. His profound relationship with Vidhi challenges caste divisions in a powerful fight for love and equality. Starring Siddhant Chaturvedi, Triptii Dimri, Saad Bilgrami, Saurabh Sachdeva, Vipin Sharma, Zakir Hussain. Directed by Shazia Iqbal, produced by Dharma Productions. Streamed in 1080P HEVC via CodeSpecters TMDB 1213777.",
+    "hero": "assets/images/dhadak2_landscape.jpg",
+    "poster": "assets/images/dhadak2_poster.jpg",
+    "genres": [
+      "Action",
+      "Romance"
+    ],
+    "industry": "Bollywood",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "demon_slayer",
+    "title": "DEMON SLAYER: KIMETSU NO YAIBA \u2013 INFINITY CASTLE",
+    "year": "2025",
+    "age": "U/A 16+",
+    "dur": "2h 15m",
+    "desc": "The Demon Slayer Corps plunges into the terrifying, dimension-warping Infinity Castle to confront Muzan Kibutsuji and the deadly Upper Rank demons in the climactic war of survival. Spectacular animation by ufotable, directed by Haruo Sotozaki, music by Yuki Kajiura and Go Shiina. Streamed in 4K UHD via Peachify TMDB 1311031.",
+    "hero": "assets/images/demon_slayer_landscape.jpg",
+    "poster": "assets/images/demon_slayer_poster.jpg",
+    "genres": [
+      "Action",
+      "Animation",
+      "Musical"
+    ],
+    "industry": "Indian Cinema",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "hi_papa",
+    "title": "HI PAPA (HI NANNA)",
+    "year": "2023",
+    "age": "U/A 13+",
+    "dur": "2h 35m",
+    "desc": "A doting single father raising his precocious daughter begins narrating stories of her absent mother, unaware that serendipitous encounters with a compassionate woman are about to unravel buried memories and destiny. Starring Nani, Mrunal Thakur, Baby Kiara Khanna, Jayaram, Priyadarshi Pulikonda. Directed by Shouryuv, music by Hesham Abdul Wahab. Streamed in 4K UHD via Peachify TMDB 1068452.",
+    "hero": "assets/images/hi_papa_landscape.jpg",
+    "poster": "assets/images/hi_papa_poster.jpg",
+    "genres": [
+      "Action",
+      "Musical"
+    ],
+    "industry": "South Indian",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "dragon",
+    "title": "DRAGON",
+    "year": "2025",
+    "age": "U/A 16+",
+    "dur": "2h 32m",
+    "desc": "A carefree, backbencher college student dubbed ",
+    "hero": "assets/images/dragon_landscape.jpg",
+    "poster": "assets/images/dragon_poster.jpg",
+    "genres": [
+      "Cinema",
+      "Drama"
+    ],
+    "industry": "Indian Cinema",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "youth",
+    "title": "YOUTH",
+    "year": "2026",
+    "age": "U/A 13+",
+    "dur": "2h 10m",
+    "desc": "A fun-filled coming-of-age romantic comedy following 16-year-old carefree schoolboy Praveen and his tight-knit gang as they navigate school life, friendship, teenage romance, and heartfelt life lessons. Written, directed by, and starring Ken Karunas, alongside Anishma Anilkumar, Suraj Venjaramoodu, Devadarshini, Meenakshi Dinesh, Priyanshi Yadav. Music by G. V. Prakash Kumar. Streamed in 1080P HEVC via Peachify TMDB 1542352.",
+    "hero": "assets/images/youth_landscape.jpg",
+    "poster": "assets/images/youth_poster.jpg",
+    "genres": [
+      "Comedy",
+      "Romance",
+      "Musical"
+    ],
+    "industry": "Indian Cinema",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "chhaava",
+    "title": "CHHAAVA",
+    "year": "2025",
+    "age": "U/A 16+",
+    "dur": "2h 41m",
+    "desc": "An epic historical action saga chronicling the valiant life and fearless battles of Chhatrapati Sambhaji Maharaj, the lion of the Maratha Empire, as he fiercely defends Swarajya against Mughal Emperor Aurangzeb. Starring Vicky Kaushal, Rashmika Mandanna, Akshaye Khanna, Ashutosh Rana, Divya Dutta, Vineet Kumar Singh. Directed by Laxman Utekar, produced by Dinesh Vijan, music by A. R. Rahman. Streamed in 4K UHD via Peachify TMDB 1196943.",
+    "hero": "assets/images/chhaava_landscape.jpg",
+    "poster": "assets/images/chhaava_poster.jpg",
+    "genres": [
+      "Action",
+      "Musical"
+    ],
+    "industry": "Bollywood",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "maa",
+    "title": "MAA",
+    "year": "2025",
+    "age": "U/A 16+",
+    "dur": "2h 13m",
+    "desc": "In a cursed remote village shadowed by ancient demonic forces, a determined mother unleashes the fierce divine wrath of Goddess Kali to rescue her abducted daughter from a child-devouring entity. Starring Kajol, Ronit Roy, Indraneil Sengupta, Kherin Sharma, Jitin Gulati. Directed by Vishal Furia, produced by Ajay Devgn and Jyoti Deshpande. Streamed in 1080P HEVC via Peachify TMDB 1389158.",
+    "hero": "assets/images/maa_landscape.jpg",
+    "poster": "assets/images/maa_poster.jpg",
+    "genres": [
+      "Cinema",
+      "Drama"
+    ],
+    "industry": "Indian Cinema",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "retro",
+    "title": "RETRO (SURIYA 44)",
+    "year": "2025",
+    "age": "U/A 16+",
+    "dur": "2h 38m",
+    "desc": "A stylized retro action-gangster romance following a ruthless yet charismatic lone wolf driven by love, laughter, and relentless war. Starring Suriya, Pooja Hegde, Jayaram, Karunakaran, Joju George. Directed by Karthik Subbaraj, music composed by Santhosh Narayanan, produced by 2D Entertainment. Streamed in 4K UHD via Peachify TMDB 1265827.",
+    "hero": "assets/images/retro_landscape.jpg",
+    "poster": "assets/images/retro_poster.jpg",
+    "genres": [
+      "Action",
+      "Romance",
+      "Musical"
+    ],
+    "industry": "Indian Cinema",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "the_odyssey",
+    "title": "THE ODYSSEY",
+    "year": "2026",
+    "age": "U/A 16+",
+    "dur": "3h 10m",
+    "desc": "Christopher Nolan",
+    "hero": "assets/images/the_odyssey_landscape.jpg",
+    "poster": "assets/images/the_odyssey_poster.jpg",
+    "genres": [
+      "Cinema",
+      "Drama"
+    ],
+    "industry": "Hollywood",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "goat",
+    "title": "GOAT (2026)",
+    "year": "2026",
+    "age": "U/A 7+",
+    "dur": "1h 45m",
+    "desc": "A groundbreaking animated sports adventure comedy produced by Sony Pictures Animation and Stephen Curry",
+    "hero": "assets/images/goat_landscape.jpg",
+    "poster": "assets/images/goat_poster.jpg",
+    "genres": [
+      "Comedy",
+      "Animation"
+    ],
+    "industry": "Indian Cinema",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "scary_movie_6",
+    "title": "SCARY MOVIE 6",
+    "year": "2026",
+    "age": "A 18+",
+    "dur": "1h 36m",
+    "desc": "The legendary Wayans Brothers (Marlon, Shawn, and Keenen Ivory Wayans) reunite alongside franchise icons Anna Faris (Cindy Campbell) and Regina Hall (Brenda Meeks) to resurrect the premier horror parody franchise. Skewering modern horror sensations (M3GAN, Smile, Longlegs, Talk to Me, Hereditary), Scary Movie 6 unleashes side-splitting, unfiltered slapstick mayhem. Produced by Miramax. Streamed in 1080P HEVC via Peachify TMDB 1273221.",
+    "hero": "assets/images/scary_movie_6_landscape.jpg",
+    "poster": "assets/images/scary_movie_6_poster.jpg",
+    "genres": [
+      "Horror"
+    ],
+    "industry": "Hollywood",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "coolie",
+    "title": "COOLIE",
+    "year": "2025",
+    "age": "U/A 16+",
+    "dur": "2h 50m",
+    "desc": "Superstar Rajinikanth stars as Deva, a legendary harbor kingpin and gold smuggler in an adrenaline-charged action crime thriller set against Chennai",
+    "hero": "assets/images/coolie_landscape.jpg",
+    "poster": "assets/images/coolie_poster.jpg",
+    "genres": [
+      "Action",
+      "Thriller"
+    ],
+    "industry": "South Indian",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "dhurandhar",
+    "title": "DHURANDHAR",
+    "year": "2025",
+    "age": "U/A 16+",
+    "dur": "2h 45m",
+    "desc": "National Award-winning director Aditya Dhar (Uri: The Surgical Strike) helms a high-octane geopolitical spy action saga based on real covert espionage missions conducted by Indian intelligence. Starring Ranveer Singh as a daring undercover operative, alongside Sanjay Dutt, R. Madhavan, Akshaye Khanna, and Arjun Rampal. Produced by Jio Studios and B62 Studios. Streamed in 4K UHD via Peachify TMDB 1291608.",
+    "hero": "assets/images/dhurandhar_landscape.jpg",
+    "poster": "assets/images/dhurandhar_poster.jpg",
+    "genres": [
+      "Action",
+      "Thriller"
+    ],
+    "industry": "Bollywood",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "jailer_2",
+    "title": "JAILER 2 (HUKUM)",
+    "year": "2026",
+    "age": "U/A 16+",
+    "dur": "2h 55m",
+    "desc": "Tiger Muthuvel Pandian (Superstar Rajinikanth) returns in Nelson Dilipkumar",
+    "hero": "assets/images/jailer_2_landscape.jpg",
+    "poster": "assets/images/jailer_2_poster.jpg",
+    "genres": [
+      "Cinema",
+      "Drama"
+    ],
+    "industry": "South Indian",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "disclosure_day",
+    "title": "DISCLOSURE DAY",
+    "year": "2026",
+    "age": "U/A 16+",
+    "dur": "2h 35m",
+    "desc": "A gripping science-fiction thriller directed by Steven Spielberg and written by David Koepp. When undeniable proof of extraterrestrial existence surfaces, a resilient television meteorologist and an intrepid cybersecurity analyst brave a deadly government pursuit to disclose the epochal truth to seven billion people. Starring Emily Blunt, Josh O",
+    "hero": "assets/images/disclosure_day_landscape.jpg",
+    "poster": "assets/images/disclosure_day_poster.jpg",
+    "genres": [
+      "Thriller",
+      "Sci-Fi"
+    ],
+    "industry": "Hollywood",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "wuthering_heights",
+    "title": "WUTHERING HEIGHTS",
+    "year": "2026",
+    "age": "U/A 16+",
+    "dur": "2h 25m",
+    "desc": "Academy Award winner Emerald Fennell directs a visceral, intoxicating reimagining of Emily Bront\u00eb",
+    "hero": "assets/images/wuthering_heights_landscape.jpg",
+    "poster": "assets/images/wuthering_heights_poster.jpg",
+    "genres": [
+      "Action"
+    ],
+    "industry": "Indian Cinema",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "hoppers",
+    "title": "HOPPERS (2026)",
+    "year": "2026",
+    "age": "U/A 7+",
+    "dur": "1h 42m",
+    "desc": "A witty, heartwarming sci-fi comedy adventure from Disney and Pixar Animation Studios. An animal-loving college student Mabel utilizes revolutionary neuro-link science to hop her consciousness into an ultra-realistic robotic beaver. Infiltrating the wilderness, she befriends charismatic woodland creatures to protect their forest realm from ruthless urban expansion. Directed by Daniel Chong. Voices by Piper Curda, Bobby Moynihan, Jon Hamm. Streamed in 4K UHD via Peachify TMDB 1327819.",
+    "hero": "assets/images/hoppers_landscape.jpg",
+    "poster": "assets/images/hoppers_poster.jpg",
+    "genres": [
+      "Action",
+      "Comedy",
+      "Animation"
+    ],
+    "industry": "Hollywood",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "michael",
+    "title": "MICHAEL (THE KING OF POP)",
+    "year": "2026",
+    "age": "U/A 16+",
+    "dur": "2h 50m",
+    "desc": "The monumental biographical musical drama directed by Antoine Fuqua and produced by Graham King (Bohemian Rhapsody). Chronicling the triumphant yet turbulent life and enduring legacy of global music icon Michael Jackson, from child prodigy in the Jackson 5 to the undisputed King of Pop. Starring nephew Jaafar Jackson in an electric tour-de-force performance alongside Colman Domingo, Nia Long, Miles Teller. Lionsgate & Universal Pictures. Streamed in 4K UHD via Peachify TMDB 936075.",
+    "hero": "assets/images/michael_landscape.jpg",
+    "poster": "assets/images/michael_poster.jpg",
+    "genres": [
+      "Drama",
+      "Musical"
+    ],
+    "industry": "Hollywood",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "mario_galaxy",
+    "title": "THE SUPER MARIO GALAXY MOVIE",
+    "year": "2026",
+    "age": "U/A 7+",
+    "dur": "1h 40m",
+    "desc": "Nintendo and Illumination reunite for the spectacular galactic sequel to the billion-dollar blockbuster. Mario, Luigi, Princess Peach, and Toad launch into deep cosmos to protect Rosalina",
+    "hero": "assets/images/mario_galaxy_landscape.jpg",
+    "poster": "assets/images/mario_galaxy_poster.jpg",
+    "genres": [
+      "Animation"
+    ],
+    "industry": "Indian Cinema",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "minions_monsters",
+    "title": "MINIONS & MONSTERS",
+    "year": "2026",
+    "age": "U/A 7+",
+    "dur": "1h 35m",
+    "desc": "In 1920s Hollywood",
+    "hero": "assets/images/minions_monsters_landscape.jpg",
+    "poster": "assets/images/minions_monsters_poster.jpg",
+    "genres": [
+      "Cinema",
+      "Drama"
+    ],
+    "industry": "Hollywood",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "mortal_kombat_2",
+    "title": "MORTAL KOMBAT II",
+    "year": "2026",
+    "age": "A 18+",
+    "dur": "2h 05m",
+    "desc": "The ultimate martial arts tournament erupts as Earthrealm",
+    "hero": "assets/images/mortal_kombat_2_landscape.jpg",
+    "poster": "assets/images/mortal_kombat_2_poster.jpg",
+    "genres": [
+      "Action"
+    ],
+    "industry": "Indian Cinema",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "shiva",
+    "title": "SHIVA DHANUSH: THE SACRED PINAKA",
+    "year": "2026",
+    "age": "U/A 13+",
+    "dur": "Chapter 2",
+    "desc": "In the grand court of King Janaka at Mithila, mighty warriors fail to lift the celestial bow of Lord Shiva. Prince Rama effortlessly strings Pinaka, breaking it into two halves to fulfill the sacred prophecy.",
+    "hero": "assets/images/feature_banner_hd.jpg",
+    "poster": "assets/images/feature_banner_hd.jpg",
+    "genres": [
+      "Action",
+      "Mythology"
+    ],
+    "industry": "Indian Cinema",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "exile",
+    "title": "THE FOREST EXILE & PANCHAVATI",
+    "year": "2026",
+    "age": "U/A 13+",
+    "dur": "Chapter 3",
+    "desc": "Lord Rama, Mata Sita, and Lakshmana begin their sacred 14-year exile in the mystical forests of Dandakaranya, establishing peace among hermits and confronting primeval demonic forces.",
+    "hero": "assets/images/movie_cover_hd.jpg",
+    "poster": "assets/images/movie_cover_hd.jpg",
+    "genres": [
+      "Cinema",
+      "Drama"
+    ],
+    "industry": "Indian Cinema",
+    "quality": "4K UHD"
+  }
+];
+
+let currentSearchQuery = '';
+let currentSearchCategory = 'all';
+
+// Initialize search listeners
+document.addEventListener('DOMContentLoaded', function() {
+  initSearchEngine();
+});
+
+function initSearchEngine() {
+  // Initial render of all/trending movies on search view
+  if (document.getElementById('searchResultsGrid')) {
+    renderSearchResults(sandflixCatalog, '');
+  }
+
+  // Close desktop search dropdown on click outside
+  document.addEventListener('click', function(e) {
+    const wrap = document.getElementById('headerSearchWrap');
+    if (wrap && !wrap.contains(e.target)) {
+      closeDesktopSearch();
+    }
+  });
+}
+
+function toggleDesktopSearch(event) {
+  if (event) event.stopPropagation();
+  const wrap = document.getElementById('headerSearchWrap');
+  const input = document.getElementById('desktopSearchInput');
+  if (!wrap) return;
+
+  if (wrap.classList.contains('active')) {
+    if (input && input.value.trim() !== '') {
+      openFullSearchViewFromDesktop();
+    } else {
+      closeDesktopSearch();
+    }
+  } else {
+    wrap.classList.add('active');
+    if (input) {
+      input.focus();
+      if (input.value.trim() !== '') {
+        handleSearchInput(input.value, 'desktop');
+      }
+    }
+  }
+}
+
+function closeDesktopSearch() {
+  const wrap = document.getElementById('headerSearchWrap');
+  const dropdown = document.getElementById('desktopSearchDropdown');
+  if (wrap) wrap.classList.remove('active');
+  if (dropdown) dropdown.classList.remove('active');
+}
+
+function openFullSearchViewFromDesktop() {
+  closeDesktopSearch();
+  const desktopInput = document.getElementById('desktopSearchInput');
+  const mobileInput = document.getElementById('mobileSearchInput');
+  const q = desktopInput ? desktopInput.value.trim() : '';
+
+  switchPage('search');
+  if (mobileInput) {
+    mobileInput.value = q;
+    handleSearchInput(q, 'mobile');
+    mobileInput.focus();
+  }
+}
+
+function handleSearchKeyDown(event) {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    openFullSearchViewFromDesktop();
+  } else if (event.key === 'Escape') {
+    closeDesktopSearch();
+  }
+}
+
+function clearSearch(source) {
+  currentSearchQuery = '';
+  const dInput = document.getElementById('desktopSearchInput');
+  const mInput = document.getElementById('mobileSearchInput');
+  const dClear = document.getElementById('desktopSearchClear');
+  const mClear = document.getElementById('mobileSearchClear');
+
+  if (dInput) dInput.value = '';
+  if (mInput) mInput.value = '';
+  if (dClear) dClear.style.display = 'none';
+  if (mClear) mClear.style.display = 'none';
+
+  const dropdown = document.getElementById('desktopSearchDropdown');
+  if (dropdown) dropdown.classList.remove('active');
+
+  applySearchFilters();
+}
+
+function filterSearchCategory(category, buttonEl) {
+  currentSearchCategory = category;
+  document.querySelectorAll('#searchFilterPills .s-pill').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  if (buttonEl) buttonEl.classList.add('active');
+  applySearchFilters();
+}
+
+function handleSearchInput(value, source) {
+  currentSearchQuery = value.trim().toLowerCase();
+
+  const dInput = document.getElementById('desktopSearchInput');
+  const mInput = document.getElementById('mobileSearchInput');
+  const dClear = document.getElementById('desktopSearchClear');
+  const mClear = document.getElementById('mobileSearchClear');
+
+  if (source === 'desktop' && mInput) mInput.value = value;
+  if (source === 'mobile' && dInput) dInput.value = value;
+
+  if (dClear) dClear.style.display = value ? 'flex' : 'none';
+  if (mClear) mClear.style.display = value ? 'flex' : 'none';
+
+  applySearchFilters(source);
+}
+
+function applySearchFilters(source) {
+  let filtered = sandflixCatalog;
+
+  // Filter by category pill
+  if (currentSearchCategory === 'trending') {
+    filtered = filtered.filter(m => ['part1', 'coolie', 'dhurandhar', 'jailer_2', 'the_odyssey', 'michael', 'pushpa2', 'chhaava'].includes(m.key));
+  } else if (currentSearchCategory === 'action') {
+    filtered = filtered.filter(m => m.genres.includes('Action') || m.desc.toLowerCase().includes('action'));
+  } else if (currentSearchCategory === 'hollywood') {
+    filtered = filtered.filter(m => m.industry === 'Hollywood' || m.desc.toLowerCase().includes('hollywood'));
+  } else if (currentSearchCategory === 'south') {
+    filtered = filtered.filter(m => m.industry === 'South Indian' || m.desc.toLowerCase().includes('south indian') || m.desc.toLowerCase().includes('tamil') || m.desc.toLowerCase().includes('telugu'));
+  } else if (currentSearchCategory === '4k') {
+    filtered = filtered.filter(m => m.quality === '4K UHD' || m.desc.toLowerCase().includes('4k'));
+  } else if (currentSearchCategory === 'animation') {
+    filtered = filtered.filter(m => m.genres.includes('Animation') || m.desc.toLowerCase().includes('animation'));
+  } else if (currentSearchCategory === 'comedy') {
+    filtered = filtered.filter(m => m.genres.includes('Comedy') || m.desc.toLowerCase().includes('comedy'));
+  }
+
+  // Filter by search query
+  if (currentSearchQuery) {
+    const q = currentSearchQuery;
+    filtered = filtered.filter(m => {
+      const inTitle = m.title.toLowerCase().includes(q);
+      const inDesc = m.desc.toLowerCase().includes(q);
+      const inGenres = m.genres.some(g => g.toLowerCase().includes(q));
+      const inYear = m.year.includes(q);
+      const inIndustry = m.industry.toLowerCase().includes(q);
+      return inTitle || inDesc || inGenres || inYear || inIndustry;
+    });
+  }
+
+  // Update Desktop dropdown if on desktop
+  const dropdown = document.getElementById('desktopSearchDropdown');
+  if (source === 'desktop' && dropdown) {
+    if (currentSearchQuery) {
+      dropdown.classList.add('active');
+      renderDesktopDropdownResults(filtered, currentSearchQuery);
+    } else {
+      dropdown.classList.remove('active');
+    }
+  }
+
+  // Always update the full search grid
+  renderSearchResults(filtered, currentSearchQuery);
+}
+
+function renderDesktopDropdownResults(results, query) {
+  const countEl = document.getElementById('desktopSearchCount');
+  const listEl = document.getElementById('desktopSearchResultsList');
+  if (!listEl) return;
+
+  if (countEl) {
+    countEl.textContent = results.length > 0 
+      ? results.length + ' ' + (results.length === 1 ? 'title' : 'titles') + ' for "' + query + '"'
+      : 'No titles found for "' + query + '"';
+  }
+
+  if (results.length === 0) {
+    listEl.innerHTML = '<div class="desktop-search-no-results"><p>No movies match <strong>"' + query + '"</strong></p><span class="desktop-search-hint">Try searching Ramayana, Coolie, Dhurandhar, or Hollywood</span></div>';
+    return;
+  }
+
+  listEl.innerHTML = results.slice(0, 7).map(item => `
+    <div class="desktop-search-item" onclick="openNetflixBlackPlayer('${item.key}')">
+      <div class="desktop-search-thumb">
+        <img src="${item.poster}" alt="${item.title}" loading="lazy" />
+        <span class="desktop-search-quality">${item.quality}</span>
+      </div>
+      <div class="desktop-search-details">
+        <h4 class="desktop-search-title">${item.title}</h4>
+        <div class="desktop-search-meta">
+          <span class="desktop-search-year">${item.year}</span>
+          <span class="desktop-search-age">${item.age}</span>
+          <span class="desktop-search-dur">${item.dur}</span>
+        </div>
+        <p class="desktop-search-genres">${item.genres.join(' • ')}</p>
+      </div>
+      <div class="desktop-search-actions">
+        <button class="desktop-search-play-btn" onclick="event.stopPropagation(); openNetflixBlackPlayer('${item.key}')" title="Play Movie">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+        </button>
+        <button class="desktop-search-info-btn" onclick="event.stopPropagation(); openMovieDetailsModal('${item.key}')" title="More Info">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderSearchResults(results, query) {
+  const grid = document.getElementById('searchResultsGrid');
+  const emptyState = document.getElementById('searchEmptyState');
+  const statusTitle = document.getElementById('searchStatusTitle');
+  const statusBadge = document.getElementById('searchStatusBadge');
+
+  if (!grid) return;
+
+  if (statusTitle && statusBadge) {
+    if (query) {
+      statusTitle.textContent = 'Results for "' + query + '"';
+      statusBadge.textContent = results.length + ' ' + (results.length === 1 ? 'Title' : 'Titles');
+    } else {
+      if (currentSearchCategory === 'all') {
+        statusTitle.textContent = 'All Available Movies & Sagas';
+      } else if (currentSearchCategory === 'trending') {
+        statusTitle.textContent = '🔥 Trending Searches & Blockbusters';
+      } else {
+        statusTitle.textContent = currentSearchCategory.toUpperCase() + ' Cinema';
+      }
+      statusBadge.textContent = results.length + ' Titles';
+    }
+  }
+
+  if (results.length === 0) {
+    grid.style.display = 'none';
+    if (emptyState) {
+      emptyState.style.display = 'flex';
+      const emptyHeading = document.getElementById('searchEmptyHeading');
+      const emptyText = document.getElementById('searchEmptyText');
+      if (emptyHeading) emptyHeading.textContent = 'No movies found matching "' + query + '"';
+      if (emptyText) emptyText.textContent = 'Try searching for Ramayana, Coolie, Dhurandhar, The Odyssey, Michael, or browse by category.';
+    }
+    return;
+  }
+
+  if (emptyState) emptyState.style.display = 'none';
+  grid.style.display = 'grid';
+
+  grid.innerHTML = results.map(item => `
+    <article class="n-card compact search-card official-master-card" onclick="openNetflixBlackPlayer('${item.key}')" title="Play ${item.title} (${item.year})">
+      <div class="n-card-thumb">
+        <img src="${item.hero}" data-poster="${item.poster}" alt="${item.title}" loading="lazy" />
+        <span class="n-card-quality-tag">${item.quality}</span>
+
+        <div class="n-card-overlay">
+          <div class="n-card-actions">
+            <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('${item.key}');" title="Play Movie">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+            </button>
+            <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </button>
+            <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+            </button>
+            <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('${item.key}');" title="More Info">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+          </div>
+          <div class="n-card-info">
+            <h4 class="n-movie-name">${item.title}</h4>
+            <p class="n-card-genres">${item.genres.join(' • ')} &bull; ${item.year}</p>
+          </div>
+        </div>
+      </div>
+    </article>
+  `).join('');
+}
