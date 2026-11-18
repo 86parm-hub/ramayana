@@ -4563,6 +4563,72 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
+  // Handle Embed Movie Mode (The Super Mario Galaxy Movie TMDB 1226863 via Peachify)
+  if (targetTime === 'mario_galaxy' || targetTime === 'super_mario' || targetTime === '1226863') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = 'The Super Mario Galaxy Movie (2026) • TMDB 1226863 (Nintendo / Illumination)';
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1226863';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
+  // Handle Embed Movie Mode (Minions & Monsters TMDB 1315772 via Peachify)
+  if (targetTime === 'minions_monsters' || targetTime === 'minions' || targetTime === '1315772') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = 'Minions & Monsters (2026) • TMDB 1315772 (Illumination / Universal)';
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1315772';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
+  // Handle Embed Movie Mode (Mortal Kombat II TMDB 931285 via Peachify)
+  if (targetTime === 'mortal_kombat_2' || targetTime === 'mortalkombat2' || targetTime === '931285') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = 'Mortal Kombat II (2026) • TMDB 931285 (New Line Cinema / Warner Bros)';
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/931285';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
   // Generalized CodeSpecters / Custom Embed Routing
   if (typeof targetTime === 'string' && (targetTime.startsWith('codespecters:') || targetTime.startsWith('cs:') || targetTime.startsWith('https://api.codespecters.com/'))) {
     nbpIsEmbedMode = true;
@@ -5818,6 +5884,30 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       age: 'U/A 16+',
       dur: '2h 50m',
       desc: "The monumental biographical musical drama directed by Antoine Fuqua and produced by Graham King (Bohemian Rhapsody). Chronicling the triumphant yet turbulent life and enduring legacy of global music icon Michael Jackson, from child prodigy in the Jackson 5 to the undisputed King of Pop. Starring nephew Jaafar Jackson in an electric tour-de-force performance alongside Colman Domingo, Nia Long, Miles Teller. Lionsgate & Universal Pictures. Streamed in 4K UHD via Peachify TMDB 936075."
+    },
+    'mario_galaxy': {
+      title: 'THE SUPER MARIO GALAXY MOVIE',
+      hero: 'assets/images/mario_galaxy_landscape.jpg',
+      year: '2026',
+      age: 'U/A 7+',
+      dur: '1h 40m',
+      desc: "Nintendo and Illumination reunite for the spectacular galactic sequel to the billion-dollar blockbuster. Mario, Luigi, Princess Peach, and Toad launch into deep cosmos to protect Rosalina's Comet Observatory and rescue celestial Lumas from Bowser's cosmic conquest. Directed by Aaron Horvath and Michael Jelenic. Starring Chris Pratt, Charlie Day, Anya Taylor-Joy, Jack Black, Keegan-Michael Key. Streamed in 4K UHD via Peachify TMDB 1226863."
+    },
+    'minions_monsters': {
+      title: 'MINIONS & MONSTERS',
+      hero: 'assets/images/minions_monsters_landscape.jpg',
+      year: '2026',
+      age: 'U/A 7+',
+      dur: '1h 35m',
+      desc: "In 1920s Hollywood's golden age, Kevin, Stuart, and Bob set out to produce their own classic creature feature. Armed with hilarious makeshift special effects and slapstick chaos, the mischievous yellow henchmen accidentally awaken genuine mythical monsters across the movie backlot. Directed by Pierre Coffin. Produced by Chris Meledandri and Illumination. Streamed in 4K UHD via Peachify TMDB 1315772."
+    },
+    'mortal_kombat_2': {
+      title: 'MORTAL KOMBAT II',
+      hero: 'assets/images/mortal_kombat_2_landscape.jpg',
+      year: '2026',
+      age: 'A 18+',
+      dur: '2h 05m',
+      desc: "The ultimate martial arts tournament erupts as Earthrealm's champions stand on the precipice of obliteration against the menacing warlord Shao Kahn and Outworld forces. Cole Young, Sonya Blade, and Jax recruit arrogant action icon Johnny Cage to unleash his martial prowess alongside legendary rival warriors Scorpion and Sub-Zero. Directed by Simon McQuoid. Starring Karl Urban, Hiroyuki Sanada, Joe Taslim, Jessica McNamee, Lewis Tan. New Line Cinema & Warner Bros. Streamed in 4K UHD via Peachify TMDB 931285."
     },
     'shiva': {
       title: 'SHIVA DHANUSH: THE SACRED PINAKA',

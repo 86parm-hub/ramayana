@@ -361,6 +361,36 @@
         if (spinner) spinner.classList.remove('active');
         return;
       }
+      // The Super Mario Galaxy Movie (2026) TMDB 1226863
+      if (targetTime === 'mario_galaxy' || targetTime === 'super_mario' || targetTime === '1226863') {
+        if (modal) { modal.classList.add('active', 'is-embed-active'); modal.setAttribute('aria-hidden', 'false'); }
+        document.body.style.overflow = 'hidden';
+        if (video) { try { video.pause(); video.currentTime = 0; } catch(e){} video.style.display = 'none'; }
+        if (titleDisplay) titleDisplay.textContent = 'The Super Mario Galaxy Movie (2026) • TMDB 1226863 (Nintendo / Illumination)';
+        if (embedIframe) { embedIframe.style.display = 'block'; embedIframe.src = 'https://peachify.net/movie/1226863'; }
+        if (spinner) spinner.classList.remove('active');
+        return;
+      }
+      // Minions & Monsters (2026) TMDB 1315772
+      if (targetTime === 'minions_monsters' || targetTime === 'minions' || targetTime === '1315772') {
+        if (modal) { modal.classList.add('active', 'is-embed-active'); modal.setAttribute('aria-hidden', 'false'); }
+        document.body.style.overflow = 'hidden';
+        if (video) { try { video.pause(); video.currentTime = 0; } catch(e){} video.style.display = 'none'; }
+        if (titleDisplay) titleDisplay.textContent = 'Minions & Monsters (2026) • TMDB 1315772 (Illumination / Universal)';
+        if (embedIframe) { embedIframe.style.display = 'block'; embedIframe.src = 'https://peachify.net/movie/1315772'; }
+        if (spinner) spinner.classList.remove('active');
+        return;
+      }
+      // Mortal Kombat II (2026) TMDB 931285
+      if (targetTime === 'mortal_kombat_2' || targetTime === 'mortalkombat2' || targetTime === '931285') {
+        if (modal) { modal.classList.add('active', 'is-embed-active'); modal.setAttribute('aria-hidden', 'false'); }
+        document.body.style.overflow = 'hidden';
+        if (video) { try { video.pause(); video.currentTime = 0; } catch(e){} video.style.display = 'none'; }
+        if (titleDisplay) titleDisplay.textContent = 'Mortal Kombat II (2026) • TMDB 931285 (New Line Cinema / Warner Bros)';
+        if (embedIframe) { embedIframe.style.display = 'block'; embedIframe.src = 'https://peachify.net/movie/931285'; }
+        if (spinner) spinner.classList.remove('active');
+        return;
+      }
       // Disclosure Day (2026) TMDB 1275779
       if (targetTime === 'disclosure_day' || targetTime === 'disclosureday' || targetTime === '1275779') {
         if (modal) { modal.classList.add('active', 'is-embed-active'); modal.setAttribute('aria-hidden', 'false'); }
@@ -2350,6 +2380,92 @@
                 </div>
               </div>
             </article>
+            <!-- Official Movie Card 39: The Super Mario Galaxy Movie (2026) (TMDB 1226863) -->
+            <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('mario_galaxy')" title="Play The Super Mario Galaxy Movie - TMDB 1226863">
+              <div class="n-card-thumb">
+                <img src="assets/images/mario_galaxy_landscape.jpg" data-poster="assets/images/mario_galaxy_poster.jpg" alt="The Super Mario Galaxy Movie" loading="lazy">
+                <span class="n-card-quality-tag">4K UHD</span>
+
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('mario_galaxy');" title="Play Movie">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                    </button>
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('mario_galaxy');" title="More Info">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">The Super Mario Galaxy Movie</h4>
+                    <p class="n-card-genres">Animation &bull; Adventure Comedy &bull; Nintendo &bull; Illumination</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Official Movie Card 40: Minions & Monsters (2026) (TMDB 1315772) -->
+            <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('minions_monsters')" title="Play Minions & Monsters - TMDB 1315772">
+              <div class="n-card-thumb">
+                <img src="assets/images/minions_monsters_landscape.jpg" data-poster="assets/images/minions_monsters_poster.jpg" alt="Minions & Monsters" loading="lazy">
+                <span class="n-card-quality-tag">4K UHD</span>
+
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('minions_monsters');" title="Play Movie">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                    </button>
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('minions_monsters');" title="More Info">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">Minions & Monsters</h4>
+                    <p class="n-card-genres">Animation &bull; Slapstick Comedy &bull; Illumination &bull; Universal</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Official Movie Card 41: Mortal Kombat II (2026) (TMDB 931285) -->
+            <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('mortal_kombat_2')" title="Play Mortal Kombat II - TMDB 931285">
+              <div class="n-card-thumb">
+                <img src="assets/images/mortal_kombat_2_landscape.jpg" data-poster="assets/images/mortal_kombat_2_poster.jpg" alt="Mortal Kombat II" loading="lazy">
+                <span class="n-card-quality-tag">4K UHD</span>
+
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('mortal_kombat_2');" title="Play Movie">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                    </button>
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('mortal_kombat_2');" title="More Info">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">Mortal Kombat II</h4>
+                    <p class="n-card-genres">Martial Arts Action &bull; Fantasy &bull; Karl Urban &bull; Warner Bros</p>
+                  </div>
+                </div>
+              </div>
+            </article>
 
             <!-- Official Movie Card 4: The Odyssey (2026) (TMDB 1368337) -->
             <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('the_odyssey')" title="Play The Odyssey - TMDB 1368337">
@@ -2538,7 +2654,7 @@
             <span>Hollywood &amp; International Premieres</span>
             <span class="row-title-chevron">&rsaquo;</span>
           </h2>
-          <span class="row-badge-pill">4 Titles Streaming</span>
+          <span class="row-badge-pill">7 Titles Streaming</span>
         </div>
 
         <div class="n-carousel-wrap">
@@ -2657,6 +2773,93 @@
                   <div class="n-card-info">
                     <h4 class="n-movie-name">Michael</h4>
                     <p class="n-card-genres">Biographical Musical &bull; King of Pop &bull; Jaafar Jackson &bull; Lionsgate</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Movie Card 5: The Super Mario Galaxy Movie (2026) (TMDB 1226863) -->
+            <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('mario_galaxy')" title="Play The Super Mario Galaxy Movie - TMDB 1226863">
+              <div class="n-card-thumb">
+                <img src="assets/images/mario_galaxy_landscape.jpg" data-poster="assets/images/mario_galaxy_poster.jpg" alt="The Super Mario Galaxy Movie" loading="lazy">
+                <span class="n-card-quality-tag">4K UHD</span>
+
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('mario_galaxy');" title="Play Movie">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                    </button>
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('mario_galaxy');" title="More Info">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">The Super Mario Galaxy Movie</h4>
+                    <p class="n-card-genres">Animation &bull; Adventure Comedy &bull; Nintendo &bull; Illumination</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Movie Card 6: Minions & Monsters (2026) (TMDB 1315772) -->
+            <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('minions_monsters')" title="Play Minions & Monsters - TMDB 1315772">
+              <div class="n-card-thumb">
+                <img src="assets/images/minions_monsters_landscape.jpg" data-poster="assets/images/minions_monsters_poster.jpg" alt="Minions & Monsters" loading="lazy">
+                <span class="n-card-quality-tag">4K UHD</span>
+
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('minions_monsters');" title="Play Movie">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                    </button>
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('minions_monsters');" title="More Info">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">Minions & Monsters</h4>
+                    <p class="n-card-genres">Animation &bull; Slapstick Comedy &bull; Illumination &bull; Universal</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Movie Card 7: Mortal Kombat II (2026) (TMDB 931285) -->
+            <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('mortal_kombat_2')" title="Play Mortal Kombat II - TMDB 931285">
+              <div class="n-card-thumb">
+                <img src="assets/images/mortal_kombat_2_landscape.jpg" data-poster="assets/images/mortal_kombat_2_poster.jpg" alt="Mortal Kombat II" loading="lazy">
+                <span class="n-card-quality-tag">4K UHD</span>
+
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('mortal_kombat_2');" title="Play Movie">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                    </button>
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('mortal_kombat_2');" title="More Info">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">Mortal Kombat II</h4>
+                    <p class="n-card-genres">Martial Arts Action &bull; Fantasy &bull; Karl Urban &bull; Warner Bros</p>
                   </div>
                 </div>
               </div>
