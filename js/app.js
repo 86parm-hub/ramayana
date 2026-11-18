@@ -4641,6 +4641,72 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
+  // Handle Embed Movie Mode (Kartavya TMDB 1628367 via Peachify)
+  if (targetTime === 'kartavya' || targetTime === 'kartavya_2026' || targetTime === '1628367') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = 'Kartavya (2026) • TMDB 1628367 (Saif Ali Khan & Red Chillies)';
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1628367';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
+  // Handle Embed Movie Mode (Gandhari TMDB 1355228 via Peachify)
+  if (targetTime === 'gandhari' || targetTime === 'gandhari_2026' || targetTime === '1355228') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = 'Gandhari (2026) • TMDB 1355228 (Taapsee Pannu & Kanika Dhillon)';
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1355228';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
+  // Handle Embed Movie Mode (Toaster TMDB 1416391 via Peachify)
+  if (targetTime === 'toaster' || targetTime === 'toaster_2026' || targetTime === '1416391') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = 'Toaster (2026) • TMDB 1416391 (Rajkummar Rao & Sanya Malhotra)';
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1416391';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
   // Generalized CodeSpecters / Custom Embed Routing
   if (typeof targetTime === 'string' && (targetTime.startsWith('codespecters:') || targetTime.startsWith('cs:') || targetTime.startsWith('https://api.codespecters.com/'))) {
     nbpIsEmbedMode = true;
@@ -5921,6 +5987,30 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       dur: '2h 05m',
       desc: "The ultimate martial arts tournament erupts as Earthrealm's champions stand on the precipice of obliteration against the menacing warlord Shao Kahn and Outworld forces. Cole Young, Sonya Blade, and Jax recruit arrogant action icon Johnny Cage to unleash his martial prowess alongside legendary rival warriors Scorpion and Sub-Zero. Directed by Simon McQuoid. Starring Karl Urban, Hiroyuki Sanada, Joe Taslim, Jessica McNamee, Lewis Tan. New Line Cinema & Warner Bros. Streamed in 4K UHD via Peachify TMDB 931285."
     },
+    'kartavya': {
+      title: 'KARTAVYA',
+      hero: 'assets/images/kartavya_landscape.jpg',
+      year: '2026',
+      age: 'U/A 16+',
+      dur: '1h 49m',
+      desc: "Local police officer Inspector Pawan Malik (Saif Ali Khan) is assigned to guard a fearless investigative journalist exposing a high-profile corruption racket tied to an influential spiritual cult. When the journalist is assassinated on his watch, Pawan must risk everything against political pressure and family threats to fulfill his sworn duty. Produced by Gauri Khan (Red Chillies Entertainment), directed by Pulkit. Starring Saif Ali Khan, Rasika Dugal, Sanjay Mishra. Streamed in 4K UHD via Peachify TMDB 1628367."
+    },
+    'gandhari': {
+      title: 'GANDHARI',
+      hero: 'assets/images/gandhari_landscape.jpg',
+      year: '2026',
+      age: 'A 18+',
+      dur: '2h 10m',
+      desc: "When her young daughter is abducted from a crowded railway platform, mother Bani (Taapsee Pannu) is left temporarily blinded in the assault. Channeling the fierce mythical spirit of Gandhari, she transforms into an unstoppable lethal force of maternal vengeance to crush an interstate child trafficking syndicate and reclaim her child. Written & produced by Kanika Dhillon, directed by Devashish Makhija. Starring Taapsee Pannu, Ishwak Singh, Swastika Mukherjee. Streamed in 4K UHD via Peachify TMDB 1355228."
+    },
+    'toaster': {
+      title: 'TOASTER',
+      hero: 'assets/images/toaster_landscape.jpg',
+      year: '2026',
+      age: 'U/A 16+',
+      dur: '1h 55m',
+      desc: "A hilarious and dark comic thriller following Ramakant (Rajkummar Rao), a hilariously stingy man who goes to absurdly extreme lengths to retrieve a luxury toaster he gifted after a wedding is suddenly called off. His relentless obsession inadvertently lands him straight into a chaotic web of murder, extortion, and absurd criminal mayhem. Produced by Patralekhaa & Rajkummar Rao, directed by Vivek Das Chaudhary. Starring Rajkummar Rao, Sanya Malhotra, Abhishek Banerjee, Farah Khan. Streamed in 4K UHD via Peachify TMDB 1416391."
+    },
     'shiva': {
       title: 'SHIVA DHANUSH: THE SACRED PINAKA',
       hero: 'assets/images/feature_banner_hd.jpg',
@@ -7004,7 +7094,58 @@ const sandflixCatalog = [
     "genres": [
       "Action"
     ],
-    "industry": "Indian Cinema",
+    "industry": "Hollywood",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "kartavya",
+    "title": "KARTAVYA",
+    "year": "2026",
+    "age": "U/A 16+",
+    "dur": "1h 49m",
+    "desc": "Local police officer Inspector Pawan Malik (Saif Ali Khan) is assigned to guard a fearless investigative journalist exposing a high-profile corruption racket tied to an influential spiritual cult. When the journalist is assassinated on his watch, Pawan must risk everything to fulfill his sworn duty. Produced by Red Chillies Entertainment.",
+    "hero": "assets/images/kartavya_landscape.jpg",
+    "poster": "assets/images/kartavya_poster.jpg",
+    "genres": [
+      "Action",
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "industry": "Bollywood",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "gandhari",
+    "title": "GANDHARI",
+    "year": "2026",
+    "age": "A 18+",
+    "dur": "2h 10m",
+    "desc": "When her daughter is abducted from a railway platform and she is blinded in the assault, mother Bani (Taapsee Pannu) transforms into an unstoppable lethal force of maternal vengeance to crush a child trafficking syndicate. Written & produced by Kanika Dhillon, directed by Devashish Makhija.",
+    "hero": "assets/images/gandhari_landscape.jpg",
+    "poster": "assets/images/gandhari_poster.jpg",
+    "genres": [
+      "Action",
+      "Thriller"
+    ],
+    "industry": "Bollywood",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "toaster",
+    "title": "TOASTER",
+    "year": "2026",
+    "age": "U/A 16+",
+    "dur": "1h 55m",
+    "desc": "A hilarious dark comic thriller following Ramakant (Rajkummar Rao), a stingy man whose desperate quest to retrieve a luxury wedding toaster accidentally drags him into murder, blackmail, and criminal chaos. Starring Rajkummar Rao and Sanya Malhotra.",
+    "hero": "assets/images/toaster_landscape.jpg",
+    "poster": "assets/images/toaster_poster.jpg",
+    "genres": [
+      "Comedy",
+      "Crime",
+      "Thriller"
+    ],
+    "industry": "Bollywood",
     "quality": "4K UHD"
   },
   {
@@ -7091,6 +7232,7 @@ function filterMoviesList(catalog, query, category) {
     list = list.filter(m => [
       'part1', 'coolie', 'dhurandhar', 'jailer_2', 'the_odyssey', 
       'michael', 'mario_galaxy', 'minions_monsters', 'mortal_kombat_2',
+      'kartavya', 'gandhari', 'toaster',
       'disclosure_day', 'pushpa2', 'chhaava'
     ].includes(m.key));
   } else if (category === 'action') {
