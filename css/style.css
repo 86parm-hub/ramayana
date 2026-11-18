@@ -11212,13 +11212,13 @@ video {
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   1. Desktop Navbar Search Widget (Exact Netflix Horizontal Slide-In)
+   1. Desktop Navbar Search Widget (Curved Black Glass Theme with Subtle Border)
    -------------------------------------------------------------------------- */
 .netflix-search-widget {
   display: inline-flex;
   align-items: center;
   position: relative;
-  height: 36px;
+  height: 38px;
 }
 
 .n-search-toggle-btn {
@@ -11226,12 +11226,12 @@ video {
   border: none;
   color: #fff;
   cursor: pointer;
-  padding: 6px;
+  padding: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s;
-  border-radius: 0;
+  border-radius: 50%;
 }
 
 .n-search-toggle-btn:hover {
@@ -11244,17 +11244,20 @@ video {
   opacity: 0;
   pointer-events: none;
   border: 1px solid transparent;
-  background: #000000;
+  background: rgba(18, 18, 18, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   display: flex;
   align-items: center;
-  height: 36px;
+  height: 38px;
   box-sizing: border-box;
   padding: 0;
   overflow: hidden;
-  border-radius: 0;
-  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
-              opacity 0.2s ease, 
-              border-color 0.2s ease;
+  border-radius: 8px; /* Clean curved corners as requested */
+  transition: width 0.32s cubic-bezier(0.16, 1, 0.3, 1), 
+              opacity 0.22s ease, 
+              border-color 0.22s ease,
+              box-shadow 0.22s ease;
 }
 
 .netflix-search-widget.open .n-search-toggle-btn {
@@ -11262,18 +11265,26 @@ video {
 }
 
 .netflix-search-widget.open .n-search-input-wrap {
-  width: 290px;
+  width: 300px;
   opacity: 1;
   pointer-events: auto;
-  border: 1px solid #ffffff;
-  background: #000000;
-  padding: 0 10px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.24); /* Thinner/softer border as requested */
+  background: rgba(18, 18, 18, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 0 12px;
+  border-radius: 8px; /* Curve corners */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.netflix-search-widget.open .n-search-input-wrap:focus-within {
+  border-color: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1), 0 8px 30px rgba(0, 0, 0, 0.85);
 }
 
 .n-search-inner-icon {
-  color: #fff;
-  margin-right: 9px;
+  color: rgba(255, 255, 255, 0.85);
+  margin-right: 10px;
   display: flex;
   align-items: center;
   flex-shrink: 0;
@@ -11288,28 +11299,30 @@ video {
   font-weight: 400;
   width: 100%;
   font-family: inherit;
-  letter-spacing: 0.1px;
+  letter-spacing: 0.15px;
 }
 
 .n-search-input-field::placeholder {
-  color: #8c8c8c;
+  color: rgba(255, 255, 255, 0.45);
 }
 
 .n-search-clear-btn {
   background: transparent;
   border: none;
-  color: #8c8c8c;
+  color: rgba(255, 255, 255, 0.6);
   cursor: pointer;
   padding: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  transition: color 0.2s;
+  border-radius: 50%;
+  transition: color 0.2s, background 0.2s;
 }
 
 .n-search-clear-btn:hover {
   color: #fff;
+  background: rgba(255, 255, 255, 0.12);
 }
 
 /* --------------------------------------------------------------------------
@@ -11354,69 +11367,6 @@ video {
   margin: 0 auto;
   padding: 32px 36px 100px 36px;
   box-sizing: border-box;
-}
-
-/* Netflix Desktop On-Page Search Bar (Official Netflix Black Theme with Crisp White Border) */
-.netflix-pc-search-bar-wrap {
-  margin-bottom: 26px;
-  display: flex;
-  align-items: center;
-}
-
-.netflix-pc-search-box {
-  display: inline-flex;
-  align-items: center;
-  background: #000000;
-  border: 1px solid #ffffff;
-  border-radius: 0;
-  height: 36px;
-  width: 320px;
-  max-width: 100%;
-  padding: 0 12px;
-  box-sizing: border-box;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.85);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.netflix-pc-search-icon {
-  color: #ffffff;
-  margin-right: 10px;
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-}
-
-.netflix-pc-search-input {
-  flex: 1;
-  background: transparent;
-  border: none;
-  outline: none;
-  color: #ffffff;
-  font-size: 14px;
-  font-weight: 400;
-  font-family: inherit;
-  letter-spacing: 0.1px;
-}
-
-.netflix-pc-search-input::placeholder {
-  color: #8c8c8c;
-}
-
-.netflix-pc-search-clear {
-  background: transparent;
-  border: none;
-  color: #8c8c8c;
-  cursor: pointer;
-  padding: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  transition: color 0.2s;
-}
-
-.netflix-pc-search-clear:hover {
-  color: #ffffff;
 }
 
 .search-explore-section {
