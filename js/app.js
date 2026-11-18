@@ -4343,6 +4343,138 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
+  // Handle Embed Movie Mode (The Odyssey TMDB 1368337 via Peachify)
+  if (targetTime === 'the_odyssey' || targetTime === 'odyssey' || targetTime === '1368337') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = 'The Odyssey (2026) • TMDB 1368337 (Christopher Nolan)';
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1368337';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
+  // Handle Embed Movie Mode (GOAT TMDB 1297842 via Peachify)
+  if (targetTime === 'goat' || targetTime === 'goat_2026' || targetTime === '1297842') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = 'GOAT (2026) • TMDB 1297842 (Sony Pictures Animation)';
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1297842';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
+  // Handle Embed Movie Mode (Scary Movie 6 TMDB 1273221 via Peachify)
+  if (targetTime === 'scary_movie_6' || targetTime === 'scarymovie6' || targetTime === '1273221') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = 'Scary Movie 6 (2026) • TMDB 1273221 (Wayans Brothers)';
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1273221';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
+  // Handle Embed Movie Mode (Coolie TMDB 1153399 via Peachify)
+  if (targetTime === 'coolie' || targetTime === '1153399') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = 'Coolie (2025) • TMDB 1153399 (Superstar Rajinikanth / Lokesh Kanagaraj)';
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1153399';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
+  // Handle Embed Movie Mode (Dhurandhar TMDB 1291608 via Peachify)
+  if (targetTime === 'dhurandhar' || targetTime === '1291608') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = 'Dhurandhar (2025) • TMDB 1291608 (Ranveer Singh / Aditya Dhar)';
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1291608';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
+  // Handle Embed Movie Mode (Jailer 2 TMDB 1234139 via Peachify)
+  if (targetTime === 'jailer_2' || targetTime === 'jailer2' || targetTime === '1234139') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = 'Jailer 2 (2026) • TMDB 1234139 (Superstar Rajinikanth / Nelson)';
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1234139';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
   // Generalized CodeSpecters / Custom Embed Routing
   if (typeof targetTime === 'string' && (targetTime.startsWith('codespecters:') || targetTime.startsWith('cs:') || targetTime.startsWith('https://api.codespecters.com/'))) {
     nbpIsEmbedMode = true;
@@ -5518,6 +5650,54 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       age: 'U/A 16+',
       dur: '2h 38m',
       desc: "A stylized retro action-gangster romance following a ruthless yet charismatic lone wolf driven by love, laughter, and relentless war. Starring Suriya, Pooja Hegde, Jayaram, Karunakaran, Joju George. Directed by Karthik Subbaraj, music composed by Santhosh Narayanan, produced by 2D Entertainment. Streamed in 4K UHD via Peachify TMDB 1265827."
+    },
+    'the_odyssey': {
+      title: 'THE ODYSSEY',
+      hero: 'assets/images/the_odyssey_landscape.jpg',
+      year: '2026',
+      age: 'U/A 16+',
+      dur: '3h 10m',
+      desc: "Christopher Nolan's monumental cinematic vision of Homer's ancient Greek mythological epic. Odysseus, King of Ithaca, embarks on a treacherous, decade-long voyage home across perilous seas following the fall of Troy, confronting mythical beasts, seductive enchantresses, and the wrath of Poseidon. Produced by Universal Pictures and Syncopy. Streamed in 4K UHD via Peachify TMDB 1368337."
+    },
+    'goat': {
+      title: 'GOAT (2026)',
+      hero: 'assets/images/goat_landscape.jpg',
+      year: '2026',
+      age: 'U/A 7+',
+      dur: '1h 45m',
+      desc: "A groundbreaking animated sports adventure comedy produced by Sony Pictures Animation and Stephen Curry's Unanimous Media. A small, underdog kid with oversized hoop dreams overcomes massive odds to rise through the ranks of streetball and prove greatness comes from heart and grit. Directed by Tyree Dillihay. Streamed in 4K UHD via Peachify TMDB 1297842."
+    },
+    'scary_movie_6': {
+      title: 'SCARY MOVIE 6',
+      hero: 'assets/images/scary_movie_6_landscape.jpg',
+      year: '2026',
+      age: 'A 18+',
+      dur: '1h 36m',
+      desc: "The legendary Wayans Brothers (Marlon, Shawn, and Keenen Ivory Wayans) reunite alongside franchise icons Anna Faris (Cindy Campbell) and Regina Hall (Brenda Meeks) to resurrect the premier horror parody franchise. Skewering modern horror sensations (M3GAN, Smile, Longlegs, Talk to Me, Hereditary), Scary Movie 6 unleashes side-splitting, unfiltered slapstick mayhem. Produced by Miramax. Streamed in 1080P HEVC via Peachify TMDB 1273221."
+    },
+    'coolie': {
+      title: 'COOLIE',
+      hero: 'assets/images/coolie_landscape.jpg',
+      year: '2025',
+      age: 'U/A 16+',
+      dur: '2h 50m',
+      desc: "Superstar Rajinikanth stars as Deva, a legendary harbor kingpin and gold smuggler in an adrenaline-charged action crime thriller set against Chennai's port underworld. Directed by Lokesh Kanagaraj, featuring an ensemble cast including Nagarjuna, Soubin Shahir, Shruti Haasan, Sathyaraj, and Upendra, with explosive musical score by Anirudh Ravichander. Produced by Sun Pictures. Streamed in 4K UHD via Peachify TMDB 1153399."
+    },
+    'dhurandhar': {
+      title: 'DHURANDHAR',
+      hero: 'assets/images/dhurandhar_landscape.jpg',
+      year: '2025',
+      age: 'U/A 16+',
+      dur: '2h 45m',
+      desc: "National Award-winning director Aditya Dhar (Uri: The Surgical Strike) helms a high-octane geopolitical spy action saga based on real covert espionage missions conducted by Indian intelligence. Starring Ranveer Singh as a daring undercover operative, alongside Sanjay Dutt, R. Madhavan, Akshaye Khanna, and Arjun Rampal. Produced by Jio Studios and B62 Studios. Streamed in 4K UHD via Peachify TMDB 1291608."
+    },
+    'jailer_2': {
+      title: 'JAILER 2 (HUKUM)',
+      hero: 'assets/images/jailer_2_landscape.jpg',
+      year: '2026',
+      age: 'U/A 16+',
+      dur: '2h 55m',
+      desc: "Tiger Muthuvel Pandian (Superstar Rajinikanth) returns in Nelson Dilipkumar's high-octane sequel to the global blockbuster Jailer. Forced out of retirement when an international syndicate targets his family and alliances, the lethal retired jailer unleashes his trademark calm ruthlessness to dismantle criminal syndicates across borders. Music by Anirudh Ravichander, produced by Sun Pictures. Streamed in 4K UHD via Peachify TMDB 1234139."
     },
     'shiva': {
       title: 'SHIVA DHANUSH: THE SACRED PINAKA',
