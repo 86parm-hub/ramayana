@@ -18,7 +18,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/android-chrome-192x192.png?v=3">
   <link rel="icon" type="image/png" sizes="512x512" href="assets/icons/android-chrome-512x512.png?v=3">
 
-  <link rel="stylesheet" href="css/style.css?v=20261118_v74_mobile_2col_cards">
+  <link rel="stylesheet" href="css/style.css?v=20261118_v80_production_ready">
 
   <!-- Premium Fonts: Cinzel, Cinzel Decorative, Marcellus, Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -2961,58 +2961,120 @@
        PAGE: SEARCH VIEW (Dedicated Real-Time Movie Search Engine - Mobile & PC)
        ========================================================================= -->
   <section class="page-view" id="search-view">
-    <div class="search-view-container">
-      <!-- Mobile Hero Search Input Bar (Visible on mobile, hidden on desktop where navbar search is active) -->
-      <div class="search-hero-bar">
-        <div class="search-hero-input-wrap">
-          <svg class="search-hero-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-          <input type="text" id="mobileSearchInput" class="search-hero-input" placeholder="Search movies, actors, genres, directors..." autocomplete="off" oninput="handleUnifiedSearch(this.value, 'mobile')" />
-          <button class="search-hero-clear" id="mobileSearchClear" onclick="clearUnifiedSearch('mobile')" title="Clear Search" style="display: none;">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-          </button>
+    <!-- =========================================================================
+         1. DESKTOP SEARCH VIEW (Active on PC & Laptops > 768px: Authentic Netflix Canvas)
+         ========================================================================= -->
+    <div class="desktop-search-view-wrap">
+      <div class="netflix-search-canvas">
+        <!-- Explore Category Pills ("Explore titles related to:") -->
+        <div class="search-explore-section">
+          <span class="search-explore-label">Explore titles related to:</span>
+          <div class="search-pills-row" id="desktopSearchFilterPills">
+            <button class="n-search-pill active" onclick="filterDesktopSearchByPill('all', this)">All Titles (48)</button>
+            <button class="n-search-pill" onclick="filterDesktopSearchByPill('trending', this)">🔥 Trending</button>
+            <button class="n-search-pill" onclick="filterDesktopSearchByPill('action', this)">⚔️ Action &amp; Mass</button>
+            <button class="n-search-pill" onclick="filterDesktopSearchByPill('hollywood', this)">🎬 Hollywood</button>
+            <button class="n-search-pill" onclick="filterDesktopSearchByPill('south', this)">⚡ South Indian</button>
+            <button class="n-search-pill" onclick="filterDesktopSearchByPill('4k', this)">💎 4K UHD</button>
+            <button class="n-search-pill" onclick="filterDesktopSearchByPill('animation', this)">🎨 Animation</button>
+            <button class="n-search-pill" onclick="filterDesktopSearchByPill('comedy', this)">😄 Comedy</button>
+          </div>
+        </div>
+
+        <!-- Live Real-Time Search Results Grid (5-6 Columns) -->
+        <div class="live-search-section" id="desktopLiveSearchResultsSection">
+          <div class="search-results-header-bar">
+            <h3 class="search-results-heading" id="desktopSearchResultsHeading">All Titles</h3>
+            <span class="search-results-badge" id="desktopSearchResultsBadge">48 Titles</span>
+          </div>
+          <div class="netflix-search-grid" id="desktopSearchResultsGrid">
+            <!-- Dynamic Movie Cards rendered by JS -->
+          </div>
+        </div>
+
+        <!-- Netflix Empty State -->
+        <div class="netflix-search-empty-state" id="desktopSearchEmptyState" style="display: none;">
+          <p class="empty-msg">Your search for <strong id="desktopEmptyQueryHighlight">"..."</strong> did not have any matches.</p>
+          <div class="empty-suggestions-box">
+            <p class="empty-suggestions-title">Suggestions:</p>
+            <ul>
+              <li>Try different keywords or check spelling</li>
+              <li>Looking for a movie or saga?</li>
+              <li>Try searching an actor, director, or franchise</li>
+            </ul>
+          </div>
+          <div class="empty-quick-pills">
+            <span class="empty-quick-label">Try searching:</span>
+            <button class="empty-quick-btn" onclick="quickDesktopSearchTag('Ramayana')">Ramayana</button>
+            <button class="empty-quick-btn" onclick="quickDesktopSearchTag('Coolie')">Coolie</button>
+            <button class="empty-quick-btn" onclick="quickDesktopSearchTag('Dhurandhar')">Dhurandhar</button>
+            <button class="empty-quick-btn" onclick="quickDesktopSearchTag('Jailer 2')">Jailer 2</button>
+            <button class="empty-quick-btn" onclick="quickDesktopSearchTag('The Odyssey')">The Odyssey</button>
+            <button class="empty-quick-btn" onclick="quickDesktopSearchTag('Michael')">Michael</button>
+            <button class="empty-quick-btn" onclick="quickDesktopSearchTag('Super Mario')">Super Mario</button>
+            <button class="empty-quick-btn" onclick="quickDesktopSearchTag('Hollywood')">Hollywood</button>
+          </div>
         </div>
       </div>
+    </div>
 
-      <!-- Quick Filter Category Pills -->
-      <div class="search-filter-pills-wrap">
-        <div class="search-filter-pills" id="searchFilterPills">
-          <button class="s-pill active" onclick="filterSearchCategory('all', this)">All Titles (48)</button>
-          <button class="s-pill" onclick="filterSearchCategory('trending', this)">🔥 Trending</button>
-          <button class="s-pill" onclick="filterSearchCategory('action', this)">⚔️ Action &amp; Mass</button>
-          <button class="s-pill" onclick="filterSearchCategory('hollywood', this)">🎬 Hollywood</button>
-          <button class="s-pill" onclick="filterSearchCategory('south', this)">⚡ South Indian</button>
-          <button class="s-pill" onclick="filterSearchCategory('4k', this)">💎 4K UHD</button>
-          <button class="s-pill" onclick="filterSearchCategory('animation', this)">🎨 Animation</button>
-          <button class="s-pill" onclick="filterSearchCategory('comedy', this)">😄 Comedy</button>
+    <!-- =========================================================================
+         2. MOBILE SEARCH VIEW (Active on Phones <= 768px: Dedicated Mobile Page)
+         ========================================================================= -->
+    <div class="mobile-search-view-wrap">
+      <div class="search-view-container">
+        <!-- Search Input Bar -->
+        <div class="search-hero-bar">
+          <div class="search-hero-input-wrap">
+            <svg class="search-hero-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="mobileSearchInput" class="search-hero-input" placeholder="Search movies, actors, genres, directors..." autocomplete="off" oninput="handleMobileSearchInput(this.value)" />
+            <button class="search-hero-clear" id="mobileSearchClear" onclick="clearMobileSearch()" title="Clear Search" style="display: none;">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+          </div>
         </div>
-      </div>
 
-      <!-- Search Status & Count Bar -->
-      <div class="search-status-bar" id="searchStatusBar">
-        <h3 class="search-status-title" id="searchStatusTitle">All Available Movies &amp; Sagas</h3>
-        <span class="search-status-badge" id="searchStatusBadge">48 Titles</span>
-      </div>
-
-      <!-- Search Results Grid (Real-Time Dynamic: 2 cols on mobile, 5 cols on desktop) -->
-      <div class="search-results-grid" id="searchResultsGrid">
-        <!-- Dynamic Movie Cards rendered by JS -->
-      </div>
-
-      <!-- Empty State (when no search query matches) -->
-      <div class="search-empty-state" id="searchEmptyState" style="display: none;">
-        <div class="search-empty-icon">
-          <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            <line x1="8" y1="11" x2="14" y2="11"></line>
-          </svg>
+        <!-- Quick Filter Category Pills -->
+        <div class="search-filter-pills-wrap">
+          <div class="search-filter-pills" id="mobileSearchFilterPills">
+            <button class="s-pill active" onclick="filterMobileSearchCategory('all', this)">All Titles (48)</button>
+            <button class="s-pill" onclick="filterMobileSearchCategory('trending', this)">🔥 Trending</button>
+            <button class="s-pill" onclick="filterMobileSearchCategory('action', this)">⚔️ Action &amp; Mass</button>
+            <button class="s-pill" onclick="filterMobileSearchCategory('hollywood', this)">🎬 Hollywood</button>
+            <button class="s-pill" onclick="filterMobileSearchCategory('south', this)">⚡ South Indian</button>
+            <button class="s-pill" onclick="filterMobileSearchCategory('4k', this)">💎 4K UHD</button>
+            <button class="s-pill" onclick="filterMobileSearchCategory('animation', this)">🎨 Animation</button>
+            <button class="s-pill" onclick="filterMobileSearchCategory('comedy', this)">😄 Comedy</button>
+          </div>
         </div>
-        <h4 class="search-empty-heading" id="searchEmptyHeading">No matches found</h4>
-        <p class="search-empty-text" id="searchEmptyText">Try searching by title (e.g. Ramayana, Coolie, Dhurandhar, The Odyssey) or actor name.</p>
-        <button class="search-empty-reset-btn" onclick="clearUnifiedSearch()">View All Movies</button>
+
+        <!-- Search Status & Count Bar -->
+        <div class="search-status-bar" id="mobileSearchStatusBar">
+          <h3 class="search-status-title" id="mobileSearchStatusTitle">All Available Movies &amp; Sagas</h3>
+          <span class="search-status-badge" id="mobileSearchStatusBadge">48 Titles</span>
+        </div>
+
+        <!-- Search Results Grid (Real-Time Dynamic: 2 cols on mobile) -->
+        <div class="search-results-grid" id="mobileSearchResultsGrid">
+          <!-- Dynamic Movie Cards rendered by JS -->
+        </div>
+
+        <!-- Empty State (when no search query matches) -->
+        <div class="search-empty-state" id="mobileSearchEmptyState" style="display: none;">
+          <div class="search-empty-icon">
+            <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              <line x1="8" y1="11" x2="14" y2="11"></line>
+            </svg>
+          </div>
+          <h4 class="search-empty-heading" id="mobileSearchEmptyHeading">No matches found</h4>
+          <p class="search-empty-text" id="mobileSearchEmptyText">Try searching by title (e.g. Ramayana, Coolie, Dhurandhar, The Odyssey) or actor name.</p>
+          <button class="search-empty-reset-btn" onclick="clearMobileSearch()">View All Movies</button>
+        </div>
       </div>
     </div>
   </section>
@@ -6580,8 +6642,6 @@
     </button>
   </nav>
 
-  <script src="js/app.js?v=20261118_v76_arijit_singh_card?v=20261118_v73_moosetape_album"></script>
-
   <!-- =========================================================================
        SPOTIFY NOW PLAYING BOTTOM BAR (AUTHENTIC 3-COLUMN DESKTOP DOCK)
        ========================================================================= -->
@@ -6953,6 +7013,8 @@
     </div>
   </div>
 
+  <!-- Main Application Script (Production Ready - Fast Cached) -->
+  <script src="js/app.js?v=20261118_v80_production_ready"></script>
 </body>
 
 </html>

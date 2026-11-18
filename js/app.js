@@ -84,6 +84,7 @@ function getCurrentActivePage() {
   if (!activeView) return 'home';
   if (activeView.id === 'movies-view') return 'movies';
   if (activeView.id === 'gallery-view') return 'gallery';
+  if (activeView.id === 'search-view') return 'search';
   return 'home';
 }
 
@@ -7034,39 +7035,166 @@ const sandflixCatalog = [
   }
 ];
 
-let currentSearchQuery = '';
-let currentSearchCategory = 'all';
-let prevPageBeforeSearch = 'home';
+/* =========================================================================
+   SANDFLIX INDEPENDENT DUAL SEARCH ENGINES (PC & MOBILE)
+   PC/Laptop: Official Netflix Navbar Search Widget + Expandable Canvas
+   Mobile: Dedicated Mobile Search Page with Sticky Hero Bar & Instant 2-Col Grid
+   ========================================================================= */
 
-document.addEventListener('DOMContentLoaded', function() {
-  initUnifiedSearchEngine();
-});
+// --- Shared Search Card HTML Builder ---
+function buildSearchCardHtml(item) {
+  return `
+    <article class="n-card compact search-card official-master-card" onclick="openNetflixBlackPlayer('${item.key}')" title="Play ${item.title} (${item.year})">
+      <div class="n-card-thumb">
+        <img src="${item.hero}" data-poster="${item.poster}" alt="${item.title}" loading="lazy" />
+        <span class="n-card-quality-tag">${item.quality}</span>
 
-function initUnifiedSearchEngine() {
-  // Immediately render all 48 movies on load so grid is never empty
-  renderSearchResults(sandflixCatalog, '');
+        <div class="n-card-overlay">
+          <div class="n-card-actions">
+            <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('${item.key}');" title="Play Movie">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+            </button>
+            <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </button>
+            <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+            </button>
+            <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('${item.key}');" title="More Info">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+          </div>
+          <div class="n-card-info">
+            <h4 class="n-movie-name">${item.title}</h4>
+            <p class="n-card-genres">${item.genres.join(' • ')} &bull; ${item.year}</p>
+          </div>
+        </div>
+      </div>
+    </article>
+  `;
+}
 
-  // Click outside to collapse desktop search if input is empty
-  document.addEventListener('click', function(e) {
-    const widget = document.getElementById('netflixSearchWidget');
-    const dInput = document.getElementById('desktopSearchInput');
-    if (widget && !widget.contains(e.target)) {
-      if (dInput && dInput.value.trim() === '') {
-        widget.classList.remove('open');
-      }
-    }
-  });
+// --- DESKTOP SEARCH STATE & FUNCTIONS ---
+let desktopSearchQuery = '';
+let desktopSearchPill = 'all';
+let prevPageBeforeDesktopSearch = 'home';
 
-  // Shortcut key: press '/' to focus desktop search on PC
-  document.addEventListener('keydown', function(e) {
-    if (e.key === '/' && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
-      e.preventDefault();
-      const widget = document.getElementById('netflixSearchWidget');
+function filterMoviesList(catalog, query, category) {
+  let list = catalog;
+  if (category === 'trending') {
+    list = list.filter(m => [
+      'part1', 'coolie', 'dhurandhar', 'jailer_2', 'the_odyssey', 
+      'michael', 'mario_galaxy', 'minions_monsters', 'mortal_kombat_2',
+      'disclosure_day', 'pushpa2', 'chhaava'
+    ].includes(m.key));
+  } else if (category === 'action') {
+    list = list.filter(m => m.genres.includes('Action') || m.desc.toLowerCase().includes('action') || m.desc.toLowerCase().includes('mass'));
+  } else if (category === 'hollywood') {
+    list = list.filter(m => m.industry === 'Hollywood' || m.desc.toLowerCase().includes('hollywood') || m.desc.toLowerCase().includes('universal') || m.desc.toLowerCase().includes('warner'));
+  } else if (category === 'south') {
+    list = list.filter(m => m.industry === 'South Indian' || m.desc.toLowerCase().includes('south indian') || m.desc.toLowerCase().includes('tamil') || m.desc.toLowerCase().includes('telugu'));
+  } else if (category === '4k') {
+    list = list.filter(m => m.quality === '4K UHD' || m.desc.toLowerCase().includes('4k'));
+  } else if (category === 'animation') {
+    list = list.filter(m => m.genres.includes('Animation') || m.desc.toLowerCase().includes('animation') || m.desc.toLowerCase().includes('pixar') || m.desc.toLowerCase().includes('nintendo'));
+  } else if (category === 'comedy') {
+    list = list.filter(m => m.genres.includes('Comedy') || m.desc.toLowerCase().includes('comedy'));
+  }
+
+  if (query) {
+    const q = query.toLowerCase();
+    list = list.filter(m => {
+      return m.title.toLowerCase().includes(q) ||
+             m.desc.toLowerCase().includes(q) ||
+             m.genres.some(g => g.toLowerCase().includes(q)) ||
+             m.year.includes(q) ||
+             m.industry.toLowerCase().includes(q);
+    });
+  }
+  return list;
+}
+
+function handleDesktopSearchInput(val) {
+  desktopSearchQuery = (val || '').trim();
+  const dClear = document.getElementById('desktopSearchClear');
+  if (dClear) dClear.style.display = desktopSearchQuery ? 'flex' : 'none';
+
+  // If user types on desktop navbar, open search view
+  if (desktopSearchQuery.length > 0) {
+    const cur = getCurrentActivePage();
+    if (cur !== 'search') {
+      prevPageBeforeDesktopSearch = cur;
+      switchPage('search');
       const dInput = document.getElementById('desktopSearchInput');
-      if (widget) widget.classList.add('open');
-      if (dInput) dInput.focus();
+      if (dInput) setTimeout(() => dInput.focus(), 60);
     }
-  });
+  }
+
+  applyDesktopSearchFilter();
+}
+
+function clearDesktopSearch() {
+  desktopSearchQuery = '';
+  const dInput = document.getElementById('desktopSearchInput');
+  const dClear = document.getElementById('desktopSearchClear');
+  if (dInput) {
+    dInput.value = '';
+    dInput.focus();
+  }
+  if (dClear) dClear.style.display = 'none';
+  applyDesktopSearchFilter();
+}
+
+function filterDesktopSearchByPill(pill, btnEl) {
+  desktopSearchPill = pill;
+  document.querySelectorAll('#desktopSearchFilterPills .n-search-pill').forEach(b => b.classList.remove('active'));
+  if (btnEl) btnEl.classList.add('active');
+  applyDesktopSearchFilter();
+}
+
+function quickDesktopSearchTag(tagName) {
+  const dInput = document.getElementById('desktopSearchInput');
+  if (dInput) dInput.value = tagName;
+  handleDesktopSearchInput(tagName);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function applyDesktopSearchFilter() {
+  const results = filterMoviesList(sandflixCatalog, desktopSearchQuery, desktopSearchPill);
+  renderDesktopSearchResults(results, desktopSearchQuery);
+}
+
+function renderDesktopSearchResults(results, query) {
+  const grid = document.getElementById('desktopSearchResultsGrid');
+  const heading = document.getElementById('desktopSearchResultsHeading');
+  const badge = document.getElementById('desktopSearchResultsBadge');
+  const emptyState = document.getElementById('desktopSearchEmptyState');
+  const highlight = document.getElementById('desktopEmptyQueryHighlight');
+
+  if (heading && badge) {
+    if (query) {
+      heading.textContent = `Results for "${query}"`;
+      badge.textContent = `${results.length} ${results.length === 1 ? 'Title' : 'Titles'}`;
+    } else {
+      heading.textContent = desktopSearchPill === 'all' ? 'All Titles' : `${desktopSearchPill.toUpperCase()} Titles`;
+      badge.textContent = `${results.length} Titles`;
+    }
+  }
+
+  if (results.length === 0) {
+    if (grid) grid.style.display = 'none';
+    if (emptyState) {
+      emptyState.style.display = 'flex';
+      if (highlight) highlight.textContent = `"${query}"`;
+    }
+    return;
+  }
+
+  if (emptyState) emptyState.style.display = 'none';
+  if (grid) {
+    grid.style.display = 'grid';
+    grid.innerHTML = results.map(item => buildSearchCardHtml(item)).join('');
+  }
 }
 
 function toggleNetflixSearch(event) {
@@ -7087,7 +7215,7 @@ function toggleNetflixSearch(event) {
       setTimeout(() => dInput.focus(), 150);
     }
     const curActive = getCurrentActivePage();
-    if (curActive !== 'search') prevPageBeforeSearch = curActive;
+    if (curActive !== 'search') prevPageBeforeDesktopSearch = curActive;
   }
 }
 
@@ -7097,9 +7225,9 @@ function handleDesktopSearchKeyDown(event) {
     const dInput = document.getElementById('desktopSearchInput');
     if (dInput) dInput.value = '';
     if (widget) widget.classList.remove('open');
-    clearUnifiedSearch('desktop');
-    if (prevPageBeforeSearch && prevPageBeforeSearch !== 'search') {
-      switchPage(prevPageBeforeSearch);
+    clearDesktopSearch();
+    if (prevPageBeforeDesktopSearch && prevPageBeforeDesktopSearch !== 'search') {
+      switchPage(prevPageBeforeDesktopSearch);
     }
   } else if (event.key === 'Enter') {
     event.preventDefault();
@@ -7107,122 +7235,62 @@ function handleDesktopSearchKeyDown(event) {
   }
 }
 
-function handleUnifiedSearch(value, source) {
-  currentSearchQuery = value.trim();
+// --- MOBILE SEARCH STATE & FUNCTIONS ---
+let mobileSearchQuery = '';
+let mobileSearchCategory = 'all';
 
-  const dInput = document.getElementById('desktopSearchInput');
-  const mInput = document.getElementById('mobileSearchInput');
-  const dClear = document.getElementById('desktopSearchClear');
+function handleMobileSearchInput(val) {
+  mobileSearchQuery = (val || '').trim();
   const mClear = document.getElementById('mobileSearchClear');
-
-  if (source === 'desktop' && mInput) mInput.value = value;
-  if (source === 'mobile' && dInput) dInput.value = value;
-
-  if (dClear) dClear.style.display = value ? 'flex' : 'none';
-  if (mClear) mClear.style.display = value ? 'flex' : 'none';
-
-  // If user is typing on desktop navbar, seamlessly bring up the search-view
-  if (source === 'desktop' && value.length > 0) {
-    const curPage = getCurrentActivePage();
-    if (curPage !== 'search') {
-      prevPageBeforeSearch = curPage;
-      switchPage('search');
-      if (dInput) setTimeout(() => dInput.focus(), 50);
-    }
-  }
-
-  applySearchFilters();
+  if (mClear) mClear.style.display = mobileSearchQuery ? 'flex' : 'none';
+  applyMobileSearchFilter();
 }
 
-function clearUnifiedSearch(source) {
-  currentSearchQuery = '';
-  const dInput = document.getElementById('desktopSearchInput');
+function clearMobileSearch() {
+  mobileSearchQuery = '';
   const mInput = document.getElementById('mobileSearchInput');
-  const dClear = document.getElementById('desktopSearchClear');
   const mClear = document.getElementById('mobileSearchClear');
-
-  if (dInput) dInput.value = '';
-  if (mInput) mInput.value = '';
-  if (dClear) dClear.style.display = 'none';
+  if (mInput) {
+    mInput.value = '';
+    mInput.focus();
+  }
   if (mClear) mClear.style.display = 'none';
-
-  applySearchFilters();
-
-  if (source === 'desktop') {
-    if (dInput) dInput.focus();
-  } else {
-    if (mInput) mInput.focus();
-  }
+  applyMobileSearchFilter();
 }
 
-function filterSearchCategory(category, buttonEl) {
-  currentSearchCategory = category;
-  document.querySelectorAll('#searchFilterPills .s-pill').forEach(btn => {
-    btn.classList.remove('active');
-  });
-  if (buttonEl) buttonEl.classList.add('active');
-  applySearchFilters();
+function filterMobileSearchCategory(cat, btnEl) {
+  mobileSearchCategory = cat;
+  document.querySelectorAll('#mobileSearchFilterPills .s-pill').forEach(b => b.classList.remove('active'));
+  if (btnEl) btnEl.classList.add('active');
+  applyMobileSearchFilter();
 }
 
-function applySearchFilters() {
-  let filtered = sandflixCatalog;
-
-  // Filter by category pill
-  if (currentSearchCategory === 'trending') {
-    filtered = filtered.filter(m => [
-      'part1', 'coolie', 'dhurandhar', 'jailer_2', 'the_odyssey', 
-      'michael', 'mario_galaxy', 'minions_monsters', 'mortal_kombat_2',
-      'disclosure_day', 'pushpa2', 'chhaava'
-    ].includes(m.key));
-  } else if (currentSearchCategory === 'action') {
-    filtered = filtered.filter(m => m.genres.includes('Action') || m.desc.toLowerCase().includes('action') || m.desc.toLowerCase().includes('mass'));
-  } else if (currentSearchCategory === 'hollywood') {
-    filtered = filtered.filter(m => m.industry === 'Hollywood' || m.desc.toLowerCase().includes('hollywood') || m.desc.toLowerCase().includes('universal') || m.desc.toLowerCase().includes('warner'));
-  } else if (currentSearchCategory === 'south') {
-    filtered = filtered.filter(m => m.industry === 'South Indian' || m.desc.toLowerCase().includes('south indian') || m.desc.toLowerCase().includes('tamil') || m.desc.toLowerCase().includes('telugu'));
-  } else if (currentSearchCategory === '4k') {
-    filtered = filtered.filter(m => m.quality === '4K UHD' || m.desc.toLowerCase().includes('4k'));
-  } else if (currentSearchCategory === 'animation') {
-    filtered = filtered.filter(m => m.genres.includes('Animation') || m.desc.toLowerCase().includes('animation') || m.desc.toLowerCase().includes('pixar') || m.desc.toLowerCase().includes('nintendo'));
-  } else if (currentSearchCategory === 'comedy') {
-    filtered = filtered.filter(m => m.genres.includes('Comedy') || m.desc.toLowerCase().includes('comedy'));
-  }
-
-  // Filter by search query
-  if (currentSearchQuery) {
-    const q = currentSearchQuery.toLowerCase();
-    filtered = filtered.filter(m => {
-      const inTitle = m.title.toLowerCase().includes(q);
-      const inDesc = m.desc.toLowerCase().includes(q);
-      const inGenres = m.genres.some(g => g.toLowerCase().includes(q));
-      const inYear = m.year.includes(q);
-      const inIndustry = m.industry.toLowerCase().includes(q);
-      return inTitle || inDesc || inGenres || inYear || inIndustry;
-    });
-  }
-
-  renderSearchResults(filtered, currentSearchQuery);
+function applyMobileSearchFilter() {
+  const results = filterMoviesList(sandflixCatalog, mobileSearchQuery, mobileSearchCategory);
+  renderMobileSearchResults(results, mobileSearchQuery);
 }
 
-function renderSearchResults(results, query) {
-  const grid = document.getElementById('searchResultsGrid');
-  const emptyState = document.getElementById('searchEmptyState');
-  const statusTitle = document.getElementById('searchStatusTitle');
-  const statusBadge = document.getElementById('searchStatusBadge');
+function renderMobileSearchResults(results, query) {
+  const grid = document.getElementById('mobileSearchResultsGrid');
+  const title = document.getElementById('mobileSearchStatusTitle');
+  const badge = document.getElementById('mobileSearchStatusBadge');
+  const emptyState = document.getElementById('mobileSearchEmptyState');
+  const emptyHeading = document.getElementById('mobileSearchEmptyHeading');
+  const emptyText = document.getElementById('mobileSearchEmptyText');
 
-  if (statusTitle && statusBadge) {
+  if (title && badge) {
     if (query) {
-      statusTitle.textContent = 'Results for "' + query + '"';
-      statusBadge.textContent = results.length + ' ' + (results.length === 1 ? 'Title' : 'Titles');
+      title.textContent = `Results for "${query}"`;
+      badge.textContent = `${results.length} ${results.length === 1 ? 'Title' : 'Titles'}`;
     } else {
-      if (currentSearchCategory === 'all') {
-        statusTitle.textContent = 'All Available Movies & Sagas';
-      } else if (currentSearchCategory === 'trending') {
-        statusTitle.textContent = '🔥 Trending Searches & Blockbusters';
+      if (mobileSearchCategory === 'all') {
+        title.textContent = 'All Available Movies & Sagas';
+      } else if (mobileSearchCategory === 'trending') {
+        title.textContent = '🔥 Trending Searches';
       } else {
-        statusTitle.textContent = currentSearchCategory.toUpperCase() + ' Cinema';
+        title.textContent = mobileSearchCategory.toUpperCase() + ' Cinema';
       }
-      statusBadge.textContent = results.length + ' Titles';
+      badge.textContent = `${results.length} Titles`;
     }
   }
 
@@ -7230,10 +7298,8 @@ function renderSearchResults(results, query) {
     if (grid) grid.style.display = 'none';
     if (emptyState) {
       emptyState.style.display = 'flex';
-      const emptyHeading = document.getElementById('searchEmptyHeading');
-      const emptyText = document.getElementById('searchEmptyText');
-      if (emptyHeading) emptyHeading.textContent = 'No movies found matching "' + query + '"';
-      if (emptyText) emptyText.textContent = 'Try searching for Ramayana, Coolie, Dhurandhar, The Odyssey, Michael, or browse by category.';
+      if (emptyHeading) emptyHeading.textContent = `No movies found matching "${query}"`;
+      if (emptyText) emptyText.textContent = 'Try searching by title (e.g. Ramayana, Coolie, Dhurandhar, The Odyssey) or actor name.';
     }
     return;
   }
@@ -7241,41 +7307,56 @@ function renderSearchResults(results, query) {
   if (emptyState) emptyState.style.display = 'none';
   if (grid) {
     grid.style.display = 'grid';
-    grid.innerHTML = results.map(item => `
-      <article class="n-card compact search-card official-master-card" onclick="openNetflixBlackPlayer('${item.key}')" title="Play ${item.title} (${item.year})">
-        <div class="n-card-thumb">
-          <img src="${item.hero}" data-poster="${item.poster}" alt="${item.title}" loading="lazy" />
-          <span class="n-card-quality-tag">${item.quality}</span>
-
-          <div class="n-card-overlay">
-            <div class="n-card-actions">
-              <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('${item.key}');" title="Play Movie">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
-              </button>
-              <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-              </button>
-              <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
-              </button>
-              <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('${item.key}');" title="More Info">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-              </button>
-            </div>
-            <div class="n-card-info">
-              <h4 class="n-movie-name">${item.title}</h4>
-              <p class="n-card-genres">${item.genres.join(' • ')} &bull; ${item.year}</p>
-            </div>
-          </div>
-        </div>
-      </article>
-    `).join('');
+    grid.innerHTML = results.map(item => buildSearchCardHtml(item)).join('');
   }
 }
 
-// Aliases for compatibility
-function handleNetflixSearchInput(val, src) { handleUnifiedSearch(val, src); }
-function clearNetflixSearch(src) { clearUnifiedSearch(src); }
-function filterSearchByPill(cat, el) { filterSearchCategory(cat, el); }
+// --- MASTER INITIALIZATION ---
+function initDualSearchEngines() {
+  // Render full catalog on both Desktop & Mobile immediately
+  applyDesktopSearchFilter();
+  applyMobileSearchFilter();
+
+  // Desktop click outside listener to collapse search bar if empty
+  document.addEventListener('click', function(e) {
+    const widget = document.getElementById('netflixSearchWidget');
+    const dInput = document.getElementById('desktopSearchInput');
+    if (widget && !widget.contains(e.target)) {
+      if (dInput && dInput.value.trim() === '') {
+        widget.classList.remove('open');
+      }
+    }
+  });
+
+  // Shortcut '/' for PC desktop search
+  document.addEventListener('keydown', function(e) {
+    if (e.key === '/' && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+      e.preventDefault();
+      const widget = document.getElementById('netflixSearchWidget');
+      const dInput = document.getElementById('desktopSearchInput');
+      if (widget) widget.classList.add('open');
+      if (dInput) dInput.focus();
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  initDualSearchEngines();
+});
+
+// Compatibility Aliases so no external call can fail
+function handleNetflixSearchInput(val, src) {
+  if (src === 'desktop') handleDesktopSearchInput(val);
+  else handleMobileSearchInput(val);
+}
+function clearNetflixSearch(src) {
+  if (src === 'desktop') clearDesktopSearch();
+  else clearMobileSearch();
+}
+function filterSearchByPill(cat, el) { filterDesktopSearchByPill(cat, el); }
 function handleNetflixSearchKeyDown(e) { handleDesktopSearchKeyDown(e); }
-function initNetflixSearch() { initUnifiedSearchEngine(); }
+function handleUnifiedSearch(val, src) { handleNetflixSearchInput(val, src); }
+function clearUnifiedSearch(src) { clearNetflixSearch(src); }
+function filterSearchCategory(cat, el) { filterMobileSearchCategory(cat, el); }
+function initUnifiedSearchEngine() { initDualSearchEngines(); }
+function initNetflixSearch() { initDualSearchEngines(); }
