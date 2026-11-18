@@ -1160,6 +1160,90 @@ const OST_TRACKS = [
     src: "audio/14_bolo_har_har_har_shivaay.m4a",
     banner: "assets/images/hanuman_meditation_hd.jpg",
     desc: "A roaring, cosmic fusion of ancient Sanskrit Rudrastakam with modern bass honoring Lord Shiva the Supreme Destroyer."
+  },
+  {
+    id: 15,
+    num: "07",
+    album: "hanuman-divine",
+    title: "Babam Bam",
+    subtitle: "Sacred Shiv Tandav Rap & High Energy Chants",
+    tag: "SHIVA HIP-HOP",
+    artist: "Paradox • Aditya Pushkarna",
+    duration: "02:17",
+    durationSec: 137,
+    src: "audio/15_babam_bam.m4a",
+    banner: "assets/images/hanuman_meditation_hd.jpg",
+    desc: "Explosive devotional hip-hop tribute praising Mahadev's infinite glory with thunderous beats and raw energy."
+  },
+  {
+    id: 16,
+    num: "08",
+    album: "hanuman-divine",
+    title: "Bhagwadhari",
+    subtitle: "Valor of Sanatana Dharma & Saffron Anthem",
+    tag: "DHARMA ANTHEM",
+    artist: "Bucks Boy • Sudarshan Jagdish",
+    duration: "03:18",
+    durationSec: 198,
+    src: "audio/16_bhagwadhari.m4a",
+    banner: "assets/images/hanuman_meditation_hd.jpg",
+    desc: "Fierce anthem celebrating the eternal spirit of Sanatan Dharma, strength, and unwavering devotion."
+  },
+  {
+    id: 17,
+    num: "09",
+    album: "hanuman-divine",
+    title: "Kalki",
+    subtitle: "Prophecy of the Tenth Avatar & End of Kaliyuga",
+    tag: "AVATAR THEME",
+    artist: "Lucke • Dean Music",
+    duration: "03:49",
+    durationSec: 229,
+    src: "audio/17_kalki.m4a",
+    banner: "assets/images/hanuman_meditation_hd.jpg",
+    desc: "Hypnotic cinematic score capturing the prophesied awakening of Lord Kalki to restore righteousness."
+  },
+  {
+    id: 18,
+    num: "10",
+    album: "hanuman-divine",
+    title: "Aathma Raama",
+    subtitle: "Classical Carnatic Meets Underground Hip-Hop",
+    tag: "CARNATIC RAP",
+    artist: "Brodha V • Vighnesh S",
+    duration: "03:54",
+    durationSec: 235,
+    src: "audio/18_aathma_raama.m4a",
+    banner: "assets/images/hanuman_meditation_hd.jpg",
+    desc: "Legendary blend of sacred Carnatic classical vocals with hard-hitting conscious lyricism and flow."
+  },
+  {
+    id: 19,
+    num: "11",
+    album: "hanuman-divine",
+    title: "Shoorveer - Maharana Pratap",
+    subtitle: "Legendary Tribute to the Immortal Rajput Warrior",
+    tag: "HISTORIC ANTHEM",
+    artist: "Rapperiya Baalam • Rajneesh Jaipuri",
+    duration: "03:58",
+    durationSec: 238,
+    src: "audio/19_shoorveer.m4a",
+    banner: "assets/images/hanuman_meditation_hd.jpg",
+    desc: "Stirring historic war ballad honoring the unyielding pride and freedom of Maharana Pratap."
+  },
+  {
+    id: 20,
+    num: "12",
+    album: "hanuman-divine",
+    title: "Aigiri Nandini",
+    subtitle: "Mahishasura Mardini Stotram Fusion",
+    tag: "SHAKTI ANTHEM",
+    artist: "Brodha V",
+    duration: "04:00",
+    durationSec: 240,
+    src: "audio/20_aigiri_nandini.m4a",
+    banner: "assets/images/hanuman_meditation_hd.jpg",
+    desc: "Adrenaline-fueled rendition of Adi Shankaracharya's sacred verses invoking Goddess Durga's cosmic power."
   }
 ];
 
@@ -1797,9 +1881,9 @@ const SANDIFY_ALBUMS = {
   'hanuman-divine': {
     title: 'Hanuman & Shiv Shakti: Divine Warriors',
     subtitle: 'Thunderous devotional anthems, sacred stotrams, epic war rap, and timeless invocations to <strong>Bajrangbali</strong> and <strong>Lord Shiva</strong>.',
-    artist1: 'Devotional Folk',
-    artist2: 'Rapperiya Baalam • Mithoon',
-    meta: '2026 • 6 songs, 18 min 52 sec',
+    artist1: 'Devotional Folk • Brodha V',
+    artist2: 'Rapperiya Baalam • Paradox',
+    meta: '2026 • 12 songs, 41 min 39 sec',
     cover: 'assets/images/hanuman_meditation_hd.jpg',
     category: 'all',
     startTrack: 9
