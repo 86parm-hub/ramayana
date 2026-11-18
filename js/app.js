@@ -7114,19 +7114,33 @@ function filterMoviesList(catalog, query, category) {
   return list;
 }
 
-function handleDesktopSearchInput(val) {
+function handleDesktopSearchInput(val, source) {
   desktopSearchQuery = (val || '').trim();
+
+  const dInput = document.getElementById('desktopSearchInput');
+  const dCanvasInput = document.getElementById('desktopCanvasSearchInput');
   const dClear = document.getElementById('desktopSearchClear');
-  if (dClear) dClear.style.display = desktopSearchQuery ? 'flex' : 'none';
+  const dCanvasClear = document.getElementById('desktopCanvasSearchClear');
+
+  // Synchronize both inputs if one changed
+  if (source === 'navbar' && dCanvasInput && dCanvasInput.value !== val) {
+    dCanvasInput.value = val || '';
+  } else if (source === 'canvas' && dInput && dInput.value !== val) {
+    dInput.value = val || '';
+  }
+
+  const hasVal = desktopSearchQuery.length > 0;
+  if (dClear) dClear.style.display = hasVal ? 'flex' : 'none';
+  if (dCanvasClear) dCanvasClear.style.display = hasVal ? 'flex' : 'none';
 
   // If user types on desktop navbar, open search view
-  if (desktopSearchQuery.length > 0) {
+  if (hasVal) {
     const cur = getCurrentActivePage();
     if (cur !== 'search') {
       prevPageBeforeDesktopSearch = cur;
       switchPage('search');
-      const dInput = document.getElementById('desktopSearchInput');
-      if (dInput) setTimeout(() => dInput.focus(), 60);
+      if (source === 'navbar' && dInput) setTimeout(() => dInput.focus(), 60);
+      if (source === 'canvas' && dCanvasInput) setTimeout(() => dCanvasInput.focus(), 60);
     }
   }
 
@@ -7136,13 +7150,22 @@ function handleDesktopSearchInput(val) {
 function clearDesktopSearch() {
   desktopSearchQuery = '';
   const dInput = document.getElementById('desktopSearchInput');
+  const dCanvasInput = document.getElementById('desktopCanvasSearchInput');
   const dClear = document.getElementById('desktopSearchClear');
-  if (dInput) {
-    dInput.value = '';
+  const dCanvasClear = document.getElementById('desktopCanvasSearchClear');
+
+  if (dInput) dInput.value = '';
+  if (dCanvasInput) dCanvasInput.value = '';
+  if (dClear) dClear.style.display = 'none';
+  if (dCanvasClear) dCanvasClear.style.display = 'none';
+
+  applyDesktopSearchFilter();
+
+  if (dCanvasInput && document.activeElement === dCanvasInput) {
+    dCanvasInput.focus();
+  } else if (dInput) {
     dInput.focus();
   }
-  if (dClear) dClear.style.display = 'none';
-  applyDesktopSearchFilter();
 }
 
 function filterDesktopSearchByPill(pill, btnEl) {
@@ -7154,8 +7177,10 @@ function filterDesktopSearchByPill(pill, btnEl) {
 
 function quickDesktopSearchTag(tagName) {
   const dInput = document.getElementById('desktopSearchInput');
+  const dCanvasInput = document.getElementById('desktopCanvasSearchInput');
   if (dInput) dInput.value = tagName;
-  handleDesktopSearchInput(tagName);
+  if (dCanvasInput) dCanvasInput.value = tagName;
+  handleDesktopSearchInput(tagName, 'quick');
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
