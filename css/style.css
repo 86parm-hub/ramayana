@@ -11212,13 +11212,13 @@ video {
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   1. Desktop Navbar Search Widget (Curved Black Glass Theme with Subtle Border)
+   1. Desktop Navbar Search Widget (Exact Netflix Capsule Pill with Black Glass Theme)
    -------------------------------------------------------------------------- */
 .netflix-search-widget {
   display: inline-flex;
   align-items: center;
   position: relative;
-  height: 38px;
+  height: 40px;
 }
 
 .n-search-toggle-btn {
@@ -11226,7 +11226,7 @@ video {
   border: none;
   color: #fff;
   cursor: pointer;
-  padding: 8px;
+  padding: 9px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11235,7 +11235,7 @@ video {
 }
 
 .n-search-toggle-btn:hover {
-  transform: scale(1.1);
+  transform: scale(1.08);
   color: #e50914;
 }
 
@@ -11244,16 +11244,16 @@ video {
   opacity: 0;
   pointer-events: none;
   border: 1px solid transparent;
-  background: rgba(18, 18, 18, 0.88);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(12, 12, 12, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   display: flex;
   align-items: center;
-  height: 38px;
+  height: 40px;
   box-sizing: border-box;
   padding: 0;
   overflow: hidden;
-  border-radius: 8px; /* Clean curved corners as requested */
+  border-radius: 9999px; /* Exact Capsule Pill shape matching uploaded Netflix image */
   transition: width 0.32s cubic-bezier(0.16, 1, 0.3, 1), 
               opacity 0.22s ease, 
               border-color 0.22s ease,
@@ -11265,37 +11265,42 @@ video {
 }
 
 .netflix-search-widget.open .n-search-input-wrap {
-  width: 300px;
+  width: 320px;
   opacity: 1;
   pointer-events: auto;
-  border: 1px solid rgba(255, 255, 255, 0.24); /* Thinner/softer border as requested */
-  background: rgba(18, 18, 18, 0.88);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  padding: 0 12px;
-  border-radius: 8px; /* Curve corners */
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.32); /* Thin subtle translucent border as in Netflix image */
+  background: rgba(10, 10, 10, 0.82); /* Netflix dark glass */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 0 16px 0 16px; /* Semicircular cap spacing */
+  border-radius: 9999px; /* 100% Semicircular Pill ends */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .netflix-search-widget.open .n-search-input-wrap:focus-within {
-  border-color: rgba(255, 255, 255, 0.55);
-  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1), 0 8px 30px rgba(0, 0, 0, 0.85);
+  border-color: rgba(255, 255, 255, 0.62);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2), 0 8px 26px rgba(0, 0, 0, 0.85);
 }
 
 .n-search-inner-icon {
-  color: rgba(255, 255, 255, 0.85);
-  margin-right: 10px;
+  color: #ffffff;
+  margin-right: 11px;
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-shrink: 0;
+}
+
+.n-search-inner-icon svg {
+  display: block;
 }
 
 .n-search-input-field {
   background: transparent;
   border: none;
   outline: none;
-  color: #fff;
-  font-size: 14px;
+  color: #ffffff;
+  font-size: 14.5px;
   font-weight: 400;
   width: 100%;
   font-family: inherit;
@@ -11303,7 +11308,8 @@ video {
 }
 
 .n-search-input-field::placeholder {
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.5); /* Soft greyish white matching image */
+  font-weight: 400;
 }
 
 .n-search-clear-btn {
@@ -11318,11 +11324,12 @@ video {
   flex-shrink: 0;
   border-radius: 50%;
   transition: color 0.2s, background 0.2s;
+  margin-left: 4px;
 }
 
 .n-search-clear-btn:hover {
   color: #fff;
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.14);
 }
 
 /* --------------------------------------------------------------------------

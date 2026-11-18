@@ -131,7 +131,13 @@ function switchPage(pageKey, fromHistory) {
   } else if (pageKey === 'search') {
     if (homeBbVideo && !homeBbVideo.paused) homeBbVideo.pause();
     if (moviesBbVideo && !moviesBbVideo.paused) moviesBbVideo.pause();
-    if (typeof applySearchFilters === 'function') applySearchFilters();
+    const dWidget = document.getElementById('netflixSearchWidget');
+    if (dWidget) dWidget.classList.add('open');
+    const dInput = document.getElementById('desktopSearchInput');
+    if (dInput && window.innerWidth > 768) {
+      setTimeout(() => dInput.focus(), 80);
+    }
+    if (typeof applyDesktopSearchFilter === 'function') applyDesktopSearchFilter();
   } else {
     if (homeBbVideo && !homeBbVideo.paused) homeBbVideo.pause();
     if (moviesBbVideo && !moviesBbVideo.paused) moviesBbVideo.pause();
@@ -7322,13 +7328,16 @@ function initDualSearchEngines() {
   applyDesktopSearchFilter();
   applyMobileSearchFilter();
 
-  // Desktop click outside listener to collapse search bar if empty
+  // Desktop click outside listener to collapse search bar if empty (keeps open if on search page)
   document.addEventListener('click', function(e) {
     const widget = document.getElementById('netflixSearchWidget');
     const dInput = document.getElementById('desktopSearchInput');
     if (widget && !widget.contains(e.target)) {
       if (dInput && dInput.value.trim() === '') {
-        widget.classList.remove('open');
+        const curActive = typeof getCurrentActivePage === 'function' ? getCurrentActivePage() : '';
+        if (curActive !== 'search') {
+          widget.classList.remove('open');
+        }
       }
     }
   });
