@@ -1674,6 +1674,11 @@ function minimizeFloatingPlayer(event) {
     if (pillTitle && OST_TRACKS[currentOSTIndex]) {
       pillTitle.textContent = OST_TRACKS[currentOSTIndex].title;
     }
+    if (isOSTPlaying && ostAudio && !ostAudio.paused) {
+      restorePill.classList.add('is-playing');
+    } else {
+      restorePill.classList.remove('is-playing');
+    }
     restorePill.classList.add('visible');
   }
 }
@@ -1713,12 +1718,26 @@ function updateFloatingPlayerUI() {
 
   const fp = document.getElementById('ostFloatingPlayer');
   const restorePill = document.getElementById('ostRestorePill');
-  if (fp) {
-    fp.classList.remove('is-hidden');
-    fp.classList.remove('minimized');
+  const pillTitle = document.getElementById('ostRestorePillTitle');
+
+  if (pillTitle) {
+    pillTitle.textContent = track.title;
   }
+
+  const isPlayingNow = isOSTPlaying && ostAudio && !ostAudio.paused;
   if (restorePill) {
-    restorePill.classList.remove('visible');
+    if (isPlayingNow) {
+      restorePill.classList.add('is-playing');
+    } else {
+      restorePill.classList.remove('is-playing');
+    }
+  }
+
+  if (fp && !fp.classList.contains('minimized')) {
+    fp.classList.remove('is-hidden');
+    if (restorePill) {
+      restorePill.classList.remove('visible');
+    }
   }
 
   const thumb = document.getElementById('ostFpThumb');
@@ -1876,6 +1895,10 @@ ostAudio.addEventListener('play', () => {
   const fpEq = document.getElementById('ostFpEqualizer');
   if (fpEq) fpEq.classList.add('playing');
 
+  // Update Mini Restore Pill (Red circle spinning symbol)
+  const restorePill = document.getElementById('ostRestorePill');
+  if (restorePill) restorePill.classList.add('is-playing');
+
   // Update Cards UI
   OST_TRACKS.forEach((t, idx) => {
     const card = document.getElementById(`ostCard${t.id}`);
@@ -1904,6 +1927,10 @@ ostAudio.addEventListener('play', () => {
 
 ostAudio.addEventListener('pause', () => {
   isOSTPlaying = false;
+
+  // Mini Restore Pill stop rotation
+  const restorePill = document.getElementById('ostRestorePill');
+  if (restorePill) restorePill.classList.remove('is-playing');
 
   // Mobile background mediaSession playbackState
   if ('mediaSession' in navigator) {

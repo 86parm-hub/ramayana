@@ -4800,6 +4800,41 @@ body.ott-platform {
   justify-content: center !important;
   flex-shrink: 0 !important;
   animation: ostPillPulse 2s infinite ease-in-out !important;
+  transition: box-shadow 0.25s ease, transform 0.25s ease !important;
+  position: relative !important;
+}
+
+.ost-restore-pill-icon svg {
+  display: block !important;
+  width: 14px !important;
+  height: 14px !important;
+  transform-origin: center center !important;
+  will-change: transform !important;
+}
+
+/* Jab song play ho, to red circle ke andar ka symbol gol-gol (smooth 360deg) rotate ho */
+.ost-restore-pill.is-playing .ost-restore-pill-icon svg {
+  animation: ostSpinMusicSymbol 2.4s linear infinite !important;
+  transform-origin: center center !important;
+}
+
+/* Jab song pause ho, to rotation wahi pause ho jaye */
+.ost-restore-pill:not(.is-playing) .ost-restore-pill-icon svg {
+  animation: ostSpinMusicSymbol 2.4s linear infinite paused !important;
+}
+
+/* Red circle pulse & active vinyl glow when music is playing */
+.ost-restore-pill.is-playing .ost-restore-pill-icon {
+  box-shadow: 0 0 10px rgba(229, 9, 20, 0.8), 0 0 20px rgba(229, 9, 20, 0.45) !important;
+}
+
+@keyframes ostSpinMusicSymbol {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes ostPillPulse {
