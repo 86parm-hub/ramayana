@@ -11400,44 +11400,63 @@ video {
 }
 
 .search-explore-label {
-  font-size: 13.5px;
+  font-size: 14px;
   font-weight: 500;
-  color: #8c8c8c;
+  color: rgba(255, 255, 255, 0.65);
   white-space: nowrap;
   flex-shrink: 0;
+  letter-spacing: 0.1px;
 }
 
 .search-pills-row {
   display: flex;
-  gap: 8px;
+  gap: 10px;
   flex-shrink: 0;
+  align-items: center;
 }
 
+/* Explore Category Pills (Exact Netflix Pill Capsule Replica as in Image) */
 .n-search-pill {
-  background: rgba(45, 45, 45, 0.85);
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 4px;
-  padding: 6px 14px;
-  font-size: 13px;
+  background: rgba(18, 18, 18, 0.92);
+  color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.35); /* Exact subtle outline matching uploaded pill image */
+  border-radius: 9999px; /* Complete Semicircular Capsule Pill shape */
+  padding: 8px 18px;
+  font-size: 13.5px;
   font-weight: 500;
   cursor: pointer;
   white-space: nowrap;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.2;
 }
 
 .n-search-pill:hover {
-  background: #3e3e3e;
-  border-color: #fff;
+  background: rgba(35, 35, 35, 0.96);
+  border-color: rgba(255, 255, 255, 0.65);
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
 }
 
 .n-search-pill.active {
-  background: #e50914;
-  border-color: #e50914;
-  color: #fff;
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #000000;
   font-weight: 700;
-  box-shadow: 0 2px 10px rgba(229, 9, 20, 0.4);
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.35);
+  transform: scale(1.02);
+}
+
+.n-search-pill.active:hover {
+  background: #f0f0f0;
+  color: #000000;
 }
 
 .search-results-header-bar {
@@ -11545,21 +11564,25 @@ video {
 }
 
 .empty-quick-btn {
-  background: rgba(45, 45, 45, 0.85);
+  background: rgba(18, 18, 18, 0.92);
   color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 4px;
-  padding: 6px 14px;
-  font-size: 12.5px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 9999px; /* Pill capsule */
+  padding: 6px 16px;
+  font-size: 13px;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   font-family: inherit;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 .empty-quick-btn:hover {
-  background: #e50914;
-  border-color: #e50914;
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #000000;
+  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.3);
 }
 
 /* --------------------------------------------------------------------------
