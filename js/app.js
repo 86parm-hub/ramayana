@@ -1076,6 +1076,90 @@ const OST_TRACKS = [
     fallbackSrc: "audio/08_main_ram_dasharath_suta.m4a",
     banner: "assets/images/hero_banner_hd.jpg",
     desc: "Soul-stirring divine anthem of Maryada Purushottam Lord Rama upholding supreme Dharma and eternal vows."
+  },
+  {
+    id: 9,
+    num: "01",
+    album: "hanuman-divine",
+    title: "Balwan Hanuman",
+    subtitle: "Sacred Bhajans & Devotional Chants",
+    tag: "DEVOTIONAL BHAJAN",
+    artist: "Jai Jai Bhajans • Devotional Folk",
+    duration: "02:40",
+    durationSec: 160,
+    src: "audio/09_balwan_hanuman.m4a",
+    banner: "assets/images/hanuman_meditation_hd.jpg",
+    desc: "Soul-stirring divine chants of Balwan Hanuman praising the supreme strength and humility of Bajrangbali."
+  },
+  {
+    id: 10,
+    num: "02",
+    album: "hanuman-divine",
+    title: "Shendur Laal Chadhayo (Aarti)",
+    subtitle: "Auspicious Ganesha Aarti & Divine Rhythms",
+    tag: "GANPATI AARTI",
+    artist: "Ravindra Sathe • Jatin-Lalit • Sameer",
+    duration: "03:12",
+    durationSec: 192,
+    src: "audio/10_shendur_laal_chadhayo.m4a",
+    banner: "assets/images/hanuman_meditation_hd.jpg",
+    desc: "The sacred Ganpati Aarti with traditional dhol-tasha rhythms invoking prosperity and removing all obstacles."
+  },
+  {
+    id: 11,
+    num: "03",
+    album: "hanuman-divine",
+    title: "Mahabharat Story Rap",
+    subtitle: "High-Octane Narrative Rap of the Great Epic",
+    tag: "EPIC WAR RAP",
+    artist: "Abby Viral",
+    duration: "03:58",
+    durationSec: 238,
+    src: "audio/11_mahabharat_story_rap.m4a",
+    banner: "assets/images/hanuman_meditation_hd.jpg",
+    desc: "Powerful storytelling rap narrating the Kurukshetra war, Dharma, and the eternal teachings of the Bhagavad Gita."
+  },
+  {
+    id: 12,
+    num: "04",
+    album: "hanuman-divine",
+    title: "Shoorveer 3 - Chhatrapati Shivaji Maharaj",
+    subtitle: "Grand Historic Anthem of Valor & Swarajya",
+    tag: "WAR ANTHEM",
+    artist: "Rapperiya Baalam • Shambho • Meetu Solanki",
+    duration: "03:29",
+    durationSec: 209,
+    src: "audio/12_shoorveer_3_shivaji_maharaj.m4a",
+    banner: "assets/images/hanuman_meditation_hd.jpg",
+    desc: "Electrifying patriotic tribute commemorating the valor, vision, and immortal glory of Chhatrapati Shivaji Maharaj."
+  },
+  {
+    id: 13,
+    num: "05",
+    album: "hanuman-divine",
+    title: "Gajanana (Shree Ganesha)",
+    subtitle: "Majestic Divine Invocation of Vighnaharta",
+    tag: "DEVOTIONAL ANTHEM",
+    artist: "Sukhwinder Singh • Traditional Choral",
+    duration: "03:34",
+    durationSec: 214,
+    src: "audio/13_gajanana_shree_ganesha.m4a",
+    banner: "assets/images/hanuman_meditation_hd.jpg",
+    desc: "Thunderous, heart-racing celebratory ode to Lord Ganesha with high brass, traditional shankh, and folk drums."
+  },
+  {
+    id: 14,
+    num: "06",
+    album: "hanuman-divine",
+    title: "Bolo Har Har Har (Shivaay)",
+    subtitle: "Monumental Tandav Anthem of Mahadev",
+    tag: "SHIVA TANDAV",
+    artist: "Mithoon • Mohit Chauhan • Badshah • Sukhwinder",
+    duration: "03:29",
+    durationSec: 209,
+    src: "audio/14_bolo_har_har_har_shivaay.m4a",
+    banner: "assets/images/hanuman_meditation_hd.jpg",
+    desc: "A roaring, cosmic fusion of ancient Sanskrit Rudrastakam with modern bass honoring Lord Shiva the Supreme Destroyer."
   }
 ];
 
@@ -1185,7 +1269,9 @@ function togglePlayAllOST() {
     ostAudio.pause();
   } else {
     if (!ostAudio.src || ostAudio.src === '') {
-      playOSTTrack(1);
+      const album = SANDIFY_ALBUMS[currentActiveAlbumKey];
+      const startId = (album && album.startTrack) ? album.startTrack : 1;
+      playOSTTrack(startId);
     } else {
       ostAudio.play().catch(e => console.warn('Audio play prevented:', e));
     }
@@ -1195,15 +1281,19 @@ function togglePlayAllOST() {
 // Shuffle Play
 function shufflePlayOST() {
   pauseActiveVideosForAudio();
-  let nextIdx;
-  if (OST_TRACKS.length > 1) {
-    do {
-      nextIdx = Math.floor(Math.random() * OST_TRACKS.length);
-    } while (nextIdx === currentOSTIndex);
+  // Filter tracks to current active album
+  const currentAlbumTracks = OST_TRACKS.filter(t => (t.album || 'divine-symphony') === currentActiveAlbumKey);
+  const pool = currentAlbumTracks.length > 0 ? currentAlbumTracks : OST_TRACKS;
+
+  let nextTrack;
+  if (pool.length > 1) {
+    const currentId = OST_TRACKS[currentOSTIndex] ? OST_TRACKS[currentOSTIndex].id : -1;
+    const candidates = pool.filter(t => t.id !== currentId);
+    nextTrack = candidates[Math.floor(Math.random() * candidates.length)];
   } else {
-    nextIdx = 0;
+    nextTrack = pool[0];
   }
-  playOSTTrack(OST_TRACKS[nextIdx].id);
+  if (nextTrack) playOSTTrack(nextTrack.id);
 }
 
 // Previous Track
@@ -1404,6 +1494,12 @@ function filterSandifyTracks(category, btn) {
 
   const rows = document.querySelectorAll('.spotify-row');
   rows.forEach(r => {
+    const rowAlbum = r.getAttribute('data-album') || 'divine-symphony';
+    // Only filter tracks of currently active album
+    if (rowAlbum !== currentActiveAlbumKey) {
+      r.style.display = 'none';
+      return;
+    }
     const cat = r.getAttribute('data-cat') || '';
     if (category === 'all' || cat === category || cat.split(' ').indexOf(category) !== -1) {
       r.style.display = 'grid';
@@ -1693,8 +1789,20 @@ const SANDIFY_ALBUMS = {
     subtitle: 'The celestial orchestral masterpiece and sacred Sanskrit hymns orchestrated by dual Academy Award winners <strong>A.R. Rahman</strong> &amp; <strong>Hans Zimmer</strong>.',
     artist1: 'A.R. Rahman',
     artist2: 'Hans Zimmer',
+    meta: '2026 • 8 songs, 28 min 50 sec',
     cover: 'assets/images/movie_poster_hd.jpg',
-    category: 'all'
+    category: 'all',
+    startTrack: 1
+  },
+  'hanuman-divine': {
+    title: 'Hanuman & Shiv Shakti: Divine Warriors',
+    subtitle: 'Thunderous devotional anthems, sacred stotrams, epic war rap, and timeless invocations to <strong>Bajrangbali</strong> and <strong>Lord Shiva</strong>.',
+    artist1: 'Devotional Folk',
+    artist2: 'Rapperiya Baalam • Mithoon',
+    meta: '2026 • 6 songs, 18 min 52 sec',
+    cover: 'assets/images/hanuman_meditation_hd.jpg',
+    category: 'all',
+    startTrack: 9
   },
   'sacred-shlokas': {
     title: 'Sacred Shlokas & Vedic Chants',
@@ -1738,27 +1846,52 @@ const SANDIFY_ALBUMS = {
   }
 };
 
+let currentActiveAlbumKey = 'divine-symphony';
+
 function openSandifySubpage(albumKey, fromHistory) {
   albumKey = albumKey || 'divine-symphony';
+  currentActiveAlbumKey = albumKey;
   const album = SANDIFY_ALBUMS[albumKey] || SANDIFY_ALBUMS['divine-symphony'];
 
   const titleEl = document.querySelector('.subpage-main-title');
   const descEl = document.querySelector('.subpage-main-desc');
   const coverEl = document.getElementById('subpageCoverImg');
+  const creditsLineEl = document.querySelector('.subpage-credits-line');
+  const playBtnEl = document.querySelector('.subpage-btn-play');
+
   if (titleEl && album.title) titleEl.textContent = album.title;
   if (descEl && album.subtitle) descEl.innerHTML = album.subtitle;
   if (coverEl && album.cover) coverEl.src = album.cover;
-
-  if (typeof filterSandifyTracks === 'function' && album.category) {
-    const chipCat = (album.category === 'score' || album.category === 'all') ? 'all' : album.category;
-    const chips = document.querySelectorAll('.subpage-chips .ytm-chip');
-    chips.forEach(c => {
-      const onclickAttr = c.getAttribute('onclick') || '';
-      if (onclickAttr.includes(`'${chipCat}'`)) {
-        filterSandifyTracks(chipCat, c);
-      }
-    });
+  if (creditsLineEl) {
+    creditsLineEl.innerHTML = `
+      <span class="subpage-artist">${album.artist1 || 'Devotional'}</span>
+      <span class="subpage-dot">&bull;</span>
+      <span class="subpage-artist">${album.artist2 || 'Traditional'}</span>
+      <span class="subpage-dot">&bull;</span>
+      <span class="subpage-meta-dim">${album.meta || '2026'}</span>
+    `;
   }
+  if (playBtnEl && album.startTrack) {
+    playBtnEl.setAttribute('onclick', `playOSTTrack(${album.startTrack})`);
+  }
+
+  // Filter tracklist rows to display only tracks belonging to this album
+  const allRows = document.querySelectorAll('.spotify-row');
+  allRows.forEach(row => {
+    const rowAlbum = row.getAttribute('data-album') || 'divine-symphony';
+    if (rowAlbum === albumKey) {
+      row.style.display = 'grid';
+    } else {
+      row.style.display = 'none';
+    }
+  });
+
+  // Reset mood chips to 'All Tracks'
+  const chips = document.querySelectorAll('.subpage-chips .ytm-chip');
+  chips.forEach((c, idx) => {
+    if (idx === 0) c.classList.add('active');
+    else c.classList.remove('active');
+  });
 
   const mainView = document.getElementById('sandifyMainView');
   const subpageView = document.getElementById('sandifySubpageView');

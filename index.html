@@ -3402,11 +3402,11 @@
             <h2 class="sandify-section-title">Albums &amp; Soundtracks <span class="sandify-chevron">&rsaquo;</span></h2>
             <p class="sandify-section-desc">Click any card to open its dedicated tracklist</p>
           </div>
-          <span class="sandify-badge-count">1 Master Album</span>
+          <span class="sandify-badge-count">2 Master Albums</span>
         </div>
 
         <div class="spotify-card-grid">
-          <!-- Card 1: Master Album (Only Card) -->
+          <!-- Card 1: Master Album (Ramayana: The Divine Symphony) -->
           <article class="spotify-music-card" onclick="openSandifySubpage('divine-symphony')" title="Ramayana: The Divine Symphony">
             <div class="spotify-card-art-box">
               <img src="assets/images/movie_poster_hd.jpg" alt="Ramayana: The Divine Symphony" class="spotify-card-img" loading="lazy">
@@ -3418,6 +3418,20 @@
             </div>
             <h3 class="spotify-card-name">Ramayana: The Divine Symphony</h3>
             <p class="spotify-card-artists">A.R. Rahman, Hans Zimmer</p>
+          </article>
+
+          <!-- Card 2: Hanuman & Shiv Shakti - Divine Warriors & Hymns -->
+          <article class="spotify-music-card" onclick="openSandifySubpage('hanuman-divine')" title="Hanuman &amp; Shiv Shakti: Divine Warriors">
+            <div class="spotify-card-art-box">
+              <img src="assets/images/hanuman_meditation_hd.jpg" alt="Hanuman &amp; Shiv Shakti: Divine Warriors" class="spotify-card-img" loading="lazy">
+              <button class="spotify-card-play" onclick="event.stopPropagation(); playOSTTrack(9);" title="Play Album">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                  <polygon points="6 4 20 12 6 20 6 4"></polygon>
+                </svg>
+              </button>
+            </div>
+            <h3 class="spotify-card-name">Hanuman &amp; Shiv Shakti: Divine Warriors</h3>
+            <p class="spotify-card-artists">Devotional Folk, Rapperiya Baalam, Mithoon</p>
           </article>
         </div>
       </div>
@@ -3514,7 +3528,7 @@
         <div class="spotify-tracks-list" id="spotifyTracksList">
 
           <!-- Track 01 -->
-          <div class="spotify-row" id="sRow1" data-track-id="1" data-cat="symphony" onclick="playOSTTrack(1)">
+          <div class="spotify-row" id="sRow1" data-album="divine-symphony" data-track-id="1" data-cat="symphony" onclick="playOSTTrack(1)">
             <div class="s-col-num">
               <span class="s-track-idx">1</span>
               <button class="s-row-play-btn" title="Play">
@@ -3532,7 +3546,7 @@
           </div>
 
           <!-- Track 02 -->
-          <div class="spotify-row" id="sRow2" data-track-id="2" data-cat="devotional" onclick="playOSTTrack(2)">
+          <div class="spotify-row" id="sRow2" data-album="divine-symphony" data-track-id="2" data-cat="devotional" onclick="playOSTTrack(2)">
             <div class="s-col-num">
               <span class="s-track-idx">2</span>
               <button class="s-row-play-btn" title="Play">
@@ -3550,7 +3564,7 @@
           </div>
 
           <!-- Track 03 -->
-          <div class="spotify-row" id="sRow3" data-track-id="3" data-cat="symphony" onclick="playOSTTrack(3)">
+          <div class="spotify-row" id="sRow3" data-album="divine-symphony" data-track-id="3" data-cat="symphony" onclick="playOSTTrack(3)">
             <div class="s-col-num">
               <span class="s-track-idx">3</span>
               <button class="s-row-play-btn" title="Play">
@@ -3568,7 +3582,7 @@
           </div>
 
           <!-- Track 04 -->
-          <div class="spotify-row" id="sRow4" data-track-id="4" data-cat="devotional" onclick="playOSTTrack(4)">
+          <div class="spotify-row" id="sRow4" data-album="divine-symphony" data-track-id="4" data-cat="devotional" onclick="playOSTTrack(4)">
             <div class="s-col-num">
               <span class="s-track-idx">4</span>
               <button class="s-row-play-btn" title="Play">
@@ -3586,7 +3600,7 @@
           </div>
 
           <!-- Track 05 -->
-          <div class="spotify-row" id="sRow5" data-track-id="5" data-cat="action" onclick="playOSTTrack(5)">
+          <div class="spotify-row" id="sRow5" data-album="divine-symphony" data-track-id="5" data-cat="action" onclick="playOSTTrack(5)">
             <div class="s-col-num">
               <span class="s-track-idx">5</span>
               <button class="s-row-play-btn" title="Play">
@@ -3604,7 +3618,7 @@
           </div>
 
           <!-- Track 06 -->
-          <div class="spotify-row" id="sRow6" data-track-id="6" data-cat="devotional" onclick="playOSTTrack(6)">
+          <div class="spotify-row" id="sRow6" data-album="divine-symphony" data-track-id="6" data-cat="devotional" onclick="playOSTTrack(6)">
             <div class="s-col-num">
               <span class="s-track-idx">6</span>
               <button class="s-row-play-btn" title="Play">
@@ -3622,7 +3636,7 @@
           </div>
 
           <!-- Track 07 -->
-          <div class="spotify-row" id="sRow7" data-track-id="7" data-cat="devotional" onclick="playOSTTrack(7)">
+          <div class="spotify-row" id="sRow7" data-album="divine-symphony" data-track-id="7" data-cat="devotional" onclick="playOSTTrack(7)">
             <div class="s-col-num">
               <span class="s-track-idx">7</span>
               <button class="s-row-play-btn" title="Play">
@@ -3640,7 +3654,7 @@
           </div>
 
           <!-- Track 08 -->
-          <div class="spotify-row" id="sRow8" data-track-id="8" data-cat="devotional action" onclick="playOSTTrack(8)">
+          <div class="spotify-row" id="sRow8" data-album="divine-symphony" data-track-id="8" data-cat="devotional action" onclick="playOSTTrack(8)">
             <div class="s-col-num">
               <span class="s-track-idx">8</span>
               <button class="s-row-play-btn" title="Play">
@@ -3653,6 +3667,118 @@
               <div class="s-track-text">
                 <h4 class="s-track-name">Main Ram (Dasharath Suta)</h4>
                 <p class="s-track-artist">JAM8 &bull; Sachet Tandon &bull; Kumar Vishwas &bull; <span class="s-lossless-tag">Hi-Res Lossless</span></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- =========================================================================
+               NEW ALBUM: HANUMAN & SHIV SHAKTI (TRACKS 09 TO 14)
+               ========================================================================= -->
+
+          <!-- Track 09 -->
+          <div class="spotify-row" id="sRow9" data-album="hanuman-divine" data-track-id="9" data-cat="devotional" onclick="playOSTTrack(9)">
+            <div class="s-col-num">
+              <span class="s-track-idx">1</span>
+              <button class="s-row-play-btn" title="Play">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
+              </button>
+              <div class="s-row-equalizer"><span></span><span></span><span></span><span></span></div>
+            </div>
+            <div class="s-col-info">
+              <img src="assets/images/hanuman_meditation_hd.jpg" alt="Balwan Hanuman" class="s-track-thumb" loading="lazy">
+              <div class="s-track-text">
+                <h4 class="s-track-name">Balwan Hanuman</h4>
+                <p class="s-track-artist">Jai Jai Bhajans &bull; Devotional Folk &bull; <span class="s-lossless-tag">Hi-Res Lossless</span></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Track 10 -->
+          <div class="spotify-row" id="sRow10" data-album="hanuman-divine" data-track-id="10" data-cat="devotional" onclick="playOSTTrack(10)">
+            <div class="s-col-num">
+              <span class="s-track-idx">2</span>
+              <button class="s-row-play-btn" title="Play">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
+              </button>
+              <div class="s-row-equalizer"><span></span><span></span><span></span><span></span></div>
+            </div>
+            <div class="s-col-info">
+              <img src="assets/images/hanuman_meditation_hd.jpg" alt="Shendur Laal Chadhayo (Aarti)" class="s-track-thumb" loading="lazy">
+              <div class="s-track-text">
+                <h4 class="s-track-name">Shendur Laal Chadhayo (Aarti)</h4>
+                <p class="s-track-artist">Ravindra Sathe &bull; Jatin-Lalit &bull; <span class="s-lossless-tag">Hi-Res Lossless</span></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Track 11 -->
+          <div class="spotify-row" id="sRow11" data-album="hanuman-divine" data-track-id="11" data-cat="action" onclick="playOSTTrack(11)">
+            <div class="s-col-num">
+              <span class="s-track-idx">3</span>
+              <button class="s-row-play-btn" title="Play">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
+              </button>
+              <div class="s-row-equalizer"><span></span><span></span><span></span><span></span></div>
+            </div>
+            <div class="s-col-info">
+              <img src="assets/images/hanuman_meditation_hd.jpg" alt="Mahabharat Story Rap" class="s-track-thumb" loading="lazy">
+              <div class="s-track-text">
+                <h4 class="s-track-name">Mahabharat Story Rap</h4>
+                <p class="s-track-artist">Abby Viral &bull; Epic Narrative Rap</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Track 12 -->
+          <div class="spotify-row" id="sRow12" data-album="hanuman-divine" data-track-id="12" data-cat="action" onclick="playOSTTrack(12)">
+            <div class="s-col-num">
+              <span class="s-track-idx">4</span>
+              <button class="s-row-play-btn" title="Play">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
+              </button>
+              <div class="s-row-equalizer"><span></span><span></span><span></span><span></span></div>
+            </div>
+            <div class="s-col-info">
+              <img src="assets/images/hanuman_meditation_hd.jpg" alt="Shoorveer 3 - Chhatrapati Shivaji Maharaj" class="s-track-thumb" loading="lazy">
+              <div class="s-track-text">
+                <h4 class="s-track-name">Shoorveer 3 - Chhatrapati Shivaji Maharaj</h4>
+                <p class="s-track-artist">Rapperiya Baalam &bull; Shambho &bull; Meetu Solanki</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Track 13 -->
+          <div class="spotify-row" id="sRow13" data-album="hanuman-divine" data-track-id="13" data-cat="devotional" onclick="playOSTTrack(13)">
+            <div class="s-col-num">
+              <span class="s-track-idx">5</span>
+              <button class="s-row-play-btn" title="Play">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
+              </button>
+              <div class="s-row-equalizer"><span></span><span></span><span></span><span></span></div>
+            </div>
+            <div class="s-col-info">
+              <img src="assets/images/hanuman_meditation_hd.jpg" alt="Gajanana (Shree Ganesha)" class="s-track-thumb" loading="lazy">
+              <div class="s-track-text">
+                <h4 class="s-track-name">Gajanana (Shree Ganesha)</h4>
+                <p class="s-track-artist">Sukhwinder Singh &bull; Traditional &bull; <span class="s-lossless-tag">Hi-Res Lossless</span></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Track 14 -->
+          <div class="spotify-row" id="sRow14" data-album="hanuman-divine" data-track-id="14" data-cat="symphony action" onclick="playOSTTrack(14)">
+            <div class="s-col-num">
+              <span class="s-track-idx">6</span>
+              <button class="s-row-play-btn" title="Play">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
+              </button>
+              <div class="s-row-equalizer"><span></span><span></span><span></span><span></span></div>
+            </div>
+            <div class="s-col-info">
+              <img src="assets/images/hanuman_meditation_hd.jpg" alt="Bolo Har Har Har (Shivaay)" class="s-track-thumb" loading="lazy">
+              <div class="s-track-text">
+                <h4 class="s-track-name">Bolo Har Har Har (Shivaay)</h4>
+                <p class="s-track-artist">Mithoon &bull; Mohit Chauhan &bull; Badshah &bull; Sukhwinder Singh</p>
               </div>
             </div>
           </div>
@@ -3833,7 +3959,7 @@
     </button>
   </nav>
 
-  <script src="js/app.js?v=20261117_v61_all14_netflix_posters"></script>
+  <script src="js/app.js?v=20261118_v68_hanuman_album"></script>
 
   <!-- =========================================================================
        SPOTIFY NOW PLAYING BOTTOM BAR (AUTHENTIC 3-COLUMN DESKTOP DOCK)
