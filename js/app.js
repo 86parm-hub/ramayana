@@ -7492,6 +7492,79 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       dur: 'Chapter 3',
       desc: "Lord Rama, Mata Sita, and Lakshmana begin their sacred 14-year exile in the mystical forests of Dandakaranya, establishing peace among hermits and confronting primeval demonic forces."
     }
+,
+    'spiderman_brand_new_day': {
+      title: 'SPIDER-MAN: BRAND NEW DAY',
+      hero: 'assets/images/spiderman_brand_new_day_landscape.jpg',
+      year: '2026',
+      age: 'PG-13',
+      dur: 'Summer 2026',
+      desc: 'Peter Parker begins a brand-new chapter navigating life after the worldwide memory wipe erased his civilian identity. As street-level crime escalates across New York City and formidable new adversaries emerge from the shadows, Spider-Man must forge unexpected alliances and discover what it truly costs to be a standalone hero. TMDB ID 969681.'
+    },
+    'clayface': {
+      title: 'CLAYFACE',
+      hero: 'assets/images/clayface_landscape.jpg',
+      year: '2026',
+      age: 'R',
+      dur: 'Fall 2026',
+      desc: 'A body-horror psychological noir exploring the tragic descent of Basil Karlo, a once-revered B-movie actor whose desperate quest for vanity and youth leads him to an experimental chemical treatment. Mutating into a monstrous, shape-shifting entity consumed by identity dysphoria, he wages a horrifying war against Gotham City\'s elite. TMDB ID 1400940.'
+    },
+    'resident_evil_2026': {
+      title: 'RESIDENT EVIL',
+      hero: 'assets/images/resident_evil_2026_landscape.jpg',
+      year: '2026',
+      age: 'R',
+      dur: 'Fall 2026',
+      desc: 'A terrifying cinematic reboot returning to the claustrophobic survival-horror roots of Capcom\'s iconic franchise. Trapped deep inside the infected bio-weapons research complex of the Arklay Mountains, a specialized tactical team faces grotesque viral mutations and Umbrella Corporation\'s catastrophic bio-hazard cover-up. TMDB ID 1423191.'
+    },
+    'street_fighter': {
+      title: 'STREET FIGHTER',
+      hero: 'assets/images/street_fighter_landscape.jpg',
+      year: '2026',
+      age: 'PG-13',
+      dur: 'March 2026',
+      desc: 'Legendary martial artists from across the globe converge to battle in the shadowy World Warrior Tournament orchestrated by M. Bison\'s Shadaloo syndicate. Ryu and Ken Masters must master the ancient power of Ansatsuken and overcome dark Hadou energy to prevent worldwide devastation. TMDB ID 1153576.'
+    },
+    'toy_story_5': {
+      title: 'TOY STORY 5',
+      hero: 'assets/images/toy_story_5_landscape.jpg',
+      year: '2026',
+      age: 'G',
+      dur: 'June 2026',
+      desc: 'Woody, Buzz Lightyear, and the beloved toy crew face their ultimate 21st-century existential challenge: competing for children\'s devotion against modern digital screens, tablets, and interactive electronics. Together, they embark on a hilarious, heartwarming quest to prove the enduring magic of imagination and playtime. TMDB ID 1084244.'
+    },
+    'supergirl_woman_of_tomorrow': {
+      title: 'SUPERGIRL: WOMAN OF TOMORROW',
+      hero: 'assets/images/supergirl_woman_of_tomorrow_landscape.jpg',
+      year: '2026',
+      age: 'PG-13',
+      dur: 'June 2026',
+      desc: 'Unlike her cousin Superman who was raised on Earth by loving parents, Kara Zor-El grew up on a chipped-off rock of Krypton, witnessing everyone around her die tragically. Hardened and accompanied by Krypto the Superdog, she embarks on an epic, interstellar revenge quest across the cosmos with an alien girl named Ruthye. TMDB ID 1081003.'
+    },
+    'mandalorian_and_grogu': {
+      title: 'STAR WARS: THE MANDALORIAN AND GROGU',
+      hero: 'assets/images/mandalorian_and_grogu_landscape.jpg',
+      year: '2026',
+      age: 'PG-13',
+      dur: 'May 2026',
+      desc: 'The legendary Mandalorian bounty hunter Din Djarin and his Force-sensitive apprentice Grogu transition to the grand theatrical big screen. Partnering with the fledgling New Republic, they hunt Imperial remnants scheming in the dark corners of the outer rim galaxy to protect the fragile peace. TMDB ID 1228710.'
+    },
+    'godzilla_minus_zero': {
+      title: 'GODZILLA MINUS ZERO',
+      hero: 'assets/images/godzilla_minus_zero_landscape.jpg',
+      year: '2026',
+      age: 'PG-13',
+      dur: 'November 2026',
+      desc: 'Following the Academy Award-winning global triumph of Godzilla Minus One, visionary director Takashi Yamazaki returns with the next colossal chapter in the Toho kaiju saga. As postwar Japan strives to rebuild, a terrifying atomic terror re-emerges from the oceanic abyss with catastrophic destructive fury. TMDB ID 1381071.'
+    },
+    'project_hail_mary': {
+      title: 'PROJECT HAIL MARY',
+      hero: 'assets/images/project_hail_mary_landscape.jpg',
+      year: '2026',
+      age: 'PG-13',
+      dur: 'March 2026',
+      desc: 'Ryland Grace, a middle-school science teacher turned lone survivor of an interstellar desperate mission, awakens from a coma with amnesia light-years from Earth. As our sun dies from an alien microbe, Grace must combine scientific deduction and an extraordinary interspecies friendship with an alien named Rocky to save humanity. TMDB ID 687163.'
+    }
   };
 
   const item = data[movieKey] || data['part1'];
@@ -8655,6 +8728,159 @@ const sandflixCatalog = [
     ],
     "industry": "Indian Cinema",
     "quality": "4K UHD"
+  }
+,
+  {
+      "key": "spiderman_brand_new_day",
+      "title": "Spider-Man: Brand New Day",
+      "year": "2026",
+      "age": "PG-13",
+      "dur": "Summer 2026",
+      "desc": "Peter Parker begins a brand-new chapter navigating life after the worldwide memory wipe erased his civilian identity. As street-level crime escalates across New York City and formidable new adversaries emerge from the shadows, Spider-Man must forge unexpected alliances and discover what it truly costs to be a standalone hero. TMDB ID 969681.",
+      "hero": "assets/images/spiderman_brand_new_day_landscape.jpg",
+      "poster": "assets/images/spiderman_brand_new_day_poster.jpg",
+      "genres": [
+          "Action",
+          "Sci-Fi",
+          "Superhero"
+      ],
+      "industry": "Hollywood Cinema",
+      "quality": "4K UHD"
+  },
+  {
+      "key": "clayface",
+      "title": "Clayface",
+      "year": "2026",
+      "age": "R",
+      "dur": "Fall 2026",
+      "desc": "A body-horror psychological noir exploring the tragic descent of Basil Karlo, a once-revered B-movie actor whose desperate quest for vanity and youth leads him to an experimental chemical treatment. Mutating into a monstrous, shape-shifting entity consumed by identity dysphoria, he wages a horrifying war against Gotham City's elite. TMDB ID 1400940.",
+      "hero": "assets/images/clayface_landscape.jpg",
+      "poster": "assets/images/clayface_poster.jpg",
+      "genres": [
+          "Horror",
+          "Thriller",
+          "DC Universe"
+      ],
+      "industry": "Hollywood Cinema",
+      "quality": "4K UHD"
+  },
+  {
+      "key": "resident_evil_2026",
+      "title": "Resident Evil",
+      "year": "2026",
+      "age": "R",
+      "dur": "Fall 2026",
+      "desc": "A terrifying cinematic reboot returning to the claustrophobic survival-horror roots of Capcom's iconic franchise. Trapped deep inside the infected bio-weapons research complex of the Arklay Mountains, a specialized tactical team faces grotesque viral mutations and Umbrella Corporation's catastrophic bio-hazard cover-up. TMDB ID 1423191.",
+      "hero": "assets/images/resident_evil_2026_landscape.jpg",
+      "poster": "assets/images/resident_evil_2026_poster.jpg",
+      "genres": [
+          "Horror",
+          "Action",
+          "Sci-Fi"
+      ],
+      "industry": "Hollywood Cinema",
+      "quality": "4K UHD"
+  },
+  {
+      "key": "street_fighter",
+      "title": "Street Fighter",
+      "year": "2026",
+      "age": "PG-13",
+      "dur": "March 2026",
+      "desc": "Legendary martial artists from across the globe converge to battle in the shadowy World Warrior Tournament orchestrated by M. Bison's Shadaloo syndicate. Ryu and Ken Masters must master the ancient power of Ansatsuken and overcome dark Hadou energy to prevent worldwide devastation. TMDB ID 1153576.",
+      "hero": "assets/images/street_fighter_landscape.jpg",
+      "poster": "assets/images/street_fighter_poster.jpg",
+      "genres": [
+          "Action",
+          "Martial Arts"
+      ],
+      "industry": "Hollywood Cinema",
+      "quality": "4K UHD"
+  },
+  {
+      "key": "toy_story_5",
+      "title": "Toy Story 5",
+      "year": "2026",
+      "age": "G",
+      "dur": "June 2026",
+      "desc": "Woody, Buzz Lightyear, and the beloved toy crew face their ultimate 21st-century existential challenge: competing for children's devotion against modern digital screens, tablets, and interactive electronics. Together, they embark on a hilarious, heartwarming quest to prove the enduring magic of imagination and playtime. TMDB ID 1084244.",
+      "hero": "assets/images/toy_story_5_landscape.jpg",
+      "poster": "assets/images/toy_story_5_poster.jpg",
+      "genres": [
+          "Animation",
+          "Family",
+          "Comedy"
+      ],
+      "industry": "Hollywood Cinema",
+      "quality": "4K UHD"
+  },
+  {
+      "key": "supergirl_woman_of_tomorrow",
+      "title": "Supergirl: Woman of Tomorrow",
+      "year": "2026",
+      "age": "PG-13",
+      "dur": "June 2026",
+      "desc": "Unlike her cousin Superman who was raised on Earth by loving parents, Kara Zor-El grew up on a chipped-off rock of Krypton, witnessing everyone around her die tragically. Hardened and accompanied by Krypto the Superdog, she embarks on an epic, interstellar revenge quest across the cosmos with an alien girl named Ruthye. TMDB ID 1081003.",
+      "hero": "assets/images/supergirl_woman_of_tomorrow_landscape.jpg",
+      "poster": "assets/images/supergirl_woman_of_tomorrow_poster.jpg",
+      "genres": [
+          "Action",
+          "Sci-Fi",
+          "Superhero"
+      ],
+      "industry": "Hollywood Cinema",
+      "quality": "4K UHD"
+  },
+  {
+      "key": "mandalorian_and_grogu",
+      "title": "Star Wars: The Mandalorian and Grogu",
+      "year": "2026",
+      "age": "PG-13",
+      "dur": "May 2026",
+      "desc": "The legendary Mandalorian bounty hunter Din Djarin and his Force-sensitive apprentice Grogu transition to the grand theatrical big screen. Partnering with the fledgling New Republic, they hunt Imperial remnants scheming in the dark corners of the outer rim galaxy to protect the fragile peace. TMDB ID 1228710.",
+      "hero": "assets/images/mandalorian_and_grogu_landscape.jpg",
+      "poster": "assets/images/mandalorian_and_grogu_poster.jpg",
+      "genres": [
+          "Action",
+          "Sci-Fi",
+          "Adventure"
+      ],
+      "industry": "Hollywood Cinema",
+      "quality": "4K UHD"
+  },
+  {
+      "key": "godzilla_minus_zero",
+      "title": "Godzilla Minus Zero",
+      "year": "2026",
+      "age": "PG-13",
+      "dur": "November 2026",
+      "desc": "Following the Academy Award-winning global triumph of Godzilla Minus One, visionary director Takashi Yamazaki returns with the next colossal chapter in the Toho kaiju saga. As postwar Japan strives to rebuild, a terrifying atomic terror re-emerges from the oceanic abyss with catastrophic destructive fury. TMDB ID 1381071.",
+      "hero": "assets/images/godzilla_minus_zero_landscape.jpg",
+      "poster": "assets/images/godzilla_minus_zero_poster.jpg",
+      "genres": [
+          "Action",
+          "Sci-Fi",
+          "Drama"
+      ],
+      "industry": "International Cinema",
+      "quality": "4K UHD"
+  },
+  {
+      "key": "project_hail_mary",
+      "title": "Project Hail Mary",
+      "year": "2026",
+      "age": "PG-13",
+      "dur": "March 2026",
+      "desc": "Ryland Grace, a middle-school science teacher turned lone survivor of an interstellar desperate mission, awakens from a coma with amnesia light-years from Earth. As our sun dies from an alien microbe, Grace must combine scientific deduction and an extraordinary interspecies friendship with an alien named Rocky to save humanity. TMDB ID 687163.",
+      "hero": "assets/images/project_hail_mary_landscape.jpg",
+      "poster": "assets/images/project_hail_mary_poster.jpg",
+      "genres": [
+          "Sci-Fi",
+          "Adventure",
+          "Drama"
+      ],
+      "industry": "Hollywood Cinema",
+      "quality": "4K UHD"
   }
 ];
 
