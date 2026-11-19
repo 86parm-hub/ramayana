@@ -6135,6 +6135,209 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
+  // =========================================================================
+  // EMBED MOVIE HANDLERS: ROW 7 (MOST ANTICIPATED 2026 FRANCHISE BLOCKBUSTERS)
+  // =========================================================================
+
+  // Spider-Man: Brand New Day (TMDB 969681 via Peachify)
+  if (targetTime === 'spiderman_brand_new_day' || targetTime === 'spiderman' || targetTime === 'spiderman_2026' || targetTime === '969681') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = 'Spider-Man: Brand New Day (2026) • TMDB 969681';
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/969681';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
+  // Clayface (TMDB 1400940 via Peachify)
+  if (targetTime === 'clayface' || targetTime === 'clay_face' || targetTime === 'clayface_2026' || targetTime === '1400940') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = 'Clayface (2026) • TMDB 1400940';
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1400940';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
+  // Resident Evil (TMDB 1423191 via Peachify)
+  if (targetTime === 'resident_evil_2026' || targetTime === 'resident_evil' || targetTime === 'residentevil' || targetTime === '1423191') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = 'Resident Evil (2026) • TMDB 1423191';
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1423191';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
+  // Street Fighter (TMDB 1153576 via Peachify)
+  if (targetTime === 'street_fighter' || targetTime === 'streetfighter' || targetTime === 'street_fighter_2026' || targetTime === '1153576') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = 'Street Fighter (2026) • TMDB 1153576';
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1153576';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
+  // Toy Story 5 (TMDB 1084244 via Peachify)
+  if (targetTime === 'toy_story_5' || targetTime === 'toystory5' || targetTime === 'toy_story' || targetTime === '1084244') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = 'Toy Story 5 (2026) • TMDB 1084244';
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1084244';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
+  // Supergirl: Woman of Tomorrow (TMDB 1081003 via Peachify)
+  if (targetTime === 'supergirl_woman_of_tomorrow' || targetTime === 'supergirl' || targetTime === 'supergirl_2026' || targetTime === '1081003') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = 'Supergirl: Woman of Tomorrow (2026) • TMDB 1081003';
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1081003';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
+  // Star Wars: The Mandalorian and Grogu (TMDB 1228710 via Peachify)
+  if (targetTime === 'mandalorian_and_grogu' || targetTime === 'mandalorian' || targetTime === 'the_mandalorian' || targetTime === '1228710') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = 'Star Wars: The Mandalorian & Grogu (2026) • TMDB 1228710';
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1228710';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
+  // Godzilla Minus Zero (TMDB 1381071 via Peachify)
+  if (targetTime === 'godzilla_minus_zero' || targetTime === 'godzilla' || targetTime === 'godzilla_2026' || targetTime === '1381071') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = 'Godzilla Minus Zero (2026) • TMDB 1381071';
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1381071';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
+  // Project Hail Mary (TMDB 687163 via Peachify)
+  if (targetTime === 'project_hail_mary' || targetTime === 'projecthailmary' || targetTime === 'project_hail_mary_2026' || targetTime === '687163') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = 'Project Hail Mary (2026) • TMDB 687163';
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/687163';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
+
   // Generalized CodeSpecters / Custom Embed Routing
   if (typeof targetTime === 'string' && (targetTime.startsWith('codespecters:') || targetTime.startsWith('cs:') || targetTime.startsWith('https://api.codespecters.com/'))) {
     nbpIsEmbedMode = true;
@@ -7495,7 +7698,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
 ,
     'spiderman_brand_new_day': {
       title: 'SPIDER-MAN: BRAND NEW DAY',
-      hero: 'assets/images/spiderman_brand_new_day_landscape.jpg',
+      hero: 'assets/images/spiderman_brand_new_day_landscape.jpg?v=20261119_v100_real_art',
       year: '2026',
       age: 'PG-13',
       dur: 'Summer 2026',
@@ -7503,7 +7706,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
     },
     'clayface': {
       title: 'CLAYFACE',
-      hero: 'assets/images/clayface_landscape.jpg',
+      hero: 'assets/images/clayface_landscape.jpg?v=20261119_v100_real_art',
       year: '2026',
       age: 'R',
       dur: 'Fall 2026',
@@ -7511,7 +7714,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
     },
     'resident_evil_2026': {
       title: 'RESIDENT EVIL',
-      hero: 'assets/images/resident_evil_2026_landscape.jpg',
+      hero: 'assets/images/resident_evil_2026_landscape.jpg?v=20261119_v100_real_art',
       year: '2026',
       age: 'R',
       dur: 'Fall 2026',
@@ -7519,7 +7722,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
     },
     'street_fighter': {
       title: 'STREET FIGHTER',
-      hero: 'assets/images/street_fighter_landscape.jpg',
+      hero: 'assets/images/street_fighter_landscape.jpg?v=20261119_v100_real_art',
       year: '2026',
       age: 'PG-13',
       dur: 'March 2026',
@@ -7527,7 +7730,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
     },
     'toy_story_5': {
       title: 'TOY STORY 5',
-      hero: 'assets/images/toy_story_5_landscape.jpg',
+      hero: 'assets/images/toy_story_5_landscape.jpg?v=20261119_v100_real_art',
       year: '2026',
       age: 'G',
       dur: 'June 2026',
@@ -7535,7 +7738,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
     },
     'supergirl_woman_of_tomorrow': {
       title: 'SUPERGIRL: WOMAN OF TOMORROW',
-      hero: 'assets/images/supergirl_woman_of_tomorrow_landscape.jpg',
+      hero: 'assets/images/supergirl_woman_of_tomorrow_landscape.jpg?v=20261119_v100_real_art',
       year: '2026',
       age: 'PG-13',
       dur: 'June 2026',
@@ -7543,7 +7746,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
     },
     'mandalorian_and_grogu': {
       title: 'STAR WARS: THE MANDALORIAN AND GROGU',
-      hero: 'assets/images/mandalorian_and_grogu_landscape.jpg',
+      hero: 'assets/images/mandalorian_and_grogu_landscape.jpg?v=20261119_v100_real_art',
       year: '2026',
       age: 'PG-13',
       dur: 'May 2026',
@@ -7551,7 +7754,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
     },
     'godzilla_minus_zero': {
       title: 'GODZILLA MINUS ZERO',
-      hero: 'assets/images/godzilla_minus_zero_landscape.jpg',
+      hero: 'assets/images/godzilla_minus_zero_landscape.jpg?v=20261119_v100_real_art',
       year: '2026',
       age: 'PG-13',
       dur: 'November 2026',
@@ -7559,7 +7762,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
     },
     'project_hail_mary': {
       title: 'PROJECT HAIL MARY',
-      hero: 'assets/images/project_hail_mary_landscape.jpg',
+      hero: 'assets/images/project_hail_mary_landscape.jpg?v=20261119_v100_real_art',
       year: '2026',
       age: 'PG-13',
       dur: 'March 2026',
@@ -8737,8 +8940,8 @@ const sandflixCatalog = [
       "age": "PG-13",
       "dur": "Summer 2026",
       "desc": "Peter Parker begins a brand-new chapter navigating life after the worldwide memory wipe erased his civilian identity. As street-level crime escalates across New York City and formidable new adversaries emerge from the shadows, Spider-Man must forge unexpected alliances and discover what it truly costs to be a standalone hero. TMDB ID 969681.",
-      "hero": "assets/images/spiderman_brand_new_day_landscape.jpg",
-      "poster": "assets/images/spiderman_brand_new_day_poster.jpg",
+      "hero": "assets/images/spiderman_brand_new_day_landscape.jpg?v=20261119_v100_real_art",
+      "poster": "assets/images/spiderman_brand_new_day_poster.jpg?v=20261119_v100_real_art",
       "genres": [
           "Action",
           "Sci-Fi",
@@ -8754,8 +8957,8 @@ const sandflixCatalog = [
       "age": "R",
       "dur": "Fall 2026",
       "desc": "A body-horror psychological noir exploring the tragic descent of Basil Karlo, a once-revered B-movie actor whose desperate quest for vanity and youth leads him to an experimental chemical treatment. Mutating into a monstrous, shape-shifting entity consumed by identity dysphoria, he wages a horrifying war against Gotham City's elite. TMDB ID 1400940.",
-      "hero": "assets/images/clayface_landscape.jpg",
-      "poster": "assets/images/clayface_poster.jpg",
+      "hero": "assets/images/clayface_landscape.jpg?v=20261119_v100_real_art",
+      "poster": "assets/images/clayface_poster.jpg?v=20261119_v100_real_art",
       "genres": [
           "Horror",
           "Thriller",
@@ -8771,8 +8974,8 @@ const sandflixCatalog = [
       "age": "R",
       "dur": "Fall 2026",
       "desc": "A terrifying cinematic reboot returning to the claustrophobic survival-horror roots of Capcom's iconic franchise. Trapped deep inside the infected bio-weapons research complex of the Arklay Mountains, a specialized tactical team faces grotesque viral mutations and Umbrella Corporation's catastrophic bio-hazard cover-up. TMDB ID 1423191.",
-      "hero": "assets/images/resident_evil_2026_landscape.jpg",
-      "poster": "assets/images/resident_evil_2026_poster.jpg",
+      "hero": "assets/images/resident_evil_2026_landscape.jpg?v=20261119_v100_real_art",
+      "poster": "assets/images/resident_evil_2026_poster.jpg?v=20261119_v100_real_art",
       "genres": [
           "Horror",
           "Action",
@@ -8788,8 +8991,8 @@ const sandflixCatalog = [
       "age": "PG-13",
       "dur": "March 2026",
       "desc": "Legendary martial artists from across the globe converge to battle in the shadowy World Warrior Tournament orchestrated by M. Bison's Shadaloo syndicate. Ryu and Ken Masters must master the ancient power of Ansatsuken and overcome dark Hadou energy to prevent worldwide devastation. TMDB ID 1153576.",
-      "hero": "assets/images/street_fighter_landscape.jpg",
-      "poster": "assets/images/street_fighter_poster.jpg",
+      "hero": "assets/images/street_fighter_landscape.jpg?v=20261119_v100_real_art",
+      "poster": "assets/images/street_fighter_poster.jpg?v=20261119_v100_real_art",
       "genres": [
           "Action",
           "Martial Arts"
@@ -8804,8 +9007,8 @@ const sandflixCatalog = [
       "age": "G",
       "dur": "June 2026",
       "desc": "Woody, Buzz Lightyear, and the beloved toy crew face their ultimate 21st-century existential challenge: competing for children's devotion against modern digital screens, tablets, and interactive electronics. Together, they embark on a hilarious, heartwarming quest to prove the enduring magic of imagination and playtime. TMDB ID 1084244.",
-      "hero": "assets/images/toy_story_5_landscape.jpg",
-      "poster": "assets/images/toy_story_5_poster.jpg",
+      "hero": "assets/images/toy_story_5_landscape.jpg?v=20261119_v100_real_art",
+      "poster": "assets/images/toy_story_5_poster.jpg?v=20261119_v100_real_art",
       "genres": [
           "Animation",
           "Family",
@@ -8821,8 +9024,8 @@ const sandflixCatalog = [
       "age": "PG-13",
       "dur": "June 2026",
       "desc": "Unlike her cousin Superman who was raised on Earth by loving parents, Kara Zor-El grew up on a chipped-off rock of Krypton, witnessing everyone around her die tragically. Hardened and accompanied by Krypto the Superdog, she embarks on an epic, interstellar revenge quest across the cosmos with an alien girl named Ruthye. TMDB ID 1081003.",
-      "hero": "assets/images/supergirl_woman_of_tomorrow_landscape.jpg",
-      "poster": "assets/images/supergirl_woman_of_tomorrow_poster.jpg",
+      "hero": "assets/images/supergirl_woman_of_tomorrow_landscape.jpg?v=20261119_v100_real_art",
+      "poster": "assets/images/supergirl_woman_of_tomorrow_poster.jpg?v=20261119_v100_real_art",
       "genres": [
           "Action",
           "Sci-Fi",
@@ -8838,8 +9041,8 @@ const sandflixCatalog = [
       "age": "PG-13",
       "dur": "May 2026",
       "desc": "The legendary Mandalorian bounty hunter Din Djarin and his Force-sensitive apprentice Grogu transition to the grand theatrical big screen. Partnering with the fledgling New Republic, they hunt Imperial remnants scheming in the dark corners of the outer rim galaxy to protect the fragile peace. TMDB ID 1228710.",
-      "hero": "assets/images/mandalorian_and_grogu_landscape.jpg",
-      "poster": "assets/images/mandalorian_and_grogu_poster.jpg",
+      "hero": "assets/images/mandalorian_and_grogu_landscape.jpg?v=20261119_v100_real_art",
+      "poster": "assets/images/mandalorian_and_grogu_poster.jpg?v=20261119_v100_real_art",
       "genres": [
           "Action",
           "Sci-Fi",
@@ -8855,8 +9058,8 @@ const sandflixCatalog = [
       "age": "PG-13",
       "dur": "November 2026",
       "desc": "Following the Academy Award-winning global triumph of Godzilla Minus One, visionary director Takashi Yamazaki returns with the next colossal chapter in the Toho kaiju saga. As postwar Japan strives to rebuild, a terrifying atomic terror re-emerges from the oceanic abyss with catastrophic destructive fury. TMDB ID 1381071.",
-      "hero": "assets/images/godzilla_minus_zero_landscape.jpg",
-      "poster": "assets/images/godzilla_minus_zero_poster.jpg",
+      "hero": "assets/images/godzilla_minus_zero_landscape.jpg?v=20261119_v100_real_art",
+      "poster": "assets/images/godzilla_minus_zero_poster.jpg?v=20261119_v100_real_art",
       "genres": [
           "Action",
           "Sci-Fi",
@@ -8872,8 +9075,8 @@ const sandflixCatalog = [
       "age": "PG-13",
       "dur": "March 2026",
       "desc": "Ryland Grace, a middle-school science teacher turned lone survivor of an interstellar desperate mission, awakens from a coma with amnesia light-years from Earth. As our sun dies from an alien microbe, Grace must combine scientific deduction and an extraordinary interspecies friendship with an alien named Rocky to save humanity. TMDB ID 687163.",
-      "hero": "assets/images/project_hail_mary_landscape.jpg",
-      "poster": "assets/images/project_hail_mary_poster.jpg",
+      "hero": "assets/images/project_hail_mary_landscape.jpg?v=20261119_v100_real_art",
+      "poster": "assets/images/project_hail_mary_poster.jpg?v=20261119_v100_real_art",
       "genres": [
           "Sci-Fi",
           "Adventure",
