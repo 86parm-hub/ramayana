@@ -5057,8 +5057,8 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode: Never Surrender (2026 / Netflix Original)
-  if (targetTime === 'never-surrender' || targetTime === 'neversurrender' || targetTime === 'akka' || targetTime === '243555') {
+  // Handle Embed Movie Mode: Never Surrender (2026 / Netflix Original / TMDB 1616687)
+  if (targetTime === 'never-surrender' || targetTime === 'never_surrender' || targetTime === 'neversurrender' || targetTime === '1616687' || targetTime === '81996126' || targetTime === '81958252' || targetTime === 'seranganbalik' || targetTime === 'akka' || targetTime === '243555') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
     modal.classList.add('is-embed-active');
@@ -5070,7 +5070,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
-      const peachifyUrl = 'https://peachify.net/movie/81958252';
+      const peachifyUrl = 'https://peachify.net/movie/1616687';
       if (embedIframe.src !== peachifyUrl) {
         embedIframe.src = peachifyUrl;
       }
@@ -5322,7 +5322,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
   }
 
   // Handle Embed Movie Mode (Never Surrender TMDB 1616687 via Peachify)
-  if (targetTime === 'never_surrender' || targetTime === 'neversurrender' || targetTime === '1616687' || targetTime === 'seranganbalik') {
+  if (targetTime === 'never_surrender' || targetTime === 'never-surrender' || targetTime === 'neversurrender' || targetTime === '1616687' || targetTime === '81996126' || targetTime === '81958252' || targetTime === 'seranganbalik') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
     modal.classList.add('is-embed-active');
@@ -5330,7 +5330,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Never Surrender • TMDB 1616687";
+    if (titleDisplay) titleDisplay.textContent = 'Never Surrender (2026) • A Netflix Original Film';
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -7252,7 +7252,8 @@ function openMovieDetailsModal(movieKey, fromHistory) {
     },
     'never-surrender': {
       title: 'NEVER SURRENDER',
-      hero: 'assets/images/never_surrender_landscape.jpg',
+      hero: 'assets/images/never_surrender_landscape.jpg?v=20261119_v105_real_nflx',
+      poster: 'assets/images/never_surrender_poster.jpg?v=20261119_v105_real_nflx',
       year: '2026',
       age: 'TV-MA 18+',
       dur: '2h 17m',
@@ -7263,7 +7264,8 @@ function openMovieDetailsModal(movieKey, fromHistory) {
     },
     'neversurrender': {
       title: 'NEVER SURRENDER',
-      hero: 'assets/images/never_surrender_landscape.jpg',
+      hero: 'assets/images/never_surrender_landscape.jpg?v=20261119_v105_real_nflx',
+      poster: 'assets/images/never_surrender_poster.jpg?v=20261119_v105_real_nflx',
       year: '2026',
       age: 'TV-MA 18+',
       dur: '2h 17m',
@@ -7274,7 +7276,8 @@ function openMovieDetailsModal(movieKey, fromHistory) {
     },
     'akka': {
       title: 'NEVER SURRENDER',
-      hero: 'assets/images/never_surrender_landscape.jpg',
+      hero: 'assets/images/never_surrender_landscape.jpg?v=20261119_v105_real_nflx',
+      poster: 'assets/images/never_surrender_poster.jpg?v=20261119_v105_real_nflx',
       year: '2026',
       age: 'TV-MA 18+',
       dur: '2h 17m',
@@ -7373,7 +7376,8 @@ function openMovieDetailsModal(movieKey, fromHistory) {
     },
     'never_surrender': {
       title: 'NEVER SURRENDER',
-      hero: 'assets/images/never_surrender_landscape.jpg',
+      hero: 'assets/images/never_surrender_landscape.jpg?v=20261119_v105_real_nflx',
+      poster: 'assets/images/never_surrender_poster.jpg?v=20261119_v105_real_nflx',
       year: '2026',
       age: 'U/A 16+',
       dur: '2h 20m',
@@ -8160,8 +8164,8 @@ const sandflixCatalog = [
     "age": "TV-MA",
     "dur": "2h 17m",
     "desc": "Hari (Lukman Sardi), an aging former special forces veteran living in a remote village, must protect his estranged grandchildren when a ruthless Jakarta crime syndicate storms their home seeking crucial evidence. Forced into survival, Hari unleashes his dormant combat skills to turn the house into an impenetrable fortress. Directed by Sidharta Tata, produced by Kimo Stamboel. Starring Lukman Sardi, Callista Arum, Donny Alamsyah, Derby Romero.",
-    "hero": "assets/images/never_surrender_landscape.jpg",
-    "poster": "assets/images/never_surrender_poster.jpg",
+    "hero": "assets/images/never_surrender_landscape.jpg?v=20261119_v105_real_nflx",
+    "poster": "assets/images/never_surrender_poster.jpg?v=20261119_v105_real_nflx",
     "genres": [
       "Action",
       "Crime",
@@ -8317,8 +8321,8 @@ const sandflixCatalog = [
     "age": "U/A 16+",
     "dur": "2h 20m",
     "desc": "When a ruthless mercenary syndicate descends upon a remote mountain homestead, an estranged veteran with a haunted past and his grandchildren must unite their survival instincts to wage an uncompromising counter-offensive. Starring Lukman Sardi, Callista Arum, Sulthan Hamonangan, Derby Romero, Donny Alamsyah. Directed by Sidharta Tata. Streamed in 1080P HEVC via Peachify TMDB 1616687.",
-    "hero": "assets/images/never_surrender_landscape.jpg",
-    "poster": "assets/images/never_surrender_poster.jpg",
+    "hero": "assets/images/never_surrender_landscape.jpg?v=20261119_v105_real_nflx",
+    "poster": "assets/images/never_surrender_poster.jpg?v=20261119_v105_real_nflx",
     "genres": [
       "Cinema",
       "Drama"
