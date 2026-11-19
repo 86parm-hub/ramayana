@@ -360,7 +360,7 @@
         video.style.display = 'none';
       }
       if (titleDisplay) titleDisplay.textContent = title;
-      if (serverBar) serverBar.style.display = 'flex';
+      if (serverBar) serverBar.style.display = 'none';
       if (embedIframe) embedIframe.style.display = 'block';
 
       switchEmbedServer(defaultServer);
@@ -1041,9 +1041,95 @@
         return;
       }
 
-      // Row 7 2026 Franchise Blockbusters Embed Handlers
+            // Row 7: Most Anticipated 2026 Franchise Blockbusters (Clean Peachify Embed)
       if (targetTime === 'spiderman_brand_new_day' || targetTime === 'spiderman' || targetTime === '969681') {
-        openEmbedPlayer('969681', 'Spider-Man: Brand New Day (2026) • TMDB 969681', 1, 'spiderman_brand_new_day');
+        if (modal) { modal.classList.add('active', 'is-embed-active'); modal.setAttribute('aria-hidden', 'false'); }
+        document.body.style.overflow = 'hidden';
+        if (serverBar) serverBar.style.display = 'none';
+        if (video) { try { video.pause(); video.currentTime = 0; } catch(e){} video.style.display = 'none'; }
+        if (titleDisplay) titleDisplay.textContent = 'Spider-Man: Brand New Day (2026) • TMDB 969681';
+        if (embedIframe) { embedIframe.style.display = 'block'; embedIframe.src = 'https://peachify.net/movie/969681'; }
+        if (spinner) spinner.classList.remove('active');
+        return;
+      }
+      if (targetTime === 'clayface' || targetTime === 'clay_face' || targetTime === '1400940') {
+        if (modal) { modal.classList.add('active', 'is-embed-active'); modal.setAttribute('aria-hidden', 'false'); }
+        document.body.style.overflow = 'hidden';
+        if (serverBar) serverBar.style.display = 'none';
+        if (video) { try { video.pause(); video.currentTime = 0; } catch(e){} video.style.display = 'none'; }
+        if (titleDisplay) titleDisplay.textContent = 'Clayface (2026) • TMDB 1400940';
+        if (embedIframe) { embedIframe.style.display = 'block'; embedIframe.src = 'https://peachify.net/movie/1400940'; }
+        if (spinner) spinner.classList.remove('active');
+        return;
+      }
+      if (targetTime === 'resident_evil_2026' || targetTime === 'resident_evil' || targetTime === '1423191') {
+        if (modal) { modal.classList.add('active', 'is-embed-active'); modal.setAttribute('aria-hidden', 'false'); }
+        document.body.style.overflow = 'hidden';
+        if (serverBar) serverBar.style.display = 'none';
+        if (video) { try { video.pause(); video.currentTime = 0; } catch(e){} video.style.display = 'none'; }
+        if (titleDisplay) titleDisplay.textContent = 'Resident Evil (2026) • TMDB 1423191';
+        if (embedIframe) { embedIframe.style.display = 'block'; embedIframe.src = 'https://peachify.net/movie/1423191'; }
+        if (spinner) spinner.classList.remove('active');
+        return;
+      }
+      if (targetTime === 'street_fighter' || targetTime === 'streetfighter' || targetTime === '1153576') {
+        if (modal) { modal.classList.add('active', 'is-embed-active'); modal.setAttribute('aria-hidden', 'false'); }
+        document.body.style.overflow = 'hidden';
+        if (serverBar) serverBar.style.display = 'none';
+        if (video) { try { video.pause(); video.currentTime = 0; } catch(e){} video.style.display = 'none'; }
+        if (titleDisplay) titleDisplay.textContent = 'Street Fighter (2026) • TMDB 1153576';
+        if (embedIframe) { embedIframe.style.display = 'block'; embedIframe.src = 'https://peachify.net/movie/1153576'; }
+        if (spinner) spinner.classList.remove('active');
+        return;
+      }
+      if (targetTime === 'toy_story_5' || targetTime === 'toystory5' || targetTime === '1084244') {
+        if (modal) { modal.classList.add('active', 'is-embed-active'); modal.setAttribute('aria-hidden', 'false'); }
+        document.body.style.overflow = 'hidden';
+        if (serverBar) serverBar.style.display = 'none';
+        if (video) { try { video.pause(); video.currentTime = 0; } catch(e){} video.style.display = 'none'; }
+        if (titleDisplay) titleDisplay.textContent = 'Toy Story 5 (2026) • TMDB 1084244';
+        if (embedIframe) { embedIframe.style.display = 'block'; embedIframe.src = 'https://peachify.net/movie/1084244'; }
+        if (spinner) spinner.classList.remove('active');
+        return;
+      }
+      if (targetTime === 'supergirl_woman_of_tomorrow' || targetTime === 'supergirl' || targetTime === '1081003') {
+        if (modal) { modal.classList.add('active', 'is-embed-active'); modal.setAttribute('aria-hidden', 'false'); }
+        document.body.style.overflow = 'hidden';
+        if (serverBar) serverBar.style.display = 'none';
+        if (video) { try { video.pause(); video.currentTime = 0; } catch(e){} video.style.display = 'none'; }
+        if (titleDisplay) titleDisplay.textContent = 'Supergirl: Woman of Tomorrow (2026) • TMDB 1081003';
+        if (embedIframe) { embedIframe.style.display = 'block'; embedIframe.src = 'https://peachify.net/movie/1081003'; }
+        if (spinner) spinner.classList.remove('active');
+        return;
+      }
+      if (targetTime === 'mandalorian_and_grogu' || targetTime === 'mandalorian' || targetTime === '1228710') {
+        if (modal) { modal.classList.add('active', 'is-embed-active'); modal.setAttribute('aria-hidden', 'false'); }
+        document.body.style.overflow = 'hidden';
+        if (serverBar) serverBar.style.display = 'none';
+        if (video) { try { video.pause(); video.currentTime = 0; } catch(e){} video.style.display = 'none'; }
+        if (titleDisplay) titleDisplay.textContent = 'Star Wars: The Mandalorian & Grogu (2026) • TMDB 1228710';
+        if (embedIframe) { embedIframe.style.display = 'block'; embedIframe.src = 'https://peachify.net/movie/1228710'; }
+        if (spinner) spinner.classList.remove('active');
+        return;
+      }
+      if (targetTime === 'godzilla_minus_zero' || targetTime === 'godzilla' || targetTime === '1381071') {
+        if (modal) { modal.classList.add('active', 'is-embed-active'); modal.setAttribute('aria-hidden', 'false'); }
+        document.body.style.overflow = 'hidden';
+        if (serverBar) serverBar.style.display = 'none';
+        if (video) { try { video.pause(); video.currentTime = 0; } catch(e){} video.style.display = 'none'; }
+        if (titleDisplay) titleDisplay.textContent = 'Godzilla Minus Zero (2026) • TMDB 1381071';
+        if (embedIframe) { embedIframe.style.display = 'block'; embedIframe.src = 'https://peachify.net/movie/1381071'; }
+        if (spinner) spinner.classList.remove('active');
+        return;
+      }
+      if (targetTime === 'project_hail_mary' || targetTime === 'projecthailmary' || targetTime === '687163') {
+        if (modal) { modal.classList.add('active', 'is-embed-active'); modal.setAttribute('aria-hidden', 'false'); }
+        document.body.style.overflow = 'hidden';
+        if (serverBar) serverBar.style.display = 'none';
+        if (video) { try { video.pause(); video.currentTime = 0; } catch(e){} video.style.display = 'none'; }
+        if (titleDisplay) titleDisplay.textContent = 'Project Hail Mary (2026) • TMDB 687163';
+        if (embedIframe) { embedIframe.style.display = 'block'; embedIframe.src = 'https://peachify.net/movie/687163'; }
+        if (spinner) spinner.classList.remove('active');
         return;
       }
       if (targetTime === 'clayface' || targetTime === 'clay_face' || targetTime === '1400940') {
@@ -9279,7 +9365,7 @@
       </button>
 
       <!-- Dynamic Cinema Multi-Server Switcher Bar for Embedded OTT Streams -->
-      <div class="nbp-embed-server-bar" id="nbpEmbedServerBar" style="display:none;" aria-label="Streaming Server Selection">
+      <div class="nbp-embed-server-bar" id="nbpEmbedServerBar" style="display:none !important;" aria-label="Streaming Server Selection">
         <span class="nbp-server-label">Server:</span>
         <button type="button" class="nbp-server-pill active" id="serverPill1" onclick="switchEmbedServer(1)">Server 1 (Peachify)</button>
         <button type="button" class="nbp-server-pill" id="serverPill2" onclick="switchEmbedServer(2)">Server 2 (CodeSpecters)</button>
