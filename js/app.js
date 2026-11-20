@@ -6337,6 +6337,183 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
+  // Handle Embed Movie Mode (Daayra TMDB 1215889 via Peachify)
+  if (targetTime === 'daayra' || targetTime === '1215889') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = "Daayra • TMDB 1215889";
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1215889';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
+  // Handle Embed Movie Mode (Vishwanath & Sons TMDB 1408162 via Peachify)
+  if (targetTime === 'vishwanath_and_sons' || targetTime === '1408162') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = "Vishwanath & Sons • TMDB 1408162";
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1408162';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
+  // Handle Embed Movie Mode (Gajab Raat TMDB 1453407 via Peachify)
+  if (targetTime === 'gajab_raat' || targetTime === '1453407') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = "Gajab Raat • TMDB 1453407";
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1453407';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
+  // Handle Embed Movie Mode (Dilwali Diwali TMDB 1810711 via Peachify)
+  if (targetTime === 'dilwali_diwali' || targetTime === '1810711') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = "Dilwali Diwali • TMDB 1810711";
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1810711';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
+  // Handle Embed Movie Mode (Mahavatar Narsimha TMDB 1383072 via Peachify)
+  if (targetTime === 'mahavatar_narsimha' || targetTime === '1383072') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = "Mahavatar Narsimha • TMDB 1383072";
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1383072';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
+  // Handle Embed Movie Mode (Border 2 TMDB 1213898 via Peachify)
+  if (targetTime === 'border_2' || targetTime === '1213898') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = "Border 2 • TMDB 1213898";
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1213898';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
+  // Handle Embed Movie Mode (Ikkis TMDB 1196946 via Peachify)
+  if (targetTime === 'ikkis' || targetTime === '1196946') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = "Ikkis • TMDB 1196946";
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1196946';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
+  // Handle Embed Movie Mode (Guarding Stars TMDB 1551025 via Peachify)
+  if (targetTime === 'guarding_stars' || targetTime === '1551025') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+
+    const titleDisplay = document.getElementById('nbpCenterTitle');
+    if (titleDisplay) titleDisplay.textContent = "Guarding Stars • TMDB 1551025";
+
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      const peachifyUrl = 'https://peachify.net/movie/1551025';
+      if (embedIframe.src !== peachifyUrl) {
+        embedIframe.src = peachifyUrl;
+      }
+    }
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
+
 
   // Generalized CodeSpecters / Custom Embed Routing
   if (typeof targetTime === 'string' && (targetTime.startsWith('codespecters:') || targetTime.startsWith('cs:') || targetTime.startsWith('https://api.codespecters.com/'))) {
@@ -7771,7 +7948,87 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       age: 'PG-13',
       dur: 'March 2026',
       desc: 'Ryland Grace, a middle-school science teacher turned lone survivor of an interstellar desperate mission, awakens from a coma with amnesia light-years from Earth. As our sun dies from an alien microbe, Grace must combine scientific deduction and an extraordinary interspecies friendship with an alien named Rocky to save humanity. TMDB ID 687163.'
-    }
+    },
+        'daayra': {
+          title: 'DAAYRA',
+          hero: 'assets/images/daayra_landscape.jpg?v=20261120_v106_new_premieres',
+          poster: 'assets/images/daayra_poster.jpg?v=20261120_v106_new_premieres',
+          year: '2026', age: 'U/A 13+', dur: '2h 21m',
+          desc: 'Raman (Prithviraj Sukumaran), a seasoned police officer with a controversial record of staged encounters and harsh interrogations, finds himself locked in an intense psychological battle as Ajooni (Kareena Kapoor Khan) relentlessly challenges his methods at every step. Directed by Meghna Gulzar, produced by Junglee Pictures & Pen Studios. Streamed in 4K UHD via Peachify TMDB 1215889.',
+          cast: 'Kareena Kapoor Khan, Prithviraj Sukumaran, Pragati Mishra, Prammod Sanghi, Sumali Khaniwale',
+          director: 'Meghna Gulzar',
+          genres: 'Crime, Drama'
+        },
+        'vishwanath_and_sons': {
+          title: 'VISHWANATH & SONS',
+          hero: 'assets/images/vishwanath_and_sons_landscape.jpg?v=20261120_v106_new_premieres',
+          poster: 'assets/images/vishwanath_and_sons_poster.jpg?v=20261120_v106_new_premieres',
+          year: '2026', age: 'U/A 13+', dur: '2h 41m',
+          desc: 'A heartwarming and gripping drama chronicling the legacy of a distinguished family firm. When unexpected corporate rivals and interpersonal tensions threaten everything their patriarch built, a devoted son steps forward to reclaim honor and justice. Starring Suriya, Mamitha Baiju, Raveena Tandon. Directed by Venky Atluri. Streamed in 4K UHD via Peachify TMDB 1408162.',
+          cast: 'Suriya, Mamitha Baiju, Radhika Sarathkumar, Raveena Tandon, Sunil',
+          director: 'Venky Atluri',
+          genres: 'Drama, Romance, Comedy'
+        },
+        'gajab_raat': {
+          title: 'GAJAB RAAT',
+          hero: 'assets/images/gajab_raat_landscape.jpg?v=20261120_v106_new_premieres',
+          poster: 'assets/images/gajab_raat_poster.jpg?v=20261120_v106_new_premieres',
+          year: '2026', age: 'U/A 13+', dur: '2h 4m',
+          desc: 'A gripping nocturnal thriller where an unexpected chain of events plunges an ordinary town into a maze of crime, suspense, and dark revelations before sunrise. Starring Manoj Bajpayee, Divya Dutta, Akshay Oberoi, Saqib Saleem. Directed by Ritesh Shah. Streamed in 1080P HEVC via Peachify TMDB 1453407.',
+          cast: 'Manoj Bajpayee, Divya Dutta, Akshay Oberoi, Saqib Saleem, Shraddha Das',
+          director: 'Ritesh Shah',
+          genres: 'Thriller, Crime'
+        },
+        'dilwali_diwali': {
+          title: 'DILWALI DIWALI',
+          hero: 'assets/images/dilwali_diwali_landscape.jpg?v=20261120_v106_new_premieres',
+          poster: 'assets/images/dilwali_diwali_poster.jpg?v=20261120_v106_new_premieres',
+          year: '2026', age: 'U/A 13+', dur: '1h 1m',
+          desc: 'A lighthearted festive comedy exploring the chaotic, humorous, and emotional mishaps of a vibrant Indian family gathering for Diwali celebrations. Starring Mihir Ahuja, Manoj Pahwa, Neelu Kohli. Directed by Ritesh Menon. Streamed in 1080P HEVC via Peachify TMDB 1810711.',
+          cast: 'Mihir Ahuja, Manoj Pahwa, Neelu Kohli, Aura Bhatnagar Badoni, Manmeet Singh Sawhney',
+          director: 'Ritesh Menon',
+          genres: 'Comedy'
+        },
+        'mahavatar_narsimha': {
+          title: 'MAHAVATAR NARSIMHA',
+          hero: 'assets/images/mahavatar_narsimha_landscape.jpg?v=20261120_v106_new_premieres',
+          poster: 'assets/images/mahavatar_narsimha_poster.jpg?v=20261120_v106_new_premieres',
+          year: '2025', age: 'U/A 13+', dur: '2h 11m',
+          desc: 'An epic animated cinematic saga portraying the divine avatar of Lord Vishnu—Narasimha—and his supreme manifestation to vanquish the demonic king Hiranyakashipu and protect his devout follower Prahlada. Directed by Ashwin Kumar. Streamed in 4K UHD via Peachify TMDB 1383072.',
+          cast: 'Harjeet Walia, Aditya Raj Sharma, Haripriya Matta, Sanket Jaiswal, Priyanka Bhandari',
+          director: 'Ashwin Kumar',
+          genres: 'Animation, Action, Fantasy, Drama'
+        },
+        'border_2': {
+          title: 'BORDER 2',
+          hero: 'assets/images/border_2_landscape.jpg?v=20261120_v106_new_premieres',
+          poster: 'assets/images/border_2_poster.jpg?v=20261120_v106_new_premieres',
+          year: '2026', age: 'U/A 13+', dur: '3h 21m',
+          desc: 'The grand military action sequel set against the backdrop of historical conflicts. A courageous battalion of Indian soldiers mounts an unyielding defense against overwhelming enemy forces, exemplifying ultimate valor, brotherhood, and patriotism. Starring Sunny Deol, Varun Dhawan, Diljit Dosanjh, Ahan Shetty. Directed by Anurag Singh. Streamed in 4K UHD via Peachify TMDB 1213898.',
+          cast: 'Sunny Deol, Varun Dhawan, Diljit Dosanjh, Ahan Shetty, Mona Singh',
+          director: 'Anurag Singh',
+          genres: 'Action, Drama, War'
+        },
+        'ikkis': {
+          title: 'IKKIS',
+          hero: 'assets/images/ikkis_landscape.jpg?v=20261120_v106_new_premieres',
+          poster: 'assets/images/ikkis_poster.jpg?v=20261120_v106_new_premieres',
+          year: '2026', age: 'U/A 13+', dur: '2h 28m',
+          desc: 'A deeply moving biographical war drama recounting the extraordinary bravery and sacrifice of Second Lieutenant Arun Khetarpal PVC, who fought heroically during the Battle of Basantar at the age of twenty-one. Starring Dharmendra, Jaideep Ahlawat, Agastya Nanda. Directed by Sriram Raghavan. Streamed in 1080P HEVC via Peachify TMDB 1196946.',
+          cast: 'Dharmendra, Jaideep Ahlawat, Agastya Nanda, Simar Bhatia, Shree Bishnoi',
+          director: 'Sriram Raghavan',
+          genres: 'History, War, Drama'
+        },
+        'guarding_stars': {
+          title: 'GUARDING STARS',
+          hero: 'assets/images/guarding_stars_landscape.jpg?v=20261120_v106_new_premieres',
+          poster: 'assets/images/guarding_stars_poster.jpg?v=20261120_v106_new_premieres',
+          year: '2026', age: 'U/A 13+', dur: '1h 49m',
+          desc: 'An engaging romantic comedy following a high-profile bodyguard tasked with protecting an eccentric international music star, only to find unexpected affection blossoming amidst chaos and spotlights. Starring Leighton Meester, Jared Padalecki, Andie MacDowell. Directed by Elizabeth Allen Rosenbaum. Streamed in 4K UHD via Peachify TMDB 1551025.',
+          cast: 'Leighton Meester, Jared Padalecki, Andie MacDowell, Walker Hayes, Noah LaLonde',
+          director: 'Elizabeth Allen Rosenbaum',
+          genres: 'Romance, Comedy'
+        },
   };
 
   const item = data[movieKey] || data['part1'];
@@ -9088,7 +9345,139 @@ const sandflixCatalog = [
       ],
       "industry": "Hollywood Cinema",
       "quality": "4K UHD"
-  }
+  },
+{
+  "key": "daayra",
+  "title": "Daayra",
+  "year": "2026",
+  "age": "U/A 13+",
+  "dur": "2h 21m",
+  "desc": "Raman (Prithviraj Sukumaran), a seasoned police officer with a controversial record of staged encounters and harsh interrogations, finds himself locked in an intense psychological battle as Ajooni (Kareena Kapoor Khan) relentlessly challenges his methods at every step. Directed by Meghna Gulzar, produced by Junglee Pictures & Pen Studios. Streamed in 4K UHD via Peachify TMDB 1215889.",
+  "hero": "assets/images/daayra_landscape.jpg?v=20261120_v106_new_premieres",
+  "poster": "assets/images/daayra_poster.jpg?v=20261120_v106_new_premieres",
+  "genres": [
+    "Crime",
+    "Drama"
+  ],
+  "industry": "Indian Cinema",
+  "quality": "4K UHD"
+},
+{
+  "key": "vishwanath_and_sons",
+  "title": "Vishwanath & Sons",
+  "year": "2026",
+  "age": "U/A 13+",
+  "dur": "2h 41m",
+  "desc": "A heartwarming and gripping drama chronicling the legacy of a distinguished family firm. When unexpected corporate rivals and interpersonal tensions threaten everything their patriarch built, a devoted son steps forward to reclaim honor and justice. Starring Suriya, Mamitha Baiju, Raveena Tandon. Directed by Venky Atluri. Streamed in 4K UHD via Peachify TMDB 1408162.",
+  "hero": "assets/images/vishwanath_and_sons_landscape.jpg?v=20261120_v106_new_premieres",
+  "poster": "assets/images/vishwanath_and_sons_poster.jpg?v=20261120_v106_new_premieres",
+  "genres": [
+    "Drama",
+    "Romance",
+    "Comedy"
+  ],
+  "industry": "Indian Cinema",
+  "quality": "4K UHD"
+},
+{
+  "key": "gajab_raat",
+  "title": "Gajab Raat",
+  "year": "2026",
+  "age": "U/A 13+",
+  "dur": "2h 4m",
+  "desc": "A gripping nocturnal thriller where an unexpected chain of events plunges an ordinary town into a maze of crime, suspense, and dark revelations before sunrise. Starring Manoj Bajpayee, Divya Dutta, Akshay Oberoi, Saqib Saleem. Directed by Ritesh Shah. Streamed in 1080P HEVC via Peachify TMDB 1453407.",
+  "hero": "assets/images/gajab_raat_landscape.jpg?v=20261120_v106_new_premieres",
+  "poster": "assets/images/gajab_raat_poster.jpg?v=20261120_v106_new_premieres",
+  "genres": [
+    "Thriller",
+    "Crime"
+  ],
+  "industry": "Indian Cinema",
+  "quality": "1080P HEVC"
+},
+{
+  "key": "dilwali_diwali",
+  "title": "Dilwali Diwali",
+  "year": "2026",
+  "age": "U/A 13+",
+  "dur": "1h 1m",
+  "desc": "A lighthearted festive comedy exploring the chaotic, humorous, and emotional mishaps of a vibrant Indian family gathering for Diwali celebrations. Starring Mihir Ahuja, Manoj Pahwa, Neelu Kohli. Directed by Ritesh Menon. Streamed in 1080P HEVC via Peachify TMDB 1810711.",
+  "hero": "assets/images/dilwali_diwali_landscape.jpg?v=20261120_v106_new_premieres",
+  "poster": "assets/images/dilwali_diwali_poster.jpg?v=20261120_v106_new_premieres",
+  "genres": [
+    "Comedy"
+  ],
+  "industry": "Indian Cinema",
+  "quality": "1080P HEVC"
+},
+{
+  "key": "mahavatar_narsimha",
+  "title": "Mahavatar Narsimha",
+  "year": "2025",
+  "age": "U/A 13+",
+  "dur": "2h 11m",
+  "desc": "An epic animated cinematic saga portraying the divine avatar of Lord Vishnu\u2014Narasimha\u2014and his supreme manifestation to vanquish the demonic king Hiranyakashipu and protect his devout follower Prahlada. Directed by Ashwin Kumar. Streamed in 4K UHD via Peachify TMDB 1383072.",
+  "hero": "assets/images/mahavatar_narsimha_landscape.jpg?v=20261120_v106_new_premieres",
+  "poster": "assets/images/mahavatar_narsimha_poster.jpg?v=20261120_v106_new_premieres",
+  "genres": [
+    "Animation",
+    "Action",
+    "Fantasy",
+    "Drama"
+  ],
+  "industry": "Indian Cinema",
+  "quality": "4K UHD"
+},
+{
+  "key": "border_2",
+  "title": "Border 2",
+  "year": "2026",
+  "age": "U/A 13+",
+  "dur": "3h 21m",
+  "desc": "The grand military action sequel set against the backdrop of historical conflicts. A courageous battalion of Indian soldiers mounts an unyielding defense against overwhelming enemy forces, exemplifying ultimate valor, brotherhood, and patriotism. Starring Sunny Deol, Varun Dhawan, Diljit Dosanjh, Ahan Shetty. Directed by Anurag Singh. Streamed in 4K UHD via Peachify TMDB 1213898.",
+  "hero": "assets/images/border_2_landscape.jpg?v=20261120_v106_new_premieres",
+  "poster": "assets/images/border_2_poster.jpg?v=20261120_v106_new_premieres",
+  "genres": [
+    "Action",
+    "Drama",
+    "War"
+  ],
+  "industry": "Indian Cinema",
+  "quality": "4K UHD"
+},
+{
+  "key": "ikkis",
+  "title": "Ikkis",
+  "year": "2026",
+  "age": "U/A 13+",
+  "dur": "2h 28m",
+  "desc": "A deeply moving biographical war drama recounting the extraordinary bravery and sacrifice of Second Lieutenant Arun Khetarpal PVC, who fought heroically during the Battle of Basantar at the age of twenty-one. Starring Dharmendra, Jaideep Ahlawat, Agastya Nanda. Directed by Sriram Raghavan. Streamed in 1080P HEVC via Peachify TMDB 1196946.",
+  "hero": "assets/images/ikkis_landscape.jpg?v=20261120_v106_new_premieres",
+  "poster": "assets/images/ikkis_poster.jpg?v=20261120_v106_new_premieres",
+  "genres": [
+    "History",
+    "War",
+    "Drama"
+  ],
+  "industry": "Indian Cinema",
+  "quality": "1080P HEVC"
+},
+{
+  "key": "guarding_stars",
+  "title": "Guarding Stars",
+  "year": "2026",
+  "age": "U/A 13+",
+  "dur": "1h 49m",
+  "desc": "An engaging romantic comedy following a high-profile bodyguard tasked with protecting an eccentric international music star, only to find unexpected affection blossoming amidst chaos and spotlights. Starring Leighton Meester, Jared Padalecki, Andie MacDowell. Directed by Elizabeth Allen Rosenbaum. Streamed in 4K UHD via Peachify TMDB 1551025.",
+  "hero": "assets/images/guarding_stars_landscape.jpg?v=20261120_v106_new_premieres",
+  "poster": "assets/images/guarding_stars_poster.jpg?v=20261120_v106_new_premieres",
+  "genres": [
+    "Romance",
+    "Comedy"
+  ],
+  "industry": "Hollywood",
+  "quality": "4K UHD"
+}
 ];
 
 /* =========================================================================
