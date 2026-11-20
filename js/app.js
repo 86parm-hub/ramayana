@@ -7722,7 +7722,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
     },
     'the_odyssey': {
       title: 'THE ODYSSEY',
-      hero: 'assets/images/the_odyssey_landscape.jpg',
+      hero: 'assets/images/the_odyssey_landscape.jpg?v=20261120_v110_clean_art',
       year: '2026',
       age: 'U/A 16+',
       dur: '3h 10m',
@@ -7730,7 +7730,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
     },
     'goat': {
       title: 'GOAT (2026)',
-      hero: 'assets/images/goat_landscape.jpg',
+      hero: 'assets/images/goat_landscape.jpg?v=20261120_v110_clean_art',
       year: '2026',
       age: 'U/A 7+',
       dur: '1h 45m',
@@ -7738,7 +7738,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
     },
     'scary_movie_6': {
       title: 'SCARY MOVIE 6',
-      hero: 'assets/images/scary_movie_6_landscape.jpg',
+      hero: 'assets/images/scary_movie_6_landscape.jpg?v=20261120_v110_clean_art',
       year: '2026',
       age: 'A 18+',
       dur: '1h 36m',
@@ -7746,7 +7746,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
     },
     'coolie': {
       title: 'COOLIE',
-      hero: 'assets/images/coolie_landscape.jpg',
+      hero: 'assets/images/coolie_landscape.jpg?v=20261120_v110_clean_art',
       year: '2025',
       age: 'U/A 16+',
       dur: '2h 50m',
@@ -7754,7 +7754,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
     },
     'dhurandhar': {
       title: 'DHURANDHAR',
-      hero: 'assets/images/dhurandhar_landscape.jpg',
+      hero: 'assets/images/dhurandhar_landscape.jpg?v=20261120_v110_clean_art',
       year: '2025',
       age: 'U/A 16+',
       dur: '2h 45m',
@@ -7762,7 +7762,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
     },
     'jailer_2': {
       title: 'JAILER 2 (HUKUM)',
-      hero: 'assets/images/jailer_2_landscape.jpg',
+      hero: 'assets/images/jailer_2_landscape.jpg?v=20261120_v110_clean_art',
       year: '2026',
       age: 'U/A 16+',
       dur: '2h 55m',
@@ -7770,7 +7770,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
     },
     'disclosure_day': {
       title: 'DISCLOSURE DAY',
-      hero: 'assets/images/disclosure_day_landscape.jpg',
+      hero: 'assets/images/disclosure_day_landscape.jpg?v=20261120_v110_clean_art',
       year: '2026',
       age: 'U/A 16+',
       dur: '2h 35m',
@@ -7778,7 +7778,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
     },
     'wuthering_heights': {
       title: 'WUTHERING HEIGHTS',
-      hero: 'assets/images/wuthering_heights_landscape.jpg',
+      hero: 'assets/images/wuthering_heights_landscape.jpg?v=20261120_v110_clean_art',
       year: '2026',
       age: 'U/A 16+',
       dur: '2h 25m',
@@ -7786,7 +7786,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
     },
     'hoppers': {
       title: 'HOPPERS (2026)',
-      hero: 'assets/images/hoppers_landscape.jpg',
+      hero: 'assets/images/hoppers_landscape.jpg?v=20261120_v110_clean_art',
       year: '2026',
       age: 'U/A 7+',
       dur: '1h 42m',
@@ -7794,7 +7794,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
     },
     'michael': {
       title: 'MICHAEL (THE KING OF POP)',
-      hero: 'assets/images/michael_landscape.jpg',
+      hero: 'assets/images/michael_landscape.jpg?v=20261120_v110_clean_art',
       year: '2026',
       age: 'U/A 16+',
       dur: '2h 50m',
@@ -8912,8 +8912,8 @@ const sandflixCatalog = [
     "age": "U/A 16+",
     "dur": "3h 10m",
     "desc": "Christopher Nolan",
-    "hero": "assets/images/the_odyssey_landscape.jpg",
-    "poster": "assets/images/the_odyssey_poster.jpg",
+    "hero": "assets/images/the_odyssey_landscape.jpg?v=20261120_v110_clean_art",
+    "poster": "assets/images/the_odyssey_poster.jpg?v=20261120_v110_clean_art",
     "genres": [
       "Cinema",
       "Drama"
@@ -8928,8 +8928,8 @@ const sandflixCatalog = [
     "age": "U/A 7+",
     "dur": "1h 45m",
     "desc": "A groundbreaking animated sports adventure comedy produced by Sony Pictures Animation and Stephen Curry",
-    "hero": "assets/images/goat_landscape.jpg",
-    "poster": "assets/images/goat_poster.jpg",
+    "hero": "assets/images/goat_landscape.jpg?v=20261120_v110_clean_art",
+    "poster": "assets/images/goat_poster.jpg?v=20261120_v110_clean_art",
     "genres": [
       "Comedy",
       "Animation"
@@ -8944,8 +8944,8 @@ const sandflixCatalog = [
     "age": "A 18+",
     "dur": "1h 36m",
     "desc": "The legendary Wayans Brothers (Marlon, Shawn, and Keenen Ivory Wayans) reunite alongside franchise icons Anna Faris (Cindy Campbell) and Regina Hall (Brenda Meeks) to resurrect the premier horror parody franchise. Skewering modern horror sensations (M3GAN, Smile, Longlegs, Talk to Me, Hereditary), Scary Movie 6 unleashes side-splitting, unfiltered slapstick mayhem. Produced by Miramax. Streamed in 1080P HEVC via Peachify TMDB 1273221.",
-    "hero": "assets/images/scary_movie_6_landscape.jpg",
-    "poster": "assets/images/scary_movie_6_poster.jpg",
+    "hero": "assets/images/scary_movie_6_landscape.jpg?v=20261120_v110_clean_art",
+    "poster": "assets/images/scary_movie_6_poster.jpg?v=20261120_v110_clean_art",
     "genres": [
       "Horror"
     ],
@@ -8959,8 +8959,8 @@ const sandflixCatalog = [
     "age": "U/A 16+",
     "dur": "2h 50m",
     "desc": "Superstar Rajinikanth stars as Deva, a legendary harbor kingpin and gold smuggler in an adrenaline-charged action crime thriller set against Chennai",
-    "hero": "assets/images/coolie_landscape.jpg",
-    "poster": "assets/images/coolie_poster.jpg",
+    "hero": "assets/images/coolie_landscape.jpg?v=20261120_v110_clean_art",
+    "poster": "assets/images/coolie_poster.jpg?v=20261120_v110_clean_art",
     "genres": [
       "Action",
       "Thriller"
@@ -8975,8 +8975,8 @@ const sandflixCatalog = [
     "age": "U/A 16+",
     "dur": "2h 45m",
     "desc": "National Award-winning director Aditya Dhar (Uri: The Surgical Strike) helms a high-octane geopolitical spy action saga based on real covert espionage missions conducted by Indian intelligence. Starring Ranveer Singh as a daring undercover operative, alongside Sanjay Dutt, R. Madhavan, Akshaye Khanna, and Arjun Rampal. Produced by Jio Studios and B62 Studios. Streamed in 4K UHD via Peachify TMDB 1291608.",
-    "hero": "assets/images/dhurandhar_landscape.jpg",
-    "poster": "assets/images/dhurandhar_poster.jpg",
+    "hero": "assets/images/dhurandhar_landscape.jpg?v=20261120_v110_clean_art",
+    "poster": "assets/images/dhurandhar_poster.jpg?v=20261120_v110_clean_art",
     "genres": [
       "Action",
       "Thriller"
@@ -8991,8 +8991,8 @@ const sandflixCatalog = [
     "age": "U/A 16+",
     "dur": "2h 55m",
     "desc": "Tiger Muthuvel Pandian (Superstar Rajinikanth) returns in Nelson Dilipkumar",
-    "hero": "assets/images/jailer_2_landscape.jpg",
-    "poster": "assets/images/jailer_2_poster.jpg",
+    "hero": "assets/images/jailer_2_landscape.jpg?v=20261120_v110_clean_art",
+    "poster": "assets/images/jailer_2_poster.jpg?v=20261120_v110_clean_art",
     "genres": [
       "Cinema",
       "Drama"
@@ -9007,8 +9007,8 @@ const sandflixCatalog = [
     "age": "U/A 16+",
     "dur": "2h 35m",
     "desc": "A gripping science-fiction thriller directed by Steven Spielberg and written by David Koepp. When undeniable proof of extraterrestrial existence surfaces, a resilient television meteorologist and an intrepid cybersecurity analyst brave a deadly government pursuit to disclose the epochal truth to seven billion people. Starring Emily Blunt, Josh O",
-    "hero": "assets/images/disclosure_day_landscape.jpg",
-    "poster": "assets/images/disclosure_day_poster.jpg",
+    "hero": "assets/images/disclosure_day_landscape.jpg?v=20261120_v110_clean_art",
+    "poster": "assets/images/disclosure_day_poster.jpg?v=20261120_v110_clean_art",
     "genres": [
       "Thriller",
       "Sci-Fi"
@@ -9023,8 +9023,8 @@ const sandflixCatalog = [
     "age": "U/A 16+",
     "dur": "2h 25m",
     "desc": "Academy Award winner Emerald Fennell directs a visceral, intoxicating reimagining of Emily Bront\u00eb",
-    "hero": "assets/images/wuthering_heights_landscape.jpg",
-    "poster": "assets/images/wuthering_heights_poster.jpg",
+    "hero": "assets/images/wuthering_heights_landscape.jpg?v=20261120_v110_clean_art",
+    "poster": "assets/images/wuthering_heights_poster.jpg?v=20261120_v110_clean_art",
     "genres": [
       "Action"
     ],
@@ -9038,8 +9038,8 @@ const sandflixCatalog = [
     "age": "U/A 7+",
     "dur": "1h 42m",
     "desc": "A witty, heartwarming sci-fi comedy adventure from Disney and Pixar Animation Studios. An animal-loving college student Mabel utilizes revolutionary neuro-link science to hop her consciousness into an ultra-realistic robotic beaver. Infiltrating the wilderness, she befriends charismatic woodland creatures to protect their forest realm from ruthless urban expansion. Directed by Daniel Chong. Voices by Piper Curda, Bobby Moynihan, Jon Hamm. Streamed in 4K UHD via Peachify TMDB 1327819.",
-    "hero": "assets/images/hoppers_landscape.jpg",
-    "poster": "assets/images/hoppers_poster.jpg",
+    "hero": "assets/images/hoppers_landscape.jpg?v=20261120_v110_clean_art",
+    "poster": "assets/images/hoppers_poster.jpg?v=20261120_v110_clean_art",
     "genres": [
       "Action",
       "Comedy",
@@ -9055,8 +9055,8 @@ const sandflixCatalog = [
     "age": "U/A 16+",
     "dur": "2h 50m",
     "desc": "The monumental biographical musical drama directed by Antoine Fuqua and produced by Graham King (Bohemian Rhapsody). Chronicling the triumphant yet turbulent life and enduring legacy of global music icon Michael Jackson, from child prodigy in the Jackson 5 to the undisputed King of Pop. Starring nephew Jaafar Jackson in an electric tour-de-force performance alongside Colman Domingo, Nia Long, Miles Teller. Lionsgate & Universal Pictures. Streamed in 4K UHD via Peachify TMDB 936075.",
-    "hero": "assets/images/michael_landscape.jpg",
-    "poster": "assets/images/michael_poster.jpg",
+    "hero": "assets/images/michael_landscape.jpg?v=20261120_v110_clean_art",
+    "poster": "assets/images/michael_poster.jpg?v=20261120_v110_clean_art",
     "genres": [
       "Drama",
       "Musical"
