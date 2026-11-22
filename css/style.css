@@ -6203,9 +6203,10 @@ body.ott-platform {
 }
 
 .row-title-chevron {
-  color: #ff2a44;
-  font-size: 24px;
-  line-height: 1;
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 
 .row-badge-pill {
@@ -10573,9 +10574,10 @@ video {
 }
 
 .sandify-chevron {
-  color: #e50914;
-  font-size: 26px;
-  line-height: 1;
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 
 .sandify-section-desc {
