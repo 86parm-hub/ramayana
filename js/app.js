@@ -5783,6 +5783,86 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
+    // Handle Embed Movie Mode (Baththa TMDB 1515692 via Peachify)
+  if (targetTime === 'baththa' || targetTime === '1515692') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      embedIframe.src = 'https://peachify.net/movie/1515692';
+    }
+    if (titleDisplay) titleDisplay.textContent = "Baththa (2026) • TMDB 1515692 (Vijay Sethupathi)";
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
+  // Handle Embed Movie Mode (Haiku TMDB 1593350 via Peachify)
+  if (targetTime === 'haiku' || targetTime === '1593350') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      embedIframe.src = 'https://peachify.net/movie/1593350';
+    }
+    if (titleDisplay) titleDisplay.textContent = "Haiku (2026) • TMDB 1593350";
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
+  // Handle Embed Movie Mode (G.D.N TMDB 1489543 via Peachify)
+  if (targetTime === 'gdn' || targetTime === 'g.d.n' || targetTime === '1489543') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      embedIframe.src = 'https://peachify.net/movie/1489543';
+    }
+    if (titleDisplay) titleDisplay.textContent = "G.D.N (2026) • TMDB 1489543 (R. Madhavan)";
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
+  // Handle Embed Movie Mode (418 TMDB 1606527 via Peachify)
+  if (targetTime === 'movie_418' || targetTime === '418' || targetTime === '1606527') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      embedIframe.src = 'https://peachify.net/movie/1606527';
+    }
+    if (titleDisplay) titleDisplay.textContent = "418 (2026) • TMDB 1606527";
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
+  // Handle Embed Movie Mode (Steps TMDB 1595124 via Peachify)
+  if (targetTime === 'steps' || targetTime === '1595124') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      embedIframe.src = 'https://peachify.net/movie/1595124';
+    }
+    if (titleDisplay) titleDisplay.textContent = "Steps (2026) • TMDB 1595124 (Ali Wong)";
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
   // Handle Embed Movie Mode (The Odyssey TMDB 1368337 via Peachify)
   if (targetTime === 'the_odyssey' || targetTime === 'odyssey' || targetTime === '1368337') {
     nbpIsEmbedMode = true;
@@ -7824,6 +7904,51 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       dur: '2h 05m',
       desc: "The ultimate martial arts tournament erupts as Earthrealm's champions stand on the precipice of obliteration against the menacing warlord Shao Kahn and Outworld forces. Cole Young, Sonya Blade, and Jax recruit arrogant action icon Johnny Cage to unleash his martial prowess alongside legendary rival warriors Scorpion and Sub-Zero. Directed by Simon McQuoid. Starring Karl Urban, Hiroyuki Sanada, Joe Taslim, Jessica McNamee, Lewis Tan. New Line Cinema & Warner Bros. Streamed in 4K UHD via Peachify TMDB 931285."
     },
+        'baththa': {
+      title: 'BATHTHA',
+      hero: 'assets/images/baththa_landscape.jpg?v=20261122_v112_new_trending',
+      poster: 'assets/images/baththa_poster.jpg?v=20261122_v112_new_trending',
+      year: '2026',
+      age: 'U/A 13+',
+      dur: '2h 15m',
+      desc: 'In 1986 Madras, a timid eight-year-old boy accidentally traps a feared gangster inside a deserted school toilet. As tension mounts and the hunt for the missing gangster intensifies, an unlikely bond and a chain of chaotic events reshape their lives. Starring Vijay Sethupathi, Sai Prithviraj, Lijomol Jose, and Sahasra Sree. Directed by Balaji Tharaneetharan. Streamed in 4K UHD via Peachify TMDB 1515692.'
+    },
+    'haiku': {
+      title: 'HAIKU',
+      hero: 'assets/images/haiku_landscape.jpg?v=20261122_v112_new_trending',
+      poster: 'assets/images/haiku_poster.jpg?v=20261122_v112_new_trending',
+      year: '2026',
+      age: 'U/A 13+',
+      dur: '2h 10m',
+      desc: 'A charismatic young man uses the delicate art of poetry to navigate the complex maze of modern romance and protect his fragile relationship against societal pressures. Starring Aegan, Sridevi Apalla, Femina George, and Adhirchi Arun. Directed by Yuvaraj Chinnasamy. Streamed in 4K UHD via Peachify TMDB 1593350.'
+    },
+    'gdn': {
+      title: 'G.D.N',
+      hero: 'assets/images/gdn_landscape.jpg?v=20261122_v112_new_trending',
+      poster: 'assets/images/gdn_poster.jpg?v=20261122_v112_new_trending',
+      year: '2026',
+      age: 'U/A 13+',
+      dur: '2h 20m',
+      desc: 'The inspiring biopic of G.D. Naidu, the Edison of India, who overcame insurmountable challenges and defied a repressive colonial regime to create transformative inventions and industrial breakthroughs. Starring R. Madhavan, Priyamani, Sathyaraj, and Jayaram. Directed by Krishnakumar Ramakumar. Streamed in 4K UHD via Peachify TMDB 1489543.'
+    },
+    'movie_418': {
+      title: '418',
+      hero: 'assets/images/movie_418_landscape.jpg?v=20261122_v112_new_trending',
+      poster: 'assets/images/movie_418_poster.jpg?v=20261122_v112_new_trending',
+      year: '2026',
+      age: 'A 18+',
+      dur: '2h 05m',
+      desc: 'Set in a medical college situated in a dread-stricken village, the gripping narrative confronts the rational science behind superstitions and the terrifying, superstitious truths lurking behind scientific reality. Starring Chaithra J Achar, Charan Lakkaraju, Preethi Pagadala, and Ramesh Indira. Directed by Kiran Nadagouda. Streamed in 4K UHD via Peachify TMDB 1606527.'
+    },
+    'steps': {
+      title: 'STEPS',
+      hero: 'assets/images/steps_landscape.jpg?v=20261122_v112_new_trending',
+      poster: 'assets/images/steps_poster.jpg?v=20261122_v112_new_trending',
+      year: '2026',
+      age: 'U/A 7+',
+      dur: '1h 45m',
+      desc: 'After being blamed for disrupting the Royal Ball with a stolen magic wand, a misunderstood stepsister accidentally turns her world upside down and embarks on an unforgettable fantasy adventure to restore harmony. Starring the vocal talents of Ali Wong, Amanda Seyfried, Stephanie Hsu, and Nikki Glaser. Directed by Alyce Tzue. Streamed in 4K UHD via Peachify TMDB 1595124.'
+    },
     'kartavya': {
       title: 'KARTAVYA',
       hero: 'assets/images/kartavya_landscape.jpg',
@@ -9345,6 +9470,71 @@ const sandflixCatalog = [
       ],
       "industry": "Hollywood Cinema",
       "quality": "4K UHD"
+  },
+  {
+    "key": "baththa",
+    "title": "Baththa",
+    "year": "2026",
+    "age": "U/A 13+",
+    "dur": "2h 15m",
+    "desc": "In 1986 Madras, a timid eight-year-old boy accidentally traps a feared gangster inside a deserted school toilet. As tension mounts and the hunt for the missing gangster intensifies, an unlikely bond and a chain of chaotic events reshape their lives. Starring Vijay Sethupathi, Sai Prithviraj, Lijomol Jose, and Sahasra Sree. Directed by Balaji Tharaneetharan. Streamed in 4K UHD via Peachify TMDB 1515692.",
+    "hero": "assets/images/baththa_landscape.jpg?v=20261122_v112_new_trending",
+    "poster": "assets/images/baththa_poster.jpg?v=20261122_v112_new_trending",
+    "genres": ["Action", "Comedy", "Drama"],
+    "industry": "Indian Cinema",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "haiku",
+    "title": "Haiku",
+    "year": "2026",
+    "age": "U/A 13+",
+    "dur": "2h 10m",
+    "desc": "A charismatic young man uses the delicate art of poetry to navigate the complex maze of modern romance and protect his fragile relationship against societal pressures. Starring Aegan, Sridevi Apalla, Femina George, and Adhirchi Arun. Directed by Yuvaraj Chinnasamy. Streamed in 4K UHD via Peachify TMDB 1593350.",
+    "hero": "assets/images/haiku_landscape.jpg?v=20261122_v112_new_trending",
+    "poster": "assets/images/haiku_poster.jpg?v=20261122_v112_new_trending",
+    "genres": ["Romance", "Comedy"],
+    "industry": "Indian Cinema",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "gdn",
+    "title": "G.D.N",
+    "year": "2026",
+    "age": "U/A 13+",
+    "dur": "2h 20m",
+    "desc": "The inspiring biopic of G.D. Naidu, the Edison of India, who overcame insurmountable challenges and defied a repressive colonial regime to create transformative inventions and industrial breakthroughs. Starring R. Madhavan, Priyamani, Sathyaraj, and Jayaram. Directed by Krishnakumar Ramakumar. Streamed in 4K UHD via Peachify TMDB 1489543.",
+    "hero": "assets/images/gdn_landscape.jpg?v=20261122_v112_new_trending",
+    "poster": "assets/images/gdn_poster.jpg?v=20261122_v112_new_trending",
+    "genres": ["Biopic", "Drama", "History"],
+    "industry": "Indian Cinema",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "movie_418",
+    "title": "418",
+    "year": "2026",
+    "age": "A 18+",
+    "dur": "2h 05m",
+    "desc": "Set in a medical college situated in a dread-stricken village, the gripping narrative confronts the rational science behind superstitions and the terrifying, superstitious truths lurking behind scientific reality. Starring Chaithra J Achar, Charan Lakkaraju, Preethi Pagadala, and Ramesh Indira. Directed by Kiran Nadagouda. Streamed in 4K UHD via Peachify TMDB 1606527.",
+    "hero": "assets/images/movie_418_landscape.jpg?v=20261122_v112_new_trending",
+    "poster": "assets/images/movie_418_poster.jpg?v=20261122_v112_new_trending",
+    "genres": ["Horror", "Mystery", "Thriller"],
+    "industry": "Indian Cinema",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "steps",
+    "title": "Steps",
+    "year": "2026",
+    "age": "U/A 7+",
+    "dur": "1h 45m",
+    "desc": "After being blamed for disrupting the Royal Ball with a stolen magic wand, a misunderstood stepsister accidentally turns her world upside down and embarks on an unforgettable fantasy adventure to restore harmony. Starring the vocal talents of Ali Wong, Amanda Seyfried, Stephanie Hsu, and Nikki Glaser. Directed by Alyce Tzue. Streamed in 4K UHD via Peachify TMDB 1595124.",
+    "hero": "assets/images/steps_landscape.jpg?v=20261122_v112_new_trending",
+    "poster": "assets/images/steps_poster.jpg?v=20261122_v112_new_trending",
+    "genres": ["Animation", "Fantasy", "Comedy"],
+    "industry": "Hollywood Cinema",
+    "quality": "4K UHD"
   },
 {
   "key": "daayra",

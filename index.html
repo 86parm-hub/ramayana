@@ -18,7 +18,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/android-chrome-192x192.png?v=3">
   <link rel="icon" type="image/png" sizes="512x512" href="assets/icons/android-chrome-512x512.png?v=3">
 
-  <link rel="stylesheet" href="css/style.css?v=20261120_v111_row7_fullcard">
+  <link rel="stylesheet" href="css/style.css?v=20261122_v112_new_trending">
 
   <!-- Exact Netflix Desktop Pill Search Capsule Styling (1:1 Replica of Netflix Desktop Reference) -->
   <style id="netflixPillSearchExplicit">
@@ -389,6 +389,61 @@
       var titleDisplay = document.getElementById('nbpCenterTitle');
       var spinner = document.getElementById('nbpSpinner');
 
+            // Baththa (2026) TMDB 1515692
+      if (targetTime === 'baththa' || targetTime === '1515692') {
+        if (modal) { modal.classList.add('active', 'is-embed-active'); modal.setAttribute('aria-hidden', 'false'); }
+        document.body.style.overflow = 'hidden';
+        if (video) { try { video.pause(); video.currentTime = 0; } catch(e){} video.style.display = 'none'; }
+        if (titleDisplay) titleDisplay.textContent = 'Baththa (2026) • TMDB 1515692 (Vijay Sethupathi)';
+        if (embedIframe) { embedIframe.style.display = 'block'; embedIframe.src = 'https://peachify.net/movie/1515692'; }
+        if (spinner) spinner.classList.remove('active');
+        try { if (window.history && window.history.pushState) window.history.pushState({ type: 'netflix-player', targetTime: 'baththa' }, null, '#player'); } catch(e){}
+        return;
+      }
+      // Haiku (2026) TMDB 1593350
+      if (targetTime === 'haiku' || targetTime === '1593350') {
+        if (modal) { modal.classList.add('active', 'is-embed-active'); modal.setAttribute('aria-hidden', 'false'); }
+        document.body.style.overflow = 'hidden';
+        if (video) { try { video.pause(); video.currentTime = 0; } catch(e){} video.style.display = 'none'; }
+        if (titleDisplay) titleDisplay.textContent = 'Haiku (2026) • TMDB 1593350';
+        if (embedIframe) { embedIframe.style.display = 'block'; embedIframe.src = 'https://peachify.net/movie/1593350'; }
+        if (spinner) spinner.classList.remove('active');
+        try { if (window.history && window.history.pushState) window.history.pushState({ type: 'netflix-player', targetTime: 'haiku' }, null, '#player'); } catch(e){}
+        return;
+      }
+      // G.D.N (2026) TMDB 1489543
+      if (targetTime === 'gdn' || targetTime === 'g.d.n' || targetTime === '1489543') {
+        if (modal) { modal.classList.add('active', 'is-embed-active'); modal.setAttribute('aria-hidden', 'false'); }
+        document.body.style.overflow = 'hidden';
+        if (video) { try { video.pause(); video.currentTime = 0; } catch(e){} video.style.display = 'none'; }
+        if (titleDisplay) titleDisplay.textContent = 'G.D.N (2026) • TMDB 1489543 (R. Madhavan)';
+        if (embedIframe) { embedIframe.style.display = 'block'; embedIframe.src = 'https://peachify.net/movie/1489543'; }
+        if (spinner) spinner.classList.remove('active');
+        try { if (window.history && window.history.pushState) window.history.pushState({ type: 'netflix-player', targetTime: 'gdn' }, null, '#player'); } catch(e){}
+        return;
+      }
+      // 418 (2026) TMDB 1606527
+      if (targetTime === 'movie_418' || targetTime === '418' || targetTime === '1606527') {
+        if (modal) { modal.classList.add('active', 'is-embed-active'); modal.setAttribute('aria-hidden', 'false'); }
+        document.body.style.overflow = 'hidden';
+        if (video) { try { video.pause(); video.currentTime = 0; } catch(e){} video.style.display = 'none'; }
+        if (titleDisplay) titleDisplay.textContent = '418 (2026) • TMDB 1606527';
+        if (embedIframe) { embedIframe.style.display = 'block'; embedIframe.src = 'https://peachify.net/movie/1606527'; }
+        if (spinner) spinner.classList.remove('active');
+        try { if (window.history && window.history.pushState) window.history.pushState({ type: 'netflix-player', targetTime: 'movie_418' }, null, '#player'); } catch(e){}
+        return;
+      }
+      // Steps (2026) TMDB 1595124
+      if (targetTime === 'steps' || targetTime === '1595124') {
+        if (modal) { modal.classList.add('active', 'is-embed-active'); modal.setAttribute('aria-hidden', 'false'); }
+        document.body.style.overflow = 'hidden';
+        if (video) { try { video.pause(); video.currentTime = 0; } catch(e){} video.style.display = 'none'; }
+        if (titleDisplay) titleDisplay.textContent = 'Steps (2026) • TMDB 1595124 (Ali Wong)';
+        if (embedIframe) { embedIframe.style.display = 'block'; embedIframe.src = 'https://peachify.net/movie/1595124'; }
+        if (spinner) spinner.classList.remove('active');
+        try { if (window.history && window.history.pushState) window.history.pushState({ type: 'netflix-player', targetTime: 'steps' }, null, '#player'); } catch(e){}
+        return;
+      }
       // The Odyssey TMDB 1368337
       if (targetTime === 'the_odyssey' || targetTime === 'odyssey' || targetTime === '1368337') {
         if (modal) { modal.classList.add('active', 'is-embed-active'); modal.setAttribute('aria-hidden', 'false'); }
@@ -1368,6 +1423,41 @@
       window.currentModalMovieKey = movieKey;
 
       var movieDetailsMap = {
+                'baththa': {
+          title: 'BATHTHA',
+          hero: 'assets/images/baththa_landscape.jpg?v=20261122_v112_new_trending',
+          poster: 'assets/images/baththa_poster.jpg?v=20261122_v112_new_trending',
+          year: '2026', age: 'U/A 13+', dur: '2h 15m',
+          desc: 'In 1986 Madras, a timid eight-year-old boy accidentally traps a feared gangster inside a deserted school toilet. As tension mounts and the hunt for the missing gangster intensifies, an unlikely bond and a chain of chaotic events reshape their lives. Starring Vijay Sethupathi, Sai Prithviraj, Lijomol Jose, and Sahasra Sree. Directed by Balaji Tharaneetharan. Streamed in 4K UHD via Peachify TMDB 1515692.'
+        },
+        'haiku': {
+          title: 'HAIKU',
+          hero: 'assets/images/haiku_landscape.jpg?v=20261122_v112_new_trending',
+          poster: 'assets/images/haiku_poster.jpg?v=20261122_v112_new_trending',
+          year: '2026', age: 'U/A 13+', dur: '2h 10m',
+          desc: 'A charismatic young man uses the delicate art of poetry to navigate the complex maze of modern romance and protect his fragile relationship against societal pressures. Starring Aegan, Sridevi Apalla, Femina George, and Adhirchi Arun. Directed by Yuvaraj Chinnasamy. Streamed in 4K UHD via Peachify TMDB 1593350.'
+        },
+        'gdn': {
+          title: 'G.D.N',
+          hero: 'assets/images/gdn_landscape.jpg?v=20261122_v112_new_trending',
+          poster: 'assets/images/gdn_poster.jpg?v=20261122_v112_new_trending',
+          year: '2026', age: 'U/A 13+', dur: '2h 20m',
+          desc: 'The inspiring biopic of G.D. Naidu, the Edison of India, who overcame insurmountable challenges and defied a repressive colonial regime to create transformative inventions and industrial breakthroughs. Starring R. Madhavan, Priyamani, Sathyaraj, and Jayaram. Directed by Krishnakumar Ramakumar. Streamed in 4K UHD via Peachify TMDB 1489543.'
+        },
+        'movie_418': {
+          title: '418',
+          hero: 'assets/images/movie_418_landscape.jpg?v=20261122_v112_new_trending',
+          poster: 'assets/images/movie_418_poster.jpg?v=20261122_v112_new_trending',
+          year: '2026', age: 'A 18+', dur: '2h 05m',
+          desc: 'Set in a medical college situated in a dread-stricken village, the gripping narrative confronts the rational science behind superstitions and the terrifying, superstitious truths lurking behind scientific reality. Starring Chaithra J Achar, Charan Lakkaraju, Preethi Pagadala, and Ramesh Indira. Directed by Kiran Nadagouda. Streamed in 4K UHD via Peachify TMDB 1606527.'
+        },
+        'steps': {
+          title: 'STEPS',
+          hero: 'assets/images/steps_landscape.jpg?v=20261122_v112_new_trending',
+          poster: 'assets/images/steps_poster.jpg?v=20261122_v112_new_trending',
+          year: '2026', age: 'U/A 7+', dur: '1h 45m',
+          desc: 'After being blamed for disrupting the Royal Ball with a stolen magic wand, a misunderstood stepsister accidentally turns her world upside down and embarks on an unforgettable fantasy adventure to restore harmony. Starring the vocal talents of Ali Wong, Amanda Seyfried, Stephanie Hsu, and Nikki Glaser. Directed by Alyce Tzue. Streamed in 4K UHD via Peachify TMDB 1595124.'
+        },
         'kartavya': {
           title: 'KARTAVYA',
           hero: 'assets/images/kartavya_landscape.jpg?v=20261118_real_nflx',
@@ -1802,7 +1892,7 @@
             <span>Trending on SANDFLIX</span>
             <span class="row-title-chevron">&rsaquo;</span>
           </h2>
-          <span class="row-badge-pill">7 Titles Streaming</span>
+          <span class="row-badge-pill">12 Titles Streaming</span>
         </div>
 
         <div class="n-carousel-wrap">
@@ -1925,6 +2015,156 @@
                   <div class="n-card-info">
                     <h4 class="n-movie-name">The Paradise</h4>
                     <p class="n-card-genres">Action &bull; Period Drama &bull; Rebellion &bull; Epic</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Official Movie Card 5: Baththa (2026) (TMDB 1515692) -->
+            <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('baththa')" title="Play Baththa - TMDB 1515692">
+              <div class="n-card-thumb">
+                <img src="assets/images/baththa_landscape.jpg?v=20261122_v112_new_trending" data-poster="assets/images/baththa_poster.jpg?v=20261122_v112_new_trending" alt="Baththa" loading="lazy">
+                <span class="n-card-top-tag">TOP 10</span>
+                <span class="n-card-quality-tag">4K UHD</span>
+
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('baththa');" title="Play Movie">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                    </button>
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('baththa');" title="More Info">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">Baththa</h4>
+                    <p class="n-card-genres">Action &bull; Comedy &bull; Vijay Sethupathi</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Official Movie Card 6: Haiku (2026) (TMDB 1593350) -->
+            <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('haiku')" title="Play Haiku - TMDB 1593350">
+              <div class="n-card-thumb">
+                <img src="assets/images/haiku_landscape.jpg?v=20261122_v112_new_trending" data-poster="assets/images/haiku_poster.jpg?v=20261122_v112_new_trending" alt="Haiku" loading="lazy">
+                <span class="n-card-top-tag">TOP 10</span>
+                <span class="n-card-quality-tag">4K UHD</span>
+
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('haiku');" title="Play Movie">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                    </button>
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('haiku');" title="More Info">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">Haiku</h4>
+                    <p class="n-card-genres">Romance &bull; Comedy &bull; Yuvaraj Chinnasamy</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Official Movie Card 7: G.D.N (2026) (TMDB 1489543) -->
+            <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('gdn')" title="Play G.D.N - TMDB 1489543">
+              <div class="n-card-thumb">
+                <img src="assets/images/gdn_landscape.jpg?v=20261122_v112_new_trending" data-poster="assets/images/gdn_poster.jpg?v=20261122_v112_new_trending" alt="G.D.N" loading="lazy">
+                <span class="n-card-top-tag">TOP 10</span>
+                <span class="n-card-quality-tag">4K UHD</span>
+
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('gdn');" title="Play Movie">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                    </button>
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('gdn');" title="More Info">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">G.D.N</h4>
+                    <p class="n-card-genres">Biopic &bull; Drama &bull; R. Madhavan</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Official Movie Card 8: 418 (2026) (TMDB 1606527) -->
+            <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('movie_418')" title="Play 418 - TMDB 1606527">
+              <div class="n-card-thumb">
+                <img src="assets/images/movie_418_landscape.jpg?v=20261122_v112_new_trending" data-poster="assets/images/movie_418_poster.jpg?v=20261122_v112_new_trending" alt="418" loading="lazy">
+                <span class="n-card-top-tag">TOP 10</span>
+                <span class="n-card-quality-tag">4K UHD</span>
+
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('movie_418');" title="Play Movie">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                    </button>
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('movie_418');" title="More Info">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">418</h4>
+                    <p class="n-card-genres">Horror &bull; Mystery Thriller &bull; Kiran Nadagouda</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Official Movie Card 9: Steps (2026) (TMDB 1595124) -->
+            <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('steps')" title="Play Steps - TMDB 1595124">
+              <div class="n-card-thumb">
+                <img src="assets/images/steps_landscape.jpg?v=20261122_v112_new_trending" data-poster="assets/images/steps_poster.jpg?v=20261122_v112_new_trending" alt="Steps" loading="lazy">
+                <span class="n-card-top-tag">TOP 10</span>
+                <span class="n-card-quality-tag">4K UHD</span>
+
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('steps');" title="Play Movie">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                    </button>
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('steps');" title="More Info">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">Steps</h4>
+                    <p class="n-card-genres">Animation &bull; Fantasy Comedy &bull; Ali Wong</p>
                   </div>
                 </div>
               </div>
@@ -3697,7 +3937,7 @@
             <span>Hollywood &amp; International Premieres</span>
             <span class="row-title-chevron">&rsaquo;</span>
           </h2>
-          <span class="row-badge-pill">7 Titles Streaming</span>
+          <span class="row-badge-pill">12 Titles Streaming</span>
         </div>
 
         <div class="n-carousel-wrap">
@@ -9988,7 +10228,7 @@
   </div>
 
   <!-- Main Application Script (Production Ready - Fast Cached) -->
-  <script src="js/app.js?v=20261120_v111_row7_fullcard"></script>
+  <script src="js/app.js?v=20261122_v112_new_trending"></script>
 </body>
 
 </html>
