@@ -18,7 +18,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/android-chrome-192x192.png?v=3">
   <link rel="icon" type="image/png" sizes="512x512" href="assets/icons/android-chrome-512x512.png?v=3">
 
-  <link rel="stylesheet" href="css/style.css?v=20261122_v112_new_trending">
+  <link rel="stylesheet" href="css/style.css?v=20261122_v113_recent_add">
 
   <!-- Exact Netflix Desktop Pill Search Capsule Styling (1:1 Replica of Netflix Desktop Reference) -->
   <style id="netflixPillSearchExplicit">
@@ -389,7 +389,31 @@
       var titleDisplay = document.getElementById('nbpCenterTitle');
       var spinner = document.getElementById('nbpSpinner');
 
-            // Baththa (2026) TMDB 1515692
+                  // Hanuman Ansh (2026) TMDB 1709391
+      if (targetTime === 'hanuman_ansh' || targetTime === '1709391') {
+        if (modal) { modal.classList.add('active', 'is-embed-active'); modal.setAttribute('aria-hidden', 'false'); }
+        document.body.style.overflow = 'hidden';
+        if (serverBar) serverBar.style.display = 'none';
+        if (video) { try { video.pause(); video.currentTime = 0; } catch(e){} video.style.display = 'none'; }
+        if (titleDisplay) titleDisplay.textContent = 'Hanuman Ansh (2026) • TMDB 1709391';
+        if (embedIframe) { embedIframe.style.display = 'block'; embedIframe.src = 'https://peachify.net/movie/1709391'; }
+        if (spinner) spinner.classList.remove('active');
+        try { if (window.history && window.history.pushState) window.history.pushState({ type: 'netflix-player', targetTime: 'hanuman_ansh' }, null, '#player'); } catch(e){}
+        return;
+      }
+      // KON CITY / CON CITY (2026) TMDB 1596008
+      if (targetTime === 'kon_city' || targetTime === 'con_city' || targetTime === '1596008') {
+        if (modal) { modal.classList.add('active', 'is-embed-active'); modal.setAttribute('aria-hidden', 'false'); }
+        document.body.style.overflow = 'hidden';
+        if (serverBar) serverBar.style.display = 'none';
+        if (video) { try { video.pause(); video.currentTime = 0; } catch(e){} video.style.display = 'none'; }
+        if (titleDisplay) titleDisplay.textContent = 'KON CITY (2026) • TMDB 1596008';
+        if (embedIframe) { embedIframe.style.display = 'block'; embedIframe.src = 'https://peachify.net/movie/1596008'; }
+        if (spinner) spinner.classList.remove('active');
+        try { if (window.history && window.history.pushState) window.history.pushState({ type: 'netflix-player', targetTime: 'kon_city' }, null, '#player'); } catch(e){}
+        return;
+      }
+      // Baththa (2026) TMDB 1515692
       if (targetTime === 'baththa' || targetTime === '1515692') {
         if (modal) { modal.classList.add('active', 'is-embed-active'); modal.setAttribute('aria-hidden', 'false'); }
         document.body.style.overflow = 'hidden';
@@ -1423,7 +1447,21 @@
       window.currentModalMovieKey = movieKey;
 
       var movieDetailsMap = {
-                'baththa': {
+                        'hanuman_ansh': {
+          title: 'HANUMAN ANSH',
+          hero: 'assets/images/hanuman_ansh_landscape.jpg?v=20261122_v113_recent_add',
+          poster: 'assets/images/hanuman_ansh_poster.jpg?v=20261122_v113_recent_add',
+          year: '2026', age: 'U/A 7+', dur: '2h 10m',
+          desc: 'A grieving boy seeks God to meet his departed mother, and in finding the divine, learns to serve humanity through the eternal devotion and inspiration of Lord Hanuman. Starring Shobhinaw Satyaa, Vihaan Shedge, Chandan Anand, Purnima Tiwari, Anil Rastogi. Directed by Vishal Chaturvedi. Streamed in 4K UHD via Peachify TMDB 1709391.'
+        },
+        'kon_city': {
+          title: 'KON CITY',
+          hero: 'assets/images/kon_city_landscape.jpg?v=20261122_v113_recent_add',
+          poster: 'assets/images/kon_city_poster.jpg?v=20261122_v113_recent_add',
+          year: '2026', age: 'U/A 13+', dur: '2h 20m',
+          desc: 'Saravana, Mithra, Jacky, and Janaki are skilled con artists hiding out as an ordinary family in Multan. Facing unexpected threats and gripping twists, they plan the ultimate heist. Starring Arjun Das, Anna Ben, Yogi Babu, Vadivukarasi, Thambi Ramaiah. Directed by Harish Durairaj. Streamed in 4K UHD via Peachify TMDB 1596008.'
+        },
+        'baththa': {
           title: 'BATHTHA',
           hero: 'assets/images/baththa_landscape.jpg?v=20261122_v112_new_trending',
           poster: 'assets/images/baththa_poster.jpg?v=20261122_v112_new_trending',
@@ -2273,7 +2311,7 @@
             <span>Spotlight Premieres & Blockbusters</span>
             <span class="row-title-chevron">&rsaquo;</span>
           </h2>
-          <span class="row-badge-pill">8 Titles Streaming</span>
+          <span class="row-badge-pill">10 Titles Streaming</span>
         </div>
 
         <div class="n-carousel-wrap">
@@ -2481,6 +2519,7 @@
             <article class="n-card compact official-master-card" onclick="openEmbedPlayer('1551025', 'Guarding Stars (2026) • TMDB 1551025', 1, 'guarding_stars')" title="Play Guarding Stars - TMDB 1551025">
               <div class="n-card-thumb">
                 <img src="assets/images/guarding_stars_landscape.jpg?v=20261120_v109_fullcard_fit" data-poster="assets/images/guarding_stars_poster.jpg?v=20261120_v109_fullcard_fit" alt="Guarding Stars" loading="lazy">
+                <span class="n-card-top-tag">TOP 10</span>
                 <span class="n-card-quality-tag">4K UHD</span>
 
                 <div class="n-card-overlay">
@@ -2501,6 +2540,66 @@
                   <div class="n-card-info">
                     <h4 class="n-movie-name">Guarding Stars</h4>
                     <p class="n-card-genres">Romance &bull; Comedy &bull; Hollywood</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Official Movie Card 9: Hanuman Ansh (2026) (TMDB 1709391) -->
+            <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('hanuman_ansh')" title="Play Hanuman Ansh - TMDB 1709391">
+              <div class="n-card-thumb">
+                <img src="assets/images/hanuman_ansh_landscape.jpg?v=20261122_v113_recent_add" data-poster="assets/images/hanuman_ansh_poster.jpg?v=20261122_v113_recent_add" alt="Hanuman Ansh" loading="lazy">
+                <span class="n-card-top-tag n-card-recent-tag">RECENTLY ADDED</span>
+                <span class="n-card-quality-tag">4K UHD</span>
+
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('hanuman_ansh');" title="Play Movie">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                    </button>
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('hanuman_ansh');" title="More Info">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">Hanuman Ansh</h4>
+                    <p class="n-card-genres">Family &bull; Drama &bull; Devotional</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Official Movie Card 10: KON CITY / CON CITY (2026) (TMDB 1596008) -->
+            <article class="n-card compact official-master-card" onclick="openNetflixBlackPlayer('kon_city')" title="Play KON CITY - TMDB 1596008">
+              <div class="n-card-thumb">
+                <img src="assets/images/kon_city_landscape.jpg?v=20261122_v113_recent_add" data-poster="assets/images/kon_city_poster.jpg?v=20261122_v113_recent_add" alt="KON CITY" loading="lazy">
+                <span class="n-card-top-tag n-card-recent-tag">RECENTLY ADDED</span>
+                <span class="n-card-quality-tag">4K UHD</span>
+
+                <div class="n-card-overlay">
+                  <div class="n-card-actions">
+                    <button class="n-btn-circle play" onclick="event.stopPropagation(); openNetflixBlackPlayer('kon_city');" title="Play Movie">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); toggleMyList(this);" title="My List">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    </button>
+                    <button class="n-btn-circle" onclick="event.stopPropagation(); alert('Added to Liked list!');" title="Like">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                    </button>
+                    <button class="n-btn-circle chevron" onclick="event.stopPropagation(); openMovieDetailsModal('kon_city');" title="More Info">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                  </div>
+                  <div class="n-card-info">
+                    <h4 class="n-movie-name">KON CITY</h4>
+                    <p class="n-card-genres">Comedy &bull; Crime &bull; Arjun Das</p>
                   </div>
                 </div>
               </div>
@@ -10228,7 +10327,7 @@
   </div>
 
   <!-- Main Application Script (Production Ready - Fast Cached) -->
-  <script src="js/app.js?v=20261122_v112_new_trending"></script>
+  <script src="js/app.js?v=20261122_v113_recent_add"></script>
 </body>
 
 </html>

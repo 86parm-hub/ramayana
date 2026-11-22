@@ -5783,7 +5783,39 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-    // Handle Embed Movie Mode (Baththa TMDB 1515692 via Peachify)
+      // Handle Embed Movie Mode (Hanuman Ansh TMDB 1709391 via Peachify)
+  if (targetTime === 'hanuman_ansh' || targetTime === '1709391') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      embedIframe.src = 'https://peachify.net/movie/1709391';
+    }
+    if (titleDisplay) titleDisplay.textContent = "Hanuman Ansh (2026) • TMDB 1709391";
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
+  // Handle Embed Movie Mode (KON CITY TMDB 1596008 via Peachify)
+  if (targetTime === 'kon_city' || targetTime === 'con_city' || targetTime === '1596008') {
+    nbpIsEmbedMode = true;
+    nbpIsTrailerMode = false;
+    modal.classList.add('is-embed-active');
+    if (video && !video.paused) video.pause();
+    if (video) video.style.display = 'none';
+    if (embedIframe) {
+      embedIframe.style.display = 'block';
+      embedIframe.src = 'https://peachify.net/movie/1596008';
+    }
+    if (titleDisplay) titleDisplay.textContent = "KON CITY (2026) • TMDB 1596008";
+    if (spinner) spinner.classList.remove('active');
+    return;
+  }
+
+  // Handle Embed Movie Mode (Baththa TMDB 1515692 via Peachify)
   if (targetTime === 'baththa' || targetTime === '1515692') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -7904,7 +7936,25 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       dur: '2h 05m',
       desc: "The ultimate martial arts tournament erupts as Earthrealm's champions stand on the precipice of obliteration against the menacing warlord Shao Kahn and Outworld forces. Cole Young, Sonya Blade, and Jax recruit arrogant action icon Johnny Cage to unleash his martial prowess alongside legendary rival warriors Scorpion and Sub-Zero. Directed by Simon McQuoid. Starring Karl Urban, Hiroyuki Sanada, Joe Taslim, Jessica McNamee, Lewis Tan. New Line Cinema & Warner Bros. Streamed in 4K UHD via Peachify TMDB 931285."
     },
-        'baththa': {
+            'hanuman_ansh': {
+      title: 'HANUMAN ANSH',
+      hero: 'assets/images/hanuman_ansh_landscape.jpg?v=20261122_v113_recent_add',
+      poster: 'assets/images/hanuman_ansh_poster.jpg?v=20261122_v113_recent_add',
+      year: '2026',
+      age: 'U/A 7+',
+      dur: '2h 10m',
+      desc: 'A grieving boy seeks God to meet his departed mother, and in finding the divine, learns to serve humanity through the eternal devotion and inspiration of Lord Hanuman. Starring Shobhinaw Satyaa, Vihaan Shedge, Chandan Anand, Purnima Tiwari, Anil Rastogi. Directed by Vishal Chaturvedi. Streamed in 4K UHD via Peachify TMDB 1709391.'
+    },
+    'kon_city': {
+      title: 'KON CITY',
+      hero: 'assets/images/kon_city_landscape.jpg?v=20261122_v113_recent_add',
+      poster: 'assets/images/kon_city_poster.jpg?v=20261122_v113_recent_add',
+      year: '2026',
+      age: 'U/A 13+',
+      dur: '2h 20m',
+      desc: 'Saravana, Mithra, Jacky, and Janaki are skilled con artists hiding out as an ordinary family in Multan. Facing unexpected threats and gripping twists, they plan the ultimate heist. Starring Arjun Das, Anna Ben, Yogi Babu, Vadivukarasi, Thambi Ramaiah. Directed by Harish Durairaj. Streamed in 4K UHD via Peachify TMDB 1596008.'
+    },
+    'baththa': {
       title: 'BATHTHA',
       hero: 'assets/images/baththa_landscape.jpg?v=20261122_v112_new_trending',
       poster: 'assets/images/baththa_poster.jpg?v=20261122_v112_new_trending',
@@ -9471,7 +9521,33 @@ const sandflixCatalog = [
       "industry": "Hollywood Cinema",
       "quality": "4K UHD"
   },
+    {
+    "key": "hanuman_ansh",
+    "title": "Hanuman Ansh",
+    "year": "2026",
+    "age": "U/A 7+",
+    "dur": "2h 10m",
+    "desc": "A grieving boy seeks God to meet his departed mother, and in finding the divine, learns to serve humanity through the eternal devotion and inspiration of Lord Hanuman. Starring Shobhinaw Satyaa, Vihaan Shedge, Chandan Anand, Purnima Tiwari, Anil Rastogi. Directed by Vishal Chaturvedi. Streamed in 4K UHD via Peachify TMDB 1709391.",
+    "hero": "assets/images/hanuman_ansh_landscape.jpg?v=20261122_v113_recent_add",
+    "poster": "assets/images/hanuman_ansh_poster.jpg?v=20261122_v113_recent_add",
+    "genres": ["Family", "Drama", "Devotional"],
+    "industry": "Indian Cinema",
+    "quality": "4K UHD"
+  },
   {
+    "key": "kon_city",
+    "title": "KON CITY",
+    "year": "2026",
+    "age": "U/A 13+",
+    "dur": "2h 20m",
+    "desc": "Saravana, Mithra, Jacky, and Janaki are skilled con artists hiding out as an ordinary family in Multan. Facing unexpected threats and gripping twists, they plan the ultimate heist. Starring Arjun Das, Anna Ben, Yogi Babu, Vadivukarasi, Thambi Ramaiah. Directed by Harish Durairaj. Streamed in 4K UHD via Peachify TMDB 1596008.",
+    "hero": "assets/images/kon_city_landscape.jpg?v=20261122_v113_recent_add",
+    "poster": "assets/images/kon_city_poster.jpg?v=20261122_v113_recent_add",
+    "genres": ["Comedy", "Crime", "Drama"],
+    "industry": "Indian Cinema",
+    "quality": "4K UHD"
+  },
+{
     "key": "baththa",
     "title": "Baththa",
     "year": "2026",
