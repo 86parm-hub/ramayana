@@ -6469,8 +6469,8 @@ body.ott-platform {
   }
 
   .netflix-rows-container {
-    padding: 0 16px;
-    gap: 24px;
+    padding: 0 !important;
+    gap: 0 !important;
   }
 
   .netflix-slider-track {
@@ -8041,12 +8041,18 @@ video {
   /* Movies Page: Row & Swipeable Slider Track on Touch */
   .netflix-row {
     padding: 0 !important;
-    margin-bottom: 20px !important;
+    margin: 0 0 14px 0 !important;
+  }
+
+  .row-header {
+    margin-bottom: 6px !important;
+    padding: 0 16px !important;
   }
 
   .row-title {
     font-size: 15px !important;
-    margin-bottom: 10px !important;
+    margin: 0 !important;
+    margin-bottom: 0 !important;
   }
 
   .netflix-slider-track {
@@ -8056,7 +8062,9 @@ video {
     -webkit-overflow-scrolling: touch !important;
     scrollbar-width: none !important;
     gap: 10px !important;
-    padding-bottom: 6px !important;
+    padding: 2px 4px 4px 4px !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
   }
 
   .netflix-slider-track::-webkit-scrollbar {
@@ -9193,15 +9201,19 @@ video {
 
   .netflix-rows-container {
     padding: 0 !important;
-    gap: 20px !important;
+    gap: 0 !important;
   }
 
   .row-title {
     font-size: 16px !important;
+    margin: 0 !important;
+    margin-bottom: 0 !important;
   }
 
   .netflix-slider-track.compact-row {
-    padding: 8px 0 16px 0;
+    padding: 2px 4px 4px 4px !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
     gap: 10px;
   }
 
@@ -9836,7 +9848,7 @@ video {
 /* Responsive Devices on Touch / Mobile */
 @media (max-width: 768px) {
   .single-movie-track {
-    padding: 10px 4px 20px 4px !important;
+    padding: 2px 4px 4px 4px !important;
     margin-top: 0 !important;
     margin-bottom: 0 !important;
   }
@@ -11847,4 +11859,45 @@ video {
   box-shadow: 0 2px 8px rgba(255, 42, 68, 0.4) !important;
   display: inline-block !important;
   visibility: visible !important;
+}
+
+/* ==========================================================================
+   AUTHENTIC NETFLIX MOBILE ROW SPACING (MOBILE ONLY: <= 768px)
+   Removes unwanted dead gaps between movie rows for seamless scrolling
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+  .netflix-rows-container {
+    padding: 0 !important;
+    gap: 0 !important;
+  }
+
+  .netflix-row {
+    padding: 0 !important;
+    margin: 0 0 14px 0 !important;
+  }
+
+  .row-header {
+    margin-bottom: 6px !important;
+    padding: 0 14px !important;
+  }
+
+  .row-title {
+    margin: 0 !important;
+    margin-bottom: 0 !important;
+    font-size: 15px !important;
+  }
+
+  .n-carousel-wrap {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .netflix-slider-track,
+  .netflix-slider-track.compact-row,
+  .netflix-slider-track.top10-row,
+  .single-movie-track {
+    padding: 2px 4px 4px 4px !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
 }
