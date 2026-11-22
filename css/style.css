@@ -1037,6 +1037,7 @@ body.ott-platform {
   font-size: 24px;
   font-weight: 800;
   letter-spacing: 1px;
+  color: #ffffff;
 }
 
 .row-link {
@@ -6189,17 +6190,23 @@ body.ott-platform {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 20px;
   font-weight: 800;
-  color: #e5e5e5;
+  color: #ffffff !important;
   margin: 0;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   gap: 6px;
   transition: color 0.2s;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.row-title span {
+  color: #ffffff !important;
 }
 
 .row-title:hover {
-  color: #fff;
+  color: #ffffff !important;
 }
 
 .row-title-chevron {
