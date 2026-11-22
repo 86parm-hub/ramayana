@@ -8802,7 +8802,7 @@ video {
 /* Carousel Slider Buttons (Left & Right Chevrons - Premium Netflix Black Glass Theme) */
 .n-slider-btn {
   position: absolute;
-  top: 50%;
+  top: calc(40px + (clamp(200px, 17.5vw, 260px) * 9 / 32)) !important;
   transform: translateY(-50%);
   width: 42px;
   height: 76px;
