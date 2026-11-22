@@ -8564,7 +8564,7 @@ const sandflixCatalog = [
     "year": "2026",
     "age": "U/A 13+",
     "dur": "3h 12m",
-    "desc": "Witness Maryada Purushottam Lord Rama\\",
+    "desc": "Witness Maryada Purushottam Lord Rama in this grand mythological cinematic epic.",
     "hero": "assets/images/feature_banner_hd.jpg",
     "poster": "assets/images/hero_banner_hd.jpg",
     "genres": [
@@ -9744,6 +9744,309 @@ const sandflixCatalog = [
   "industry": "Hollywood",
   "quality": "4K UHD"
 }
+,
+  {
+    "key": "baththa",
+    "title": "Baththa",
+    "year": "2026",
+    "age": "U/A 13+",
+    "dur": "2h 15m",
+    "desc": "In 1986 Madras, a timid eight-year-old boy accidentally traps a feared gangster inside a deserted school toilet. As tension mounts and the hunt for the missing gangster intensifies, an unlikely bond and a chain of chaotic events reshape their lives. Starring Vijay Sethupathi, Sai Prithviraj, Lijomol Jose, and Sahasra Sree. Directed by Balaji Tharaneetharan. Streamed in 4K UHD via Peachify TMDB 1515692.",
+    "hero": "assets/images/baththa_landscape.jpg",
+    "poster": "assets/images/baththa_poster.jpg",
+    "genres": [
+      "Action",
+      "Comedy",
+      "Drama"
+    ],
+    "industry": "South Indian",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "haiku",
+    "title": "Haiku",
+    "year": "2026",
+    "age": "U/A 13+",
+    "dur": "2h 10m",
+    "desc": "A charismatic young man uses the delicate art of poetry to navigate the complex maze of modern romance and protect his fragile relationship against societal pressures. Starring Aegan, Sridevi Apalla, Femina George, and Adhirchi Arun. Directed by Yuvaraj Chinnasamy. Streamed in 4K UHD via Peachify TMDB 1593350.",
+    "hero": "assets/images/haiku_landscape.jpg",
+    "poster": "assets/images/haiku_poster.jpg",
+    "genres": [
+      "Romance",
+      "Drama",
+      "Comedy"
+    ],
+    "industry": "South Indian",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "gdn",
+    "title": "G.D.N",
+    "year": "2026",
+    "age": "U/A 13+",
+    "dur": "2h 20m",
+    "desc": "Biographical drama chronicling the astonishing life and revolutionary inventions of G.D. Naidu, celebrated as the Edison of India. Starring Jayam Ravi, directed by Vignesh Shivan. Streamed in 4K UHD via Peachify TMDB 1489543.",
+    "hero": "assets/images/gdn_landscape.jpg",
+    "poster": "assets/images/gdn_poster.jpg",
+    "genres": [
+      "Drama",
+      "History"
+    ],
+    "industry": "South Indian",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "movie_418",
+    "title": "418",
+    "year": "2026",
+    "age": "A 18+",
+    "dur": "2h 05m",
+    "desc": "A tense atmospheric psychological survival thriller set during an unprecedented subterranean containment protocol. Streamed in 4K UHD via Peachify TMDB 1606527.",
+    "hero": "assets/images/418_landscape.jpg",
+    "poster": "assets/images/418_poster.jpg",
+    "genres": [
+      "Thriller",
+      "Mystery",
+      "Sci-Fi"
+    ],
+    "industry": "South Indian",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "steps",
+    "title": "Steps",
+    "year": "2026",
+    "age": "U/A 13+",
+    "dur": "1h 55m",
+    "desc": "An uplifting and emotional musical sports drama depicting an ambitious underdog dancer from humble origins rising through high-stakes street battles. Streamed in 4K UHD via Peachify TMDB 1595124.",
+    "hero": "assets/images/steps_landscape.jpg",
+    "poster": "assets/images/steps_poster.jpg",
+    "genres": [
+      "Drama",
+      "Music"
+    ],
+    "industry": "South Indian",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "hanuman_ansh",
+    "title": "Hanuman Ansh",
+    "year": "2026",
+    "age": "U/A 7+",
+    "dur": "2h 10m",
+    "desc": "A grieving boy seeks God to meet his departed mother, and in finding the divine, learns to serve humanity through the eternal devotion and inspiration of Lord Hanuman. Starring Shobhinaw Satyaa, Vihaan Shedge, Chandan Anand, Purnima Tiwari, Anil Rastogi. Directed by Vishal Chaturvedi. Streamed in 4K UHD via Peachify TMDB 1709391.",
+    "hero": "assets/images/hanuman_ansh_landscape.jpg",
+    "poster": "assets/images/hanuman_ansh_poster.jpg",
+    "genres": [
+      "Drama",
+      "Action",
+      "Family"
+    ],
+    "industry": "Indian Cinema",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "kon_city",
+    "title": "KON City",
+    "year": "2026",
+    "age": "U/A 13+",
+    "dur": "2h 20m",
+    "desc": "Saravana, Mithra, Jacky, and Janaki are skilled con artists hiding out as an ordinary family in Multan. Facing unexpected threats and gripping twists, they plan the ultimate heist. Starring Arjun Das, Anna Ben, Yogi Babu, Vadivukarasi, Thambi Ramaiah. Directed by Harish Durairaj. Streamed in 4K UHD via Peachify TMDB 1596008.",
+    "hero": "assets/images/kon_city_landscape.jpg",
+    "poster": "assets/images/kon_city_poster.jpg",
+    "genres": [
+      "Action",
+      "Crime",
+      "Thriller"
+    ],
+    "industry": "South Indian",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "verity",
+    "title": "Verity",
+    "year": "2026",
+    "age": "A 18+",
+    "dur": "1h 57m",
+    "desc": "Lowen Ashleigh, hired to ghostwrite for best-selling author Verity Crawford, uncovers Verity's autobiographical notes, and becomes involved in what may prove to be a lethal conspiracy. Starring Dakota Johnson, Anne Hathaway, Josh Hartnett, Brady Wagner. Directed by Michael Showalter. Streamed in 4K UHD via Peachify TMDB 1283515.",
+    "hero": "assets/images/verity_landscape.jpg",
+    "poster": "assets/images/verity_poster.jpg",
+    "genres": [
+      "Mystery",
+      "Thriller",
+      "Drama"
+    ],
+    "industry": "Hollywood",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "devil_wears_prada_2",
+    "title": "The Devil Wears Prada 2",
+    "year": "2026",
+    "age": "U/A 13+",
+    "dur": "1h 59m",
+    "desc": "Andy Sachs returns to Runway as Miranda Priestly navigates a new media landscape and Runway's position within. The duo reconnect with former assistant Emily Charlton, now the head of a luxury brand that possesses funding which could ensure Runway's survival. Starring Meryl Streep, Anne Hathaway, Emily Blunt, Stanley Tucci. Directed by David Frankel. Streamed in 4K UHD via Peachify TMDB 1314481.",
+    "hero": "assets/images/devil_wears_prada_2_landscape.jpg",
+    "poster": "assets/images/devil_wears_prada_2_poster.jpg",
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "industry": "Hollywood",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "minions_monsters",
+    "title": "Minions & Monsters",
+    "year": "2026",
+    "age": "U",
+    "dur": "1h 30m",
+    "desc": "This is the rambunctious, ridiculous and totally true story of how the Minions conquered Hollywood, became movie stars, lost everything, unleashed monsters onto the world and then banded together to try and save the planet from the mayhem they had just created. Starring Pierre Coffin, Trey Parker, Christoph Waltz, Allison Janney. Directed by Pierre Coffin. Streamed in 4K UHD via Peachify TMDB 1315772.",
+    "hero": "assets/images/minions_monsters_landscape.jpg",
+    "poster": "assets/images/minions_monsters_poster.jpg",
+    "genres": [
+      "Animation",
+      "Adventure",
+      "Comedy",
+      "Family"
+    ],
+    "industry": "Hollywood",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "obsession",
+    "title": "Obsession",
+    "year": "2026",
+    "age": "A 18+",
+    "dur": "1h 49m",
+    "desc": "After breaking the mysterious 'One Wish Willow' to win his crush's heart, a hopeless romantic finds himself getting exactly what he asked for but soon discovers that some desires come at a dark, sinister price. Starring Michael Johnston, Inde Navarrette, Cooper Tomlinson, Megan Lawless. Directed by Curry Barker. Streamed in 4K UHD via Peachify TMDB 1339713.",
+    "hero": "assets/images/obsession_landscape.jpg",
+    "poster": "assets/images/obsession_poster.jpg",
+    "genres": [
+      "Horror",
+      "Thriller"
+    ],
+    "industry": "Hollywood",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "resident_evil_2026",
+    "title": "Resident Evil",
+    "year": "2026",
+    "age": "A 18+",
+    "dur": "1h 55m",
+    "desc": "Medical courier Bryan unwittingly finds himself fighting for survival as one fateful delivery thrusts him into a nightmarish zombie outbreak. Starring Austin Abrams, Paul Walter Hauser, Kali Reis, Zach Cherry. Directed by Zach Cregger. Streamed in 4K UHD via Peachify TMDB 1423191.",
+    "hero": "assets/images/resident_evil_2026_landscape.jpg",
+    "poster": "assets/images/resident_evil_2026_poster.jpg",
+    "genres": [
+      "Horror",
+      "Sci-Fi",
+      "Action"
+    ],
+    "industry": "Hollywood",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "backrooms",
+    "title": "Backrooms",
+    "year": "2026",
+    "age": "A 18+",
+    "dur": "1h 51m",
+    "desc": "A strange doorway appears in the basement of a furniture showroom, leading into an endless maze of eerie, yellow-wallpapered corridors and sinister liminal spaces. Starring Chiwetel Ejiofor, Renate Reinsve, Finn Bennett, Lukita Maxwell. Directed by Kane Parsons. Streamed in 4K UHD via Peachify TMDB 1083381.",
+    "hero": "assets/images/backrooms_landscape.jpg",
+    "poster": "assets/images/backrooms_poster.jpg",
+    "genres": [
+      "Horror",
+      "Mystery",
+      "Sci-Fi"
+    ],
+    "industry": "Hollywood",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "mandalorian_and_grogu",
+    "title": "The Mandalorian and Grogu",
+    "year": "2026",
+    "age": "U/A 13+",
+    "dur": "2h 15m",
+    "desc": "The evil Empire has fallen, and Imperial warlords remain scattered throughout the galaxy. Din Djarin and his young apprentice Grogu must navigate perilous missions across the Outer Rim. Starring Pedro Pascal, Jeremy Allen White, Sigourney Weaver. Directed by Jon Favreau. Streamed in 4K UHD via Peachify TMDB 1228710.",
+    "hero": "assets/images/mandalorian_and_grogu_landscape.jpg",
+    "poster": "assets/images/mandalorian_and_grogu_poster.jpg",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sci-Fi"
+    ],
+    "industry": "Hollywood",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "moana",
+    "title": "Moana",
+    "year": "2026",
+    "age": "U/A 7+",
+    "dur": "1h 55m",
+    "desc": "Teenage Moana answers the Ocean's call and, for the first time, voyages beyond the reef of her island of Motunui with infamous demigod Maui on an unforgettable journey to restore prosperity to her people. Starring Catherine Lagaʻaia, Dwayne Johnson, Rena Owen, John Tui. Directed by Thomas Kail. Streamed in 4K UHD via Peachify TMDB 1108427.",
+    "hero": "assets/images/moana_landscape.jpg",
+    "poster": "assets/images/moana_poster.jpg",
+    "genres": [
+      "Family",
+      "Fantasy",
+      "Adventure",
+      "Comedy"
+    ],
+    "industry": "Hollywood",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "disclosure_day",
+    "title": "Disclosure Day",
+    "year": "2026",
+    "age": "U/A 13+",
+    "dur": "2h 26m",
+    "desc": "A cybersecurity expert becomes a whistleblower after uncovering secrets about aliens, putting him on the run from a corporation. Meanwhile, a meteorologist experiencing strange phenomena joins forces with him to prove there's life beyond our understanding. Starring Emily Blunt, Josh O'Connor, Colin Firth, Eve Hewson. Directed by Steven Spielberg. Streamed in 4K UHD via Peachify TMDB 1275779.",
+    "hero": "assets/images/disclosure_day_landscape.jpg",
+    "poster": "assets/images/disclosure_day_poster.jpg",
+    "genres": [
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "industry": "Hollywood",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "wuthering_heights",
+    "title": "Wuthering Heights",
+    "year": "2026",
+    "age": "A 18+",
+    "dur": "2h 16m",
+    "desc": "Tragedy strikes when Heathcliff falls in love with Catherine Earnshaw, a woman from a wealthy family in 18th-century England. Starring Margot Robbie, Jacob Elordi, Hong Chau, Shazad Latif. Directed by Emerald Fennell. Streamed in 4K UHD via Peachify TMDB 1316092.",
+    "hero": "assets/images/wuthering_heights_landscape.jpg",
+    "poster": "assets/images/wuthering_heights_poster.jpg",
+    "genres": [
+      "Romance",
+      "Drama"
+    ],
+    "industry": "Hollywood",
+    "quality": "4K UHD"
+  },
+  {
+    "key": "scream_7",
+    "title": "Scream 7",
+    "year": "2026",
+    "age": "A 18+",
+    "dur": "1h 54m",
+    "desc": "When a new Ghostface killer emerges in the quiet town where Sidney Prescott has built a new life, her darkest fears are realized as her daughter becomes the next target. Determined to protect her family, Sidney must face the horrors of her past to put an end to the bloodshed once and for all. Starring Neve Campbell, Isabel May, Courteney Cox, Jasmin Savoy Brown. Directed by Kevin Williamson. Streamed in 4K UHD via Peachify TMDB 1159559.",
+    "hero": "assets/images/scream_7_landscape.jpg",
+    "poster": "assets/images/scream_7_poster.jpg",
+    "genres": [
+      "Horror",
+      "Mystery",
+      "Crime"
+    ],
+    "industry": "Hollywood",
+    "quality": "4K UHD"
+  }
 ];
 
 /* =========================================================================
