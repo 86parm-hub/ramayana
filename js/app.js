@@ -5088,6 +5088,174 @@ const OST_TRACKS = [
     fallbackSrc: "audio/291_singles_moose_print_ep.m4a",
     banner: "assets/images/tracks/track_291.jpg",
     desc: "A continuous seamless 9-minute compilation of tracks from the legendary Moose Print EP sessions."
+  },
+  {
+    id: 292,
+    title: 'Mentally Fragile to Mentally Strong',
+    artist: 'Your World Within • Eddie Pinero',
+    src: 'Stronger%20Soul%20Motivation/01_mentally_fragile_to_mentally_strong.m4a',
+    fallbackSrc: 'audio/292_soul_mentally_fragile_to_strong.m4a',
+    banner: 'assets/images/tracks/track_292.jpg',
+    duration: '10:58',
+    category: 'soundtrack',
+    album: 'stronger-soul',
+    desc: 'A transformative mindset talk guiding the shift from emotional vulnerability into unshakeable inner power.'
+  },
+  {
+    id: 293,
+    title: 'Listen to This Every Day',
+    artist: 'Marcus Taylor • Motiversity',
+    src: 'Stronger%20Soul%20Motivation/02_listen_to_this_every_day.m4a',
+    fallbackSrc: 'audio/293_soul_listen_to_this_every_day.m4a',
+    banner: 'assets/images/tracks/track_293.jpg',
+    duration: '08:22',
+    category: 'soundtrack',
+    album: 'stronger-soul',
+    desc: 'Marcus Taylor\'s thunderous daily wake-up call commanding discipline, focus, and refusal to surrender.'
+  },
+  {
+    id: 294,
+    title: 'Work Hard in Silence',
+    artist: 'Motiversity & Marcus Taylor',
+    src: 'Stronger%20Soul%20Motivation/03_work_hard_in_silence.m4a',
+    fallbackSrc: 'audio/294_soul_work_hard_in_silence.m4a',
+    banner: 'assets/images/tracks/track_294.jpg',
+    duration: '08:16',
+    category: 'soundtrack',
+    album: 'stronger-soul',
+    desc: 'Powerful sermon on silencing excuses, grinding in dark rooms, and letting undeniable results speak for you.'
+  },
+  {
+    id: 295,
+    title: 'How to Stop Caring What People Think',
+    artist: 'Wisdom National',
+    src: 'Stronger%20Soul%20Motivation/04_how_to_stop_caring_what_people_think.m4a',
+    fallbackSrc: 'audio/295_soul_stop_caring_what_people_think.m4a',
+    banner: 'assets/images/tracks/track_295.jpg',
+    duration: '00:56',
+    category: 'soundtrack',
+    album: 'stronger-soul',
+    desc: 'Sharp philosophical insights liberating your life from the paralyzing fear of other people\'s opinions.'
+  },
+  {
+    id: 296,
+    title: '10 Teachings of Krishna to Solve Every Problem',
+    artist: 'Apurva Krishna',
+    src: 'Stronger%20Soul%20Motivation/05_10_teachings_of_krishna.m4a',
+    fallbackSrc: 'audio/296_soul_10_teachings_of_krishna.m4a',
+    banner: 'assets/images/tracks/track_296.jpg',
+    duration: '10:06',
+    category: 'soundtrack',
+    album: 'stronger-soul',
+    desc: 'Deep spiritual breakdown of Lord Krishna\'s eternal Gita principles to overcome fear, attachment, and despair.'
+  },
+  {
+    id: 297,
+    title: 'If You Have These Habits, Your Mind Is Sharp',
+    artist: 'The Stoic',
+    src: 'Stronger%20Soul%20Motivation/06_if_you_have_these_habits_mind_sharp.m4a',
+    fallbackSrc: 'audio/297_soul_sharp_mind_stoic_habits.m4a',
+    banner: 'assets/images/tracks/track_297.jpg',
+    duration: '44:57',
+    category: 'soundtrack',
+    album: 'stronger-soul',
+    desc: 'A profound 45-minute masterclass uncovering the cognitive habits of historically extraordinary thinkers.'
+  },
+  {
+    id: 298,
+    title: 'How To Get Rich: 5 Rules Every Rich Person Knows',
+    artist: 'Sonu Sharma • Dipjay Studio',
+    src: 'Stronger%20Soul%20Motivation/07_how_to_get_rich_5_rules.m4a',
+    fallbackSrc: 'audio/298_soul_how_to_get_rich_5_rules.m4a',
+    banner: 'assets/images/tracks/track_298.jpg',
+    duration: '14:09',
+    category: 'soundtrack',
+    album: 'stronger-soul',
+    desc: 'Actionable wealth principles on compounding, cash flow management, and financial freedom psychology.'
+  },
+  {
+    id: 299,
+    title: 'Manifest with Law of Attraction',
+    artist: 'Supernatural Brainwave Power',
+    src: 'Stronger%20Soul%20Motivation/08_manifest_with_law_of_attraction.m4a',
+    fallbackSrc: 'audio/299_soul_manifest_law_of_attraction.m4a',
+    banner: 'assets/images/tracks/track_299.jpg',
+    duration: '48:53',
+    category: 'soundtrack',
+    album: 'stronger-soul',
+    desc: 'Deep meditative theta brainwave soundscape engineered to reprogram the subconscious for manifestation.'
+  },
+  {
+    id: 300,
+    title: 'Study Without Distractions Tonight',
+    artist: 'Focus Study Academy',
+    src: 'Stronger%20Soul%20Motivation/09_study_without_distractions.m4a',
+    fallbackSrc: 'audio/300_soul_study_without_distractions.m4a',
+    banner: 'assets/images/tracks/track_300.jpg',
+    duration: '02:17',
+    category: 'soundtrack',
+    album: 'stronger-soul',
+    desc: 'Hyper-focused acoustic concentration audio designed for long uninterrupted study and coding sprints.'
+  },
+  {
+    id: 301,
+    title: 'Shivam',
+    artist: 'Rawal • Spy Boi',
+    src: 'Stronger%20Soul%20Motivation/10_shivam_rawal_spy_boi.m4a',
+    fallbackSrc: 'audio/301_soul_shivam_rawal_spy_boi.m4a',
+    banner: 'assets/images/tracks/track_301.jpg',
+    duration: '01:59',
+    category: 'soundtrack',
+    album: 'stronger-soul',
+    desc: 'Raw street poetry and rhythmic beats honoring the divine eternal cosmic energy of Shiva.'
+  },
+  {
+    id: 302,
+    title: 'Nobody (feat. Matthew West)',
+    artist: 'Casting Crowns • Matthew West',
+    src: 'Stronger%20Soul%20Motivation/11_nobody_casting_crowns.m4a',
+    fallbackSrc: 'audio/302_soul_nobody_casting_crowns.m4a',
+    banner: 'assets/images/tracks/track_302.jpg',
+    duration: '03:26',
+    category: 'soundtrack',
+    album: 'stronger-soul',
+    desc: 'A heart-stirring acoustic harmony celebrating finding purpose through humility and serving a higher calling.'
+  },
+  {
+    id: 303,
+    title: 'Dubai: Stand-Up Comedy Special',
+    artist: 'Anubhav Singh Bassi',
+    src: 'Stronger%20Soul%20Motivation/12_dubai_standup_bassi.m4a',
+    fallbackSrc: 'audio/303_soul_dubai_standup_bassi.m4a',
+    banner: 'assets/images/tracks/track_303.jpg',
+    duration: '08:33',
+    category: 'soundtrack',
+    album: 'stronger-soul',
+    desc: 'Anubhav Singh Bassi\'s viral, uproarious stand-up narrative providing pure stress relief and laughter.'
+  },
+  {
+    id: 304,
+    title: 'The Facts About Intimacy & Health',
+    artist: 'Dear Doctor • The Sexologist Podcast',
+    src: 'Stronger%20Soul%20Motivation/13_the_sexologist_podcast.m4a',
+    fallbackSrc: 'audio/304_soul_the_sexologist_podcast.m4a',
+    banner: 'assets/images/tracks/track_304.jpg',
+    duration: '05:29',
+    category: 'soundtrack',
+    album: 'stronger-soul',
+    desc: 'Frank, evidence-backed medical and intimacy wellness discussions breaking myths on adult health.'
+  },
+  {
+    id: 305,
+    title: 'Kesariya X Apna Bana Le (Acoustic Cover)',
+    artist: 'Jemimah Rodrigues',
+    src: 'Stronger%20Soul%20Motivation/14_kesariya_x_apna_bana_le_jemimah.m4a',
+    fallbackSrc: 'audio/305_soul_kesariya_x_apna_bana_le_jemimah.m4a',
+    banner: 'assets/images/tracks/track_305.jpg',
+    duration: '01:28',
+    category: 'soundtrack',
+    album: 'stronger-soul',
+    desc: 'Indian cricketer Jemimah Rodrigues\'s angelic unplugged acoustic guitar mashup of Kesariya and Apna Bana Le.'
   }
 ];
 
@@ -5739,6 +5907,16 @@ window.scrollToActiveTrack = scrollToActiveTrack;
    ========================================================================== */
 
 const SANDIFY_ALBUMS = {
+  'stronger-soul': {
+    title: 'Stronger Soul Motivation',
+    subtitle: 'Unbreakable inner resilience, morning warrior mindset, deep focus, and timeless spiritual wisdom for an indomitable soul.',
+    artist1: 'Stronger Soul Motivation',
+    artist2: 'Eddie Pinero • Marcus Taylor • Wisdom National • Stoic Philosophy',
+    meta: '14 tracks • 2 hrs 49 mins',
+    cover: 'assets/images/stronger_soul_album.jpg',
+    category: 'all',
+    startTrack: 292
+  },
   'sidhu-singles': {
     title: 'Sidhu Moose Wala: Unstoppable Anthems & Singles',
     subtitle: 'The chart-topping standalone singles, cult classics, and high-octane global collaborations by the legend <strong>Sidhu Moose Wala</strong>.',
