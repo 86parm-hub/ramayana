@@ -3997,7 +3997,7 @@ const OST_TRACKS = [
     artist: "Ustad Nusrat Fateh Ali Khan",
     duration: "16:22",
     durationSec: 982,
-    src: "Nusrat Fateh Ali Khan/01_akhian_udeek_diyan_live.m4a",
+    src: "Nusrat%20Fateh%20Ali%20Khan/01_akhian_udeek_diyan_live.m4a",
     banner: "assets/images/tracks/track_216.jpg",
     desc: "The iconic live rendition of Akhian Udeek Diyan filled with transcendent vocal improvisations."
   },
@@ -4011,7 +4011,7 @@ const OST_TRACKS = [
     artist: "Ustad Nusrat Fateh Ali Khan",
     duration: "04:02",
     durationSec: 242,
-    src: "Nusrat Fateh Ali Khan/02_mast_nazron_se_allah_bachaye.m4a",
+    src: "Nusrat%20Fateh%20Ali%20Khan/02_mast_nazron_se_allah_bachaye.m4a",
     banner: "assets/images/tracks/track_217.jpg",
     desc: "A timeless romantic Sufi ghazal celebrating beauty, spiritual ecstasy, and divine longing."
   },
@@ -4025,7 +4025,7 @@ const OST_TRACKS = [
     artist: "Ustad Nusrat Fateh Ali Khan",
     duration: "17:23",
     durationSec: 1043,
-    src: "Nusrat Fateh Ali Khan/03_aisa_banna_sanwarna_mubarik_tumhen.m4a",
+    src: "Nusrat%20Fateh%20Ali%20Khan/03_aisa_banna_sanwarna_mubarik_tumhen.m4a",
     banner: "assets/images/tracks/track_218.jpg",
     desc: "An intoxicating traditional qawwali praising grace and auspicious adornment."
   },
@@ -4039,7 +4039,7 @@ const OST_TRACKS = [
     artist: "Ustad Nusrat Fateh Ali Khan",
     duration: "28:32",
     durationSec: 1712,
-    src: "Nusrat Fateh Ali Khan/04_ankh_uthi_mohabbat_ne.m4a",
+    src: "Nusrat%20Fateh%20Ali%20Khan/04_ankh_uthi_mohabbat_ne.m4a",
     banner: "assets/images/tracks/track_219.jpg",
     desc: "A monumental 28-minute masterwork exploring divine love and spiritual surrender."
   },
@@ -4053,7 +4053,7 @@ const OST_TRACKS = [
     artist: "Ustad Nusrat Fateh Ali Khan",
     duration: "09:48",
     durationSec: 588,
-    src: "Nusrat Fateh Ali Khan/05_biba_sada_dil_mor_de.m4a",
+    src: "Nusrat%20Fateh%20Ali%20Khan/05_biba_sada_dil_mor_de.m4a",
     banner: "assets/images/tracks/track_220.jpg",
     desc: "A deeply emotional Punjabi classic expressing heartfelt plea and eternal longing."
   },
@@ -4067,7 +4067,7 @@ const OST_TRACKS = [
     artist: "Ustad Nusrat Fateh Ali Khan & Party",
     duration: "07:15",
     durationSec: 435,
-    src: "Nusrat Fateh Ali Khan/06_biba_sada_dil_morr_de_party.m4a",
+    src: "Nusrat%20Fateh%20Ali%20Khan/06_biba_sada_dil_morr_de_party.m4a",
     banner: "assets/images/tracks/track_221.jpg",
     desc: "Energetic ensemble rendition driven by rhythmic clapping and harmonium mastery."
   },
@@ -4081,7 +4081,7 @@ const OST_TRACKS = [
     artist: "Ustad Nusrat Fateh Ali Khan",
     duration: "04:44",
     durationSec: 284,
-    src: "Nusrat Fateh Ali Khan/07_dil_pe_zakham_khate_hain.m4a",
+    src: "Nusrat%20Fateh%20Ali%20Khan/07_dil_pe_zakham_khate_hain.m4a",
     banner: "assets/images/tracks/track_222.jpg",
     desc: "A soul-stirring contemplation of sorrow, endurance, and unyielding romance."
   },
@@ -4095,7 +4095,7 @@ const OST_TRACKS = [
     artist: "Ustad Nusrat Fateh Ali Khan",
     duration: "13:51",
     durationSec: 831,
-    src: "Nusrat Fateh Ali Khan/08_doston_ki_shikayat.m4a",
+    src: "Nusrat%20Fateh%20Ali%20Khan/08_doston_ki_shikayat.m4a",
     banner: "assets/images/tracks/track_223.jpg",
     desc: "Philosophical verses on friendship, loyalty, and the delicate nature of human bonds."
   },
@@ -4109,7 +4109,7 @@ const OST_TRACKS = [
     artist: "Ustad Nusrat Fateh Ali Khan",
     duration: "08:32",
     durationSec: 512,
-    src: "Nusrat Fateh Ali Khan/09_dulhe_ka_sehra.m4a",
+    src: "Nusrat%20Fateh%20Ali%20Khan/09_dulhe_ka_sehra.m4a",
     banner: "assets/images/tracks/track_224.jpg",
     desc: "The legendary Bollywood wedding melody composed by Nadeem-Shravan with iconic vocals."
   },
@@ -4123,7 +4123,7 @@ const OST_TRACKS = [
     artist: "Ustad Nusrat Fateh Ali Khan",
     duration: "13:39",
     durationSec: 819,
-    src: "Nusrat Fateh Ali Khan/10_gardashon_ke_hain_mare_huye.m4a",
+    src: "Nusrat%20Fateh%20Ali%20Khan/10_gardashon_ke_hain_mare_huye.m4a",
     banner: "assets/images/tracks/track_225.jpg",
     desc: "A profound spiritual composition depicting the turbulent trials of worldly existence."
   },
@@ -4137,7 +4137,7 @@ const OST_TRACKS = [
     artist: "Ustad Nusrat Fateh Ali Khan",
     duration: "07:14",
     durationSec: 434,
-    src: "Nusrat Fateh Ali Khan/11_halka_halka_saroor.m4a",
+    src: "Nusrat%20Fateh%20Ali%20Khan/11_halka_halka_saroor.m4a",
     banner: "assets/images/tracks/track_226.jpg",
     desc: "Ustad Nusrat Fateh Ali Khan's signature spiritual intoxication and divine celebration."
   },
@@ -4151,7 +4151,7 @@ const OST_TRACKS = [
     artist: "Ustad Nusrat Fateh Ali Khan",
     duration: "09:48",
     durationSec: 588,
-    src: "Nusrat Fateh Ali Khan/12_je_toon_akhiyan_de_samne.m4a",
+    src: "Nusrat%20Fateh%20Ali%20Khan/12_je_toon_akhiyan_de_samne.m4a",
     banner: "assets/images/tracks/track_227.jpg",
     desc: "Heart-touching Punjabi melody of unwavering love and staying before one's sight."
   },
@@ -4165,7 +4165,7 @@ const OST_TRACKS = [
     artist: "Ustad Nusrat Fateh Ali Khan",
     duration: "11:46",
     durationSec: 706,
-    src: "Nusrat Fateh Ali Khan/13_kali_kali_zulfon_ke_phande_nah_dalo.m4a",
+    src: "Nusrat%20Fateh%20Ali%20Khan/13_kali_kali_zulfon_ke_phande_nah_dalo.m4a",
     banner: "assets/images/tracks/track_228.jpg",
     desc: "One of the most celebrated and beloved romantic qawwalis in musical history."
   },
@@ -4179,7 +4179,7 @@ const OST_TRACKS = [
     artist: "Ustad Nusrat Fateh Ali Khan",
     duration: "08:52",
     durationSec: 532,
-    src: "Nusrat Fateh Ali Khan/14_mera_piya_ghar_aaya.m4a",
+    src: "Nusrat%20Fateh%20Ali%20Khan/14_mera_piya_ghar_aaya.m4a",
     banner: "assets/images/tracks/track_229.jpg",
     desc: "Baba Bulleh Shah's ecstatic celebration of the beloved's return to the soul's abode."
   },
@@ -4193,7 +4193,7 @@ const OST_TRACKS = [
     artist: "Ustad Nusrat Fateh Ali Khan",
     duration: "07:03",
     durationSec: 423,
-    src: "Nusrat Fateh Ali Khan/15_mere_haath_mein_tera_haath_hai.m4a",
+    src: "Nusrat%20Fateh%20Ali%20Khan/15_mere_haath_mein_tera_haath_hai.m4a",
     banner: "assets/images/tracks/track_230.jpg",
     desc: "Gentle romantic Sufi melody radiating divine warmth and steadfast companionship."
   },
@@ -4207,7 +4207,7 @@ const OST_TRACKS = [
     artist: "Ustad Nusrat Fateh Ali Khan • Rahat Fateh Ali Khan",
     duration: "03:40",
     durationSec: 220,
-    src: "Nusrat Fateh Ali Khan/16_mere_rashke_qamar.m4a",
+    src: "Nusrat%20Fateh%20Ali%20Khan/16_mere_rashke_qamar.m4a",
     banner: "assets/images/tracks/track_231.jpg",
     desc: "The modern blockbuster recreation of Nusrat Sahab's timeless poetic gem."
   },
@@ -4221,7 +4221,7 @@ const OST_TRACKS = [
     artist: "Ustad Nusrat Fateh Ali Khan",
     duration: "11:52",
     durationSec: 712,
-    src: "Nusrat Fateh Ali Khan/17_nit_khair_mansan_sohnia_main_teri.m4a",
+    src: "Nusrat%20Fateh%20Ali%20Khan/17_nit_khair_mansan_sohnia_main_teri.m4a",
     banner: "assets/images/tracks/track_232.jpg",
     desc: "Unconditional prayer for the beloved's eternal well-being and happiness."
   },
@@ -4235,7 +4235,7 @@ const OST_TRACKS = [
     artist: "Ustad Nusrat Fateh Ali Khan",
     duration: "14:16",
     durationSec: 856,
-    src: "Nusrat Fateh Ali Khan/18_rabba_lakh_lakh_shukar_manaawa.m4a",
+    src: "Nusrat%20Fateh%20Ali%20Khan/18_rabba_lakh_lakh_shukar_manaawa.m4a",
     banner: "assets/images/tracks/track_233.jpg",
     desc: "A joyous invocation of boundless gratitude to the Almighty for all blessings."
   },
@@ -4249,7 +4249,7 @@ const OST_TRACKS = [
     artist: "Ustad Nusrat Fateh Ali Khan",
     duration: "05:25",
     durationSec: 325,
-    src: "Nusrat Fateh Ali Khan/19_sufi_fusion_revamped_remix.m4a",
+    src: "Nusrat%20Fateh%20Ali%20Khan/19_sufi_fusion_revamped_remix.m4a",
     banner: "assets/images/tracks/track_234.jpg",
     desc: "A contemporary chill-hop and ambient acoustic reimagining of sacred vocal hooks."
   },
@@ -4263,7 +4263,7 @@ const OST_TRACKS = [
     artist: "Ustad Nusrat Fateh Ali Khan",
     duration: "30:06",
     durationSec: 1806,
-    src: "Nusrat Fateh Ali Khan/20_sanson_ki_mala.m4a",
+    src: "Nusrat%20Fateh%20Ali%20Khan/20_sanson_ki_mala.m4a",
     banner: "assets/images/tracks/track_235.jpg",
     desc: "Meera Bai's immortal hymn of breathing the divine name with every heartbeat."
   },
@@ -4277,7 +4277,7 @@ const OST_TRACKS = [
     artist: "Ustad Nusrat Fateh Ali Khan",
     duration: "22:51",
     durationSec: 1371,
-    src: "Nusrat Fateh Ali Khan/21_sochta_hoon_keh_woh_kitne_masoom_thay.m4a",
+    src: "Nusrat%20Fateh%20Ali%20Khan/21_sochta_hoon_keh_woh_kitne_masoom_thay.m4a",
     banner: "assets/images/tracks/track_236.jpg",
     desc: "The world-famous philosophical ghazal capturing human change and wounded affection."
   },
@@ -4291,7 +4291,7 @@ const OST_TRACKS = [
     artist: "Ustad Nusrat Fateh Ali Khan",
     duration: "16:22",
     durationSec: 982,
-    src: "Nusrat Fateh Ali Khan/22_tumhain_dillagi_bhool_jani_paray_gi.m4a",
+    src: "Nusrat%20Fateh%20Ali%20Khan/22_tumhain_dillagi_bhool_jani_paray_gi.m4a",
     banner: "assets/images/tracks/track_237.jpg",
     desc: "The magnum opus qawwali that redefined romantic longing across continents."
   },
@@ -4305,7 +4305,7 @@ const OST_TRACKS = [
     artist: "Ustad Nusrat Fateh Ali Khan",
     duration: "17:36",
     durationSec: 1056,
-    src: "Nusrat Fateh Ali Khan/23_un_ka_andaz_e_karam.m4a",
+    src: "Nusrat%20Fateh%20Ali%20Khan/23_un_ka_andaz_e_karam.m4a",
     banner: "assets/images/tracks/track_238.jpg",
     desc: "A gentle and divine contemplation of spiritual grace, kindness, and devotion."
   },
@@ -4319,7 +4319,7 @@ const OST_TRACKS = [
     artist: "Ustad Nusrat Fateh Ali Khan • Javed Akhtar",
     duration: "10:07",
     durationSec: 607,
-    src: "Nusrat Fateh Ali Khan/24_afreen_afreen_javed_akhtar.m4a",
+    src: "Nusrat%20Fateh%20Ali%20Khan/24_afreen_afreen_javed_akhtar.m4a",
     banner: "assets/images/tracks/track_239.jpg",
     desc: "The legendary 1996 collaboration between Javed Akhtar and Nusrat Fateh Ali Khan."
   },
@@ -4333,7 +4333,7 @@ const OST_TRACKS = [
     artist: "Ustad Nusrat Fateh Ali Khan & Party",
     duration: "30:26",
     durationSec: 1826,
-    src: "Nusrat Fateh Ali Khan/25_yeh_jo_halka_halka_suroor_full_original.m4a",
+    src: "Nusrat%20Fateh%20Ali%20Khan/25_yeh_jo_halka_halka_suroor_full_original.m4a",
     banner: "assets/images/tracks/track_240.jpg",
     desc: "The monumental 30-minute original uncut performance of Yeh Jo Halka Halka Suroor."
   }
@@ -4406,7 +4406,7 @@ function playOSTTrack(trackId) {
     ostAudio.setAttribute('disableRemotePlayback', '');
   } catch(e) {}
 
-  ostAudio.src = track.src;
+  ostAudio.src = encodeURI(decodeURI(track.src));
   const playPromise = ostAudio.play();
   if (playPromise !== undefined) {
     playPromise.then(() => {
