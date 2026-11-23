@@ -2816,14 +2816,14 @@ const OST_TRACKS = [
     num: "41",
     album: "arijit-singh",
     title: "Dhokha Dhadi",
-    subtitle: "R... Rajkumar",
+    subtitle: "R. Rajkumar",
     tag: "PLAYFUL ROMANCE",
     artist: "Arijit Singh, Palak Muchhal, Pritam",
     duration: "04:09",
     durationSec: 249,
     src: "arijit_singh_tracks/132_dhokha_dhadi.m4a",
     banner: "assets/images/tracks/track_132.jpg",
-    desc: "Charming breezy romance from R... Rajkumar."
+    desc: "Charming breezy romance from R. Rajkumar."
   },
   {
     id: 133,
@@ -5035,7 +5035,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     }
   }
 
-  // Handle Embed Movie Mode (e.g. Ranabaali TMDB 1389379 via Peachify)
+  // Handle Embed Movie Mode (e.g. Ranabaali. via Peachify)
   if (targetTime === 'ranabaali' || targetTime === '1389379') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -5044,7 +5044,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Ranabaali • TMDB 1389379';
+    if (titleDisplay) titleDisplay.textContent = 'Ranabaali.';
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -5057,7 +5057,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode: Never Surrender (2026 / Netflix Original / TMDB 1616687)
+  // Handle Embed Movie Mode: Never Surrender (2026 / Netflix Original /.)
   if (targetTime === 'never-surrender' || targetTime === 'never_surrender' || targetTime === 'neversurrender' || targetTime === '1616687' || targetTime === '81996126' || targetTime === '81958252' || targetTime === 'seranganbalik' || targetTime === 'akka' || targetTime === '243555') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -5079,7 +5079,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (The Paradise TMDB 1376856 via Peachify)
+  // Handle Embed Movie Mode (The Paradise. via Peachify)
   if (targetTime === 'paradise' || targetTime === 'theparadise' || targetTime === '1376856') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -5088,7 +5088,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'The Paradise • TMDB 1376856';
+    if (titleDisplay) titleDisplay.textContent = 'The Paradise.';
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -5101,7 +5101,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Alpha TMDB 1122030 via Peachify)
+  // Handle Embed Movie Mode (Alpha. via Peachify)
   if (targetTime === 'alpha' || targetTime === '1122030') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -5110,7 +5110,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Alpha • TMDB 1122030 (YRF Spy Universe)';
+    if (titleDisplay) titleDisplay.textContent = 'Alpha. (YRF Spy Universe)';
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -5123,7 +5123,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Tere Ishk Mein TMDB 1142921 via Peachify)
+  // Handle Embed Movie Mode (Tere Ishk Mein. via Peachify)
   if (targetTime === 'tereishkmein' || targetTime === 'tere_ishk_mein' || targetTime === '1142921') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -5132,7 +5132,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Tere Ishk Mein • TMDB 1142921';
+    if (titleDisplay) titleDisplay.textContent = 'Tere Ishk Mein.';
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -5145,7 +5145,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Pushpa 2: The Rule TMDB 857598 via Peachify)
+  // Handle Embed Movie Mode (Pushpa 2: The Rule. via Peachify)
   if (targetTime === 'pushpa2' || targetTime === 'pushpa_2' || targetTime === 'pushpa' || targetTime === '857598') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -5154,7 +5154,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Pushpa 2: The Rule • TMDB 857598';
+    if (titleDisplay) titleDisplay.textContent = 'Pushpa 2: The Rule.';
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -5167,7 +5167,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Dorothy TMDB 1578079 via Peachify)
+  // Handle Embed Movie Mode (Dorothy. via Peachify)
   if (targetTime === 'dorothy' || targetTime === 'dorothi' || targetTime === '1578079') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -5176,7 +5176,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Dorothy • TMDB 1578079';
+    if (titleDisplay) titleDisplay.textContent = 'Dorothy.';
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -5189,7 +5189,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (A Dog's Perfect Christmas TMDB 1570488 via Peachify)
+  // Handle Embed Movie Mode (A Dog's Perfect Christmas. via Peachify)
   if (targetTime === 'dogs_christmas' || targetTime === 'dogschristmas' || targetTime === '1570488' || targetTime === 'adogsperfectchristmas') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -5198,7 +5198,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "A Dog's Perfect Christmas • TMDB 1570488";
+    if (titleDisplay) titleDisplay.textContent = "A Dog's Perfect Christmas.";
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -5211,7 +5211,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Jurassic World Rebirth TMDB 1234821 via Peachify)
+  // Handle Embed Movie Mode (Jurassic World Rebirth. via Peachify)
   if (targetTime === 'jurassic_rebirth' || targetTime === 'jurassicworld' || targetTime === 'jurassic' || targetTime === '1234821' || targetTime === 'jurassicworldrebirth') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -5220,7 +5220,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Jurassic World Rebirth • TMDB 1234821";
+    if (titleDisplay) titleDisplay.textContent = "Jurassic World Rebirth.";
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -5233,7 +5233,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Adipurush TMDB 734253 via Peachify)
+  // Handle Embed Movie Mode (Adipurush. via Peachify)
   if (targetTime === 'adipurush' || targetTime === '734253' || targetTime === 'prabhas_adipurush') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -5242,7 +5242,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Adipurush • TMDB 734253";
+    if (titleDisplay) titleDisplay.textContent = "Adipurush.";
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -5255,7 +5255,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Don't Trouble the Trouble TMDB 1261763 via Peachify)
+  // Handle Embed Movie Mode (Don't Trouble the Trouble. via Peachify)
   if (targetTime === 'dont_trouble' || targetTime === 'donttrouble' || targetTime === '1261763' || targetTime === 'donttroublethetrouble') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -5264,7 +5264,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Don't Trouble the Trouble • TMDB 1261763";
+    if (titleDisplay) titleDisplay.textContent = "Don't Trouble the Trouble.";
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -5277,7 +5277,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Maharaj TMDB 1171099 via Peachify)
+  // Handle Embed Movie Mode (Maharaj. via Peachify)
   if (targetTime === 'maharaj' || targetTime === '1171099' || targetTime === 'junaid_maharaj') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -5286,7 +5286,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Maharaj • TMDB 1171099";
+    if (titleDisplay) titleDisplay.textContent = "Maharaj.";
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -5299,7 +5299,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (With Love TMDB 1508564 via Peachify)
+  // Handle Embed Movie Mode (With Love. via Peachify)
   if (targetTime === 'with_love' || targetTime === 'withlove' || targetTime === '1508564' || targetTime === 'withlovetamil') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -5308,7 +5308,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "With Love • TMDB 1508564";
+    if (titleDisplay) titleDisplay.textContent = "With Love.";
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -5321,7 +5321,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Never Surrender TMDB 1616687 via Peachify)
+  // Handle Embed Movie Mode (Never Surrender. via Peachify)
   if (targetTime === 'never_surrender' || targetTime === 'never-surrender' || targetTime === 'neversurrender' || targetTime === '1616687' || targetTime === '81996126' || targetTime === '81958252' || targetTime === 'seranganbalik') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -5365,7 +5365,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Peddi TMDB 1057265 / Peachify)
+  // Handle Embed Movie Mode (Peddi. / Peachify)
   if (targetTime === 'peddi' || targetTime === '1057265' || targetTime === 'tt23865918' || targetTime === 'ramcharan_peddi') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -5374,7 +5374,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Peddi • Ram Charan • TMDB 1057265";
+    if (titleDisplay) titleDisplay.textContent = "Peddi • Ram Charan.";
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -5387,7 +5387,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Cocktail 2 TMDB 1392469 / Peachify)
+  // Handle Embed Movie Mode (Cocktail 2. / Peachify)
   if (targetTime === 'cocktail2' || targetTime === 'cocktail_2' || targetTime === '1392469' || targetTime === 'shahid_cocktail2') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -5396,7 +5396,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Cocktail 2 • Shahid Kapoor • TMDB 1392469";
+    if (titleDisplay) titleDisplay.textContent = "Cocktail 2 • Shahid Kapoor.";
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -5409,7 +5409,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Avaraachan & Sons TMDB 1290035 / Peachify)
+  // Handle Embed Movie Mode (Avaraachan & Sons. / Peachify)
   if (targetTime === 'avarachan' || targetTime === 'avarachan_sons' || targetTime === '1290035' || targetTime === 'bijumenon_avarachan') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -5418,7 +5418,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Avaraachan & Sons • Biju Menon • TMDB 1290035";
+    if (titleDisplay) titleDisplay.textContent = "Avaraachan & Sons • Biju Menon.";
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -5431,7 +5431,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Reporting Live TMDB 1389172 / Peachify)
+  // Handle Embed Movie Mode (Reporting Live. / Peachify)
   if (targetTime === 'reporting_live' || targetTime === 'reportinglive' || targetTime === '1389172' || targetTime === 'parineeti_reporting') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -5440,7 +5440,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Reporting Live • Parineeti Chopra • TMDB 1389172";
+    if (titleDisplay) titleDisplay.textContent = "Reporting Live • Parineeti Chopra.";
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -5453,7 +5453,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Heartland TMDB 1543469 / Peachify)
+  // Handle Embed Movie Mode (Heartland. / Peachify)
   if (targetTime === 'heartland' || targetTime === '1543469' || targetTime === 'jessica_heartland') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -5462,7 +5462,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Heartland • Jessica Chastain • TMDB 1543469";
+    if (titleDisplay) titleDisplay.textContent = "Heartland • Jessica Chastain.";
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -5475,7 +5475,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (One Year to Live, Buy a Man TMDB 1654940 / Peachify)
+  // Handle Embed Movie Mode (One Year to Live, Buy a Man. / Peachify)
   if (targetTime === 'one_year_to_live' || targetTime === 'oneyeartolive' || targetTime === '1654940' || targetTime === 'buy_a_man') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -5484,7 +5484,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "One Year to Live, Buy a Man • Ko Shibasaki • TMDB 1654940";
+    if (titleDisplay) titleDisplay.textContent = "One Year to Live, Buy a Man • Ko Shibasaki.";
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -5497,7 +5497,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Allen TMDB 1518204 / Peachify)
+  // Handle Embed Movie Mode (Allen. / Peachify)
   if (targetTime === 'allen' || targetTime === '1518204' || targetTime === 'allen_alien') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -5506,7 +5506,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Allen • T.J. Power • TMDB 1518204";
+    if (titleDisplay) titleDisplay.textContent = "Allen • T.J. Power.";
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -5519,7 +5519,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Jolly LLB 3 TMDB 1015981 / Peachify)
+  // Handle Embed Movie Mode (Jolly LLB 3. / Peachify)
   if (targetTime === 'jolly_llb_3' || targetTime === 'jollyllb3' || targetTime === '1015981' || targetTime === 'akshay_jolly') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -5528,7 +5528,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Jolly LLB 3 • Akshay Kumar & Arshad Warsi • TMDB 1015981";
+    if (titleDisplay) titleDisplay.textContent = "Jolly LLB 3 • Akshay Kumar & Arshad Warsi.";
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -5541,7 +5541,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Saiyaara TMDB 1241634 / Peachify)
+  // Handle Embed Movie Mode (Saiyaara. / Peachify)
   if (targetTime === 'saiyaara' || targetTime === '1241634' || targetTime === 'ahaan_saiyaara') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -5550,7 +5550,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Saiyaara • Ahaan Panday & Aneet Padda • TMDB 1241634";
+    if (titleDisplay) titleDisplay.textContent = "Saiyaara • Ahaan Panday & Aneet Padda.";
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -5563,7 +5563,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (The Last House TMDB 1284041 / Peachify)
+  // Handle Embed Movie Mode (The Last House. / Peachify)
   if (targetTime === 'the_last_house' || targetTime === 'thelasthouse' || targetTime === '1284041' || targetTime === 'greta_lasthouse') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -5572,7 +5572,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "The Last House • Greta Lee & Wagner Moura • TMDB 1284041";
+    if (titleDisplay) titleDisplay.textContent = "The Last House • Greta Lee & Wagner Moura.";
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -5585,7 +5585,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Brawlers TMDB 1418709 / Peachify)
+  // Handle Embed Movie Mode (Brawlers. / Peachify)
   if (targetTime === 'brawlers' || targetTime === 'bagarre' || targetTime === '1418709' || targetTime === 'nassim_brawlers') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -5594,7 +5594,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Brawlers (Bagarre) • Nassim Lyes • TMDB 1418709";
+    if (titleDisplay) titleDisplay.textContent = "Brawlers (Bagarre) • Nassim Lyes.";
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -5607,7 +5607,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Dhadak 2 TMDB 1213777 / CodeSpecters API DEMO_36da8c77)
+  // Handle Embed Movie Mode (Dhadak 2. / CodeSpecters API DEMO_36da8c77)
   if (targetTime === 'dhadak2' || targetTime === 'dhadak_2' || targetTime === '1213777' || targetTime === 'tt13451410' || targetTime === 'siddhant_dhadak2') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -5629,7 +5629,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Demon Slayer: Kimetsu no Yaiba – Infinity Castle TMDB 1311031)
+  // Handle Embed Movie Mode (Demon Slayer: Kimetsu no Yaiba – Infinity Castle.)
   if (targetTime === 'demon_slayer' || targetTime === 'demonslayer' || targetTime === 'infinity_castle' || targetTime === '1311031' || targetTime === 'kimetsu_no_yaiba') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -5638,7 +5638,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Demon Slayer: Kimetsu no Yaiba – Infinity Castle (2025) • TMDB 1311031";
+    if (titleDisplay) titleDisplay.textContent = "Demon Slayer: Kimetsu no Yaiba – Infinity Castle (2025).";
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -5651,7 +5651,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Hi Papa TMDB 1068452 / Peachify)
+  // Handle Embed Movie Mode (Hi Papa. / Peachify)
   if (targetTime === 'hi_papa' || targetTime === 'hipapa' || targetTime === 'hi_nanna' || targetTime === 'hinanna' || targetTime === '1068452' || targetTime === 'nani_hipapa') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -5660,7 +5660,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Hi Papa • Nani & Mrunal Thakur • TMDB 1068452";
+    if (titleDisplay) titleDisplay.textContent = "Hi Papa • Nani & Mrunal Thakur.";
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -5673,7 +5673,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Dragon TMDB 1273049 / Peachify)
+  // Handle Embed Movie Mode (Dragon. / Peachify)
   if (targetTime === 'dragon' || targetTime === 'dragon_2025' || targetTime === '1273049' || targetTime === 'pradeep_dragon') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -5682,7 +5682,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Dragon • Pradeep Ranganathan • TMDB 1273049";
+    if (titleDisplay) titleDisplay.textContent = "Dragon • Pradeep Ranganathan.";
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -5695,7 +5695,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Youth TMDB 1542352 / Peachify)
+  // Handle Embed Movie Mode (Youth. / Peachify)
   if (targetTime === 'youth' || targetTime === 'youth_2026' || targetTime === '1542352' || targetTime === 'ken_youth' || targetTime === 'ken_karunas') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -5704,7 +5704,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Youth (2026) • Ken Karunas • TMDB 1542352";
+    if (titleDisplay) titleDisplay.textContent = "Youth (2026) • Ken Karunas.";
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -5717,7 +5717,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Chhaava TMDB 1196943 / Peachify)
+  // Handle Embed Movie Mode (Chhaava. / Peachify)
   if (targetTime === 'chhaava' || targetTime === 'chhava' || targetTime === '1196943' || targetTime === 'vicky_chhaava') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -5726,7 +5726,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Chhaava (2025) • Vicky Kaushal & Rashmika Mandanna • TMDB 1196943";
+    if (titleDisplay) titleDisplay.textContent = "Chhaava (2025) • Vicky Kaushal & Rashmika Mandanna.";
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -5739,7 +5739,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Maa TMDB 1389158 / Peachify)
+  // Handle Embed Movie Mode (Maa. / Peachify)
   if (targetTime === 'maa' || targetTime === 'maa_2025' || targetTime === '1389158' || targetTime === 'kajol_maa') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -5748,7 +5748,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Maa (2025) • Kajol & Ronit Roy • TMDB 1389158";
+    if (titleDisplay) titleDisplay.textContent = "Maa (2025) • Kajol & Ronit Roy.";
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -5761,7 +5761,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Retro TMDB 1265827 / Peachify)
+  // Handle Embed Movie Mode (Retro. / Peachify)
   if (targetTime === 'retro' || targetTime === 'retro_2025' || targetTime === '1265827' || targetTime === 'suriya_retro' || targetTime === 'suriya44') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -5770,7 +5770,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Retro (Suriya 44) (2025) • Suriya & Pooja Hegde • TMDB 1265827";
+    if (titleDisplay) titleDisplay.textContent = "Retro (Suriya 44) (2025) • Suriya & Pooja Hegde.";
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -5783,7 +5783,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-      // Handle Embed Movie Mode (Hanuman Ansh TMDB 1709391 via Peachify)
+      // Handle Embed Movie Mode (Hanuman Ansh. via Peachify)
   if (targetTime === 'hanuman_ansh' || targetTime === '1709391') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -5794,12 +5794,12 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
       embedIframe.style.display = 'block';
       embedIframe.src = 'https://peachify.net/movie/1709391';
     }
-    if (titleDisplay) titleDisplay.textContent = "Hanuman Ansh (2026) • TMDB 1709391";
+    if (titleDisplay) titleDisplay.textContent = "Hanuman Ansh (2026).";
     if (spinner) spinner.classList.remove('active');
     return;
   }
 
-  // Handle Embed Movie Mode (KON CITY TMDB 1596008 via Peachify)
+  // Handle Embed Movie Mode (KON CITY. via Peachify)
   if (targetTime === 'kon_city' || targetTime === 'con_city' || targetTime === '1596008') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -5810,12 +5810,12 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
       embedIframe.style.display = 'block';
       embedIframe.src = 'https://peachify.net/movie/1596008';
     }
-    if (titleDisplay) titleDisplay.textContent = "KON CITY (2026) • TMDB 1596008";
+    if (titleDisplay) titleDisplay.textContent = "KON CITY (2026).";
     if (spinner) spinner.classList.remove('active');
     return;
   }
 
-  // Handle Embed Movie Mode (Baththa TMDB 1515692 via Peachify)
+  // Handle Embed Movie Mode (Baththa. via Peachify)
   if (targetTime === 'baththa' || targetTime === '1515692') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -5826,12 +5826,12 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
       embedIframe.style.display = 'block';
       embedIframe.src = 'https://peachify.net/movie/1515692';
     }
-    if (titleDisplay) titleDisplay.textContent = "Baththa (2026) • TMDB 1515692 (Vijay Sethupathi)";
+    if (titleDisplay) titleDisplay.textContent = "Baththa (2026). (Vijay Sethupathi)";
     if (spinner) spinner.classList.remove('active');
     return;
   }
 
-  // Handle Embed Movie Mode (Haiku TMDB 1593350 via Peachify)
+  // Handle Embed Movie Mode (Haiku. via Peachify)
   if (targetTime === 'haiku' || targetTime === '1593350') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -5842,12 +5842,12 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
       embedIframe.style.display = 'block';
       embedIframe.src = 'https://peachify.net/movie/1593350';
     }
-    if (titleDisplay) titleDisplay.textContent = "Haiku (2026) • TMDB 1593350";
+    if (titleDisplay) titleDisplay.textContent = "Haiku (2026).";
     if (spinner) spinner.classList.remove('active');
     return;
   }
 
-  // Handle Embed Movie Mode (G.D.N TMDB 1489543 via Peachify)
+  // Handle Embed Movie Mode (G.D.N. via Peachify)
   if (targetTime === 'gdn' || targetTime === 'g.d.n' || targetTime === '1489543') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -5858,12 +5858,12 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
       embedIframe.style.display = 'block';
       embedIframe.src = 'https://peachify.net/movie/1489543';
     }
-    if (titleDisplay) titleDisplay.textContent = "G.D.N (2026) • TMDB 1489543 (R. Madhavan)";
+    if (titleDisplay) titleDisplay.textContent = "G.D.N (2026). (R. Madhavan)";
     if (spinner) spinner.classList.remove('active');
     return;
   }
 
-  // Handle Embed Movie Mode (418 TMDB 1606527 via Peachify)
+  // Handle Embed Movie Mode (418. via Peachify)
   if (targetTime === 'movie_418' || targetTime === '418' || targetTime === '1606527') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -5874,12 +5874,12 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
       embedIframe.style.display = 'block';
       embedIframe.src = 'https://peachify.net/movie/1606527';
     }
-    if (titleDisplay) titleDisplay.textContent = "418 (2026) • TMDB 1606527";
+    if (titleDisplay) titleDisplay.textContent = "418 (2026).";
     if (spinner) spinner.classList.remove('active');
     return;
   }
 
-  // Handle Embed Movie Mode (Steps TMDB 1595124 via Peachify)
+  // Handle Embed Movie Mode (Steps. via Peachify)
   if (targetTime === 'steps' || targetTime === '1595124') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -5890,12 +5890,12 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
       embedIframe.style.display = 'block';
       embedIframe.src = 'https://peachify.net/movie/1595124';
     }
-    if (titleDisplay) titleDisplay.textContent = "Steps (2026) • TMDB 1595124 (Ali Wong)";
+    if (titleDisplay) titleDisplay.textContent = "Steps (2026). (Ali Wong)";
     if (spinner) spinner.classList.remove('active');
     return;
   }
 
-  // Handle Embed Movie Mode (The Odyssey TMDB 1368337 via Peachify)
+  // Handle Embed Movie Mode (The Odyssey. via Peachify)
   if (targetTime === 'the_odyssey' || targetTime === 'odyssey' || targetTime === '1368337') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -5904,7 +5904,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'The Odyssey (2026) • TMDB 1368337 (Christopher Nolan)';
+    if (titleDisplay) titleDisplay.textContent = 'The Odyssey (2026). (Christopher Nolan)';
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -5917,7 +5917,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (GOAT TMDB 1297842 via Peachify)
+  // Handle Embed Movie Mode (GOAT. via Peachify)
   if (targetTime === 'goat' || targetTime === 'goat_2026' || targetTime === '1297842') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -5926,7 +5926,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'GOAT (2026) • TMDB 1297842 (Sony Pictures Animation)';
+    if (titleDisplay) titleDisplay.textContent = 'GOAT (2026). (Sony Pictures Animation)';
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -5939,7 +5939,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Scary Movie 6 TMDB 1273221 via Peachify)
+  // Handle Embed Movie Mode (Scary Movie 6. via Peachify)
   if (targetTime === 'scary_movie_6' || targetTime === 'scarymovie6' || targetTime === '1273221') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -5948,7 +5948,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Scary Movie 6 (2026) • TMDB 1273221 (Wayans Brothers)';
+    if (titleDisplay) titleDisplay.textContent = 'Scary Movie 6 (2026). (Wayans Brothers)';
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -5961,7 +5961,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Coolie TMDB 1153399 via Peachify)
+  // Handle Embed Movie Mode (Coolie. via Peachify)
   if (targetTime === 'coolie' || targetTime === '1153399') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -5970,7 +5970,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Coolie (2025) • TMDB 1153399 (Superstar Rajinikanth / Lokesh Kanagaraj)';
+    if (titleDisplay) titleDisplay.textContent = 'Coolie (2025). (Superstar Rajinikanth / Lokesh Kanagaraj)';
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -5983,7 +5983,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Dhurandhar TMDB 1291608 via Peachify)
+  // Handle Embed Movie Mode (Dhurandhar. via Peachify)
   if (targetTime === 'dhurandhar' || targetTime === '1291608') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -5992,7 +5992,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Dhurandhar (2025) • TMDB 1291608 (Ranveer Singh / Aditya Dhar)';
+    if (titleDisplay) titleDisplay.textContent = 'Dhurandhar (2025). (Ranveer Singh / Aditya Dhar)';
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -6005,7 +6005,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Jailer 2 TMDB 1234139 via Peachify)
+  // Handle Embed Movie Mode (Jailer 2. via Peachify)
   if (targetTime === 'jailer_2' || targetTime === 'jailer2' || targetTime === '1234139') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -6014,7 +6014,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Jailer 2 (2026) • TMDB 1234139 (Superstar Rajinikanth / Nelson)';
+    if (titleDisplay) titleDisplay.textContent = 'Jailer 2 (2026). (Superstar Rajinikanth / Nelson)';
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -6027,7 +6027,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Disclosure Day TMDB 1275779 via Peachify)
+  // Handle Embed Movie Mode (Disclosure Day. via Peachify)
   if (targetTime === 'disclosure_day' || targetTime === 'disclosureday' || targetTime === '1275779') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -6036,7 +6036,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Disclosure Day (2026) • TMDB 1275779 (Steven Spielberg / Universal)';
+    if (titleDisplay) titleDisplay.textContent = 'Disclosure Day (2026). (Steven Spielberg / Universal)';
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -6049,7 +6049,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Wuthering Heights TMDB 1316092 via Peachify)
+  // Handle Embed Movie Mode (Wuthering Heights. via Peachify)
   if (targetTime === 'wuthering_heights' || targetTime === 'wutheringheights' || targetTime === '1316092') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -6058,7 +6058,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Wuthering Heights (2026) • TMDB 1316092 (Emerald Fennell / Warner Bros)';
+    if (titleDisplay) titleDisplay.textContent = 'Wuthering Heights (2026). (Emerald Fennell / Warner Bros)';
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -6071,7 +6071,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Hoppers TMDB 1327819 via Peachify)
+  // Handle Embed Movie Mode (Hoppers. via Peachify)
   if (targetTime === 'hoppers' || targetTime === '1327819') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -6080,7 +6080,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Hoppers (2026) • TMDB 1327819 (Disney & Pixar Animation)';
+    if (titleDisplay) titleDisplay.textContent = 'Hoppers (2026). (Disney & Pixar Animation)';
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -6093,7 +6093,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Michael TMDB 936075 via Peachify)
+  // Handle Embed Movie Mode (Michael. via Peachify)
   if (targetTime === 'michael' || targetTime === '936075') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -6102,7 +6102,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Michael (2026) • TMDB 936075 (Antoine Fuqua / Lionsgate)';
+    if (titleDisplay) titleDisplay.textContent = 'Michael (2026). (Antoine Fuqua / Lionsgate)';
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -6115,7 +6115,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (The Super Mario Galaxy Movie TMDB 1226863 via Peachify)
+  // Handle Embed Movie Mode (The Super Mario Galaxy Movie. via Peachify)
   if (targetTime === 'mario_galaxy' || targetTime === 'super_mario' || targetTime === '1226863') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -6124,7 +6124,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'The Super Mario Galaxy Movie (2026) • TMDB 1226863 (Nintendo / Illumination)';
+    if (titleDisplay) titleDisplay.textContent = 'The Super Mario Galaxy Movie (2026). (Nintendo / Illumination)';
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -6137,7 +6137,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Minions & Monsters TMDB 1315772 via Peachify)
+  // Handle Embed Movie Mode (Minions & Monsters. via Peachify)
   if (targetTime === 'minions_monsters' || targetTime === 'minions' || targetTime === '1315772') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -6146,7 +6146,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Minions & Monsters (2026) • TMDB 1315772 (Illumination / Universal)';
+    if (titleDisplay) titleDisplay.textContent = 'Minions & Monsters (2026). (Illumination / Universal)';
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -6159,7 +6159,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Mortal Kombat II TMDB 931285 via Peachify)
+  // Handle Embed Movie Mode (Mortal Kombat II. via Peachify)
   if (targetTime === 'mortal_kombat_2' || targetTime === 'mortalkombat2' || targetTime === '931285') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -6168,7 +6168,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Mortal Kombat II (2026) • TMDB 931285 (New Line Cinema / Warner Bros)';
+    if (titleDisplay) titleDisplay.textContent = 'Mortal Kombat II (2026). (New Line Cinema / Warner Bros)';
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -6181,7 +6181,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Kartavya TMDB 1628367 via Peachify)
+  // Handle Embed Movie Mode (Kartavya. via Peachify)
   if (targetTime === 'kartavya' || targetTime === 'kartavya_2026' || targetTime === '1628367') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -6190,7 +6190,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Kartavya (2026) • TMDB 1628367 (Saif Ali Khan & Red Chillies)';
+    if (titleDisplay) titleDisplay.textContent = 'Kartavya (2026). (Saif Ali Khan & Red Chillies)';
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -6203,7 +6203,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Gandhari TMDB 1355228 via Peachify)
+  // Handle Embed Movie Mode (Gandhari. via Peachify)
   if (targetTime === 'gandhari' || targetTime === 'gandhari_2026' || targetTime === '1355228') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -6212,7 +6212,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Gandhari (2026) • TMDB 1355228 (Taapsee Pannu & Kanika Dhillon)';
+    if (titleDisplay) titleDisplay.textContent = 'Gandhari (2026). (Taapsee Pannu & Kanika Dhillon)';
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -6225,7 +6225,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Toaster TMDB 1416391 via Peachify)
+  // Handle Embed Movie Mode (Toaster. via Peachify)
   if (targetTime === 'toaster' || targetTime === 'toaster_2026' || targetTime === '1416391') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -6234,7 +6234,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Toaster (2026) • TMDB 1416391 (Rajkummar Rao & Sanya Malhotra)';
+    if (titleDisplay) titleDisplay.textContent = 'Toaster (2026). (Rajkummar Rao & Sanya Malhotra)';
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -6251,7 +6251,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
   // EMBED MOVIE HANDLERS: ROW 7 (MOST ANTICIPATED 2026 FRANCHISE BLOCKBUSTERS)
   // =========================================================================
 
-  // Spider-Man: Brand New Day (TMDB 969681 via Peachify)
+  // Spider-Man: Brand New Day (. via Peachify)
   if (targetTime === 'spiderman_brand_new_day' || targetTime === 'spiderman' || targetTime === 'spiderman_2026' || targetTime === '969681') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -6260,7 +6260,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Spider-Man: Brand New Day (2026) • TMDB 969681';
+    if (titleDisplay) titleDisplay.textContent = 'Spider-Man: Brand New Day (2026).';
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -6273,7 +6273,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Clayface (TMDB 1400940 via Peachify)
+  // Clayface (. via Peachify)
   if (targetTime === 'clayface' || targetTime === 'clay_face' || targetTime === 'clayface_2026' || targetTime === '1400940') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -6282,7 +6282,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Clayface (2026) • TMDB 1400940';
+    if (titleDisplay) titleDisplay.textContent = 'Clayface (2026).';
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -6295,7 +6295,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Resident Evil (TMDB 1423191 via Peachify)
+  // Resident Evil (. via Peachify)
   if (targetTime === 'resident_evil_2026' || targetTime === 'resident_evil' || targetTime === 'residentevil' || targetTime === '1423191') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -6304,7 +6304,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Resident Evil (2026) • TMDB 1423191';
+    if (titleDisplay) titleDisplay.textContent = 'Resident Evil (2026).';
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -6317,7 +6317,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Street Fighter (TMDB 1153576 via Peachify)
+  // Street Fighter (. via Peachify)
   if (targetTime === 'street_fighter' || targetTime === 'streetfighter' || targetTime === 'street_fighter_2026' || targetTime === '1153576') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -6326,7 +6326,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Street Fighter (2026) • TMDB 1153576';
+    if (titleDisplay) titleDisplay.textContent = 'Street Fighter (2026).';
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -6339,7 +6339,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Toy Story 5 (TMDB 1084244 via Peachify)
+  // Toy Story 5 (. via Peachify)
   if (targetTime === 'toy_story_5' || targetTime === 'toystory5' || targetTime === 'toy_story' || targetTime === '1084244') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -6348,7 +6348,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Toy Story 5 (2026) • TMDB 1084244';
+    if (titleDisplay) titleDisplay.textContent = 'Toy Story 5 (2026).';
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -6361,7 +6361,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Supergirl: Woman of Tomorrow (TMDB 1081003 via Peachify)
+  // Supergirl: Woman of Tomorrow (. via Peachify)
   if (targetTime === 'supergirl_woman_of_tomorrow' || targetTime === 'supergirl' || targetTime === 'supergirl_2026' || targetTime === '1081003') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -6370,7 +6370,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Supergirl: Woman of Tomorrow (2026) • TMDB 1081003';
+    if (titleDisplay) titleDisplay.textContent = 'Supergirl: Woman of Tomorrow (2026).';
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -6383,7 +6383,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Star Wars: The Mandalorian and Grogu (TMDB 1228710 via Peachify)
+  // Star Wars: The Mandalorian and Grogu (. via Peachify)
   if (targetTime === 'mandalorian_and_grogu' || targetTime === 'mandalorian' || targetTime === 'the_mandalorian' || targetTime === '1228710') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -6392,7 +6392,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Star Wars: The Mandalorian & Grogu (2026) • TMDB 1228710';
+    if (titleDisplay) titleDisplay.textContent = 'Star Wars: The Mandalorian & Grogu (2026).';
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -6405,7 +6405,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Godzilla Minus Zero (TMDB 1381071 via Peachify)
+  // Godzilla Minus Zero (. via Peachify)
   if (targetTime === 'godzilla_minus_zero' || targetTime === 'godzilla' || targetTime === 'godzilla_2026' || targetTime === '1381071') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -6414,7 +6414,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Godzilla Minus Zero (2026) • TMDB 1381071';
+    if (titleDisplay) titleDisplay.textContent = 'Godzilla Minus Zero (2026).';
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -6427,7 +6427,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Project Hail Mary (TMDB 687163 via Peachify)
+  // Project Hail Mary (. via Peachify)
   if (targetTime === 'project_hail_mary' || targetTime === 'projecthailmary' || targetTime === 'project_hail_mary_2026' || targetTime === '687163') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -6436,7 +6436,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = 'Project Hail Mary (2026) • TMDB 687163';
+    if (titleDisplay) titleDisplay.textContent = 'Project Hail Mary (2026).';
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -6449,7 +6449,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Daayra TMDB 1215889 via Peachify)
+  // Handle Embed Movie Mode (Daayra. via Peachify)
   if (targetTime === 'daayra' || targetTime === '1215889') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -6458,7 +6458,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Daayra • TMDB 1215889";
+    if (titleDisplay) titleDisplay.textContent = "Daayra.";
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -6471,7 +6471,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Vishwanath & Sons TMDB 1408162 via Peachify)
+  // Handle Embed Movie Mode (Vishwanath & Sons. via Peachify)
   if (targetTime === 'vishwanath_and_sons' || targetTime === '1408162') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -6480,7 +6480,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Vishwanath & Sons • TMDB 1408162";
+    if (titleDisplay) titleDisplay.textContent = "Vishwanath & Sons.";
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -6493,7 +6493,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Gajab Raat TMDB 1453407 via Peachify)
+  // Handle Embed Movie Mode (Gajab Raat. via Peachify)
   if (targetTime === 'gajab_raat' || targetTime === '1453407') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -6502,7 +6502,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Gajab Raat • TMDB 1453407";
+    if (titleDisplay) titleDisplay.textContent = "Gajab Raat.";
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -6515,7 +6515,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Dilwali Diwali TMDB 1810711 via Peachify)
+  // Handle Embed Movie Mode (Dilwali Diwali. via Peachify)
   if (targetTime === 'dilwali_diwali' || targetTime === '1810711') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -6524,7 +6524,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Dilwali Diwali • TMDB 1810711";
+    if (titleDisplay) titleDisplay.textContent = "Dilwali Diwali.";
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -6537,7 +6537,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Mahavatar Narsimha TMDB 1383072 via Peachify)
+  // Handle Embed Movie Mode (Mahavatar Narsimha. via Peachify)
   if (targetTime === 'mahavatar_narsimha' || targetTime === '1383072') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -6546,7 +6546,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Mahavatar Narsimha • TMDB 1383072";
+    if (titleDisplay) titleDisplay.textContent = "Mahavatar Narsimha.";
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -6559,7 +6559,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Border 2 TMDB 1213898 via Peachify)
+  // Handle Embed Movie Mode (Border 2. via Peachify)
   if (targetTime === 'border_2' || targetTime === '1213898') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -6568,7 +6568,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Border 2 • TMDB 1213898";
+    if (titleDisplay) titleDisplay.textContent = "Border 2.";
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -6581,7 +6581,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Ikkis TMDB 1196946 via Peachify)
+  // Handle Embed Movie Mode (Ikkis. via Peachify)
   if (targetTime === 'ikkis' || targetTime === '1196946') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -6590,7 +6590,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Ikkis • TMDB 1196946";
+    if (titleDisplay) titleDisplay.textContent = "Ikkis.";
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -6603,7 +6603,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     return;
   }
 
-  // Handle Embed Movie Mode (Guarding Stars TMDB 1551025 via Peachify)
+  // Handle Embed Movie Mode (Guarding Stars. via Peachify)
   if (targetTime === 'guarding_stars' || targetTime === '1551025') {
     nbpIsEmbedMode = true;
     nbpIsTrailerMode = false;
@@ -6612,7 +6612,7 @@ function openNetflixBlackPlayer(targetTime, fromHistory) {
     if (video) video.style.display = 'none';
 
     const titleDisplay = document.getElementById('nbpCenterTitle');
-    if (titleDisplay) titleDisplay.textContent = "Guarding Stars • TMDB 1551025";
+    if (titleDisplay) titleDisplay.textContent = "Guarding Stars.";
 
     if (embedIframe) {
       embedIframe.style.display = 'block';
@@ -7180,7 +7180,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Seamless auto-transition from Part 1 to Part 2 on ended
   video.addEventListener('ended', () => {
     if (nbpCurrentAct === 1) {
-      console.log('Act 1 ended, seamlessly continuing to Act 2...');
+      console.log('Act 1 ended, seamlessly continuing to Act 2.');
       loadAndPlayContinuous(NBP_ACT1_DUR);
     }
   });
@@ -7537,7 +7537,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'U/A 16+',
       dur: '2h 59m',
-      desc: "Set in 19th-century British India, a fierce leader rises from a drought-stricken land to fight colonial oppression and brutal injustice. Starring Vijay Deverakonda, Rashmika Mandanna, directed by Rahul Sankrityan. Streamed in 1080P HEVC via Peachify TMDB 1389379."
+      desc: "Set in 19th-century British India, a fierce leader rises from a drought-stricken land to fight colonial oppression and brutal injustice. Starring Vijay Deverakonda, Rashmika Mandanna, directed by Rahul Sankrityan. Streamed in 1080P HEVC via Peachify."
     },
     'never-surrender': {
       title: 'NEVER SURRENDER',
@@ -7581,7 +7581,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'U/A 16+',
       dur: '2h 45m',
-      desc: "Set in 1980s Secunderabad, a marginalized group rises to fight against systemic oppression, discrimination, and brutal injustice for their identity and citizenship. Starring Nani, Mohan Babu, Kayadu Lohar, Sonali Kulkarni. Directed by Srikanth Odela. Streamed in 1080P HEVC via Peachify TMDB 1376856."
+      desc: "Set in 1980s Secunderabad, a marginalized group rises to fight against systemic oppression, discrimination, and brutal injustice for their identity and citizenship. Starring Nani, Mohan Babu, Kayadu Lohar, Sonali Kulkarni. Directed by Srikanth Odela. Streamed in 1080P HEVC via Peachify."
     },
     'alpha': {
       title: 'ALPHA',
@@ -7589,7 +7589,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'U/A 16+',
       dur: '2h 38m',
-      desc: "Two elite female super-agents unite in the lethal espionage world of the YRF Spy Universe to execute a covert global counter-strike against a ruthless criminal cabal. Starring Alia Bhatt, Sharvari, Bobby Deol, Anil Kapoor. Directed by Shiv Rawail. Streamed in 1080P HEVC via Peachify TMDB 1122030."
+      desc: "Two elite female super-agents unite in the lethal espionage world of the YRF Spy Universe to execute a covert global counter-strike against a ruthless criminal cabal. Starring Alia Bhatt, Sharvari, Bobby Deol, Anil Kapoor. Directed by Shiv Rawail. Streamed in 1080P HEVC via Peachify."
     },
     'tereishkmein': {
       title: 'TERE ISHK MEIN',
@@ -7597,7 +7597,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2025',
       age: 'U/A 16+',
       dur: '2h 42m',
-      desc: "From the world of Raanjhanaa, a fiery, unyielding saga of intense love, rebellion, and sacrifice in Varanasi. Shankar wages an all-consuming battle against destiny and societal divides for an eternal romance. Starring Dhanush, Kriti Sanon. Directed by Aanand L. Rai, music by A.R. Rahman. Streamed in 1080P HEVC via Peachify TMDB 1142921."
+      desc: "From the world of Raanjhanaa, a fiery, unyielding saga of intense love, rebellion, and sacrifice in Varanasi. Shankar wages an all-consuming battle against destiny and societal divides for an eternal romance. Starring Dhanush, Kriti Sanon. Directed by Aanand L. Rai, music by A.R. Rahman. Streamed in 1080P HEVC via Peachify."
     },
     'pushpa2': {
       title: 'PUSHPA 2: THE RULE',
@@ -7605,7 +7605,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2024',
       age: 'U/A 16+',
       dur: '3h 21m',
-      desc: "Pushpa Raj expands his red sandalwood smuggling empire across borders while fiercely defending his reign against SP Bhanwar Singh Shekhawat and rival syndicates in an explosive clash of power and dominance. Starring Allu Arjun, Rashmika Mandanna, Fahadh Faasil. Directed by Sukumar, music by Devi Sri Prasad. Streamed in 1080P HEVC via Peachify TMDB 857598."
+      desc: "Pushpa Raj expands his red sandalwood smuggling empire across borders while fiercely defending his reign against SP Bhanwar Singh Shekhawat and rival syndicates in an explosive clash of power and dominance. Starring Allu Arjun, Rashmika Mandanna, Fahadh Faasil. Directed by Sukumar, music by Devi Sri Prasad. Streamed in 1080P HEVC via Peachify."
     },
     'dorothy': {
       title: 'DOROTHY',
@@ -7613,7 +7613,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'U/A 16+',
       dur: '2h 28m',
-      desc: "In a rural Tamil Nadu village shaped by traditional norms and toxic masculinity, the unexpected arrival of Dorothy (Keerthy Suresh) — a bold, independent woman — transforms the lives and worldview of two inseparable friends. Directed by Karthik Subbaraj with music by Maestro Ilaiyaraaja. World premiered at TIFF 2026. Streamed in 1080P HEVC via Peachify TMDB 1578079."
+      desc: "In a rural Tamil Nadu village shaped by traditional norms and toxic masculinity, the unexpected arrival of Dorothy (Keerthy Suresh) — a bold, independent woman — transforms the lives and worldview of two inseparable friends. Directed by Karthik Subbaraj with music by Maestro Ilaiyaraaja. World premiered at TIFF 2026. Streamed in 1080P HEVC via Peachify."
     },
     'dogs_christmas': {
       title: "A DOG'S PERFECT CHRISTMAS",
@@ -7621,7 +7621,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'U/A 7+',
       dur: '1h 48m',
-      desc: "Based on W. Bruce Cameron's bestselling novel, the Goss family faces mounting chaos and hardship when an unexpected crisis strikes during the holidays. Their loyal basset hound Winstead and an energetic corgi puppy Ruby embark on an unforgettable mission to heal the family and bring them home for Christmas Eve. Starring Dennis Quaid, Milo Ventimiglia, Jennifer Tilly, Mary Steenburgen. Streamed in 1080P HEVC via Peachify TMDB 1570488."
+      desc: "Based on W. Bruce Cameron's bestselling novel, the Goss family faces mounting chaos and hardship when an unexpected crisis strikes during the holidays. Their loyal basset hound Winstead and an energetic corgi puppy Ruby embark on an unforgettable mission to heal the family and bring them home for Christmas Eve. Starring Dennis Quaid, Milo Ventimiglia, Jennifer Tilly, Mary Steenburgen. Streamed in 1080P HEVC via Peachify."
     },
     'jurassic_rebirth': {
       title: 'JURASSIC WORLD REBIRTH',
@@ -7629,7 +7629,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2025',
       age: 'U/A 13+',
       dur: '2h 14m',
-      desc: "Five years after Jurassic World Dominion, covert operations expert Zora Bennett (Scarlett Johansson) leads an elite expedition into isolated equatorial biomes to extract genetic material from the planet's three most colossal surviving prehistoric titans. When their mission crosses paths with a shipwrecked civilian family, they unearth a sinister conspiracy hidden from humanity for decades. Directed by Gareth Edwards, starring Scarlett Johansson, Mahershala Ali, Jonathan Bailey, Rupert Friend. Streamed in 4K / 1080P HEVC via Peachify TMDB 1234821."
+      desc: "Five years after Jurassic World Dominion, covert operations expert Zora Bennett (Scarlett Johansson) leads an elite expedition into isolated equatorial biomes to extract genetic material from the planet's three most colossal surviving prehistoric titans. When their mission crosses paths with a shipwrecked civilian family, they unearth a sinister conspiracy hidden from humanity for decades. Directed by Gareth Edwards, starring Scarlett Johansson, Mahershala Ali, Jonathan Bailey, Rupert Friend. Streamed in 4K / 1080P HEVC via Peachify."
     },
     'adipurush': {
       title: 'ADIPURUSH',
@@ -7637,7 +7637,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2023',
       age: 'U/A 13+',
       dur: '2h 59m',
-      desc: "7,000 years ago, Ayodhya's righteous Prince Raghava and Prince Sesh, accompanied by the mighty Vanara Sena led by Sugriva and Bajrang, march across the ocean to the golden island citadel of Lanka to rescue Janaki from the clutches of the ten-headed demon king Lankesh. Starring Prabhas, Kriti Sanon, Saif Ali Khan, Sunny Singh, Devdatta Nage. Directed by Om Raut, music by Ajay-Atul and Sachet-Parampara. Streamed in 1080P HEVC via Peachify TMDB 734253."
+      desc: "7,000 years ago, Ayodhya's righteous Prince Raghava and Prince Sesh, accompanied by the mighty Vanara Sena led by Sugriva and Bajrang, march across the ocean to the golden island citadel of Lanka to rescue Janaki from the clutches of the ten-headed demon king Lankesh. Starring Prabhas, Kriti Sanon, Saif Ali Khan, Sunny Singh, Devdatta Nage. Directed by Om Raut, music by Ajay-Atul and Sachet-Parampara. Streamed in 1080P HEVC via Peachify."
     },
     'dont_trouble': {
       title: "DON'T TROUBLE THE TROUBLE",
@@ -7645,7 +7645,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'U/A 7+',
       dur: '2h 36m',
-      desc: "Suri (Fahadh Faasil), a down-on-his-luck street magician, accidentally casts an ancient spell that makes an enigmatic young girl vanish. But when she re-emerges as a powerful, wish-granting genie who wanders the nocturnal city streets and unleashes reality-bending magic whenever angered, Suri must navigate high-stakes chaos to protect her and set things right. Directed by Shashank Yeleti, produced by Arka Media Works. Streamed in 1080P HEVC via Peachify TMDB 1261763."
+      desc: "Suri (Fahadh Faasil), a down-on-his-luck street magician, accidentally casts an ancient spell that makes an enigmatic young girl vanish. But when she re-emerges as a powerful, wish-granting genie who wanders the nocturnal city streets and unleashes reality-bending magic whenever angered, Suri must navigate high-stakes chaos to protect her and set things right. Directed by Shashank Yeleti, produced by Arka Media Works. Streamed in 1080P HEVC via Peachify."
     },
     'maharaj': {
       title: 'MAHARAJ',
@@ -7653,7 +7653,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2024',
       age: 'U/A 16+',
       dur: '2h 12m',
-      desc: "Set in pre-independence 1862 Bombay and based on the historic Maharaj Libel Case, fearless reformer and journalist Karsandas Mulji (Junaid Khan) bravely challenges the exploitation of female devotees by the venerated, untouchable religious figure Jadunath Maharaj (Jaideep Ahlawat) in an epic courtroom reckoning. Directed by Siddharth P. Malhotra, starring Junaid Khan, Jaideep Ahlawat, Sharvari, Shalini Pandey. Streamed in 1080P HEVC via Peachify TMDB 1171099."
+      desc: "Set in pre-independence 1862 Bombay and based on the historic Maharaj Libel Case, fearless reformer and journalist Karsandas Mulji (Junaid Khan) bravely challenges the exploitation of female devotees by the venerated, untouchable religious figure Jadunath Maharaj (Jaideep Ahlawat) in an epic courtroom reckoning. Directed by Siddharth P. Malhotra, starring Junaid Khan, Jaideep Ahlawat, Sharvari, Shalini Pandey. Streamed in 1080P HEVC via Peachify."
     },
     'with_love': {
       title: 'WITH LOVE',
@@ -7661,7 +7661,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'U/A 13+',
       dur: '2h 21m',
-      desc: "Sathya reluctantly agrees to a blind date arranged by his sister and meets Monisha. To their astonishment, they discover they attended the same high school years ago. Reminiscing over teenage crushes and nostalgia, their past sparks an endearing modern connection. Starring Abishan Jeevinth, Anaswara Rajan, Harish Kumar. Directed by Madhan. Streamed in 1080P HEVC via Peachify TMDB 1508564."
+      desc: "Sathya reluctantly agrees to a blind date arranged by his sister and meets Monisha. To their astonishment, they discover they attended the same high school years ago. Reminiscing over teenage crushes and nostalgia, their past sparks an endearing modern connection. Starring Abishan Jeevinth, Anaswara Rajan, Harish Kumar. Directed by Madhan. Streamed in 1080P HEVC via Peachify."
     },
     'never_surrender': {
       title: 'NEVER SURRENDER',
@@ -7670,7 +7670,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'U/A 16+',
       dur: '2h 20m',
-      desc: "When a ruthless mercenary syndicate descends upon a remote mountain homestead, an estranged veteran with a haunted past and his grandchildren must unite their survival instincts to wage an uncompromising counter-offensive. Starring Lukman Sardi, Callista Arum, Sulthan Hamonangan, Derby Romero, Donny Alamsyah. Directed by Sidharta Tata. Streamed in 1080P HEVC via Peachify TMDB 1616687."
+      desc: "When a ruthless mercenary syndicate descends upon a remote mountain homestead, an estranged veteran with a haunted past and his grandchildren must unite their survival instincts to wage an uncompromising counter-offensive. Starring Lukman Sardi, Callista Arum, Sulthan Hamonangan, Derby Romero, Donny Alamsyah. Directed by Sidharta Tata. Streamed in 1080P HEVC via Peachify."
     },
     'made_in_korea': {
       title: 'MADE IN KOREA',
@@ -7686,7 +7686,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'U/A 16+',
       dur: '3h 09m',
-      desc: "In an isolated, unmapped rural hinterland that does not officially exist on government records, a fierce laborer's unmatched athletic prowess and wrestling talent become his ultimate weapon. Rising against oppressive exploitation, he wages an uncompromising battle for his community's dignity, identity, and right to be recognized. Starring Mega Power Star Ram Charan as Peddi Pehelwan, Janhvi Kapoor as Achiyyamma, Shiva Rajkumar, Jagapati Babu, Divyendu Sharma, Boman Irani, Ravi Kishan. Directed by Buchi Babu Sana. Music by A. R. Rahman. Streamed in 1080P HEVC via Peachify TMDB 1057265."
+      desc: "In an isolated, unmapped rural hinterland that does not officially exist on government records, a fierce laborer's unmatched athletic prowess and wrestling talent become his ultimate weapon. Rising against oppressive exploitation, he wages an uncompromising battle for his community's dignity, identity, and right to be recognized. Starring Mega Power Star Ram Charan as Peddi Pehelwan, Janhvi Kapoor as Achiyyamma, Shiva Rajkumar, Jagapati Babu, Divyendu Sharma, Boman Irani, Ravi Kishan. Directed by Buchi Babu Sana. Music by A. R. Rahman. Streamed in 1080P HEVC via Peachify."
     },
     'cocktail2': {
       title: 'COCKTAIL 2',
@@ -7694,7 +7694,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'U/A 16+',
       dur: '2h 30m',
-      desc: "A bold, modern romantic dramedy exploring turbulent friendships, love triangles, and emotional vulnerabilities amidst high-stakes metropolitan life. Starring Shahid Kapoor, Kriti Sanon, Rashmika Mandanna. Directed by Homi Adajania, written by Imtiaz Ali. Streamed in 1080P HEVC via Peachify TMDB 1392469."
+      desc: "A bold, modern romantic dramedy exploring turbulent friendships, love triangles, and emotional vulnerabilities amidst high-stakes metropolitan life. Starring Shahid Kapoor, Kriti Sanon, Rashmika Mandanna. Directed by Homi Adajania, written by Imtiaz Ali. Streamed in 1080P HEVC via Peachify."
     },
     'avarachan': {
       title: 'AVARAACHAN & SONS',
@@ -7702,7 +7702,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'U/A 13+',
       dur: '2h 30m',
-      desc: "A humorous and heartwarming family drama chronicling the quirks, squabbles, and unyielding bonds within a traditional family business in Kerala. Starring Biju Menon, Sreenath Bhasi, Vinay Forrt, Grace Antony. Directed by Thamby. Streamed in 1080P HEVC via Peachify TMDB 1290035."
+      desc: "A humorous and heartwarming family drama chronicling the quirks, squabbles, and unyielding bonds within a traditional family business in Kerala. Starring Biju Menon, Sreenath Bhasi, Vinay Forrt, Grace Antony. Directed by Thamby. Streamed in 1080P HEVC via Peachify."
     },
     'reporting_live': {
       title: 'REPORTING LIVE',
@@ -7710,7 +7710,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'U/A 16+',
       dur: '1h 56m',
-      desc: "A gritty investigative crime thriller following an ambitious young reporter and her cynical cameraman whose routine coverage spirals into perilous territory when they uncover an illicit sand-mining cartel governed by dangerous political figures. Starring Parineeti Chopra, Deven Bhojani, Adil Hussain, Shekhar Suman, Amol Palekar, Nassar. Directed by Dhruv Tripathi. Streamed in 1080P HEVC via Peachify TMDB 1389172."
+      desc: "A gritty investigative crime thriller following an ambitious young reporter and her cynical cameraman whose routine coverage spirals into perilous territory when they uncover an illicit sand-mining cartel governed by dangerous political figures. Starring Parineeti Chopra, Deven Bhojani, Adil Hussain, Shekhar Suman, Amol Palekar, Nassar. Directed by Dhruv Tripathi. Streamed in 1080P HEVC via Peachify."
     },
     'heartland': {
       title: 'HEARTLAND',
@@ -7718,7 +7718,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'U/A 16+',
       dur: '1h 54m',
-      desc: "Former country music icon Misty Jones travels back into the intense Nashville music scene determined to unravel the elusive truth behind the sudden and mysterious disappearance of her rising-star niece. Starring Jessica Chastain, Carter Faith, Ross Lynch, John Hawkes, Garrett Hedlund, Norbert Leo Butz. Directed by Shana Feste. Streamed in 1080P HEVC via Peachify TMDB 1543469."
+      desc: "Former country music icon Misty Jones travels back into the intense Nashville music scene determined to unravel the elusive truth behind the sudden and mysterious disappearance of her rising-star niece. Starring Jessica Chastain, Carter Faith, Ross Lynch, John Hawkes, Garrett Hedlund, Norbert Leo Butz. Directed by Shana Feste. Streamed in 1080P HEVC via Peachify."
     },
     'one_year_to_live': {
       title: 'ONE YEAR TO LIVE, BUY A MAN',
@@ -7726,7 +7726,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'U/A 16+',
       dur: '1h 49m',
-      desc: "Given only a single year left to live, an intensely frugal 40-year-old woman decides to spend her hard-earned life savings on hiring a popular nightclub host Sena, sparking a profound emotional transformation that challenges both of their worlds. Starring Ko Shibasaki, Eiji Akaso, Michitaka Tsutsui, Naomi Nishida, Yui Narumi. Directed by Hiroki Kazama. Streamed in 1080P HEVC via Peachify TMDB 1654940."
+      desc: "Given only a single year left to live, an intensely frugal 40-year-old woman decides to spend her hard-earned life savings on hiring a popular nightclub host Sena, sparking a profound emotional transformation that challenges both of their worlds. Starring Ko Shibasaki, Eiji Akaso, Michitaka Tsutsui, Naomi Nishida, Yui Narumi. Directed by Hiroki Kazama. Streamed in 1080P HEVC via Peachify."
     },
     'allen': {
       title: 'ALLEN',
@@ -7734,7 +7734,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'U/A 13+',
       dur: '1h 47m',
-      desc: "Twenty years following a bizarre childhood encounter with an extra-terrestrial, Petey's routine life is upended when his eccentric alien friend abruptly resurfaces with a wildly unexpected mission. Starring T.J. Power, Charlotte Nicdao, Josh Helman, Emily Barclay, Benedict Hardie, Elijah Tamati. Directed by Daley Pearson and Jeffrey Walker. Streamed in 1080P HEVC via Peachify TMDB 1518204."
+      desc: "Twenty years following a bizarre childhood encounter with an extra-terrestrial, Petey's routine life is upended when his eccentric alien friend abruptly resurfaces with a wildly unexpected mission. Starring T.J. Power, Charlotte Nicdao, Josh Helman, Emily Barclay, Benedict Hardie, Elijah Tamati. Directed by Daley Pearson and Jeffrey Walker. Streamed in 1080P HEVC via Peachify."
     },
     'jolly_llb_3': {
       title: 'JOLLY LLB 3',
@@ -7742,7 +7742,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2025',
       age: 'U/A 13+',
       dur: '2h 36m',
-      desc: "The third part of the Jolly LLB trilogy brings back Jagdish Tyagi and Jagdishwar Mishra for the biggest courtroom showdown as penurious widow Janki Devi Solanki seeks justice against an arrogant industrialist in a sharp satire on the judiciary and social disparity. Starring Akshay Kumar, Arshad Warsi, Saurabh Shukla, Gajraj Rao, Amrita Rao, Huma Qureshi. Directed by Subhash Kapoor. Streamed in 1080P HEVC via Peachify TMDB 1015981."
+      desc: "The third part of the Jolly LLB trilogy brings back Jagdish Tyagi and Jagdishwar Mishra for the biggest courtroom showdown as penurious widow Janki Devi Solanki seeks justice against an arrogant industrialist in a sharp satire on the judiciary and social disparity. Starring Akshay Kumar, Arshad Warsi, Saurabh Shukla, Gajraj Rao, Amrita Rao, Huma Qureshi. Directed by Subhash Kapoor. Streamed in 1080P HEVC via Peachify."
     },
     'saiyaara': {
       title: 'SAIYAARA',
@@ -7750,7 +7750,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2025',
       age: 'U/A 13+',
       dur: '2h 30m',
-      desc: "Two artistic souls find soulful harmony through musical expression despite their starkly contrasting social backgrounds. As emotional bonds deepen, unexpected circumstances and social expectations test their connection. Starring Ahaan Panday, Aneet Padda, Alam Khan, Rajesh Kumar, Geeta Agrawal Sharma. Directed by Mohit Suri. Streamed in 1080P HEVC via Peachify TMDB 1241634."
+      desc: "Two artistic souls find soulful harmony through musical expression despite their starkly contrasting social backgrounds. As emotional bonds deepen, unexpected circumstances and social expectations test their connection. Starring Ahaan Panday, Aneet Padda, Alam Khan, Rajesh Kumar, Geeta Agrawal Sharma. Directed by Mohit Suri. Streamed in 1080P HEVC via Peachify."
     },
     'the_last_house': {
       title: 'THE LAST HOUSE',
@@ -7758,7 +7758,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'U/A 16+',
       dur: '1h 50m',
-      desc: "A family suddenly sealed inside their high-tech home must work together to survive against dwindling food, psychological tension, and the ominous menace keeping them trapped. Starring Greta Lee, Wagner Moura, Riley Chung, Noah Alexander Sosnowski, Emma Ho. Directed by Louis Leterrier. Streamed in 1080P HEVC via Peachify TMDB 1284041."
+      desc: "A family suddenly sealed inside their high-tech home must work together to survive against dwindling food, psychological tension, and the ominous menace keeping them trapped. Starring Greta Lee, Wagner Moura, Riley Chung, Noah Alexander Sosnowski, Emma Ho. Directed by Louis Leterrier. Streamed in 1080P HEVC via Peachify."
     },
     'brawlers': {
       title: 'BRAWLERS (BAGARRE)',
@@ -7766,7 +7766,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'U/A 16+',
       dur: '1h 38m',
-      desc: "Naïm is gentle and warm in ordinary life, but possesses beast-like martial fury in combat. Desperate to finance medical care for his aging dog, he joins 'Hello Brawl', a clandestine underground service resolving high-stakes disputes with fists. Starring Nassim Lyes, Anaïde Rozam, Ramzy Bedia, Hedi Bouchenafa, Arriles Amrani. Directed by Julien Royal. Streamed in 1080P HEVC via Peachify TMDB 1418709."
+      desc: "Naïm is gentle and warm in ordinary life, but possesses beast-like martial fury in combat. Desperate to finance medical care for his aging dog, he joins 'Hello Brawl', a clandestine underground service resolving high-stakes disputes with fists. Starring Nassim Lyes, Anaïde Rozam, Ramzy Bedia, Hedi Bouchenafa, Arriles Amrani. Directed by Julien Royal. Streamed in 1080P HEVC via Peachify."
     },
     'dhadak2': {
       title: 'DHADAK 2',
@@ -7774,7 +7774,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2025',
       age: 'U/A 16+',
       dur: '2h 26m',
-      desc: "When Neelesh, an idealistic law student from an oppressed social background, enters an elite academic institution, he is confronted with institutional prejudice and systemic hierarchies. His profound relationship with Vidhi challenges caste divisions in a powerful fight for love and equality. Starring Siddhant Chaturvedi, Triptii Dimri, Saad Bilgrami, Saurabh Sachdeva, Vipin Sharma, Zakir Hussain. Directed by Shazia Iqbal, produced by Dharma Productions. Streamed in 1080P HEVC via CodeSpecters TMDB 1213777."
+      desc: "When Neelesh, an idealistic law student from an oppressed social background, enters an elite academic institution, he is confronted with institutional prejudice and systemic hierarchies. His profound relationship with Vidhi challenges caste divisions in a powerful fight for love and equality. Starring Siddhant Chaturvedi, Triptii Dimri, Saad Bilgrami, Saurabh Sachdeva, Vipin Sharma, Zakir Hussain. Directed by Shazia Iqbal, produced by Dharma Productions. Streamed in 1080P HEVC via CodeSpecters."
     },
     'demon_slayer': {
       title: 'DEMON SLAYER: KIMETSU NO YAIBA – INFINITY CASTLE',
@@ -7782,7 +7782,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2025',
       age: 'U/A 16+',
       dur: '2h 15m',
-      desc: "The Demon Slayer Corps plunges into the terrifying, dimension-warping Infinity Castle to confront Muzan Kibutsuji and the deadly Upper Rank demons in the climactic war of survival. Spectacular animation by ufotable, directed by Haruo Sotozaki, music by Yuki Kajiura and Go Shiina. Streamed in 4K UHD via Peachify TMDB 1311031."
+      desc: "The Demon Slayer Corps plunges into the terrifying, dimension-warping Infinity Castle to confront Muzan Kibutsuji and the deadly Upper Rank demons in the climactic war of survival. Spectacular animation by ufotable, directed by Haruo Sotozaki, music by Yuki Kajiura and Go Shiina. Streamed in 4K UHD via Peachify."
     },
     'hi_papa': {
       title: 'HI PAPA (HI NANNA)',
@@ -7790,7 +7790,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2023',
       age: 'U/A 13+',
       dur: '2h 35m',
-      desc: "A doting single father raising his precocious daughter begins narrating stories of her absent mother, unaware that serendipitous encounters with a compassionate woman are about to unravel buried memories and destiny. Starring Nani, Mrunal Thakur, Baby Kiara Khanna, Jayaram, Priyadarshi Pulikonda. Directed by Shouryuv, music by Hesham Abdul Wahab. Streamed in 4K UHD via Peachify TMDB 1068452."
+      desc: "A doting single father raising his precocious daughter begins narrating stories of her absent mother, unaware that serendipitous encounters with a compassionate woman are about to unravel buried memories and destiny. Starring Nani, Mrunal Thakur, Baby Kiara Khanna, Jayaram, Priyadarshi Pulikonda. Directed by Shouryuv, music by Hesham Abdul Wahab. Streamed in 4K UHD via Peachify."
     },
     'dragon': {
       title: 'DRAGON',
@@ -7798,7 +7798,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2025',
       age: 'U/A 16+',
       dur: '2h 32m',
-      desc: "A carefree, backbencher college student dubbed 'Dragon' seeks shortcuts to success and wealth, sparking hilarious chaos, unexpected romance, and heartfelt coming-of-age life lessons. Starring Pradeep Ranganathan, Anupama Parameswaran, Kayadu Lohar, Mysskin, Gautham Vasudev Menon. Directed by Ashwath Marimuthu, produced by AGS Entertainment. Streamed in 1080P HEVC via Peachify TMDB 1273049."
+      desc: "A carefree, backbencher college student dubbed 'Dragon' seeks shortcuts to success and wealth, sparking hilarious chaos, unexpected romance, and heartfelt coming-of-age life lessons. Starring Pradeep Ranganathan, Anupama Parameswaran, Kayadu Lohar, Mysskin, Gautham Vasudev Menon. Directed by Ashwath Marimuthu, produced by AGS Entertainment. Streamed in 1080P HEVC via Peachify."
     },
     'youth': {
       title: 'YOUTH',
@@ -7806,7 +7806,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'U/A 13+',
       dur: '2h 10m',
-      desc: "A fun-filled coming-of-age romantic comedy following 16-year-old carefree schoolboy Praveen and his tight-knit gang as they navigate school life, friendship, teenage romance, and heartfelt life lessons. Written, directed by, and starring Ken Karunas, alongside Anishma Anilkumar, Suraj Venjaramoodu, Devadarshini, Meenakshi Dinesh, Priyanshi Yadav. Music by G. V. Prakash Kumar. Streamed in 1080P HEVC via Peachify TMDB 1542352."
+      desc: "A fun-filled coming-of-age romantic comedy following 16-year-old carefree schoolboy Praveen and his tight-knit gang as they navigate school life, friendship, teenage romance, and heartfelt life lessons. Written, directed by, and starring Ken Karunas, alongside Anishma Anilkumar, Suraj Venjaramoodu, Devadarshini, Meenakshi Dinesh, Priyanshi Yadav. Music by G. V. Prakash Kumar. Streamed in 1080P HEVC via Peachify."
     },
     'chhaava': {
       title: 'CHHAAVA',
@@ -7814,7 +7814,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2025',
       age: 'U/A 16+',
       dur: '2h 41m',
-      desc: "An epic historical action saga chronicling the valiant life and fearless battles of Chhatrapati Sambhaji Maharaj, the lion of the Maratha Empire, as he fiercely defends Swarajya against Mughal Emperor Aurangzeb. Starring Vicky Kaushal, Rashmika Mandanna, Akshaye Khanna, Ashutosh Rana, Divya Dutta, Vineet Kumar Singh. Directed by Laxman Utekar, produced by Dinesh Vijan, music by A. R. Rahman. Streamed in 4K UHD via Peachify TMDB 1196943."
+      desc: "An epic historical action saga chronicling the valiant life and fearless battles of Chhatrapati Sambhaji Maharaj, the lion of the Maratha Empire, as he fiercely defends Swarajya against Mughal Emperor Aurangzeb. Starring Vicky Kaushal, Rashmika Mandanna, Akshaye Khanna, Ashutosh Rana, Divya Dutta, Vineet Kumar Singh. Directed by Laxman Utekar, produced by Dinesh Vijan, music by A. R. Rahman. Streamed in 4K UHD via Peachify."
     },
     'maa': {
       title: 'MAA',
@@ -7822,7 +7822,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2025',
       age: 'U/A 16+',
       dur: '2h 13m',
-      desc: "In a cursed remote village shadowed by ancient demonic forces, a determined mother unleashes the fierce divine wrath of Goddess Kali to rescue her abducted daughter from a child-devouring entity. Starring Kajol, Ronit Roy, Indraneil Sengupta, Kherin Sharma, Jitin Gulati. Directed by Vishal Furia, produced by Ajay Devgn and Jyoti Deshpande. Streamed in 1080P HEVC via Peachify TMDB 1389158."
+      desc: "In a cursed remote village shadowed by ancient demonic forces, a determined mother unleashes the fierce divine wrath of Goddess Kali to rescue her abducted daughter from a child-devouring entity. Starring Kajol, Ronit Roy, Indraneil Sengupta, Kherin Sharma, Jitin Gulati. Directed by Vishal Furia, produced by Ajay Devgn and Jyoti Deshpande. Streamed in 1080P HEVC via Peachify."
     },
     'retro': {
       title: 'RETRO (SURIYA 44)',
@@ -7830,7 +7830,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2025',
       age: 'U/A 16+',
       dur: '2h 38m',
-      desc: "A stylized retro action-gangster romance following a ruthless yet charismatic lone wolf driven by love, laughter, and relentless war. Starring Suriya, Pooja Hegde, Jayaram, Karunakaran, Joju George. Directed by Karthik Subbaraj, music composed by Santhosh Narayanan, produced by 2D Entertainment. Streamed in 4K UHD via Peachify TMDB 1265827."
+      desc: "A stylized retro action-gangster romance following a ruthless yet charismatic lone wolf driven by love, laughter, and relentless war. Starring Suriya, Pooja Hegde, Jayaram, Karunakaran, Joju George. Directed by Karthik Subbaraj, music composed by Santhosh Narayanan, produced by 2D Entertainment. Streamed in 4K UHD via Peachify."
     },
     'the_odyssey': {
       title: 'THE ODYSSEY',
@@ -7838,7 +7838,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'U/A 16+',
       dur: '3h 10m',
-      desc: "Christopher Nolan's monumental cinematic vision of Homer's ancient Greek mythological epic. Odysseus, King of Ithaca, embarks on a treacherous, decade-long voyage home across perilous seas following the fall of Troy, confronting mythical beasts, seductive enchantresses, and the wrath of Poseidon. Produced by Universal Pictures and Syncopy. Streamed in 4K UHD via Peachify TMDB 1368337."
+      desc: "Christopher Nolan's monumental cinematic vision of Homer's ancient Greek mythological epic. Odysseus, King of Ithaca, embarks on a treacherous, decade-long voyage home across perilous seas following the fall of Troy, confronting mythical beasts, seductive enchantresses, and the wrath of Poseidon. Produced by Universal Pictures and Syncopy. Streamed in 4K UHD via Peachify."
     },
     'goat': {
       title: 'GOAT (2026)',
@@ -7846,7 +7846,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'U/A 7+',
       dur: '1h 45m',
-      desc: "A groundbreaking animated sports adventure comedy produced by Sony Pictures Animation and Stephen Curry's Unanimous Media. A small, underdog kid with oversized hoop dreams overcomes massive odds to rise through the ranks of streetball and prove greatness comes from heart and grit. Directed by Tyree Dillihay. Streamed in 4K UHD via Peachify TMDB 1297842."
+      desc: "A groundbreaking animated sports adventure comedy produced by Sony Pictures Animation and Stephen Curry's Unanimous Media. A small, underdog kid with oversized hoop dreams overcomes massive odds to rise through the ranks of streetball and prove greatness comes from heart and grit. Directed by Tyree Dillihay. Streamed in 4K UHD via Peachify."
     },
     'scary_movie_6': {
       title: 'SCARY MOVIE 6',
@@ -7854,7 +7854,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'A 18+',
       dur: '1h 36m',
-      desc: "The legendary Wayans Brothers (Marlon, Shawn, and Keenen Ivory Wayans) reunite alongside franchise icons Anna Faris (Cindy Campbell) and Regina Hall (Brenda Meeks) to resurrect the premier horror parody franchise. Skewering modern horror sensations (M3GAN, Smile, Longlegs, Talk to Me, Hereditary), Scary Movie 6 unleashes side-splitting, unfiltered slapstick mayhem. Produced by Miramax. Streamed in 1080P HEVC via Peachify TMDB 1273221."
+      desc: "The legendary Wayans Brothers (Marlon, Shawn, and Keenen Ivory Wayans) reunite alongside franchise icons Anna Faris (Cindy Campbell) and Regina Hall (Brenda Meeks) to resurrect the premier horror parody franchise. Skewering modern horror sensations (M3GAN, Smile, Longlegs, Talk to Me, Hereditary), Scary Movie 6 unleashes side-splitting, unfiltered slapstick mayhem. Produced by Miramax. Streamed in 1080P HEVC via Peachify."
     },
     'coolie': {
       title: 'COOLIE',
@@ -7862,7 +7862,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2025',
       age: 'U/A 16+',
       dur: '2h 50m',
-      desc: "Superstar Rajinikanth stars as Deva, a legendary harbor kingpin and gold smuggler in an adrenaline-charged action crime thriller set against Chennai's port underworld. Directed by Lokesh Kanagaraj, featuring an ensemble cast including Nagarjuna, Soubin Shahir, Shruti Haasan, Sathyaraj, and Upendra, with explosive musical score by Anirudh Ravichander. Produced by Sun Pictures. Streamed in 4K UHD via Peachify TMDB 1153399."
+      desc: "Superstar Rajinikanth stars as Deva, a legendary harbor kingpin and gold smuggler in an adrenaline-charged action crime thriller set against Chennai's port underworld. Directed by Lokesh Kanagaraj, featuring an ensemble cast including Nagarjuna, Soubin Shahir, Shruti Haasan, Sathyaraj, and Upendra, with explosive musical score by Anirudh Ravichander. Produced by Sun Pictures. Streamed in 4K UHD via Peachify."
     },
     'dhurandhar': {
       title: 'DHURANDHAR',
@@ -7870,7 +7870,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2025',
       age: 'U/A 16+',
       dur: '2h 45m',
-      desc: "National Award-winning director Aditya Dhar (Uri: The Surgical Strike) helms a high-octane geopolitical spy action saga based on real covert espionage missions conducted by Indian intelligence. Starring Ranveer Singh as a daring undercover operative, alongside Sanjay Dutt, R. Madhavan, Akshaye Khanna, and Arjun Rampal. Produced by Jio Studios and B62 Studios. Streamed in 4K UHD via Peachify TMDB 1291608."
+      desc: "National Award-winning director Aditya Dhar (Uri: The Surgical Strike) helms a high-octane geopolitical spy action saga based on real covert espionage missions conducted by Indian intelligence. Starring Ranveer Singh as a daring undercover operative, alongside Sanjay Dutt, R. Madhavan, Akshaye Khanna, and Arjun Rampal. Produced by Jio Studios and B62 Studios. Streamed in 4K UHD via Peachify."
     },
     'jailer_2': {
       title: 'JAILER 2 (HUKUM)',
@@ -7878,7 +7878,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'U/A 16+',
       dur: '2h 55m',
-      desc: "Tiger Muthuvel Pandian (Superstar Rajinikanth) returns in Nelson Dilipkumar's high-octane sequel to the global blockbuster Jailer. Forced out of retirement when an international syndicate targets his family and alliances, the lethal retired jailer unleashes his trademark calm ruthlessness to dismantle criminal syndicates across borders. Music by Anirudh Ravichander, produced by Sun Pictures. Streamed in 4K UHD via Peachify TMDB 1234139."
+      desc: "Tiger Muthuvel Pandian (Superstar Rajinikanth) returns in Nelson Dilipkumar's high-octane sequel to the global blockbuster Jailer. Forced out of retirement when an international syndicate targets his family and alliances, the lethal retired jailer unleashes his trademark calm ruthlessness to dismantle criminal syndicates across borders. Music by Anirudh Ravichander, produced by Sun Pictures. Streamed in 4K UHD via Peachify."
     },
     'disclosure_day': {
       title: 'DISCLOSURE DAY',
@@ -7886,7 +7886,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'U/A 16+',
       dur: '2h 35m',
-      desc: "A gripping science-fiction thriller directed by Steven Spielberg and written by David Koepp. When undeniable proof of extraterrestrial existence surfaces, a resilient television meteorologist and an intrepid cybersecurity analyst brave a deadly government pursuit to disclose the epochal truth to seven billion people. Starring Emily Blunt, Josh O'Connor, Colin Firth, Eve Hewson, Colman Domingo. Universal Pictures & Amblin. Streamed in 4K UHD via Peachify TMDB 1275779."
+      desc: "A gripping science-fiction thriller directed by Steven Spielberg and written by David Koepp. When undeniable proof of extraterrestrial existence surfaces, a resilient television meteorologist and an intrepid cybersecurity analyst brave a deadly government pursuit to disclose the epochal truth to seven billion people. Starring Emily Blunt, Josh O'Connor, Colin Firth, Eve Hewson, Colman Domingo. Universal Pictures & Amblin. Streamed in 4K UHD via Peachify."
     },
     'wuthering_heights': {
       title: 'WUTHERING HEIGHTS',
@@ -7894,7 +7894,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'U/A 16+',
       dur: '2h 25m',
-      desc: "Academy Award winner Emerald Fennell directs a visceral, intoxicating reimagining of Emily Brontë's immortal gothic romance on the wind-swept Yorkshire moors. Catherine Earnshaw and Heathcliff's obsessive, all-consuming passion defies social hierarchy, vengeance, and mortality itself. Starring Margot Robbie and Jacob Elordi. Produced by LuckyChap Entertainment and Warner Bros. Pictures. Streamed in 4K UHD via Peachify TMDB 1316092."
+      desc: "Academy Award winner Emerald Fennell directs a visceral, intoxicating reimagining of Emily Brontë's immortal gothic romance on the wind-swept Yorkshire moors. Catherine Earnshaw and Heathcliff's obsessive, all-consuming passion defies social hierarchy, vengeance, and mortality itself. Starring Margot Robbie and Jacob Elordi. Produced by LuckyChap Entertainment and Warner Bros. Pictures. Streamed in 4K UHD via Peachify."
     },
     'hoppers': {
       title: 'HOPPERS (2026)',
@@ -7902,7 +7902,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'U/A 7+',
       dur: '1h 42m',
-      desc: "A witty, heartwarming sci-fi comedy adventure from Disney and Pixar Animation Studios. An animal-loving college student Mabel utilizes revolutionary neuro-link science to hop her consciousness into an ultra-realistic robotic beaver. Infiltrating the wilderness, she befriends charismatic woodland creatures to protect their forest realm from ruthless urban expansion. Directed by Daniel Chong. Voices by Piper Curda, Bobby Moynihan, Jon Hamm. Streamed in 4K UHD via Peachify TMDB 1327819."
+      desc: "A witty, heartwarming sci-fi comedy adventure from Disney and Pixar Animation Studios. An animal-loving college student Mabel utilizes revolutionary neuro-link science to hop her consciousness into an ultra-realistic robotic beaver. Infiltrating the wilderness, she befriends charismatic woodland creatures to protect their forest realm from ruthless urban expansion. Directed by Daniel Chong. Voices by Piper Curda, Bobby Moynihan, Jon Hamm. Streamed in 4K UHD via Peachify."
     },
     'michael': {
       title: 'MICHAEL (THE KING OF POP)',
@@ -7910,7 +7910,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'U/A 16+',
       dur: '2h 50m',
-      desc: "The monumental biographical musical drama directed by Antoine Fuqua and produced by Graham King (Bohemian Rhapsody). Chronicling the triumphant yet turbulent life and enduring legacy of global music icon Michael Jackson, from child prodigy in the Jackson 5 to the undisputed King of Pop. Starring nephew Jaafar Jackson in an electric tour-de-force performance alongside Colman Domingo, Nia Long, Miles Teller. Lionsgate & Universal Pictures. Streamed in 4K UHD via Peachify TMDB 936075."
+      desc: "The monumental biographical musical drama directed by Antoine Fuqua and produced by Graham King (Bohemian Rhapsody). Chronicling the triumphant yet turbulent life and enduring legacy of global music icon Michael Jackson, from child prodigy in the Jackson 5 to the undisputed King of Pop. Starring nephew Jaafar Jackson in an electric tour-de-force performance alongside Colman Domingo, Nia Long, Miles Teller. Lionsgate & Universal Pictures. Streamed in 4K UHD via Peachify."
     },
     'mario_galaxy': {
       title: 'THE SUPER MARIO GALAXY MOVIE',
@@ -7918,7 +7918,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'U/A 7+',
       dur: '1h 40m',
-      desc: "Nintendo and Illumination reunite for the spectacular galactic sequel to the billion-dollar blockbuster. Mario, Luigi, Princess Peach, and Toad launch into deep cosmos to protect Rosalina's Comet Observatory and rescue celestial Lumas from Bowser's cosmic conquest. Directed by Aaron Horvath and Michael Jelenic. Starring Chris Pratt, Charlie Day, Anya Taylor-Joy, Jack Black, Keegan-Michael Key. Streamed in 4K UHD via Peachify TMDB 1226863."
+      desc: "Nintendo and Illumination reunite for the spectacular galactic sequel to the billion-dollar blockbuster. Mario, Luigi, Princess Peach, and Toad launch into deep cosmos to protect Rosalina's Comet Observatory and rescue celestial Lumas from Bowser's cosmic conquest. Directed by Aaron Horvath and Michael Jelenic. Starring Chris Pratt, Charlie Day, Anya Taylor-Joy, Jack Black, Keegan-Michael Key. Streamed in 4K UHD via Peachify."
     },
     'minions_monsters': {
       title: 'MINIONS & MONSTERS',
@@ -7926,7 +7926,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'U/A 7+',
       dur: '1h 35m',
-      desc: "In 1920s Hollywood's golden age, Kevin, Stuart, and Bob set out to produce their own classic creature feature. Armed with hilarious makeshift special effects and slapstick chaos, the mischievous yellow henchmen accidentally awaken genuine mythical monsters across the movie backlot. Directed by Pierre Coffin. Produced by Chris Meledandri and Illumination. Streamed in 4K UHD via Peachify TMDB 1315772."
+      desc: "In 1920s Hollywood's golden age, Kevin, Stuart, and Bob set out to produce their own classic creature feature. Armed with hilarious makeshift special effects and slapstick chaos, the mischievous yellow henchmen accidentally awaken genuine mythical monsters across the movie backlot. Directed by Pierre Coffin. Produced by Chris Meledandri and Illumination. Streamed in 4K UHD via Peachify."
     },
     'mortal_kombat_2': {
       title: 'MORTAL KOMBAT II',
@@ -7934,7 +7934,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'A 18+',
       dur: '2h 05m',
-      desc: "The ultimate martial arts tournament erupts as Earthrealm's champions stand on the precipice of obliteration against the menacing warlord Shao Kahn and Outworld forces. Cole Young, Sonya Blade, and Jax recruit arrogant action icon Johnny Cage to unleash his martial prowess alongside legendary rival warriors Scorpion and Sub-Zero. Directed by Simon McQuoid. Starring Karl Urban, Hiroyuki Sanada, Joe Taslim, Jessica McNamee, Lewis Tan. New Line Cinema & Warner Bros. Streamed in 4K UHD via Peachify TMDB 931285."
+      desc: "The ultimate martial arts tournament erupts as Earthrealm's champions stand on the precipice of obliteration against the menacing warlord Shao Kahn and Outworld forces. Cole Young, Sonya Blade, and Jax recruit arrogant action icon Johnny Cage to unleash his martial prowess alongside legendary rival warriors Scorpion and Sub-Zero. Directed by Simon McQuoid. Starring Karl Urban, Hiroyuki Sanada, Joe Taslim, Jessica McNamee, Lewis Tan. New Line Cinema & Warner Bros. Streamed in 4K UHD via Peachify."
     },
             'hanuman_ansh': {
       title: 'HANUMAN ANSH',
@@ -7943,7 +7943,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'U/A 7+',
       dur: '2h 10m',
-      desc: 'A grieving boy seeks God to meet his departed mother, and in finding the divine, learns to serve humanity through the eternal devotion and inspiration of Lord Hanuman. Starring Shobhinaw Satyaa, Vihaan Shedge, Chandan Anand, Purnima Tiwari, Anil Rastogi. Directed by Vishal Chaturvedi. Streamed in 4K UHD via Peachify TMDB 1709391.'
+      desc: 'A grieving boy seeks God to meet his departed mother, and in finding the divine, learns to serve humanity through the eternal devotion and inspiration of Lord Hanuman. Starring Shobhinaw Satyaa, Vihaan Shedge, Chandan Anand, Purnima Tiwari, Anil Rastogi. Directed by Vishal Chaturvedi. Streamed in 4K UHD via Peachify.'
     },
     'kon_city': {
       title: 'KON CITY',
@@ -7952,7 +7952,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'U/A 13+',
       dur: '2h 20m',
-      desc: 'Saravana, Mithra, Jacky, and Janaki are skilled con artists hiding out as an ordinary family in Multan. Facing unexpected threats and gripping twists, they plan the ultimate heist. Starring Arjun Das, Anna Ben, Yogi Babu, Vadivukarasi, Thambi Ramaiah. Directed by Harish Durairaj. Streamed in 4K UHD via Peachify TMDB 1596008.'
+      desc: 'Saravana, Mithra, Jacky, and Janaki are skilled con artists hiding out as an ordinary family in Multan. Facing unexpected threats and gripping twists, they plan the ultimate heist. Starring Arjun Das, Anna Ben, Yogi Babu, Vadivukarasi, Thambi Ramaiah. Directed by Harish Durairaj. Streamed in 4K UHD via Peachify.'
     },
     'baththa': {
       title: 'BATHTHA',
@@ -7961,7 +7961,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'U/A 13+',
       dur: '2h 15m',
-      desc: 'In 1986 Madras, a timid eight-year-old boy accidentally traps a feared gangster inside a deserted school toilet. As tension mounts and the hunt for the missing gangster intensifies, an unlikely bond and a chain of chaotic events reshape their lives. Starring Vijay Sethupathi, Sai Prithviraj, Lijomol Jose, and Sahasra Sree. Directed by Balaji Tharaneetharan. Streamed in 4K UHD via Peachify TMDB 1515692.'
+      desc: 'In 1986 Madras, a timid eight-year-old boy accidentally traps a feared gangster inside a deserted school toilet. As tension mounts and the hunt for the missing gangster intensifies, an unlikely bond and a chain of chaotic events reshape their lives. Starring Vijay Sethupathi, Sai Prithviraj, Lijomol Jose, and Sahasra Sree. Directed by Balaji Tharaneetharan. Streamed in 4K UHD via Peachify.'
     },
     'haiku': {
       title: 'HAIKU',
@@ -7970,7 +7970,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'U/A 13+',
       dur: '2h 10m',
-      desc: 'A charismatic young man uses the delicate art of poetry to navigate the complex maze of modern romance and protect his fragile relationship against societal pressures. Starring Aegan, Sridevi Apalla, Femina George, and Adhirchi Arun. Directed by Yuvaraj Chinnasamy. Streamed in 4K UHD via Peachify TMDB 1593350.'
+      desc: 'A charismatic young man uses the delicate art of poetry to navigate the complex maze of modern romance and protect his fragile relationship against societal pressures. Starring Aegan, Sridevi Apalla, Femina George, and Adhirchi Arun. Directed by Yuvaraj Chinnasamy. Streamed in 4K UHD via Peachify.'
     },
     'gdn': {
       title: 'G.D.N',
@@ -7979,7 +7979,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'U/A 13+',
       dur: '2h 20m',
-      desc: 'The inspiring biopic of G.D. Naidu, the Edison of India, who overcame insurmountable challenges and defied a repressive colonial regime to create transformative inventions and industrial breakthroughs. Starring R. Madhavan, Priyamani, Sathyaraj, and Jayaram. Directed by Krishnakumar Ramakumar. Streamed in 4K UHD via Peachify TMDB 1489543.'
+      desc: 'The inspiring biopic of G.D. Naidu, the Edison of India, who overcame insurmountable challenges and defied a repressive colonial regime to create transformative inventions and industrial breakthroughs. Starring R. Madhavan, Priyamani, Sathyaraj, and Jayaram. Directed by Krishnakumar Ramakumar. Streamed in 4K UHD via Peachify.'
     },
     'movie_418': {
       title: '418',
@@ -7988,7 +7988,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'A 18+',
       dur: '2h 05m',
-      desc: 'Set in a medical college situated in a dread-stricken village, the gripping narrative confronts the rational science behind superstitions and the terrifying, superstitious truths lurking behind scientific reality. Starring Chaithra J Achar, Charan Lakkaraju, Preethi Pagadala, and Ramesh Indira. Directed by Kiran Nadagouda. Streamed in 4K UHD via Peachify TMDB 1606527.'
+      desc: 'Set in a medical college situated in a dread-stricken village, the gripping narrative confronts the rational science behind superstitions and the terrifying, superstitious truths lurking behind scientific reality. Starring Chaithra J Achar, Charan Lakkaraju, Preethi Pagadala, and Ramesh Indira. Directed by Kiran Nadagouda. Streamed in 4K UHD via Peachify.'
     },
     'steps': {
       title: 'STEPS',
@@ -7997,7 +7997,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'U/A 7+',
       dur: '1h 45m',
-      desc: 'After being blamed for disrupting the Royal Ball with a stolen magic wand, a misunderstood stepsister accidentally turns her world upside down and embarks on an unforgettable fantasy adventure to restore harmony. Starring the vocal talents of Ali Wong, Amanda Seyfried, Stephanie Hsu, and Nikki Glaser. Directed by Alyce Tzue. Streamed in 4K UHD via Peachify TMDB 1595124.'
+      desc: 'After being blamed for disrupting the Royal Ball with a stolen magic wand, a misunderstood stepsister accidentally turns her world upside down and embarks on an unforgettable fantasy adventure to restore harmony. Starring the vocal talents of Ali Wong, Amanda Seyfried, Stephanie Hsu, and Nikki Glaser. Directed by Alyce Tzue. Streamed in 4K UHD via Peachify.'
     },
     'kartavya': {
       title: 'KARTAVYA',
@@ -8005,7 +8005,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'U/A 16+',
       dur: '1h 49m',
-      desc: "Local police officer Inspector Pawan Malik (Saif Ali Khan) is assigned to guard a fearless investigative journalist exposing a high-profile corruption racket tied to an influential spiritual cult. When the journalist is assassinated on his watch, Pawan must risk everything against political pressure and family threats to fulfill his sworn duty. Produced by Gauri Khan (Red Chillies Entertainment), directed by Pulkit. Starring Saif Ali Khan, Rasika Dugal, Sanjay Mishra. Streamed in 4K UHD via Peachify TMDB 1628367.",
+      desc: "Local police officer Inspector Pawan Malik (Saif Ali Khan) is assigned to guard a fearless investigative journalist exposing a high-profile corruption racket tied to an influential spiritual cult. When the journalist is assassinated on his watch, Pawan must risk everything against political pressure and family threats to fulfill his sworn duty. Produced by Gauri Khan (Red Chillies Entertainment), directed by Pulkit. Starring Saif Ali Khan, Rasika Dugal, Sanjay Mishra. Streamed in 4K UHD via Peachify.",
       cast: 'Saif Ali Khan, Rasika Dugal, Sanjay Mishra, Zakir Hussain',
       director: 'Pulkit (Red Chillies Entertainment)',
       music: 'Shankar-Ehsaan-Loy',
@@ -8017,7 +8017,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'A 18+',
       dur: '2h 10m',
-      desc: "When her young daughter is abducted from a crowded railway platform, mother Bani (Taapsee Pannu) is left temporarily blinded in the assault. Channeling the fierce mythical spirit of Gandhari, she transforms into an unstoppable lethal force of maternal vengeance to crush an interstate child trafficking syndicate and reclaim her child. Written & produced by Kanika Dhillon, directed by Devashish Makhija. Starring Taapsee Pannu, Ishwak Singh, Swastika Mukherjee. Streamed in 4K UHD via Peachify TMDB 1355228.",
+      desc: "When her young daughter is abducted from a crowded railway platform, mother Bani (Taapsee Pannu) is left temporarily blinded in the assault. Channeling the fierce mythical spirit of Gandhari, she transforms into an unstoppable lethal force of maternal vengeance to crush an interstate child trafficking syndicate and reclaim her child. Written & produced by Kanika Dhillon, directed by Devashish Makhija. Starring Taapsee Pannu, Ishwak Singh, Swastika Mukherjee. Streamed in 4K UHD via Peachify.",
       cast: 'Taapsee Pannu, Ishwak Singh, Swastika Mukherjee, Chhaya Kadam',
       director: 'Devashish Makhija (Written by Kanika Dhillon)',
       music: 'Amit Trivedi',
@@ -8029,7 +8029,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'U/A 16+',
       dur: '1h 55m',
-      desc: "A hilarious and dark comic thriller following Ramakant (Rajkummar Rao), a hilariously stingy man who goes to absurdly extreme lengths to retrieve a luxury toaster he gifted after a wedding is suddenly called off. His relentless obsession inadvertently lands him straight into a chaotic web of murder, extortion, and absurd criminal mayhem. Produced by Patralekhaa & Rajkummar Rao, directed by Vivek Das Chaudhary. Starring Rajkummar Rao, Sanya Malhotra, Abhishek Banerjee, Farah Khan. Streamed in 4K UHD via Peachify TMDB 1416391.",
+      desc: "A hilarious and dark comic thriller following Ramakant (Rajkummar Rao), a hilariously stingy man who goes to absurdly extreme lengths to retrieve a luxury toaster he gifted after a wedding is suddenly called off. His relentless obsession inadvertently lands him straight into a chaotic web of murder, extortion, and absurd criminal mayhem. Produced by Patralekhaa & Rajkummar Rao, directed by Vivek Das Chaudhary. Starring Rajkummar Rao, Sanya Malhotra, Abhishek Banerjee, Farah Khan. Streamed in 4K UHD via Peachify.",
       cast: 'Rajkummar Rao, Sanya Malhotra, Abhishek Banerjee, Farah Khan',
       director: 'Vivek Das Chaudhary (Produced by Patralekhaa)',
       music: 'Sachin-Jigar',
@@ -8058,7 +8058,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'PG-13',
       dur: 'Summer 2026',
-      desc: 'Peter Parker begins a brand-new chapter navigating life after the worldwide memory wipe erased his civilian identity. As street-level crime escalates across New York City and formidable new adversaries emerge from the shadows, Spider-Man must forge unexpected alliances and discover what it truly costs to be a standalone hero. TMDB ID 969681.'
+      desc: 'Peter Parker begins a brand-new chapter navigating life after the worldwide memory wipe erased his civilian identity. As street-level crime escalates across New York City and formidable new adversaries emerge from the shadows, Spider-Man must forge unexpected alliances and discover what it truly costs to be a standalone hero.'
     },
     'clayface': {
       title: 'CLAYFACE',
@@ -8066,7 +8066,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'R',
       dur: 'Fall 2026',
-      desc: 'A body-horror psychological noir exploring the tragic descent of Basil Karlo, a once-revered B-movie actor whose desperate quest for vanity and youth leads him to an experimental chemical treatment. Mutating into a monstrous, shape-shifting entity consumed by identity dysphoria, he wages a horrifying war against Gotham City\'s elite. TMDB ID 1400940.'
+      desc: 'A body-horror psychological noir exploring the tragic descent of Basil Karlo, a once-revered B-movie actor whose desperate quest for vanity and youth leads him to an experimental chemical treatment. Mutating into a monstrous, shape-shifting entity consumed by identity dysphoria, he wages a horrifying war against Gotham City\'s elite.'
     },
     'resident_evil_2026': {
       title: 'RESIDENT EVIL',
@@ -8074,7 +8074,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'R',
       dur: 'Fall 2026',
-      desc: 'A terrifying cinematic reboot returning to the claustrophobic survival-horror roots of Capcom\'s iconic franchise. Trapped deep inside the infected bio-weapons research complex of the Arklay Mountains, a specialized tactical team faces grotesque viral mutations and Umbrella Corporation\'s catastrophic bio-hazard cover-up. TMDB ID 1423191.'
+      desc: 'A terrifying cinematic reboot returning to the claustrophobic survival-horror roots of Capcom\'s iconic franchise. Trapped deep inside the infected bio-weapons research complex of the Arklay Mountains, a specialized tactical team faces grotesque viral mutations and Umbrella Corporation\'s catastrophic bio-hazard cover-up.'
     },
     'street_fighter': {
       title: 'STREET FIGHTER',
@@ -8082,7 +8082,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'PG-13',
       dur: 'March 2026',
-      desc: 'Legendary martial artists from across the globe converge to battle in the shadowy World Warrior Tournament orchestrated by M. Bison\'s Shadaloo syndicate. Ryu and Ken Masters must master the ancient power of Ansatsuken and overcome dark Hadou energy to prevent worldwide devastation. TMDB ID 1153576.'
+      desc: 'Legendary martial artists from across the globe converge to battle in the shadowy World Warrior Tournament orchestrated by M. Bison\'s Shadaloo syndicate. Ryu and Ken Masters must master the ancient power of Ansatsuken and overcome dark Hadou energy to prevent worldwide devastation.'
     },
     'toy_story_5': {
       title: 'TOY STORY 5',
@@ -8090,7 +8090,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'G',
       dur: 'June 2026',
-      desc: 'Woody, Buzz Lightyear, and the beloved toy crew face their ultimate 21st-century existential challenge: competing for children\'s devotion against modern digital screens, tablets, and interactive electronics. Together, they embark on a hilarious, heartwarming quest to prove the enduring magic of imagination and playtime. TMDB ID 1084244.'
+      desc: 'Woody, Buzz Lightyear, and the beloved toy crew face their ultimate 21st-century existential challenge: competing for children\'s devotion against modern digital screens, tablets, and interactive electronics. Together, they embark on a hilarious, heartwarming quest to prove the enduring magic of imagination and playtime.'
     },
     'supergirl_woman_of_tomorrow': {
       title: 'SUPERGIRL: WOMAN OF TOMORROW',
@@ -8098,7 +8098,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'PG-13',
       dur: 'June 2026',
-      desc: 'Unlike her cousin Superman who was raised on Earth by loving parents, Kara Zor-El grew up on a chipped-off rock of Krypton, witnessing everyone around her die tragically. Hardened and accompanied by Krypto the Superdog, she embarks on an epic, interstellar revenge quest across the cosmos with an alien girl named Ruthye. TMDB ID 1081003.'
+      desc: 'Unlike her cousin Superman who was raised on Earth by loving parents, Kara Zor-El grew up on a chipped-off rock of Krypton, witnessing everyone around her die tragically. Hardened and accompanied by Krypto the Superdog, she embarks on an epic, interstellar revenge quest across the cosmos with an alien girl named Ruthye.'
     },
     'mandalorian_and_grogu': {
       title: 'STAR WARS: THE MANDALORIAN AND GROGU',
@@ -8106,7 +8106,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'PG-13',
       dur: 'May 2026',
-      desc: 'The legendary Mandalorian bounty hunter Din Djarin and his Force-sensitive apprentice Grogu transition to the grand theatrical big screen. Partnering with the fledgling New Republic, they hunt Imperial remnants scheming in the dark corners of the outer rim galaxy to protect the fragile peace. TMDB ID 1228710.'
+      desc: 'The legendary Mandalorian bounty hunter Din Djarin and his Force-sensitive apprentice Grogu transition to the grand theatrical big screen. Partnering with the fledgling New Republic, they hunt Imperial remnants scheming in the dark corners of the outer rim galaxy to protect the fragile peace.'
     },
     'godzilla_minus_zero': {
       title: 'GODZILLA MINUS ZERO',
@@ -8114,7 +8114,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'PG-13',
       dur: 'November 2026',
-      desc: 'Following the Academy Award-winning global triumph of Godzilla Minus One, visionary director Takashi Yamazaki returns with the next colossal chapter in the Toho kaiju saga. As postwar Japan strives to rebuild, a terrifying atomic terror re-emerges from the oceanic abyss with catastrophic destructive fury. TMDB ID 1381071.'
+      desc: 'Following the Academy Award-winning global triumph of Godzilla Minus One, visionary director Takashi Yamazaki returns with the next colossal chapter in the Toho kaiju saga. As postwar Japan strives to rebuild, a terrifying atomic terror re-emerges from the oceanic abyss with catastrophic destructive fury.'
     },
     'project_hail_mary': {
       title: 'PROJECT HAIL MARY',
@@ -8122,14 +8122,14 @@ function openMovieDetailsModal(movieKey, fromHistory) {
       year: '2026',
       age: 'PG-13',
       dur: 'March 2026',
-      desc: 'Ryland Grace, a middle-school science teacher turned lone survivor of an interstellar desperate mission, awakens from a coma with amnesia light-years from Earth. As our sun dies from an alien microbe, Grace must combine scientific deduction and an extraordinary interspecies friendship with an alien named Rocky to save humanity. TMDB ID 687163.'
+      desc: 'Ryland Grace, a middle-school science teacher turned lone survivor of an interstellar desperate mission, awakens from a coma with amnesia light-years from Earth. As our sun dies from an alien microbe, Grace must combine scientific deduction and an extraordinary interspecies friendship with an alien named Rocky to save humanity.'
     },
         'daayra': {
           title: 'DAAYRA',
           hero: 'assets/images/daayra_landscape.jpg?v=20261120_v106_new_premieres',
           poster: 'assets/images/daayra_poster.jpg?v=20261120_v106_new_premieres',
           year: '2026', age: 'U/A 13+', dur: '2h 21m',
-          desc: 'Raman (Prithviraj Sukumaran), a seasoned police officer with a controversial record of staged encounters and harsh interrogations, finds himself locked in an intense psychological battle as Ajooni (Kareena Kapoor Khan) relentlessly challenges his methods at every step. Directed by Meghna Gulzar, produced by Junglee Pictures & Pen Studios. Streamed in 4K UHD via Peachify TMDB 1215889.',
+          desc: 'Raman (Prithviraj Sukumaran), a seasoned police officer with a controversial record of staged encounters and harsh interrogations, finds himself locked in an intense psychological battle as Ajooni (Kareena Kapoor Khan) relentlessly challenges his methods at every step. Directed by Meghna Gulzar, produced by Junglee Pictures & Pen Studios. Streamed in 4K UHD via Peachify.',
           cast: 'Kareena Kapoor Khan, Prithviraj Sukumaran, Pragati Mishra, Prammod Sanghi, Sumali Khaniwale',
           director: 'Meghna Gulzar',
           genres: 'Crime, Drama'
@@ -8139,7 +8139,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
           hero: 'assets/images/vishwanath_and_sons_landscape.jpg?v=20261120_v106_new_premieres',
           poster: 'assets/images/vishwanath_and_sons_poster.jpg?v=20261120_v106_new_premieres',
           year: '2026', age: 'U/A 13+', dur: '2h 41m',
-          desc: 'A heartwarming and gripping drama chronicling the legacy of a distinguished family firm. When unexpected corporate rivals and interpersonal tensions threaten everything their patriarch built, a devoted son steps forward to reclaim honor and justice. Starring Suriya, Mamitha Baiju, Raveena Tandon. Directed by Venky Atluri. Streamed in 4K UHD via Peachify TMDB 1408162.',
+          desc: 'A heartwarming and gripping drama chronicling the legacy of a distinguished family firm. When unexpected corporate rivals and interpersonal tensions threaten everything their patriarch built, a devoted son steps forward to reclaim honor and justice. Starring Suriya, Mamitha Baiju, Raveena Tandon. Directed by Venky Atluri. Streamed in 4K UHD via Peachify.',
           cast: 'Suriya, Mamitha Baiju, Radhika Sarathkumar, Raveena Tandon, Sunil',
           director: 'Venky Atluri',
           genres: 'Drama, Romance, Comedy'
@@ -8149,7 +8149,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
           hero: 'assets/images/gajab_raat_landscape.jpg?v=20261120_v106_new_premieres',
           poster: 'assets/images/gajab_raat_poster.jpg?v=20261120_v106_new_premieres',
           year: '2026', age: 'U/A 13+', dur: '2h 4m',
-          desc: 'A gripping nocturnal thriller where an unexpected chain of events plunges an ordinary town into a maze of crime, suspense, and dark revelations before sunrise. Starring Manoj Bajpayee, Divya Dutta, Akshay Oberoi, Saqib Saleem. Directed by Ritesh Shah. Streamed in 1080P HEVC via Peachify TMDB 1453407.',
+          desc: 'A gripping nocturnal thriller where an unexpected chain of events plunges an ordinary town into a maze of crime, suspense, and dark revelations before sunrise. Starring Manoj Bajpayee, Divya Dutta, Akshay Oberoi, Saqib Saleem. Directed by Ritesh Shah. Streamed in 1080P HEVC via Peachify.',
           cast: 'Manoj Bajpayee, Divya Dutta, Akshay Oberoi, Saqib Saleem, Shraddha Das',
           director: 'Ritesh Shah',
           genres: 'Thriller, Crime'
@@ -8159,7 +8159,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
           hero: 'assets/images/dilwali_diwali_landscape.jpg?v=20261120_v106_new_premieres',
           poster: 'assets/images/dilwali_diwali_poster.jpg?v=20261120_v106_new_premieres',
           year: '2026', age: 'U/A 13+', dur: '1h 1m',
-          desc: 'A lighthearted festive comedy exploring the chaotic, humorous, and emotional mishaps of a vibrant Indian family gathering for Diwali celebrations. Starring Mihir Ahuja, Manoj Pahwa, Neelu Kohli. Directed by Ritesh Menon. Streamed in 1080P HEVC via Peachify TMDB 1810711.',
+          desc: 'A lighthearted festive comedy exploring the chaotic, humorous, and emotional mishaps of a vibrant Indian family gathering for Diwali celebrations. Starring Mihir Ahuja, Manoj Pahwa, Neelu Kohli. Directed by Ritesh Menon. Streamed in 1080P HEVC via Peachify.',
           cast: 'Mihir Ahuja, Manoj Pahwa, Neelu Kohli, Aura Bhatnagar Badoni, Manmeet Singh Sawhney',
           director: 'Ritesh Menon',
           genres: 'Comedy'
@@ -8169,7 +8169,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
           hero: 'assets/images/mahavatar_narsimha_landscape.jpg?v=20261120_v106_new_premieres',
           poster: 'assets/images/mahavatar_narsimha_poster.jpg?v=20261120_v106_new_premieres',
           year: '2025', age: 'U/A 13+', dur: '2h 11m',
-          desc: 'An epic animated cinematic saga portraying the divine avatar of Lord Vishnu—Narasimha—and his supreme manifestation to vanquish the demonic king Hiranyakashipu and protect his devout follower Prahlada. Directed by Ashwin Kumar. Streamed in 4K UHD via Peachify TMDB 1383072.',
+          desc: 'An epic animated cinematic saga portraying the divine avatar of Lord Vishnu—Narasimha—and his supreme manifestation to vanquish the demonic king Hiranyakashipu and protect his devout follower Prahlada. Directed by Ashwin Kumar. Streamed in 4K UHD via Peachify.',
           cast: 'Harjeet Walia, Aditya Raj Sharma, Haripriya Matta, Sanket Jaiswal, Priyanka Bhandari',
           director: 'Ashwin Kumar',
           genres: 'Animation, Action, Fantasy, Drama'
@@ -8179,7 +8179,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
           hero: 'assets/images/border_2_landscape.jpg?v=20261120_v106_new_premieres',
           poster: 'assets/images/border_2_poster.jpg?v=20261120_v106_new_premieres',
           year: '2026', age: 'U/A 13+', dur: '3h 21m',
-          desc: 'The grand military action sequel set against the backdrop of historical conflicts. A courageous battalion of Indian soldiers mounts an unyielding defense against overwhelming enemy forces, exemplifying ultimate valor, brotherhood, and patriotism. Starring Sunny Deol, Varun Dhawan, Diljit Dosanjh, Ahan Shetty. Directed by Anurag Singh. Streamed in 4K UHD via Peachify TMDB 1213898.',
+          desc: 'The grand military action sequel set against the backdrop of historical conflicts. A courageous battalion of Indian soldiers mounts an unyielding defense against overwhelming enemy forces, exemplifying ultimate valor, brotherhood, and patriotism. Starring Sunny Deol, Varun Dhawan, Diljit Dosanjh, Ahan Shetty. Directed by Anurag Singh. Streamed in 4K UHD via Peachify.',
           cast: 'Sunny Deol, Varun Dhawan, Diljit Dosanjh, Ahan Shetty, Mona Singh',
           director: 'Anurag Singh',
           genres: 'Action, Drama, War'
@@ -8189,7 +8189,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
           hero: 'assets/images/ikkis_landscape.jpg?v=20261120_v106_new_premieres',
           poster: 'assets/images/ikkis_poster.jpg?v=20261120_v106_new_premieres',
           year: '2026', age: 'U/A 13+', dur: '2h 28m',
-          desc: 'A deeply moving biographical war drama recounting the extraordinary bravery and sacrifice of Second Lieutenant Arun Khetarpal PVC, who fought heroically during the Battle of Basantar at the age of twenty-one. Starring Dharmendra, Jaideep Ahlawat, Agastya Nanda. Directed by Sriram Raghavan. Streamed in 1080P HEVC via Peachify TMDB 1196946.',
+          desc: 'A deeply moving biographical war drama recounting the extraordinary bravery and sacrifice of Second Lieutenant Arun Khetarpal PVC, who fought heroically during the Battle of Basantar at the age of twenty-one. Starring Dharmendra, Jaideep Ahlawat, Agastya Nanda. Directed by Sriram Raghavan. Streamed in 1080P HEVC via Peachify.',
           cast: 'Dharmendra, Jaideep Ahlawat, Agastya Nanda, Simar Bhatia, Shree Bishnoi',
           director: 'Sriram Raghavan',
           genres: 'History, War, Drama'
@@ -8199,7 +8199,7 @@ function openMovieDetailsModal(movieKey, fromHistory) {
           hero: 'assets/images/guarding_stars_landscape.jpg?v=20261120_v106_new_premieres',
           poster: 'assets/images/guarding_stars_poster.jpg?v=20261120_v106_new_premieres',
           year: '2026', age: 'U/A 13+', dur: '1h 49m',
-          desc: 'An engaging romantic comedy following a high-profile bodyguard tasked with protecting an eccentric international music star, only to find unexpected affection blossoming amidst chaos and spotlights. Starring Leighton Meester, Jared Padalecki, Andie MacDowell. Directed by Elizabeth Allen Rosenbaum. Streamed in 4K UHD via Peachify TMDB 1551025.',
+          desc: 'An engaging romantic comedy following a high-profile bodyguard tasked with protecting an eccentric international music star, only to find unexpected affection blossoming amidst chaos and spotlights. Starring Leighton Meester, Jared Padalecki, Andie MacDowell. Directed by Elizabeth Allen Rosenbaum. Streamed in 4K UHD via Peachify.',
           cast: 'Leighton Meester, Jared Padalecki, Andie MacDowell, Walker Hayes, Noah LaLonde',
           director: 'Elizabeth Allen Rosenbaum',
           genres: 'Romance, Comedy'
@@ -8580,7 +8580,7 @@ const sandflixCatalog = [
     "year": "2026",
     "age": "U/A 16+",
     "dur": "2h 59m",
-    "desc": "Set in 19th-century British India, a fierce leader rises from a drought-stricken land to fight colonial oppression and brutal injustice. Starring Vijay Deverakonda, Rashmika Mandanna, directed by Rahul Sankrityan. Streamed in 1080P HEVC via Peachify TMDB 1389379.",
+    "desc": "Set in 19th-century British India, a fierce leader rises from a drought-stricken land to fight colonial oppression and brutal injustice. Starring Vijay Deverakonda, Rashmika Mandanna, directed by Rahul Sankrityan. Streamed in 1080P HEVC via Peachify.",
     "hero": "assets/images/ranabaali_landscape.jpg",
     "poster": "assets/images/ranabaali_poster.jpg",
     "genres": [
@@ -8612,7 +8612,7 @@ const sandflixCatalog = [
     "year": "2026",
     "age": "U/A 16+",
     "dur": "2h 45m",
-    "desc": "Set in 1980s Secunderabad, a marginalized group rises to fight against systemic oppression, discrimination, and brutal injustice for their identity and citizenship. Starring Nani, Mohan Babu, Kayadu Lohar, Sonali Kulkarni. Directed by Srikanth Odela. Streamed in 1080P HEVC via Peachify TMDB 1376856.",
+    "desc": "Set in 1980s Secunderabad, a marginalized group rises to fight against systemic oppression, discrimination, and brutal injustice for their identity and citizenship. Starring Nani, Mohan Babu, Kayadu Lohar, Sonali Kulkarni. Directed by Srikanth Odela. Streamed in 1080P HEVC via Peachify.",
     "hero": "assets/images/the_paradise_landscape.jpg",
     "poster": "assets/images/the_paradise_poster.jpg",
     "genres": [
@@ -8627,7 +8627,7 @@ const sandflixCatalog = [
     "year": "2026",
     "age": "U/A 16+",
     "dur": "2h 38m",
-    "desc": "Two elite female super-agents unite in the lethal espionage world of the YRF Spy Universe to execute a covert global counter-strike against a ruthless criminal cabal. Starring Alia Bhatt, Sharvari, Bobby Deol, Anil Kapoor. Directed by Shiv Rawail. Streamed in 1080P HEVC via Peachify TMDB 1122030.",
+    "desc": "Two elite female super-agents unite in the lethal espionage world of the YRF Spy Universe to execute a covert global counter-strike against a ruthless criminal cabal. Starring Alia Bhatt, Sharvari, Bobby Deol, Anil Kapoor. Directed by Shiv Rawail. Streamed in 1080P HEVC via Peachify.",
     "hero": "assets/images/alpha_landscape.jpg",
     "poster": "assets/images/alpha_poster.jpg",
     "genres": [
@@ -8642,7 +8642,7 @@ const sandflixCatalog = [
     "year": "2025",
     "age": "U/A 16+",
     "dur": "2h 42m",
-    "desc": "From the world of Raanjhanaa, a fiery, unyielding saga of intense love, rebellion, and sacrifice in Varanasi. Shankar wages an all-consuming battle against destiny and societal divides for an eternal romance. Starring Dhanush, Kriti Sanon. Directed by Aanand L. Rai, music by A.R. Rahman. Streamed in 1080P HEVC via Peachify TMDB 1142921.",
+    "desc": "From the world of Raanjhanaa, a fiery, unyielding saga of intense love, rebellion, and sacrifice in Varanasi. Shankar wages an all-consuming battle against destiny and societal divides for an eternal romance. Starring Dhanush, Kriti Sanon. Directed by Aanand L. Rai, music by A.R. Rahman. Streamed in 1080P HEVC via Peachify.",
     "hero": "assets/images/tere_ishk_mein_landscape.jpg",
     "poster": "assets/images/tere_ishk_mein_poster.jpg",
     "genres": [
@@ -8658,7 +8658,7 @@ const sandflixCatalog = [
     "year": "2024",
     "age": "U/A 16+",
     "dur": "3h 21m",
-    "desc": "Pushpa Raj expands his red sandalwood smuggling empire across borders while fiercely defending his reign against SP Bhanwar Singh Shekhawat and rival syndicates in an explosive clash of power and dominance. Starring Allu Arjun, Rashmika Mandanna, Fahadh Faasil. Directed by Sukumar, music by Devi Sri Prasad. Streamed in 1080P HEVC via Peachify TMDB 857598.",
+    "desc": "Pushpa Raj expands his red sandalwood smuggling empire across borders while fiercely defending his reign against SP Bhanwar Singh Shekhawat and rival syndicates in an explosive clash of power and dominance. Starring Allu Arjun, Rashmika Mandanna, Fahadh Faasil. Directed by Sukumar, music by Devi Sri Prasad. Streamed in 1080P HEVC via Peachify.",
     "hero": "assets/images/pushpa2_landscape.jpg",
     "poster": "assets/images/pushpa2_poster.jpg",
     "genres": [
@@ -8674,7 +8674,7 @@ const sandflixCatalog = [
     "year": "2026",
     "age": "U/A 16+",
     "dur": "2h 28m",
-    "desc": "In a rural Tamil Nadu village shaped by traditional norms and toxic masculinity, the unexpected arrival of Dorothy (Keerthy Suresh) \u2014 a bold, independent woman \u2014 transforms the lives and worldview of two inseparable friends. Directed by Karthik Subbaraj with music by Maestro Ilaiyaraaja. World premiered at TIFF 2026. Streamed in 1080P HEVC via Peachify TMDB 1578079.",
+    "desc": "In a rural Tamil Nadu village shaped by traditional norms and toxic masculinity, the unexpected arrival of Dorothy (Keerthy Suresh) \u2014 a bold, independent woman \u2014 transforms the lives and worldview of two inseparable friends. Directed by Karthik Subbaraj with music by Maestro Ilaiyaraaja. World premiered at TIFF 2026. Streamed in 1080P HEVC via Peachify.",
     "hero": "assets/images/dorothy_landscape.jpg",
     "poster": "assets/images/dorothy_poster.jpg",
     "genres": [
@@ -8721,7 +8721,7 @@ const sandflixCatalog = [
     "year": "2024",
     "age": "U/A 16+",
     "dur": "2h 12m",
-    "desc": "Set in pre-independence 1862 Bombay and based on the historic Maharaj Libel Case, fearless reformer and journalist Karsandas Mulji (Junaid Khan) bravely challenges the exploitation of female devotees by the venerated, untouchable religious figure Jadunath Maharaj (Jaideep Ahlawat) in an epic courtroom reckoning. Directed by Siddharth P. Malhotra, starring Junaid Khan, Jaideep Ahlawat, Sharvari, Shalini Pandey. Streamed in 1080P HEVC via Peachify TMDB 1171099.",
+    "desc": "Set in pre-independence 1862 Bombay and based on the historic Maharaj Libel Case, fearless reformer and journalist Karsandas Mulji (Junaid Khan) bravely challenges the exploitation of female devotees by the venerated, untouchable religious figure Jadunath Maharaj (Jaideep Ahlawat) in an epic courtroom reckoning. Directed by Siddharth P. Malhotra, starring Junaid Khan, Jaideep Ahlawat, Sharvari, Shalini Pandey. Streamed in 1080P HEVC via Peachify.",
     "hero": "assets/images/maharaj_landscape.jpg",
     "poster": "assets/images/maharaj_poster.jpg",
     "genres": [
@@ -8737,7 +8737,7 @@ const sandflixCatalog = [
     "year": "2026",
     "age": "U/A 13+",
     "dur": "2h 21m",
-    "desc": "Sathya reluctantly agrees to a blind date arranged by his sister and meets Monisha. To their astonishment, they discover they attended the same high school years ago. Reminiscing over teenage crushes and nostalgia, their past sparks an endearing modern connection. Starring Abishan Jeevinth, Anaswara Rajan, Harish Kumar. Directed by Madhan. Streamed in 1080P HEVC via Peachify TMDB 1508564.",
+    "desc": "Sathya reluctantly agrees to a blind date arranged by his sister and meets Monisha. To their astonishment, they discover they attended the same high school years ago. Reminiscing over teenage crushes and nostalgia, their past sparks an endearing modern connection. Starring Abishan Jeevinth, Anaswara Rajan, Harish Kumar. Directed by Madhan. Streamed in 1080P HEVC via Peachify.",
     "hero": "assets/images/with_love_landscape.jpg",
     "poster": "assets/images/with_love_poster.jpg",
     "genres": [
@@ -8752,7 +8752,7 @@ const sandflixCatalog = [
     "year": "2026",
     "age": "U/A 16+",
     "dur": "2h 20m",
-    "desc": "When a ruthless mercenary syndicate descends upon a remote mountain homestead, an estranged veteran with a haunted past and his grandchildren must unite their survival instincts to wage an uncompromising counter-offensive. Starring Lukman Sardi, Callista Arum, Sulthan Hamonangan, Derby Romero, Donny Alamsyah. Directed by Sidharta Tata. Streamed in 1080P HEVC via Peachify TMDB 1616687.",
+    "desc": "When a ruthless mercenary syndicate descends upon a remote mountain homestead, an estranged veteran with a haunted past and his grandchildren must unite their survival instincts to wage an uncompromising counter-offensive. Starring Lukman Sardi, Callista Arum, Sulthan Hamonangan, Derby Romero, Donny Alamsyah. Directed by Sidharta Tata. Streamed in 1080P HEVC via Peachify.",
     "hero": "assets/images/never_surrender_landscape.jpg?v=20261119_v105_real_nflx",
     "poster": "assets/images/never_surrender_poster.jpg?v=20261119_v105_real_nflx",
     "genres": [
@@ -8800,7 +8800,7 @@ const sandflixCatalog = [
     "year": "2026",
     "age": "U/A 16+",
     "dur": "2h 30m",
-    "desc": "A bold, modern romantic dramedy exploring turbulent friendships, love triangles, and emotional vulnerabilities amidst high-stakes metropolitan life. Starring Shahid Kapoor, Kriti Sanon, Rashmika Mandanna. Directed by Homi Adajania, written by Imtiaz Ali. Streamed in 1080P HEVC via Peachify TMDB 1392469.",
+    "desc": "A bold, modern romantic dramedy exploring turbulent friendships, love triangles, and emotional vulnerabilities amidst high-stakes metropolitan life. Starring Shahid Kapoor, Kriti Sanon, Rashmika Mandanna. Directed by Homi Adajania, written by Imtiaz Ali. Streamed in 1080P HEVC via Peachify.",
     "hero": "assets/images/cocktail2_landscape.jpg",
     "poster": "assets/images/cocktail2_poster.jpg",
     "genres": [
@@ -8815,7 +8815,7 @@ const sandflixCatalog = [
     "year": "2026",
     "age": "U/A 13+",
     "dur": "2h 30m",
-    "desc": "A humorous and heartwarming family drama chronicling the quirks, squabbles, and unyielding bonds within a traditional family business in Kerala. Starring Biju Menon, Sreenath Bhasi, Vinay Forrt, Grace Antony. Directed by Thamby. Streamed in 1080P HEVC via Peachify TMDB 1290035.",
+    "desc": "A humorous and heartwarming family drama chronicling the quirks, squabbles, and unyielding bonds within a traditional family business in Kerala. Starring Biju Menon, Sreenath Bhasi, Vinay Forrt, Grace Antony. Directed by Thamby. Streamed in 1080P HEVC via Peachify.",
     "hero": "assets/images/avarachan_landscape.jpg",
     "poster": "assets/images/avarachan_poster.jpg",
     "genres": [
@@ -8832,7 +8832,7 @@ const sandflixCatalog = [
     "year": "2026",
     "age": "U/A 16+",
     "dur": "1h 56m",
-    "desc": "A gritty investigative crime thriller following an ambitious young reporter and her cynical cameraman whose routine coverage spirals into perilous territory when they uncover an illicit sand-mining cartel governed by dangerous political figures. Starring Parineeti Chopra, Deven Bhojani, Adil Hussain, Shekhar Suman, Amol Palekar, Nassar. Directed by Dhruv Tripathi. Streamed in 1080P HEVC via Peachify TMDB 1389172.",
+    "desc": "A gritty investigative crime thriller following an ambitious young reporter and her cynical cameraman whose routine coverage spirals into perilous territory when they uncover an illicit sand-mining cartel governed by dangerous political figures. Starring Parineeti Chopra, Deven Bhojani, Adil Hussain, Shekhar Suman, Amol Palekar, Nassar. Directed by Dhruv Tripathi. Streamed in 1080P HEVC via Peachify.",
     "hero": "assets/images/reporting_live_landscape.jpg",
     "poster": "assets/images/reporting_live_poster.jpg",
     "genres": [
@@ -8847,7 +8847,7 @@ const sandflixCatalog = [
     "year": "2026",
     "age": "U/A 16+",
     "dur": "1h 54m",
-    "desc": "Former country music icon Misty Jones travels back into the intense Nashville music scene determined to unravel the elusive truth behind the sudden and mysterious disappearance of her rising-star niece. Starring Jessica Chastain, Carter Faith, Ross Lynch, John Hawkes, Garrett Hedlund, Norbert Leo Butz. Directed by Shana Feste. Streamed in 1080P HEVC via Peachify TMDB 1543469.",
+    "desc": "Former country music icon Misty Jones travels back into the intense Nashville music scene determined to unravel the elusive truth behind the sudden and mysterious disappearance of her rising-star niece. Starring Jessica Chastain, Carter Faith, Ross Lynch, John Hawkes, Garrett Hedlund, Norbert Leo Butz. Directed by Shana Feste. Streamed in 1080P HEVC via Peachify.",
     "hero": "assets/images/heartland_landscape.jpg",
     "poster": "assets/images/heartland_poster.jpg",
     "genres": [
@@ -8862,7 +8862,7 @@ const sandflixCatalog = [
     "year": "2026",
     "age": "U/A 16+",
     "dur": "1h 49m",
-    "desc": "Given only a single year left to live, an intensely frugal 40-year-old woman decides to spend her hard-earned life savings on hiring a popular nightclub host Sena, sparking a profound emotional transformation that challenges both of their worlds. Starring Ko Shibasaki, Eiji Akaso, Michitaka Tsutsui, Naomi Nishida, Yui Narumi. Directed by Hiroki Kazama. Streamed in 1080P HEVC via Peachify TMDB 1654940.",
+    "desc": "Given only a single year left to live, an intensely frugal 40-year-old woman decides to spend her hard-earned life savings on hiring a popular nightclub host Sena, sparking a profound emotional transformation that challenges both of their worlds. Starring Ko Shibasaki, Eiji Akaso, Michitaka Tsutsui, Naomi Nishida, Yui Narumi. Directed by Hiroki Kazama. Streamed in 1080P HEVC via Peachify.",
     "hero": "assets/images/one_year_to_live_landscape.jpg",
     "poster": "assets/images/one_year_to_live_poster.jpg",
     "genres": [
@@ -8894,7 +8894,7 @@ const sandflixCatalog = [
     "year": "2025",
     "age": "U/A 13+",
     "dur": "2h 36m",
-    "desc": "The third part of the Jolly LLB trilogy brings back Jagdish Tyagi and Jagdishwar Mishra for the biggest courtroom showdown as penurious widow Janki Devi Solanki seeks justice against an arrogant industrialist in a sharp satire on the judiciary and social disparity. Starring Akshay Kumar, Arshad Warsi, Saurabh Shukla, Gajraj Rao, Amrita Rao, Huma Qureshi. Directed by Subhash Kapoor. Streamed in 1080P HEVC via Peachify TMDB 1015981.",
+    "desc": "The third part of the Jolly LLB trilogy brings back Jagdish Tyagi and Jagdishwar Mishra for the biggest courtroom showdown as penurious widow Janki Devi Solanki seeks justice against an arrogant industrialist in a sharp satire on the judiciary and social disparity. Starring Akshay Kumar, Arshad Warsi, Saurabh Shukla, Gajraj Rao, Amrita Rao, Huma Qureshi. Directed by Subhash Kapoor. Streamed in 1080P HEVC via Peachify.",
     "hero": "assets/images/jolly_llb_3_landscape.jpg",
     "poster": "assets/images/jolly_llb_3_poster.jpg",
     "genres": [
@@ -8909,7 +8909,7 @@ const sandflixCatalog = [
     "year": "2025",
     "age": "U/A 13+",
     "dur": "2h 30m",
-    "desc": "Two artistic souls find soulful harmony through musical expression despite their starkly contrasting social backgrounds. As emotional bonds deepen, unexpected circumstances and social expectations test their connection. Starring Ahaan Panday, Aneet Padda, Alam Khan, Rajesh Kumar, Geeta Agrawal Sharma. Directed by Mohit Suri. Streamed in 1080P HEVC via Peachify TMDB 1241634.",
+    "desc": "Two artistic souls find soulful harmony through musical expression despite their starkly contrasting social backgrounds. As emotional bonds deepen, unexpected circumstances and social expectations test their connection. Starring Ahaan Panday, Aneet Padda, Alam Khan, Rajesh Kumar, Geeta Agrawal Sharma. Directed by Mohit Suri. Streamed in 1080P HEVC via Peachify.",
     "hero": "assets/images/saiyaara_landscape.jpg",
     "poster": "assets/images/saiyaara_poster.jpg",
     "genres": [
@@ -8924,7 +8924,7 @@ const sandflixCatalog = [
     "year": "2026",
     "age": "U/A 16+",
     "dur": "1h 50m",
-    "desc": "A family suddenly sealed inside their high-tech home must work together to survive against dwindling food, psychological tension, and the ominous menace keeping them trapped. Starring Greta Lee, Wagner Moura, Riley Chung, Noah Alexander Sosnowski, Emma Ho. Directed by Louis Leterrier. Streamed in 1080P HEVC via Peachify TMDB 1284041.",
+    "desc": "A family suddenly sealed inside their high-tech home must work together to survive against dwindling food, psychological tension, and the ominous menace keeping them trapped. Starring Greta Lee, Wagner Moura, Riley Chung, Noah Alexander Sosnowski, Emma Ho. Directed by Louis Leterrier. Streamed in 1080P HEVC via Peachify.",
     "hero": "assets/images/the_last_house_landscape.jpg",
     "poster": "assets/images/the_last_house_poster.jpg",
     "genres": [
@@ -8955,7 +8955,7 @@ const sandflixCatalog = [
     "year": "2025",
     "age": "U/A 16+",
     "dur": "2h 26m",
-    "desc": "When Neelesh, an idealistic law student from an oppressed social background, enters an elite academic institution, he is confronted with institutional prejudice and systemic hierarchies. His profound relationship with Vidhi challenges caste divisions in a powerful fight for love and equality. Starring Siddhant Chaturvedi, Triptii Dimri, Saad Bilgrami, Saurabh Sachdeva, Vipin Sharma, Zakir Hussain. Directed by Shazia Iqbal, produced by Dharma Productions. Streamed in 1080P HEVC via CodeSpecters TMDB 1213777.",
+    "desc": "When Neelesh, an idealistic law student from an oppressed social background, enters an elite academic institution, he is confronted with institutional prejudice and systemic hierarchies. His profound relationship with Vidhi challenges caste divisions in a powerful fight for love and equality. Starring Siddhant Chaturvedi, Triptii Dimri, Saad Bilgrami, Saurabh Sachdeva, Vipin Sharma, Zakir Hussain. Directed by Shazia Iqbal, produced by Dharma Productions. Streamed in 1080P HEVC via CodeSpecters.",
     "hero": "assets/images/dhadak2_landscape.jpg",
     "poster": "assets/images/dhadak2_poster.jpg",
     "genres": [
@@ -8971,7 +8971,7 @@ const sandflixCatalog = [
     "year": "2025",
     "age": "U/A 16+",
     "dur": "2h 15m",
-    "desc": "The Demon Slayer Corps plunges into the terrifying, dimension-warping Infinity Castle to confront Muzan Kibutsuji and the deadly Upper Rank demons in the climactic war of survival. Spectacular animation by ufotable, directed by Haruo Sotozaki, music by Yuki Kajiura and Go Shiina. Streamed in 4K UHD via Peachify TMDB 1311031.",
+    "desc": "The Demon Slayer Corps plunges into the terrifying, dimension-warping Infinity Castle to confront Muzan Kibutsuji and the deadly Upper Rank demons in the climactic war of survival. Spectacular animation by ufotable, directed by Haruo Sotozaki, music by Yuki Kajiura and Go Shiina. Streamed in 4K UHD via Peachify.",
     "hero": "assets/images/demon_slayer_landscape.jpg",
     "poster": "assets/images/demon_slayer_poster.jpg",
     "genres": [
@@ -8988,7 +8988,7 @@ const sandflixCatalog = [
     "year": "2023",
     "age": "U/A 13+",
     "dur": "2h 35m",
-    "desc": "A doting single father raising his precocious daughter begins narrating stories of her absent mother, unaware that serendipitous encounters with a compassionate woman are about to unravel buried memories and destiny. Starring Nani, Mrunal Thakur, Baby Kiara Khanna, Jayaram, Priyadarshi Pulikonda. Directed by Shouryuv, music by Hesham Abdul Wahab. Streamed in 4K UHD via Peachify TMDB 1068452.",
+    "desc": "A doting single father raising his precocious daughter begins narrating stories of her absent mother, unaware that serendipitous encounters with a compassionate woman are about to unravel buried memories and destiny. Starring Nani, Mrunal Thakur, Baby Kiara Khanna, Jayaram, Priyadarshi Pulikonda. Directed by Shouryuv, music by Hesham Abdul Wahab. Streamed in 4K UHD via Peachify.",
     "hero": "assets/images/hi_papa_landscape.jpg",
     "poster": "assets/images/hi_papa_poster.jpg",
     "genres": [
@@ -9020,7 +9020,7 @@ const sandflixCatalog = [
     "year": "2026",
     "age": "U/A 13+",
     "dur": "2h 10m",
-    "desc": "A fun-filled coming-of-age romantic comedy following 16-year-old carefree schoolboy Praveen and his tight-knit gang as they navigate school life, friendship, teenage romance, and heartfelt life lessons. Written, directed by, and starring Ken Karunas, alongside Anishma Anilkumar, Suraj Venjaramoodu, Devadarshini, Meenakshi Dinesh, Priyanshi Yadav. Music by G. V. Prakash Kumar. Streamed in 1080P HEVC via Peachify TMDB 1542352.",
+    "desc": "A fun-filled coming-of-age romantic comedy following 16-year-old carefree schoolboy Praveen and his tight-knit gang as they navigate school life, friendship, teenage romance, and heartfelt life lessons. Written, directed by, and starring Ken Karunas, alongside Anishma Anilkumar, Suraj Venjaramoodu, Devadarshini, Meenakshi Dinesh, Priyanshi Yadav. Music by G. V. Prakash Kumar. Streamed in 1080P HEVC via Peachify.",
     "hero": "assets/images/youth_landscape.jpg",
     "poster": "assets/images/youth_poster.jpg",
     "genres": [
@@ -9037,7 +9037,7 @@ const sandflixCatalog = [
     "year": "2025",
     "age": "U/A 16+",
     "dur": "2h 41m",
-    "desc": "An epic historical action saga chronicling the valiant life and fearless battles of Chhatrapati Sambhaji Maharaj, the lion of the Maratha Empire, as he fiercely defends Swarajya against Mughal Emperor Aurangzeb. Starring Vicky Kaushal, Rashmika Mandanna, Akshaye Khanna, Ashutosh Rana, Divya Dutta, Vineet Kumar Singh. Directed by Laxman Utekar, produced by Dinesh Vijan, music by A. R. Rahman. Streamed in 4K UHD via Peachify TMDB 1196943.",
+    "desc": "An epic historical action saga chronicling the valiant life and fearless battles of Chhatrapati Sambhaji Maharaj, the lion of the Maratha Empire, as he fiercely defends Swarajya against Mughal Emperor Aurangzeb. Starring Vicky Kaushal, Rashmika Mandanna, Akshaye Khanna, Ashutosh Rana, Divya Dutta, Vineet Kumar Singh. Directed by Laxman Utekar, produced by Dinesh Vijan, music by A. R. Rahman. Streamed in 4K UHD via Peachify.",
     "hero": "assets/images/chhaava_landscape.jpg",
     "poster": "assets/images/chhaava_poster.jpg",
     "genres": [
@@ -9053,7 +9053,7 @@ const sandflixCatalog = [
     "year": "2025",
     "age": "U/A 16+",
     "dur": "2h 13m",
-    "desc": "In a cursed remote village shadowed by ancient demonic forces, a determined mother unleashes the fierce divine wrath of Goddess Kali to rescue her abducted daughter from a child-devouring entity. Starring Kajol, Ronit Roy, Indraneil Sengupta, Kherin Sharma, Jitin Gulati. Directed by Vishal Furia, produced by Ajay Devgn and Jyoti Deshpande. Streamed in 1080P HEVC via Peachify TMDB 1389158.",
+    "desc": "In a cursed remote village shadowed by ancient demonic forces, a determined mother unleashes the fierce divine wrath of Goddess Kali to rescue her abducted daughter from a child-devouring entity. Starring Kajol, Ronit Roy, Indraneil Sengupta, Kherin Sharma, Jitin Gulati. Directed by Vishal Furia, produced by Ajay Devgn and Jyoti Deshpande. Streamed in 1080P HEVC via Peachify.",
     "hero": "assets/images/maa_landscape.jpg",
     "poster": "assets/images/maa_poster.jpg",
     "genres": [
@@ -9069,7 +9069,7 @@ const sandflixCatalog = [
     "year": "2025",
     "age": "U/A 16+",
     "dur": "2h 38m",
-    "desc": "A stylized retro action-gangster romance following a ruthless yet charismatic lone wolf driven by love, laughter, and relentless war. Starring Suriya, Pooja Hegde, Jayaram, Karunakaran, Joju George. Directed by Karthik Subbaraj, music composed by Santhosh Narayanan, produced by 2D Entertainment. Streamed in 4K UHD via Peachify TMDB 1265827.",
+    "desc": "A stylized retro action-gangster romance following a ruthless yet charismatic lone wolf driven by love, laughter, and relentless war. Starring Suriya, Pooja Hegde, Jayaram, Karunakaran, Joju George. Directed by Karthik Subbaraj, music composed by Santhosh Narayanan, produced by 2D Entertainment. Streamed in 4K UHD via Peachify.",
     "hero": "assets/images/retro_landscape.jpg",
     "poster": "assets/images/retro_poster.jpg",
     "genres": [
@@ -9118,7 +9118,7 @@ const sandflixCatalog = [
     "year": "2026",
     "age": "A 18+",
     "dur": "1h 36m",
-    "desc": "The legendary Wayans Brothers (Marlon, Shawn, and Keenen Ivory Wayans) reunite alongside franchise icons Anna Faris (Cindy Campbell) and Regina Hall (Brenda Meeks) to resurrect the premier horror parody franchise. Skewering modern horror sensations (M3GAN, Smile, Longlegs, Talk to Me, Hereditary), Scary Movie 6 unleashes side-splitting, unfiltered slapstick mayhem. Produced by Miramax. Streamed in 1080P HEVC via Peachify TMDB 1273221.",
+    "desc": "The legendary Wayans Brothers (Marlon, Shawn, and Keenen Ivory Wayans) reunite alongside franchise icons Anna Faris (Cindy Campbell) and Regina Hall (Brenda Meeks) to resurrect the premier horror parody franchise. Skewering modern horror sensations (M3GAN, Smile, Longlegs, Talk to Me, Hereditary), Scary Movie 6 unleashes side-splitting, unfiltered slapstick mayhem. Produced by Miramax. Streamed in 1080P HEVC via Peachify.",
     "hero": "assets/images/scary_movie_6_landscape.jpg?v=20261120_v110_clean_art",
     "poster": "assets/images/scary_movie_6_poster.jpg?v=20261120_v110_clean_art",
     "genres": [
@@ -9149,7 +9149,7 @@ const sandflixCatalog = [
     "year": "2025",
     "age": "U/A 16+",
     "dur": "2h 45m",
-    "desc": "National Award-winning director Aditya Dhar (Uri: The Surgical Strike) helms a high-octane geopolitical spy action saga based on real covert espionage missions conducted by Indian intelligence. Starring Ranveer Singh as a daring undercover operative, alongside Sanjay Dutt, R. Madhavan, Akshaye Khanna, and Arjun Rampal. Produced by Jio Studios and B62 Studios. Streamed in 4K UHD via Peachify TMDB 1291608.",
+    "desc": "National Award-winning director Aditya Dhar (Uri: The Surgical Strike) helms a high-octane geopolitical spy action saga based on real covert espionage missions conducted by Indian intelligence. Starring Ranveer Singh as a daring undercover operative, alongside Sanjay Dutt, R. Madhavan, Akshaye Khanna, and Arjun Rampal. Produced by Jio Studios and B62 Studios. Streamed in 4K UHD via Peachify.",
     "hero": "assets/images/dhurandhar_landscape.jpg?v=20261120_v110_clean_art",
     "poster": "assets/images/dhurandhar_poster.jpg?v=20261120_v110_clean_art",
     "genres": [
@@ -9212,7 +9212,7 @@ const sandflixCatalog = [
     "year": "2026",
     "age": "U/A 7+",
     "dur": "1h 42m",
-    "desc": "A witty, heartwarming sci-fi comedy adventure from Disney and Pixar Animation Studios. An animal-loving college student Mabel utilizes revolutionary neuro-link science to hop her consciousness into an ultra-realistic robotic beaver. Infiltrating the wilderness, she befriends charismatic woodland creatures to protect their forest realm from ruthless urban expansion. Directed by Daniel Chong. Voices by Piper Curda, Bobby Moynihan, Jon Hamm. Streamed in 4K UHD via Peachify TMDB 1327819.",
+    "desc": "A witty, heartwarming sci-fi comedy adventure from Disney and Pixar Animation Studios. An animal-loving college student Mabel utilizes revolutionary neuro-link science to hop her consciousness into an ultra-realistic robotic beaver. Infiltrating the wilderness, she befriends charismatic woodland creatures to protect their forest realm from ruthless urban expansion. Directed by Daniel Chong. Voices by Piper Curda, Bobby Moynihan, Jon Hamm. Streamed in 4K UHD via Peachify.",
     "hero": "assets/images/hoppers_landscape.jpg?v=20261120_v110_clean_art",
     "poster": "assets/images/hoppers_poster.jpg?v=20261120_v110_clean_art",
     "genres": [
@@ -9229,7 +9229,7 @@ const sandflixCatalog = [
     "year": "2026",
     "age": "U/A 16+",
     "dur": "2h 50m",
-    "desc": "The monumental biographical musical drama directed by Antoine Fuqua and produced by Graham King (Bohemian Rhapsody). Chronicling the triumphant yet turbulent life and enduring legacy of global music icon Michael Jackson, from child prodigy in the Jackson 5 to the undisputed King of Pop. Starring nephew Jaafar Jackson in an electric tour-de-force performance alongside Colman Domingo, Nia Long, Miles Teller. Lionsgate & Universal Pictures. Streamed in 4K UHD via Peachify TMDB 936075.",
+    "desc": "The monumental biographical musical drama directed by Antoine Fuqua and produced by Graham King (Bohemian Rhapsody). Chronicling the triumphant yet turbulent life and enduring legacy of global music icon Michael Jackson, from child prodigy in the Jackson 5 to the undisputed King of Pop. Starring nephew Jaafar Jackson in an electric tour-de-force performance alongside Colman Domingo, Nia Long, Miles Teller. Lionsgate & Universal Pictures. Streamed in 4K UHD via Peachify.",
     "hero": "assets/images/michael_landscape.jpg?v=20261120_v110_clean_art",
     "poster": "assets/images/michael_poster.jpg?v=20261120_v110_clean_art",
     "genres": [
@@ -9375,7 +9375,7 @@ const sandflixCatalog = [
       "year": "2026",
       "age": "PG-13",
       "dur": "Summer 2026",
-      "desc": "Peter Parker begins a brand-new chapter navigating life after the worldwide memory wipe erased his civilian identity. As street-level crime escalates across New York City and formidable new adversaries emerge from the shadows, Spider-Man must forge unexpected alliances and discover what it truly costs to be a standalone hero. TMDB ID 969681.",
+      "desc": "Peter Parker begins a brand-new chapter navigating life after the worldwide memory wipe erased his civilian identity. As street-level crime escalates across New York City and formidable new adversaries emerge from the shadows, Spider-Man must forge unexpected alliances and discover what it truly costs to be a standalone hero.",
       "hero": "assets/images/spiderman_brand_new_day_landscape.jpg?v=20261120_v111_row7_fullcard",
       "poster": "assets/images/spiderman_brand_new_day_poster.jpg?v=20261120_v111_row7_fullcard",
       "genres": [
@@ -9392,7 +9392,7 @@ const sandflixCatalog = [
       "year": "2026",
       "age": "R",
       "dur": "Fall 2026",
-      "desc": "A body-horror psychological noir exploring the tragic descent of Basil Karlo, a once-revered B-movie actor whose desperate quest for vanity and youth leads him to an experimental chemical treatment. Mutating into a monstrous, shape-shifting entity consumed by identity dysphoria, he wages a horrifying war against Gotham City's elite. TMDB ID 1400940.",
+      "desc": "A body-horror psychological noir exploring the tragic descent of Basil Karlo, a once-revered B-movie actor whose desperate quest for vanity and youth leads him to an experimental chemical treatment. Mutating into a monstrous, shape-shifting entity consumed by identity dysphoria, he wages a horrifying war against Gotham City's elite.",
       "hero": "assets/images/clayface_landscape.jpg?v=20261120_v111_row7_fullcard",
       "poster": "assets/images/clayface_poster.jpg?v=20261120_v111_row7_fullcard",
       "genres": [
@@ -9409,7 +9409,7 @@ const sandflixCatalog = [
       "year": "2026",
       "age": "R",
       "dur": "Fall 2026",
-      "desc": "A terrifying cinematic reboot returning to the claustrophobic survival-horror roots of Capcom's iconic franchise. Trapped deep inside the infected bio-weapons research complex of the Arklay Mountains, a specialized tactical team faces grotesque viral mutations and Umbrella Corporation's catastrophic bio-hazard cover-up. TMDB ID 1423191.",
+      "desc": "A terrifying cinematic reboot returning to the claustrophobic survival-horror roots of Capcom's iconic franchise. Trapped deep inside the infected bio-weapons research complex of the Arklay Mountains, a specialized tactical team faces grotesque viral mutations and Umbrella Corporation's catastrophic bio-hazard cover-up.",
       "hero": "assets/images/resident_evil_2026_landscape.jpg?v=20261120_v111_row7_fullcard",
       "poster": "assets/images/resident_evil_2026_poster.jpg?v=20261120_v111_row7_fullcard",
       "genres": [
@@ -9426,7 +9426,7 @@ const sandflixCatalog = [
       "year": "2026",
       "age": "PG-13",
       "dur": "March 2026",
-      "desc": "Legendary martial artists from across the globe converge to battle in the shadowy World Warrior Tournament orchestrated by M. Bison's Shadaloo syndicate. Ryu and Ken Masters must master the ancient power of Ansatsuken and overcome dark Hadou energy to prevent worldwide devastation. TMDB ID 1153576.",
+      "desc": "Legendary martial artists from across the globe converge to battle in the shadowy World Warrior Tournament orchestrated by M. Bison's Shadaloo syndicate. Ryu and Ken Masters must master the ancient power of Ansatsuken and overcome dark Hadou energy to prevent worldwide devastation.",
       "hero": "assets/images/street_fighter_landscape.jpg?v=20261120_v111_row7_fullcard",
       "poster": "assets/images/street_fighter_poster.jpg?v=20261120_v111_row7_fullcard",
       "genres": [
@@ -9442,7 +9442,7 @@ const sandflixCatalog = [
       "year": "2026",
       "age": "G",
       "dur": "June 2026",
-      "desc": "Woody, Buzz Lightyear, and the beloved toy crew face their ultimate 21st-century existential challenge: competing for children's devotion against modern digital screens, tablets, and interactive electronics. Together, they embark on a hilarious, heartwarming quest to prove the enduring magic of imagination and playtime. TMDB ID 1084244.",
+      "desc": "Woody, Buzz Lightyear, and the beloved toy crew face their ultimate 21st-century existential challenge: competing for children's devotion against modern digital screens, tablets, and interactive electronics. Together, they embark on a hilarious, heartwarming quest to prove the enduring magic of imagination and playtime.",
       "hero": "assets/images/toy_story_5_landscape.jpg?v=20261120_v111_row7_fullcard",
       "poster": "assets/images/toy_story_5_poster.jpg?v=20261120_v111_row7_fullcard",
       "genres": [
@@ -9459,7 +9459,7 @@ const sandflixCatalog = [
       "year": "2026",
       "age": "PG-13",
       "dur": "June 2026",
-      "desc": "Unlike her cousin Superman who was raised on Earth by loving parents, Kara Zor-El grew up on a chipped-off rock of Krypton, witnessing everyone around her die tragically. Hardened and accompanied by Krypto the Superdog, she embarks on an epic, interstellar revenge quest across the cosmos with an alien girl named Ruthye. TMDB ID 1081003.",
+      "desc": "Unlike her cousin Superman who was raised on Earth by loving parents, Kara Zor-El grew up on a chipped-off rock of Krypton, witnessing everyone around her die tragically. Hardened and accompanied by Krypto the Superdog, she embarks on an epic, interstellar revenge quest across the cosmos with an alien girl named Ruthye.",
       "hero": "assets/images/supergirl_woman_of_tomorrow_landscape.jpg?v=20261120_v111_row7_fullcard",
       "poster": "assets/images/supergirl_woman_of_tomorrow_poster.jpg?v=20261120_v111_row7_fullcard",
       "genres": [
@@ -9476,7 +9476,7 @@ const sandflixCatalog = [
       "year": "2026",
       "age": "PG-13",
       "dur": "May 2026",
-      "desc": "The legendary Mandalorian bounty hunter Din Djarin and his Force-sensitive apprentice Grogu transition to the grand theatrical big screen. Partnering with the fledgling New Republic, they hunt Imperial remnants scheming in the dark corners of the outer rim galaxy to protect the fragile peace. TMDB ID 1228710.",
+      "desc": "The legendary Mandalorian bounty hunter Din Djarin and his Force-sensitive apprentice Grogu transition to the grand theatrical big screen. Partnering with the fledgling New Republic, they hunt Imperial remnants scheming in the dark corners of the outer rim galaxy to protect the fragile peace.",
       "hero": "assets/images/mandalorian_and_grogu_landscape.jpg?v=20261120_v111_row7_fullcard",
       "poster": "assets/images/mandalorian_and_grogu_poster.jpg?v=20261120_v111_row7_fullcard",
       "genres": [
@@ -9493,7 +9493,7 @@ const sandflixCatalog = [
       "year": "2026",
       "age": "PG-13",
       "dur": "November 2026",
-      "desc": "Following the Academy Award-winning global triumph of Godzilla Minus One, visionary director Takashi Yamazaki returns with the next colossal chapter in the Toho kaiju saga. As postwar Japan strives to rebuild, a terrifying atomic terror re-emerges from the oceanic abyss with catastrophic destructive fury. TMDB ID 1381071.",
+      "desc": "Following the Academy Award-winning global triumph of Godzilla Minus One, visionary director Takashi Yamazaki returns with the next colossal chapter in the Toho kaiju saga. As postwar Japan strives to rebuild, a terrifying atomic terror re-emerges from the oceanic abyss with catastrophic destructive fury.",
       "hero": "assets/images/godzilla_minus_zero_landscape.jpg?v=20261120_v111_row7_fullcard",
       "poster": "assets/images/godzilla_minus_zero_poster.jpg?v=20261120_v111_row7_fullcard",
       "genres": [
@@ -9510,7 +9510,7 @@ const sandflixCatalog = [
       "year": "2026",
       "age": "PG-13",
       "dur": "March 2026",
-      "desc": "Ryland Grace, a middle-school science teacher turned lone survivor of an interstellar desperate mission, awakens from a coma with amnesia light-years from Earth. As our sun dies from an alien microbe, Grace must combine scientific deduction and an extraordinary interspecies friendship with an alien named Rocky to save humanity. TMDB ID 687163.",
+      "desc": "Ryland Grace, a middle-school science teacher turned lone survivor of an interstellar desperate mission, awakens from a coma with amnesia light-years from Earth. As our sun dies from an alien microbe, Grace must combine scientific deduction and an extraordinary interspecies friendship with an alien named Rocky to save humanity.",
       "hero": "assets/images/project_hail_mary_landscape.jpg?v=20261120_v111_row7_fullcard",
       "poster": "assets/images/project_hail_mary_poster.jpg?v=20261120_v111_row7_fullcard",
       "genres": [
@@ -9527,7 +9527,7 @@ const sandflixCatalog = [
     "year": "2026",
     "age": "U/A 7+",
     "dur": "2h 10m",
-    "desc": "A grieving boy seeks God to meet his departed mother, and in finding the divine, learns to serve humanity through the eternal devotion and inspiration of Lord Hanuman. Starring Shobhinaw Satyaa, Vihaan Shedge, Chandan Anand, Purnima Tiwari, Anil Rastogi. Directed by Vishal Chaturvedi. Streamed in 4K UHD via Peachify TMDB 1709391.",
+    "desc": "A grieving boy seeks God to meet his departed mother, and in finding the divine, learns to serve humanity through the eternal devotion and inspiration of Lord Hanuman. Starring Shobhinaw Satyaa, Vihaan Shedge, Chandan Anand, Purnima Tiwari, Anil Rastogi. Directed by Vishal Chaturvedi. Streamed in 4K UHD via Peachify.",
     "hero": "assets/images/hanuman_ansh_landscape.jpg?v=20261122_v113_recent_add",
     "poster": "assets/images/hanuman_ansh_poster.jpg?v=20261122_v113_recent_add",
     "genres": ["Family", "Drama", "Devotional"],
@@ -9540,7 +9540,7 @@ const sandflixCatalog = [
     "year": "2026",
     "age": "U/A 13+",
     "dur": "2h 20m",
-    "desc": "Saravana, Mithra, Jacky, and Janaki are skilled con artists hiding out as an ordinary family in Multan. Facing unexpected threats and gripping twists, they plan the ultimate heist. Starring Arjun Das, Anna Ben, Yogi Babu, Vadivukarasi, Thambi Ramaiah. Directed by Harish Durairaj. Streamed in 4K UHD via Peachify TMDB 1596008.",
+    "desc": "Saravana, Mithra, Jacky, and Janaki are skilled con artists hiding out as an ordinary family in Multan. Facing unexpected threats and gripping twists, they plan the ultimate heist. Starring Arjun Das, Anna Ben, Yogi Babu, Vadivukarasi, Thambi Ramaiah. Directed by Harish Durairaj. Streamed in 4K UHD via Peachify.",
     "hero": "assets/images/kon_city_landscape.jpg?v=20261122_v113_recent_add",
     "poster": "assets/images/kon_city_poster.jpg?v=20261122_v113_recent_add",
     "genres": ["Comedy", "Crime", "Drama"],
@@ -9553,7 +9553,7 @@ const sandflixCatalog = [
     "year": "2026",
     "age": "U/A 13+",
     "dur": "2h 15m",
-    "desc": "In 1986 Madras, a timid eight-year-old boy accidentally traps a feared gangster inside a deserted school toilet. As tension mounts and the hunt for the missing gangster intensifies, an unlikely bond and a chain of chaotic events reshape their lives. Starring Vijay Sethupathi, Sai Prithviraj, Lijomol Jose, and Sahasra Sree. Directed by Balaji Tharaneetharan. Streamed in 4K UHD via Peachify TMDB 1515692.",
+    "desc": "In 1986 Madras, a timid eight-year-old boy accidentally traps a feared gangster inside a deserted school toilet. As tension mounts and the hunt for the missing gangster intensifies, an unlikely bond and a chain of chaotic events reshape their lives. Starring Vijay Sethupathi, Sai Prithviraj, Lijomol Jose, and Sahasra Sree. Directed by Balaji Tharaneetharan. Streamed in 4K UHD via Peachify.",
     "hero": "assets/images/baththa_landscape.jpg?v=20261122_v112_new_trending",
     "poster": "assets/images/baththa_poster.jpg?v=20261122_v112_new_trending",
     "genres": ["Action", "Comedy", "Drama"],
@@ -9566,7 +9566,7 @@ const sandflixCatalog = [
     "year": "2026",
     "age": "U/A 13+",
     "dur": "2h 10m",
-    "desc": "A charismatic young man uses the delicate art of poetry to navigate the complex maze of modern romance and protect his fragile relationship against societal pressures. Starring Aegan, Sridevi Apalla, Femina George, and Adhirchi Arun. Directed by Yuvaraj Chinnasamy. Streamed in 4K UHD via Peachify TMDB 1593350.",
+    "desc": "A charismatic young man uses the delicate art of poetry to navigate the complex maze of modern romance and protect his fragile relationship against societal pressures. Starring Aegan, Sridevi Apalla, Femina George, and Adhirchi Arun. Directed by Yuvaraj Chinnasamy. Streamed in 4K UHD via Peachify.",
     "hero": "assets/images/haiku_landscape.jpg?v=20261122_v112_new_trending",
     "poster": "assets/images/haiku_poster.jpg?v=20261122_v112_new_trending",
     "genres": ["Romance", "Comedy"],
@@ -9579,7 +9579,7 @@ const sandflixCatalog = [
     "year": "2026",
     "age": "U/A 13+",
     "dur": "2h 20m",
-    "desc": "The inspiring biopic of G.D. Naidu, the Edison of India, who overcame insurmountable challenges and defied a repressive colonial regime to create transformative inventions and industrial breakthroughs. Starring R. Madhavan, Priyamani, Sathyaraj, and Jayaram. Directed by Krishnakumar Ramakumar. Streamed in 4K UHD via Peachify TMDB 1489543.",
+    "desc": "The inspiring biopic of G.D. Naidu, the Edison of India, who overcame insurmountable challenges and defied a repressive colonial regime to create transformative inventions and industrial breakthroughs. Starring R. Madhavan, Priyamani, Sathyaraj, and Jayaram. Directed by Krishnakumar Ramakumar. Streamed in 4K UHD via Peachify.",
     "hero": "assets/images/gdn_landscape.jpg?v=20261122_v112_new_trending",
     "poster": "assets/images/gdn_poster.jpg?v=20261122_v112_new_trending",
     "genres": ["Biopic", "Drama", "History"],
@@ -9592,7 +9592,7 @@ const sandflixCatalog = [
     "year": "2026",
     "age": "A 18+",
     "dur": "2h 05m",
-    "desc": "Set in a medical college situated in a dread-stricken village, the gripping narrative confronts the rational science behind superstitions and the terrifying, superstitious truths lurking behind scientific reality. Starring Chaithra J Achar, Charan Lakkaraju, Preethi Pagadala, and Ramesh Indira. Directed by Kiran Nadagouda. Streamed in 4K UHD via Peachify TMDB 1606527.",
+    "desc": "Set in a medical college situated in a dread-stricken village, the gripping narrative confronts the rational science behind superstitions and the terrifying, superstitious truths lurking behind scientific reality. Starring Chaithra J Achar, Charan Lakkaraju, Preethi Pagadala, and Ramesh Indira. Directed by Kiran Nadagouda. Streamed in 4K UHD via Peachify.",
     "hero": "assets/images/movie_418_landscape.jpg?v=20261122_v112_new_trending",
     "poster": "assets/images/movie_418_poster.jpg?v=20261122_v112_new_trending",
     "genres": ["Horror", "Mystery", "Thriller"],
@@ -9605,7 +9605,7 @@ const sandflixCatalog = [
     "year": "2026",
     "age": "U/A 7+",
     "dur": "1h 45m",
-    "desc": "After being blamed for disrupting the Royal Ball with a stolen magic wand, a misunderstood stepsister accidentally turns her world upside down and embarks on an unforgettable fantasy adventure to restore harmony. Starring the vocal talents of Ali Wong, Amanda Seyfried, Stephanie Hsu, and Nikki Glaser. Directed by Alyce Tzue. Streamed in 4K UHD via Peachify TMDB 1595124.",
+    "desc": "After being blamed for disrupting the Royal Ball with a stolen magic wand, a misunderstood stepsister accidentally turns her world upside down and embarks on an unforgettable fantasy adventure to restore harmony. Starring the vocal talents of Ali Wong, Amanda Seyfried, Stephanie Hsu, and Nikki Glaser. Directed by Alyce Tzue. Streamed in 4K UHD via Peachify.",
     "hero": "assets/images/steps_landscape.jpg?v=20261122_v112_new_trending",
     "poster": "assets/images/steps_poster.jpg?v=20261122_v112_new_trending",
     "genres": ["Animation", "Fantasy", "Comedy"],
@@ -9618,7 +9618,7 @@ const sandflixCatalog = [
   "year": "2026",
   "age": "U/A 13+",
   "dur": "2h 21m",
-  "desc": "Raman (Prithviraj Sukumaran), a seasoned police officer with a controversial record of staged encounters and harsh interrogations, finds himself locked in an intense psychological battle as Ajooni (Kareena Kapoor Khan) relentlessly challenges his methods at every step. Directed by Meghna Gulzar, produced by Junglee Pictures & Pen Studios. Streamed in 4K UHD via Peachify TMDB 1215889.",
+  "desc": "Raman (Prithviraj Sukumaran), a seasoned police officer with a controversial record of staged encounters and harsh interrogations, finds himself locked in an intense psychological battle as Ajooni (Kareena Kapoor Khan) relentlessly challenges his methods at every step. Directed by Meghna Gulzar, produced by Junglee Pictures & Pen Studios. Streamed in 4K UHD via Peachify.",
   "hero": "assets/images/daayra_landscape.jpg?v=20261120_v106_new_premieres",
   "poster": "assets/images/daayra_poster.jpg?v=20261120_v106_new_premieres",
   "genres": [
@@ -9634,7 +9634,7 @@ const sandflixCatalog = [
   "year": "2026",
   "age": "U/A 13+",
   "dur": "2h 41m",
-  "desc": "A heartwarming and gripping drama chronicling the legacy of a distinguished family firm. When unexpected corporate rivals and interpersonal tensions threaten everything their patriarch built, a devoted son steps forward to reclaim honor and justice. Starring Suriya, Mamitha Baiju, Raveena Tandon. Directed by Venky Atluri. Streamed in 4K UHD via Peachify TMDB 1408162.",
+  "desc": "A heartwarming and gripping drama chronicling the legacy of a distinguished family firm. When unexpected corporate rivals and interpersonal tensions threaten everything their patriarch built, a devoted son steps forward to reclaim honor and justice. Starring Suriya, Mamitha Baiju, Raveena Tandon. Directed by Venky Atluri. Streamed in 4K UHD via Peachify.",
   "hero": "assets/images/vishwanath_and_sons_landscape.jpg?v=20261120_v106_new_premieres",
   "poster": "assets/images/vishwanath_and_sons_poster.jpg?v=20261120_v106_new_premieres",
   "genres": [
@@ -9651,7 +9651,7 @@ const sandflixCatalog = [
   "year": "2026",
   "age": "U/A 13+",
   "dur": "2h 4m",
-  "desc": "A gripping nocturnal thriller where an unexpected chain of events plunges an ordinary town into a maze of crime, suspense, and dark revelations before sunrise. Starring Manoj Bajpayee, Divya Dutta, Akshay Oberoi, Saqib Saleem. Directed by Ritesh Shah. Streamed in 1080P HEVC via Peachify TMDB 1453407.",
+  "desc": "A gripping nocturnal thriller where an unexpected chain of events plunges an ordinary town into a maze of crime, suspense, and dark revelations before sunrise. Starring Manoj Bajpayee, Divya Dutta, Akshay Oberoi, Saqib Saleem. Directed by Ritesh Shah. Streamed in 1080P HEVC via Peachify.",
   "hero": "assets/images/gajab_raat_landscape.jpg?v=20261120_v106_new_premieres",
   "poster": "assets/images/gajab_raat_poster.jpg?v=20261120_v106_new_premieres",
   "genres": [
@@ -9667,7 +9667,7 @@ const sandflixCatalog = [
   "year": "2026",
   "age": "U/A 13+",
   "dur": "1h 1m",
-  "desc": "A lighthearted festive comedy exploring the chaotic, humorous, and emotional mishaps of a vibrant Indian family gathering for Diwali celebrations. Starring Mihir Ahuja, Manoj Pahwa, Neelu Kohli. Directed by Ritesh Menon. Streamed in 1080P HEVC via Peachify TMDB 1810711.",
+  "desc": "A lighthearted festive comedy exploring the chaotic, humorous, and emotional mishaps of a vibrant Indian family gathering for Diwali celebrations. Starring Mihir Ahuja, Manoj Pahwa, Neelu Kohli. Directed by Ritesh Menon. Streamed in 1080P HEVC via Peachify.",
   "hero": "assets/images/dilwali_diwali_landscape.jpg?v=20261120_v106_new_premieres",
   "poster": "assets/images/dilwali_diwali_poster.jpg?v=20261120_v106_new_premieres",
   "genres": [
@@ -9682,7 +9682,7 @@ const sandflixCatalog = [
   "year": "2025",
   "age": "U/A 13+",
   "dur": "2h 11m",
-  "desc": "An epic animated cinematic saga portraying the divine avatar of Lord Vishnu\u2014Narasimha\u2014and his supreme manifestation to vanquish the demonic king Hiranyakashipu and protect his devout follower Prahlada. Directed by Ashwin Kumar. Streamed in 4K UHD via Peachify TMDB 1383072.",
+  "desc": "An epic animated cinematic saga portraying the divine avatar of Lord Vishnu\u2014Narasimha\u2014and his supreme manifestation to vanquish the demonic king Hiranyakashipu and protect his devout follower Prahlada. Directed by Ashwin Kumar. Streamed in 4K UHD via Peachify.",
   "hero": "assets/images/mahavatar_narsimha_landscape.jpg?v=20261120_v106_new_premieres",
   "poster": "assets/images/mahavatar_narsimha_poster.jpg?v=20261120_v106_new_premieres",
   "genres": [
@@ -9700,7 +9700,7 @@ const sandflixCatalog = [
   "year": "2026",
   "age": "U/A 13+",
   "dur": "3h 21m",
-  "desc": "The grand military action sequel set against the backdrop of historical conflicts. A courageous battalion of Indian soldiers mounts an unyielding defense against overwhelming enemy forces, exemplifying ultimate valor, brotherhood, and patriotism. Starring Sunny Deol, Varun Dhawan, Diljit Dosanjh, Ahan Shetty. Directed by Anurag Singh. Streamed in 4K UHD via Peachify TMDB 1213898.",
+  "desc": "The grand military action sequel set against the backdrop of historical conflicts. A courageous battalion of Indian soldiers mounts an unyielding defense against overwhelming enemy forces, exemplifying ultimate valor, brotherhood, and patriotism. Starring Sunny Deol, Varun Dhawan, Diljit Dosanjh, Ahan Shetty. Directed by Anurag Singh. Streamed in 4K UHD via Peachify.",
   "hero": "assets/images/border_2_landscape.jpg?v=20261120_v106_new_premieres",
   "poster": "assets/images/border_2_poster.jpg?v=20261120_v106_new_premieres",
   "genres": [
@@ -9717,7 +9717,7 @@ const sandflixCatalog = [
   "year": "2026",
   "age": "U/A 13+",
   "dur": "2h 28m",
-  "desc": "A deeply moving biographical war drama recounting the extraordinary bravery and sacrifice of Second Lieutenant Arun Khetarpal PVC, who fought heroically during the Battle of Basantar at the age of twenty-one. Starring Dharmendra, Jaideep Ahlawat, Agastya Nanda. Directed by Sriram Raghavan. Streamed in 1080P HEVC via Peachify TMDB 1196946.",
+  "desc": "A deeply moving biographical war drama recounting the extraordinary bravery and sacrifice of Second Lieutenant Arun Khetarpal PVC, who fought heroically during the Battle of Basantar at the age of twenty-one. Starring Dharmendra, Jaideep Ahlawat, Agastya Nanda. Directed by Sriram Raghavan. Streamed in 1080P HEVC via Peachify.",
   "hero": "assets/images/ikkis_landscape.jpg?v=20261120_v106_new_premieres",
   "poster": "assets/images/ikkis_poster.jpg?v=20261120_v106_new_premieres",
   "genres": [
@@ -9734,7 +9734,7 @@ const sandflixCatalog = [
   "year": "2026",
   "age": "U/A 13+",
   "dur": "1h 49m",
-  "desc": "An engaging romantic comedy following a high-profile bodyguard tasked with protecting an eccentric international music star, only to find unexpected affection blossoming amidst chaos and spotlights. Starring Leighton Meester, Jared Padalecki, Andie MacDowell. Directed by Elizabeth Allen Rosenbaum. Streamed in 4K UHD via Peachify TMDB 1551025.",
+  "desc": "An engaging romantic comedy following a high-profile bodyguard tasked with protecting an eccentric international music star, only to find unexpected affection blossoming amidst chaos and spotlights. Starring Leighton Meester, Jared Padalecki, Andie MacDowell. Directed by Elizabeth Allen Rosenbaum. Streamed in 4K UHD via Peachify.",
   "hero": "assets/images/guarding_stars_landscape.jpg?v=20261120_v106_new_premieres",
   "poster": "assets/images/guarding_stars_poster.jpg?v=20261120_v106_new_premieres",
   "genres": [
@@ -9751,7 +9751,7 @@ const sandflixCatalog = [
     "year": "2026",
     "age": "U/A 13+",
     "dur": "2h 15m",
-    "desc": "In 1986 Madras, a timid eight-year-old boy accidentally traps a feared gangster inside a deserted school toilet. As tension mounts and the hunt for the missing gangster intensifies, an unlikely bond and a chain of chaotic events reshape their lives. Starring Vijay Sethupathi, Sai Prithviraj, Lijomol Jose, and Sahasra Sree. Directed by Balaji Tharaneetharan. Streamed in 4K UHD via Peachify TMDB 1515692.",
+    "desc": "In 1986 Madras, a timid eight-year-old boy accidentally traps a feared gangster inside a deserted school toilet. As tension mounts and the hunt for the missing gangster intensifies, an unlikely bond and a chain of chaotic events reshape their lives. Starring Vijay Sethupathi, Sai Prithviraj, Lijomol Jose, and Sahasra Sree. Directed by Balaji Tharaneetharan. Streamed in 4K UHD via Peachify.",
     "hero": "assets/images/baththa_landscape.jpg",
     "poster": "assets/images/baththa_poster.jpg",
     "genres": [
@@ -9768,7 +9768,7 @@ const sandflixCatalog = [
     "year": "2026",
     "age": "U/A 13+",
     "dur": "2h 10m",
-    "desc": "A charismatic young man uses the delicate art of poetry to navigate the complex maze of modern romance and protect his fragile relationship against societal pressures. Starring Aegan, Sridevi Apalla, Femina George, and Adhirchi Arun. Directed by Yuvaraj Chinnasamy. Streamed in 4K UHD via Peachify TMDB 1593350.",
+    "desc": "A charismatic young man uses the delicate art of poetry to navigate the complex maze of modern romance and protect his fragile relationship against societal pressures. Starring Aegan, Sridevi Apalla, Femina George, and Adhirchi Arun. Directed by Yuvaraj Chinnasamy. Streamed in 4K UHD via Peachify.",
     "hero": "assets/images/haiku_landscape.jpg",
     "poster": "assets/images/haiku_poster.jpg",
     "genres": [
@@ -9785,7 +9785,7 @@ const sandflixCatalog = [
     "year": "2026",
     "age": "U/A 13+",
     "dur": "2h 20m",
-    "desc": "Biographical drama chronicling the astonishing life and revolutionary inventions of G.D. Naidu, celebrated as the Edison of India. Starring Jayam Ravi, directed by Vignesh Shivan. Streamed in 4K UHD via Peachify TMDB 1489543.",
+    "desc": "Biographical drama chronicling the astonishing life and revolutionary inventions of G.D. Naidu, celebrated as the Edison of India. Starring Jayam Ravi, directed by Vignesh Shivan. Streamed in 4K UHD via Peachify.",
     "hero": "assets/images/gdn_landscape.jpg",
     "poster": "assets/images/gdn_poster.jpg",
     "genres": [
@@ -9801,7 +9801,7 @@ const sandflixCatalog = [
     "year": "2026",
     "age": "A 18+",
     "dur": "2h 05m",
-    "desc": "A tense atmospheric psychological survival thriller set during an unprecedented subterranean containment protocol. Streamed in 4K UHD via Peachify TMDB 1606527.",
+    "desc": "A tense atmospheric psychological survival thriller set during an unprecedented subterranean containment protocol. Streamed in 4K UHD via Peachify.",
     "hero": "assets/images/418_landscape.jpg",
     "poster": "assets/images/418_poster.jpg",
     "genres": [
@@ -9818,7 +9818,7 @@ const sandflixCatalog = [
     "year": "2026",
     "age": "U/A 13+",
     "dur": "1h 55m",
-    "desc": "An uplifting and emotional musical sports drama depicting an ambitious underdog dancer from humble origins rising through high-stakes street battles. Streamed in 4K UHD via Peachify TMDB 1595124.",
+    "desc": "An uplifting and emotional musical sports drama depicting an ambitious underdog dancer from humble origins rising through high-stakes street battles. Streamed in 4K UHD via Peachify.",
     "hero": "assets/images/steps_landscape.jpg",
     "poster": "assets/images/steps_poster.jpg",
     "genres": [
@@ -9834,7 +9834,7 @@ const sandflixCatalog = [
     "year": "2026",
     "age": "U/A 7+",
     "dur": "2h 10m",
-    "desc": "A grieving boy seeks God to meet his departed mother, and in finding the divine, learns to serve humanity through the eternal devotion and inspiration of Lord Hanuman. Starring Shobhinaw Satyaa, Vihaan Shedge, Chandan Anand, Purnima Tiwari, Anil Rastogi. Directed by Vishal Chaturvedi. Streamed in 4K UHD via Peachify TMDB 1709391.",
+    "desc": "A grieving boy seeks God to meet his departed mother, and in finding the divine, learns to serve humanity through the eternal devotion and inspiration of Lord Hanuman. Starring Shobhinaw Satyaa, Vihaan Shedge, Chandan Anand, Purnima Tiwari, Anil Rastogi. Directed by Vishal Chaturvedi. Streamed in 4K UHD via Peachify.",
     "hero": "assets/images/hanuman_ansh_landscape.jpg",
     "poster": "assets/images/hanuman_ansh_poster.jpg",
     "genres": [
@@ -9851,7 +9851,7 @@ const sandflixCatalog = [
     "year": "2026",
     "age": "U/A 13+",
     "dur": "2h 20m",
-    "desc": "Saravana, Mithra, Jacky, and Janaki are skilled con artists hiding out as an ordinary family in Multan. Facing unexpected threats and gripping twists, they plan the ultimate heist. Starring Arjun Das, Anna Ben, Yogi Babu, Vadivukarasi, Thambi Ramaiah. Directed by Harish Durairaj. Streamed in 4K UHD via Peachify TMDB 1596008.",
+    "desc": "Saravana, Mithra, Jacky, and Janaki are skilled con artists hiding out as an ordinary family in Multan. Facing unexpected threats and gripping twists, they plan the ultimate heist. Starring Arjun Das, Anna Ben, Yogi Babu, Vadivukarasi, Thambi Ramaiah. Directed by Harish Durairaj. Streamed in 4K UHD via Peachify.",
     "hero": "assets/images/kon_city_landscape.jpg",
     "poster": "assets/images/kon_city_poster.jpg",
     "genres": [
@@ -9868,7 +9868,7 @@ const sandflixCatalog = [
     "year": "2026",
     "age": "A 18+",
     "dur": "1h 57m",
-    "desc": "Lowen Ashleigh, hired to ghostwrite for best-selling author Verity Crawford, uncovers Verity's autobiographical notes, and becomes involved in what may prove to be a lethal conspiracy. Starring Dakota Johnson, Anne Hathaway, Josh Hartnett, Brady Wagner. Directed by Michael Showalter. Streamed in 4K UHD via Peachify TMDB 1283515.",
+    "desc": "Lowen Ashleigh, hired to ghostwrite for best-selling author Verity Crawford, uncovers Verity's autobiographical notes, and becomes involved in what may prove to be a lethal conspiracy. Starring Dakota Johnson, Anne Hathaway, Josh Hartnett, Brady Wagner. Directed by Michael Showalter. Streamed in 4K UHD via Peachify.",
     "hero": "assets/images/verity_landscape.jpg",
     "poster": "assets/images/verity_poster.jpg",
     "genres": [
@@ -9885,7 +9885,7 @@ const sandflixCatalog = [
     "year": "2026",
     "age": "U/A 13+",
     "dur": "1h 59m",
-    "desc": "Andy Sachs returns to Runway as Miranda Priestly navigates a new media landscape and Runway's position within. The duo reconnect with former assistant Emily Charlton, now the head of a luxury brand that possesses funding which could ensure Runway's survival. Starring Meryl Streep, Anne Hathaway, Emily Blunt, Stanley Tucci. Directed by David Frankel. Streamed in 4K UHD via Peachify TMDB 1314481.",
+    "desc": "Andy Sachs returns to Runway as Miranda Priestly navigates a new media landscape and Runway's position within. The duo reconnect with former assistant Emily Charlton, now the head of a luxury brand that possesses funding which could ensure Runway's survival. Starring Meryl Streep, Anne Hathaway, Emily Blunt, Stanley Tucci. Directed by David Frankel. Streamed in 4K UHD via Peachify.",
     "hero": "assets/images/devil_wears_prada_2_landscape.jpg",
     "poster": "assets/images/devil_wears_prada_2_poster.jpg",
     "genres": [
@@ -9901,7 +9901,7 @@ const sandflixCatalog = [
     "year": "2026",
     "age": "U",
     "dur": "1h 30m",
-    "desc": "This is the rambunctious, ridiculous and totally true story of how the Minions conquered Hollywood, became movie stars, lost everything, unleashed monsters onto the world and then banded together to try and save the planet from the mayhem they had just created. Starring Pierre Coffin, Trey Parker, Christoph Waltz, Allison Janney. Directed by Pierre Coffin. Streamed in 4K UHD via Peachify TMDB 1315772.",
+    "desc": "This is the rambunctious, ridiculous and totally true story of how the Minions conquered Hollywood, became movie stars, lost everything, unleashed monsters onto the world and then banded together to try and save the planet from the mayhem they had just created. Starring Pierre Coffin, Trey Parker, Christoph Waltz, Allison Janney. Directed by Pierre Coffin. Streamed in 4K UHD via Peachify.",
     "hero": "assets/images/minions_monsters_landscape.jpg",
     "poster": "assets/images/minions_monsters_poster.jpg",
     "genres": [
@@ -9919,7 +9919,7 @@ const sandflixCatalog = [
     "year": "2026",
     "age": "A 18+",
     "dur": "1h 49m",
-    "desc": "After breaking the mysterious 'One Wish Willow' to win his crush's heart, a hopeless romantic finds himself getting exactly what he asked for but soon discovers that some desires come at a dark, sinister price. Starring Michael Johnston, Inde Navarrette, Cooper Tomlinson, Megan Lawless. Directed by Curry Barker. Streamed in 4K UHD via Peachify TMDB 1339713.",
+    "desc": "After breaking the mysterious 'One Wish Willow' to win his crush's heart, a hopeless romantic finds himself getting exactly what he asked for but soon discovers that some desires come at a dark, sinister price. Starring Michael Johnston, Inde Navarrette, Cooper Tomlinson, Megan Lawless. Directed by Curry Barker. Streamed in 4K UHD via Peachify.",
     "hero": "assets/images/obsession_landscape.jpg",
     "poster": "assets/images/obsession_poster.jpg",
     "genres": [
@@ -9935,7 +9935,7 @@ const sandflixCatalog = [
     "year": "2026",
     "age": "A 18+",
     "dur": "1h 55m",
-    "desc": "Medical courier Bryan unwittingly finds himself fighting for survival as one fateful delivery thrusts him into a nightmarish zombie outbreak. Starring Austin Abrams, Paul Walter Hauser, Kali Reis, Zach Cherry. Directed by Zach Cregger. Streamed in 4K UHD via Peachify TMDB 1423191.",
+    "desc": "Medical courier Bryan unwittingly finds himself fighting for survival as one fateful delivery thrusts him into a nightmarish zombie outbreak. Starring Austin Abrams, Paul Walter Hauser, Kali Reis, Zach Cherry. Directed by Zach Cregger. Streamed in 4K UHD via Peachify.",
     "hero": "assets/images/resident_evil_2026_landscape.jpg",
     "poster": "assets/images/resident_evil_2026_poster.jpg",
     "genres": [
@@ -9952,7 +9952,7 @@ const sandflixCatalog = [
     "year": "2026",
     "age": "A 18+",
     "dur": "1h 51m",
-    "desc": "A strange doorway appears in the basement of a furniture showroom, leading into an endless maze of eerie, yellow-wallpapered corridors and sinister liminal spaces. Starring Chiwetel Ejiofor, Renate Reinsve, Finn Bennett, Lukita Maxwell. Directed by Kane Parsons. Streamed in 4K UHD via Peachify TMDB 1083381.",
+    "desc": "A strange doorway appears in the basement of a furniture showroom, leading into an endless maze of eerie, yellow-wallpapered corridors and sinister liminal spaces. Starring Chiwetel Ejiofor, Renate Reinsve, Finn Bennett, Lukita Maxwell. Directed by Kane Parsons. Streamed in 4K UHD via Peachify.",
     "hero": "assets/images/backrooms_landscape.jpg",
     "poster": "assets/images/backrooms_poster.jpg",
     "genres": [
@@ -9969,7 +9969,7 @@ const sandflixCatalog = [
     "year": "2026",
     "age": "U/A 13+",
     "dur": "2h 15m",
-    "desc": "The evil Empire has fallen, and Imperial warlords remain scattered throughout the galaxy. Din Djarin and his young apprentice Grogu must navigate perilous missions across the Outer Rim. Starring Pedro Pascal, Jeremy Allen White, Sigourney Weaver. Directed by Jon Favreau. Streamed in 4K UHD via Peachify TMDB 1228710.",
+    "desc": "The evil Empire has fallen, and Imperial warlords remain scattered throughout the galaxy. Din Djarin and his young apprentice Grogu must navigate perilous missions across the Outer Rim. Starring Pedro Pascal, Jeremy Allen White, Sigourney Weaver. Directed by Jon Favreau. Streamed in 4K UHD via Peachify.",
     "hero": "assets/images/mandalorian_and_grogu_landscape.jpg",
     "poster": "assets/images/mandalorian_and_grogu_poster.jpg",
     "genres": [
@@ -9986,7 +9986,7 @@ const sandflixCatalog = [
     "year": "2026",
     "age": "U/A 7+",
     "dur": "1h 55m",
-    "desc": "Teenage Moana answers the Ocean's call and, for the first time, voyages beyond the reef of her island of Motunui with infamous demigod Maui on an unforgettable journey to restore prosperity to her people. Starring Catherine Lagaʻaia, Dwayne Johnson, Rena Owen, John Tui. Directed by Thomas Kail. Streamed in 4K UHD via Peachify TMDB 1108427.",
+    "desc": "Teenage Moana answers the Ocean's call and, for the first time, voyages beyond the reef of her island of Motunui with infamous demigod Maui on an unforgettable journey to restore prosperity to her people. Starring Catherine Lagaʻaia, Dwayne Johnson, Rena Owen, John Tui. Directed by Thomas Kail. Streamed in 4K UHD via Peachify.",
     "hero": "assets/images/moana_landscape.jpg",
     "poster": "assets/images/moana_poster.jpg",
     "genres": [
@@ -10004,7 +10004,7 @@ const sandflixCatalog = [
     "year": "2026",
     "age": "U/A 13+",
     "dur": "2h 26m",
-    "desc": "A cybersecurity expert becomes a whistleblower after uncovering secrets about aliens, putting him on the run from a corporation. Meanwhile, a meteorologist experiencing strange phenomena joins forces with him to prove there's life beyond our understanding. Starring Emily Blunt, Josh O'Connor, Colin Firth, Eve Hewson. Directed by Steven Spielberg. Streamed in 4K UHD via Peachify TMDB 1275779.",
+    "desc": "A cybersecurity expert becomes a whistleblower after uncovering secrets about aliens, putting him on the run from a corporation. Meanwhile, a meteorologist experiencing strange phenomena joins forces with him to prove there's life beyond our understanding. Starring Emily Blunt, Josh O'Connor, Colin Firth, Eve Hewson. Directed by Steven Spielberg. Streamed in 4K UHD via Peachify.",
     "hero": "assets/images/disclosure_day_landscape.jpg",
     "poster": "assets/images/disclosure_day_poster.jpg",
     "genres": [
@@ -10020,7 +10020,7 @@ const sandflixCatalog = [
     "year": "2026",
     "age": "A 18+",
     "dur": "2h 16m",
-    "desc": "Tragedy strikes when Heathcliff falls in love with Catherine Earnshaw, a woman from a wealthy family in 18th-century England. Starring Margot Robbie, Jacob Elordi, Hong Chau, Shazad Latif. Directed by Emerald Fennell. Streamed in 4K UHD via Peachify TMDB 1316092.",
+    "desc": "Tragedy strikes when Heathcliff falls in love with Catherine Earnshaw, a woman from a wealthy family in 18th-century England. Starring Margot Robbie, Jacob Elordi, Hong Chau, Shazad Latif. Directed by Emerald Fennell. Streamed in 4K UHD via Peachify.",
     "hero": "assets/images/wuthering_heights_landscape.jpg",
     "poster": "assets/images/wuthering_heights_poster.jpg",
     "genres": [
@@ -10036,7 +10036,7 @@ const sandflixCatalog = [
     "year": "2026",
     "age": "A 18+",
     "dur": "1h 54m",
-    "desc": "When a new Ghostface killer emerges in the quiet town where Sidney Prescott has built a new life, her darkest fears are realized as her daughter becomes the next target. Determined to protect her family, Sidney must face the horrors of her past to put an end to the bloodshed once and for all. Starring Neve Campbell, Isabel May, Courteney Cox, Jasmin Savoy Brown. Directed by Kevin Williamson. Streamed in 4K UHD via Peachify TMDB 1159559.",
+    "desc": "When a new Ghostface killer emerges in the quiet town where Sidney Prescott has built a new life, her darkest fears are realized as her daughter becomes the next target. Determined to protect her family, Sidney must face the horrors of her past to put an end to the bloodshed once and for all. Starring Neve Campbell, Isabel May, Courteney Cox, Jasmin Savoy Brown. Directed by Kevin Williamson. Streamed in 4K UHD via Peachify.",
     "hero": "assets/images/scream_7_landscape.jpg",
     "poster": "assets/images/scream_7_poster.jpg",
     "genres": [
