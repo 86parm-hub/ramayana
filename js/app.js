@@ -4518,6 +4518,81 @@ const OST_TRACKS = [
     src: "audio/253_shiv_tandav_stotram_sachet_parampara.m4a",
     banner: "assets/images/tracks/track_253.jpg",
     desc: "Electrifying vocal power and blazing electronic bass in Sachet & Parampara's hit Shiva anthem."
+  },
+  {
+    id: 254,
+    num: "1",
+    album: "no-name",
+    title: "Never Fold",
+    subtitle: "Raw Defiance & Unstoppable Willpower",
+    tag: "EPIC HIP-HOP",
+    artist: "Sidhu Moose Wala • Sunny Malton",
+    duration: "03:01",
+    durationSec: 181,
+    src: "sidhu%20moose%20wala%20songs/01_never_fold.m4a",
+    fallbackSrc: "audio/254_never_fold.m4a",
+    banner: "assets/images/tracks/track_254.jpg",
+    desc: "The legendary anthem of grit and integrity by Sidhu Moose Wala featuring Sunny Malton."
+  },
+  {
+    id: 255,
+    num: "2",
+    album: "no-name",
+    title: "Love Sick",
+    subtitle: "Melodic Hip-Hop & Unfiltered Emotion",
+    tag: "MELODIC DRIFT",
+    artist: "Sidhu Moose Wala • AR Paisley",
+    duration: "03:49",
+    durationSec: 229,
+    src: "sidhu%20moose%20wala%20songs/02_love_sick.m4a",
+    fallbackSrc: "audio/255_love_sick.m4a",
+    banner: "assets/images/tracks/track_255.jpg",
+    desc: "Soul-stirring lyrical storytelling uniting Sidhu Moose Wala and Canadian rapper AR Paisley."
+  },
+  {
+    id: 256,
+    num: "3",
+    album: "no-name",
+    title: "Everybody Hurts",
+    subtitle: "Vulnerable Truths & Heavy Hearts",
+    tag: "DEEP SOUL",
+    artist: "Sidhu Moose Wala • JayB",
+    duration: "02:51",
+    durationSec: 171,
+    src: "sidhu%20moose%20wala%20songs/03_everybody_hurts.m4a",
+    fallbackSrc: "audio/256_everybody_hurts.m4a",
+    banner: "assets/images/tracks/track_256.jpg",
+    desc: "Deeply reflective and honest verses shedding light on fame, loneliness, and emotional pain."
+  },
+  {
+    id: 257,
+    num: "4",
+    album: "no-name",
+    title: "0 To 100",
+    subtitle: "Rapid Fire Aggression & Unmatched Dominance",
+    tag: "HARDCORE BARS",
+    artist: "Sidhu Moose Wala • Mxrci",
+    duration: "01:49",
+    durationSec: 109,
+    src: "sidhu%20moose%20wala%20songs/04_0_to_100.m4a",
+    fallbackSrc: "audio/257_0_to_100.m4a",
+    banner: "assets/images/tracks/track_257.jpg",
+    desc: "Blistering high-speed flow and uncompromising confidence clocking in from 0 to 100."
+  },
+  {
+    id: 258,
+    num: "5",
+    album: "no-name",
+    title: "Bloodlust",
+    subtitle: "West Coast Street Vibe & Punjabi Swagger",
+    tag: "WEST COAST DRILL",
+    artist: "Sidhu Moose Wala • Mr. Capone-E",
+    duration: "02:39",
+    durationSec: 159,
+    src: "sidhu%20moose%20wala%20songs/05_bloodlust.m4a",
+    fallbackSrc: "audio/258_bloodlust.m4a",
+    banner: "assets/images/tracks/track_258.jpg",
+    desc: "Cross-continental gangster anthem linking Punjab with American West Coast rap icon Mr. Capone-E."
   }
 ];
 
@@ -5169,6 +5244,16 @@ window.scrollToActiveTrack = scrollToActiveTrack;
    ========================================================================== */
 
 const SANDIFY_ALBUMS = {
+  'no-name': {
+    title: 'No Name: Sidhu Moose Wala',
+    subtitle: 'The iconic 2022 raw hip-hop EP by <strong>Sidhu Moose Wala</strong> featuring hard-hitting flow, unapologetic lyricism, and global cross-border collaborations.',
+    artist1: 'Sidhu Moose Wala',
+    artist2: 'Sunny Malton • AR Paisley • Mr. Capone-E • Snappy',
+    meta: '5 songs • 14 mins',
+    cover: 'assets/images/no_name_album.jpg',
+    category: 'all',
+    startTrack: 254
+  },
   'nusrat-fateh-ali-khan': {
     title: 'Nusrat Fateh Ali Khan: Shahenshah-e-Qawwali',
     subtitle: 'The eternal soul of Sufi devotion, timeless mystical ghazals, and legendary qawwalis by the supreme voice of the sub-continent, <strong>Ustad Nusrat Fateh Ali Khan</strong>.',
